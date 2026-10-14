@@ -103,6 +103,8 @@ public enum PropertyDomain {
   
   FUNDSTRUCTURE("FundStructure"),
   
+  PROCESSINGGROUP("ProcessingGroup"),
+  
   FEE("Fee"),
   
   RECONCILIATION("Reconciliation"),
@@ -216,6 +218,8 @@ public enum PropertyDomain {
   RECRESULT("RecResult"),
   
   JOURNALENTRY("JournalEntry"),
+  
+  COLLATERALAGREEMENT("CollateralAgreement"),
   
   ELIGIBLECOLLATERALSCHEDULE("EligibleCollateralSchedule");
 

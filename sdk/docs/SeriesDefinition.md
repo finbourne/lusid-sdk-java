@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **launchPriceType** | **String** | The type of launch price for the Series. Available values: Manual, Calculated. | [default to String]
 **domCcy** | **String** | The denomination currency of the Series. | [default to String]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | An optional set of properties to associate with the Series. Only applied if createInstrument is set to true on the parent Fund. | [optional] [default to Map<String, Property>]
+**launchPrice** | **java.math.BigDecimal** | The launch price of the Series. Required when LaunchPriceType is Manual; ignored when it is Calculated. | [optional] [default to java.math.BigDecimal]
+**status** | **String** | The lifecycle status of the Series: Open, Closed or Rolled. Defaults to Open. Available values: Open, Closed, Rolled. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.SeriesDefinition;
@@ -23,6 +25,8 @@ OffsetDateTime LaunchDate = OffsetDateTime.now();
 String LaunchPriceType = "example LaunchPriceType";
 String DomCcy = "example DomCcy";
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
+@jakarta.annotation.Nullable java.math.BigDecimal LaunchPrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String Status = "example Status";
 
 
 SeriesDefinition seriesDefinitionInstance = new SeriesDefinition()
@@ -31,7 +35,9 @@ SeriesDefinition seriesDefinitionInstance = new SeriesDefinition()
     .LaunchDate(LaunchDate)
     .LaunchPriceType(LaunchPriceType)
     .DomCcy(DomCcy)
-    .Properties(Properties);
+    .Properties(Properties)
+    .LaunchPrice(LaunchPrice)
+    .Status(Status);
 ```
 
 

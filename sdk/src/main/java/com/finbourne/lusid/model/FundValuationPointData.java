@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.FeeAccrual;
 import com.finbourne.lusid.model.FundAmount;
 import com.finbourne.lusid.model.FundPnlBreakdown;
+import com.finbourne.lusid.model.PartnershipAccountingValuationPointData;
 import com.finbourne.lusid.model.PreviousFundValuationPointData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -87,6 +88,10 @@ public class FundValuationPointData {
   public static final String SERIALIZED_NAME_PREVIOUS_VALUATION_POINT_DATA = "previousValuationPointData";
   @SerializedName(SERIALIZED_NAME_PREVIOUS_VALUATION_POINT_DATA)
   private PreviousFundValuationPointData previousValuationPointData;
+
+  public static final String SERIALIZED_NAME_PARTNERSHIP_ACCOUNTING = "partnershipAccounting";
+  @SerializedName(SERIALIZED_NAME_PARTNERSHIP_ACCOUNTING)
+  private PartnershipAccountingValuationPointData partnershipAccounting;
 
   public FundValuationPointData() {
   }
@@ -291,6 +296,27 @@ public class FundValuationPointData {
   }
 
 
+  public FundValuationPointData partnershipAccounting(PartnershipAccountingValuationPointData partnershipAccounting) {
+    
+    this.partnershipAccounting = partnershipAccounting;
+    return this;
+  }
+
+   /**
+   * Get partnershipAccounting
+   * @return partnershipAccounting
+  **/
+  @jakarta.annotation.Nullable
+  public PartnershipAccountingValuationPointData getPartnershipAccounting() {
+    return partnershipAccounting;
+  }
+
+
+  public void setPartnershipAccounting(PartnershipAccountingValuationPointData partnershipAccounting) {
+    this.partnershipAccounting = partnershipAccounting;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -308,7 +334,8 @@ public class FundValuationPointData {
         Objects.equals(this.fees, fundValuationPointData.fees) &&
         (this.nav.compareTo(fundValuationPointData.getNav()) == 0) &&
         Objects.equals(this.miscellaneous, fundValuationPointData.miscellaneous) &&
-        Objects.equals(this.previousValuationPointData, fundValuationPointData.previousValuationPointData);
+        Objects.equals(this.previousValuationPointData, fundValuationPointData.previousValuationPointData) &&
+        Objects.equals(this.partnershipAccounting, fundValuationPointData.partnershipAccounting);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -317,7 +344,7 @@ public class FundValuationPointData {
 
   @Override
   public int hashCode() {
-    return Objects.hash(backOut, dealing, pnL, gav, fees, nav, miscellaneous, previousValuationPointData);
+    return Objects.hash(backOut, dealing, pnL, gav, fees, nav, miscellaneous, previousValuationPointData, partnershipAccounting);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -339,6 +366,7 @@ public class FundValuationPointData {
     sb.append("    nav: ").append(toIndentedString(nav)).append("\n");
     sb.append("    miscellaneous: ").append(toIndentedString(miscellaneous)).append("\n");
     sb.append("    previousValuationPointData: ").append(toIndentedString(previousValuationPointData)).append("\n");
+    sb.append("    partnershipAccounting: ").append(toIndentedString(partnershipAccounting)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -369,6 +397,7 @@ public class FundValuationPointData {
     openapiFields.add("nav");
     openapiFields.add("miscellaneous");
     openapiFields.add("previousValuationPointData");
+    openapiFields.add("partnershipAccounting");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -405,6 +434,10 @@ public class FundValuationPointData {
       // validate the optional field `previousValuationPointData`
       if (jsonObj.get("previousValuationPointData") != null && !jsonObj.get("previousValuationPointData").isJsonNull()) {
         PreviousFundValuationPointData.validateJsonElement(jsonObj.get("previousValuationPointData"));
+      }
+      // validate the optional field `partnershipAccounting`
+      if (jsonObj.get("partnershipAccounting") != null && !jsonObj.get("partnershipAccounting").isJsonNull()) {
+        PartnershipAccountingValuationPointData.validateJsonElement(jsonObj.get("partnershipAccounting"));
       }
   }
 

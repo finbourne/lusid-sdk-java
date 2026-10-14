@@ -32,6 +32,7 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfAmortisationRuleSet;
+import com.finbourne.lusid.model.ResourceListOfRulesInterval;
 import com.finbourne.lusid.model.SetAmortisationRulesRequest;
 import com.finbourne.lusid.model.UpdateAmortisationRuleSetDetailsRequest;
 
@@ -1146,6 +1147,292 @@ public class AmortisationRuleSetsApi {
      */
     public APIlistAmortisationRuleSetsRequest listAmortisationRuleSets() {
         return new APIlistAmortisationRuleSetsRequest();
+    }
+    private okhttp3.Call listAmortisationRulesIntervalsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listAmortisationRulesIntervalsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listAmortisationRulesIntervalsCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/amortisation/rulesets/{scope}/{code}/rulesIntervals"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (fromEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromEffectiveAt", fromEffectiveAt));
+        }
+
+        if (toEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toEffectiveAt", toEffectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listAmortisationRulesIntervalsValidateBeforeCall(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listAmortisationRulesIntervals(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listAmortisationRulesIntervals(Async)");
+        }
+
+        return listAmortisationRulesIntervalsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfRulesInterval> listAmortisationRulesIntervalsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = listAmortisationRulesIntervalsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRulesInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfRulesInterval> listAmortisationRulesIntervalsWithHttpInfo(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listAmortisationRulesIntervalsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfRulesInterval>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listAmortisationRulesIntervalsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfRulesInterval> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listAmortisationRulesIntervalsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfRulesInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listAmortisationRulesIntervalsAsync(String scope, String code, String fromEffectiveAt, String toEffectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfRulesInterval> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listAmortisationRulesIntervalsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfRulesInterval>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistAmortisationRulesIntervalsRequest {
+        private final String scope;
+        private final String code;
+        private String fromEffectiveAt;
+        private String toEffectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIlistAmortisationRulesIntervalsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt Return only the intervals that overlap the effective range starting at this datetime or cut label.  There is no lower bound if not specified. (optional)
+         * @return APIlistAmortisationRulesIntervalsRequest
+         */
+        public APIlistAmortisationRulesIntervalsRequest fromEffectiveAt(String fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set toEffectiveAt
+         * @param toEffectiveAt Return only the intervals that overlap the effective range ending at this datetime or cut label.  There is no upper bound if not specified. (optional)
+         * @return APIlistAmortisationRulesIntervalsRequest
+         */
+        public APIlistAmortisationRulesIntervalsRequest toEffectiveAt(String toEffectiveAt) {
+            this.toEffectiveAt = toEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the rules intervals. Defaults to returning the latest version if not  specified. (optional)
+         * @return APIlistAmortisationRulesIntervalsRequest
+         */
+        public APIlistAmortisationRulesIntervalsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listAmortisationRulesIntervals
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules intervals of the rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listAmortisationRulesIntervalsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute listAmortisationRulesIntervals request
+         * @return ResourceListOfRulesInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules intervals of the rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRulesInterval execute() throws ApiException {
+            ApiResponse<ResourceListOfRulesInterval> localVarResp = listAmortisationRulesIntervalsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAmortisationRulesIntervals request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfRulesInterval
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules intervals of the rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfRulesInterval execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfRulesInterval> localVarResp = listAmortisationRulesIntervalsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listAmortisationRulesIntervals request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfRulesInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules intervals of the rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRulesInterval> executeWithHttpInfo() throws ApiException {
+            return listAmortisationRulesIntervalsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
+        }
+
+        /**
+         * Execute listAmortisationRulesIntervals request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfRulesInterval&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules intervals of the rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfRulesInterval> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listAmortisationRulesIntervalsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, opts);
+        }
+
+        /**
+         * Execute listAmortisationRulesIntervals request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules intervals of the rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRulesInterval> _callback) throws ApiException {
+            return listAmortisationRulesIntervalsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute listAmortisationRulesIntervals request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The rules intervals of the rule set. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfRulesInterval> _callback, ConfigurationOptions opts) throws ApiException {
+            return listAmortisationRulesIntervalsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * ListAmortisationRulesIntervals: List the rules intervals of an amortisation rule set.
+     * Lists the rules intervals of the rule set, ordered by from date. Each interval applies from its from date  until the next interval starts. The last interval has no until date.
+     * @param scope The rule set scope. (required)
+     * @param code The rule set code. (required)
+     * @return APIlistAmortisationRulesIntervalsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The rules intervals of the rule set. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistAmortisationRulesIntervalsRequest listAmortisationRulesIntervals(String scope, String code) {
+        return new APIlistAmortisationRulesIntervalsRequest(scope, code);
     }
     private okhttp3.Call setAmortisationRulesCall(String scope, String code, SetAmortisationRulesRequest setAmortisationRulesRequest, final ApiCallback _callback) throws ApiException {
         return setAmortisationRulesCall(scope, code, setAmortisationRulesRequest,  _callback, new ConfigurationOptions());

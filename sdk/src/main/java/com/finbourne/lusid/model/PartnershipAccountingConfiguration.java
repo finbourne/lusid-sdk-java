@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CapabilityOverride;
+import com.finbourne.lusid.model.PresentationConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.SeriesConfiguration;
 import com.google.gson.TypeAdapter;
@@ -89,6 +90,10 @@ public class PartnershipAccountingConfiguration {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_CAPABILITIES)
   private Map<String, String> effectiveCapabilities;
 
+  public static final String SERIALIZED_NAME_PRESENTATION = "presentation";
+  @SerializedName(SERIALIZED_NAME_PRESENTATION)
+  private PresentationConfiguration presentation;
+
   public PartnershipAccountingConfiguration() {
   }
 
@@ -141,7 +146,7 @@ public class PartnershipAccountingConfiguration {
   }
 
    /**
-   * Available values: FundCurrencyOnly.
+   * Available values: FundCurrencyOnly, AllowLineCurrency.
    * @return commitmentCurrencyPolicy
   **/
   @jakarta.annotation.Nullable
@@ -276,6 +281,27 @@ public class PartnershipAccountingConfiguration {
   }
 
 
+  public PartnershipAccountingConfiguration presentation(PresentationConfiguration presentation) {
+    
+    this.presentation = presentation;
+    return this;
+  }
+
+   /**
+   * Get presentation
+   * @return presentation
+  **/
+  @jakarta.annotation.Nullable
+  public PresentationConfiguration getPresentation() {
+    return presentation;
+  }
+
+
+  public void setPresentation(PresentationConfiguration presentation) {
+    this.presentation = presentation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -293,7 +319,8 @@ public class PartnershipAccountingConfiguration {
         Objects.equals(this.capitalModel, partnershipAccountingConfiguration.capitalModel) &&
         Objects.equals(this.capabilityOverrides, partnershipAccountingConfiguration.capabilityOverrides) &&
         Objects.equals(this.series, partnershipAccountingConfiguration.series) &&
-        Objects.equals(this.effectiveCapabilities, partnershipAccountingConfiguration.effectiveCapabilities);
+        Objects.equals(this.effectiveCapabilities, partnershipAccountingConfiguration.effectiveCapabilities) &&
+        Objects.equals(this.presentation, partnershipAccountingConfiguration.presentation);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -302,7 +329,7 @@ public class PartnershipAccountingConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(enabled, configPack, commitmentCurrencyPolicy, registerPortfolioGroup, capitalModel, capabilityOverrides, series, effectiveCapabilities);
+    return Objects.hash(enabled, configPack, commitmentCurrencyPolicy, registerPortfolioGroup, capitalModel, capabilityOverrides, series, effectiveCapabilities, presentation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -324,6 +351,7 @@ public class PartnershipAccountingConfiguration {
     sb.append("    capabilityOverrides: ").append(toIndentedString(capabilityOverrides)).append("\n");
     sb.append("    series: ").append(toIndentedString(series)).append("\n");
     sb.append("    effectiveCapabilities: ").append(toIndentedString(effectiveCapabilities)).append("\n");
+    sb.append("    presentation: ").append(toIndentedString(presentation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -354,6 +382,7 @@ public class PartnershipAccountingConfiguration {
     openapiFields.add("capabilityOverrides");
     openapiFields.add("series");
     openapiFields.add("effectiveCapabilities");
+    openapiFields.add("presentation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -411,6 +440,10 @@ public class PartnershipAccountingConfiguration {
       // validate the optional field `series`
       if (jsonObj.get("series") != null && !jsonObj.get("series").isJsonNull()) {
         SeriesConfiguration.validateJsonElement(jsonObj.get("series"));
+      }
+      // validate the optional field `presentation`
+      if (jsonObj.get("presentation") != null && !jsonObj.get("presentation").isJsonNull()) {
+        PresentationConfiguration.validateJsonElement(jsonObj.get("presentation"));
       }
   }
 

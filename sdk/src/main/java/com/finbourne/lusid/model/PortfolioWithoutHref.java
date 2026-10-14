@@ -20,6 +20,7 @@ import com.finbourne.lusid.model.Relationship;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
+import com.finbourne.lusid.model.WhtParameters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -293,6 +294,10 @@ public class PortfolioWithoutHref {
   public static final String SERIALIZED_NAME_HOLDINGS_FUNGIBILITY = "holdingsFungibility";
   @SerializedName(SERIALIZED_NAME_HOLDINGS_FUNGIBILITY)
   private String holdingsFungibility;
+
+  public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
+  @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
+  private WhtParameters whtParameters;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -871,6 +876,27 @@ public class PortfolioWithoutHref {
   }
 
 
+  public PortfolioWithoutHref whtParameters(WhtParameters whtParameters) {
+    
+    this.whtParameters = whtParameters;
+    return this;
+  }
+
+   /**
+   * Get whtParameters
+   * @return whtParameters
+  **/
+  @jakarta.annotation.Nullable
+  public WhtParameters getWhtParameters() {
+    return whtParameters;
+  }
+
+
+  public void setWhtParameters(WhtParameters whtParameters) {
+    this.whtParameters = whtParameters;
+  }
+
+
   public PortfolioWithoutHref links(List<Link> links) {
     
     this.links = links;
@@ -936,6 +962,7 @@ public class PortfolioWithoutHref {
         Objects.equals(this.taxLotSelectionCostBasis, portfolioWithoutHref.taxLotSelectionCostBasis) &&
         Objects.equals(this.fractionalUnitsTrueUpConfiguration, portfolioWithoutHref.fractionalUnitsTrueUpConfiguration) &&
         Objects.equals(this.holdingsFungibility, portfolioWithoutHref.holdingsFungibility) &&
+        Objects.equals(this.whtParameters, portfolioWithoutHref.whtParameters) &&
         Objects.equals(this.links, portfolioWithoutHref.links);
   }
 
@@ -945,7 +972,7 @@ public class PortfolioWithoutHref {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, links);
+    return Objects.hash(id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, whtParameters, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -985,6 +1012,7 @@ public class PortfolioWithoutHref {
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("    holdingsFungibility: ").append(toIndentedString(holdingsFungibility)).append("\n");
+    sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1034,6 +1062,7 @@ public class PortfolioWithoutHref {
     openapiFields.add("taxLotSelectionCostBasis");
     openapiFields.add("fractionalUnitsTrueUpConfiguration");
     openapiFields.add("holdingsFungibility");
+    openapiFields.add("whtParameters");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1147,6 +1176,10 @@ public class PortfolioWithoutHref {
       }
       if ((jsonObj.get("holdingsFungibility") != null && !jsonObj.get("holdingsFungibility").isJsonNull()) && !jsonObj.get("holdingsFungibility").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingsFungibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingsFungibility").toString()));
+      }
+      // validate the optional field `whtParameters`
+      if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {
+        WhtParameters.validateJsonElement(jsonObj.get("whtParameters"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

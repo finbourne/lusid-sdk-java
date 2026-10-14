@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | Unique instrument identifiers | [optional] [default to Map<String, String>]
+**series** | [**List&lt;Series&gt;**](Series.md) | The series that belong to this Share Class - only relevant if InvestorType is Series. | [optional] [default to List<Series>]
 **name** | **String** | The display name of the Share Class. | [default to String]
 **description** | **String** | An optional description for the Share Class. | [optional] [default to String]
 **shareClassShortCode** | **String** | A short code that uniquely identifies the share class within the Fund. | [default to String]
@@ -20,6 +21,7 @@ Name | Type | Description | Notes
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
 **distributionPaymentType** | **String** | The tax treatment applied to distributions. Available values: Invalid, Gross, Net. | [optional] [default to String]
 **hedging** | **String** | Indicates whether the ShareClass applies currency hedging. Available values: Invalid, None, ApplyHedging. | [optional] [default to String]
+**whtParameters** | [**WhtParameters**](WhtParameters.md) |  | [optional] [default to WhtParameters]
 
 ```java
 import com.finbourne.lusid.model.ShareClass;
@@ -28,6 +30,7 @@ import java.lang.System;
 import java.net.URI;
 
 @jakarta.annotation.Nullable Map<String, String> InstrumentIdentifiers = new Map<String, String>();
+@jakarta.annotation.Nullable List<Series> Series = new List<Series>();
 String Name = "example Name";
 @jakarta.annotation.Nullable String Description = "example Description";
 String ShareClassShortCode = "example ShareClassShortCode";
@@ -43,10 +46,12 @@ TradingConventions TradingConventions = new TradingConventions();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
 @jakarta.annotation.Nullable String DistributionPaymentType = "example DistributionPaymentType";
 @jakarta.annotation.Nullable String Hedging = "example Hedging";
+WhtParameters WhtParameters = new WhtParameters();
 
 
 ShareClass shareClassInstance = new ShareClass()
     .InstrumentIdentifiers(InstrumentIdentifiers)
+    .Series(Series)
     .Name(Name)
     .Description(Description)
     .ShareClassShortCode(ShareClassShortCode)
@@ -61,7 +66,8 @@ ShareClass shareClassInstance = new ShareClass()
     .RoundingConventionsUnits(RoundingConventionsUnits)
     .TimeZoneConventions(TimeZoneConventions)
     .DistributionPaymentType(DistributionPaymentType)
-    .Hedging(Hedging);
+    .Hedging(Hedging)
+    .WhtParameters(WhtParameters);
 ```
 
 

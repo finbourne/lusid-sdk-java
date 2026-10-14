@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **inflationConvexity** | [**InflationConvexityOptions**](InflationConvexityOptions.md) |  | [optional] [default to InflationConvexityOptions]
 **allowFallbackOnModelDecline** | **Boolean** | When true, a model that refuses an instrument outright - because the instrument is outside  what that model can represent, not because data was missing - hands the instrument to the  next model this recipe&#39;s rules offer for it, and to the default model for its type after  those. The row is then priced by the first model that accepts it, and carries a diagnostic  naming the model that stood down, its objection, and the model that served it. The caller  must be entitled to the model that serves the row; where none of the alternatives is both  licensed and willing, the row keeps the original refusal.  When false (default), a refusal ends the row however many other models the recipe offers.  A failure that is not a refusal - a missing curve, an unresolved fixing, a malformed model  option - always ends the row, whatever this is set to, because another model&#39;s number would  hide the gap rather than close it. | [optional] [default to Boolean]
 **namedPrices** | [**List&lt;NamedPrice&gt;**](NamedPrice.md) | Names a valuation request can use to ask for a pricing side and a notional dealing cost  treatment in one column, as Valuation/PV(NamedPrice&#x3D;name) (and likewise PvInReportCcy and  PvInPortfolioCcy). For example a fund might define \&quot;creation\&quot; as the offer side plus the  buy-side dealing cost, \&quot;cancellation\&quot; as the bid side less the sell-side cost, and  \&quot;perfRef\&quot; as the plain mid. Each name must start with a letter, contain only letters and  digits, and be unique within the recipe ignoring case; a request must spell the name exactly as  defined. Absent or empty defines no names. | [optional] [default to List<NamedPrice>]
+**suppressAutomaticLoanPrincipalRepayment** | **Boolean** | If true, FlexibleLoans held as contracts on a LoanFacility do not automatically generate a  LoanPrincipalRepaymentEvent at the end of their schedule. Users must then book rollovers or explicit  LoanPrincipalRepaymentEvents themselves, otherwise the contract stays open and may fail to value once matured.  Stand-alone and WholeLoanFacility FlexibleLoans, interest repayments and upserted repayment events are unaffected. Only takes  effect on the recipe used to generate instrument events. Defaults to false. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.PricingOptions;
@@ -68,6 +69,7 @@ Boolean FindOrCalculateWriteThrough = true;
 InflationConvexityOptions InflationConvexity = new InflationConvexityOptions();
 Boolean AllowFallbackOnModelDecline = true;
 @jakarta.annotation.Nullable List<NamedPrice> NamedPrices = new List<NamedPrice>();
+Boolean SuppressAutomaticLoanPrincipalRepayment = true;
 
 
 PricingOptions pricingOptionsInstance = new PricingOptions()
@@ -98,7 +100,8 @@ PricingOptions pricingOptionsInstance = new PricingOptions()
     .FindOrCalculateWriteThrough(FindOrCalculateWriteThrough)
     .InflationConvexity(InflationConvexity)
     .AllowFallbackOnModelDecline(AllowFallbackOnModelDecline)
-    .NamedPrices(NamedPrices);
+    .NamedPrices(NamedPrices)
+    .SuppressAutomaticLoanPrincipalRepayment(SuppressAutomaticLoanPrincipalRepayment);
 ```
 
 

@@ -78,6 +78,14 @@ public class SeriesDefinition {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
+  public static final String SERIALIZED_NAME_LAUNCH_PRICE = "launchPrice";
+  @SerializedName(SERIALIZED_NAME_LAUNCH_PRICE)
+  private java.math.BigDecimal launchPrice;
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
+
   public SeriesDefinition() {
   }
 
@@ -215,6 +223,48 @@ public class SeriesDefinition {
   }
 
 
+  public SeriesDefinition launchPrice(java.math.BigDecimal launchPrice) {
+    
+    this.launchPrice = launchPrice;
+    return this;
+  }
+
+   /**
+   * The launch price of the Series. Required when LaunchPriceType is Manual; ignored when it is Calculated.
+   * @return launchPrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getLaunchPrice() {
+    return launchPrice;
+  }
+
+
+  public void setLaunchPrice(java.math.BigDecimal launchPrice) {
+    this.launchPrice = launchPrice;
+  }
+
+
+  public SeriesDefinition status(String status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * The lifecycle status of the Series: Open, Closed or Rolled. Defaults to Open. Available values: Open, Closed, Rolled.
+   * @return status
+  **/
+  @jakarta.annotation.Nullable
+  public String getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(String status) {
+    this.status = status;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -230,7 +280,9 @@ public class SeriesDefinition {
         Objects.equals(this.launchDate, seriesDefinition.launchDate) &&
         Objects.equals(this.launchPriceType, seriesDefinition.launchPriceType) &&
         Objects.equals(this.domCcy, seriesDefinition.domCcy) &&
-        Objects.equals(this.properties, seriesDefinition.properties);
+        Objects.equals(this.properties, seriesDefinition.properties) &&
+        (this.launchPrice.compareTo(seriesDefinition.getLaunchPrice()) == 0) &&
+        Objects.equals(this.status, seriesDefinition.status);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -239,7 +291,7 @@ public class SeriesDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(seriesIdentifier, seriesType, launchDate, launchPriceType, domCcy, properties);
+    return Objects.hash(seriesIdentifier, seriesType, launchDate, launchPriceType, domCcy, properties, launchPrice, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -259,6 +311,8 @@ public class SeriesDefinition {
     sb.append("    launchPriceType: ").append(toIndentedString(launchPriceType)).append("\n");
     sb.append("    domCcy: ").append(toIndentedString(domCcy)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    launchPrice: ").append(toIndentedString(launchPrice)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -287,6 +341,8 @@ public class SeriesDefinition {
     openapiFields.add("launchPriceType");
     openapiFields.add("domCcy");
     openapiFields.add("properties");
+    openapiFields.add("launchPrice");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -328,6 +384,9 @@ public class SeriesDefinition {
       }
       if (!jsonObj.get("domCcy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `domCcy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("domCcy").toString()));
+      }
+      if ((jsonObj.get("status") != null && !jsonObj.get("status").isJsonNull()) && !jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

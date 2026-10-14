@@ -1,0 +1,47 @@
+# com.finbourne.lusid.model.Series
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**shareClassShortCode** | **String** | The short code of the share class the Series belongs to. A series identifier is unique only within its share class. | [optional] [default to String]
+**seriesIdentifier** | **String** | The identifier that uniquely identifies this Series within the Share Class. | [default to String]
+**seriesType** | **String** | The type of the Series. Available values: Lead, Standard. | [default to String]
+**launchDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date on which the Series was launched. | [default to OffsetDateTime]
+**launchPriceType** | **String** | The type of launch price for the Series. Available values: Manual, Calculated. | [default to String]
+**domCcy** | **String** | The denomination currency of the Series. | [default to String]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | An optional set of properties to associate with the Series. Only applied if createInstrument is set to true on the parent Fund. | [optional] [default to Map<String, Property>]
+**launchPrice** | **java.math.BigDecimal** | The launch price of the Series. Required when LaunchPriceType is Manual; ignored when it is Calculated. | [optional] [default to java.math.BigDecimal]
+**status** | **String** | The lifecycle status of the Series: Open, Closed or Rolled. Defaults to Open. Available values: Open, Closed, Rolled. | [optional] [default to String]
+
+```java
+import com.finbourne.lusid.model.Series;
+import java.util.*;
+import java.lang.System;
+import java.net.URI;
+
+@jakarta.annotation.Nullable String ShareClassShortCode = "example ShareClassShortCode";
+String SeriesIdentifier = "example SeriesIdentifier";
+String SeriesType = "example SeriesType";
+OffsetDateTime LaunchDate = OffsetDateTime.now();
+String LaunchPriceType = "example LaunchPriceType";
+String DomCcy = "example DomCcy";
+@jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
+@jakarta.annotation.Nullable java.math.BigDecimal LaunchPrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String Status = "example Status";
+
+
+Series seriesInstance = new Series()
+    .ShareClassShortCode(ShareClassShortCode)
+    .SeriesIdentifier(SeriesIdentifier)
+    .SeriesType(SeriesType)
+    .LaunchDate(LaunchDate)
+    .LaunchPriceType(LaunchPriceType)
+    .DomCcy(DomCcy)
+    .Properties(Properties)
+    .LaunchPrice(LaunchPrice)
+    .Status(Status);
+```
+
+
+[Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)

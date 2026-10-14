@@ -33,7 +33,9 @@ import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfPaymentInstruction;
 import com.finbourne.lusid.model.PaymentInstruction;
 import com.finbourne.lusid.model.PaymentInstructionRequest;
+import com.finbourne.lusid.model.PaymentInstructionStatusTransitionRequest;
 import com.finbourne.lusid.model.PaymentInstructionsResponse;
+import com.finbourne.lusid.model.TransitionPaymentInstructionsResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1212,6 +1214,256 @@ public class PaymentInstructionsApi {
      */
     public APIlistPaymentInstructionsRequest listPaymentInstructions() {
         return new APIlistPaymentInstructionsRequest();
+    }
+    private okhttp3.Call transitionPaymentInstructionStatusesCall(Map<String, PaymentInstructionStatusTransitionRequest> requestBody, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return transitionPaymentInstructionStatusesCall(requestBody, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call transitionPaymentInstructionStatusesCall(Map<String, PaymentInstructionStatusTransitionRequest> requestBody, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/paymentinstructions/$transitionStatuses";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call transitionPaymentInstructionStatusesValidateBeforeCall(Map<String, PaymentInstructionStatusTransitionRequest> requestBody, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling transitionPaymentInstructionStatuses(Async)");
+        }
+
+        return transitionPaymentInstructionStatusesCall(requestBody, propertyKeys, _callback, opts);
+
+    }
+
+
+    private ApiResponse<TransitionPaymentInstructionsResponse> transitionPaymentInstructionStatusesWithHttpInfo(Map<String, PaymentInstructionStatusTransitionRequest> requestBody, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = transitionPaymentInstructionStatusesValidateBeforeCall(requestBody, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransitionPaymentInstructionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TransitionPaymentInstructionsResponse> transitionPaymentInstructionStatusesWithHttpInfo(Map<String, PaymentInstructionStatusTransitionRequest> requestBody, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = transitionPaymentInstructionStatusesValidateBeforeCall(requestBody, propertyKeys, null, opts);
+        Type localVarReturnType = new TypeToken<TransitionPaymentInstructionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call transitionPaymentInstructionStatusesAsync(Map<String, PaymentInstructionStatusTransitionRequest> requestBody, List<String> propertyKeys, final ApiCallback<TransitionPaymentInstructionsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = transitionPaymentInstructionStatusesValidateBeforeCall(requestBody, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TransitionPaymentInstructionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call transitionPaymentInstructionStatusesAsync(Map<String, PaymentInstructionStatusTransitionRequest> requestBody, List<String> propertyKeys, final ApiCallback<TransitionPaymentInstructionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = transitionPaymentInstructionStatusesValidateBeforeCall(requestBody, propertyKeys, _callback, opts);
+        Type localVarReturnType = new TypeToken<TransitionPaymentInstructionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APItransitionPaymentInstructionStatusesRequest {
+        private final Map<String, PaymentInstructionStatusTransitionRequest> requestBody;
+        private List<String> propertyKeys;
+
+        private APItransitionPaymentInstructionStatusesRequest(Map<String, PaymentInstructionStatusTransitionRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;PaymentInstruction\&quot; domain to decorate onto each   transitioned payment instruction. These take the format {domain}/{scope}/{code} e.g. \&quot;PaymentInstruction/myScope/myProperty\&quot;. (optional)
+         * @return APItransitionPaymentInstructionStatusesRequest
+         */
+        public APItransitionPaymentInstructionStatusesRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for transitionPaymentInstructionStatuses
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully transitioned payment instructions at their new status, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return transitionPaymentInstructionStatusesCall(requestBody, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute transitionPaymentInstructionStatuses request
+         * @return TransitionPaymentInstructionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully transitioned payment instructions at their new status, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransitionPaymentInstructionsResponse execute() throws ApiException {
+            ApiResponse<TransitionPaymentInstructionsResponse> localVarResp = transitionPaymentInstructionStatusesWithHttpInfo(requestBody, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute transitionPaymentInstructionStatuses request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TransitionPaymentInstructionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully transitioned payment instructions at their new status, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TransitionPaymentInstructionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TransitionPaymentInstructionsResponse> localVarResp = transitionPaymentInstructionStatusesWithHttpInfo(requestBody, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute transitionPaymentInstructionStatuses request with HTTP info returned
+         * @return ApiResponse&lt;TransitionPaymentInstructionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully transitioned payment instructions at their new status, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransitionPaymentInstructionsResponse> executeWithHttpInfo() throws ApiException {
+            return transitionPaymentInstructionStatusesWithHttpInfo(requestBody, propertyKeys);
+        }
+
+        /**
+         * Execute transitionPaymentInstructionStatuses request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TransitionPaymentInstructionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully transitioned payment instructions at their new status, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TransitionPaymentInstructionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return transitionPaymentInstructionStatusesWithHttpInfo(requestBody, propertyKeys, opts);
+        }
+
+        /**
+         * Execute transitionPaymentInstructionStatuses request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully transitioned payment instructions at their new status, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransitionPaymentInstructionsResponse> _callback) throws ApiException {
+            return transitionPaymentInstructionStatusesAsync(requestBody, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute transitionPaymentInstructionStatuses request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully transitioned payment instructions at their new status, along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TransitionPaymentInstructionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return transitionPaymentInstructionStatusesAsync(requestBody, propertyKeys, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] TransitionPaymentInstructionStatuses: Transition Payment Instruction Statuses
+     * Move a collection of Payment Instructions to new statuses. A Payment Instruction&#39;s status is not settable on  the upsert endpoint; this endpoint is the state machine that controls its lifecycle, which runs  Created, Staged, Released, Instructed, Sent, with Cancelled reachable before the instruction is Instructed and  Failed reachable once it has been. Each requested transition is validated against the instruction&#39;s current  status on its own, and those that are permitted are applied together.
+     * @param requestBody A collection of requests to transition the status of Payment Instructions. (required)
+     * @return APItransitionPaymentInstructionStatusesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successfully transitioned payment instructions at their new status, along with any failures </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APItransitionPaymentInstructionStatusesRequest transitionPaymentInstructionStatuses(Map<String, PaymentInstructionStatusTransitionRequest> requestBody) {
+        return new APItransitionPaymentInstructionStatusesRequest(requestBody);
     }
     private okhttp3.Call upsertPaymentInstructionsCall(Map<String, PaymentInstructionRequest> requestBody, final ApiCallback _callback) throws ApiException {
         return upsertPaymentInstructionsCall(requestBody,  _callback, new ConfigurationOptions());

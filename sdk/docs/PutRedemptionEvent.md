@@ -1,14 +1,14 @@
 # com.finbourne.lusid.model.PutRedemptionEvent
-Put Redemption (BPUT) — early redemption of a bond at the holder's election under an  indenture-defined put option. Supports both Voluntary (the AMI-SeCo canonical shape) and  Mandatory (a deliberate market extension beyond SCoRE) participation on Bond, ComplexBond,  and InflationLinkedBond instruments. Cloned from RepurchaseOfferEvent (BIDS) and narrowed  to debt with a fixed event-level OfferPrice instead of a per-election holder-bid price.
+Put Redemption (BPUT) — early redemption of a bond at the holder's election under an  indenture-defined put option. Supports both Voluntary (the AMI-SeCo canonical shape) and  Mandatory (a deliberate market extension beyond SCoRE) participation on Bond, ComplexBond,  and InflationLinkedBond instruments. Cloned from RepurchaseOfferEvent (BIDS) and narrowed  to debt. The put price and the settlement currency can be set at the event level or on the  sole CashOfferElection.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Settlement date for the cash + security legs of the put redemption. | [optional] [default to OffsetDateTime]
-**offerPrice** | **java.math.BigDecimal** | Put price per unit of face value (AMI-SeCo OFFR). Per-100 PRCT semantics —  &#x60;OfferPrice &#x3D; 100.00&#x60; means par; &#x60;97.50&#x60; means 97.5% of par. Must be strictly positive. | [default to java.math.BigDecimal]
-**currency** | **String** | Settlement currency of the cash leg (ISO 4217 3-letter code). | [default to String]
-**cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | List of possible CashOfferElections. Exactly one entry per event in both Mandatory and Voluntary paths. | [default to List<CashOfferElection>]
+**offerPrice** | **java.math.BigDecimal** | Put price per unit of face value (AMI-SeCo OFFR). Per-100 PRCT semantics —  &#x60;OfferPrice &#x3D; 100.00&#x60; means par; &#x60;97.50&#x60; means 97.5% of par. Must be strictly positive.  Optional. When it is omitted, the cashOfferPrice of the sole CashOfferElection is the put price,  and it must be strictly positive. When both are set, this value is used. | [optional] [default to java.math.BigDecimal]
+**currency** | **String** | Settlement currency of the cash leg (ISO 4217 3-letter code). Optional. When it is omitted, the  cashOfferCurrency of the sole CashOfferElection is the settlement currency. When both are set,  this value is used. | [optional] [default to String]
+**cashOfferElections** | [**List&lt;CashOfferElection&gt;**](CashOfferElection.md) | List of possible CashOfferElections. Exactly one entry per event in both Mandatory and Voluntary paths.  Its cashOfferPrice and cashOfferCurrency are the put price and the settlement currency when  offerPrice and currency are omitted. | [default to List<CashOfferElection>]
 **lapseElections** | [**List&lt;LapseElection&gt;**](LapseElection.md) | List of possible LapseElections. Exactly one entry for Voluntary (NOAC default). Empty for Mandatory. | [default to List<LapseElection>]
 **marketDeadlineDate** | [**OffsetDateTime**](OffsetDateTime.md) | Issuer / agent deadline for holder instructions. Required for Voluntary participation;  optional for Mandatory (no holder-deadline concept). | [optional] [default to OffsetDateTime]
 **responseDeadlineDate** | [**OffsetDateTime**](OffsetDateTime.md) | Account-servicer deadline. Defaults to MarketDeadlineDate when omitted.  If set, must be on or before MarketDeadlineDate. | [optional] [default to OffsetDateTime]
@@ -27,8 +27,8 @@ import java.lang.System;
 import java.net.URI;
 
 OffsetDateTime PaymentDate = OffsetDateTime.now();
-java.math.BigDecimal OfferPrice = new java.math.BigDecimal("100.00");
-String Currency = "example Currency";
+@jakarta.annotation.Nullable java.math.BigDecimal OfferPrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String Currency = "example Currency";
 List<CashOfferElection> CashOfferElections = new List<CashOfferElection>();
 List<LapseElection> LapseElections = new List<LapseElection>();
 @jakarta.annotation.Nullable OffsetDateTime MarketDeadlineDate = OffsetDateTime.now();

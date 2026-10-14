@@ -8,6 +8,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteAmortisationRuleset**](AmortisationRuleSetsApi.md#deleteAmortisationRuleset) | **DELETE** /api/amortisation/rulesets/{scope}/{code} | [EXPERIMENTAL] DeleteAmortisationRuleset: Delete an amortisation rule set. |
 | [**getAmortisationRuleSet**](AmortisationRuleSetsApi.md#getAmortisationRuleSet) | **GET** /api/amortisation/rulesets/{scope}/{code} | [EXPERIMENTAL] GetAmortisationRuleSet: Retrieve the definition of a single amortisation rule set |
 | [**listAmortisationRuleSets**](AmortisationRuleSetsApi.md#listAmortisationRuleSets) | **GET** /api/amortisation/rulesets | [EXPERIMENTAL] ListAmortisationRuleSets: List amortisation rule sets. |
+| [**listAmortisationRulesIntervals**](AmortisationRuleSetsApi.md#listAmortisationRulesIntervals) | **GET** /api/amortisation/rulesets/{scope}/{code}/rulesIntervals | ListAmortisationRulesIntervals: List the rules intervals of an amortisation rule set. |
 | [**setAmortisationRules**](AmortisationRuleSetsApi.md#setAmortisationRules) | **PUT** /api/amortisation/rulesets/{scope}/{code}/rules | [EXPERIMENTAL] SetAmortisationRules: Set Amortisation Rules on an existing Amortisation Rule Set. |
 | [**updateAmortisationRuleSetDetails**](AmortisationRuleSetsApi.md#updateAmortisationRuleSetDetails) | **PUT** /api/amortisation/rulesets/{scope}/{code}/details | [EXPERIMENTAL] UpdateAmortisationRuleSetDetails: Update an amortisation rule set. |
 
@@ -391,6 +392,105 @@ public class AmortisationRuleSetsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | A list of rule sets available. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listAmortisationRulesIntervals
+
+> ResourceListOfRulesInterval listAmortisationRulesIntervals(scope, code, fromEffectiveAt, toEffectiveAt, asAt)
+
+ListAmortisationRulesIntervals: List the rules intervals of an amortisation rule set.
+
+Lists the rules intervals of the rule set, ordered by from date. Each interval applies from its from date  until the next interval starts. The last interval has no until date.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AmortisationRuleSetsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AmortisationRuleSetsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AmortisationRuleSetsApi apiInstance = apiFactory.build(AmortisationRuleSetsApi.class);
+
+        AmortisationRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AmortisationRuleSetsApi.class);
+        String scope = "scope_example"; // String | The rule set scope.
+        String code = "code_example"; // String | The rule set code.
+        String fromEffectiveAt = "fromEffectiveAt_example"; // String | Return only the intervals that overlap the effective range starting at this datetime or cut label.  There is no lower bound if not specified.
+        String toEffectiveAt = "toEffectiveAt_example"; // String | Return only the intervals that overlap the effective range ending at this datetime or cut label.  There is no upper bound if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the rules intervals. Defaults to returning the latest version if not  specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfRulesInterval result = apiInstance.listAmortisationRulesIntervals(scope, code, fromEffectiveAt, toEffectiveAt, asAt).execute(opts);
+
+            ResourceListOfRulesInterval result = apiInstance.listAmortisationRulesIntervals(scope, code, fromEffectiveAt, toEffectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AmortisationRuleSetsApi#listAmortisationRulesIntervals");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The rule set scope. | |
+| **code** | **String**| The rule set code. | |
+| **fromEffectiveAt** | **String**| Return only the intervals that overlap the effective range starting at this datetime or cut label.  There is no lower bound if not specified. | [optional] |
+| **toEffectiveAt** | **String**| Return only the intervals that overlap the effective range ending at this datetime or cut label.  There is no upper bound if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the rules intervals. Defaults to returning the latest version if not  specified. | [optional] |
+
+### Return type
+
+[**ResourceListOfRulesInterval**](ResourceListOfRulesInterval.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The rules intervals of the rule set. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

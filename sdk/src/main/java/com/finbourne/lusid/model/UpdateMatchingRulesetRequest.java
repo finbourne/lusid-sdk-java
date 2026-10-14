@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.AggregateMatchingRule;
 import com.finbourne.lusid.model.CoreMatchingRule;
+import com.finbourne.lusid.model.ExternalRecType;
 import com.finbourne.lusid.model.GroupReconciliationFilters;
 import com.finbourne.lusid.model.RecDatasetSchemas;
 import com.finbourne.lusid.model.SupplementalAttribute;
@@ -66,6 +67,10 @@ public class UpdateMatchingRulesetRequest {
   public static final String SERIALIZED_NAME_REC_TYPE = "recType";
   @SerializedName(SERIALIZED_NAME_REC_TYPE)
   private String recType;
+
+  public static final String SERIALIZED_NAME_EXTERNAL_REC_TYPE = "externalRecType";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_REC_TYPE)
+  private ExternalRecType externalRecType;
 
   public static final String SERIALIZED_NAME_DATASET_SCHEMAS = "datasetSchemas";
   @SerializedName(SERIALIZED_NAME_DATASET_SCHEMAS)
@@ -134,7 +139,7 @@ public class UpdateMatchingRulesetRequest {
   }
 
    /**
-   * The type of reconciliation to perform. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+   * The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
    * @return recType
   **/
   @jakarta.annotation.Nonnull
@@ -145,6 +150,27 @@ public class UpdateMatchingRulesetRequest {
 
   public void setRecType(String recType) {
     this.recType = recType;
+  }
+
+
+  public UpdateMatchingRulesetRequest externalRecType(ExternalRecType externalRecType) {
+    
+    this.externalRecType = externalRecType;
+    return this;
+  }
+
+   /**
+   * Get externalRecType
+   * @return externalRecType
+  **/
+  @jakarta.annotation.Nullable
+  public ExternalRecType getExternalRecType() {
+    return externalRecType;
+  }
+
+
+  public void setExternalRecType(ExternalRecType externalRecType) {
+    this.externalRecType = externalRecType;
   }
 
 
@@ -313,7 +339,7 @@ public class UpdateMatchingRulesetRequest {
   }
 
    /**
-   * Whether to permit partial matches when applying rules.
+   * Whether to permit partial matches when applying rules. Optional, defaults to true if a value is not provided.
    * @return allowPartialMatching
   **/
   @jakarta.annotation.Nullable
@@ -397,6 +423,7 @@ public class UpdateMatchingRulesetRequest {
     UpdateMatchingRulesetRequest updateMatchingRulesetRequest = (UpdateMatchingRulesetRequest) o;
     return Objects.equals(this.displayName, updateMatchingRulesetRequest.displayName) &&
         Objects.equals(this.recType, updateMatchingRulesetRequest.recType) &&
+        Objects.equals(this.externalRecType, updateMatchingRulesetRequest.externalRecType) &&
         Objects.equals(this.datasetSchemas, updateMatchingRulesetRequest.datasetSchemas) &&
         Objects.equals(this.filters, updateMatchingRulesetRequest.filters) &&
         Objects.equals(this.coreRules, updateMatchingRulesetRequest.coreRules) &&
@@ -414,7 +441,7 @@ public class UpdateMatchingRulesetRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, recType, datasetSchemas, filters, coreRules, aggregateRules, coreTolerances, aggregateTolerances, allowPartialMatching, supplementalAttributes, writebackConfigurations);
+    return Objects.hash(displayName, recType, externalRecType, datasetSchemas, filters, coreRules, aggregateRules, coreTolerances, aggregateTolerances, allowPartialMatching, supplementalAttributes, writebackConfigurations);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -430,6 +457,7 @@ public class UpdateMatchingRulesetRequest {
     sb.append("class UpdateMatchingRulesetRequest {\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    recType: ").append(toIndentedString(recType)).append("\n");
+    sb.append("    externalRecType: ").append(toIndentedString(externalRecType)).append("\n");
     sb.append("    datasetSchemas: ").append(toIndentedString(datasetSchemas)).append("\n");
     sb.append("    filters: ").append(toIndentedString(filters)).append("\n");
     sb.append("    coreRules: ").append(toIndentedString(coreRules)).append("\n");
@@ -463,6 +491,7 @@ public class UpdateMatchingRulesetRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("displayName");
     openapiFields.add("recType");
+    openapiFields.add("externalRecType");
     openapiFields.add("datasetSchemas");
     openapiFields.add("filters");
     openapiFields.add("coreRules");
@@ -506,6 +535,10 @@ public class UpdateMatchingRulesetRequest {
       }
       if (!jsonObj.get("recType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `recType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recType").toString()));
+      }
+      // validate the optional field `externalRecType`
+      if (jsonObj.get("externalRecType") != null && !jsonObj.get("externalRecType").isJsonNull()) {
+        ExternalRecType.validateJsonElement(jsonObj.get("externalRecType"));
       }
       // validate the optional field `datasetSchemas`
       if (jsonObj.get("datasetSchemas") != null && !jsonObj.get("datasetSchemas").isJsonNull()) {

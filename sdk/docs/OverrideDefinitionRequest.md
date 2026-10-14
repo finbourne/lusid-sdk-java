@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | A list of unique transaction properties and associated values to store for the replacement transaction. Each property must be from the &#39;Transaction&#39; domain. | [optional] [default to Map<String, PerpetualProperty>]
 **counterpartyId** | **String** | The identifier for the counterparty of the replacement transaction. | [optional] [default to String]
 **source** | **String** | The source of the replacement transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. | [optional] [default to String]
+**custodianAccountId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.OverrideDefinitionRequest;
@@ -38,6 +39,7 @@ CurrencyAndAmount TotalConsideration = new CurrencyAndAmount();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 @jakarta.annotation.Nullable String CounterpartyId = "example CounterpartyId";
 @jakarta.annotation.Nullable String Source = "example Source";
+ResourceId CustodianAccountId = new ResourceId();
 
 
 OverrideDefinitionRequest overrideDefinitionRequestInstance = new OverrideDefinitionRequest()
@@ -53,7 +55,8 @@ OverrideDefinitionRequest overrideDefinitionRequestInstance = new OverrideDefini
     .TradeCurrency(TradeCurrency)
     .Properties(Properties)
     .CounterpartyId(CounterpartyId)
-    .Source(Source);
+    .Source(Source)
+    .CustodianAccountId(CustodianAccountId);
 ```
 
 

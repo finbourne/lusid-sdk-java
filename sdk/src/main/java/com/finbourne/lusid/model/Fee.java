@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.DayMonth;
+import com.finbourne.lusid.model.FeeRateTier;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
@@ -144,6 +145,34 @@ public class Fee {
   public static final String SERIALIZED_NAME_NAV_TYPE_CODE = "navTypeCode";
   @SerializedName(SERIALIZED_NAME_NAV_TYPE_CODE)
   private String navTypeCode;
+
+  public static final String SERIALIZED_NAME_FEE_CALCULATION_TYPE = "feeCalculationType";
+  @SerializedName(SERIALIZED_NAME_FEE_CALCULATION_TYPE)
+  private String feeCalculationType;
+
+  public static final String SERIALIZED_NAME_DAILY_ACCRUAL_AMOUNT = "dailyAccrualAmount";
+  @SerializedName(SERIALIZED_NAME_DAILY_ACCRUAL_AMOUNT)
+  private java.math.BigDecimal dailyAccrualAmount;
+
+  public static final String SERIALIZED_NAME_VARIABLE_PERCENTAGE_SOURCE = "variablePercentageSource";
+  @SerializedName(SERIALIZED_NAME_VARIABLE_PERCENTAGE_SOURCE)
+  private String variablePercentageSource;
+
+  public static final String SERIALIZED_NAME_VARIABLE_PERCENTAGE_SOURCE_OFFSET = "variablePercentageSourceOffset";
+  @SerializedName(SERIALIZED_NAME_VARIABLE_PERCENTAGE_SOURCE_OFFSET)
+  private java.math.BigDecimal variablePercentageSourceOffset;
+
+  public static final String SERIALIZED_NAME_TIERS = "tiers";
+  @SerializedName(SERIALIZED_NAME_TIERS)
+  private List<FeeRateTier> tiers;
+
+  public static final String SERIALIZED_NAME_FEE_CAP = "feeCap";
+  @SerializedName(SERIALIZED_NAME_FEE_CAP)
+  private java.math.BigDecimal feeCap;
+
+  public static final String SERIALIZED_NAME_FEE_FLOOR = "feeFloor";
+  @SerializedName(SERIALIZED_NAME_FEE_FLOOR)
+  private java.math.BigDecimal feeFloor;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -369,7 +398,7 @@ public class Fee {
   }
 
    /**
-   * The fee rate percentage. (Required when CalculationBase is present and not compatible with TotalAnnualAccrualAmount)
+   * The annual rate applied to the CalculationBase for a &#39;FixedPercentage&#39; Fee, expressed as a multiplier rather than a percentage: 0.052 means 5.2% of the base per year. (Required when CalculationBase is present and not compatible with TotalAnnualAccrualAmount)
    * @return feeRatePercentage
   **/
   @jakarta.annotation.Nullable
@@ -609,6 +638,161 @@ public class Fee {
   }
 
 
+  public Fee feeCalculationType(String feeCalculationType) {
+    
+    this.feeCalculationType = feeCalculationType;
+    return this;
+  }
+
+   /**
+   * How the Fee accrual amount is calculated. Supported values: &#39;FixedAnnual&#39; (a fixed annual amount, requires TotalAnnualAccrualAmount), &#39;FixedDaily&#39; (a fixed daily amount, requires DailyAccrualAmount), &#39;FixedPercentage&#39; (a fixed percentage of the CalculationBase, requires FeeRatePercentage), &#39;VariablePercentage&#39; (a percentage of the CalculationBase resolved from a rate source at each accrual date, requires VariablePercentageSource), &#39;Tiered&#39; (a single rate applied to the whole CalculationBase, chosen by the tier the base falls in, requires Tiers), &#39;Blended&#39; (each tier&#39;s rate applied to the portion of the CalculationBase within that tier, requires Tiers). Optional: when not provided it is inferred as &#39;FixedAnnual&#39; if TotalAnnualAccrualAmount is populated and &#39;FixedPercentage&#39; otherwise, so existing requests keep their behaviour; the new calculation types must be requested explicitly. Available values: FixedAnnual, FixedDaily, FixedPercentage, VariablePercentage, Tiered, Blended.
+   * @return feeCalculationType
+  **/
+  @jakarta.annotation.Nullable
+  public String getFeeCalculationType() {
+    return feeCalculationType;
+  }
+
+
+  public void setFeeCalculationType(String feeCalculationType) {
+    this.feeCalculationType = feeCalculationType;
+  }
+
+
+  public Fee dailyAccrualAmount(java.math.BigDecimal dailyAccrualAmount) {
+    
+    this.dailyAccrualAmount = dailyAccrualAmount;
+    return this;
+  }
+
+   /**
+   * The fixed daily accrued amount for a &#39;FixedDaily&#39; Fee, in the fund currency. The amount accrues for each day of the accrual period with no annualisation or day-count proration; Treatment does not affect it.
+   * @return dailyAccrualAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getDailyAccrualAmount() {
+    return dailyAccrualAmount;
+  }
+
+
+  public void setDailyAccrualAmount(java.math.BigDecimal dailyAccrualAmount) {
+    this.dailyAccrualAmount = dailyAccrualAmount;
+  }
+
+
+  public Fee variablePercentageSource(String variablePercentageSource) {
+    
+    this.variablePercentageSource = variablePercentageSource;
+    return this;
+  }
+
+   /**
+   * The source of the rate for a &#39;VariablePercentage&#39; Fee, in the form \&quot;scope/provider/instrumentIdType/instrumentId\&quot; identifying a Rate quote series in the quote store. At each accrual date the most recent rate at or before that date is used; if no rate can be found the valuation point calculation fails. The quote&#39;s normalised value (its value divided by any scale factor) is applied like FeeRatePercentage, as a multiplier of the CalculationBase: a rate of 5.2% must normalise to 0.052.
+   * @return variablePercentageSource
+  **/
+  @jakarta.annotation.Nullable
+  public String getVariablePercentageSource() {
+    return variablePercentageSource;
+  }
+
+
+  public void setVariablePercentageSource(String variablePercentageSource) {
+    this.variablePercentageSource = variablePercentageSource;
+  }
+
+
+  public Fee variablePercentageSourceOffset(java.math.BigDecimal variablePercentageSourceOffset) {
+    
+    this.variablePercentageSourceOffset = variablePercentageSourceOffset;
+    return this;
+  }
+
+   /**
+   * An optional adjustment added to the rate resolved from the VariablePercentageSource, expressed as a factor like FeeRatePercentage (e.g. 0.0025 adds 25 basis points).
+   * @return variablePercentageSourceOffset
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getVariablePercentageSourceOffset() {
+    return variablePercentageSourceOffset;
+  }
+
+
+  public void setVariablePercentageSourceOffset(java.math.BigDecimal variablePercentageSourceOffset) {
+    this.variablePercentageSourceOffset = variablePercentageSourceOffset;
+  }
+
+
+  public Fee tiers(List<FeeRateTier> tiers) {
+    
+    this.tiers = tiers;
+    return this;
+  }
+
+  public Fee addTiersItem(FeeRateTier tiersItem) {
+    if (this.tiers == null) {
+      this.tiers = new ArrayList<>();
+    }
+    this.tiers.add(tiersItem);
+    return this;
+  }
+
+   /**
+   * The rate tiers for a &#39;Tiered&#39; or &#39;Blended&#39; Fee: between 2 and 10 tiers over the CalculationBase. Every tier except the last must have a Threshold, and thresholds must be positive and strictly increasing; a base equal to a Threshold falls in that tier, and the final tier covers the balance above the last threshold. A &#39;Tiered&#39; Fee applies the rate of the tier the whole base falls in; a &#39;Blended&#39; Fee applies each tier&#39;s rate to the portion of the base within that tier.
+   * @return tiers
+  **/
+  @jakarta.annotation.Nullable
+  public List<FeeRateTier> getTiers() {
+    return tiers;
+  }
+
+
+  public void setTiers(List<FeeRateTier> tiers) {
+    this.tiers = tiers;
+  }
+
+
+  public Fee feeCap(java.math.BigDecimal feeCap) {
+    
+    this.feeCap = feeCap;
+    return this;
+  }
+
+   /**
+   * An optional annual cap on the accrued fee for &#39;FixedPercentage&#39;, &#39;VariablePercentage&#39;, &#39;Tiered&#39; and &#39;Blended&#39; Fees, in the fund currency and assessed period-to-date. Each day accrues only up to the amount left under the cap for the current fee year, which runs from one AnchorDate to the next; once the cap is reached nothing further accrues until the next AnchorDate.
+   * @return feeCap
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFeeCap() {
+    return feeCap;
+  }
+
+
+  public void setFeeCap(java.math.BigDecimal feeCap) {
+    this.feeCap = feeCap;
+  }
+
+
+  public Fee feeFloor(java.math.BigDecimal feeFloor) {
+    
+    this.feeFloor = feeFloor;
+    return this;
+  }
+
+   /**
+   * An optional annual floor on the calculated fee for &#39;FixedPercentage&#39;, &#39;VariablePercentage&#39;, &#39;Tiered&#39; and &#39;Blended&#39; Fees, in the fund currency. The annualised fee amount is raised to the floor before being prorated to each accrual day.
+   * @return feeFloor
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFeeFloor() {
+    return feeFloor;
+  }
+
+
+  public void setFeeFloor(java.math.BigDecimal feeFloor) {
+    this.feeFloor = feeFloor;
+  }
+
+
   public Fee links(List<Link> links) {
     
     this.links = links;
@@ -669,6 +853,13 @@ public class Fee {
         Objects.equals(this.portfolioId, fee.portfolioId) &&
         Objects.equals(this.shareClasses, fee.shareClasses) &&
         Objects.equals(this.navTypeCode, fee.navTypeCode) &&
+        Objects.equals(this.feeCalculationType, fee.feeCalculationType) &&
+        (this.dailyAccrualAmount.compareTo(fee.getDailyAccrualAmount()) == 0) &&
+        Objects.equals(this.variablePercentageSource, fee.variablePercentageSource) &&
+        (this.variablePercentageSourceOffset.compareTo(fee.getVariablePercentageSourceOffset()) == 0) &&
+        Objects.equals(this.tiers, fee.tiers) &&
+        (this.feeCap.compareTo(fee.getFeeCap()) == 0) &&
+        (this.feeFloor.compareTo(fee.getFeeFloor()) == 0) &&
         Objects.equals(this.links, fee.links);
   }
 
@@ -678,7 +869,7 @@ public class Fee {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, feeCode, feeTypeId, displayName, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, portfolioId, shareClasses, navTypeCode, links);
+    return Objects.hash(href, feeCode, feeTypeId, displayName, description, origin, calculationBase, accrualCurrency, treatment, totalAnnualAccrualAmount, feeRatePercentage, payableFrequency, businessDayConvention, startDate, endDate, anchorDate, properties, version, portfolioId, shareClasses, navTypeCode, feeCalculationType, dailyAccrualAmount, variablePercentageSource, variablePercentageSourceOffset, tiers, feeCap, feeFloor, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -713,6 +904,13 @@ public class Fee {
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("    navTypeCode: ").append(toIndentedString(navTypeCode)).append("\n");
+    sb.append("    feeCalculationType: ").append(toIndentedString(feeCalculationType)).append("\n");
+    sb.append("    dailyAccrualAmount: ").append(toIndentedString(dailyAccrualAmount)).append("\n");
+    sb.append("    variablePercentageSource: ").append(toIndentedString(variablePercentageSource)).append("\n");
+    sb.append("    variablePercentageSourceOffset: ").append(toIndentedString(variablePercentageSourceOffset)).append("\n");
+    sb.append("    tiers: ").append(toIndentedString(tiers)).append("\n");
+    sb.append("    feeCap: ").append(toIndentedString(feeCap)).append("\n");
+    sb.append("    feeFloor: ").append(toIndentedString(feeFloor)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -757,6 +955,13 @@ public class Fee {
     openapiFields.add("portfolioId");
     openapiFields.add("shareClasses");
     openapiFields.add("navTypeCode");
+    openapiFields.add("feeCalculationType");
+    openapiFields.add("dailyAccrualAmount");
+    openapiFields.add("variablePercentageSource");
+    openapiFields.add("variablePercentageSourceOffset");
+    openapiFields.add("tiers");
+    openapiFields.add("feeCap");
+    openapiFields.add("feeFloor");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -840,6 +1045,26 @@ public class Fee {
       }
       if ((jsonObj.get("navTypeCode") != null && !jsonObj.get("navTypeCode").isJsonNull()) && !jsonObj.get("navTypeCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `navTypeCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("navTypeCode").toString()));
+      }
+      if ((jsonObj.get("feeCalculationType") != null && !jsonObj.get("feeCalculationType").isJsonNull()) && !jsonObj.get("feeCalculationType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `feeCalculationType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("feeCalculationType").toString()));
+      }
+      if ((jsonObj.get("variablePercentageSource") != null && !jsonObj.get("variablePercentageSource").isJsonNull()) && !jsonObj.get("variablePercentageSource").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `variablePercentageSource` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variablePercentageSource").toString()));
+      }
+      if (jsonObj.get("tiers") != null && !jsonObj.get("tiers").isJsonNull()) {
+        JsonArray jsonArraytiers = jsonObj.getAsJsonArray("tiers");
+        if (jsonArraytiers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("tiers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `tiers` to be an array in the JSON string but got `%s`", jsonObj.get("tiers").toString()));
+          }
+
+          // validate the optional field `tiers` (array)
+          for (int i = 0; i < jsonArraytiers.size(); i++) {
+            FeeRateTier.validateJsonElement(jsonArraytiers.get(i));
+          };
+        }
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

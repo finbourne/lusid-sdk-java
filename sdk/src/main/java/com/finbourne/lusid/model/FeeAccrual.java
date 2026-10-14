@@ -86,6 +86,18 @@ public class FeeAccrual {
   @SerializedName(SERIALIZED_NAME_TOTAL_ACCRUAL)
   private java.math.BigDecimal totalAccrual;
 
+  public static final String SERIALIZED_NAME_CAP_PERIOD_ACCRUAL = "capPeriodAccrual";
+  @SerializedName(SERIALIZED_NAME_CAP_PERIOD_ACCRUAL)
+  private java.math.BigDecimal capPeriodAccrual;
+
+  public static final String SERIALIZED_NAME_FEE_CAP_APPLIED = "feeCapApplied";
+  @SerializedName(SERIALIZED_NAME_FEE_CAP_APPLIED)
+  private Boolean feeCapApplied;
+
+  public static final String SERIALIZED_NAME_FEE_FLOOR_APPLIED = "feeFloorApplied";
+  @SerializedName(SERIALIZED_NAME_FEE_FLOOR_APPLIED)
+  private Boolean feeFloorApplied;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -261,6 +273,69 @@ public class FeeAccrual {
   }
 
 
+  public FeeAccrual capPeriodAccrual(java.math.BigDecimal capPeriodAccrual) {
+    
+    this.capPeriodAccrual = capPeriodAccrual;
+    return this;
+  }
+
+   /**
+   * The amount accrued so far in the current fee year (from the fee&#39;s AnchorDate), in the fund currency, against which an annual FeeCap is assessed.
+   * @return capPeriodAccrual
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCapPeriodAccrual() {
+    return capPeriodAccrual;
+  }
+
+
+  public void setCapPeriodAccrual(java.math.BigDecimal capPeriodAccrual) {
+    this.capPeriodAccrual = capPeriodAccrual;
+  }
+
+
+  public FeeAccrual feeCapApplied(Boolean feeCapApplied) {
+    
+    this.feeCapApplied = feeCapApplied;
+    return this;
+  }
+
+   /**
+   * Whether the FeeCap reduced the amount accrued at this valuation point.
+   * @return feeCapApplied
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getFeeCapApplied() {
+    return feeCapApplied;
+  }
+
+
+  public void setFeeCapApplied(Boolean feeCapApplied) {
+    this.feeCapApplied = feeCapApplied;
+  }
+
+
+  public FeeAccrual feeFloorApplied(Boolean feeFloorApplied) {
+    
+    this.feeFloorApplied = feeFloorApplied;
+    return this;
+  }
+
+   /**
+   * Whether the FeeFloor raised the amount accrued at this valuation point.
+   * @return feeFloorApplied
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getFeeFloorApplied() {
+    return feeFloorApplied;
+  }
+
+
+  public void setFeeFloorApplied(Boolean feeFloorApplied) {
+    this.feeFloorApplied = feeFloorApplied;
+  }
+
+
   public FeeAccrual links(List<Link> links) {
     
     this.links = links;
@@ -308,6 +383,9 @@ public class FeeAccrual {
         (this.previousAccrual.compareTo(feeAccrual.getPreviousAccrual()) == 0) &&
         (this.previousTotalAccrual.compareTo(feeAccrual.getPreviousTotalAccrual()) == 0) &&
         (this.totalAccrual.compareTo(feeAccrual.getTotalAccrual()) == 0) &&
+        (this.capPeriodAccrual.compareTo(feeAccrual.getCapPeriodAccrual()) == 0) &&
+        Objects.equals(this.feeCapApplied, feeAccrual.feeCapApplied) &&
+        Objects.equals(this.feeFloorApplied, feeAccrual.feeFloorApplied) &&
         Objects.equals(this.links, feeAccrual.links);
   }
 
@@ -317,7 +395,7 @@ public class FeeAccrual {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, code, name, calculationBase, amount, previousAccrual, previousTotalAccrual, totalAccrual, links);
+    return Objects.hash(effectiveAt, code, name, calculationBase, amount, previousAccrual, previousTotalAccrual, totalAccrual, capPeriodAccrual, feeCapApplied, feeFloorApplied, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -339,6 +417,9 @@ public class FeeAccrual {
     sb.append("    previousAccrual: ").append(toIndentedString(previousAccrual)).append("\n");
     sb.append("    previousTotalAccrual: ").append(toIndentedString(previousTotalAccrual)).append("\n");
     sb.append("    totalAccrual: ").append(toIndentedString(totalAccrual)).append("\n");
+    sb.append("    capPeriodAccrual: ").append(toIndentedString(capPeriodAccrual)).append("\n");
+    sb.append("    feeCapApplied: ").append(toIndentedString(feeCapApplied)).append("\n");
+    sb.append("    feeFloorApplied: ").append(toIndentedString(feeFloorApplied)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -370,6 +451,9 @@ public class FeeAccrual {
     openapiFields.add("previousAccrual");
     openapiFields.add("previousTotalAccrual");
     openapiFields.add("totalAccrual");
+    openapiFields.add("capPeriodAccrual");
+    openapiFields.add("feeCapApplied");
+    openapiFields.add("feeFloorApplied");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

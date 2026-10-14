@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.SimpleRoundingConvention;
 import com.finbourne.lusid.model.TimeZoneConventions;
 import com.finbourne.lusid.model.TradingConventions;
+import com.finbourne.lusid.model.WhtParameters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -122,6 +123,10 @@ public class ShareClassDefinition {
   public static final String SERIALIZED_NAME_HEDGING = "hedging";
   @SerializedName(SERIALIZED_NAME_HEDGING)
   private String hedging;
+
+  public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
+  @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
+  private WhtParameters whtParameters;
 
   public ShareClassDefinition() {
   }
@@ -494,6 +499,27 @@ public class ShareClassDefinition {
   }
 
 
+  public ShareClassDefinition whtParameters(WhtParameters whtParameters) {
+    
+    this.whtParameters = whtParameters;
+    return this;
+  }
+
+   /**
+   * Get whtParameters
+   * @return whtParameters
+  **/
+  @jakarta.annotation.Nullable
+  public WhtParameters getWhtParameters() {
+    return whtParameters;
+  }
+
+
+  public void setWhtParameters(WhtParameters whtParameters) {
+    this.whtParameters = whtParameters;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -519,7 +545,8 @@ public class ShareClassDefinition {
         Objects.equals(this.roundingConventionsUnits, shareClassDefinition.roundingConventionsUnits) &&
         Objects.equals(this.timeZoneConventions, shareClassDefinition.timeZoneConventions) &&
         Objects.equals(this.distributionPaymentType, shareClassDefinition.distributionPaymentType) &&
-        Objects.equals(this.hedging, shareClassDefinition.hedging);
+        Objects.equals(this.hedging, shareClassDefinition.hedging) &&
+        Objects.equals(this.whtParameters, shareClassDefinition.whtParameters);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -528,7 +555,7 @@ public class ShareClassDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentIdentifiers, name, description, shareClassShortCode, launchPrice, launchDate, properties, investorType, distributionType, domCcy, tradingConventions, roundingConventionsPrice, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging);
+    return Objects.hash(instrumentIdentifiers, name, description, shareClassShortCode, launchPrice, launchDate, properties, investorType, distributionType, domCcy, tradingConventions, roundingConventionsPrice, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging, whtParameters);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -558,6 +585,7 @@ public class ShareClassDefinition {
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("    distributionPaymentType: ").append(toIndentedString(distributionPaymentType)).append("\n");
     sb.append("    hedging: ").append(toIndentedString(hedging)).append("\n");
+    sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -596,6 +624,7 @@ public class ShareClassDefinition {
     openapiFields.add("timeZoneConventions");
     openapiFields.add("distributionPaymentType");
     openapiFields.add("hedging");
+    openapiFields.add("whtParameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -685,6 +714,10 @@ public class ShareClassDefinition {
       }
       if ((jsonObj.get("hedging") != null && !jsonObj.get("hedging").isJsonNull()) && !jsonObj.get("hedging").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hedging` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hedging").toString()));
+      }
+      // validate the optional field `whtParameters`
+      if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {
+        WhtParameters.validateJsonElement(jsonObj.get("whtParameters"));
       }
   }
 

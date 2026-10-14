@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **excludeUnsettledTrades** | **Boolean** | If set to true, unsettled trades are excluded from the result set. Set this to match the value used on the bucketed cash flow query being drilled into, so the individual cash flows reconcile with the bucket. Note that the drill-down returns the complete resolved stream including transaction-sourced cashflows; if the bucketed query used the (default) InstrumentCashFlow representation, also exclude rows with a sourceType of &#39;Transaction&#39; when reconciling. | [optional] [default to Boolean]
 **haircutRules** | [**List&lt;CashFlowHaircutRule&gt;**](CashFlowHaircutRule.md) | Optional ordered haircut rules applied to cashflow inflows; the first matching rule wins and a rule with no criteria acts as a catch-all. When supplied, each returned cashflow carries its gross amount, haircut fraction, net amount and the rule that was applied; with no rules those fields are omitted and the results are unchanged. | [optional] [default to List<CashFlowHaircutRule>]
 **cashType** | **String** | Which date basis buckets cash flows: TradeDate uses each cash flow&#39;s transaction date, SettleDate (default) uses its payment date. The response&#39;s CashFlowDetail.PaymentDate reflects whichever basis was used. Available values: TradeDate, SettleDate. | [optional] [default to String]
+**fxRateType** | **String** | Which FX rate converts each cashflow into the ReportCurrency. FxSpot (default) uses the spot rate. FxForward uses the forward rate for the cashflow&#39;s payment date, read from the FX forward curve the recipe resolves for the currency pair as at the valuation (EffectiveAt) date; a cashflow with no such forward rate reports an Error and has no converted amount. ForwardThenSpot uses the forward rate where the recipe resolves one and the spot rate where it does not. FxForward and ForwardThenSpot require a ReportCurrency. A cashflow paid after the last point of the recipe&#39;s forward curve takes the last point&#39;s forward rate when the curve&#39;s back extrapolation is Flat (the default), and reports an Error when it is None. Where ForwardThenSpot falls back, the spot rate is the one FxSpot uses: read on the cashflow&#39;s own transaction date, not the valuation date. The response&#39;s CashFlowDetail.FxRateTypeApplied says which rate each cashflow received. Available values: FxSpot, FxForward, ForwardThenSpot. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.QueryBucketCashFlowDrillDownRequest;
@@ -36,6 +37,7 @@ ResourceId RecipeId = new ResourceId();
 Boolean ExcludeUnsettledTrades = true;
 @jakarta.annotation.Nullable List<CashFlowHaircutRule> HaircutRules = new List<CashFlowHaircutRule>();
 @jakarta.annotation.Nullable String CashType = "example CashType";
+@jakarta.annotation.Nullable String FxRateType = "example FxRateType";
 
 
 QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequestInstance = new QueryBucketCashFlowDrillDownRequest()
@@ -50,7 +52,8 @@ QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequestInstance 
     .ReportCurrency(ReportCurrency)
     .ExcludeUnsettledTrades(ExcludeUnsettledTrades)
     .HaircutRules(HaircutRules)
-    .CashType(CashType);
+    .CashType(CashType)
+    .FxRateType(FxRateType);
 ```
 
 

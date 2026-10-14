@@ -12,9 +12,11 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.Series;
 import com.finbourne.lusid.model.SimpleRoundingConvention;
 import com.finbourne.lusid.model.TimeZoneConventions;
 import com.finbourne.lusid.model.TradingConventions;
+import com.finbourne.lusid.model.WhtParameters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -62,6 +64,10 @@ public class ShareClass {
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
   private Map<String, String> instrumentIdentifiers;
+
+  public static final String SERIALIZED_NAME_SERIES = "series";
+  @SerializedName(SERIALIZED_NAME_SERIES)
+  private List<Series> series;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -123,6 +129,10 @@ public class ShareClass {
   @SerializedName(SERIALIZED_NAME_HEDGING)
   private String hedging;
 
+  public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
+  @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
+  private WhtParameters whtParameters;
+
   public ShareClass() {
   }
 
@@ -152,6 +162,35 @@ public class ShareClass {
 
   public void setInstrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
     this.instrumentIdentifiers = instrumentIdentifiers;
+  }
+
+
+  public ShareClass series(List<Series> series) {
+    
+    this.series = series;
+    return this;
+  }
+
+  public ShareClass addSeriesItem(Series seriesItem) {
+    if (this.series == null) {
+      this.series = new ArrayList<>();
+    }
+    this.series.add(seriesItem);
+    return this;
+  }
+
+   /**
+   * The series that belong to this Share Class - only relevant if InvestorType is Series.
+   * @return series
+  **/
+  @jakarta.annotation.Nullable
+  public List<Series> getSeries() {
+    return series;
+  }
+
+
+  public void setSeries(List<Series> series) {
+    this.series = series;
   }
 
 
@@ -494,6 +533,27 @@ public class ShareClass {
   }
 
 
+  public ShareClass whtParameters(WhtParameters whtParameters) {
+    
+    this.whtParameters = whtParameters;
+    return this;
+  }
+
+   /**
+   * Get whtParameters
+   * @return whtParameters
+  **/
+  @jakarta.annotation.Nullable
+  public WhtParameters getWhtParameters() {
+    return whtParameters;
+  }
+
+
+  public void setWhtParameters(WhtParameters whtParameters) {
+    this.whtParameters = whtParameters;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -505,6 +565,7 @@ public class ShareClass {
     }
     ShareClass shareClass = (ShareClass) o;
     return Objects.equals(this.instrumentIdentifiers, shareClass.instrumentIdentifiers) &&
+        Objects.equals(this.series, shareClass.series) &&
         Objects.equals(this.name, shareClass.name) &&
         Objects.equals(this.description, shareClass.description) &&
         Objects.equals(this.shareClassShortCode, shareClass.shareClassShortCode) &&
@@ -519,7 +580,8 @@ public class ShareClass {
         Objects.equals(this.roundingConventionsUnits, shareClass.roundingConventionsUnits) &&
         Objects.equals(this.timeZoneConventions, shareClass.timeZoneConventions) &&
         Objects.equals(this.distributionPaymentType, shareClass.distributionPaymentType) &&
-        Objects.equals(this.hedging, shareClass.hedging);
+        Objects.equals(this.hedging, shareClass.hedging) &&
+        Objects.equals(this.whtParameters, shareClass.whtParameters);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -528,7 +590,7 @@ public class ShareClass {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentIdentifiers, name, description, shareClassShortCode, launchPrice, launchDate, properties, investorType, distributionType, domCcy, tradingConventions, roundingConventionsPrice, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging);
+    return Objects.hash(instrumentIdentifiers, series, name, description, shareClassShortCode, launchPrice, launchDate, properties, investorType, distributionType, domCcy, tradingConventions, roundingConventionsPrice, roundingConventionsUnits, timeZoneConventions, distributionPaymentType, hedging, whtParameters);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -543,6 +605,7 @@ public class ShareClass {
     StringBuilder sb = new StringBuilder();
     sb.append("class ShareClass {\n");
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
+    sb.append("    series: ").append(toIndentedString(series)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    shareClassShortCode: ").append(toIndentedString(shareClassShortCode)).append("\n");
@@ -558,6 +621,7 @@ public class ShareClass {
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("    distributionPaymentType: ").append(toIndentedString(distributionPaymentType)).append("\n");
     sb.append("    hedging: ").append(toIndentedString(hedging)).append("\n");
+    sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -581,6 +645,7 @@ public class ShareClass {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("instrumentIdentifiers");
+    openapiFields.add("series");
     openapiFields.add("name");
     openapiFields.add("description");
     openapiFields.add("shareClassShortCode");
@@ -596,6 +661,7 @@ public class ShareClass {
     openapiFields.add("timeZoneConventions");
     openapiFields.add("distributionPaymentType");
     openapiFields.add("hedging");
+    openapiFields.add("whtParameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -625,6 +691,20 @@ public class ShareClass {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("series") != null && !jsonObj.get("series").isJsonNull()) {
+        JsonArray jsonArrayseries = jsonObj.getAsJsonArray("series");
+        if (jsonArrayseries != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("series").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `series` to be an array in the JSON string but got `%s`", jsonObj.get("series").toString()));
+          }
+
+          // validate the optional field `series` (array)
+          for (int i = 0; i < jsonArrayseries.size(); i++) {
+            Series.validateJsonElement(jsonArrayseries.get(i));
+          };
+        }
+      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
@@ -684,6 +764,10 @@ public class ShareClass {
       }
       if ((jsonObj.get("hedging") != null && !jsonObj.get("hedging").isJsonNull()) && !jsonObj.get("hedging").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `hedging` to be a primitive type in the JSON string but got `%s`", jsonObj.get("hedging").toString()));
+      }
+      // validate the optional field `whtParameters`
+      if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {
+        WhtParameters.validateJsonElement(jsonObj.get("whtParameters"));
       }
   }
 

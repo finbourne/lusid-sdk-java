@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **shareClassShortCode** | **String** | A short code that uniquely identifies the share class within the Fund and is attached to the transaction. | [default to String]
 **apportionmentFactor** | **java.math.BigDecimal** | Only used for fixed percentage method or be zero, must equal 1 or 0 across all classes in the fund. | [optional] [default to java.math.BigDecimal]
+**shareClassSeriesCode** | **String** | The series of the share class the member refers to. Not yet supported: an allocation group is apportioned by share class, so a member that names a series is rejected. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.AllocationGroupClass;
@@ -15,11 +16,13 @@ import java.net.URI;
 
 String ShareClassShortCode = "example ShareClassShortCode";
 @jakarta.annotation.Nullable java.math.BigDecimal ApportionmentFactor = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String ShareClassSeriesCode = "example ShareClassSeriesCode";
 
 
 AllocationGroupClass allocationGroupClassInstance = new AllocationGroupClass()
     .ShareClassShortCode(ShareClassShortCode)
-    .ApportionmentFactor(ApportionmentFactor);
+    .ApportionmentFactor(ApportionmentFactor)
+    .ShareClassSeriesCode(ShareClassSeriesCode);
 ```
 
 

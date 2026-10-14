@@ -53,6 +53,7 @@ PropertyDomain method = PropertyDomain.ABORCONFIGURATION;
 PropertyDomain method = PropertyDomain.FUND;
 PropertyDomain method = PropertyDomain.FUNDCONFIGURATION;
 PropertyDomain method = PropertyDomain.FUNDSTRUCTURE;
+PropertyDomain method = PropertyDomain.PROCESSINGGROUP;
 PropertyDomain method = PropertyDomain.FEE;
 PropertyDomain method = PropertyDomain.RECONCILIATION;
 PropertyDomain method = PropertyDomain.PROPERTYDEFINITION;
@@ -110,6 +111,7 @@ PropertyDomain method = PropertyDomain.CURRENCYGROUP;
 PropertyDomain method = PropertyDomain.RECDEFINITION;
 PropertyDomain method = PropertyDomain.RECRESULT;
 PropertyDomain method = PropertyDomain.JOURNALENTRY;
+PropertyDomain method = PropertyDomain.COLLATERALAGREEMENT;
 PropertyDomain method = PropertyDomain.ELIGIBLECOLLATERALSCHEDULE;
 ```
 

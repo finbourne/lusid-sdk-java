@@ -8,9 +8,12 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**createAllocationEvent**](AllocationEventsApi.md#createAllocationEvent) | **POST** /api/allocationevents/{scope} | [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event. |
 | [**deleteAllocationEvent**](AllocationEventsApi.md#deleteAllocationEvent) | **DELETE** /api/allocationevents/{scope}/{code} | [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. |
 | [**getAllocationEvent**](AllocationEventsApi.md#getAllocationEvent) | **GET** /api/allocationevents/{scope}/{code} | [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event. |
+| [**getAllocationEventNotices**](AllocationEventsApi.md#getAllocationEventNotices) | **GET** /api/allocationevents/{scope}/{code}/notices | [EARLY ACCESS] GetAllocationEventNotices: [EARLY ACCESS] GetAllocationEventNotices: Get the notices an allocation event issues to its partners. |
 | [**getAllocationEventReceivables**](AllocationEventsApi.md#getAllocationEventReceivables) | **GET** /api/allocationevents/{scope}/{code}/receivables | [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event. |
 | [**listAllocationEvents**](AllocationEventsApi.md#listAllocationEvents) | **GET** /api/allocationevents | [EXPERIMENTAL] ListAllocationEvents: List Allocation Events. |
+| [**listAllocationPaymentHolds**](AllocationEventsApi.md#listAllocationPaymentHolds) | **GET** /api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/holds | [EARLY ACCESS] ListAllocationPaymentHolds: [EARLY ACCESS] ListAllocationPaymentHolds: List the holds placed on a partner&#39;s payment. |
 | [**planAllocationEventBooking**](AllocationEventsApi.md#planAllocationEventBooking) | **POST** /api/allocationevents/{scope}/{code}/plan | [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event. |
+| [**putAllocationPaymentHold**](AllocationEventsApi.md#putAllocationPaymentHold) | **PUT** /api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/hold | [EARLY ACCESS] PutAllocationPaymentHold: [EARLY ACCESS] PutAllocationPaymentHold: Place, move or release a hold on a partner&#39;s payment. |
 | [**reallocateAllocationEvent**](AllocationEventsApi.md#reallocateAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/reallocate | [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event. |
 | [**receiveAllocationEvent**](AllocationEventsApi.md#receiveAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/receipts | [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event. |
 | [**reverseAllocationEvent**](AllocationEventsApi.md#reverseAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/reverse | [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event. |
@@ -401,6 +404,105 @@ public class AllocationEventsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## getAllocationEventNotices
+
+> ResourceListOfAllocationEventNotice getAllocationEventNotices(scope, code, investorRecordId, includeZero, asAt)
+
+[EARLY ACCESS] GetAllocationEventNotices: [EARLY ACCESS] GetAllocationEventNotices: Get the notices an allocation event issues to its partners.
+
+One notice per partner allocation, listing the ILPA transaction lines, the net amount due, the partner&#39;s  unfunded commitment reconciliation across the event and their cumulative position alongside the general  partner&#39;s. Notices carry a DRAFT watermark until the event is booked.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AllocationEventsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AllocationEventsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationEventsApi apiInstance = apiFactory.build(AllocationEventsApi.class);
+
+        AllocationEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationEventsApi.class);
+        String scope = "scope_example"; // String | The scope of the Allocation Event.
+        String code = "code_example"; // String | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.
+        String investorRecordId = "investorRecordId_example"; // String | Restrict the notices to this partner's investor record.
+        Boolean includeZero = false; // Boolean | Whether to include notices whose every line is zero. Defaults to false.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the event. Defaults to returning the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAllocationEventNotice result = apiInstance.getAllocationEventNotices(scope, code, investorRecordId, includeZero, asAt).execute(opts);
+
+            ResourceListOfAllocationEventNotice result = apiInstance.getAllocationEventNotices(scope, code, investorRecordId, includeZero, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllocationEventsApi#getAllocationEventNotices");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Allocation Event. | |
+| **code** | **String**| The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. | |
+| **investorRecordId** | **String**| Restrict the notices to this partner&#39;s investor record. | [optional] |
+| **includeZero** | **Boolean**| Whether to include notices whose every line is zero. Defaults to false. | [optional] [default to false] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the event. Defaults to returning the latest version if not specified. | [optional] |
+
+### Return type
+
+[**ResourceListOfAllocationEventNotice**](ResourceListOfAllocationEventNotice.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The notices the allocation event issues. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## getAllocationEventReceivables
 
 > AllocationReceivablesAgeing getAllocationEventReceivables(scope, code, effectiveAt, asAt)
@@ -599,6 +701,101 @@ public class AllocationEventsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## listAllocationPaymentHolds
+
+> ResourceListOfAllocationPaymentHold listAllocationPaymentHolds(scope, code, investorRecordId)
+
+[EARLY ACCESS] ListAllocationPaymentHolds: [EARLY ACCESS] ListAllocationPaymentHolds: List the holds placed on a partner&#39;s payment.
+
+Every hold placed on the partner&#39;s payment against the event, newest first, including released ones.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AllocationEventsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AllocationEventsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationEventsApi apiInstance = apiFactory.build(AllocationEventsApi.class);
+
+        AllocationEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationEventsApi.class);
+        String scope = "scope_example"; // String | The scope of the Allocation Event.
+        String code = "code_example"; // String | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.
+        String investorRecordId = "investorRecordId_example"; // String | The investor record of the partner whose holds are listed.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfAllocationPaymentHold result = apiInstance.listAllocationPaymentHolds(scope, code, investorRecordId).execute(opts);
+
+            ResourceListOfAllocationPaymentHold result = apiInstance.listAllocationPaymentHolds(scope, code, investorRecordId).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllocationEventsApi#listAllocationPaymentHolds");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Allocation Event. | |
+| **code** | **String**| The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. | |
+| **investorRecordId** | **String**| The investor record of the partner whose holds are listed. | |
+
+### Return type
+
+[**ResourceListOfAllocationPaymentHold**](ResourceListOfAllocationPaymentHold.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The holds placed on the partner&#39;s payment. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## planAllocationEventBooking
 
 > AllocationPostingPlan planAllocationEventBooking(scope, code, allocationEventBookRequest, effectiveAt)
@@ -690,6 +887,103 @@ public class AllocationEventsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The postings the booking would write. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## putAllocationPaymentHold
+
+> AllocationPaymentHold putAllocationPaymentHold(scope, code, investorRecordId, allocationPaymentHoldRequest)
+
+[EARLY ACCESS] PutAllocationPaymentHold: [EARLY ACCESS] PutAllocationPaymentHold: Place, move or release a hold on a partner&#39;s payment.
+
+A Blocked or Escrow hold stops the partner&#39;s allocation being received against the event until it is  Released. A hold may only be released by a user other than the one who placed it.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AllocationEventsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AllocationEventsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationEventsApi apiInstance = apiFactory.build(AllocationEventsApi.class);
+
+        AllocationEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationEventsApi.class);
+        String scope = "scope_example"; // String | The scope of the Allocation Event.
+        String code = "code_example"; // String | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.
+        String investorRecordId = "investorRecordId_example"; // String | The investor record of the partner whose payment is held.
+        AllocationPaymentHoldRequest allocationPaymentHoldRequest = new AllocationPaymentHoldRequest(); // AllocationPaymentHoldRequest | The hold to record: its status, and optionally a reason and an external reference.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AllocationPaymentHold result = apiInstance.putAllocationPaymentHold(scope, code, investorRecordId, allocationPaymentHoldRequest).execute(opts);
+
+            AllocationPaymentHold result = apiInstance.putAllocationPaymentHold(scope, code, investorRecordId, allocationPaymentHoldRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllocationEventsApi#putAllocationPaymentHold");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Allocation Event. | |
+| **code** | **String**| The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. | |
+| **investorRecordId** | **String**| The investor record of the partner whose payment is held. | |
+| **allocationPaymentHoldRequest** | [**AllocationPaymentHoldRequest**](AllocationPaymentHoldRequest.md)| The hold to record: its status, and optionally a reason and an external reference. | |
+
+### Return type
+
+[**AllocationPaymentHold**](AllocationPaymentHold.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The hold as recorded. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

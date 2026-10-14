@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.TransactionPrice;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -106,6 +107,10 @@ public class OverrideDefinitionResponse {
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
   private String source;
+
+  public static final String SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID = "custodianAccountId";
+  @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID)
+  private ResourceId custodianAccountId;
 
   public static final String SERIALIZED_NAME_PRECEDES_EVENT = "precedesEvent";
   @SerializedName(SERIALIZED_NAME_PRECEDES_EVENT)
@@ -403,6 +408,27 @@ public class OverrideDefinitionResponse {
   }
 
 
+  public OverrideDefinitionResponse custodianAccountId(ResourceId custodianAccountId) {
+    
+    this.custodianAccountId = custodianAccountId;
+    return this;
+  }
+
+   /**
+   * Get custodianAccountId
+   * @return custodianAccountId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCustodianAccountId() {
+    return custodianAccountId;
+  }
+
+
+  public void setCustodianAccountId(ResourceId custodianAccountId) {
+    this.custodianAccountId = custodianAccountId;
+  }
+
+
   public OverrideDefinitionResponse precedesEvent(Boolean precedesEvent) {
     
     this.precedesEvent = precedesEvent;
@@ -447,6 +473,7 @@ public class OverrideDefinitionResponse {
         Objects.equals(this.properties, overrideDefinitionResponse.properties) &&
         Objects.equals(this.counterpartyId, overrideDefinitionResponse.counterpartyId) &&
         Objects.equals(this.source, overrideDefinitionResponse.source) &&
+        Objects.equals(this.custodianAccountId, overrideDefinitionResponse.custodianAccountId) &&
         Objects.equals(this.precedesEvent, overrideDefinitionResponse.precedesEvent);
   }
 
@@ -456,7 +483,7 @@ public class OverrideDefinitionResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, tradeDate, settlementDate, units, tradePrice, totalConsideration, exchangeRate, tradeCurrency, properties, counterpartyId, source, precedesEvent);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, tradeDate, settlementDate, units, tradePrice, totalConsideration, exchangeRate, tradeCurrency, properties, counterpartyId, source, custodianAccountId, precedesEvent);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -483,6 +510,7 @@ public class OverrideDefinitionResponse {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    counterpartyId: ").append(toIndentedString(counterpartyId)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    custodianAccountId: ").append(toIndentedString(custodianAccountId)).append("\n");
     sb.append("    precedesEvent: ").append(toIndentedString(precedesEvent)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -519,6 +547,7 @@ public class OverrideDefinitionResponse {
     openapiFields.add("properties");
     openapiFields.add("counterpartyId");
     openapiFields.add("source");
+    openapiFields.add("custodianAccountId");
     openapiFields.add("precedesEvent");
 
     // a set of required properties/fields (JSON key names)
@@ -566,6 +595,10 @@ public class OverrideDefinitionResponse {
       }
       if ((jsonObj.get("source") != null && !jsonObj.get("source").isJsonNull()) && !jsonObj.get("source").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
+      }
+      // validate the optional field `custodianAccountId`
+      if (jsonObj.get("custodianAccountId") != null && !jsonObj.get("custodianAccountId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("custodianAccountId"));
       }
   }
 

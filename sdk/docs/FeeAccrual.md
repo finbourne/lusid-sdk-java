@@ -12,6 +12,9 @@ Name | Type | Description | Notes
 **previousAccrual** | **java.math.BigDecimal** | The previous valuation point&#39;s total accrual. | [optional] [default to java.math.BigDecimal]
 **previousTotalAccrual** | **java.math.BigDecimal** | The previous valuation point&#39;s total accrual. | [optional] [default to java.math.BigDecimal]
 **totalAccrual** | **java.math.BigDecimal** | The sum of the PreviousAccrual and Amount. | [optional] [default to java.math.BigDecimal]
+**capPeriodAccrual** | **java.math.BigDecimal** | The amount accrued so far in the current fee year (from the fee&#39;s AnchorDate), in the fund currency, against which an annual FeeCap is assessed. | [optional] [default to java.math.BigDecimal]
+**feeCapApplied** | **Boolean** | Whether the FeeCap reduced the amount accrued at this valuation point. | [optional] [default to Boolean]
+**feeFloorApplied** | **Boolean** | Whether the FeeFloor raised the amount accrued at this valuation point. | [optional] [default to Boolean]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -28,6 +31,9 @@ java.math.BigDecimal Amount = new java.math.BigDecimal("100.00");
 java.math.BigDecimal PreviousAccrual = new java.math.BigDecimal("100.00");
 java.math.BigDecimal PreviousTotalAccrual = new java.math.BigDecimal("100.00");
 java.math.BigDecimal TotalAccrual = new java.math.BigDecimal("100.00");
+java.math.BigDecimal CapPeriodAccrual = new java.math.BigDecimal("100.00");
+Boolean FeeCapApplied = true;
+Boolean FeeFloorApplied = true;
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -40,6 +46,9 @@ FeeAccrual feeAccrualInstance = new FeeAccrual()
     .PreviousAccrual(PreviousAccrual)
     .PreviousTotalAccrual(PreviousTotalAccrual)
     .TotalAccrual(TotalAccrual)
+    .CapPeriodAccrual(CapPeriodAccrual)
+    .FeeCapApplied(FeeCapApplied)
+    .FeeFloorApplied(FeeFloorApplied)
     .Links(Links);
 ```
 

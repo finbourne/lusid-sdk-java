@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,6 +58,10 @@ public class FundIdList extends ReferenceList {
   @SerializedName(SERIALIZED_NAME_VALUES)
   private List<ResourceId> values = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_NAV_TYPE_CODES_HINT = "navTypeCodesHint";
+  @SerializedName(SERIALIZED_NAME_NAV_TYPE_CODES_HINT)
+  private List<String> navTypeCodesHint;
+
   public FundIdList() {
     // this.referenceListType = this.getClass().getSimpleName();
   }
@@ -90,6 +95,35 @@ public class FundIdList extends ReferenceList {
   }
 
 
+  public FundIdList navTypeCodesHint(List<String> navTypeCodesHint) {
+    
+    this.navTypeCodesHint = navTypeCodesHint;
+    return this;
+  }
+
+  public FundIdList addNavTypeCodesHintItem(String navTypeCodesHintItem) {
+    if (this.navTypeCodesHint == null) {
+      this.navTypeCodesHint = new ArrayList<>();
+    }
+    this.navTypeCodesHint.add(navTypeCodesHintItem);
+    return this;
+  }
+
+   /**
+   * The NAV type codes this list nominates, in priority order; entries may contain &#39;*&#39; wildcards.  For each fund the first matching code the fund defines is picked, falling back to the fund&#39;s  primary (official) NAV type when the list is empty or nothing matches. Optional.
+   * @return navTypeCodesHint
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getNavTypeCodesHint() {
+    return navTypeCodesHint;
+  }
+
+
+  public void setNavTypeCodesHint(List<String> navTypeCodesHint) {
+    this.navTypeCodesHint = navTypeCodesHint;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -101,12 +135,24 @@ public class FundIdList extends ReferenceList {
     }
     FundIdList fundIdList = (FundIdList) o;
     return Objects.equals(this.values, fundIdList.values) &&
+        Objects.equals(this.navTypeCodesHint, fundIdList.navTypeCodesHint) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, super.hashCode());
+    return Objects.hash(values, navTypeCodesHint, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -115,6 +161,7 @@ public class FundIdList extends ReferenceList {
     sb.append("class FundIdList {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
+    sb.append("    navTypeCodesHint: ").append(toIndentedString(navTypeCodesHint)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -139,6 +186,7 @@ public class FundIdList extends ReferenceList {
     openapiFields = new HashSet<String>();
     openapiFields.add("referenceListType");
     openapiFields.add("values");
+    openapiFields.add("navTypeCodesHint");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

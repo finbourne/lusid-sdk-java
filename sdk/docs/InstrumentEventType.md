@@ -135,6 +135,7 @@ InstrumentEventType method = InstrumentEventType.FACILITYDRAWEVENT;
 InstrumentEventType method = InstrumentEventType.FACILITYREPAYMENTEVENT;
 InstrumentEventType method = InstrumentEventType.FACILITYINTERESTEVENT;
 InstrumentEventType method = InstrumentEventType.FACILITYCOMMITMENTFEEEVENT;
+InstrumentEventType method = InstrumentEventType.INSTALMENTCALLEVENT;
 ```
 
 

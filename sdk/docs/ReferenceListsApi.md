@@ -106,7 +106,7 @@ public class ReferenceListsApiExample {
 
 ## getReferenceList
 
-> ReferenceListResponse getReferenceList(scope, code, asAt)
+> ReferenceListResponse getReferenceList(scope, code, asAt, filter)
 
 GetReferenceList: Get Reference List
 
@@ -154,11 +154,12 @@ public class ReferenceListsApiExample {
         String scope = "scope_example"; // String | The scope to which the Reference List belongs.
         String code = "code_example"; // String | The Reference List's unique identifier.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Reference List. Defaults to return the latest version of the Reference List if not specified.
+        String filter = "filter_example"; // String | Expression to filter the values of the Reference List by its underlying type:   fund lists filter on the fund (for example \"id.Code eq 'FundCode'\"), id lists on Scope and Code,   property lists on Key and Value, and scalar lists on Value. Defaults to returning all values if not specified.
         try {
             // uncomment the below to set overrides at the request level
-            // ReferenceListResponse result = apiInstance.getReferenceList(scope, code, asAt).execute(opts);
+            // ReferenceListResponse result = apiInstance.getReferenceList(scope, code, asAt, filter).execute(opts);
 
-            ReferenceListResponse result = apiInstance.getReferenceList(scope, code, asAt).execute();
+            ReferenceListResponse result = apiInstance.getReferenceList(scope, code, asAt, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ReferenceListsApi#getReferenceList");
@@ -178,6 +179,7 @@ public class ReferenceListsApiExample {
 | **scope** | **String**| The scope to which the Reference List belongs. | |
 | **code** | **String**| The Reference List&#39;s unique identifier. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Reference List. Defaults to return the latest version of the Reference List if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the values of the Reference List by its underlying type:   fund lists filter on the fund (for example \&quot;id.Code eq &#39;FundCode&#39;\&quot;), id lists on Scope and Code,   property lists on Key and Value, and scalar lists on Value. Defaults to returning all values if not specified. | [optional] |
 
 ### Return type
 

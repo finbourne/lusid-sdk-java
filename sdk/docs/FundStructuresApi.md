@@ -5,6 +5,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**addFundStructureMember**](FundStructuresApi.md#addFundStructureMember) | **POST** /api/fundstructures/{scope}/{code}/members | [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure. |
+| [**closeFundStructure**](FundStructuresApi.md#closeFundStructure) | **POST** /api/fundstructures/{scope}/{code}/$close | [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure. |
 | [**createFundStructure**](FundStructuresApi.md#createFundStructure) | **POST** /api/fundstructures/{scope} | [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure. |
 | [**deleteFundStructure**](FundStructuresApi.md#deleteFundStructure) | **DELETE** /api/fundstructures/{scope}/{code} | [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure. |
 | [**getFundStructure**](FundStructuresApi.md#getFundStructure) | **GET** /api/fundstructures/{scope}/{code} | [EXPERIMENTAL] GetFundStructure: Get a Fund Structure. |
@@ -105,6 +106,103 @@ public class FundStructuresApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The Fund Structure with the member added. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## closeFundStructure
+
+> FundStructureCloseResult closeFundStructure(scope, code, fundStructureCloseRequest, asAt)
+
+[EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure.
+
+Finalise the named valuation point on every member fund of the structure, leaves first so that each fund&#39;s  investors see a final NAV before the fund holding them closes. A member that fails stops the funds that depend on  it; the members already finalised stand.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundStructuresApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundStructuresApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundStructuresApi apiInstance = apiFactory.build(FundStructuresApi.class);
+
+        FundStructuresApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundStructuresApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund Structure.
+        String code = "code_example"; // String | The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure.
+        FundStructureCloseRequest fundStructureCloseRequest = new FundStructureCloseRequest(); // FundStructureCloseRequest | The valuation point to finalise.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the structure. Defaults to return the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // FundStructureCloseResult result = apiInstance.closeFundStructure(scope, code, fundStructureCloseRequest, asAt).execute(opts);
+
+            FundStructureCloseResult result = apiInstance.closeFundStructure(scope, code, fundStructureCloseRequest, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundStructuresApi#closeFundStructure");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund Structure. | |
+| **code** | **String**| The code of the Fund Structure. Together with the scope this uniquely identifies the Fund Structure. | |
+| **fundStructureCloseRequest** | [**FundStructureCloseRequest**](FundStructureCloseRequest.md)| The valuation point to finalise. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the structure. Defaults to return the latest version if not specified. | [optional] |
+
+### Return type
+
+[**FundStructureCloseResult**](FundStructureCloseResult.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The finalisation of each member of the structure. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

@@ -317,11 +317,11 @@ public class ReferenceListsApi {
     public APIdeleteReferenceListRequest deleteReferenceList(String scope, String code) {
         return new APIdeleteReferenceListRequest(scope, code);
     }
-    private okhttp3.Call getReferenceListCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        return getReferenceListCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getReferenceListCall(String scope, String code, OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
+        return getReferenceListCall(scope, code, asAt, filter,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getReferenceListCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getReferenceListCall(String scope, String code, OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -352,6 +352,10 @@ public class ReferenceListsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -374,7 +378,7 @@ public class ReferenceListsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getReferenceListValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getReferenceListValidateBeforeCall(String scope, String code, OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getReferenceList(Async)");
@@ -385,34 +389,34 @@ public class ReferenceListsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getReferenceList(Async)");
         }
 
-        return getReferenceListCall(scope, code, asAt, _callback, opts);
+        return getReferenceListCall(scope, code, asAt, filter, _callback, opts);
 
     }
 
 
-    private ApiResponse<ReferenceListResponse> getReferenceListWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
-        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+    private ApiResponse<ReferenceListResponse> getReferenceListWithHttpInfo(String scope, String code, OffsetDateTime asAt, String filter) throws ApiException {
+        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, filter, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ReferenceListResponse> getReferenceListWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, null, opts);
+    private ApiResponse<ReferenceListResponse> getReferenceListWithHttpInfo(String scope, String code, OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, filter, null, opts);
         Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getReferenceListAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<ReferenceListResponse> _callback) throws ApiException {
+    private okhttp3.Call getReferenceListAsync(String scope, String code, OffsetDateTime asAt, String filter, final ApiCallback<ReferenceListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, filter, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getReferenceListAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<ReferenceListResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getReferenceListAsync(String scope, String code, OffsetDateTime asAt, String filter, final ApiCallback<ReferenceListResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, _callback, opts);
+        okhttp3.Call localVarCall = getReferenceListValidateBeforeCall(scope, code, asAt, filter, _callback, opts);
         Type localVarReturnType = new TypeToken<ReferenceListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -422,6 +426,7 @@ public class ReferenceListsApi {
         private final String scope;
         private final String code;
         private OffsetDateTime asAt;
+        private String filter;
 
         private APIgetReferenceListRequest(String scope, String code) {
             this.scope = scope;
@@ -439,6 +444,16 @@ public class ReferenceListsApi {
         }
 
         /**
+         * Set filter
+         * @param filter Expression to filter the values of the Reference List by its underlying type:   fund lists filter on the fund (for example \&quot;id.Code eq &#39;FundCode&#39;\&quot;), id lists on Scope and Code,   property lists on Key and Value, and scalar lists on Value. Defaults to returning all values if not specified. (optional)
+         * @return APIgetReferenceListRequest
+         */
+        public APIgetReferenceListRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
          * Build call for getReferenceList
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -452,7 +467,7 @@ public class ReferenceListsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getReferenceListCall(scope, code, asAt, _callback);
+            return getReferenceListCall(scope, code, asAt, filter, _callback);
         }
 
         /**
@@ -468,7 +483,7 @@ public class ReferenceListsApi {
          </table>
          */
         public ReferenceListResponse execute() throws ApiException {
-            ApiResponse<ReferenceListResponse> localVarResp = getReferenceListWithHttpInfo(scope, code, asAt);
+            ApiResponse<ReferenceListResponse> localVarResp = getReferenceListWithHttpInfo(scope, code, asAt, filter);
             return localVarResp.getData();
         }
 
@@ -485,7 +500,7 @@ public class ReferenceListsApi {
          </table>
          */
         public ReferenceListResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ReferenceListResponse> localVarResp = getReferenceListWithHttpInfo(scope, code, asAt, opts);
+            ApiResponse<ReferenceListResponse> localVarResp = getReferenceListWithHttpInfo(scope, code, asAt, filter, opts);
             return localVarResp.getData();
         }
 
@@ -502,7 +517,7 @@ public class ReferenceListsApi {
          </table>
          */
         public ApiResponse<ReferenceListResponse> executeWithHttpInfo() throws ApiException {
-            return getReferenceListWithHttpInfo(scope, code, asAt);
+            return getReferenceListWithHttpInfo(scope, code, asAt, filter);
         }
 
         /**
@@ -518,7 +533,7 @@ public class ReferenceListsApi {
          </table>
          */
         public ApiResponse<ReferenceListResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getReferenceListWithHttpInfo(scope, code, asAt, opts);
+            return getReferenceListWithHttpInfo(scope, code, asAt, filter, opts);
         }
 
         /**
@@ -535,7 +550,7 @@ public class ReferenceListsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ReferenceListResponse> _callback) throws ApiException {
-            return getReferenceListAsync(scope, code, asAt, _callback);
+            return getReferenceListAsync(scope, code, asAt, filter, _callback);
         }
 
         /**
@@ -552,7 +567,7 @@ public class ReferenceListsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ReferenceListResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return getReferenceListAsync(scope, code, asAt, _callback, opts);
+            return getReferenceListAsync(scope, code, asAt, filter, _callback, opts);
         }
     }
 

@@ -19,6 +19,7 @@ import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ReportingPrice;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ShareClassDefinition;
+import com.finbourne.lusid.model.WhtParameters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -146,6 +147,10 @@ public class FundDefinitionRequest {
   public static final String SERIALIZED_NAME_REPORTING_PRICES = "reportingPrices";
   @SerializedName(SERIALIZED_NAME_REPORTING_PRICES)
   private List<ReportingPrice> reportingPrices;
+
+  public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
+  @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
+  private WhtParameters whtParameters;
 
   public FundDefinitionRequest() {
   }
@@ -649,6 +654,27 @@ public class FundDefinitionRequest {
   }
 
 
+  public FundDefinitionRequest whtParameters(WhtParameters whtParameters) {
+    
+    this.whtParameters = whtParameters;
+    return this;
+  }
+
+   /**
+   * Get whtParameters
+   * @return whtParameters
+  **/
+  @jakarta.annotation.Nullable
+  public WhtParameters getWhtParameters() {
+    return whtParameters;
+  }
+
+
+  public void setWhtParameters(WhtParameters whtParameters) {
+    this.whtParameters = whtParameters;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -679,7 +705,8 @@ public class FundDefinitionRequest {
         Objects.equals(this.createInstrument, fundDefinitionRequest.createInstrument) &&
         Objects.equals(this.shareClasses, fundDefinitionRequest.shareClasses) &&
         Objects.equals(this.pricingMethodology, fundDefinitionRequest.pricingMethodology) &&
-        Objects.equals(this.reportingPrices, fundDefinitionRequest.reportingPrices);
+        Objects.equals(this.reportingPrices, fundDefinitionRequest.reportingPrices) &&
+        Objects.equals(this.whtParameters, fundDefinitionRequest.whtParameters);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -688,7 +715,7 @@ public class FundDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, shareClasses, pricingMethodology, reportingPrices);
+    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, shareClasses, pricingMethodology, reportingPrices, whtParameters);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -723,6 +750,7 @@ public class FundDefinitionRequest {
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("    pricingMethodology: ").append(toIndentedString(pricingMethodology)).append("\n");
     sb.append("    reportingPrices: ").append(toIndentedString(reportingPrices)).append("\n");
+    sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -766,6 +794,7 @@ public class FundDefinitionRequest {
     openapiFields.add("shareClasses");
     openapiFields.add("pricingMethodology");
     openapiFields.add("reportingPrices");
+    openapiFields.add("whtParameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -899,6 +928,10 @@ public class FundDefinitionRequest {
             ReportingPrice.validateJsonElement(jsonArrayreportingPrices.get(i));
           };
         }
+      }
+      // validate the optional field `whtParameters`
+      if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {
+        WhtParameters.validateJsonElement(jsonObj.get("whtParameters"));
       }
   }
 

@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.FractionalUnitsTrueUpConfiguration;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.WhtParameters;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -67,6 +68,10 @@ public class CreatePortfolioDetails {
   public static final String SERIALIZED_NAME_HOLDINGS_FUNGIBILITY = "holdingsFungibility";
   @SerializedName(SERIALIZED_NAME_HOLDINGS_FUNGIBILITY)
   private String holdingsFungibility;
+
+  public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
+  @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
+  private WhtParameters whtParameters;
 
   public CreatePortfolioDetails() {
   }
@@ -155,6 +160,27 @@ public class CreatePortfolioDetails {
   }
 
 
+  public CreatePortfolioDetails whtParameters(WhtParameters whtParameters) {
+    
+    this.whtParameters = whtParameters;
+    return this;
+  }
+
+   /**
+   * Get whtParameters
+   * @return whtParameters
+  **/
+  @jakarta.annotation.Nullable
+  public WhtParameters getWhtParameters() {
+    return whtParameters;
+  }
+
+
+  public void setWhtParameters(WhtParameters whtParameters) {
+    this.whtParameters = whtParameters;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -168,7 +194,8 @@ public class CreatePortfolioDetails {
     return Objects.equals(this.corporateActionSourceId, createPortfolioDetails.corporateActionSourceId) &&
         Objects.equals(this.taxLotSelectionCostBasis, createPortfolioDetails.taxLotSelectionCostBasis) &&
         Objects.equals(this.fractionalUnitsTrueUpConfiguration, createPortfolioDetails.fractionalUnitsTrueUpConfiguration) &&
-        Objects.equals(this.holdingsFungibility, createPortfolioDetails.holdingsFungibility);
+        Objects.equals(this.holdingsFungibility, createPortfolioDetails.holdingsFungibility) &&
+        Objects.equals(this.whtParameters, createPortfolioDetails.whtParameters);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -177,7 +204,7 @@ public class CreatePortfolioDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(corporateActionSourceId, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility);
+    return Objects.hash(corporateActionSourceId, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, whtParameters);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -195,6 +222,7 @@ public class CreatePortfolioDetails {
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("    holdingsFungibility: ").append(toIndentedString(holdingsFungibility)).append("\n");
+    sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -221,6 +249,7 @@ public class CreatePortfolioDetails {
     openapiFields.add("taxLotSelectionCostBasis");
     openapiFields.add("fractionalUnitsTrueUpConfiguration");
     openapiFields.add("holdingsFungibility");
+    openapiFields.add("whtParameters");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -252,6 +281,10 @@ public class CreatePortfolioDetails {
       }
       if ((jsonObj.get("holdingsFungibility") != null && !jsonObj.get("holdingsFungibility").isJsonNull()) && !jsonObj.get("holdingsFungibility").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingsFungibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingsFungibility").toString()));
+      }
+      // validate the optional field `whtParameters`
+      if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {
+        WhtParameters.validateJsonElement(jsonObj.get("whtParameters"));
       }
   }
 

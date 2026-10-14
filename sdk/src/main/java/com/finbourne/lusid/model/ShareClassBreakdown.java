@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.FeeAccrual;
 import com.finbourne.lusid.model.PreviousShareClassBreakdown;
+import com.finbourne.lusid.model.SeriesBreakdown;
 import com.finbourne.lusid.model.ShareClassAmount;
 import com.finbourne.lusid.model.ShareClassDealingBreakdown;
 import com.finbourne.lusid.model.ShareClassPnlBreakdown;
@@ -23,8 +24,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -101,6 +104,10 @@ public class ShareClassBreakdown {
   public static final String SERIALIZED_NAME_PREVIOUS_SHARE_CLASS_BREAKDOWN = "previousShareClassBreakdown";
   @SerializedName(SERIALIZED_NAME_PREVIOUS_SHARE_CLASS_BREAKDOWN)
   private PreviousShareClassBreakdown previousShareClassBreakdown;
+
+  public static final String SERIALIZED_NAME_SERIES_BREAKDOWNS = "seriesBreakdowns";
+  @SerializedName(SERIALIZED_NAME_SERIES_BREAKDOWNS)
+  private List<SeriesBreakdown> seriesBreakdowns;
 
   public ShareClassBreakdown() {
   }
@@ -360,6 +367,35 @@ public class ShareClassBreakdown {
   }
 
 
+  public ShareClassBreakdown seriesBreakdowns(List<SeriesBreakdown> seriesBreakdowns) {
+    
+    this.seriesBreakdowns = seriesBreakdowns;
+    return this;
+  }
+
+  public ShareClassBreakdown addSeriesBreakdownsItem(SeriesBreakdown seriesBreakdownsItem) {
+    if (this.seriesBreakdowns == null) {
+      this.seriesBreakdowns = new ArrayList<>();
+    }
+    this.seriesBreakdowns.add(seriesBreakdownsItem);
+    return this;
+  }
+
+   /**
+   * The share class NAV split across the series within the share class, one entry per series. Empty for a share class without series.
+   * @return seriesBreakdowns
+  **/
+  @jakarta.annotation.Nullable
+  public List<SeriesBreakdown> getSeriesBreakdowns() {
+    return seriesBreakdowns;
+  }
+
+
+  public void setSeriesBreakdowns(List<SeriesBreakdown> seriesBreakdowns) {
+    this.seriesBreakdowns = seriesBreakdowns;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -380,7 +416,8 @@ public class ShareClassBreakdown {
         Objects.equals(this.miscellaneous, shareClassBreakdown.miscellaneous) &&
         (this.shareClassToFundFxRate.compareTo(shareClassBreakdown.getShareClassToFundFxRate()) == 0) &&
         (this.capitalRatio.compareTo(shareClassBreakdown.getCapitalRatio()) == 0) &&
-        Objects.equals(this.previousShareClassBreakdown, shareClassBreakdown.previousShareClassBreakdown);
+        Objects.equals(this.previousShareClassBreakdown, shareClassBreakdown.previousShareClassBreakdown) &&
+        Objects.equals(this.seriesBreakdowns, shareClassBreakdown.seriesBreakdowns);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -389,7 +426,7 @@ public class ShareClassBreakdown {
 
   @Override
   public int hashCode() {
-    return Objects.hash(backOut, dealing, pnL, gav, fees, nav, unitisation, miscellaneous, shareClassToFundFxRate, capitalRatio, previousShareClassBreakdown);
+    return Objects.hash(backOut, dealing, pnL, gav, fees, nav, unitisation, miscellaneous, shareClassToFundFxRate, capitalRatio, previousShareClassBreakdown, seriesBreakdowns);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -414,6 +451,7 @@ public class ShareClassBreakdown {
     sb.append("    shareClassToFundFxRate: ").append(toIndentedString(shareClassToFundFxRate)).append("\n");
     sb.append("    capitalRatio: ").append(toIndentedString(capitalRatio)).append("\n");
     sb.append("    previousShareClassBreakdown: ").append(toIndentedString(previousShareClassBreakdown)).append("\n");
+    sb.append("    seriesBreakdowns: ").append(toIndentedString(seriesBreakdowns)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -447,6 +485,7 @@ public class ShareClassBreakdown {
     openapiFields.add("shareClassToFundFxRate");
     openapiFields.add("capitalRatio");
     openapiFields.add("previousShareClassBreakdown");
+    openapiFields.add("seriesBreakdowns");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -495,6 +534,20 @@ public class ShareClassBreakdown {
       }
       // validate the required field `previousShareClassBreakdown`
       PreviousShareClassBreakdown.validateJsonElement(jsonObj.get("previousShareClassBreakdown"));
+      if (jsonObj.get("seriesBreakdowns") != null && !jsonObj.get("seriesBreakdowns").isJsonNull()) {
+        JsonArray jsonArrayseriesBreakdowns = jsonObj.getAsJsonArray("seriesBreakdowns");
+        if (jsonArrayseriesBreakdowns != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("seriesBreakdowns").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `seriesBreakdowns` to be an array in the JSON string but got `%s`", jsonObj.get("seriesBreakdowns").toString()));
+          }
+
+          // validate the optional field `seriesBreakdowns` (array)
+          for (int i = 0; i < jsonArrayseriesBreakdowns.size(); i++) {
+            SeriesBreakdown.validateJsonElement(jsonArrayseriesBreakdowns.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

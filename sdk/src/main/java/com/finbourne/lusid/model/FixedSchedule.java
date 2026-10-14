@@ -315,7 +315,7 @@ public class FixedSchedule extends Schedule {
   }
 
    /**
-   * Optional. The date on which the first coupon is paid. Set this date for an irregular first coupon period.  If this date is an adjusted date, also set SecondPeriodStartDate.
+   * Optional. The date on which the first coupon is paid. Set this date for an irregular first coupon period.  When SecondPeriodStartDate is not set, this date is also the end of the first coupon period and the regular coupon periods roll forward from it.  If this date is an adjusted date, also set SecondPeriodStartDate.
    * @return firstCouponPayDate
   **/
   @jakarta.annotation.Nullable
@@ -336,7 +336,7 @@ public class FixedSchedule extends Schedule {
   }
 
    /**
-   * Optional. The date on which the second coupon period starts. This is also the accrual end date of the first coupon period.  Set this date together with FirstCouponPayDate when the first coupon pay date is an adjusted date.
+   * Optional. The date on which the second coupon period starts. This is also the accrual end date of the first coupon period.  The regular coupon periods roll forward from this date, whatever the stub type, and the last period ends on the maturity date.  Set this date together with FirstCouponPayDate when the first coupon pay date is an adjusted date.
    * @return secondPeriodStartDate
   **/
   @jakarta.annotation.Nullable
@@ -357,7 +357,7 @@ public class FixedSchedule extends Schedule {
   }
 
    /**
-   * Optional. The date on which the penultimate coupon is paid. Set this date for an irregular last coupon period.  If this date is an adjusted date, also set LastPeriodStartDate.
+   * Optional. The date on which the penultimate coupon is paid. Set this date for an irregular last coupon period.  When LastPeriodStartDate is not set, this date is also the start of the last coupon period.  If this date is an adjusted date, also set LastPeriodStartDate.
    * @return penultimateCouponPayDate
   **/
   @jakarta.annotation.Nullable
@@ -378,7 +378,7 @@ public class FixedSchedule extends Schedule {
   }
 
    /**
-   * Optional. The date on which the last coupon period starts. This is also the accrual end date of the penultimate coupon period.  Set this date together with PenultimateCouponPayDate when the penultimate coupon pay date is an adjusted date.
+   * Optional. The date on which the last coupon period starts. This is also the accrual end date of the penultimate coupon period.  When the first coupon period is not given explicitly, the regular coupon periods roll backward from this date, whatever the stub type.  Set this date together with PenultimateCouponPayDate when the penultimate coupon pay date is an adjusted date.
    * @return lastPeriodStartDate
   **/
   @jakarta.annotation.Nullable

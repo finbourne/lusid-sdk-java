@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **String** | The id of the result within its run: its result type and result number, e.g. &#39;break-3&#39;. Unique within one run of one rec type of an instance; the same id in another run of the instance names the same result, for as long as it keeps its result type. | [default to String]
 **resultNumber** | **Integer** | The result&#39;s number within its result type. Kept across runs while the result keeps its type; never reused once assigned. | [default to Integer]
 **firstRunSeen** | **Integer** | The run in which the result was first assigned its id. | [default to Integer]
-**recType** | **String** | The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity. | [default to String]
+**recType** | **String** | The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. | [default to String]
 **instanceId** | [**RecInstanceId**](RecInstanceId.md) |  | [default to RecInstanceId]
 **recDefinitionId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **runNumber** | **Integer** | The run number within the instance. Increments with each re-run. | [default to Integer]

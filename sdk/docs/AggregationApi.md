@@ -6,7 +6,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**generateConfigurationRecipe**](AggregationApi.md#generateConfigurationRecipe) | **POST** /api/aggregation/{scope}/{code}/$generateconfigurationrecipe | [EXPERIMENTAL] GenerateConfigurationRecipe: Generates a recipe sufficient to perform valuations for the given portfolio. |
 | [**getQueryableKeys**](AggregationApi.md#getQueryableKeys) | **GET** /api/results/queryable/keys | GetQueryableKeys: Query the set of supported \&quot;addresses\&quot; that can be queried from the aggregation endpoint. |
-| [**getQueryableKeysForMetrics**](AggregationApi.md#getQueryableKeysForMetrics) | **POST** /api/aggregation/$queryablekeys | [EXPERIMENTAL] GetQueryableKeysForMetrics: Query the queryable keys behind a given set of valuation metrics. |
+| [**getQueryableKeysForMetrics**](AggregationApi.md#getQueryableKeysForMetrics) | **POST** /api/aggregation/$queryablekeys | [EARLY ACCESS] GetQueryableKeysForMetrics: Query the queryable keys behind a given set of valuation metrics. |
 | [**getValuation**](AggregationApi.md#getValuation) | **POST** /api/aggregation/$valuation | GetValuation: Perform valuation for a list of portfolios and/or portfolio groups |
 | [**getValuationOfWeightedInstruments**](AggregationApi.md#getValuationOfWeightedInstruments) | **POST** /api/aggregation/$valuationinlined | GetValuationOfWeightedInstruments: Perform valuation for an inlined portfolio |
 
@@ -206,7 +206,7 @@ public class AggregationApiExample {
 
 > QueryableKeysForMetricsResponse getQueryableKeysForMetrics(queryableKeysForMetricsRequest)
 
-[EXPERIMENTAL] GetQueryableKeysForMetrics: Query the queryable keys behind a given set of valuation metrics.
+[EARLY ACCESS] GetQueryableKeysForMetrics: Query the queryable keys behind a given set of valuation metrics.
 
 Describes what a valuation would return for each of the supplied metrics, so that a caller can  prepare for the response, and render it, without having to ask for the valuation first. The  metrics are given exactly as they would be supplied to the metrics of a valuation request.     Each metric is reported on individually, keyed by its normalised address key: those that resolve  appear under metrics with their queryable key definition, and the rest appear under failed with the  reason. A metric that does not exist, or that you are not entitled to read, is reported as failed;  the two cases are not distinguished from one another.
 

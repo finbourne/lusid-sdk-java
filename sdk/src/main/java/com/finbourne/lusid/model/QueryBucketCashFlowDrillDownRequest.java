@@ -104,6 +104,10 @@ public class QueryBucketCashFlowDrillDownRequest {
   @SerializedName(SERIALIZED_NAME_CASH_TYPE)
   private String cashType;
 
+  public static final String SERIALIZED_NAME_FX_RATE_TYPE = "fxRateType";
+  @SerializedName(SERIALIZED_NAME_FX_RATE_TYPE)
+  private String fxRateType;
+
   public QueryBucketCashFlowDrillDownRequest() {
   }
 
@@ -375,6 +379,27 @@ public class QueryBucketCashFlowDrillDownRequest {
   }
 
 
+  public QueryBucketCashFlowDrillDownRequest fxRateType(String fxRateType) {
+    
+    this.fxRateType = fxRateType;
+    return this;
+  }
+
+   /**
+   * Which FX rate converts each cashflow into the ReportCurrency. FxSpot (default) uses the spot rate. FxForward uses the forward rate for the cashflow&#39;s payment date, read from the FX forward curve the recipe resolves for the currency pair as at the valuation (EffectiveAt) date; a cashflow with no such forward rate reports an Error and has no converted amount. ForwardThenSpot uses the forward rate where the recipe resolves one and the spot rate where it does not. FxForward and ForwardThenSpot require a ReportCurrency. A cashflow paid after the last point of the recipe&#39;s forward curve takes the last point&#39;s forward rate when the curve&#39;s back extrapolation is Flat (the default), and reports an Error when it is None. Where ForwardThenSpot falls back, the spot rate is the one FxSpot uses: read on the cashflow&#39;s own transaction date, not the valuation date. The response&#39;s CashFlowDetail.FxRateTypeApplied says which rate each cashflow received. Available values: FxSpot, FxForward, ForwardThenSpot.
+   * @return fxRateType
+  **/
+  @jakarta.annotation.Nullable
+  public String getFxRateType() {
+    return fxRateType;
+  }
+
+
+  public void setFxRateType(String fxRateType) {
+    this.fxRateType = fxRateType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -396,7 +421,8 @@ public class QueryBucketCashFlowDrillDownRequest {
         Objects.equals(this.reportCurrency, queryBucketCashFlowDrillDownRequest.reportCurrency) &&
         Objects.equals(this.excludeUnsettledTrades, queryBucketCashFlowDrillDownRequest.excludeUnsettledTrades) &&
         Objects.equals(this.haircutRules, queryBucketCashFlowDrillDownRequest.haircutRules) &&
-        Objects.equals(this.cashType, queryBucketCashFlowDrillDownRequest.cashType);
+        Objects.equals(this.cashType, queryBucketCashFlowDrillDownRequest.cashType) &&
+        Objects.equals(this.fxRateType, queryBucketCashFlowDrillDownRequest.fxRateType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -405,7 +431,7 @@ public class QueryBucketCashFlowDrillDownRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAt, bucketStart, bucketEnd, startInclusive, endInclusive, portfolioEntityIds, effectiveAt, recipeId, reportCurrency, excludeUnsettledTrades, haircutRules, cashType);
+    return Objects.hash(asAt, bucketStart, bucketEnd, startInclusive, endInclusive, portfolioEntityIds, effectiveAt, recipeId, reportCurrency, excludeUnsettledTrades, haircutRules, cashType, fxRateType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -431,6 +457,7 @@ public class QueryBucketCashFlowDrillDownRequest {
     sb.append("    excludeUnsettledTrades: ").append(toIndentedString(excludeUnsettledTrades)).append("\n");
     sb.append("    haircutRules: ").append(toIndentedString(haircutRules)).append("\n");
     sb.append("    cashType: ").append(toIndentedString(cashType)).append("\n");
+    sb.append("    fxRateType: ").append(toIndentedString(fxRateType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -465,6 +492,7 @@ public class QueryBucketCashFlowDrillDownRequest {
     openapiFields.add("excludeUnsettledTrades");
     openapiFields.add("haircutRules");
     openapiFields.add("cashType");
+    openapiFields.add("fxRateType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -526,6 +554,9 @@ public class QueryBucketCashFlowDrillDownRequest {
       }
       if ((jsonObj.get("cashType") != null && !jsonObj.get("cashType").isJsonNull()) && !jsonObj.get("cashType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `cashType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashType").toString()));
+      }
+      if ((jsonObj.get("fxRateType") != null && !jsonObj.get("fxRateType").isJsonNull()) && !jsonObj.get("fxRateType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fxRateType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fxRateType").toString()));
       }
   }
 

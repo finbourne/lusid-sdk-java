@@ -22,6 +22,13 @@ Name | Type | Description | Notes
 **consentDeniedElections** | [**List&lt;ConsentDeniedElection&gt;**](ConsentDeniedElection.md) | List of possible consent-denied elections for this event (CONN) — vote against the proposal.    - The event requires at least one election of any type.    - Any number of ConsentDeniedElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen. | [optional] [default to List<ConsentDeniedElection>]
 **abstainElections** | [**List&lt;AbstainElection&gt;**](AbstainElection.md) | List of possible abstain elections for this event (ABST) — decline to vote on the consent.    - The event requires at least one election of any type.    - Any number of AbstainElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen. | [optional] [default to List<AbstainElection>]
 **unknownProceedsElections** | [**List&lt;UnknownProceedsElection&gt;**](UnknownProceedsElection.md) | List of possible unknown-proceeds elections for this event (UNKNOWN) — the outturn is not yet known.    - The event requires at least one election of any type.    - Any number of UnknownProceedsElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen. | [optional] [default to List<UnknownProceedsElection>]
+**securityOfferElections** | [**List&lt;SecurityOfferElection&gt;**](SecurityOfferElection.md) | List of possible security-offer elections for this event (SECU). The accepted units are paid out  in securities rather than cash.    - The event requires at least one election of any type.    - Any number of SecurityOfferElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.    - NewInstrument is required on the event when any of these is present. | [optional] [default to List<SecurityOfferElection>]
+**cashAndSecurityOfferElections** | [**List&lt;CashAndSecurityOfferElection&gt;**](CashAndSecurityOfferElection.md) | List of possible cash-and-security-offer elections for this event (CASE). The accepted units are  paid out as a mix of cash and securities, with CostFactor splitting the book cost between them.    - The event requires at least one election of any type.    - Any number of CashAndSecurityOfferElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.    - NewInstrument is required on the event when any of these is present. | [optional] [default to List<CashAndSecurityOfferElection>]
+**newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [optional] [default to NewInstrument]
+**fractionalUnitsCashPrice** | **java.math.BigDecimal** | The cash price per unit paid in lieu of a fractional securities entitlement. SECU and CASE only. | [optional] [default to java.math.BigDecimal]
+**fractionalUnitsCashCurrency** | **String** | The currency of the cash paid in lieu of fractionalUnits. | [optional] [default to String]
+**fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
+**fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
 
 ```java
 import com.finbourne.lusid.model.RepurchaseOfferEvent;
@@ -46,6 +53,13 @@ java.math.BigDecimal ProrationRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable List<ConsentDeniedElection> ConsentDeniedElections = new List<ConsentDeniedElection>();
 @jakarta.annotation.Nullable List<AbstainElection> AbstainElections = new List<AbstainElection>();
 @jakarta.annotation.Nullable List<UnknownProceedsElection> UnknownProceedsElections = new List<UnknownProceedsElection>();
+@jakarta.annotation.Nullable List<SecurityOfferElection> SecurityOfferElections = new List<SecurityOfferElection>();
+@jakarta.annotation.Nullable List<CashAndSecurityOfferElection> CashAndSecurityOfferElections = new List<CashAndSecurityOfferElection>();
+NewInstrument NewInstrument = new NewInstrument();
+@jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
+@jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
+@jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
 
 
 RepurchaseOfferEvent repurchaseOfferEventInstance = new RepurchaseOfferEvent()
@@ -65,7 +79,14 @@ RepurchaseOfferEvent repurchaseOfferEventInstance = new RepurchaseOfferEvent()
     .ConsentGrantedElections(ConsentGrantedElections)
     .ConsentDeniedElections(ConsentDeniedElections)
     .AbstainElections(AbstainElections)
-    .UnknownProceedsElections(UnknownProceedsElections);
+    .UnknownProceedsElections(UnknownProceedsElections)
+    .SecurityOfferElections(SecurityOfferElections)
+    .CashAndSecurityOfferElections(CashAndSecurityOfferElections)
+    .NewInstrument(NewInstrument)
+    .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
+    .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
+    .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
+    .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces);
 ```
 
 

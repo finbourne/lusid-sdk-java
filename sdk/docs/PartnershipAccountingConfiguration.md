@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **enabled** | **Boolean** |  | [default to Boolean]
 **configPack** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
-**commitmentCurrencyPolicy** | **String** | Available values: FundCurrencyOnly. | [optional] [default to String]
+**commitmentCurrencyPolicy** | **String** | Available values: FundCurrencyOnly, AllowLineCurrency. | [optional] [default to String]
 **registerPortfolioGroup** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **capitalModel** | **String** | Available values: PartnershipCapitalAccounts, SeriesUnitised. | [optional] [default to String]
 **capabilityOverrides** | [**List&lt;CapabilityOverride&gt;**](CapabilityOverride.md) |  | [optional] [default to List<CapabilityOverride>]
 **series** | [**SeriesConfiguration**](SeriesConfiguration.md) |  | [optional] [default to SeriesConfiguration]
 **effectiveCapabilities** | **Map&lt;String, String&gt;** | Derived on the way out; ignored on the way in. | [optional] [default to Map<String, String>]
+**presentation** | [**PresentationConfiguration**](PresentationConfiguration.md) |  | [optional] [default to PresentationConfiguration]
 
 ```java
 import com.finbourne.lusid.model.PartnershipAccountingConfiguration;
@@ -27,6 +28,7 @@ ResourceId RegisterPortfolioGroup = new ResourceId();
 @jakarta.annotation.Nullable List<CapabilityOverride> CapabilityOverrides = new List<CapabilityOverride>();
 SeriesConfiguration Series = new SeriesConfiguration();
 @jakarta.annotation.Nullable Map<String, String> EffectiveCapabilities = new Map<String, String>();
+PresentationConfiguration Presentation = new PresentationConfiguration();
 
 
 PartnershipAccountingConfiguration partnershipAccountingConfigurationInstance = new PartnershipAccountingConfiguration()
@@ -37,7 +39,8 @@ PartnershipAccountingConfiguration partnershipAccountingConfigurationInstance = 
     .CapitalModel(CapitalModel)
     .CapabilityOverrides(CapabilityOverrides)
     .Series(Series)
-    .EffectiveCapabilities(EffectiveCapabilities);
+    .EffectiveCapabilities(EffectiveCapabilities)
+    .Presentation(Presentation);
 ```
 
 

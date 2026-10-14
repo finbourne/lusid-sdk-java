@@ -296,7 +296,7 @@ public class ToBeAnnouncedOption extends LusidInstrument {
    * Get premium
    * @return premium
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public Premium getPremium() {
     return premium;
   }
@@ -530,7 +530,6 @@ public class ToBeAnnouncedOption extends LusidInstrument {
     openapiRequiredFields.add("deliveryType");
     openapiRequiredFields.add("underlying");
     openapiRequiredFields.add("exerciseType");
-    openapiRequiredFields.add("premium");
     openapiRequiredFields.add("instrumentType");
   }
 

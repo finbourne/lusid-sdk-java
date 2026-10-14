@@ -301,7 +301,7 @@ public class TransactionConfigurationApiExample {
 
 ## getSideDefinition
 
-> SideDefinition getSideDefinition(side, scope, asAt)
+> SideDefinition getSideDefinition(side, scope, asAt, includeSystemTypes)
 
 GetSideDefinition: Get the side definition for a given side name( or label)
 
@@ -349,11 +349,12 @@ public class TransactionConfigurationApiExample {
         String side = "side_example"; // String | The label to uniquely identify the side.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified.
+        Boolean includeSystemTypes = false; // Boolean | Whether the default definitions of the sides that LUSID's own transaction   types reference, which LUSID provides to every scope that lacks them, may be returned. Defaults to false,   so a side is found only if the scope stored it itself.
         try {
             // uncomment the below to set overrides at the request level
-            // SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt).execute(opts);
+            // SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt, includeSystemTypes).execute(opts);
 
-            SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt).execute();
+            SideDefinition result = apiInstance.getSideDefinition(side, scope, asAt, includeSystemTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionConfigurationApi#getSideDefinition");
@@ -373,6 +374,7 @@ public class TransactionConfigurationApiExample {
 | **side** | **String**| The label to uniquely identify the side. | |
 | **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. | [optional] |
+| **includeSystemTypes** | **Boolean**| Whether the default definitions of the sides that LUSID&#39;s own transaction   types reference, which LUSID provides to every scope that lacks them, may be returned. Defaults to false,   so a side is found only if the scope stored it itself. | [optional] [default to false] |
 
 ### Return type
 
@@ -396,7 +398,7 @@ public class TransactionConfigurationApiExample {
 
 ## getTransactionType
 
-> TransactionType getTransactionType(source, type, asAt, scope)
+> TransactionType getTransactionType(source, type, asAt, scope, includeSystemTypes)
 
 GetTransactionType: Get a single transaction configuration type
 
@@ -445,11 +447,12 @@ public class TransactionConfigurationApiExample {
         String type = "type_example"; // String | One of the type's aliases
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified
         String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
+        Boolean includeSystemTypes = false; // Boolean | Whether the transaction types LUSID provides to every scope under the   'pa-system' source may be returned. Defaults to false, so a type in that source is found only if the scope   stored it there itself.
         try {
             // uncomment the below to set overrides at the request level
-            // TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope).execute(opts);
+            // TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope, includeSystemTypes).execute(opts);
 
-            TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope).execute();
+            TransactionType result = apiInstance.getTransactionType(source, type, asAt, scope, includeSystemTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionConfigurationApi#getTransactionType");
@@ -470,6 +473,7 @@ public class TransactionConfigurationApiExample {
 | **type** | **String**| One of the type&#39;s aliases | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction configuration.   Defaults to returning the latest version of the transaction configuration type if not specified | [optional] |
 | **scope** | **String**| The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
+| **includeSystemTypes** | **Boolean**| Whether the transaction types LUSID provides to every scope under the   &#39;pa-system&#39; source may be returned. Defaults to false, so a type in that source is found only if the scope   stored it there itself. | [optional] [default to false] |
 
 ### Return type
 
@@ -493,7 +497,7 @@ public class TransactionConfigurationApiExample {
 
 ## listSideDefinitions
 
-> ResourceListOfSideDefinition listSideDefinitions(asAt, scope)
+> ResourceListOfSideDefinition listSideDefinitions(asAt, scope, includeSystemTypes)
 
 ListSideDefinitions: List the side definitions
 
@@ -540,11 +544,12 @@ public class TransactionConfigurationApiExample {
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified.
         String scope = "default"; // String | The scope in which the side exists. When not supplied the scope is 'default'. Use '*' to list across all scopes.
+        Boolean includeSystemTypes = false; // Boolean | Whether the default definitions of the sides that LUSID's own transaction   types reference, which LUSID provides to every scope that lacks them, are listed. Defaults to false, so   only the sides the scope stored itself are listed.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope).execute(opts);
+            // ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope, includeSystemTypes).execute(opts);
 
-            ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope).execute();
+            ResourceListOfSideDefinition result = apiInstance.listSideDefinitions(asAt, scope, includeSystemTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionConfigurationApi#listSideDefinitions");
@@ -563,6 +568,7 @@ public class TransactionConfigurationApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults to returning the latest versions if not specified. | [optional] |
 | **scope** | **String**| The scope in which the side exists. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. | [optional] [default to default] |
+| **includeSystemTypes** | **Boolean**| Whether the default definitions of the sides that LUSID&#39;s own transaction   types reference, which LUSID provides to every scope that lacks them, are listed. Defaults to false, so   only the sides the scope stored itself are listed. | [optional] [default to false] |
 
 ### Return type
 
@@ -586,7 +592,7 @@ public class TransactionConfigurationApiExample {
 
 ## listTransactionTypes
 
-> Map&lt;String, List&lt;TransactionType&gt;&gt; listTransactionTypes(asAt, scope)
+> Map&lt;String, List&lt;TransactionType&gt;&gt; listTransactionTypes(asAt, scope, includeSystemTypes)
 
 ListTransactionTypes: List transaction types
 
@@ -633,11 +639,12 @@ public class TransactionConfigurationApiExample {
         TransactionConfigurationApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransactionConfigurationApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified.
         String scope = "default"; // String | The scope in which the transaction types exist. When not supplied the scope is 'default'. Use '*' to list across all scopes.
+        Boolean includeSystemTypes = false; // Boolean | Whether to include the transaction types LUSID provides to every scope under   the 'pa-system' source, which portfolios in the scope can book with. Defaults to false, so that source shows   only what the scope stored there itself.
         try {
             // uncomment the below to set overrides at the request level
-            // Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope).execute(opts);
+            // Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope, includeSystemTypes).execute(opts);
 
-            Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope).execute();
+            Map<String, List<TransactionType>> result = apiInstance.listTransactionTypes(asAt, scope, includeSystemTypes).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionConfigurationApi#listTransactionTypes");
@@ -656,6 +663,7 @@ public class TransactionConfigurationApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the transaction types. Defaults   to returning the latest versions if not specified. | [optional] |
 | **scope** | **String**| The scope in which the transaction types exist. When not supplied the scope is &#39;default&#39;. Use &#39;*&#39; to list across all scopes. | [optional] [default to default] |
+| **includeSystemTypes** | **Boolean**| Whether to include the transaction types LUSID provides to every scope under   the &#39;pa-system&#39; source, which portfolios in the scope can book with. Defaults to false, so that source shows   only what the scope stored there itself. | [optional] [default to false] |
 
 ### Return type
 

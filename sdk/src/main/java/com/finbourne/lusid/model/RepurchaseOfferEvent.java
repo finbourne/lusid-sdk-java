@@ -12,12 +12,15 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.AbstainElection;
+import com.finbourne.lusid.model.CashAndSecurityOfferElection;
 import com.finbourne.lusid.model.CashOfferElection;
 import com.finbourne.lusid.model.ConsentAndTenderElection;
 import com.finbourne.lusid.model.ConsentDeniedElection;
 import com.finbourne.lusid.model.ConsentGrantedElection;
 import com.finbourne.lusid.model.InstrumentEvent;
 import com.finbourne.lusid.model.LapseElection;
+import com.finbourne.lusid.model.NewInstrument;
+import com.finbourne.lusid.model.SecurityOfferElection;
 import com.finbourne.lusid.model.TenderOfferElection;
 import com.finbourne.lusid.model.UnknownProceedsElection;
 import com.google.gson.TypeAdapter;
@@ -129,6 +132,34 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS = "unknownProceedsElections";
   @SerializedName(SERIALIZED_NAME_UNKNOWN_PROCEEDS_ELECTIONS)
   private List<UnknownProceedsElection> unknownProceedsElections;
+
+  public static final String SERIALIZED_NAME_SECURITY_OFFER_ELECTIONS = "securityOfferElections";
+  @SerializedName(SERIALIZED_NAME_SECURITY_OFFER_ELECTIONS)
+  private List<SecurityOfferElection> securityOfferElections;
+
+  public static final String SERIALIZED_NAME_CASH_AND_SECURITY_OFFER_ELECTIONS = "cashAndSecurityOfferElections";
+  @SerializedName(SERIALIZED_NAME_CASH_AND_SECURITY_OFFER_ELECTIONS)
+  private List<CashAndSecurityOfferElection> cashAndSecurityOfferElections;
+
+  public static final String SERIALIZED_NAME_NEW_INSTRUMENT = "newInstrument";
+  @SerializedName(SERIALIZED_NAME_NEW_INSTRUMENT)
+  private NewInstrument newInstrument;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_PRICE = "fractionalUnitsCashPrice";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_PRICE)
+  private java.math.BigDecimal fractionalUnitsCashPrice;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY = "fractionalUnitsCashCurrency";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY)
+  private String fractionalUnitsCashCurrency;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION = "fractionalUnitsRoundingConvention";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION)
+  private String fractionalUnitsRoundingConvention;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES = "fractionalUnitsDecimalPlaces";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES)
+  private Integer fractionalUnitsDecimalPlaces;
 
   public RepurchaseOfferEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -555,6 +586,169 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
   }
 
 
+  public RepurchaseOfferEvent securityOfferElections(List<SecurityOfferElection> securityOfferElections) {
+    
+    this.securityOfferElections = securityOfferElections;
+    return this;
+  }
+
+  public RepurchaseOfferEvent addSecurityOfferElectionsItem(SecurityOfferElection securityOfferElectionsItem) {
+    if (this.securityOfferElections == null) {
+      this.securityOfferElections = new ArrayList<>();
+    }
+    this.securityOfferElections.add(securityOfferElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible security-offer elections for this event (SECU). The accepted units are paid out  in securities rather than cash.    - The event requires at least one election of any type.    - Any number of SecurityOfferElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.    - NewInstrument is required on the event when any of these is present.
+   * @return securityOfferElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<SecurityOfferElection> getSecurityOfferElections() {
+    return securityOfferElections;
+  }
+
+
+  public void setSecurityOfferElections(List<SecurityOfferElection> securityOfferElections) {
+    this.securityOfferElections = securityOfferElections;
+  }
+
+
+  public RepurchaseOfferEvent cashAndSecurityOfferElections(List<CashAndSecurityOfferElection> cashAndSecurityOfferElections) {
+    
+    this.cashAndSecurityOfferElections = cashAndSecurityOfferElections;
+    return this;
+  }
+
+  public RepurchaseOfferEvent addCashAndSecurityOfferElectionsItem(CashAndSecurityOfferElection cashAndSecurityOfferElectionsItem) {
+    if (this.cashAndSecurityOfferElections == null) {
+      this.cashAndSecurityOfferElections = new ArrayList<>();
+    }
+    this.cashAndSecurityOfferElections.add(cashAndSecurityOfferElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible cash-and-security-offer elections for this event (CASE). The accepted units are  paid out as a mix of cash and securities, with CostFactor splitting the book cost between them.    - The event requires at least one election of any type.    - Any number of CashAndSecurityOfferElections may be supplied.    - At most one election on the event may be the default, and at most one may be chosen.    - NewInstrument is required on the event when any of these is present.
+   * @return cashAndSecurityOfferElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<CashAndSecurityOfferElection> getCashAndSecurityOfferElections() {
+    return cashAndSecurityOfferElections;
+  }
+
+
+  public void setCashAndSecurityOfferElections(List<CashAndSecurityOfferElection> cashAndSecurityOfferElections) {
+    this.cashAndSecurityOfferElections = cashAndSecurityOfferElections;
+  }
+
+
+  public RepurchaseOfferEvent newInstrument(NewInstrument newInstrument) {
+    
+    this.newInstrument = newInstrument;
+    return this;
+  }
+
+   /**
+   * Get newInstrument
+   * @return newInstrument
+  **/
+  @jakarta.annotation.Nullable
+  public NewInstrument getNewInstrument() {
+    return newInstrument;
+  }
+
+
+  public void setNewInstrument(NewInstrument newInstrument) {
+    this.newInstrument = newInstrument;
+  }
+
+
+  public RepurchaseOfferEvent fractionalUnitsCashPrice(java.math.BigDecimal fractionalUnitsCashPrice) {
+    
+    this.fractionalUnitsCashPrice = fractionalUnitsCashPrice;
+    return this;
+  }
+
+   /**
+   * The cash price per unit paid in lieu of a fractional securities entitlement. SECU and CASE only.
+   * @return fractionalUnitsCashPrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFractionalUnitsCashPrice() {
+    return fractionalUnitsCashPrice;
+  }
+
+
+  public void setFractionalUnitsCashPrice(java.math.BigDecimal fractionalUnitsCashPrice) {
+    this.fractionalUnitsCashPrice = fractionalUnitsCashPrice;
+  }
+
+
+  public RepurchaseOfferEvent fractionalUnitsCashCurrency(String fractionalUnitsCashCurrency) {
+    
+    this.fractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
+    return this;
+  }
+
+   /**
+   * The currency of the cash paid in lieu of fractionalUnits.
+   * @return fractionalUnitsCashCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getFractionalUnitsCashCurrency() {
+    return fractionalUnitsCashCurrency;
+  }
+
+
+  public void setFractionalUnitsCashCurrency(String fractionalUnitsCashCurrency) {
+    this.fractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
+  }
+
+
+  public RepurchaseOfferEvent fractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+    return this;
+  }
+
+   /**
+   * The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.
+   * @return fractionalUnitsRoundingConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getFractionalUnitsRoundingConvention() {
+    return fractionalUnitsRoundingConvention;
+  }
+
+
+  public void setFractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+  }
+
+
+  public RepurchaseOfferEvent fractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+    return this;
+  }
+
+   /**
+   * The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces.
+   * @return fractionalUnitsDecimalPlaces
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getFractionalUnitsDecimalPlaces() {
+    return fractionalUnitsDecimalPlaces;
+  }
+
+
+  public void setFractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -582,6 +776,13 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
         Objects.equals(this.consentDeniedElections, repurchaseOfferEvent.consentDeniedElections) &&
         Objects.equals(this.abstainElections, repurchaseOfferEvent.abstainElections) &&
         Objects.equals(this.unknownProceedsElections, repurchaseOfferEvent.unknownProceedsElections) &&
+        Objects.equals(this.securityOfferElections, repurchaseOfferEvent.securityOfferElections) &&
+        Objects.equals(this.cashAndSecurityOfferElections, repurchaseOfferEvent.cashAndSecurityOfferElections) &&
+        Objects.equals(this.newInstrument, repurchaseOfferEvent.newInstrument) &&
+        (this.fractionalUnitsCashPrice.compareTo(repurchaseOfferEvent.getFractionalUnitsCashPrice()) == 0) &&
+        Objects.equals(this.fractionalUnitsCashCurrency, repurchaseOfferEvent.fractionalUnitsCashCurrency) &&
+        Objects.equals(this.fractionalUnitsRoundingConvention, repurchaseOfferEvent.fractionalUnitsRoundingConvention) &&
+        Objects.equals(this.fractionalUnitsDecimalPlaces, repurchaseOfferEvent.fractionalUnitsDecimalPlaces) &&
         super.equals(o);
   }
 
@@ -591,7 +792,7 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, marketDeadlineDate, repurchaseQuantity, cashOfferElections, lapseElections, tenderOfferElections, prorationRate, responseDeadlineDate, earlyResponseDeadline, minPieceSize, minIncrement, accruedInterestPerUnit, consentAndTenderElections, consentGrantedElections, consentDeniedElections, abstainElections, unknownProceedsElections, super.hashCode());
+    return Objects.hash(paymentDate, marketDeadlineDate, repurchaseQuantity, cashOfferElections, lapseElections, tenderOfferElections, prorationRate, responseDeadlineDate, earlyResponseDeadline, minPieceSize, minIncrement, accruedInterestPerUnit, consentAndTenderElections, consentGrantedElections, consentDeniedElections, abstainElections, unknownProceedsElections, securityOfferElections, cashAndSecurityOfferElections, newInstrument, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -623,6 +824,13 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
     sb.append("    consentDeniedElections: ").append(toIndentedString(consentDeniedElections)).append("\n");
     sb.append("    abstainElections: ").append(toIndentedString(abstainElections)).append("\n");
     sb.append("    unknownProceedsElections: ").append(toIndentedString(unknownProceedsElections)).append("\n");
+    sb.append("    securityOfferElections: ").append(toIndentedString(securityOfferElections)).append("\n");
+    sb.append("    cashAndSecurityOfferElections: ").append(toIndentedString(cashAndSecurityOfferElections)).append("\n");
+    sb.append("    newInstrument: ").append(toIndentedString(newInstrument)).append("\n");
+    sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
+    sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
+    sb.append("    fractionalUnitsRoundingConvention: ").append(toIndentedString(fractionalUnitsRoundingConvention)).append("\n");
+    sb.append("    fractionalUnitsDecimalPlaces: ").append(toIndentedString(fractionalUnitsDecimalPlaces)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -663,6 +871,13 @@ public class RepurchaseOfferEvent extends InstrumentEvent {
     openapiFields.add("consentDeniedElections");
     openapiFields.add("abstainElections");
     openapiFields.add("unknownProceedsElections");
+    openapiFields.add("securityOfferElections");
+    openapiFields.add("cashAndSecurityOfferElections");
+    openapiFields.add("newInstrument");
+    openapiFields.add("fractionalUnitsCashPrice");
+    openapiFields.add("fractionalUnitsCashCurrency");
+    openapiFields.add("fractionalUnitsRoundingConvention");
+    openapiFields.add("fractionalUnitsDecimalPlaces");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

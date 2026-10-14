@@ -93,7 +93,7 @@ public class RecLinkedResult {
   }
 
    /**
-   * The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity.
+   * The rec type of the linked result. Always differs from this result&#39;s rec type. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
    * @return recType
   **/
   @jakarta.annotation.Nonnull
