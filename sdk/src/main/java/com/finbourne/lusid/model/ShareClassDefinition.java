@@ -280,7 +280,7 @@ public class ShareClassDefinition {
   }
 
    /**
-   * An optional set of properties to attach to the auto-created Instrument. Only applied when createInstrument is true.
+   * An optional set of properties for the Share Class. These must be from the &#39;Instrument&#39; domain.
    * @return properties
   **/
   @jakarta.annotation.Nullable

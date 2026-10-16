@@ -4,17 +4,17 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**createItem**](WorkspaceApi.md#createItem) | **POST** /api/workspaces/{visibility}/{workspaceName}/items | [EXPERIMENTAL] CreateItem: Create a new item in a workspace. |
-| [**createWorkspace**](WorkspaceApi.md#createWorkspace) | **POST** /api/workspaces/{visibility} | [EXPERIMENTAL] CreateWorkspace: Create a new workspace. |
-| [**deleteItem**](WorkspaceApi.md#deleteItem) | **DELETE** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] DeleteItem: Delete an item from a workspace. |
-| [**deleteWorkspace**](WorkspaceApi.md#deleteWorkspace) | **DELETE** /api/workspaces/{visibility}/{workspaceName} | [EXPERIMENTAL] DeleteWorkspace: Delete a workspace. |
-| [**getItem**](WorkspaceApi.md#getItem) | **GET** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] GetItem: Get a single workspace item. |
-| [**getWorkspace**](WorkspaceApi.md#getWorkspace) | **GET** /api/workspaces/{visibility}/{workspaceName} | [EXPERIMENTAL] GetWorkspace: Get a workspace. |
-| [**listItems**](WorkspaceApi.md#listItems) | **GET** /api/workspaces/{visibility}/{workspaceName}/items | [EXPERIMENTAL] ListItems: List the items in a workspace. |
-| [**listWorkspaces**](WorkspaceApi.md#listWorkspaces) | **GET** /api/workspaces/{visibility} | [EXPERIMENTAL] ListWorkspaces: List workspaces. |
-| [**searchItems**](WorkspaceApi.md#searchItems) | **GET** /api/workspaces/{visibility}/items | [EXPERIMENTAL] SearchItems: List items across all workspaces. |
-| [**updateItem**](WorkspaceApi.md#updateItem) | **PUT** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] UpdateItem: Update an item in a workspace. |
-| [**updateWorkspace**](WorkspaceApi.md#updateWorkspace) | **PUT** /api/workspaces/{visibility}/{workspaceName} | [EXPERIMENTAL] UpdateWorkspace: Update a workspace. |
+| [**createItem**](WorkspaceApi.md#createItem) | **POST** /api/workspaces/{visibility}/{workspaceName}/items | CreateItem: Create a new item in a workspace. |
+| [**createWorkspace**](WorkspaceApi.md#createWorkspace) | **POST** /api/workspaces/{visibility} | CreateWorkspace: Create a new workspace. |
+| [**deleteItem**](WorkspaceApi.md#deleteItem) | **DELETE** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | DeleteItem: Delete an item from a workspace. |
+| [**deleteWorkspace**](WorkspaceApi.md#deleteWorkspace) | **DELETE** /api/workspaces/{visibility}/{workspaceName} | DeleteWorkspace: Delete a workspace. |
+| [**getItem**](WorkspaceApi.md#getItem) | **GET** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | GetItem: Get a single workspace item. |
+| [**getWorkspace**](WorkspaceApi.md#getWorkspace) | **GET** /api/workspaces/{visibility}/{workspaceName} | GetWorkspace: Get a workspace. |
+| [**listItems**](WorkspaceApi.md#listItems) | **GET** /api/workspaces/{visibility}/{workspaceName}/items | ListItems: List the items in a workspace. |
+| [**listWorkspaces**](WorkspaceApi.md#listWorkspaces) | **GET** /api/workspaces/{visibility} | ListWorkspaces: List workspaces. |
+| [**searchItems**](WorkspaceApi.md#searchItems) | **GET** /api/workspaces/{visibility}/items | SearchItems: List items across all workspaces. |
+| [**updateItem**](WorkspaceApi.md#updateItem) | **PUT** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | UpdateItem: Update an item in a workspace. |
+| [**updateWorkspace**](WorkspaceApi.md#updateWorkspace) | **PUT** /api/workspaces/{visibility}/{workspaceName} | UpdateWorkspace: Update a workspace. |
 
 
 
@@ -22,7 +22,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > WorkspaceItem createItem(visibility, workspaceName, workspaceItemCreationRequest)
 
-[EXPERIMENTAL] CreateItem: Create a new item in a workspace.
+CreateItem: Create a new item in a workspace.
 
 Create a new item in a workspace.
 
@@ -117,7 +117,7 @@ public class WorkspaceApiExample {
 
 > Workspace createWorkspace(visibility, workspaceCreationRequest, includeItemAccess)
 
-[EXPERIMENTAL] CreateWorkspace: Create a new workspace.
+CreateWorkspace: Create a new workspace.
 
 Create a new workspace.
 
@@ -212,7 +212,7 @@ public class WorkspaceApiExample {
 
 > DeletedEntityResponse deleteItem(visibility, workspaceName, groupName, itemName)
 
-[EXPERIMENTAL] DeleteItem: Delete an item from a workspace.
+DeleteItem: Delete an item from a workspace.
 
 Delete an item from a workspace.
 
@@ -309,7 +309,7 @@ public class WorkspaceApiExample {
 
 > DeletedEntityResponse deleteWorkspace(visibility, workspaceName, recurse)
 
-[EXPERIMENTAL] DeleteWorkspace: Delete a workspace.
+DeleteWorkspace: Delete a workspace.
 
 Delete a workspace.
 
@@ -404,7 +404,7 @@ public class WorkspaceApiExample {
 
 > WorkspaceItem getItem(visibility, workspaceName, groupName, itemName, asAt)
 
-[EXPERIMENTAL] GetItem: Get a single workspace item.
+GetItem: Get a single workspace item.
 
 Get a single workspace item.
 
@@ -503,7 +503,7 @@ public class WorkspaceApiExample {
 
 > Workspace getWorkspace(visibility, workspaceName, asAt, includeItemAccess)
 
-[EXPERIMENTAL] GetWorkspace: Get a workspace.
+GetWorkspace: Get a workspace.
 
 Get a workspace.
 
@@ -600,7 +600,7 @@ public class WorkspaceApiExample {
 
 > PagedResourceListOfWorkspaceItem listItems(visibility, workspaceName, asAt, page, sortBy, limit, filter)
 
-[EXPERIMENTAL] ListItems: List the items in a workspace.
+ListItems: List the items in a workspace.
 
 List the items in a workspace.
 
@@ -703,7 +703,7 @@ public class WorkspaceApiExample {
 
 > PagedResourceListOfWorkspace listWorkspaces(visibility, asAt, page, sortBy, limit, filter, includeItemAccess)
 
-[EXPERIMENTAL] ListWorkspaces: List workspaces.
+ListWorkspaces: List workspaces.
 
 List workspaces.
 
@@ -806,7 +806,7 @@ public class WorkspaceApiExample {
 
 > PagedResourceListOfItemAndWorkspace searchItems(visibility, asAt, page, sortBy, limit, filter)
 
-[EXPERIMENTAL] SearchItems: List items across all workspaces.
+SearchItems: List items across all workspaces.
 
 List items across all workspaces.
 
@@ -907,7 +907,7 @@ public class WorkspaceApiExample {
 
 > WorkspaceItem updateItem(visibility, workspaceName, groupName, itemName, workspaceItemUpdateRequest)
 
-[EXPERIMENTAL] UpdateItem: Update an item in a workspace.
+UpdateItem: Update an item in a workspace.
 
 Update an item in a workspace.
 
@@ -1006,7 +1006,7 @@ public class WorkspaceApiExample {
 
 > Workspace updateWorkspace(visibility, workspaceName, workspaceUpdateRequest, includeItemAccess)
 
-[EXPERIMENTAL] UpdateWorkspace: Update a workspace.
+UpdateWorkspace: Update a workspace.
 
 Update a workspace.
 

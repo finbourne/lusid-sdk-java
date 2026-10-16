@@ -2295,7 +2295,7 @@ public class WithholdingTaxApi {
 
         /**
          * Set filter
-         * @param filter Expression to filter the results. For example, to filter on the scope, specify   \&quot;scope eq &#39;WithholdingTax&#39;\&quot;, and to filter on the code, specify \&quot;code eq &#39;wht-main-rates&#39;\&quot;. For more   information about filtering results, see   https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
+         * @param filter Expression to filter the results. For example, to filter on the scope, specify   \&quot;scope eq &#39;WithholdingTax&#39;\&quot;, to filter on the code, specify \&quot;code eq &#39;wht-main-rates&#39;\&quot;, and to filter on the   dataset type, specify \&quot;datasetType eq &#39;Anomaly&#39;\&quot;. For more information about filtering results, see   https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
          * @return APIlistWithholdingTaxDatasetDefinitionsRequest
          */
         public APIlistWithholdingTaxDatasetDefinitionsRequest filter(String filter) {

@@ -267,7 +267,9 @@ public enum InstrumentEventType {
   
   FACILITYCOMMITMENTFEEEVENT("FacilityCommitmentFeeEvent"),
   
-  INSTALMENTCALLEVENT("InstalmentCallEvent");
+  INSTALMENTCALLEVENT("InstalmentCallEvent"),
+  
+  DEPOSITINTERESTCAPITALISATIONEVENT("DepositInterestCapitalisationEvent");
 
   private String value;
 

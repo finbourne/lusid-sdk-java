@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **theyPost** | [**PartyTerms**](PartyTerms.md) |  | [default to PartyTerms]
 **eligibleCollateral** | [**EligibleCollateralReferences**](EligibleCollateralReferences.md) |  | [optional] [default to EligibleCollateralReferences]
 **calculation** | [**MarginCalculation**](MarginCalculation.md) |  | [default to MarginCalculation]
+**marginAccounts** | [**MarginAccounts**](MarginAccounts.md) |  | [optional] [default to MarginAccounts]
 
 ```java
 import com.finbourne.lusid.model.MarginItem;
@@ -28,6 +29,7 @@ PartyTerms WePost = new PartyTerms();
 PartyTerms TheyPost = new PartyTerms();
 EligibleCollateralReferences EligibleCollateral = new EligibleCollateralReferences();
 MarginCalculation Calculation = new MarginCalculation();
+MarginAccounts MarginAccounts = new MarginAccounts();
 
 
 MarginItem marginItemInstance = new MarginItem()
@@ -38,7 +40,8 @@ MarginItem marginItemInstance = new MarginItem()
     .WePost(WePost)
     .TheyPost(TheyPost)
     .EligibleCollateral(EligibleCollateral)
-    .Calculation(Calculation);
+    .Calculation(Calculation)
+    .MarginAccounts(MarginAccounts);
 ```
 
 

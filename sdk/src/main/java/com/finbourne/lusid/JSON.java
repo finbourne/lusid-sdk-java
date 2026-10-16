@@ -931,6 +931,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.DepositInterestCapitalisationEvent.class, new TypeSelector<com.finbourne.lusid.model.DepositInterestCapitalisationEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.DepositInterestCapitalisationEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("DepositInterestCapitalisationEvent", com.finbourne.lusid.model.DepositInterestCapitalisationEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.DepositInterestPaymentEvent.class, new TypeSelector<com.finbourne.lusid.model.DepositInterestPaymentEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.DepositInterestPaymentEvent> getClassForElement(JsonElement readElement) {
@@ -1897,6 +1906,7 @@ public class JSON {
                         classByDiscriminatorValue.put("CreditPremiumCashFlowEvent", com.finbourne.lusid.model.CreditPremiumCashFlowEvent.class);
                         classByDiscriminatorValue.put("DelistingEvent", com.finbourne.lusid.model.DelistingEvent.class);
                         classByDiscriminatorValue.put("DepositCloseEvent", com.finbourne.lusid.model.DepositCloseEvent.class);
+                        classByDiscriminatorValue.put("DepositInterestCapitalisationEvent", com.finbourne.lusid.model.DepositInterestCapitalisationEvent.class);
                         classByDiscriminatorValue.put("DepositInterestPaymentEvent", com.finbourne.lusid.model.DepositInterestPaymentEvent.class);
                         classByDiscriminatorValue.put("DepositRollEvent", com.finbourne.lusid.model.DepositRollEvent.class);
                         classByDiscriminatorValue.put("DepositSweepEvent", com.finbourne.lusid.model.DepositSweepEvent.class);
@@ -3997,6 +4007,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DelistingEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DependencySourceFilter.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DepositCloseEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DepositInterestCapitalisationEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DepositInterestPaymentEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DepositRollEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.DepositSweepEvent.CustomTypeAdapterFactory());
@@ -4372,6 +4383,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MappedString.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Mapping.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MappingRule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MarginAccounts.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MarginCalculation.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MarginItem.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.MarginRounding.CustomTypeAdapterFactory());

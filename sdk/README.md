@@ -877,17 +877,17 @@ Class | Method | HTTP request | Description
 *WithholdingTaxApi* | [**listWithholdingTaxDatasetDefinitions**](docs/WithholdingTaxApi.md#listwithholdingtaxdatasetdefinitions) | **GET** /api/withholdingtax/datasetdefinitions | [EARLY ACCESS] ListWithholdingTaxDatasetDefinitions: List Withholding Tax dataset definitions.
 *WithholdingTaxApi* | [**patchWithholdingTaxDatasetDefinition**](docs/WithholdingTaxApi.md#patchwithholdingtaxdatasetdefinition) | **PATCH** /api/withholdingtax/datasetdefinitions/{scope}/{code} | [EARLY ACCESS] PatchWithholdingTaxDatasetDefinition: Patch a Withholding Tax dataset definition.
 *WithholdingTaxApi* | [**upsertWithholdingTaxConfiguration**](docs/WithholdingTaxApi.md#upsertwithholdingtaxconfiguration) | **POST** /api/withholdingtax/configurations/{scope}/{code} | [EARLY ACCESS] UpsertWithholdingTaxConfiguration: Upsert a Withholding Tax Configuration.
-*WorkspaceApi* | [**createItem**](docs/WorkspaceApi.md#createitem) | **POST** /api/workspaces/{visibility}/{workspaceName}/items | [EXPERIMENTAL] CreateItem: Create a new item in a workspace.
-*WorkspaceApi* | [**createWorkspace**](docs/WorkspaceApi.md#createworkspace) | **POST** /api/workspaces/{visibility} | [EXPERIMENTAL] CreateWorkspace: Create a new workspace.
-*WorkspaceApi* | [**deleteItem**](docs/WorkspaceApi.md#deleteitem) | **DELETE** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] DeleteItem: Delete an item from a workspace.
-*WorkspaceApi* | [**deleteWorkspace**](docs/WorkspaceApi.md#deleteworkspace) | **DELETE** /api/workspaces/{visibility}/{workspaceName} | [EXPERIMENTAL] DeleteWorkspace: Delete a workspace.
-*WorkspaceApi* | [**getItem**](docs/WorkspaceApi.md#getitem) | **GET** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] GetItem: Get a single workspace item.
-*WorkspaceApi* | [**getWorkspace**](docs/WorkspaceApi.md#getworkspace) | **GET** /api/workspaces/{visibility}/{workspaceName} | [EXPERIMENTAL] GetWorkspace: Get a workspace.
-*WorkspaceApi* | [**listItems**](docs/WorkspaceApi.md#listitems) | **GET** /api/workspaces/{visibility}/{workspaceName}/items | [EXPERIMENTAL] ListItems: List the items in a workspace.
-*WorkspaceApi* | [**listWorkspaces**](docs/WorkspaceApi.md#listworkspaces) | **GET** /api/workspaces/{visibility} | [EXPERIMENTAL] ListWorkspaces: List workspaces.
-*WorkspaceApi* | [**searchItems**](docs/WorkspaceApi.md#searchitems) | **GET** /api/workspaces/{visibility}/items | [EXPERIMENTAL] SearchItems: List items across all workspaces.
-*WorkspaceApi* | [**updateItem**](docs/WorkspaceApi.md#updateitem) | **PUT** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | [EXPERIMENTAL] UpdateItem: Update an item in a workspace.
-*WorkspaceApi* | [**updateWorkspace**](docs/WorkspaceApi.md#updateworkspace) | **PUT** /api/workspaces/{visibility}/{workspaceName} | [EXPERIMENTAL] UpdateWorkspace: Update a workspace.
+*WorkspaceApi* | [**createItem**](docs/WorkspaceApi.md#createitem) | **POST** /api/workspaces/{visibility}/{workspaceName}/items | CreateItem: Create a new item in a workspace.
+*WorkspaceApi* | [**createWorkspace**](docs/WorkspaceApi.md#createworkspace) | **POST** /api/workspaces/{visibility} | CreateWorkspace: Create a new workspace.
+*WorkspaceApi* | [**deleteItem**](docs/WorkspaceApi.md#deleteitem) | **DELETE** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | DeleteItem: Delete an item from a workspace.
+*WorkspaceApi* | [**deleteWorkspace**](docs/WorkspaceApi.md#deleteworkspace) | **DELETE** /api/workspaces/{visibility}/{workspaceName} | DeleteWorkspace: Delete a workspace.
+*WorkspaceApi* | [**getItem**](docs/WorkspaceApi.md#getitem) | **GET** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | GetItem: Get a single workspace item.
+*WorkspaceApi* | [**getWorkspace**](docs/WorkspaceApi.md#getworkspace) | **GET** /api/workspaces/{visibility}/{workspaceName} | GetWorkspace: Get a workspace.
+*WorkspaceApi* | [**listItems**](docs/WorkspaceApi.md#listitems) | **GET** /api/workspaces/{visibility}/{workspaceName}/items | ListItems: List the items in a workspace.
+*WorkspaceApi* | [**listWorkspaces**](docs/WorkspaceApi.md#listworkspaces) | **GET** /api/workspaces/{visibility} | ListWorkspaces: List workspaces.
+*WorkspaceApi* | [**searchItems**](docs/WorkspaceApi.md#searchitems) | **GET** /api/workspaces/{visibility}/items | SearchItems: List items across all workspaces.
+*WorkspaceApi* | [**updateItem**](docs/WorkspaceApi.md#updateitem) | **PUT** /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName} | UpdateItem: Update an item in a workspace.
+*WorkspaceApi* | [**updateWorkspace**](docs/WorkspaceApi.md#updateworkspace) | **PUT** /api/workspaces/{visibility}/{workspaceName} | UpdateWorkspace: Update a workspace.
 
 
 <a id="documentation-for-models"></a>
@@ -1412,6 +1412,7 @@ Class | Method | HTTP request | Description
  - [DelistingEvent](docs/DelistingEvent.md)
  - [DependencySourceFilter](docs/DependencySourceFilter.md)
  - [DepositCloseEvent](docs/DepositCloseEvent.md)
+ - [DepositInterestCapitalisationEvent](docs/DepositInterestCapitalisationEvent.md)
  - [DepositInterestPaymentEvent](docs/DepositInterestPaymentEvent.md)
  - [DepositRollEvent](docs/DepositRollEvent.md)
  - [DepositSweepEvent](docs/DepositSweepEvent.md)
@@ -1800,6 +1801,7 @@ Class | Method | HTTP request | Description
  - [MappedString](docs/MappedString.md)
  - [Mapping](docs/Mapping.md)
  - [MappingRule](docs/MappingRule.md)
+ - [MarginAccounts](docs/MarginAccounts.md)
  - [MarginCalculation](docs/MarginCalculation.md)
  - [MarginItem](docs/MarginItem.md)
  - [MarginRounding](docs/MarginRounding.md)

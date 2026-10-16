@@ -117,7 +117,7 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
   private ShiftTypeEnum shiftType;
 
   /**
-   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor.
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed.
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -159,7 +159,9 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
     
     FORWARDPRICE("ForwardPrice"),
     
-    DISCOUNTFACTOR("DiscountFactor");
+    DISCOUNTFACTOR("DiscountFactor"),
+    
+    PRINCIPALDISTRIBUTED("PrincipalDistributed");
 
     private String value;
 
@@ -300,7 +302,7 @@ public class PriceShiftDefinition extends ScenarioShiftDefinition {
   }
 
    /**
-   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor.
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed.
    * @return quoteType
   **/
   @jakarta.annotation.Nullable

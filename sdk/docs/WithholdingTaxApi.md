@@ -828,7 +828,7 @@ public class WithholdingTaxApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the dataset definitions. Defaults to returning the latest version of each definition if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing dataset definitions; this value is returned   from the previous call. If a pagination token is provided, the filter and asAt fields must not have changed   since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-        String filter = "filter_example"; // String | Expression to filter the results. For example, to filter on the scope, specify   \"scope eq 'WithholdingTax'\", and to filter on the code, specify \"code eq 'wht-main-rates'\". For more   information about filtering results, see   https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
+        String filter = "filter_example"; // String | Expression to filter the results. For example, to filter on the scope, specify   \"scope eq 'WithholdingTax'\", to filter on the code, specify \"code eq 'wht-main-rates'\", and to filter on the   dataset type, specify \"datasetType eq 'Anomaly'\". For more information about filtering results, see   https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
             // uncomment the below to set overrides at the request level
@@ -854,7 +854,7 @@ public class WithholdingTaxApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the dataset definitions. Defaults to returning the latest version of each definition if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing dataset definitions; this value is returned   from the previous call. If a pagination token is provided, the filter and asAt fields must not have changed   since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results. For example, to filter on the scope, specify   \&quot;scope eq &#39;WithholdingTax&#39;\&quot;, and to filter on the code, specify \&quot;code eq &#39;wht-main-rates&#39;\&quot;. For more   information about filtering results, see   https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
+| **filter** | **String**| Expression to filter the results. For example, to filter on the scope, specify   \&quot;scope eq &#39;WithholdingTax&#39;\&quot;, to filter on the code, specify \&quot;code eq &#39;wht-main-rates&#39;\&quot;, and to filter on the   dataset type, specify \&quot;datasetType eq &#39;Anomaly&#39;\&quot;. For more information about filtering results, see   https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 
 ### Return type

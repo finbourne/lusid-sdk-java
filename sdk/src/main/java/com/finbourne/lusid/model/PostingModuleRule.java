@@ -17,7 +17,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +62,14 @@ public class PostingModuleRule {
   public static final String SERIALIZED_NAME_RULE_FILTER = "ruleFilter";
   @SerializedName(SERIALIZED_NAME_RULE_FILTER)
   private String ruleFilter;
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_FROM = "effectiveFrom";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_FROM)
+  private OffsetDateTime effectiveFrom;
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_UNTIL = "effectiveUntil";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_UNTIL)
+  private OffsetDateTime effectiveUntil;
 
   public PostingModuleRule() {
   }
@@ -127,6 +137,48 @@ public class PostingModuleRule {
   }
 
 
+  public PostingModuleRule effectiveFrom(OffsetDateTime effectiveFrom) {
+    
+    this.effectiveFrom = effectiveFrom;
+    return this;
+  }
+
+   /**
+   * The inclusive accounting date from which the Posting Rule applies. If not set, the rule applies from the beginning of time.
+   * @return effectiveFrom
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEffectiveFrom() {
+    return effectiveFrom;
+  }
+
+
+  public void setEffectiveFrom(OffsetDateTime effectiveFrom) {
+    this.effectiveFrom = effectiveFrom;
+  }
+
+
+  public PostingModuleRule effectiveUntil(OffsetDateTime effectiveUntil) {
+    
+    this.effectiveUntil = effectiveUntil;
+    return this;
+  }
+
+   /**
+   * The exclusive accounting date until which the Posting Rule applies. If not set, the rule applies until the end of time.
+   * @return effectiveUntil
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getEffectiveUntil() {
+    return effectiveUntil;
+  }
+
+
+  public void setEffectiveUntil(OffsetDateTime effectiveUntil) {
+    this.effectiveUntil = effectiveUntil;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +191,25 @@ public class PostingModuleRule {
     PostingModuleRule postingModuleRule = (PostingModuleRule) o;
     return Objects.equals(this.ruleId, postingModuleRule.ruleId) &&
         Objects.equals(this.generalLedgerAccountCode, postingModuleRule.generalLedgerAccountCode) &&
-        Objects.equals(this.ruleFilter, postingModuleRule.ruleFilter);
+        Objects.equals(this.ruleFilter, postingModuleRule.ruleFilter) &&
+        Objects.equals(this.effectiveFrom, postingModuleRule.effectiveFrom) &&
+        Objects.equals(this.effectiveUntil, postingModuleRule.effectiveUntil);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, generalLedgerAccountCode, ruleFilter);
+    return Objects.hash(ruleId, generalLedgerAccountCode, ruleFilter, effectiveFrom, effectiveUntil);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -154,6 +219,8 @@ public class PostingModuleRule {
     sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
     sb.append("    generalLedgerAccountCode: ").append(toIndentedString(generalLedgerAccountCode)).append("\n");
     sb.append("    ruleFilter: ").append(toIndentedString(ruleFilter)).append("\n");
+    sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
+    sb.append("    effectiveUntil: ").append(toIndentedString(effectiveUntil)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,6 +246,8 @@ public class PostingModuleRule {
     openapiFields.add("ruleId");
     openapiFields.add("generalLedgerAccountCode");
     openapiFields.add("ruleFilter");
+    openapiFields.add("effectiveFrom");
+    openapiFields.add("effectiveUntil");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

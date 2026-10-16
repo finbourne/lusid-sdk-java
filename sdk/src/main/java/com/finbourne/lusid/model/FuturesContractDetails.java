@@ -128,6 +128,10 @@ public class FuturesContractDetails {
   @SerializedName(SERIALIZED_NAME_DELIVERABLE_MIN_AMOUNT_OUTSTANDING)
   private java.math.BigDecimal deliverableMinAmountOutstanding;
 
+  public static final String SERIALIZED_NAME_DELIVERABLE_ISINS = "deliverableIsins";
+  @SerializedName(SERIALIZED_NAME_DELIVERABLE_ISINS)
+  private List<String> deliverableIsins;
+
   public FuturesContractDetails() {
   }
 
@@ -264,7 +268,7 @@ public class FuturesContractDetails {
   }
 
    /**
-   * If appropriate, the day count convention method used in pricing (rates futures).  For more information on day counts, see [Day count conventions supported by LUSID](https://support.lusid.com/docs/day-count-conventions-supported-by-lusid)     Supported string (enumeration) values are: [Actual360, Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM].
+   * If appropriate, the day count convention method used in pricing (rates futures).  For more information on day counts, see [Day count conventions supported by LUSID](https://support.lusid.com/docs/day-count-conventions-supported-by-lusid)     Supported string (enumeration) values are: [Actual360, Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIcma, ActActIsma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM].
    * @return convention
   **/
   @jakarta.annotation.Nullable
@@ -538,6 +542,35 @@ public class FuturesContractDetails {
   }
 
 
+  public FuturesContractDetails deliverableIsins(List<String> deliverableIsins) {
+    
+    this.deliverableIsins = deliverableIsins;
+    return this;
+  }
+
+  public FuturesContractDetails addDeliverableIsinsItem(String deliverableIsinsItem) {
+    if (this.deliverableIsins == null) {
+      this.deliverableIsins = new ArrayList<>();
+    }
+    this.deliverableIsins.add(deliverableIsinsItem);
+    return this;
+  }
+
+   /**
+   * ISINs of the bonds deliverable into this contract for its delivery month. When set, the deliverable  basket is these bonds only; when empty, every active bond in the portfolio&#39;s instrument scope is a candidate.  Bonds not yet issued on the valuation date are left out of the basket.  Update it when the exchange notifies a new deliverable; the list is not effective-dated.
+   * @return deliverableIsins
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getDeliverableIsins() {
+    return deliverableIsins;
+  }
+
+
+  public void setDeliverableIsins(List<String> deliverableIsins) {
+    this.deliverableIsins = deliverableIsins;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -566,7 +599,8 @@ public class FuturesContractDetails {
         (this.deliverableMinMaturityYears.compareTo(futuresContractDetails.getDeliverableMinMaturityYears()) == 0) &&
         (this.deliverableMaxMaturityYears.compareTo(futuresContractDetails.getDeliverableMaxMaturityYears()) == 0) &&
         Objects.equals(this.excludeCallableBonds, futuresContractDetails.excludeCallableBonds) &&
-        (this.deliverableMinAmountOutstanding.compareTo(futuresContractDetails.getDeliverableMinAmountOutstanding()) == 0);
+        (this.deliverableMinAmountOutstanding.compareTo(futuresContractDetails.getDeliverableMinAmountOutstanding()) == 0) &&
+        Objects.equals(this.deliverableIsins, futuresContractDetails.deliverableIsins);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -575,7 +609,7 @@ public class FuturesContractDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(domCcy, fgnCcy, assetClass, contractCode, contractMonth, contractSize, convention, country, description, exchangeCode, exchangeName, tickerStep, unitValue, calendars, deliveryType, deliverableMinMaturityYears, deliverableMaxMaturityYears, excludeCallableBonds, deliverableMinAmountOutstanding);
+    return Objects.hash(domCcy, fgnCcy, assetClass, contractCode, contractMonth, contractSize, convention, country, description, exchangeCode, exchangeName, tickerStep, unitValue, calendars, deliveryType, deliverableMinMaturityYears, deliverableMaxMaturityYears, excludeCallableBonds, deliverableMinAmountOutstanding, deliverableIsins);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -608,6 +642,7 @@ public class FuturesContractDetails {
     sb.append("    deliverableMaxMaturityYears: ").append(toIndentedString(deliverableMaxMaturityYears)).append("\n");
     sb.append("    excludeCallableBonds: ").append(toIndentedString(excludeCallableBonds)).append("\n");
     sb.append("    deliverableMinAmountOutstanding: ").append(toIndentedString(deliverableMinAmountOutstanding)).append("\n");
+    sb.append("    deliverableIsins: ").append(toIndentedString(deliverableIsins)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -649,6 +684,7 @@ public class FuturesContractDetails {
     openapiFields.add("deliverableMaxMaturityYears");
     openapiFields.add("excludeCallableBonds");
     openapiFields.add("deliverableMinAmountOutstanding");
+    openapiFields.add("deliverableIsins");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -714,6 +750,10 @@ public class FuturesContractDetails {
       }
       if ((jsonObj.get("deliveryType") != null && !jsonObj.get("deliveryType").isJsonNull()) && !jsonObj.get("deliveryType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deliveryType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deliveryType").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("deliverableIsins") != null && !jsonObj.get("deliverableIsins").isJsonNull() && !jsonObj.get("deliverableIsins").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `deliverableIsins` to be an array in the JSON string but got `%s`", jsonObj.get("deliverableIsins").toString()));
       }
   }
 

@@ -64,6 +64,10 @@ public class WithholdingTaxDataset {
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
+  public static final String SERIALIZED_NAME_DATASET_TYPE = "datasetType";
+  @SerializedName(SERIALIZED_NAME_DATASET_TYPE)
+  private String datasetType;
+
   public static final String SERIALIZED_NAME_DIMENSIONS = "dimensions";
   @SerializedName(SERIALIZED_NAME_DIMENSIONS)
   private List<SeriesIdentifierField> dimensions = new ArrayList<>();
@@ -122,6 +126,27 @@ public class WithholdingTaxDataset {
 
   public void setCode(String code) {
     this.code = code;
+  }
+
+
+  public WithholdingTaxDataset datasetType(String datasetType) {
+    
+    this.datasetType = datasetType;
+    return this;
+  }
+
+   /**
+   * Which of the two rate tables this dataset is: Anomaly or Main. Set when the dataset is created through the withholding tax dataset definitions endpoint and never changed afterwards. Available values: Anomaly, Main.
+   * @return datasetType
+  **/
+  @jakarta.annotation.Nullable
+  public String getDatasetType() {
+    return datasetType;
+  }
+
+
+  public void setDatasetType(String datasetType) {
+    this.datasetType = datasetType;
   }
 
 
@@ -237,6 +262,7 @@ public class WithholdingTaxDataset {
     WithholdingTaxDataset withholdingTaxDataset = (WithholdingTaxDataset) o;
     return Objects.equals(this.scope, withholdingTaxDataset.scope) &&
         Objects.equals(this.code, withholdingTaxDataset.code) &&
+        Objects.equals(this.datasetType, withholdingTaxDataset.datasetType) &&
         Objects.equals(this.dimensions, withholdingTaxDataset.dimensions) &&
         Objects.equals(this.href, withholdingTaxDataset.href) &&
         Objects.equals(this.version, withholdingTaxDataset.version) &&
@@ -249,7 +275,7 @@ public class WithholdingTaxDataset {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, dimensions, href, version, links);
+    return Objects.hash(scope, code, datasetType, dimensions, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -265,6 +291,7 @@ public class WithholdingTaxDataset {
     sb.append("class WithholdingTaxDataset {\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
+    sb.append("    datasetType: ").append(toIndentedString(datasetType)).append("\n");
     sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
@@ -293,6 +320,7 @@ public class WithholdingTaxDataset {
     openapiFields = new HashSet<String>();
     openapiFields.add("scope");
     openapiFields.add("code");
+    openapiFields.add("datasetType");
     openapiFields.add("dimensions");
     openapiFields.add("href");
     openapiFields.add("version");
@@ -330,6 +358,9 @@ public class WithholdingTaxDataset {
       }
       if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      }
+      if ((jsonObj.get("datasetType") != null && !jsonObj.get("datasetType").isJsonNull()) && !jsonObj.get("datasetType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `datasetType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datasetType").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("dimensions").isJsonArray()) {

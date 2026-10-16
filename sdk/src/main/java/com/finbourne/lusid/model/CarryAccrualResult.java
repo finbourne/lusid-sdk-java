@@ -74,6 +74,10 @@ public class CarryAccrualResult {
   @SerializedName(SERIALIZED_NAME_BOOKED_TRANSACTION_IDS)
   private List<String> bookedTransactionIds = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_LATER_RUN_IDS = "laterRunIds";
+  @SerializedName(SERIALIZED_NAME_LATER_RUN_IDS)
+  private List<String> laterRunIds = new ArrayList<>();
+
   public CarryAccrualResult() {
   }
 
@@ -198,6 +202,35 @@ public class CarryAccrualResult {
   }
 
 
+  public CarryAccrualResult laterRunIds(List<String> laterRunIds) {
+    
+    this.laterRunIds = laterRunIds;
+    return this;
+  }
+
+  public CarryAccrualResult addLaterRunIdsItem(String laterRunIdsItem) {
+    if (this.laterRunIds == null) {
+      this.laterRunIds = new ArrayList<>();
+    }
+    this.laterRunIds.add(laterRunIdsItem);
+    return this;
+  }
+
+   /**
+   * The run identifiers of carry accruals already on the ledger with an effective date after this period end. Restating an earlier period moves the to-date balance those runs were accrued against; re-run them to roll the restatement forward.
+   * @return laterRunIds
+  **/
+  @jakarta.annotation.Nonnull
+  public List<String> getLaterRunIds() {
+    return laterRunIds;
+  }
+
+
+  public void setLaterRunIds(List<String> laterRunIds) {
+    this.laterRunIds = laterRunIds;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -212,12 +245,13 @@ public class CarryAccrualResult {
         Objects.equals(this.periodEnd, carryAccrualResult.periodEnd) &&
         Objects.equals(this.source, carryAccrualResult.source) &&
         Objects.equals(this.lines, carryAccrualResult.lines) &&
-        Objects.equals(this.bookedTransactionIds, carryAccrualResult.bookedTransactionIds);
+        Objects.equals(this.bookedTransactionIds, carryAccrualResult.bookedTransactionIds) &&
+        Objects.equals(this.laterRunIds, carryAccrualResult.laterRunIds);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fundId, periodEnd, source, lines, bookedTransactionIds);
+    return Objects.hash(fundId, periodEnd, source, lines, bookedTransactionIds, laterRunIds);
   }
 
   @Override
@@ -229,6 +263,7 @@ public class CarryAccrualResult {
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
     sb.append("    bookedTransactionIds: ").append(toIndentedString(bookedTransactionIds)).append("\n");
+    sb.append("    laterRunIds: ").append(toIndentedString(laterRunIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -256,6 +291,7 @@ public class CarryAccrualResult {
     openapiFields.add("source");
     openapiFields.add("lines");
     openapiFields.add("bookedTransactionIds");
+    openapiFields.add("laterRunIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -264,6 +300,7 @@ public class CarryAccrualResult {
     openapiRequiredFields.add("source");
     openapiRequiredFields.add("lines");
     openapiRequiredFields.add("bookedTransactionIds");
+    openapiRequiredFields.add("laterRunIds");
   }
 
  /**
@@ -306,6 +343,12 @@ public class CarryAccrualResult {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("bookedTransactionIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `bookedTransactionIds` to be an array in the JSON string but got `%s`", jsonObj.get("bookedTransactionIds").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("laterRunIds") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("laterRunIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `laterRunIds` to be an array in the JSON string but got `%s`", jsonObj.get("laterRunIds").toString()));
       }
   }
 

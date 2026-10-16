@@ -33,6 +33,7 @@ QuoteType method = QuoteType.INTERESTSHORTFALL;
 QuoteType method = QuoteType.CONSTITUENTWEIGHTFACTOR;
 QuoteType method = QuoteType.FORWARDPRICE;
 QuoteType method = QuoteType.DISCOUNTFACTOR;
+QuoteType method = QuoteType.PRINCIPALDISTRIBUTED;
 ```
 
 

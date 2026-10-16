@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.EligibleCollateralReferences;
+import com.finbourne.lusid.model.MarginAccounts;
 import com.finbourne.lusid.model.MarginCalculation;
 import com.finbourne.lusid.model.PartyTerms;
 import com.google.gson.TypeAdapter;
@@ -84,6 +85,10 @@ public class MarginItem {
   public static final String SERIALIZED_NAME_CALCULATION = "calculation";
   @SerializedName(SERIALIZED_NAME_CALCULATION)
   private MarginCalculation calculation;
+
+  public static final String SERIALIZED_NAME_MARGIN_ACCOUNTS = "marginAccounts";
+  @SerializedName(SERIALIZED_NAME_MARGIN_ACCOUNTS)
+  private MarginAccounts marginAccounts;
 
   public MarginItem() {
   }
@@ -256,6 +261,27 @@ public class MarginItem {
   }
 
 
+  public MarginItem marginAccounts(MarginAccounts marginAccounts) {
+    
+    this.marginAccounts = marginAccounts;
+    return this;
+  }
+
+   /**
+   * Get marginAccounts
+   * @return marginAccounts
+  **/
+  @jakarta.annotation.Nullable
+  public MarginAccounts getMarginAccounts() {
+    return marginAccounts;
+  }
+
+
+  public void setMarginAccounts(MarginAccounts marginAccounts) {
+    this.marginAccounts = marginAccounts;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -273,7 +299,8 @@ public class MarginItem {
         Objects.equals(this.wePost, marginItem.wePost) &&
         Objects.equals(this.theyPost, marginItem.theyPost) &&
         Objects.equals(this.eligibleCollateral, marginItem.eligibleCollateral) &&
-        Objects.equals(this.calculation, marginItem.calculation);
+        Objects.equals(this.calculation, marginItem.calculation) &&
+        Objects.equals(this.marginAccounts, marginItem.marginAccounts);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -282,7 +309,7 @@ public class MarginItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, tradeFilter, settlement, legalMechanism, wePost, theyPost, eligibleCollateral, calculation);
+    return Objects.hash(code, tradeFilter, settlement, legalMechanism, wePost, theyPost, eligibleCollateral, calculation, marginAccounts);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -304,6 +331,7 @@ public class MarginItem {
     sb.append("    theyPost: ").append(toIndentedString(theyPost)).append("\n");
     sb.append("    eligibleCollateral: ").append(toIndentedString(eligibleCollateral)).append("\n");
     sb.append("    calculation: ").append(toIndentedString(calculation)).append("\n");
+    sb.append("    marginAccounts: ").append(toIndentedString(marginAccounts)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -334,6 +362,7 @@ public class MarginItem {
     openapiFields.add("theyPost");
     openapiFields.add("eligibleCollateral");
     openapiFields.add("calculation");
+    openapiFields.add("marginAccounts");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -385,6 +414,10 @@ public class MarginItem {
       }
       // validate the required field `calculation`
       MarginCalculation.validateJsonElement(jsonObj.get("calculation"));
+      // validate the optional field `marginAccounts`
+      if (jsonObj.get("marginAccounts") != null && !jsonObj.get("marginAccounts").isJsonNull()) {
+        MarginAccounts.validateJsonElement(jsonObj.get("marginAccounts"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -419,7 +419,7 @@ info:
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10264
+  version: 0.11.10279
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -20173,6 +20173,9 @@ paths:
                         code: UsdCash
                     calculation:
                       method: NetMtm
+                    marginAccounts:
+                      wePost: ACME-MARGIN
+                      theyPost: ACME-RECEIVED
                   initialMargin: []
                   properties: {}
                 links: []
@@ -20224,6 +20227,9 @@ paths:
                         code: UsdCash
                     calculation:
                       method: NetMtm
+                    marginAccounts:
+                      wePost: ACME-MARGIN
+                      theyPost: ACME-RECEIVED
                   initialMargin: []
                   properties: {}
                 links: []
@@ -20275,6 +20281,9 @@ paths:
                         code: UsdCash
                     calculation:
                       method: NetMtm
+                    marginAccounts:
+                      wePost: ACME-MARGIN
+                      theyPost: ACME-RECEIVED
                   initialMargin: []
                   properties: {}
                 links: []
@@ -20367,6 +20376,9 @@ paths:
                     code: UsdCash
                 calculation:
                   method: NetMtm
+                marginAccounts:
+                  wePost: ACME-MARGIN
+                  theyPost: ACME-RECEIVED
               initialMargin: []
               properties: {}
             schema:
@@ -20413,6 +20425,9 @@ paths:
                     code: UsdCash
                 calculation:
                   method: NetMtm
+                marginAccounts:
+                  wePost: ACME-MARGIN
+                  theyPost: ACME-RECEIVED
               initialMargin: []
               properties: {}
             schema:
@@ -20459,6 +20474,9 @@ paths:
                     code: UsdCash
                 calculation:
                   method: NetMtm
+                marginAccounts:
+                  wePost: ACME-MARGIN
+                  theyPost: ACME-RECEIVED
               initialMargin: []
               properties: {}
             schema:
@@ -20505,6 +20523,9 @@ paths:
                     code: UsdCash
                 calculation:
                   method: NetMtm
+                marginAccounts:
+                  wePost: ACME-MARGIN
+                  theyPost: ACME-RECEIVED
               initialMargin: []
               properties: {}
             schema:
@@ -20559,6 +20580,9 @@ paths:
                       code: UsdCash
                   calculation:
                     method: NetMtm
+                  marginAccounts:
+                    wePost: ACME-MARGIN
+                    theyPost: ACME-RECEIVED
                 initialMargin: []
                 properties: {}
               schema:
@@ -20608,6 +20632,9 @@ paths:
                       code: UsdCash
                   calculation:
                     method: NetMtm
+                  marginAccounts:
+                    wePost: ACME-MARGIN
+                    theyPost: ACME-RECEIVED
                 initialMargin: []
                 properties: {}
               schema:
@@ -20657,6 +20684,9 @@ paths:
                       code: UsdCash
                   calculation:
                     method: NetMtm
+                  marginAccounts:
+                    wePost: ACME-MARGIN
+                    theyPost: ACME-RECEIVED
                 initialMargin: []
                 properties: {}
               schema:
@@ -20886,6 +20916,9 @@ paths:
                       code: UsdCash
                   calculation:
                     method: NetMtm
+                  marginAccounts:
+                    wePost: ACME-MARGIN
+                    theyPost: ACME-RECEIVED
                 initialMargin: []
                 properties: {}
               schema:
@@ -20935,6 +20968,9 @@ paths:
                       code: UsdCash
                   calculation:
                     method: NetMtm
+                  marginAccounts:
+                    wePost: ACME-MARGIN
+                    theyPost: ACME-RECEIVED
                 initialMargin: []
                 properties: {}
               schema:
@@ -20984,6 +21020,9 @@ paths:
                       code: UsdCash
                   calculation:
                     method: NetMtm
+                  marginAccounts:
+                    wePost: ACME-MARGIN
+                    theyPost: ACME-RECEIVED
                 initialMargin: []
                 properties: {}
               schema:
@@ -21087,6 +21126,9 @@ paths:
                     code: UsdCash
                 calculation:
                   method: NetMtm
+                marginAccounts:
+                  wePost: ACME-MARGIN
+                  theyPost: ACME-RECEIVED
               initialMargin: []
               properties: {}
             schema:
@@ -21132,6 +21174,9 @@ paths:
                     code: UsdCash
                 calculation:
                   method: NetMtm
+                marginAccounts:
+                  wePost: ACME-MARGIN
+                  theyPost: ACME-RECEIVED
               initialMargin: []
               properties: {}
             schema:
@@ -21177,6 +21222,9 @@ paths:
                     code: UsdCash
                 calculation:
                   method: NetMtm
+                marginAccounts:
+                  wePost: ACME-MARGIN
+                  theyPost: ACME-RECEIVED
               initialMargin: []
               properties: {}
             schema:
@@ -21222,6 +21270,9 @@ paths:
                     code: UsdCash
                 calculation:
                   method: NetMtm
+                marginAccounts:
+                  wePost: ACME-MARGIN
+                  theyPost: ACME-RECEIVED
               initialMargin: []
               properties: {}
             schema:
@@ -21277,6 +21328,9 @@ paths:
                       code: UsdCash
                   calculation:
                     method: NetMtm
+                  marginAccounts:
+                    wePost: ACME-MARGIN
+                    theyPost: ACME-RECEIVED
                 initialMargin: []
                 properties: {}
               schema:
@@ -21326,6 +21380,9 @@ paths:
                       code: UsdCash
                   calculation:
                     method: NetMtm
+                  marginAccounts:
+                    wePost: ACME-MARGIN
+                    theyPost: ACME-RECEIVED
                 initialMargin: []
                 properties: {}
               schema:
@@ -21375,6 +21432,9 @@ paths:
                       code: UsdCash
                   calculation:
                     method: NetMtm
+                  marginAccounts:
+                    wePost: ACME-MARGIN
+                    theyPost: ACME-RECEIVED
                 initialMargin: []
                 properties: {}
               schema:
@@ -70589,7 +70649,7 @@ paths:
           \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
-          \ InstalmentCallEvent."
+          \ InstalmentCallEvent, DepositInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -70709,7 +70769,7 @@ paths:
           \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
-          \ InstalmentCallEvent."
+          \ InstalmentCallEvent, DepositInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -70837,7 +70897,7 @@ paths:
           \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
-          \ InstalmentCallEvent."
+          \ InstalmentCallEvent, DepositInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -71071,7 +71131,7 @@ paths:
           \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
-          \ InstalmentCallEvent."
+          \ InstalmentCallEvent, DepositInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -71306,7 +71366,7 @@ paths:
           \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
-          \ InstalmentCallEvent."
+          \ InstalmentCallEvent, DepositInterestCapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -176216,9 +176276,10 @@ paths:
         style: form
         x-nullable: true
       - description: "Expression to filter the results. For example, to filter on\
-          \ the scope, specify\r\n \"scope eq 'WithholdingTax'\", and to filter on\
-          \ the code, specify \"code eq 'wht-main-rates'\". For more\r\n information\
-          \ about filtering results, see\r\n https://support.lusid.com/docs/filtering-information-retrieved-from-lusid."
+          \ the scope, specify\r\n \"scope eq 'WithholdingTax'\", to filter on the\
+          \ code, specify \"code eq 'wht-main-rates'\", and to filter on the\r\n dataset\
+          \ type, specify \"datasetType eq 'Anomaly'\". For more information about\
+          \ filtering results, see\r\n https://support.lusid.com/docs/filtering-information-retrieved-from-lusid."
         explode: true
         in: query
         name: filter
@@ -176249,6 +176310,7 @@ paths:
                 values:
                 - scope: WithholdingTax
                   code: wht-anomaly-rates
+                  datasetType: Anomaly
                   dimensions:
                   - fieldName: isin
                     displayName: ISIN
@@ -176281,6 +176343,7 @@ paths:
                     asAtDate: 2024-01-01T09:30:00.0000000+00:00
                 - scope: WithholdingTax
                   code: wht-main-rates
+                  datasetType: Main
                   dimensions:
                   - fieldName: assetClass
                     displayName: Asset class
@@ -176314,6 +176377,7 @@ paths:
                 values:
                 - scope: WithholdingTax
                   code: wht-anomaly-rates
+                  datasetType: Anomaly
                   dimensions:
                   - fieldName: isin
                     displayName: ISIN
@@ -176346,6 +176410,7 @@ paths:
                     asAtDate: 2024-01-01T09:30:00.0000000+00:00
                 - scope: WithholdingTax
                   code: wht-main-rates
+                  datasetType: Main
                   dimensions:
                   - fieldName: assetClass
                     displayName: Asset class
@@ -176379,6 +176444,7 @@ paths:
                 values:
                 - scope: WithholdingTax
                   code: wht-anomaly-rates
+                  datasetType: Anomaly
                   dimensions:
                   - fieldName: isin
                     displayName: ISIN
@@ -176411,6 +176477,7 @@ paths:
                     asAtDate: 2024-01-01T09:30:00.0000000+00:00
                 - scope: WithholdingTax
                   code: wht-main-rates
+                  datasetType: Main
                   dimensions:
                   - fieldName: assetClass
                     displayName: Asset class
@@ -176719,6 +176786,7 @@ paths:
                 anomalyDataset:
                   scope: WithholdingTax
                   code: wht-anomaly-rates
+                  datasetType: Anomaly
                   dimensions:
                   - fieldName: isin
                     displayName: ISIN
@@ -176752,6 +176820,7 @@ paths:
                 mainDataset:
                   scope: WithholdingTax
                   code: wht-main-rates
+                  datasetType: Main
                   dimensions:
                   - fieldName: assetClass
                     displayName: Asset class
@@ -176783,6 +176852,7 @@ paths:
                 anomalyDataset:
                   scope: WithholdingTax
                   code: wht-anomaly-rates
+                  datasetType: Anomaly
                   dimensions:
                   - fieldName: isin
                     displayName: ISIN
@@ -176816,6 +176886,7 @@ paths:
                 mainDataset:
                   scope: WithholdingTax
                   code: wht-main-rates
+                  datasetType: Main
                   dimensions:
                   - fieldName: assetClass
                     displayName: Asset class
@@ -176847,6 +176918,7 @@ paths:
                 anomalyDataset:
                   scope: WithholdingTax
                   code: wht-anomaly-rates
+                  datasetType: Anomaly
                   dimensions:
                   - fieldName: isin
                     displayName: ISIN
@@ -176880,6 +176952,7 @@ paths:
                 mainDataset:
                   scope: WithholdingTax
                   code: wht-main-rates
+                  datasetType: Main
                   dimensions:
                   - fieldName: assetClass
                     displayName: Asset class
@@ -177056,6 +177129,7 @@ paths:
               example:
                 scope: WithholdingTax
                 code: wht-anomaly-rates
+                datasetType: Anomaly
                 dimensions:
                 - fieldName: isin
                   displayName: ISIN
@@ -177092,6 +177166,7 @@ paths:
               example:
                 scope: WithholdingTax
                 code: wht-anomaly-rates
+                datasetType: Anomaly
                 dimensions:
                 - fieldName: isin
                   displayName: ISIN
@@ -177128,6 +177203,7 @@ paths:
               example:
                 scope: WithholdingTax
                 code: wht-anomaly-rates
+                datasetType: Anomaly
                 dimensions:
                 - fieldName: isin
                   displayName: ISIN
@@ -177300,6 +177376,7 @@ paths:
               example:
                 scope: WithholdingTax
                 code: wht-main-rates
+                datasetType: Main
                 dimensions:
                 - fieldName: assetClass
                   displayName: Asset class
@@ -177336,6 +177413,7 @@ paths:
               example:
                 scope: WithholdingTax
                 code: wht-main-rates
+                datasetType: Main
                 dimensions:
                 - fieldName: assetClass
                   displayName: Asset class
@@ -177372,6 +177450,7 @@ paths:
               example:
                 scope: WithholdingTax
                 code: wht-main-rates
+                datasetType: Main
                 dimensions:
                 - fieldName: assetClass
                   displayName: Asset class
@@ -178009,10 +178088,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] ListWorkspaces: List workspaces."
+      summary: "ListWorkspaces: List workspaces."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     post:
       description: Create a new workspace.
@@ -178126,10 +178205,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] CreateWorkspace: Create a new workspace."
+      summary: "CreateWorkspace: Create a new workspace."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/workspaces/{visibility}/items:
@@ -178293,10 +178372,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] SearchItems: List items across all workspaces."
+      summary: "SearchItems: List items across all workspaces."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/workspaces/{visibility}/{workspaceName}:
     delete:
@@ -178375,10 +178454,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] DeleteWorkspace: Delete a workspace."
+      summary: "DeleteWorkspace: Delete a workspace."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     get:
       description: Get a workspace.
@@ -178486,10 +178565,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] GetWorkspace: Get a workspace."
+      summary: "GetWorkspace: Get a workspace."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     put:
       description: Update a workspace.
@@ -178610,10 +178689,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] UpdateWorkspace: Update a workspace."
+      summary: "UpdateWorkspace: Update a workspace."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/workspaces/{visibility}/{workspaceName}/items:
@@ -178782,10 +178861,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] ListItems: List the items in a workspace."
+      summary: "ListItems: List the items in a workspace."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     post:
       description: Create a new item in a workspace.
@@ -178939,10 +179018,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] CreateItem: Create a new item in a workspace."
+      summary: "CreateItem: Create a new item in a workspace."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/workspaces/{visibility}/{workspaceName}/items/{groupName}/{itemName}:
@@ -179034,10 +179113,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] DeleteItem: Delete an item from a workspace."
+      summary: "DeleteItem: Delete an item from a workspace."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     get:
       description: Get a single workspace item.
@@ -179165,10 +179244,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] GetItem: Get a single workspace item."
+      summary: "GetItem: Get a single workspace item."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     put:
       description: Update an item in a workspace.
@@ -179336,10 +179415,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] UpdateItem: Update an item in a workspace."
+      summary: "UpdateItem: Update an item in a workspace."
       tags:
       - Workspace
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-content-type: application/json-patch+json
       x-accepts: application/json
 components:
@@ -183980,7 +184059,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184104,6 +184183,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - dividendCurrency
@@ -184631,7 +184711,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -184755,6 +184835,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -189810,7 +189891,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -189934,6 +190015,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -189999,7 +190081,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -190123,6 +190205,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amountReduced
@@ -192119,7 +192202,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -192243,6 +192326,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -197749,7 +197833,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -197873,6 +197957,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -197945,7 +198030,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198069,6 +198154,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -198335,7 +198421,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198459,6 +198545,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - agreedCleanPrice
@@ -198619,7 +198706,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198743,6 +198830,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - agreedCleanPrice
@@ -199075,7 +199163,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199199,6 +199287,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - callPrice
@@ -199269,7 +199358,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199393,6 +199482,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -199510,7 +199600,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199634,6 +199724,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -202506,7 +202597,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202630,6 +202721,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - exerciseCurrency
@@ -203877,7 +203969,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204001,6 +204093,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -204269,7 +204362,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204393,6 +204486,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -204526,7 +204620,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204650,6 +204744,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -204733,7 +204828,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -204857,6 +204952,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -204932,7 +205028,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205056,6 +205152,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -205403,7 +205500,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205527,6 +205624,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - direction
@@ -205598,7 +205696,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205722,6 +205820,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -205876,6 +205975,9 @@ components:
         fundId:
           code: code
           scope: scope
+        laterRunIds:
+        - laterRunIds
+        - laterRunIds
         bookedTransactionIds:
         - bookedTransactionIds
         - bookedTransactionIds
@@ -205915,9 +206017,18 @@ components:
           items:
             type: string
           type: array
+        laterRunIds:
+          description: The run identifiers of carry accruals already on the ledger
+            with an effective date after this period end. Restating an earlier period
+            moves the to-date balance those runs were accrued against; re-run them
+            to roll the restatement forward.
+          items:
+            type: string
+          type: array
       required:
       - bookedTransactionIds
       - fundId
+      - laterRunIds
       - lines
       - periodEnd
       - source
@@ -206210,7 +206321,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -206334,6 +206445,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -206585,7 +206697,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -206709,6 +206821,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashFlowValue
@@ -207217,7 +207330,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207341,6 +207454,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -207392,7 +207506,7 @@ components:
             \ [Day count conventions supported by LUSID](https://support.lusid.com/docs/day-count-conventions-supported-by-lusid)\r\
             \n \r\nSupported string (enumeration) values are: [Actual360, Act360,\
             \ MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360,\
-            \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma,\
+            \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIcma, ActActIsma,\
             \ OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360,\
             \ NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda,\
             \ ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
@@ -207928,7 +208042,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208052,6 +208166,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - constituentWeight
@@ -208211,7 +208326,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208335,6 +208450,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - changeType
@@ -209247,7 +209363,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209371,6 +209487,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -209825,7 +209942,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209949,6 +210066,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -210108,6 +210226,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -210143,6 +210264,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -210202,6 +210326,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -210237,6 +210364,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -210437,6 +210567,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -210472,6 +210605,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -210519,6 +210655,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -210554,6 +210693,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -210951,7 +211093,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211075,6 +211217,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -211280,7 +211423,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211404,6 +211547,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - domCcy
@@ -211476,7 +211620,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211600,6 +211744,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -216912,7 +217057,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -217036,6 +217181,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -217420,7 +217566,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -217544,6 +217690,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - contractDetails
@@ -217751,7 +217898,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -217875,6 +218022,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -223675,7 +223823,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -223799,6 +223947,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -224274,7 +224423,7 @@ components:
             description: "Day count convention of the curve. Default value: Act360.\
               \ Available values: Actual360, Act360, MoneyMarket, Actual365, Act365,\
               \ Thirty360, ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct,\
-              \ ActActIsda, ActActIsma, ActActIcma, OneOne, Act364, Act365F, Act365L,\
+              \ ActActIsda, ActActIcma, ActActIsma, OneOne, Act364, Act365F, Act365L,\
               \ Act365_25, Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda,\
               \ Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM,\
               \ Invalid."
@@ -229214,7 +229363,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -229338,6 +229487,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -229469,7 +229619,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -229593,11 +229743,210 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
         type: object
       description: Event to trigger the termination of a deposit.
+    DepositInterestCapitalisationEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          paymentDate:
+            description: "Date that the capitalisation is effective. Capitalisation\
+              \ has no cash to settle, so nothing can lag\r\nthe accrual it capitalises\
+              \ and this is the ex-date."
+            format: date-time
+            type: string
+          exDate:
+            description: Date that the in-kind accrued interest is calculated up until.
+            format: date-time
+            type: string
+          currency:
+            description: Currency of the capitalised amount.
+            type: string
+          fraction:
+            description: "Fraction of the in-kind accrued on the holding to be capitalised.\
+              \ Must be between 0 and 1, inclusive.\r\nDefaults to 1 if not set."
+            format: double
+            type: number
+          lapseElections:
+            description: "Election for controlling whether the interest is capitalised\
+              \ automatically or not.\r\nExactly one election must be provided."
+            items:
+              $ref: '#/components/schemas/LapseElection'
+            nullable: true
+            type: array
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
+              \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent, TotalReturnSwapCashFlowEvent,\
+              \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
+              \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
+              \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            - PikBondInterestEvent
+            - CommodityForwardCashSettlementEvent
+            - PaymentInKindEvent
+            - CommodityForwardPhysicalSettlementEvent
+            - CancelSwapEvent
+            - BondOptionTerminationEvent
+            - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
+            - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
+            - AmendCommitmentEvent
+            - CapitalCallEvent
+            - FundDistributionEvent
+            - NavReportEvent
+            - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
+            - TotalReturnSwapCashFlowEvent
+            - GlobalLoanFacilityReinitialisationEvent
+            - InvestorLoanFacilityReinitialisationEvent
+            - CapitalCallReceiptEvent
+            - RecallableCapitalExpiryEvent
+            - CapitalInterestTransferEvent
+            - FacilityDrawEvent
+            - FacilityRepaymentEvent
+            - FacilityInterestEvent
+            - FacilityCommitmentFeeEvent
+            - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
+            type: string
+        required:
+        - currency
+        - instrumentEventType
+        type: object
+      description: "Event to signify that interest accrued against a deposit holding\
+        \ is capitalised into the deposit's\r\nbalance instead of being paid in cash."
     DepositInterestPaymentEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -229650,7 +229999,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -229774,6 +230123,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -229836,7 +230186,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -229960,6 +230310,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -230015,7 +230366,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -230139,6 +230490,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -230836,7 +231188,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -230960,6 +231312,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -231044,7 +231397,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231168,6 +231521,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -231229,7 +231583,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231353,6 +231707,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -231419,7 +231774,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231543,6 +231898,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -231623,7 +231979,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -231747,6 +232103,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -232020,7 +232377,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232144,6 +232501,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -232245,7 +232603,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232369,6 +232727,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - closeOutAmount
@@ -232472,7 +232831,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -232596,6 +232955,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -234542,7 +234902,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -234666,6 +235026,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - eventSource
@@ -235336,7 +235697,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235460,6 +235821,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - anchorDate
@@ -235828,7 +236190,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235952,6 +236314,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -236198,7 +236561,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236322,6 +236685,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -236399,7 +236763,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236523,6 +236887,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -236607,7 +236972,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236731,6 +237096,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -236803,7 +237169,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236927,6 +237293,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -239451,7 +239818,7 @@ components:
               \ will take precedence.\r\n\r\nSupported string (enumeration) values\
               \ are: [Actual360, Act360, MoneyMarket, Actual365, Act365, Thirty360,\
               \ ThirtyU360, Bond, ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda,\
-              \ ActActIsma, ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25,\
+              \ ActActIcma, ActActIsma, OneOne, Act364, Act365F, Act365L, Act365_25,\
               \ Act252, Bus252, NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda,\
               \ Thirty365Isda, ThirtyEActIsda, ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
             nullable: true
@@ -239670,7 +240037,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -239794,6 +240161,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -239861,7 +240229,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -239985,6 +240353,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -240046,7 +240415,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -240170,6 +240539,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -240237,7 +240607,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -240361,6 +240731,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -240445,7 +240816,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -240569,6 +240940,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -240941,7 +241313,7 @@ components:
             \ [Day count conventions supported by LUSID](https://support.lusid.com/docs/day-count-conventions-supported-by-lusid)\r\
             \n \r\nSupported string (enumeration) values are: [Actual360, Act360,\
             \ MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360,\
-            \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma,\
+            \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIcma, ActActIsma,\
             \ OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360,\
             \ NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda,\
             \ ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
@@ -244366,7 +244738,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -244490,6 +244862,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -248499,7 +248872,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -248623,6 +248996,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -248683,7 +249057,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -248807,6 +249181,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -248855,7 +249230,7 @@ components:
             \ conventions supported by LUSID](https://support.lusid.com/docs/day-count-conventions-supported-by-lusid)\r\
             \n \r\nSupported string (enumeration) values are: [Actual360, Act360,\
             \ MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360,\
-            \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma,\
+            \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIcma, ActActIsma,\
             \ OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360,\
             \ NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda,\
             \ ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
@@ -248928,6 +249303,17 @@ components:
           format: double
           nullable: true
           type: number
+        deliverableIsins:
+          description: "ISINs of the bonds deliverable into this contract for its\
+            \ delivery month. When set, the deliverable\r\nbasket is these bonds only;\
+            \ when empty, every active bond in the portfolio's instrument scope is\
+            \ a candidate.\r\nBonds not yet issued on the valuation date are left\
+            \ out of the basket.\r\nUpdate it when the exchange notifies a new deliverable;\
+            \ the list is not effective-dated."
+          items:
+            type: string
+          nullable: true
+          type: array
       required:
       - contractCode
       - contractSize
@@ -249638,7 +250024,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -249762,6 +250148,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - domAmountPerUnit
@@ -252616,7 +253003,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252740,6 +253127,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - contractStates
@@ -256285,7 +256673,7 @@ components:
             \ [Day count conventions supported by LUSID](https://support.lusid.com/docs/day-count-conventions-supported-by-lusid)\r\
             \n \r\nSupported string (enumeration) values are: [Actual360, Act360,\
             \ MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360,\
-            \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma,\
+            \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIcma, ActActIsma,\
             \ OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360,\
             \ NL365]."
           maxLength: 32
@@ -257370,7 +257758,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257494,6 +257882,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - effectiveAt
@@ -257564,7 +257953,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257688,6 +258077,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - anchorDate
@@ -258308,7 +258698,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -258432,6 +258822,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - callCurrency
@@ -259919,7 +260310,7 @@ components:
             \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
             \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
             \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
-            \ InstalmentCallEvent."
+            \ InstalmentCallEvent, DepositInterestCapitalisationEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -260043,6 +260434,7 @@ components:
           - FacilityInterestEvent
           - FacilityCommitmentFeeEvent
           - InstalmentCallEvent
+          - DepositInterestCapitalisationEvent
           type: string
       required:
       - instrumentEventType
@@ -260810,6 +261202,7 @@ components:
       - FacilityInterestEvent
       - FacilityCommitmentFeeEvent
       - InstalmentCallEvent
+      - DepositInterestCapitalisationEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -261808,7 +262201,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261932,6 +262325,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashElections
@@ -262405,7 +262799,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -262529,6 +262923,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -265154,7 +265549,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -265278,6 +265673,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -267085,7 +267481,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -267209,6 +267605,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashOfferElections
@@ -267776,7 +268173,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -267900,6 +268297,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -267974,7 +268372,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -268098,6 +268496,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -268288,7 +268687,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -268412,6 +268811,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -268484,7 +268884,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -268608,6 +269008,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -268708,7 +269109,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -268832,6 +269233,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -269743,6 +270145,33 @@ components:
             \ to `false`."
           type: boolean
       type: object
+    MarginAccounts:
+      additionalProperties: false
+      description: The custodian account each party's collateral is held in.
+      example:
+        theyPost: theyPost
+        wePost: wePost
+      properties:
+        wePost:
+          description: "The code of the custodian account, within each applicable\
+            \ portfolio, that holds collateral we post. Empty means collateral we\
+            \ post is not held in a custodian account the item knows of."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        theyPost:
+          description: "The code of the custodian account, within each applicable\
+            \ portfolio, that holds collateral the counterparty posts. Empty means\
+            \ collateral they post is not held in a custodian account the item knows\
+            \ of."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+      type: object
     MarginCalculation:
       additionalProperties: false
       description: "How the margin requirement for an item is calculated. The method\
@@ -269843,6 +270272,9 @@ components:
             code: code
             scope: scope
         legalMechanism: legalMechanism
+        marginAccounts:
+          theyPost: theyPost
+          wePost: wePost
         wePost:
           independentAmount: 7.061401241503109
           cashInterest:
@@ -269884,6 +270316,8 @@ components:
           $ref: '#/components/schemas/EligibleCollateralReferences'
         calculation:
           $ref: '#/components/schemas/MarginCalculation'
+        marginAccounts:
+          $ref: '#/components/schemas/MarginAccounts'
       required:
       - calculation
       - code
@@ -270338,7 +270772,7 @@ components:
           description: "Available values: Price, Spread, Rate, LogNormalVol, NormalVol,\
             \ ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption,\
             \ DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall,\
-            \ ConstituentWeightFactor, ForwardPrice, DiscountFactor."
+            \ ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed."
           enum:
           - Price
           - Spread
@@ -270360,6 +270794,7 @@ components:
           - ConstituentWeightFactor
           - ForwardPrice
           - DiscountFactor
+          - PrincipalDistributed
           type: string
         field:
           description: "The conceptual qualification for the field, typically 'bid',\
@@ -270567,7 +271002,7 @@ components:
           description: "Available values: Price, Spread, Rate, LogNormalVol, NormalVol,\
             \ ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption,\
             \ DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall,\
-            \ ConstituentWeightFactor, ForwardPrice, DiscountFactor."
+            \ ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed."
           enum:
           - Price
           - Spread
@@ -270589,6 +271024,7 @@ components:
           - ConstituentWeightFactor
           - ForwardPrice
           - DiscountFactor
+          - PrincipalDistributed
           type: string
         field:
           description: "The conceptual qualification for the field, such as bid, mid,\
@@ -270805,7 +271241,7 @@ components:
           description: "Available values: Price, Spread, Rate, LogNormalVol, NormalVol,\
             \ ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption,\
             \ DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall,\
-            \ ConstituentWeightFactor, ForwardPrice, DiscountFactor."
+            \ ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed."
           enum:
           - Price
           - Spread
@@ -270827,6 +271263,7 @@ components:
           - ConstituentWeightFactor
           - ForwardPrice
           - DiscountFactor
+          - PrincipalDistributed
           type: string
         value:
           description: Numeric value of the quote
@@ -271235,7 +271672,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271359,6 +271796,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -271423,7 +271861,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271547,6 +271985,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -271613,7 +272052,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271737,6 +272176,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -271805,7 +272245,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271929,6 +272369,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -271997,7 +272438,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -272121,6 +272562,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -272188,7 +272630,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -272312,6 +272754,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -272681,7 +273124,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -272805,6 +273248,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -273658,7 +274102,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -273782,6 +274226,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -274467,7 +274912,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -274591,6 +275036,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -274820,7 +275266,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -274944,6 +275390,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - exerciseType
@@ -275071,7 +275518,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -275195,6 +275642,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - exerciseType
@@ -281815,6 +282263,9 @@ components:
                 code: code
                 scope: scope
             legalMechanism: legalMechanism
+            marginAccounts:
+              theyPost: theyPost
+              wePost: wePost
             wePost:
               independentAmount: 7.061401241503109
               cashInterest:
@@ -281850,6 +282301,9 @@ components:
                 code: code
                 scope: scope
             legalMechanism: legalMechanism
+            marginAccounts:
+              theyPost: theyPost
+              wePost: wePost
             wePost:
               independentAmount: 7.061401241503109
               cashInterest:
@@ -281909,6 +282363,9 @@ components:
                 code: code
                 scope: scope
             legalMechanism: legalMechanism
+            marginAccounts:
+              theyPost: theyPost
+              wePost: wePost
             wePost:
               independentAmount: 7.061401241503109
               cashInterest:
@@ -281944,6 +282401,9 @@ components:
                 code: code
                 scope: scope
             legalMechanism: legalMechanism
+            marginAccounts:
+              theyPost: theyPost
+              wePost: wePost
             wePost:
               independentAmount: 7.061401241503109
               cashInterest:
@@ -282021,6 +282481,9 @@ components:
                 code: code
                 scope: scope
             legalMechanism: legalMechanism
+            marginAccounts:
+              theyPost: theyPost
+              wePost: wePost
             wePost:
               independentAmount: 7.061401241503109
               cashInterest:
@@ -282056,6 +282519,9 @@ components:
                 code: code
                 scope: scope
             legalMechanism: legalMechanism
+            marginAccounts:
+              theyPost: theyPost
+              wePost: wePost
             wePost:
               independentAmount: 7.061401241503109
               cashInterest:
@@ -282115,6 +282581,9 @@ components:
                 code: code
                 scope: scope
             legalMechanism: legalMechanism
+            marginAccounts:
+              theyPost: theyPost
+              wePost: wePost
             wePost:
               independentAmount: 7.061401241503109
               cashInterest:
@@ -282150,6 +282619,9 @@ components:
                 code: code
                 scope: scope
             legalMechanism: legalMechanism
+            marginAccounts:
+              theyPost: theyPost
+              wePost: wePost
             wePost:
               independentAmount: 7.061401241503109
               cashInterest:
@@ -295484,11 +295956,15 @@ components:
           description: description
           rules:
           - generalLedgerAccountCode: generalLedgerAccountCode
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
             ruleFilter: ruleFilter
             ruleId: ruleId
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
           - generalLedgerAccountCode: generalLedgerAccountCode
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
             ruleFilter: ruleFilter
             ruleId: ruleId
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
           links:
           - method: method
             description: description
@@ -295522,11 +295998,15 @@ components:
           description: description
           rules:
           - generalLedgerAccountCode: generalLedgerAccountCode
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
             ruleFilter: ruleFilter
             ruleId: ruleId
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
           - generalLedgerAccountCode: generalLedgerAccountCode
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
             ruleFilter: ruleFilter
             ruleId: ruleId
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
           links:
           - method: method
             description: description
@@ -295595,11 +296075,15 @@ components:
         nextPage: nextPage
         values:
         - generalLedgerAccountCode: generalLedgerAccountCode
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
           ruleFilter: ruleFilter
           ruleId: ruleId
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
         - generalLedgerAccountCode: generalLedgerAccountCode
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
           ruleFilter: ruleFilter
           ruleId: ruleId
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
         links:
         - method: method
           description: description
@@ -300407,6 +300891,7 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          datasetType: datasetType
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -300446,6 +300931,7 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          datasetType: datasetType
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -300759,7 +301245,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -300883,6 +301369,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -301024,7 +301511,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -301148,6 +301635,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -302596,7 +303084,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -302720,6 +303208,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -303746,7 +304235,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -303870,6 +304359,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -303933,7 +304423,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -304057,6 +304547,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -304140,7 +304631,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -304264,6 +304755,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -304392,7 +304884,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -304516,6 +305008,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -304587,7 +305080,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -304711,6 +305204,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -310838,11 +311332,15 @@ components:
         description: description
         rules:
         - generalLedgerAccountCode: generalLedgerAccountCode
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
           ruleFilter: ruleFilter
           ruleId: ruleId
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
         - generalLedgerAccountCode: generalLedgerAccountCode
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
           ruleFilter: ruleFilter
           ruleId: ruleId
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
       properties:
         code:
           description: The code of the Posting Module.
@@ -310883,11 +311381,15 @@ components:
         description: description
         rules:
         - generalLedgerAccountCode: generalLedgerAccountCode
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
           ruleFilter: ruleFilter
           ruleId: ruleId
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
         - generalLedgerAccountCode: generalLedgerAccountCode
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
           ruleFilter: ruleFilter
           ruleId: ruleId
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
         links:
         - method: method
           description: description
@@ -310969,8 +311471,10 @@ components:
       description: A Posting rule
       example:
         generalLedgerAccountCode: generalLedgerAccountCode
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
         ruleFilter: ruleFilter
         ruleId: ruleId
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
       properties:
         ruleId:
           description: The identifier for the Posting Rule.
@@ -310992,6 +311496,18 @@ components:
           minLength: 1
           pattern: "^[\\s\\S]*$"
           type: string
+        effectiveFrom:
+          description: "The inclusive accounting date from which the Posting Rule\
+            \ applies. If not set, the rule applies from the beginning of time."
+          format: date-time
+          nullable: true
+          type: string
+        effectiveUntil:
+          description: "The exclusive accounting date until which the Posting Rule\
+            \ applies. If not set, the rule applies until the end of time."
+          format: date-time
+          nullable: true
+          type: string
       required:
       - generalLedgerAccountCode
       - ruleFilter
@@ -311003,11 +311519,15 @@ components:
       example:
         rules:
         - generalLedgerAccountCode: generalLedgerAccountCode
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
           ruleFilter: ruleFilter
           ruleId: ruleId
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
         - generalLedgerAccountCode: generalLedgerAccountCode
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
           ruleFilter: ruleFilter
           ruleId: ruleId
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
         links:
         - method: method
           description: description
@@ -311439,7 +311959,7 @@ components:
             description: "Available values: Price, Spread, Rate, LogNormalVol, NormalVol,\
               \ ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption,\
               \ DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall,\
-              \ ConstituentWeightFactor, ForwardPrice, DiscountFactor."
+              \ ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed."
             enum:
             - Price
             - Spread
@@ -311461,6 +311981,7 @@ components:
             - ConstituentWeightFactor
             - ForwardPrice
             - DiscountFactor
+            - PrincipalDistributed
             nullable: true
             type: string
           scenarioShiftType:
@@ -312478,7 +312999,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312602,6 +313123,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -314561,7 +315083,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -314685,6 +315207,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -314825,7 +315348,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -314949,6 +315472,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashOfferElections
@@ -316441,7 +316965,7 @@ components:
             \ LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio,\
             \ Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff,\
             \ InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice,\
-            \ DiscountFactor."
+            \ DiscountFactor, PrincipalDistributed."
           enum:
           - Price
           - Spread
@@ -316463,6 +316987,7 @@ components:
           - ConstituentWeightFactor
           - ForwardPrice
           - DiscountFactor
+          - PrincipalDistributed
           type: string
         field:
           description: "The field of the quote e.g. bid, mid, ask etc. This should\
@@ -316520,6 +317045,7 @@ components:
       - ConstituentWeightFactor
       - ForwardPrice
       - DiscountFactor
+      - PrincipalDistributed
       type: string
     RateBreakdownComponent:
       additionalProperties: false
@@ -316766,7 +317292,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -316890,6 +317416,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - effectiveAt
@@ -317095,7 +317622,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -317219,6 +317746,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -323411,7 +323939,7 @@ components:
               \ by LUSID](https://support.lusid.com/docs/day-count-conventions-supported-by-lusid)\r\
               \n \r\nSupported string (enumeration) values are: [Actual360, Act360,\
               \ MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond, ThirtyE360,\
-              \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma, ActActIcma,\
+              \ EuroBond, ActualActual, ActAct, ActActIsda, ActActIcma, ActActIsma,\
               \ OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252, NL360,\
               \ NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda,\
               \ ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
@@ -323620,7 +324148,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -323744,6 +324272,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -323822,7 +324351,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -323946,6 +324475,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -324212,7 +324742,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -324336,6 +324866,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - cashOfferElections
@@ -324425,7 +324956,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -324549,6 +325080,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - fixingDate
@@ -351902,7 +352434,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -352026,6 +352558,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -353521,7 +354054,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -353645,6 +354178,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -353831,7 +354365,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -353955,6 +354489,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -357803,8 +358338,8 @@ components:
         properties:
           additionalProperties:
             $ref: '#/components/schemas/Property'
-          description: An optional set of properties to attach to the auto-created
-            Instrument. Only applied when createInstrument is true.
+          description: An optional set of properties for the Share Class. These must
+            be from the 'Instrument' domain.
           nullable: true
           type: object
         investorType:
@@ -358330,8 +358865,8 @@ components:
         properties:
           additionalProperties:
             $ref: '#/components/schemas/Property'
-          description: An optional set of properties to attach to the auto-created
-            Instrument. Only applied when createInstrument is true.
+          description: An optional set of properties for the Share Class. These must
+            be from the 'Instrument' domain.
           nullable: true
           type: object
         investorType:
@@ -359269,7 +359804,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -359393,6 +359928,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -360135,7 +360671,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -360259,6 +360795,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -360353,7 +360890,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -360477,6 +361014,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -361270,7 +361808,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -361394,6 +361932,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -361459,7 +361998,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -361583,6 +362122,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -362517,7 +363057,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -362641,6 +363181,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -362844,7 +363385,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -362968,6 +363509,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -363028,7 +363570,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -363152,6 +363694,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - currency
@@ -363215,7 +363758,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             minLength: 1
             type: string
           triggeringEventId:
@@ -363302,7 +363845,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -363426,6 +363969,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -364091,7 +364635,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -364215,6 +364759,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - component
@@ -371664,7 +372209,7 @@ components:
             \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
             \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
             \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
-            \ InstalmentCallEvent."
+            \ InstalmentCallEvent, DepositInterestCapitalisationEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -373753,7 +374298,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -373877,6 +374422,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -374681,7 +375227,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -374805,6 +375351,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -376606,7 +377153,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -376730,6 +377277,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - amount
@@ -378866,6 +379414,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -378901,6 +379452,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -378947,6 +379501,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -378982,6 +379539,9 @@ components:
               code: code
               scope: scope
           legalMechanism: legalMechanism
+          marginAccounts:
+            theyPost: theyPost
+            wePost: wePost
           wePost:
             independentAmount: 7.061401241503109
             cashInterest:
@@ -406633,7 +407193,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -406757,6 +407317,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -407155,6 +407716,7 @@ components:
           href: https://openapi-generator.tech
           relation: relation
         href: https://openapi-generator.tech
+        datasetType: datasetType
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -407196,6 +407758,13 @@ components:
           minLength: 1
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
+        datasetType:
+          description: "Which of the two rate tables this dataset is: Anomaly or Main.\
+            \ Set when the dataset is created through the withholding tax dataset\
+            \ definitions endpoint and never changed afterwards. Available values:\
+            \ Anomaly, Main."
+          nullable: true
+          type: string
         dimensions:
           description: "The dimensions created on this dataset as series identifiers,\
             \ as stored. The mandatory core is not returned here; read the full field\
@@ -407236,6 +407805,7 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          datasetType: datasetType
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -407276,6 +407846,7 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          datasetType: datasetType
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -407738,7 +408309,7 @@ components:
               \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
-              \ FacilityCommitmentFeeEvent, InstalmentCallEvent."
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -407862,6 +408433,7 @@ components:
             - FacilityInterestEvent
             - FacilityCommitmentFeeEvent
             - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
             type: string
         required:
         - instrumentEventType
