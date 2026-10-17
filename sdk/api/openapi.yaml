@@ -419,7 +419,7 @@ info:
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10279
+  version: 0.11.10286
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -126256,39 +126256,40 @@ paths:
               displayName: Daily Custody Reconciliation
               description: Daily reconciliation of UK equity fund holdings against
                 custodian positions.
-              definitionType: PortfolioContents
               sideNames:
                 left: Investment Portfolios
                 right: Custodian
-              leftPortfolioSources:
-              - sourceType: PortfolioGroup
-                id:
-                  scope: Funds
-                  code: UKEquityFunds
-              rightPortfolioSources: []
-              valuationRecipes:
-                left:
-                  scope: Recipes
-                  code: Default
-                right:
-                  scope: Recipes
-                  code: Default
-              currencies:
-                left: GBP
-                right: USD
-              rulesets:
-              - recType: Holding
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyHoldingRules
-                relationalDataFilter: custodian eq 'NT'
-                byTaxLots:
-                  left: true
-              - recType: InputTransaction
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyTransactionRules
-                relationalDataFilter: custodian eq 'NT'
+              details:
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
+                definitionType: PortfolioContents
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -126332,39 +126333,40 @@ paths:
               displayName: Daily Custody Reconciliation
               description: Daily reconciliation of UK equity fund holdings against
                 custodian positions.
-              definitionType: PortfolioContents
               sideNames:
                 left: Investment Portfolios
                 right: Custodian
-              leftPortfolioSources:
-              - sourceType: PortfolioGroup
-                id:
-                  scope: Funds
-                  code: UKEquityFunds
-              rightPortfolioSources: []
-              valuationRecipes:
-                left:
-                  scope: Recipes
-                  code: Default
-                right:
-                  scope: Recipes
-                  code: Default
-              currencies:
-                left: GBP
-                right: USD
-              rulesets:
-              - recType: Holding
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyHoldingRules
-                relationalDataFilter: custodian eq 'NT'
-                byTaxLots:
-                  left: true
-              - recType: InputTransaction
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyTransactionRules
-                relationalDataFilter: custodian eq 'NT'
+              details:
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
+                definitionType: PortfolioContents
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -126408,39 +126410,40 @@ paths:
               displayName: Daily Custody Reconciliation
               description: Daily reconciliation of UK equity fund holdings against
                 custodian positions.
-              definitionType: PortfolioContents
               sideNames:
                 left: Investment Portfolios
                 right: Custodian
-              leftPortfolioSources:
-              - sourceType: PortfolioGroup
-                id:
-                  scope: Funds
-                  code: UKEquityFunds
-              rightPortfolioSources: []
-              valuationRecipes:
-                left:
-                  scope: Recipes
-                  code: Default
-                right:
-                  scope: Recipes
-                  code: Default
-              currencies:
-                left: GBP
-                right: USD
-              rulesets:
-              - recType: Holding
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyHoldingRules
-                relationalDataFilter: custodian eq 'NT'
-                byTaxLots:
-                  left: true
-              - recType: InputTransaction
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyTransactionRules
-                relationalDataFilter: custodian eq 'NT'
+              details:
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
+                definitionType: PortfolioContents
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -126484,39 +126487,40 @@ paths:
               displayName: Daily Custody Reconciliation
               description: Daily reconciliation of UK equity fund holdings against
                 custodian positions.
-              definitionType: PortfolioContents
               sideNames:
                 left: Investment Portfolios
                 right: Custodian
-              leftPortfolioSources:
-              - sourceType: PortfolioGroup
-                id:
-                  scope: Funds
-                  code: UKEquityFunds
-              rightPortfolioSources: []
-              valuationRecipes:
-                left:
-                  scope: Recipes
-                  code: Default
-                right:
-                  scope: Recipes
-                  code: Default
-              currencies:
-                left: GBP
-                right: USD
-              rulesets:
-              - recType: Holding
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyHoldingRules
-                relationalDataFilter: custodian eq 'NT'
-                byTaxLots:
-                  left: true
-              - recType: InputTransaction
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyTransactionRules
-                relationalDataFilter: custodian eq 'NT'
+              details:
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
+                definitionType: PortfolioContents
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -126565,39 +126569,40 @@ paths:
                 displayName: Daily Custody Reconciliation
                 description: Daily reconciliation of UK equity fund holdings against
                   custodian positions.
-                definitionType: PortfolioContents
                 sideNames:
                   left: Investment Portfolios
                   right: Custodian
-                leftPortfolioSources:
-                - sourceType: PortfolioGroup
-                  id:
-                    scope: Funds
-                    code: UKEquityFunds
-                rightPortfolioSources: []
-                valuationRecipes:
-                  left:
-                    scope: Recipes
-                    code: Default
-                  right:
-                    scope: Recipes
-                    code: Default
-                currencies:
-                  left: GBP
-                  right: USD
-                rulesets:
-                - recType: Holding
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyHoldingRules
-                  relationalDataFilter: custodian eq 'NT'
-                  byTaxLots:
-                    left: true
-                - recType: InputTransaction
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyTransactionRules
-                  relationalDataFilter: custodian eq 'NT'
+                details:
+                  leftPortfolioSources:
+                  - sourceType: PortfolioGroup
+                    id:
+                      scope: Funds
+                      code: UKEquityFunds
+                  rightPortfolioSources: []
+                  valuationRecipes:
+                    left:
+                      scope: Recipes
+                      code: Default
+                    right:
+                      scope: Recipes
+                      code: Default
+                  currencies:
+                    left: GBP
+                    right: USD
+                  rulesets:
+                  - recType: Holding
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyHoldingRules
+                    relationalDataFilter: custodian eq 'NT'
+                    byTaxLots:
+                      left: true
+                  - recType: InputTransaction
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyTransactionRules
+                    relationalDataFilter: custodian eq 'NT'
+                  definitionType: PortfolioContents
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -126645,39 +126650,40 @@ paths:
                 displayName: Daily Custody Reconciliation
                 description: Daily reconciliation of UK equity fund holdings against
                   custodian positions.
-                definitionType: PortfolioContents
                 sideNames:
                   left: Investment Portfolios
                   right: Custodian
-                leftPortfolioSources:
-                - sourceType: PortfolioGroup
-                  id:
-                    scope: Funds
-                    code: UKEquityFunds
-                rightPortfolioSources: []
-                valuationRecipes:
-                  left:
-                    scope: Recipes
-                    code: Default
-                  right:
-                    scope: Recipes
-                    code: Default
-                currencies:
-                  left: GBP
-                  right: USD
-                rulesets:
-                - recType: Holding
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyHoldingRules
-                  relationalDataFilter: custodian eq 'NT'
-                  byTaxLots:
-                    left: true
-                - recType: InputTransaction
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyTransactionRules
-                  relationalDataFilter: custodian eq 'NT'
+                details:
+                  leftPortfolioSources:
+                  - sourceType: PortfolioGroup
+                    id:
+                      scope: Funds
+                      code: UKEquityFunds
+                  rightPortfolioSources: []
+                  valuationRecipes:
+                    left:
+                      scope: Recipes
+                      code: Default
+                    right:
+                      scope: Recipes
+                      code: Default
+                  currencies:
+                    left: GBP
+                    right: USD
+                  rulesets:
+                  - recType: Holding
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyHoldingRules
+                    relationalDataFilter: custodian eq 'NT'
+                    byTaxLots:
+                      left: true
+                  - recType: InputTransaction
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyTransactionRules
+                    relationalDataFilter: custodian eq 'NT'
+                  definitionType: PortfolioContents
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -126725,39 +126731,40 @@ paths:
                 displayName: Daily Custody Reconciliation
                 description: Daily reconciliation of UK equity fund holdings against
                   custodian positions.
-                definitionType: PortfolioContents
                 sideNames:
                   left: Investment Portfolios
                   right: Custodian
-                leftPortfolioSources:
-                - sourceType: PortfolioGroup
-                  id:
-                    scope: Funds
-                    code: UKEquityFunds
-                rightPortfolioSources: []
-                valuationRecipes:
-                  left:
-                    scope: Recipes
-                    code: Default
-                  right:
-                    scope: Recipes
-                    code: Default
-                currencies:
-                  left: GBP
-                  right: USD
-                rulesets:
-                - recType: Holding
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyHoldingRules
-                  relationalDataFilter: custodian eq 'NT'
-                  byTaxLots:
-                    left: true
-                - recType: InputTransaction
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyTransactionRules
-                  relationalDataFilter: custodian eq 'NT'
+                details:
+                  leftPortfolioSources:
+                  - sourceType: PortfolioGroup
+                    id:
+                      scope: Funds
+                      code: UKEquityFunds
+                  rightPortfolioSources: []
+                  valuationRecipes:
+                    left:
+                      scope: Recipes
+                      code: Default
+                    right:
+                      scope: Recipes
+                      code: Default
+                  currencies:
+                    left: GBP
+                    right: USD
+                  rulesets:
+                  - recType: Holding
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyHoldingRules
+                    relationalDataFilter: custodian eq 'NT'
+                    byTaxLots:
+                      left: true
+                  - recType: InputTransaction
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyTransactionRules
+                    relationalDataFilter: custodian eq 'NT'
+                  definitionType: PortfolioContents
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -126962,39 +126969,40 @@ paths:
                 displayName: Daily Custody Reconciliation
                 description: Daily reconciliation of UK equity fund holdings against
                   custodian positions.
-                definitionType: PortfolioContents
                 sideNames:
                   left: Investment Portfolios
                   right: Custodian
-                leftPortfolioSources:
-                - sourceType: PortfolioGroup
-                  id:
-                    scope: Funds
-                    code: UKEquityFunds
-                rightPortfolioSources: []
-                valuationRecipes:
-                  left:
-                    scope: Recipes
-                    code: Default
-                  right:
-                    scope: Recipes
-                    code: Default
-                currencies:
-                  left: GBP
-                  right: USD
-                rulesets:
-                - recType: Holding
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyHoldingRules
-                  relationalDataFilter: custodian eq 'NT'
-                  byTaxLots:
-                    left: true
-                - recType: InputTransaction
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyTransactionRules
-                  relationalDataFilter: custodian eq 'NT'
+                details:
+                  leftPortfolioSources:
+                  - sourceType: PortfolioGroup
+                    id:
+                      scope: Funds
+                      code: UKEquityFunds
+                  rightPortfolioSources: []
+                  valuationRecipes:
+                    left:
+                      scope: Recipes
+                      code: Default
+                    right:
+                      scope: Recipes
+                      code: Default
+                  currencies:
+                    left: GBP
+                    right: USD
+                  rulesets:
+                  - recType: Holding
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyHoldingRules
+                    relationalDataFilter: custodian eq 'NT'
+                    byTaxLots:
+                      left: true
+                  - recType: InputTransaction
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyTransactionRules
+                    relationalDataFilter: custodian eq 'NT'
+                  definitionType: PortfolioContents
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -127042,39 +127050,40 @@ paths:
                 displayName: Daily Custody Reconciliation
                 description: Daily reconciliation of UK equity fund holdings against
                   custodian positions.
-                definitionType: PortfolioContents
                 sideNames:
                   left: Investment Portfolios
                   right: Custodian
-                leftPortfolioSources:
-                - sourceType: PortfolioGroup
-                  id:
-                    scope: Funds
-                    code: UKEquityFunds
-                rightPortfolioSources: []
-                valuationRecipes:
-                  left:
-                    scope: Recipes
-                    code: Default
-                  right:
-                    scope: Recipes
-                    code: Default
-                currencies:
-                  left: GBP
-                  right: USD
-                rulesets:
-                - recType: Holding
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyHoldingRules
-                  relationalDataFilter: custodian eq 'NT'
-                  byTaxLots:
-                    left: true
-                - recType: InputTransaction
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyTransactionRules
-                  relationalDataFilter: custodian eq 'NT'
+                details:
+                  leftPortfolioSources:
+                  - sourceType: PortfolioGroup
+                    id:
+                      scope: Funds
+                      code: UKEquityFunds
+                  rightPortfolioSources: []
+                  valuationRecipes:
+                    left:
+                      scope: Recipes
+                      code: Default
+                    right:
+                      scope: Recipes
+                      code: Default
+                  currencies:
+                    left: GBP
+                    right: USD
+                  rulesets:
+                  - recType: Holding
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyHoldingRules
+                    relationalDataFilter: custodian eq 'NT'
+                    byTaxLots:
+                      left: true
+                  - recType: InputTransaction
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyTransactionRules
+                    relationalDataFilter: custodian eq 'NT'
+                  definitionType: PortfolioContents
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -127122,39 +127131,40 @@ paths:
                 displayName: Daily Custody Reconciliation
                 description: Daily reconciliation of UK equity fund holdings against
                   custodian positions.
-                definitionType: PortfolioContents
                 sideNames:
                   left: Investment Portfolios
                   right: Custodian
-                leftPortfolioSources:
-                - sourceType: PortfolioGroup
-                  id:
-                    scope: Funds
-                    code: UKEquityFunds
-                rightPortfolioSources: []
-                valuationRecipes:
-                  left:
-                    scope: Recipes
-                    code: Default
-                  right:
-                    scope: Recipes
-                    code: Default
-                currencies:
-                  left: GBP
-                  right: USD
-                rulesets:
-                - recType: Holding
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyHoldingRules
-                  relationalDataFilter: custodian eq 'NT'
-                  byTaxLots:
-                    left: true
-                - recType: InputTransaction
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyTransactionRules
-                  relationalDataFilter: custodian eq 'NT'
+                details:
+                  leftPortfolioSources:
+                  - sourceType: PortfolioGroup
+                    id:
+                      scope: Funds
+                      code: UKEquityFunds
+                  rightPortfolioSources: []
+                  valuationRecipes:
+                    left:
+                      scope: Recipes
+                      code: Default
+                    right:
+                      scope: Recipes
+                      code: Default
+                  currencies:
+                    left: GBP
+                    right: USD
+                  rulesets:
+                  - recType: Holding
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyHoldingRules
+                    relationalDataFilter: custodian eq 'NT'
+                    byTaxLots:
+                      left: true
+                  - recType: InputTransaction
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyTransactionRules
+                    relationalDataFilter: custodian eq 'NT'
+                  definitionType: PortfolioContents
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -127258,39 +127268,40 @@ paths:
               displayName: Daily Custody Reconciliation
               description: Daily reconciliation of UK equity fund holdings against
                 custodian positions.
-              definitionType: PortfolioContents
               sideNames:
                 left: Investment Portfolios
                 right: Custodian
-              leftPortfolioSources:
-              - sourceType: PortfolioGroup
-                id:
-                  scope: Funds
-                  code: UKEquityFunds
-              rightPortfolioSources: []
-              valuationRecipes:
-                left:
-                  scope: Recipes
-                  code: Default
-                right:
-                  scope: Recipes
-                  code: Default
-              currencies:
-                left: GBP
-                right: USD
-              rulesets:
-              - recType: Holding
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyHoldingRules
-                relationalDataFilter: custodian eq 'NT'
-                byTaxLots:
-                  left: true
-              - recType: InputTransaction
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyTransactionRules
-                relationalDataFilter: custodian eq 'NT'
+              details:
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
+                definitionType: PortfolioContents
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -127331,39 +127342,40 @@ paths:
               displayName: Daily Custody Reconciliation
               description: Daily reconciliation of UK equity fund holdings against
                 custodian positions.
-              definitionType: PortfolioContents
               sideNames:
                 left: Investment Portfolios
                 right: Custodian
-              leftPortfolioSources:
-              - sourceType: PortfolioGroup
-                id:
-                  scope: Funds
-                  code: UKEquityFunds
-              rightPortfolioSources: []
-              valuationRecipes:
-                left:
-                  scope: Recipes
-                  code: Default
-                right:
-                  scope: Recipes
-                  code: Default
-              currencies:
-                left: GBP
-                right: USD
-              rulesets:
-              - recType: Holding
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyHoldingRules
-                relationalDataFilter: custodian eq 'NT'
-                byTaxLots:
-                  left: true
-              - recType: InputTransaction
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyTransactionRules
-                relationalDataFilter: custodian eq 'NT'
+              details:
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
+                definitionType: PortfolioContents
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -127404,39 +127416,40 @@ paths:
               displayName: Daily Custody Reconciliation
               description: Daily reconciliation of UK equity fund holdings against
                 custodian positions.
-              definitionType: PortfolioContents
               sideNames:
                 left: Investment Portfolios
                 right: Custodian
-              leftPortfolioSources:
-              - sourceType: PortfolioGroup
-                id:
-                  scope: Funds
-                  code: UKEquityFunds
-              rightPortfolioSources: []
-              valuationRecipes:
-                left:
-                  scope: Recipes
-                  code: Default
-                right:
-                  scope: Recipes
-                  code: Default
-              currencies:
-                left: GBP
-                right: USD
-              rulesets:
-              - recType: Holding
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyHoldingRules
-                relationalDataFilter: custodian eq 'NT'
-                byTaxLots:
-                  left: true
-              - recType: InputTransaction
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyTransactionRules
-                relationalDataFilter: custodian eq 'NT'
+              details:
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
+                definitionType: PortfolioContents
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -127477,39 +127490,40 @@ paths:
               displayName: Daily Custody Reconciliation
               description: Daily reconciliation of UK equity fund holdings against
                 custodian positions.
-              definitionType: PortfolioContents
               sideNames:
                 left: Investment Portfolios
                 right: Custodian
-              leftPortfolioSources:
-              - sourceType: PortfolioGroup
-                id:
-                  scope: Funds
-                  code: UKEquityFunds
-              rightPortfolioSources: []
-              valuationRecipes:
-                left:
-                  scope: Recipes
-                  code: Default
-                right:
-                  scope: Recipes
-                  code: Default
-              currencies:
-                left: GBP
-                right: USD
-              rulesets:
-              - recType: Holding
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyHoldingRules
-                relationalDataFilter: custodian eq 'NT'
-                byTaxLots:
-                  left: true
-              - recType: InputTransaction
-                matchingRulesetId:
-                  scope: Recs
-                  code: CustodyTransactionRules
-                relationalDataFilter: custodian eq 'NT'
+              details:
+                leftPortfolioSources:
+                - sourceType: PortfolioGroup
+                  id:
+                    scope: Funds
+                    code: UKEquityFunds
+                rightPortfolioSources: []
+                valuationRecipes:
+                  left:
+                    scope: Recipes
+                    code: Default
+                  right:
+                    scope: Recipes
+                    code: Default
+                currencies:
+                  left: GBP
+                  right: USD
+                rulesets:
+                - recType: Holding
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyHoldingRules
+                  relationalDataFilter: custodian eq 'NT'
+                  byTaxLots:
+                    left: true
+                - recType: InputTransaction
+                  matchingRulesetId:
+                    scope: Recs
+                    code: CustodyTransactionRules
+                  relationalDataFilter: custodian eq 'NT'
+                definitionType: PortfolioContents
               reviewConfiguration:
                 openExceptions:
                   reviewRequirement: Required
@@ -127558,39 +127572,40 @@ paths:
                 displayName: Daily Custody Reconciliation
                 description: Daily reconciliation of UK equity fund holdings against
                   custodian positions.
-                definitionType: PortfolioContents
                 sideNames:
                   left: Investment Portfolios
                   right: Custodian
-                leftPortfolioSources:
-                - sourceType: PortfolioGroup
-                  id:
-                    scope: Funds
-                    code: UKEquityFunds
-                rightPortfolioSources: []
-                valuationRecipes:
-                  left:
-                    scope: Recipes
-                    code: Default
-                  right:
-                    scope: Recipes
-                    code: Default
-                currencies:
-                  left: GBP
-                  right: USD
-                rulesets:
-                - recType: Holding
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyHoldingRules
-                  relationalDataFilter: custodian eq 'NT'
-                  byTaxLots:
-                    left: true
-                - recType: InputTransaction
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyTransactionRules
-                  relationalDataFilter: custodian eq 'NT'
+                details:
+                  leftPortfolioSources:
+                  - sourceType: PortfolioGroup
+                    id:
+                      scope: Funds
+                      code: UKEquityFunds
+                  rightPortfolioSources: []
+                  valuationRecipes:
+                    left:
+                      scope: Recipes
+                      code: Default
+                    right:
+                      scope: Recipes
+                      code: Default
+                  currencies:
+                    left: GBP
+                    right: USD
+                  rulesets:
+                  - recType: Holding
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyHoldingRules
+                    relationalDataFilter: custodian eq 'NT'
+                    byTaxLots:
+                      left: true
+                  - recType: InputTransaction
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyTransactionRules
+                    relationalDataFilter: custodian eq 'NT'
+                  definitionType: PortfolioContents
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -127638,39 +127653,40 @@ paths:
                 displayName: Daily Custody Reconciliation
                 description: Daily reconciliation of UK equity fund holdings against
                   custodian positions.
-                definitionType: PortfolioContents
                 sideNames:
                   left: Investment Portfolios
                   right: Custodian
-                leftPortfolioSources:
-                - sourceType: PortfolioGroup
-                  id:
-                    scope: Funds
-                    code: UKEquityFunds
-                rightPortfolioSources: []
-                valuationRecipes:
-                  left:
-                    scope: Recipes
-                    code: Default
-                  right:
-                    scope: Recipes
-                    code: Default
-                currencies:
-                  left: GBP
-                  right: USD
-                rulesets:
-                - recType: Holding
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyHoldingRules
-                  relationalDataFilter: custodian eq 'NT'
-                  byTaxLots:
-                    left: true
-                - recType: InputTransaction
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyTransactionRules
-                  relationalDataFilter: custodian eq 'NT'
+                details:
+                  leftPortfolioSources:
+                  - sourceType: PortfolioGroup
+                    id:
+                      scope: Funds
+                      code: UKEquityFunds
+                  rightPortfolioSources: []
+                  valuationRecipes:
+                    left:
+                      scope: Recipes
+                      code: Default
+                    right:
+                      scope: Recipes
+                      code: Default
+                  currencies:
+                    left: GBP
+                    right: USD
+                  rulesets:
+                  - recType: Holding
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyHoldingRules
+                    relationalDataFilter: custodian eq 'NT'
+                    byTaxLots:
+                      left: true
+                  - recType: InputTransaction
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyTransactionRules
+                    relationalDataFilter: custodian eq 'NT'
+                  definitionType: PortfolioContents
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -127718,39 +127734,40 @@ paths:
                 displayName: Daily Custody Reconciliation
                 description: Daily reconciliation of UK equity fund holdings against
                   custodian positions.
-                definitionType: PortfolioContents
                 sideNames:
                   left: Investment Portfolios
                   right: Custodian
-                leftPortfolioSources:
-                - sourceType: PortfolioGroup
-                  id:
-                    scope: Funds
-                    code: UKEquityFunds
-                rightPortfolioSources: []
-                valuationRecipes:
-                  left:
-                    scope: Recipes
-                    code: Default
-                  right:
-                    scope: Recipes
-                    code: Default
-                currencies:
-                  left: GBP
-                  right: USD
-                rulesets:
-                - recType: Holding
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyHoldingRules
-                  relationalDataFilter: custodian eq 'NT'
-                  byTaxLots:
-                    left: true
-                - recType: InputTransaction
-                  matchingRulesetId:
-                    scope: Recs
-                    code: CustodyTransactionRules
-                  relationalDataFilter: custodian eq 'NT'
+                details:
+                  leftPortfolioSources:
+                  - sourceType: PortfolioGroup
+                    id:
+                      scope: Funds
+                      code: UKEquityFunds
+                  rightPortfolioSources: []
+                  valuationRecipes:
+                    left:
+                      scope: Recipes
+                      code: Default
+                    right:
+                      scope: Recipes
+                      code: Default
+                  currencies:
+                    left: GBP
+                    right: USD
+                  rulesets:
+                  - recType: Holding
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyHoldingRules
+                    relationalDataFilter: custodian eq 'NT'
+                    byTaxLots:
+                      left: true
+                  - recType: InputTransaction
+                    matchingRulesetId:
+                      scope: Recs
+                      code: CustodyTransactionRules
+                    relationalDataFilter: custodian eq 'NT'
+                  definitionType: PortfolioContents
                 reviewConfiguration:
                   openExceptions:
                     reviewRequirement: Required
@@ -193188,6 +193205,7 @@ components:
               appliedTolerance:
                 ruleName: ruleName
                 toleranceType: toleranceType
+            externalRecTypeName: externalRecTypeName
             runNumber: 1
             firstRunSeen: 6
             items:
@@ -193438,6 +193456,7 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
+          externalRecTypeName: externalRecTypeName
           runNumber: 1
           firstRunSeen: 6
           items:
@@ -193625,6 +193644,7 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
+          externalRecTypeName: externalRecTypeName
           runNumber: 1
           firstRunSeen: 6
           items:
@@ -193947,6 +193967,7 @@ components:
                 appliedTolerance:
                   ruleName: ruleName
                   toleranceType: toleranceType
+              externalRecTypeName: externalRecTypeName
               runNumber: 1
               firstRunSeen: 6
               items:
@@ -194134,6 +194155,7 @@ components:
                 appliedTolerance:
                   ruleName: ruleName
                   toleranceType: toleranceType
+              externalRecTypeName: externalRecTypeName
               runNumber: 1
               firstRunSeen: 6
               items:
@@ -220958,67 +220980,6 @@ components:
     CreateRecDefinitionRequest:
       additionalProperties: false
       example:
-        rulesets:
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        displayName: displayName
-        valuationRecipes:
-          left:
-            code: code
-            scope: scope
-          right:
-            code: code
-            scope: scope
-        description: description
-        sideNames:
-          left: left
-          right: right
-        definitionType: definitionType
-        datePolicy:
-          effectiveAtProgression: effectiveAtProgression
-          asAtPolicy:
-            left: left
-            right: right
-          activityWindow:
-            windowType: windowType
         reviewConfiguration:
           requiredApprovals:
           - approvalCode: approvalCode
@@ -221048,51 +221009,23 @@ components:
           reviewSubmission:
             completionRatioThreshold: 0.08008281904610115
             autoSubmit: true
-        rightPortfolioSources:
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
+        displayName: displayName
+        description: description
+        details:
+          definitionType: definitionType
         id:
           code: code
           scope: scope
-        leftPortfolioSources:
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
+        sideNames:
+          left: left
+          right: right
+        datePolicy:
+          effectiveAtProgression: effectiveAtProgression
+          asAtPolicy:
+            left: left
+            right: right
+          activityWindow:
+            windowType: windowType
         properties:
           key:
             referenceData:
@@ -221109,9 +221042,6 @@ components:
                 - values
                 - values
             key: key
-        currencies:
-          left: left
-          right: right
       properties:
         id:
           $ref: '#/components/schemas/ResourceId'
@@ -221126,48 +221056,10 @@ components:
           minLength: 0
           nullable: true
           type: string
-        definitionType:
-          description: "What this definition reconciles, naming the kind of dataset\
-            \ that must be present on at least one side. Only PortfolioContents is\
-            \ currently supported. Available values: PortfolioContents, LusidEntity,\
-            \ RelationalData."
-          minLength: 1
-          type: string
         sideNames:
           $ref: '#/components/schemas/RecDefSideNames'
-        leftPortfolioSources:
-          description: "The portfolios, portfolio groups and funds contributing to\
-            \ the left side. Empty when the left side draws on relational data instead,\
-            \ which requires every ruleset to declare relational data for that side.\
-            \ Both sides cannot be empty."
-          items:
-            $ref: '#/components/schemas/RecDefSource'
-          maxItems: 100
-          nullable: true
-          type: array
-        rightPortfolioSources:
-          description: "The portfolios, portfolio groups and funds contributing to\
-            \ the right side. Empty when the right side draws on relational data instead,\
-            \ which requires every ruleset to declare relational data for that side.\
-            \ Both sides cannot be empty."
-          items:
-            $ref: '#/components/schemas/RecDefSource'
-          maxItems: 100
-          nullable: true
-          type: array
-        valuationRecipes:
-          $ref: '#/components/schemas/RecDefRecipeIds'
-        currencies:
-          $ref: '#/components/schemas/RecDefCurrencies'
-        rulesets:
-          description: "The types of reconciliation included in the group, each naming\
-            \ the matching ruleset that drives it. At least one entry is required,\
-            \ and each rec type may appear at most once."
-          items:
-            $ref: '#/components/schemas/RecDefRuleset'
-          maxItems: 10
-          minItems: 1
-          type: array
+        details:
+          $ref: '#/components/schemas/RecDefinitionDetails'
         reviewConfiguration:
           $ref: '#/components/schemas/RecReviewConfiguration'
         datePolicy:
@@ -221181,10 +221073,9 @@ components:
           nullable: true
           type: object
       required:
-      - definitionType
+      - details
       - displayName
       - id
-      - rulesets
       type: object
     CreateRecipeRequest:
       additionalProperties: false
@@ -236348,6 +236239,37 @@ components:
       - appliesTo
       - filter
       - filterId
+      type: object
+    ExternalRecDefinitionDetails:
+      additionalProperties: false
+      description: "A definition reconciling relational data on both sides, driven\
+        \ by a single External matching ruleset."
+      properties:
+        matchingRulesetId:
+          $ref: '#/components/schemas/ResourceId'
+        leftFilter:
+          description: "Optional filter over the left dataset's rows, in the dataset's\
+            \ own grammar, e.g. \"Values[custodian] eq 'something'\"."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          type: string
+        rightFilter:
+          description: "Optional filter over the right dataset's rows, in the dataset's\
+            \ own grammar."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          type: string
+        definitionType:
+          description: "What this definition reconciles, and so which shape of details\
+            \ it carries. PortfolioContents and External are supported; LusidEntity\
+            \ is not yet. Available values: PortfolioContents, LusidEntity, External."
+          minLength: 1
+          type: string
+      required:
+      - definitionType
+      - matchingRulesetId
       type: object
     ExternalRecType:
       additionalProperties: false
@@ -296582,58 +296504,7 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - rulesets:
-          - recType: recType
-            matchingRulesetId:
-              code: code
-              scope: scope
-            relationalDataFilter: relationalDataFilter
-            byTaxLots:
-              left: true
-              right: true
-          - recType: recType
-            matchingRulesetId:
-              code: code
-              scope: scope
-            relationalDataFilter: relationalDataFilter
-            byTaxLots:
-              left: true
-              right: true
-          displayName: displayName
-          valuationRecipes:
-            left:
-              code: code
-              scope: scope
-            right:
-              code: code
-              scope: scope
-          description: description
-          sideNames:
-            left: left
-            right: right
-          definitionType: definitionType
-          version:
-            stagedModificationIdModified: stagedModificationIdModified
-            reasonModified: reasonModified
-            entityUniqueId: entityUniqueId
-            requestIdModified: requestIdModified
-            reasonCreated: reasonCreated
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 1
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            requestIdCreated: requestIdCreated
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          datePolicy:
-            effectiveAtProgression: effectiveAtProgression
-            asAtPolicy:
-              left: left
-              right: right
-            activityWindow:
-              windowType: windowType
-          reviewConfiguration:
+        - reviewConfiguration:
             requiredApprovals:
             - approvalCode: approvalCode
               decidingUser: decidingUser
@@ -296662,15 +296533,10 @@ components:
             reviewSubmission:
               completionRatioThreshold: 0.08008281904610115
               autoSubmit: true
-          rightPortfolioSources:
-          - sourceType: sourceType
-            id:
-              code: code
-              scope: scope
-          - sourceType: sourceType
-            id:
-              code: code
-              scope: scope
+          displayName: displayName
+          description: description
+          details:
+            definitionType: definitionType
           links:
           - method: method
             description: description
@@ -296683,65 +296549,10 @@ components:
           id:
             code: code
             scope: scope
-          href: https://openapi-generator.tech
-          leftPortfolioSources:
-          - sourceType: sourceType
-            id:
-              code: code
-              scope: scope
-          - sourceType: sourceType
-            id:
-              code: code
-              scope: scope
-          properties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              key: key
-          currencies:
-            left: left
-            right: right
-        - rulesets:
-          - recType: recType
-            matchingRulesetId:
-              code: code
-              scope: scope
-            relationalDataFilter: relationalDataFilter
-            byTaxLots:
-              left: true
-              right: true
-          - recType: recType
-            matchingRulesetId:
-              code: code
-              scope: scope
-            relationalDataFilter: relationalDataFilter
-            byTaxLots:
-              left: true
-              right: true
-          displayName: displayName
-          valuationRecipes:
-            left:
-              code: code
-              scope: scope
-            right:
-              code: code
-              scope: scope
-          description: description
           sideNames:
             left: left
             right: right
-          definitionType: definitionType
+          href: https://openapi-generator.tech
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -296763,7 +296574,23 @@ components:
               right: right
             activityWindow:
               windowType: windowType
-          reviewConfiguration:
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        - reviewConfiguration:
             requiredApprovals:
             - approvalCode: approvalCode
               decidingUser: decidingUser
@@ -296792,15 +296619,10 @@ components:
             reviewSubmission:
               completionRatioThreshold: 0.08008281904610115
               autoSubmit: true
-          rightPortfolioSources:
-          - sourceType: sourceType
-            id:
-              code: code
-              scope: scope
-          - sourceType: sourceType
-            id:
-              code: code
-              scope: scope
+          displayName: displayName
+          description: description
+          details:
+            definitionType: definitionType
           links:
           - method: method
             description: description
@@ -296813,16 +296635,31 @@ components:
           id:
             code: code
             scope: scope
+          sideNames:
+            left: left
+            right: right
           href: https://openapi-generator.tech
-          leftPortfolioSources:
-          - sourceType: sourceType
-            id:
-              code: code
-              scope: scope
-          - sourceType: sourceType
-            id:
-              code: code
-              scope: scope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          datePolicy:
+            effectiveAtProgression: effectiveAtProgression
+            asAtPolicy:
+              left: left
+              right: right
+            activityWindow:
+              windowType: windowType
           properties:
             key:
               referenceData:
@@ -296839,9 +296676,6 @@ components:
                   - values
                   - values
               key: key
-          currencies:
-            left: left
-            right: right
         links:
         - method: method
           description: description
@@ -297615,6 +297449,7 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
+          externalRecTypeName: externalRecTypeName
           runNumber: 1
           firstRunSeen: 6
           items:
@@ -297802,6 +297637,7 @@ components:
             appliedTolerance:
               ruleName: ruleName
               toleranceType: toleranceType
+          externalRecTypeName: externalRecTypeName
           runNumber: 1
           firstRunSeen: 6
           items:
@@ -297967,6 +297803,7 @@ components:
             asAtSuperseded: 2000-01-23T04:56:07.000+00:00
             userId: userId
             commentText: commentText
+          externalRecTypeName: externalRecTypeName
           previousRuns:
           - approvalStatus: approvalStatus
             execution:
@@ -298240,6 +298077,7 @@ components:
             asAtSuperseded: 2000-01-23T04:56:07.000+00:00
             userId: userId
             commentText: commentText
+          externalRecTypeName: externalRecTypeName
           previousRuns:
           - approvalStatus: approvalStatus
             execution:
@@ -307280,6 +307118,54 @@ components:
       required:
       - currency
       - records
+      type: object
+    PortfolioContentsRecDefinitionDetails:
+      additionalProperties: false
+      description: "A definition reconciling the contents of LUSID portfolios on at\
+        \ least one side, with a relational dataset\r\npermitted on the other."
+      properties:
+        leftPortfolioSources:
+          description: "The portfolios, portfolio groups and funds contributing to\
+            \ the left side. Empty when the left side draws on relational data instead,\
+            \ which requires every ruleset to declare relational data for that side.\
+            \ Both sides cannot be empty."
+          items:
+            $ref: '#/components/schemas/RecDefSource'
+          maxItems: 100
+          type: array
+        rightPortfolioSources:
+          description: "The portfolios, portfolio groups and funds contributing to\
+            \ the right side. Empty when the right side draws on relational data instead,\
+            \ which requires every ruleset to declare relational data for that side.\
+            \ Both sides cannot be empty."
+          items:
+            $ref: '#/components/schemas/RecDefSource'
+          maxItems: 100
+          type: array
+        valuationRecipes:
+          $ref: '#/components/schemas/RecDefRecipeIds'
+        currencies:
+          $ref: '#/components/schemas/RecDefCurrencies'
+        rulesets:
+          description: "The types of reconciliation included in the group, each naming\
+            \ the matching ruleset that drives it. At least one entry is required,\
+            \ and each rec type may appear at most once."
+          items:
+            $ref: '#/components/schemas/RecDefRuleset'
+          maxItems: 10
+          minItems: 1
+          type: array
+        definitionType:
+          description: "What this definition reconciles, and so which shape of details\
+            \ it carries. PortfolioContents and External are supported; LusidEntity\
+            \ is not yet. Available values: PortfolioContents, LusidEntity, External."
+          minLength: 1
+          type: string
+      required:
+      - definitionType
+      - leftPortfolioSources
+      - rightPortfolioSources
+      - rulesets
       type: object
     PortfolioDetails:
       additionalProperties: false
@@ -318031,9 +317917,6 @@ components:
       additionalProperties: false
       description: Per-side tax-lot granularity for a Holding entry of a rec definition's
         rulesets.
-      example:
-        left: true
-        right: true
       properties:
         left:
           description: "Whether the left side splits holdings by tax lot. Must be\
@@ -318048,9 +317931,6 @@ components:
       type: object
     RecDefCurrencies:
       additionalProperties: false
-      example:
-        left: left
-        right: right
       properties:
         left:
           description: The currency used on the left side of the reconciliation.
@@ -318071,57 +317951,6 @@ components:
     RecDefinition:
       additionalProperties: false
       example:
-        rulesets:
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        displayName: displayName
-        valuationRecipes:
-          left:
-            code: code
-            scope: scope
-          right:
-            code: code
-            scope: scope
-        description: description
-        sideNames:
-          left: left
-          right: right
-        definitionType: definitionType
-        version:
-          stagedModificationIdModified: stagedModificationIdModified
-          reasonModified: reasonModified
-          entityUniqueId: entityUniqueId
-          requestIdModified: requestIdModified
-          reasonCreated: reasonCreated
-          asAtModified: 2000-01-23T04:56:07.000+00:00
-          userIdModified: userIdModified
-          asAtVersionNumber: 1
-          asAtCreated: 2000-01-23T04:56:07.000+00:00
-          requestIdCreated: requestIdCreated
-          userIdCreated: userIdCreated
-          effectiveFrom: 2000-01-23T04:56:07.000+00:00
-          asAtDate: 2000-01-23T04:56:07.000+00:00
-        datePolicy:
-          effectiveAtProgression: effectiveAtProgression
-          asAtPolicy:
-            left: left
-            right: right
-          activityWindow:
-            windowType: windowType
         reviewConfiguration:
           requiredApprovals:
           - approvalCode: approvalCode
@@ -318151,15 +317980,10 @@ components:
           reviewSubmission:
             completionRatioThreshold: 0.08008281904610115
             autoSubmit: true
-        rightPortfolioSources:
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
+        displayName: displayName
+        description: description
+        details:
+          definitionType: definitionType
         links:
         - method: method
           description: description
@@ -318172,16 +317996,31 @@ components:
         id:
           code: code
           scope: scope
+        sideNames:
+          left: left
+          right: right
         href: https://openapi-generator.tech
-        leftPortfolioSources:
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        datePolicy:
+          effectiveAtProgression: effectiveAtProgression
+          asAtPolicy:
+            left: left
+            right: right
+          activityWindow:
+            windowType: windowType
         properties:
           key:
             referenceData:
@@ -318198,9 +318037,6 @@ components:
                 - values
                 - values
             key: key
-        currencies:
-          left: left
-          right: right
       properties:
         id:
           $ref: '#/components/schemas/ResourceId'
@@ -318212,42 +318048,10 @@ components:
           description: A description of the rec definition.
           nullable: true
           type: string
-        definitionType:
-          description: "What this definition reconciles, naming the kind of dataset\
-            \ that must be present on at least one side. Only PortfolioContents is\
-            \ currently supported. Available values: PortfolioContents, LusidEntity,\
-            \ RelationalData."
-          minLength: 1
-          type: string
         sideNames:
           $ref: '#/components/schemas/RecDefSideNames'
-        leftPortfolioSources:
-          description: "The portfolios, portfolio groups and funds contributing to\
-            \ the left side. Empty when the left side draws on relational data instead,\
-            \ which requires every ruleset to declare relational data for that side.\
-            \ Both sides cannot be empty."
-          items:
-            $ref: '#/components/schemas/RecDefSource'
-          type: array
-        rightPortfolioSources:
-          description: "The portfolios, portfolio groups and funds contributing to\
-            \ the right side. Empty when the right side draws on relational data instead,\
-            \ which requires every ruleset to declare relational data for that side.\
-            \ Both sides cannot be empty."
-          items:
-            $ref: '#/components/schemas/RecDefSource'
-          type: array
-        valuationRecipes:
-          $ref: '#/components/schemas/RecDefRecipeIds'
-        currencies:
-          $ref: '#/components/schemas/RecDefCurrencies'
-        rulesets:
-          description: "The types of reconciliation included in the group, each naming\
-            \ the matching ruleset that drives it. At least one entry is required,\
-            \ and each rec type may appear at most once."
-          items:
-            $ref: '#/components/schemas/RecDefRuleset'
-          type: array
+        details:
+          $ref: '#/components/schemas/RecDefinitionDetails'
         reviewConfiguration:
           $ref: '#/components/schemas/RecReviewConfiguration'
         datePolicy:
@@ -318275,23 +318079,38 @@ components:
           type: array
       required:
       - datePolicy
-      - definitionType
+      - details
       - displayName
       - id
-      - leftPortfolioSources
       - reviewConfiguration
-      - rightPortfolioSources
-      - rulesets
+      type: object
+    RecDefinitionDetails:
+      additionalProperties: false
+      description: "Base class for the part of a rec definition whose shape depends\
+        \ on what it reconciles. Polymorphic by\r\ndefinitionType; each supported\
+        \ type has a corresponding inherited class."
+      discriminator:
+        mapping:
+          PortfolioContents: '#/components/schemas/PortfolioContentsRecDefinitionDetails'
+          External: '#/components/schemas/ExternalRecDefinitionDetails'
+        propertyName: definitionType
+      example:
+        definitionType: definitionType
+      oneOf:
+      - $ref: '#/components/schemas/ExternalRecDefinitionDetails'
+      - $ref: '#/components/schemas/PortfolioContentsRecDefinitionDetails'
+      properties:
+        definitionType:
+          description: "What this definition reconciles, and so which shape of details\
+            \ it carries. PortfolioContents and External are supported; LusidEntity\
+            \ is not yet. Available values: PortfolioContents, LusidEntity, External."
+          minLength: 1
+          type: string
+      required:
+      - definitionType
       type: object
     RecDefRecipeIds:
       additionalProperties: false
-      example:
-        left:
-          code: code
-          scope: scope
-        right:
-          code: code
-          scope: scope
       properties:
         left:
           $ref: '#/components/schemas/ResourceId'
@@ -318303,15 +318122,6 @@ components:
       type: object
     RecDefRuleset:
       additionalProperties: false
-      example:
-        recType: recType
-        matchingRulesetId:
-          code: code
-          scope: scope
-        relationalDataFilter: relationalDataFilter
-        byTaxLots:
-          left: true
-          right: true
       properties:
         recType:
           description: "The type of reconciliation this entry configures. Must be\
@@ -318360,11 +318170,6 @@ components:
       type: object
     RecDefSource:
       additionalProperties: false
-      example:
-        sourceType: sourceType
-        id:
-          code: code
-          scope: scope
       properties:
         sourceType:
           description: "The type of entity that this source refers to. Available values:\
@@ -320940,6 +320745,7 @@ components:
           appliedTolerance:
             ruleName: ruleName
             toleranceType: toleranceType
+        externalRecTypeName: externalRecTypeName
         runNumber: 1
         firstRunSeen: 6
         items:
@@ -321009,6 +320815,12 @@ components:
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
             \ OutputTransaction, SettlementActivity, External."
           minLength: 1
+          type: string
+        externalRecTypeName:
+          description: "The client's name for an External rec type, as stamped from\
+            \ the matching ruleset's externalRecType when the run executed. Null for\
+            \ native rec types. Filterable."
+          nullable: true
           type: string
         instanceId:
           $ref: '#/components/schemas/RecInstanceId'
@@ -321353,11 +321165,12 @@ components:
           type: string
         itemType:
           description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
-            \ Transaction or SettlementActivity. Names the item rather than the rec\
-            \ type: Holding and CashHolding recs produce Holding items, a Valuation\
-            \ rec produces ValuedHolding items, and both transaction rec types produce\
-            \ Transaction items. Available values: SettlementActivity, Holding, Transaction,\
-            \ ValuedHolding."
+            \ Transaction, SettlementActivity or RelationalDataPoint. Names the item\
+            \ rather than the rec type: Holding and CashHolding recs produce Holding\
+            \ items, a Valuation rec produces ValuedHolding items, both transaction\
+            \ rec types produce Transaction items, and a relational dataset side produces\
+            \ RelationalDataPoint items whatever the rec type. Available values: SettlementActivity,\
+            \ Holding, Transaction, ValuedHolding, RelationalDataPoint."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -321392,6 +321205,7 @@ components:
           ValuedHolding: '#/components/schemas/RecResultHoldingItem'
           Transaction: '#/components/schemas/RecResultTransactionItem'
           SettlementActivity: '#/components/schemas/RecResultSettlementActivityItem'
+          RelationalDataPoint: '#/components/schemas/RecResultRelationalDataItem'
         propertyName: itemType
       example:
         itemType: itemType
@@ -321402,16 +321216,18 @@ components:
         - writebackType: writebackType
       oneOf:
       - $ref: '#/components/schemas/RecResultHoldingItem'
+      - $ref: '#/components/schemas/RecResultRelationalDataItem'
       - $ref: '#/components/schemas/RecResultSettlementActivityItem'
       - $ref: '#/components/schemas/RecResultTransactionItem'
       properties:
         itemType:
           description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
-            \ Transaction or SettlementActivity. Names the item rather than the rec\
-            \ type: Holding and CashHolding recs produce Holding items, a Valuation\
-            \ rec produces ValuedHolding items, and both transaction rec types produce\
-            \ Transaction items. Available values: SettlementActivity, Holding, Transaction,\
-            \ ValuedHolding."
+            \ Transaction, SettlementActivity or RelationalDataPoint. Names the item\
+            \ rather than the rec type: Holding and CashHolding recs produce Holding\
+            \ items, a Valuation rec produces ValuedHolding items, both transaction\
+            \ rec types produce Transaction items, and a relational dataset side produces\
+            \ RelationalDataPoint items whatever the rec type. Available values: SettlementActivity,\
+            \ Holding, Transaction, ValuedHolding, RelationalDataPoint."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -321520,6 +321336,53 @@ components:
             \ pairing. Null for a holding-keyed one."
           nullable: true
           type: string
+      type: object
+    RecResultRelationalDataItem:
+      additionalProperties: false
+      description: "A relational data point item within a rec result: one row of a\
+        \ relational dataset. The dataset and the unique\r\nid of the data point identify\
+        \ the row. All rec types use this item shape."
+      properties:
+        relationalDatasetDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        relationalDataPointUniqueId:
+          description: "The unique id of the relational data point the run read, as\
+            \ minted by the relational dataset store. Opaque: compare it whole, do\
+            \ not parse it."
+          minLength: 1
+          type: string
+        itemType:
+          description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
+            \ Transaction, SettlementActivity or RelationalDataPoint. Names the item\
+            \ rather than the rec type: Holding and CashHolding recs produce Holding\
+            \ items, a Valuation rec produces ValuedHolding items, both transaction\
+            \ rec types produce Transaction items, and a relational dataset side produces\
+            \ RelationalDataPoint items whatever the rec type. Available values: SettlementActivity,\
+            \ Holding, Transaction, ValuedHolding, RelationalDataPoint."
+          minLength: 1
+          type: string
+        ruleAndAttributeValues:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The core rule, aggregate rule and supplemental attribute values\
+            \ for the item, keyed by name."
+          nullable: true
+          type: object
+        writebackSuggestions:
+          description: "The writebacks suggested against this item, as configured\
+            \ by the matching ruleset's writebackConfigurations. Only ever populated\
+            \ on target-side items. Suggestions only: a user is expected to review\
+            \ them before acting. Required, but may be empty."
+          items:
+            $ref: '#/components/schemas/WritebackSuggestion'
+          readOnly: true
+          type: array
+      required:
+      - itemType
+      - relationalDataPointUniqueId
+      - relationalDatasetDefinitionId
+      - writebackSuggestions
       type: object
     RecResultReview:
       additionalProperties: false
@@ -321635,6 +321498,7 @@ components:
           asAtSuperseded: 2000-01-23T04:56:07.000+00:00
           userId: userId
           commentText: commentText
+        externalRecTypeName: externalRecTypeName
         previousRuns:
         - approvalStatus: approvalStatus
           execution:
@@ -321837,6 +321701,12 @@ components:
             \ OutputTransaction, SettlementActivity, External."
           minLength: 1
           type: string
+        externalRecTypeName:
+          description: "The client's name for an External rec type, as stamped from\
+            \ the matching ruleset's externalRecType when the run executed. Null for\
+            \ native rec types. Filterable."
+          nullable: true
+          type: string
         recInstance:
           $ref: '#/components/schemas/RecInstanceSummary'
         runNumber:
@@ -321982,11 +321852,12 @@ components:
           type: array
         itemType:
           description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
-            \ Transaction or SettlementActivity. Names the item rather than the rec\
-            \ type: Holding and CashHolding recs produce Holding items, a Valuation\
-            \ rec produces ValuedHolding items, and both transaction rec types produce\
-            \ Transaction items. Available values: SettlementActivity, Holding, Transaction,\
-            \ ValuedHolding."
+            \ Transaction, SettlementActivity or RelationalDataPoint. Names the item\
+            \ rather than the rec type: Holding and CashHolding recs produce Holding\
+            \ items, a Valuation rec produces ValuedHolding items, both transaction\
+            \ rec types produce Transaction items, and a relational dataset side produces\
+            \ RelationalDataPoint items whatever the rec type. Available values: SettlementActivity,\
+            \ Holding, Transaction, ValuedHolding, RelationalDataPoint."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -322033,11 +321904,12 @@ components:
           type: array
         itemType:
           description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
-            \ Transaction or SettlementActivity. Names the item rather than the rec\
-            \ type: Holding and CashHolding recs produce Holding items, a Valuation\
-            \ rec produces ValuedHolding items, and both transaction rec types produce\
-            \ Transaction items. Available values: SettlementActivity, Holding, Transaction,\
-            \ ValuedHolding."
+            \ Transaction, SettlementActivity or RelationalDataPoint. Names the item\
+            \ rather than the rec type: Holding and CashHolding recs produce Holding\
+            \ items, a Valuation rec produces ValuedHolding items, both transaction\
+            \ rec types produce Transaction items, and a relational dataset side produces\
+            \ RelationalDataPoint items whatever the rec type. Available values: SettlementActivity,\
+            \ Holding, Transaction, ValuedHolding, RelationalDataPoint."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -378400,47 +378272,6 @@ components:
     UpdateRecDefinitionRequest:
       additionalProperties: false
       example:
-        rulesets:
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
-        - recType: recType
-          matchingRulesetId:
-            code: code
-            scope: scope
-          relationalDataFilter: relationalDataFilter
-          byTaxLots:
-            left: true
-            right: true
         reviewConfiguration:
           requiredApprovals:
           - approvalCode: approvalCode
@@ -378470,61 +378301,13 @@ components:
           reviewSubmission:
             completionRatioThreshold: 0.08008281904610115
             autoSubmit: true
-        rightPortfolioSources:
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
         displayName: displayName
-        valuationRecipes:
-          left:
-            code: code
-            scope: scope
-          right:
-            code: code
-            scope: scope
         description: description
+        details:
+          definitionType: definitionType
         sideNames:
           left: left
           right: right
-        definitionType: definitionType
-        leftPortfolioSources:
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
-        - sourceType: sourceType
-          id:
-            code: code
-            scope: scope
         datePolicy:
           effectiveAtProgression: effectiveAtProgression
           asAtPolicy:
@@ -378548,9 +378331,6 @@ components:
                 - values
                 - values
             key: key
-        currencies:
-          left: left
-          right: right
       properties:
         displayName:
           description: The name of the rec definition.
@@ -378563,48 +378343,10 @@ components:
           minLength: 0
           nullable: true
           type: string
-        definitionType:
-          description: "What this definition reconciles, naming the kind of dataset\
-            \ that must be present on at least one side. Only PortfolioContents is\
-            \ currently supported. Available values: PortfolioContents, LusidEntity,\
-            \ RelationalData."
-          minLength: 1
-          type: string
         sideNames:
           $ref: '#/components/schemas/RecDefSideNames'
-        leftPortfolioSources:
-          description: "The portfolios, portfolio groups and funds contributing to\
-            \ the left side. Empty when the left side draws on relational data instead,\
-            \ which requires every ruleset to declare relational data for that side.\
-            \ Both sides cannot be empty."
-          items:
-            $ref: '#/components/schemas/RecDefSource'
-          maxItems: 100
-          nullable: true
-          type: array
-        rightPortfolioSources:
-          description: "The portfolios, portfolio groups and funds contributing to\
-            \ the right side. Empty when the right side draws on relational data instead,\
-            \ which requires every ruleset to declare relational data for that side.\
-            \ Both sides cannot be empty."
-          items:
-            $ref: '#/components/schemas/RecDefSource'
-          maxItems: 100
-          nullable: true
-          type: array
-        valuationRecipes:
-          $ref: '#/components/schemas/RecDefRecipeIds'
-        currencies:
-          $ref: '#/components/schemas/RecDefCurrencies'
-        rulesets:
-          description: "The types of reconciliation included in the group, each naming\
-            \ the matching ruleset that drives it. At least one entry is required,\
-            \ and each rec type may appear at most once."
-          items:
-            $ref: '#/components/schemas/RecDefRuleset'
-          maxItems: 10
-          minItems: 1
-          type: array
+        details:
+          $ref: '#/components/schemas/RecDefinitionDetails'
         reviewConfiguration:
           $ref: '#/components/schemas/RecReviewConfiguration'
         datePolicy:
@@ -378618,9 +378360,8 @@ components:
           nullable: true
           type: object
       required:
-      - definitionType
+      - details
       - displayName
-      - rulesets
       type: object
     UpdateReconciliationRequest:
       additionalProperties: false
@@ -408167,7 +407908,7 @@ components:
         type:
           description: The type of the workspace item.
           minLength: 1
-          pattern: ^(luminesce-saved-query|lusid-web-rebalance-control-panel|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
+          pattern: ^(luminesce-saved-query|luminesce-multi-query|lusid-web-rebalance-control-panel|lusid-web-rebalance-in-progress|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
           type: string
       required:
       - content
@@ -408201,7 +407942,7 @@ components:
         type:
           description: The type of the workspace item.
           minLength: 1
-          pattern: ^(luminesce-saved-query|lusid-web-rebalance-control-panel|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
+          pattern: ^(luminesce-saved-query|luminesce-multi-query|lusid-web-rebalance-control-panel|lusid-web-rebalance-in-progress|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
           type: string
       required:
       - content

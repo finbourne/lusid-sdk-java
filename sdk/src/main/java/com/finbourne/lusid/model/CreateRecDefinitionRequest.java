@@ -13,11 +13,8 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RecDatePolicy;
-import com.finbourne.lusid.model.RecDefCurrencies;
-import com.finbourne.lusid.model.RecDefRecipeIds;
-import com.finbourne.lusid.model.RecDefRuleset;
 import com.finbourne.lusid.model.RecDefSideNames;
-import com.finbourne.lusid.model.RecDefSource;
+import com.finbourne.lusid.model.RecDefinitionDetails;
 import com.finbourne.lusid.model.RecReviewConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -26,10 +23,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -75,33 +70,13 @@ public class CreateRecDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_DEFINITION_TYPE = "definitionType";
-  @SerializedName(SERIALIZED_NAME_DEFINITION_TYPE)
-  private String definitionType;
-
   public static final String SERIALIZED_NAME_SIDE_NAMES = "sideNames";
   @SerializedName(SERIALIZED_NAME_SIDE_NAMES)
   private RecDefSideNames sideNames;
 
-  public static final String SERIALIZED_NAME_LEFT_PORTFOLIO_SOURCES = "leftPortfolioSources";
-  @SerializedName(SERIALIZED_NAME_LEFT_PORTFOLIO_SOURCES)
-  private List<RecDefSource> leftPortfolioSources;
-
-  public static final String SERIALIZED_NAME_RIGHT_PORTFOLIO_SOURCES = "rightPortfolioSources";
-  @SerializedName(SERIALIZED_NAME_RIGHT_PORTFOLIO_SOURCES)
-  private List<RecDefSource> rightPortfolioSources;
-
-  public static final String SERIALIZED_NAME_VALUATION_RECIPES = "valuationRecipes";
-  @SerializedName(SERIALIZED_NAME_VALUATION_RECIPES)
-  private RecDefRecipeIds valuationRecipes;
-
-  public static final String SERIALIZED_NAME_CURRENCIES = "currencies";
-  @SerializedName(SERIALIZED_NAME_CURRENCIES)
-  private RecDefCurrencies currencies;
-
-  public static final String SERIALIZED_NAME_RULESETS = "rulesets";
-  @SerializedName(SERIALIZED_NAME_RULESETS)
-  private List<RecDefRuleset> rulesets = new ArrayList<>();
+  public static final String SERIALIZED_NAME_DETAILS = "details";
+  @SerializedName(SERIALIZED_NAME_DETAILS)
+  private RecDefinitionDetails details;
 
   public static final String SERIALIZED_NAME_REVIEW_CONFIGURATION = "reviewConfiguration";
   @SerializedName(SERIALIZED_NAME_REVIEW_CONFIGURATION)
@@ -181,27 +156,6 @@ public class CreateRecDefinitionRequest {
   }
 
 
-  public CreateRecDefinitionRequest definitionType(String definitionType) {
-    
-    this.definitionType = definitionType;
-    return this;
-  }
-
-   /**
-   * What this definition reconciles, naming the kind of dataset that must be present on at least one side. Only PortfolioContents is currently supported. Available values: PortfolioContents, LusidEntity, RelationalData.
-   * @return definitionType
-  **/
-  @jakarta.annotation.Nonnull
-  public String getDefinitionType() {
-    return definitionType;
-  }
-
-
-  public void setDefinitionType(String definitionType) {
-    this.definitionType = definitionType;
-  }
-
-
   public CreateRecDefinitionRequest sideNames(RecDefSideNames sideNames) {
     
     this.sideNames = sideNames;
@@ -223,132 +177,24 @@ public class CreateRecDefinitionRequest {
   }
 
 
-  public CreateRecDefinitionRequest leftPortfolioSources(List<RecDefSource> leftPortfolioSources) {
+  public CreateRecDefinitionRequest details(RecDefinitionDetails details) {
     
-    this.leftPortfolioSources = leftPortfolioSources;
-    return this;
-  }
-
-  public CreateRecDefinitionRequest addLeftPortfolioSourcesItem(RecDefSource leftPortfolioSourcesItem) {
-    if (this.leftPortfolioSources == null) {
-      this.leftPortfolioSources = new ArrayList<>();
-    }
-    this.leftPortfolioSources.add(leftPortfolioSourcesItem);
+    this.details = details;
     return this;
   }
 
    /**
-   * The portfolios, portfolio groups and funds contributing to the left side. Empty when the left side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty.
-   * @return leftPortfolioSources
-  **/
-  @jakarta.annotation.Nullable
-  public List<RecDefSource> getLeftPortfolioSources() {
-    return leftPortfolioSources;
-  }
-
-
-  public void setLeftPortfolioSources(List<RecDefSource> leftPortfolioSources) {
-    this.leftPortfolioSources = leftPortfolioSources;
-  }
-
-
-  public CreateRecDefinitionRequest rightPortfolioSources(List<RecDefSource> rightPortfolioSources) {
-    
-    this.rightPortfolioSources = rightPortfolioSources;
-    return this;
-  }
-
-  public CreateRecDefinitionRequest addRightPortfolioSourcesItem(RecDefSource rightPortfolioSourcesItem) {
-    if (this.rightPortfolioSources == null) {
-      this.rightPortfolioSources = new ArrayList<>();
-    }
-    this.rightPortfolioSources.add(rightPortfolioSourcesItem);
-    return this;
-  }
-
-   /**
-   * The portfolios, portfolio groups and funds contributing to the right side. Empty when the right side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty.
-   * @return rightPortfolioSources
-  **/
-  @jakarta.annotation.Nullable
-  public List<RecDefSource> getRightPortfolioSources() {
-    return rightPortfolioSources;
-  }
-
-
-  public void setRightPortfolioSources(List<RecDefSource> rightPortfolioSources) {
-    this.rightPortfolioSources = rightPortfolioSources;
-  }
-
-
-  public CreateRecDefinitionRequest valuationRecipes(RecDefRecipeIds valuationRecipes) {
-    
-    this.valuationRecipes = valuationRecipes;
-    return this;
-  }
-
-   /**
-   * Get valuationRecipes
-   * @return valuationRecipes
-  **/
-  @jakarta.annotation.Nullable
-  public RecDefRecipeIds getValuationRecipes() {
-    return valuationRecipes;
-  }
-
-
-  public void setValuationRecipes(RecDefRecipeIds valuationRecipes) {
-    this.valuationRecipes = valuationRecipes;
-  }
-
-
-  public CreateRecDefinitionRequest currencies(RecDefCurrencies currencies) {
-    
-    this.currencies = currencies;
-    return this;
-  }
-
-   /**
-   * Get currencies
-   * @return currencies
-  **/
-  @jakarta.annotation.Nullable
-  public RecDefCurrencies getCurrencies() {
-    return currencies;
-  }
-
-
-  public void setCurrencies(RecDefCurrencies currencies) {
-    this.currencies = currencies;
-  }
-
-
-  public CreateRecDefinitionRequest rulesets(List<RecDefRuleset> rulesets) {
-    
-    this.rulesets = rulesets;
-    return this;
-  }
-
-  public CreateRecDefinitionRequest addRulesetsItem(RecDefRuleset rulesetsItem) {
-    if (this.rulesets == null) {
-      this.rulesets = new ArrayList<>();
-    }
-    this.rulesets.add(rulesetsItem);
-    return this;
-  }
-
-   /**
-   * The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once.
-   * @return rulesets
+   * Get details
+   * @return details
   **/
   @jakarta.annotation.Nonnull
-  public List<RecDefRuleset> getRulesets() {
-    return rulesets;
+  public RecDefinitionDetails getDetails() {
+    return details;
   }
 
 
-  public void setRulesets(List<RecDefRuleset> rulesets) {
-    this.rulesets = rulesets;
+  public void setDetails(RecDefinitionDetails details) {
+    this.details = details;
   }
 
 
@@ -436,13 +282,8 @@ public class CreateRecDefinitionRequest {
     return Objects.equals(this.id, createRecDefinitionRequest.id) &&
         Objects.equals(this.displayName, createRecDefinitionRequest.displayName) &&
         Objects.equals(this.description, createRecDefinitionRequest.description) &&
-        Objects.equals(this.definitionType, createRecDefinitionRequest.definitionType) &&
         Objects.equals(this.sideNames, createRecDefinitionRequest.sideNames) &&
-        Objects.equals(this.leftPortfolioSources, createRecDefinitionRequest.leftPortfolioSources) &&
-        Objects.equals(this.rightPortfolioSources, createRecDefinitionRequest.rightPortfolioSources) &&
-        Objects.equals(this.valuationRecipes, createRecDefinitionRequest.valuationRecipes) &&
-        Objects.equals(this.currencies, createRecDefinitionRequest.currencies) &&
-        Objects.equals(this.rulesets, createRecDefinitionRequest.rulesets) &&
+        Objects.equals(this.details, createRecDefinitionRequest.details) &&
         Objects.equals(this.reviewConfiguration, createRecDefinitionRequest.reviewConfiguration) &&
         Objects.equals(this.datePolicy, createRecDefinitionRequest.datePolicy) &&
         Objects.equals(this.properties, createRecDefinitionRequest.properties);
@@ -454,7 +295,7 @@ public class CreateRecDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, description, definitionType, sideNames, leftPortfolioSources, rightPortfolioSources, valuationRecipes, currencies, rulesets, reviewConfiguration, datePolicy, properties);
+    return Objects.hash(id, displayName, description, sideNames, details, reviewConfiguration, datePolicy, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -471,13 +312,8 @@ public class CreateRecDefinitionRequest {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    definitionType: ").append(toIndentedString(definitionType)).append("\n");
     sb.append("    sideNames: ").append(toIndentedString(sideNames)).append("\n");
-    sb.append("    leftPortfolioSources: ").append(toIndentedString(leftPortfolioSources)).append("\n");
-    sb.append("    rightPortfolioSources: ").append(toIndentedString(rightPortfolioSources)).append("\n");
-    sb.append("    valuationRecipes: ").append(toIndentedString(valuationRecipes)).append("\n");
-    sb.append("    currencies: ").append(toIndentedString(currencies)).append("\n");
-    sb.append("    rulesets: ").append(toIndentedString(rulesets)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    reviewConfiguration: ").append(toIndentedString(reviewConfiguration)).append("\n");
     sb.append("    datePolicy: ").append(toIndentedString(datePolicy)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
@@ -506,13 +342,8 @@ public class CreateRecDefinitionRequest {
     openapiFields.add("id");
     openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("definitionType");
     openapiFields.add("sideNames");
-    openapiFields.add("leftPortfolioSources");
-    openapiFields.add("rightPortfolioSources");
-    openapiFields.add("valuationRecipes");
-    openapiFields.add("currencies");
-    openapiFields.add("rulesets");
+    openapiFields.add("details");
     openapiFields.add("reviewConfiguration");
     openapiFields.add("datePolicy");
     openapiFields.add("properties");
@@ -521,8 +352,7 @@ public class CreateRecDefinitionRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("displayName");
-    openapiRequiredFields.add("definitionType");
-    openapiRequiredFields.add("rulesets");
+    openapiRequiredFields.add("details");
   }
 
  /**
@@ -553,59 +383,12 @@ public class CreateRecDefinitionRequest {
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      if (!jsonObj.get("definitionType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `definitionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("definitionType").toString()));
-      }
       // validate the optional field `sideNames`
       if (jsonObj.get("sideNames") != null && !jsonObj.get("sideNames").isJsonNull()) {
         RecDefSideNames.validateJsonElement(jsonObj.get("sideNames"));
       }
-      if (jsonObj.get("leftPortfolioSources") != null && !jsonObj.get("leftPortfolioSources").isJsonNull()) {
-        JsonArray jsonArrayleftPortfolioSources = jsonObj.getAsJsonArray("leftPortfolioSources");
-        if (jsonArrayleftPortfolioSources != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("leftPortfolioSources").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `leftPortfolioSources` to be an array in the JSON string but got `%s`", jsonObj.get("leftPortfolioSources").toString()));
-          }
-
-          // validate the optional field `leftPortfolioSources` (array)
-          for (int i = 0; i < jsonArrayleftPortfolioSources.size(); i++) {
-            RecDefSource.validateJsonElement(jsonArrayleftPortfolioSources.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("rightPortfolioSources") != null && !jsonObj.get("rightPortfolioSources").isJsonNull()) {
-        JsonArray jsonArrayrightPortfolioSources = jsonObj.getAsJsonArray("rightPortfolioSources");
-        if (jsonArrayrightPortfolioSources != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("rightPortfolioSources").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `rightPortfolioSources` to be an array in the JSON string but got `%s`", jsonObj.get("rightPortfolioSources").toString()));
-          }
-
-          // validate the optional field `rightPortfolioSources` (array)
-          for (int i = 0; i < jsonArrayrightPortfolioSources.size(); i++) {
-            RecDefSource.validateJsonElement(jsonArrayrightPortfolioSources.get(i));
-          };
-        }
-      }
-      // validate the optional field `valuationRecipes`
-      if (jsonObj.get("valuationRecipes") != null && !jsonObj.get("valuationRecipes").isJsonNull()) {
-        RecDefRecipeIds.validateJsonElement(jsonObj.get("valuationRecipes"));
-      }
-      // validate the optional field `currencies`
-      if (jsonObj.get("currencies") != null && !jsonObj.get("currencies").isJsonNull()) {
-        RecDefCurrencies.validateJsonElement(jsonObj.get("currencies"));
-      }
-      // ensure the json data is an array
-      if (!jsonObj.get("rulesets").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `rulesets` to be an array in the JSON string but got `%s`", jsonObj.get("rulesets").toString()));
-      }
-
-      JsonArray jsonArrayrulesets = jsonObj.getAsJsonArray("rulesets");
-      // validate the required field `rulesets` (array)
-      for (int i = 0; i < jsonArrayrulesets.size(); i++) {
-        RecDefRuleset.validateJsonElement(jsonArrayrulesets.get(i));
-      };
+      // validate the required field `details`
+      RecDefinitionDetails.validateJsonElement(jsonObj.get("details"));
       // validate the optional field `reviewConfiguration`
       if (jsonObj.get("reviewConfiguration") != null && !jsonObj.get("reviewConfiguration").isJsonNull()) {
         RecReviewConfiguration.validateJsonElement(jsonObj.get("reviewConfiguration"));

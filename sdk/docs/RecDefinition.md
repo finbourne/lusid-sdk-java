@@ -7,13 +7,8 @@ Name | Type | Description | Notes
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **displayName** | **String** | The name of the rec definition. | [default to String]
 **description** | **String** | A description of the rec definition. | [optional] [default to String]
-**definitionType** | **String** | What this definition reconciles, naming the kind of dataset that must be present on at least one side. Only PortfolioContents is currently supported. Available values: PortfolioContents, LusidEntity, RelationalData. | [default to String]
 **sideNames** | [**RecDefSideNames**](RecDefSideNames.md) |  | [optional] [default to RecDefSideNames]
-**leftPortfolioSources** | [**List&lt;RecDefSource&gt;**](RecDefSource.md) | The portfolios, portfolio groups and funds contributing to the left side. Empty when the left side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty. | [default to List<RecDefSource>]
-**rightPortfolioSources** | [**List&lt;RecDefSource&gt;**](RecDefSource.md) | The portfolios, portfolio groups and funds contributing to the right side. Empty when the right side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty. | [default to List<RecDefSource>]
-**valuationRecipes** | [**RecDefRecipeIds**](RecDefRecipeIds.md) |  | [optional] [default to RecDefRecipeIds]
-**currencies** | [**RecDefCurrencies**](RecDefCurrencies.md) |  | [optional] [default to RecDefCurrencies]
-**rulesets** | [**List&lt;RecDefRuleset&gt;**](RecDefRuleset.md) | The types of reconciliation included in the group, each naming the matching ruleset that drives it. At least one entry is required, and each rec type may appear at most once. | [default to List<RecDefRuleset>]
+**details** | [**RecDefinitionDetails**](RecDefinitionDetails.md) |  | [default to RecDefinitionDetails]
 **reviewConfiguration** | [**RecReviewConfiguration**](RecReviewConfiguration.md) |  | [default to RecReviewConfiguration]
 **datePolicy** | [**RecDatePolicy**](RecDatePolicy.md) |  | [default to RecDatePolicy]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Properties in the RecDefinition domain. On update, a property with a null value is deleted and omitted properties are left unchanged. Filterable and sortable. | [optional] [default to Map<String, PerpetualProperty>]
@@ -30,13 +25,8 @@ import java.net.URI;
 ResourceId Id = new ResourceId();
 String DisplayName = "example DisplayName";
 @jakarta.annotation.Nullable String Description = "example Description";
-String DefinitionType = "example DefinitionType";
 RecDefSideNames SideNames = new RecDefSideNames();
-List<RecDefSource> LeftPortfolioSources = new List<RecDefSource>();
-List<RecDefSource> RightPortfolioSources = new List<RecDefSource>();
-RecDefRecipeIds ValuationRecipes = new RecDefRecipeIds();
-RecDefCurrencies Currencies = new RecDefCurrencies();
-List<RecDefRuleset> Rulesets = new List<RecDefRuleset>();
+RecDefinitionDetails Details = new RecDefinitionDetails();
 RecReviewConfiguration ReviewConfiguration = new RecReviewConfiguration();
 RecDatePolicy DatePolicy = new RecDatePolicy();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
@@ -49,13 +39,8 @@ RecDefinition recDefinitionInstance = new RecDefinition()
     .Id(Id)
     .DisplayName(DisplayName)
     .Description(Description)
-    .DefinitionType(DefinitionType)
     .SideNames(SideNames)
-    .LeftPortfolioSources(LeftPortfolioSources)
-    .RightPortfolioSources(RightPortfolioSources)
-    .ValuationRecipes(ValuationRecipes)
-    .Currencies(Currencies)
-    .Rulesets(Rulesets)
+    .Details(Details)
     .ReviewConfiguration(ReviewConfiguration)
     .DatePolicy(DatePolicy)
     .Properties(Properties)

@@ -69,6 +69,10 @@ public class RecResultSet {
   @SerializedName(SERIALIZED_NAME_REC_TYPE)
   private String recType;
 
+  public static final String SERIALIZED_NAME_EXTERNAL_REC_TYPE_NAME = "externalRecTypeName";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_REC_TYPE_NAME)
+  private String externalRecTypeName;
+
   public static final String SERIALIZED_NAME_REC_INSTANCE = "recInstance";
   @SerializedName(SERIALIZED_NAME_REC_INSTANCE)
   private RecInstanceSummary recInstance;
@@ -150,6 +154,27 @@ public class RecResultSet {
 
   public void setRecType(String recType) {
     this.recType = recType;
+  }
+
+
+  public RecResultSet externalRecTypeName(String externalRecTypeName) {
+    
+    this.externalRecTypeName = externalRecTypeName;
+    return this;
+  }
+
+   /**
+   * The client&#39;s name for an External rec type, as stamped from the matching ruleset&#39;s externalRecType when the run executed. Null for native rec types. Filterable.
+   * @return externalRecTypeName
+  **/
+  @jakarta.annotation.Nullable
+  public String getExternalRecTypeName() {
+    return externalRecTypeName;
+  }
+
+
+  public void setExternalRecTypeName(String externalRecTypeName) {
+    this.externalRecTypeName = externalRecTypeName;
   }
 
 
@@ -519,6 +544,7 @@ public class RecResultSet {
     }
     RecResultSet recResultSet = (RecResultSet) o;
     return Objects.equals(this.recType, recResultSet.recType) &&
+        Objects.equals(this.externalRecTypeName, recResultSet.externalRecTypeName) &&
         Objects.equals(this.recInstance, recResultSet.recInstance) &&
         Objects.equals(this.runNumber, recResultSet.runNumber) &&
         Objects.equals(this.runAsAt, recResultSet.runAsAt) &&
@@ -542,7 +568,7 @@ public class RecResultSet {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recType, recInstance, runNumber, runAsAt, execution, datesReconciled, resultCounts, review, approvalStatus, requiredApprovals, submissions, decisions, previousRuns, href, version, links);
+    return Objects.hash(recType, externalRecTypeName, recInstance, runNumber, runAsAt, execution, datesReconciled, resultCounts, review, approvalStatus, requiredApprovals, submissions, decisions, previousRuns, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -557,6 +583,7 @@ public class RecResultSet {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecResultSet {\n");
     sb.append("    recType: ").append(toIndentedString(recType)).append("\n");
+    sb.append("    externalRecTypeName: ").append(toIndentedString(externalRecTypeName)).append("\n");
     sb.append("    recInstance: ").append(toIndentedString(recInstance)).append("\n");
     sb.append("    runNumber: ").append(toIndentedString(runNumber)).append("\n");
     sb.append("    runAsAt: ").append(toIndentedString(runAsAt)).append("\n");
@@ -595,6 +622,7 @@ public class RecResultSet {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("recType");
+    openapiFields.add("externalRecTypeName");
     openapiFields.add("recInstance");
     openapiFields.add("runNumber");
     openapiFields.add("runAsAt");
@@ -650,6 +678,9 @@ public class RecResultSet {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("recType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `recType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recType").toString()));
+      }
+      if ((jsonObj.get("externalRecTypeName") != null && !jsonObj.get("externalRecTypeName").isJsonNull()) && !jsonObj.get("externalRecTypeName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `externalRecTypeName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("externalRecTypeName").toString()));
       }
       // validate the required field `recInstance`
       RecInstanceSummary.validateJsonElement(jsonObj.get("recInstance"));
