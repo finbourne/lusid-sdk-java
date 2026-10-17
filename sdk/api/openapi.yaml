@@ -419,7 +419,7 @@ info:
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10287
+  version: 0.11.10290
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -144318,14 +144318,14 @@ paths:
                 scope: hds
                 code: daily-holdings
                 displayName: Daily Holdings Feed
-                description: Streams holdings for the main equity portfolio against
-                  the EOD timeline
+                description: Streams holdings for every equity strategy portfolio
+                  in the equities scope against the timeline named by each portfolio's
+                  OfficialTimeline property
                 portfolioId:
                   scope: equities
-                  code: global-equity
-                timelineId:
-                  scope: valuations
-                  code: eod-timeline
+                  code: '*'
+                timelineProperty: Portfolio/equities/OfficialTimeline
+                portfolioFilter: "properties[Portfolio/equities/Strategy] eq 'Equity'"
                 addressKeys:
                 - Holding/Units
                 - Holding/Cost/Dom
@@ -144340,14 +144340,14 @@ paths:
                 scope: hds
                 code: daily-holdings
                 displayName: Daily Holdings Feed
-                description: Streams holdings for the main equity portfolio against
-                  the EOD timeline
+                description: Streams holdings for every equity strategy portfolio
+                  in the equities scope against the timeline named by each portfolio's
+                  OfficialTimeline property
                 portfolioId:
                   scope: equities
-                  code: global-equity
-                timelineId:
-                  scope: valuations
-                  code: eod-timeline
+                  code: '*'
+                timelineProperty: Portfolio/equities/OfficialTimeline
+                portfolioFilter: "properties[Portfolio/equities/Strategy] eq 'Equity'"
                 addressKeys:
                 - Holding/Units
                 - Holding/Cost/Dom
@@ -144362,14 +144362,14 @@ paths:
                 scope: hds
                 code: daily-holdings
                 displayName: Daily Holdings Feed
-                description: Streams holdings for the main equity portfolio against
-                  the EOD timeline
+                description: Streams holdings for every equity strategy portfolio
+                  in the equities scope against the timeline named by each portfolio's
+                  OfficialTimeline property
                 portfolioId:
                   scope: equities
-                  code: global-equity
-                timelineId:
-                  scope: valuations
-                  code: eod-timeline
+                  code: '*'
+                timelineProperty: Portfolio/equities/OfficialTimeline
+                portfolioFilter: "properties[Portfolio/equities/Strategy] eq 'Equity'"
                 addressKeys:
                 - Holding/Units
                 - Holding/Cost/Dom
@@ -144384,14 +144384,14 @@ paths:
                 scope: hds
                 code: daily-holdings
                 displayName: Daily Holdings Feed
-                description: Streams holdings for the main equity portfolio against
-                  the EOD timeline
+                description: Streams holdings for every equity strategy portfolio
+                  in the equities scope against the timeline named by each portfolio's
+                  OfficialTimeline property
                 portfolioId:
                   scope: equities
-                  code: global-equity
-                timelineId:
-                  scope: valuations
-                  code: eod-timeline
+                  code: '*'
+                timelineProperty: Portfolio/equities/OfficialTimeline
+                portfolioFilter: "properties[Portfolio/equities/Strategy] eq 'Equity'"
                 addressKeys:
                 - Holding/Units
                 - Holding/Cost/Dom
@@ -252693,14 +252693,8 @@ components:
         href: https://openapi-generator.tech
         value:
           effectiveForwardDays: 293
-          endEffectiveAt: 2000-01-23T04:56:07.000+00:00
           code: code
-          portfolioId:
-            code: code
-            scope: scope
-          subscriptionType: subscriptionType
           displayName: displayName
-          scope: scope
           byTaxLots: true
           timelineId:
             code: code
@@ -252713,6 +252707,14 @@ components:
           - addressKeys
           - addressKeys
           - addressKeys
+          endEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+          portfolioFilter: portfolioFilter
+          subscriptionType: subscriptionType
+          scope: scope
+          timelineProperty: timelineProperty
       properties:
         href:
           format: uri
@@ -290456,14 +290458,8 @@ components:
           href: https://openapi-generator.tech
           value:
             effectiveForwardDays: 293
-            endEffectiveAt: 2000-01-23T04:56:07.000+00:00
             code: code
-            portfolioId:
-              code: code
-              scope: scope
-            subscriptionType: subscriptionType
             displayName: displayName
-            scope: scope
             byTaxLots: true
             timelineId:
               code: code
@@ -290476,6 +290472,14 @@ components:
             - addressKeys
             - addressKeys
             - addressKeys
+            endEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            portfolioFilter: portfolioFilter
+            subscriptionType: subscriptionType
+            scope: scope
+            timelineProperty: timelineProperty
         - links:
           - method: method
             description: description
@@ -290488,14 +290492,8 @@ components:
           href: https://openapi-generator.tech
           value:
             effectiveForwardDays: 293
-            endEffectiveAt: 2000-01-23T04:56:07.000+00:00
             code: code
-            portfolioId:
-              code: code
-              scope: scope
-            subscriptionType: subscriptionType
             displayName: displayName
-            scope: scope
             byTaxLots: true
             timelineId:
               code: code
@@ -290508,6 +290506,14 @@ components:
             - addressKeys
             - addressKeys
             - addressKeys
+            endEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            portfolioFilter: portfolioFilter
+            subscriptionType: subscriptionType
+            scope: scope
+            timelineProperty: timelineProperty
         links:
         - method: method
           description: description
@@ -361459,14 +361465,8 @@ components:
       additionalProperties: false
       example:
         effectiveForwardDays: 293
-        endEffectiveAt: 2000-01-23T04:56:07.000+00:00
         code: code
-        portfolioId:
-          code: code
-          scope: scope
-        subscriptionType: subscriptionType
         displayName: displayName
-        scope: scope
         byTaxLots: true
         timelineId:
           code: code
@@ -361479,6 +361479,14 @@ components:
         - addressKeys
         - addressKeys
         - addressKeys
+        endEffectiveAt: 2000-01-23T04:56:07.000+00:00
+        portfolioId:
+          code: code
+          scope: scope
+        portfolioFilter: portfolioFilter
+        subscriptionType: subscriptionType
+        scope: scope
+        timelineProperty: timelineProperty
       properties:
         scope:
           maxLength: 64
@@ -361505,6 +361513,27 @@ components:
           $ref: '#/components/schemas/ResourceId'
         timelineId:
           $ref: '#/components/schemas/ResourceId'
+        timelineProperty:
+          description: "A portfolio property key (Portfolio/scope/code) naming a perpetual\
+            \ portfolio property whose value\r\n(scope/code) identifies the timeline\
+            \ for each portfolio. Mutually exclusive with timelineId.\r\nThe property\
+            \ must be defined, with a data type of value type ResourceId or String."
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          type: string
+        portfolioFilter:
+          description: "A filter, in the syntax of the list portfolios filter, that\
+            \ narrows a wildcard portfolioId to the portfolios\r\nof the scope that\
+            \ match it. Only valid when portfolioId.code is \"*\". It may use the\
+            \ portfolio's own fields and\r\nits perpetual Portfolio properties; time-variant\
+            \ and derived properties and relationships are not supported.\r\nA portfolio\
+            \ that starts or stops matching joins or leaves the subscription."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: "^[\\s\\S]*$"
+          type: string
         addressKeys:
           description: The set of addresses the subscriber wishes to receive.
           items:
@@ -386490,14 +386519,8 @@ components:
       example:
         subscription:
           effectiveForwardDays: 293
-          endEffectiveAt: 2000-01-23T04:56:07.000+00:00
           code: code
-          portfolioId:
-            code: code
-            scope: scope
-          subscriptionType: subscriptionType
           displayName: displayName
-          scope: scope
           byTaxLots: true
           timelineId:
             code: code
@@ -386510,6 +386533,14 @@ components:
           - addressKeys
           - addressKeys
           - addressKeys
+          endEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+          portfolioFilter: portfolioFilter
+          subscriptionType: subscriptionType
+          scope: scope
+          timelineProperty: timelineProperty
       properties:
         subscription:
           $ref: '#/components/schemas/SubscriptionDefinition'

@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] [default to String]
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **timelineId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**timelineProperty** | **String** | A portfolio property key (Portfolio/scope/code) naming a perpetual portfolio property whose value  (scope/code) identifies the timeline for each portfolio. Mutually exclusive with timelineId.  The property must be defined, with a data type of value type ResourceId or String. | [optional] [default to String]
+**portfolioFilter** | **String** | A filter, in the syntax of the list portfolios filter, that narrows a wildcard portfolioId to the portfolios  of the scope that match it. Only valid when portfolioId.code is \&quot;*\&quot;. It may use the portfolio&#39;s own fields and  its perpetual Portfolio properties; time-variant and derived properties and relationships are not supported.  A portfolio that starts or stops matching joins or leaves the subscription. | [optional] [default to String]
 **addressKeys** | **List&lt;String&gt;** | The set of addresses the subscriber wishes to receive. | [optional] [default to List<String>]
 **byTaxLots** | **Boolean** |  | [optional] [default to Boolean]
 **subscriptionType** | **String** | Required. The kind of data the subscription streams: before/after effects per  holding (holdings), the transactions themselves (transactions), or each changed holding&#39;s  complete current state (positions). Address keys and byTaxLots are not valid for a  transactions subscription. Available values: Holdings, Transactions, Positions. | [default to String]
@@ -29,6 +31,8 @@ String Code = "example Code";
 @jakarta.annotation.Nullable String Description = "example Description";
 ResourceId PortfolioId = new ResourceId();
 ResourceId TimelineId = new ResourceId();
+@jakarta.annotation.Nullable String TimelineProperty = "example TimelineProperty";
+@jakarta.annotation.Nullable String PortfolioFilter = "example PortfolioFilter";
 @jakarta.annotation.Nullable List<String> AddressKeys = new List<String>();
 Boolean ByTaxLots = true;
 String SubscriptionType = "example SubscriptionType";
@@ -44,6 +48,8 @@ SubscriptionDefinition subscriptionDefinitionInstance = new SubscriptionDefiniti
     .Description(Description)
     .PortfolioId(PortfolioId)
     .TimelineId(TimelineId)
+    .TimelineProperty(TimelineProperty)
+    .PortfolioFilter(PortfolioFilter)
     .AddressKeys(AddressKeys)
     .ByTaxLots(ByTaxLots)
     .SubscriptionType(SubscriptionType)

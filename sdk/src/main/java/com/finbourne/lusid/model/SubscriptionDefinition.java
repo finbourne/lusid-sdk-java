@@ -78,6 +78,14 @@ public class SubscriptionDefinition {
   @SerializedName(SERIALIZED_NAME_TIMELINE_ID)
   private ResourceId timelineId;
 
+  public static final String SERIALIZED_NAME_TIMELINE_PROPERTY = "timelineProperty";
+  @SerializedName(SERIALIZED_NAME_TIMELINE_PROPERTY)
+  private String timelineProperty;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO_FILTER = "portfolioFilter";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_FILTER)
+  private String portfolioFilter;
+
   public static final String SERIALIZED_NAME_ADDRESS_KEYS = "addressKeys";
   @SerializedName(SERIALIZED_NAME_ADDRESS_KEYS)
   private List<String> addressKeys;
@@ -228,6 +236,48 @@ public class SubscriptionDefinition {
 
   public void setTimelineId(ResourceId timelineId) {
     this.timelineId = timelineId;
+  }
+
+
+  public SubscriptionDefinition timelineProperty(String timelineProperty) {
+    
+    this.timelineProperty = timelineProperty;
+    return this;
+  }
+
+   /**
+   * A portfolio property key (Portfolio/scope/code) naming a perpetual portfolio property whose value  (scope/code) identifies the timeline for each portfolio. Mutually exclusive with timelineId.  The property must be defined, with a data type of value type ResourceId or String.
+   * @return timelineProperty
+  **/
+  @jakarta.annotation.Nullable
+  public String getTimelineProperty() {
+    return timelineProperty;
+  }
+
+
+  public void setTimelineProperty(String timelineProperty) {
+    this.timelineProperty = timelineProperty;
+  }
+
+
+  public SubscriptionDefinition portfolioFilter(String portfolioFilter) {
+    
+    this.portfolioFilter = portfolioFilter;
+    return this;
+  }
+
+   /**
+   * A filter, in the syntax of the list portfolios filter, that narrows a wildcard portfolioId to the portfolios  of the scope that match it. Only valid when portfolioId.code is \&quot;*\&quot;. It may use the portfolio&#39;s own fields and  its perpetual Portfolio properties; time-variant and derived properties and relationships are not supported.  A portfolio that starts or stops matching joins or leaves the subscription.
+   * @return portfolioFilter
+  **/
+  @jakarta.annotation.Nullable
+  public String getPortfolioFilter() {
+    return portfolioFilter;
+  }
+
+
+  public void setPortfolioFilter(String portfolioFilter) {
+    this.portfolioFilter = portfolioFilter;
   }
 
 
@@ -383,6 +433,8 @@ public class SubscriptionDefinition {
         Objects.equals(this.description, subscriptionDefinition.description) &&
         Objects.equals(this.portfolioId, subscriptionDefinition.portfolioId) &&
         Objects.equals(this.timelineId, subscriptionDefinition.timelineId) &&
+        Objects.equals(this.timelineProperty, subscriptionDefinition.timelineProperty) &&
+        Objects.equals(this.portfolioFilter, subscriptionDefinition.portfolioFilter) &&
         Objects.equals(this.addressKeys, subscriptionDefinition.addressKeys) &&
         Objects.equals(this.byTaxLots, subscriptionDefinition.byTaxLots) &&
         Objects.equals(this.subscriptionType, subscriptionDefinition.subscriptionType) &&
@@ -397,7 +449,7 @@ public class SubscriptionDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, addressKeys, byTaxLots, subscriptionType, startEffectiveAt, endEffectiveAt, effectiveForwardDays);
+    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, timelineProperty, portfolioFilter, addressKeys, byTaxLots, subscriptionType, startEffectiveAt, endEffectiveAt, effectiveForwardDays);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -417,6 +469,8 @@ public class SubscriptionDefinition {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    timelineId: ").append(toIndentedString(timelineId)).append("\n");
+    sb.append("    timelineProperty: ").append(toIndentedString(timelineProperty)).append("\n");
+    sb.append("    portfolioFilter: ").append(toIndentedString(portfolioFilter)).append("\n");
     sb.append("    addressKeys: ").append(toIndentedString(addressKeys)).append("\n");
     sb.append("    byTaxLots: ").append(toIndentedString(byTaxLots)).append("\n");
     sb.append("    subscriptionType: ").append(toIndentedString(subscriptionType)).append("\n");
@@ -451,6 +505,8 @@ public class SubscriptionDefinition {
     openapiFields.add("description");
     openapiFields.add("portfolioId");
     openapiFields.add("timelineId");
+    openapiFields.add("timelineProperty");
+    openapiFields.add("portfolioFilter");
     openapiFields.add("addressKeys");
     openapiFields.add("byTaxLots");
     openapiFields.add("subscriptionType");
@@ -503,6 +559,12 @@ public class SubscriptionDefinition {
       // validate the optional field `timelineId`
       if (jsonObj.get("timelineId") != null && !jsonObj.get("timelineId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("timelineId"));
+      }
+      if ((jsonObj.get("timelineProperty") != null && !jsonObj.get("timelineProperty").isJsonNull()) && !jsonObj.get("timelineProperty").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `timelineProperty` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timelineProperty").toString()));
+      }
+      if ((jsonObj.get("portfolioFilter") != null && !jsonObj.get("portfolioFilter").isJsonNull()) && !jsonObj.get("portfolioFilter").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `portfolioFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("portfolioFilter").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("addressKeys") != null && !jsonObj.get("addressKeys").isJsonNull() && !jsonObj.get("addressKeys").isJsonArray()) {
