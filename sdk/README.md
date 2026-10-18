@@ -144,6 +144,18 @@ Class | Method | HTTP request | Description
 *CheckDefinitionsApi* | [**runCheckDefinition**](docs/CheckDefinitionsApi.md#runcheckdefinition) | **POST** /api/dataquality/checkdefinitions/{scope}/{code}/$run | [EXPERIMENTAL] RunCheckDefinition: Runs a Check Definition against given dataset.
 *CheckDefinitionsApi* | [**updateCheckDefinition**](docs/CheckDefinitionsApi.md#updatecheckdefinition) | **PUT** /api/dataquality/checkdefinitions/{scope}/{code} | [EXPERIMENTAL] UpdateCheckDefinition: Update Check Definition defined by scope and code
 *CheckDefinitionsApi* | [**upsertRules**](docs/CheckDefinitionsApi.md#upsertrules) | **POST** /api/dataquality/checkdefinitions/{scope}/{code}/$upsertRules | [EXPERIMENTAL] UpsertRules: Upsert rules to a particular Check Definition
+*CollateralApi* | [**acceptMarginCall**](docs/CollateralApi.md#acceptmargincall) | **POST** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$accept | [EXPERIMENTAL] AcceptMarginCall: Accept a margin call.
+*CollateralApi* | [**batchAcceptMarginCalls**](docs/CollateralApi.md#batchacceptmargincalls) | **POST** /api/collateral/margincalls/$batchAccept | [EXPERIMENTAL] BatchAcceptMarginCalls: Accept several margin calls.
+*CollateralApi* | [**disputeMarginCall**](docs/CollateralApi.md#disputemargincall) | **POST** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$dispute | [EXPERIMENTAL] DisputeMarginCall: Dispute a margin call.
+*CollateralApi* | [**getMarginCall**](docs/CollateralApi.md#getmargincall) | **GET** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction} | [EXPERIMENTAL] GetMarginCall: Get a margin call.
+*CollateralApi* | [**getMarginRun**](docs/CollateralApi.md#getmarginrun) | **GET** /api/collateral/runs/{runId} | [EXPERIMENTAL] GetMarginRun: Get a margin run.
+*CollateralApi* | [**listMarginCallLines**](docs/CollateralApi.md#listmargincalllines) | **GET** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/lines | [EXPERIMENTAL] ListMarginCallLines: List the margin lines of a call.
+*CollateralApi* | [**listMarginCalls**](docs/CollateralApi.md#listmargincalls) | **GET** /api/collateral/margincalls | [EXPERIMENTAL] ListMarginCalls: List margin calls.
+*CollateralApi* | [**listMarginLines**](docs/CollateralApi.md#listmarginlines) | **GET** /api/collateral/runs/{runId}/lines | [EXPERIMENTAL] ListMarginLines: List the margin lines of a run.
+*CollateralApi* | [**listMarginRuns**](docs/CollateralApi.md#listmarginruns) | **GET** /api/collateral/runs | [EXPERIMENTAL] ListMarginRuns: List margin runs.
+*CollateralApi* | [**recordCounterpartyDemand**](docs/CollateralApi.md#recordcounterpartydemand) | **POST** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$recordCounterpartyDemand | [EXPERIMENTAL] RecordCounterpartyDemand: Record the counterparty's demand against a margin call.
+*CollateralApi* | [**retryMarginRun**](docs/CollateralApi.md#retrymarginrun) | **POST** /api/collateral/runs/{runId}/$retry | [EXPERIMENTAL] RetryMarginRun: Retry a margin run.
+*CollateralApi* | [**runMarginCalculation**](docs/CollateralApi.md#runmargincalculation) | **POST** /api/collateral/$run | [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation.
 *CollateralAgreementsApi* | [**createCollateralAgreement**](docs/CollateralAgreementsApi.md#createcollateralagreement) | **POST** /api/collateralagreements/{scope} | [EXPERIMENTAL] CreateCollateralAgreement: Create a Collateral Agreement.
 *CollateralAgreementsApi* | [**deleteCollateralAgreement**](docs/CollateralAgreementsApi.md#deletecollateralagreement) | **DELETE** /api/collateralagreements/{scope}/{code} | [EXPERIMENTAL] DeleteCollateralAgreement: Delete a Collateral Agreement.
 *CollateralAgreementsApi* | [**getCollateralAgreement**](docs/CollateralAgreementsApi.md#getcollateralagreement) | **GET** /api/collateralagreements/{scope}/{code} | [EXPERIMENTAL] GetCollateralAgreement: Get a Collateral Agreement.
@@ -905,6 +917,7 @@ Class | Method | HTTP request | Description
  - [AborRequest](docs/AborRequest.md)
  - [AbstainElection](docs/AbstainElection.md)
  - [AcceptEstimateValuationPointResponse](docs/AcceptEstimateValuationPointResponse.md)
+ - [AcceptMarginCallRequest](docs/AcceptMarginCallRequest.md)
  - [AccessControlledAction](docs/AccessControlledAction.md)
  - [AccessControlledResource](docs/AccessControlledResource.md)
  - [AccessMetadataOperation](docs/AccessMetadataOperation.md)
@@ -1043,6 +1056,8 @@ Class | Method | HTTP request | Description
  - [Barrier](docs/Barrier.md)
  - [Basket](docs/Basket.md)
  - [BasketIdentifier](docs/BasketIdentifier.md)
+ - [BatchAcceptMarginCallsRequest](docs/BatchAcceptMarginCallsRequest.md)
+ - [BatchAcceptMarginCallsResponse](docs/BatchAcceptMarginCallsResponse.md)
  - [BatchAdjustHoldingsResponse](docs/BatchAdjustHoldingsResponse.md)
  - [BatchAmendCustomDataModelMembershipResponse](docs/BatchAmendCustomDataModelMembershipResponse.md)
  - [BatchAmendTransactionSettlementInstructionResponse](docs/BatchAmendTransactionSettlementInstructionResponse.md)
@@ -1428,6 +1443,7 @@ Class | Method | HTTP request | Description
  - [DiscountFactorCurveData](docs/DiscountFactorCurveData.md)
  - [DiscountingDependency](docs/DiscountingDependency.md)
  - [DiscountingMethod](docs/DiscountingMethod.md)
+ - [DisputeMarginCallRequest](docs/DisputeMarginCallRequest.md)
  - [DividendOptionEvent](docs/DividendOptionEvent.md)
  - [DividendReinvestmentEvent](docs/DividendReinvestmentEvent.md)
  - [DividendSuspensionEvent](docs/DividendSuspensionEvent.md)
@@ -1804,8 +1820,16 @@ Class | Method | HTTP request | Description
  - [MappingRule](docs/MappingRule.md)
  - [MarginAccounts](docs/MarginAccounts.md)
  - [MarginCalculation](docs/MarginCalculation.md)
+ - [MarginCall](docs/MarginCall.md)
+ - [MarginCallKey](docs/MarginCallKey.md)
+ - [MarginCallReference](docs/MarginCallReference.md)
  - [MarginItem](docs/MarginItem.md)
+ - [MarginLine](docs/MarginLine.md)
  - [MarginRounding](docs/MarginRounding.md)
+ - [MarginRun](docs/MarginRun.md)
+ - [MarginRunIssue](docs/MarginRunIssue.md)
+ - [MarginRunRequest](docs/MarginRunRequest.md)
+ - [MarginRunShard](docs/MarginRunShard.md)
  - [MarginSettlementLag](docs/MarginSettlementLag.md)
  - [MarkToMarketConventions](docs/MarkToMarketConventions.md)
  - [MarketContext](docs/MarketContext.md)
@@ -1978,6 +2002,9 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfInstrumentEventInstruction](docs/PagedResourceListOfInstrumentEventInstruction.md)
  - [PagedResourceListOfItemAndWorkspace](docs/PagedResourceListOfItemAndWorkspace.md)
  - [PagedResourceListOfLegalEntity](docs/PagedResourceListOfLegalEntity.md)
+ - [PagedResourceListOfMarginCall](docs/PagedResourceListOfMarginCall.md)
+ - [PagedResourceListOfMarginLine](docs/PagedResourceListOfMarginLine.md)
+ - [PagedResourceListOfMarginRun](docs/PagedResourceListOfMarginRun.md)
  - [PagedResourceListOfMatchingRuleset](docs/PagedResourceListOfMatchingRuleset.md)
  - [PagedResourceListOfOrder](docs/PagedResourceListOfOrder.md)
  - [PagedResourceListOfOrderBreachHistory](docs/PagedResourceListOfOrderBreachHistory.md)
@@ -2290,6 +2317,7 @@ Class | Method | HTTP request | Description
  - [ReconciliationRuleType](docs/ReconciliationRuleType.md)
  - [ReconciliationSideConfiguration](docs/ReconciliationSideConfiguration.md)
  - [ReconciliationTransactions](docs/ReconciliationTransactions.md)
+ - [RecordCounterpartyDemandRequest](docs/RecordCounterpartyDemandRequest.md)
  - [RecyclingTerms](docs/RecyclingTerms.md)
  - [ReferenceData](docs/ReferenceData.md)
  - [ReferenceInstrument](docs/ReferenceInstrument.md)
