@@ -71,7 +71,7 @@ public class RecDefRecipeIds {
    * Get left
    * @return left
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public ResourceId getLeft() {
     return left;
   }
@@ -92,7 +92,7 @@ public class RecDefRecipeIds {
    * Get right
    * @return right
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public ResourceId getRight() {
     return right;
   }
@@ -155,8 +155,6 @@ public class RecDefRecipeIds {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("left");
-    openapiRequiredFields.add("right");
   }
 
  /**
@@ -171,18 +169,15 @@ public class RecDefRecipeIds {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RecDefRecipeIds is not found in the empty JSON string", RecDefRecipeIds.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RecDefRecipeIds.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `left`
-      ResourceId.validateJsonElement(jsonObj.get("left"));
-      // validate the required field `right`
-      ResourceId.validateJsonElement(jsonObj.get("right"));
+      // validate the optional field `left`
+      if (jsonObj.get("left") != null && !jsonObj.get("left").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("left"));
+      }
+      // validate the optional field `right`
+      if (jsonObj.get("right") != null && !jsonObj.get("right").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("right"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

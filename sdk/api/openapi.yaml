@@ -419,7 +419,7 @@ info:
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10302
+  version: 0.11.10304
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -320423,20 +320423,23 @@ components:
       additionalProperties: false
       properties:
         left:
-          description: The currency used on the left side of the reconciliation.
+          description: The currency used on the left side of the reconciliation. Required
+            when the left side has portfolio sources; must be null when it draws on
+            relational data.
           maxLength: 5
           minLength: 3
+          nullable: true
           pattern: "^[a-zA-Z]*$"
           type: string
         right:
           description: The currency used on the right side of the reconciliation.
+            Required when the right side has portfolio sources; must be null when
+            it draws on relational data.
           maxLength: 5
           minLength: 3
+          nullable: true
           pattern: "^[a-zA-Z]*$"
           type: string
-      required:
-      - left
-      - right
       type: object
     RecDefinition:
       additionalProperties: false
@@ -320606,9 +320609,6 @@ components:
           $ref: '#/components/schemas/ResourceId'
         right:
           $ref: '#/components/schemas/ResourceId'
-      required:
-      - left
-      - right
       type: object
     RecDefRuleset:
       additionalProperties: false

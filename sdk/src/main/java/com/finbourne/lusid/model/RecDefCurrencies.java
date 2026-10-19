@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -67,10 +68,10 @@ public class RecDefCurrencies {
   }
 
    /**
-   * The currency used on the left side of the reconciliation.
+   * The currency used on the left side of the reconciliation. Required when the left side has portfolio sources; must be null when it draws on relational data.
    * @return left
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getLeft() {
     return left;
   }
@@ -88,10 +89,10 @@ public class RecDefCurrencies {
   }
 
    /**
-   * The currency used on the right side of the reconciliation.
+   * The currency used on the right side of the reconciliation. Required when the right side has portfolio sources; must be null when it draws on relational data.
    * @return right
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getRight() {
     return right;
   }
@@ -116,9 +117,20 @@ public class RecDefCurrencies {
         Objects.equals(this.right, recDefCurrencies.right);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(left, right);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -154,8 +166,6 @@ public class RecDefCurrencies {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("left");
-    openapiRequiredFields.add("right");
   }
 
  /**
@@ -170,18 +180,11 @@ public class RecDefCurrencies {
           throw new IllegalArgumentException(String.format("The required field(s) %s in RecDefCurrencies is not found in the empty JSON string", RecDefCurrencies.openapiRequiredFields.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RecDefCurrencies.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("left").isJsonPrimitive()) {
+      if ((jsonObj.get("left") != null && !jsonObj.get("left").isJsonNull()) && !jsonObj.get("left").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `left` to be a primitive type in the JSON string but got `%s`", jsonObj.get("left").toString()));
       }
-      if (!jsonObj.get("right").isJsonPrimitive()) {
+      if ((jsonObj.get("right") != null && !jsonObj.get("right").isJsonNull()) && !jsonObj.get("right").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `right` to be a primitive type in the JSON string but got `%s`", jsonObj.get("right").toString()));
       }
   }
