@@ -191,7 +191,7 @@ public class WithholdingTaxConfiguration {
   }
 
    /**
-   * The rule sources in priority order, most preferred first. Optional: a single-source customer configures none and leaves ruleSource blank on every rate row, in which case no source filter is applied and specificity alone decides.
+   * The rule sources in priority order, most preferred first. Optional: a single-source customer configures none and loads its rate rows without a ruleSource, in which case no source filter is applied and specificity alone decides.
    * @return sourcePriority
   **/
   @jakarta.annotation.Nullable

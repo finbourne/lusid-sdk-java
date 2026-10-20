@@ -1013,7 +1013,7 @@ public class RecsApiExample {
         RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
         String instanceIdType = "instanceIdType_example"; // String | How the instance was created: \"WorkflowServiceTaskId\" or \"Manual\". Available values: WorkflowServiceTaskId, Manual.
         String instanceIdValue = "instanceIdValue_example"; // String | The unique identifier of the rec instance.
-        String recType = "recType_example"; // String | The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
+        String recType = "recType_example"; // String | The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
         Integer runNumber = 56; // Integer | The run of the instance whose view of the result is read.
         String id = "id_example"; // String | The display id of the rec result, e.g. \"break-3\".
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the result. Defaults to latest if not specified.
@@ -1041,7 +1041,7 @@ public class RecsApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **instanceIdType** | **String**| How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual. | |
 | **instanceIdValue** | **String**| The unique identifier of the rec instance. | |
-| **recType** | **String**| The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. | |
+| **recType** | **String**| The rec type the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. | |
 | **runNumber** | **Integer**| The run of the instance whose view of the result is read. | |
 | **id** | **String**| The display id of the rec result, e.g. \&quot;break-3\&quot;. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the result. Defaults to latest if not specified. | [optional] |

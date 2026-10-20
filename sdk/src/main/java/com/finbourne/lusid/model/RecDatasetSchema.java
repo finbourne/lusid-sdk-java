@@ -94,7 +94,7 @@ public class RecDatasetSchema {
   }
 
    /**
-   * The entity within the dataset. Required when type is PortfolioContents, in which case it is one of: Holding, Valuation, Transaction, OutputTransaction, SettlementActivity. Must be omitted when type is RelationalData. Available values: Holding, Valuation, Transaction, OutputTransaction, SettlementActivity.
+   * The entity within the dataset. Required when type is PortfolioContents, in which case it is one of: Holding, Valuation, Transaction, OutputTransaction, SettlementActivity. Required when type is LusidEntity, in which case it is Instrument. Must be omitted when type is RelationalData. Available values: Holding, Valuation, Transaction, OutputTransaction, SettlementActivity, Instrument.
    * @return entityType
   **/
   @jakarta.annotation.Nullable

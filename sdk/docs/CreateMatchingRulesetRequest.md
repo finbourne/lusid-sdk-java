@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **displayName** | **String** | The name of the matching ruleset. | [default to String]
-**recType** | **String** | The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External. | [default to String]
+**recType** | **String** | The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. | [default to String]
 **externalRecType** | [**ExternalRecType**](ExternalRecType.md) |  | [optional] [default to ExternalRecType]
 **datasetSchemas** | [**RecDatasetSchemas**](RecDatasetSchemas.md) |  | [optional] [default to RecDatasetSchemas]
 **filters** | [**GroupReconciliationFilters**](GroupReconciliationFilters.md) |  | [optional] [default to GroupReconciliationFilters]
@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **allowPartialMatching** | **Boolean** | Whether to permit partial matches when applying rules. Optional, defaults to true if a value is not provided. | [optional] [default to Boolean]
 **supplementalAttributes** | [**List&lt;SupplementalAttribute&gt;**](SupplementalAttribute.md) | Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. | [optional] [default to List<SupplementalAttribute>]
 **writebackConfigurations** | [**List&lt;WritebackConfiguration&gt;**](WritebackConfiguration.md) | The writeback suggestions generated against this ruleset&#39;s results. Suggestions are made at item level on target-side items only, and are suggestions only: a user is expected to review them before acting. Optional, and may be empty. | [optional] [default to List<WritebackConfiguration>]
+**populateResultProperties** | [**List&lt;PopulateResultProperty&gt;**](PopulateResultProperty.md) | The RecResult properties to populate on this ruleset&#39;s results, each from a formula over the result. Optional, and may be empty; at most 20. | [optional] [default to List<PopulateResultProperty>]
 
 ```java
 import com.finbourne.lusid.model.CreateMatchingRulesetRequest;
@@ -37,6 +38,7 @@ List<AggregateMatchingRule> AggregateRules = new List<AggregateMatchingRule>();
 Boolean AllowPartialMatching = true;
 @jakarta.annotation.Nullable List<SupplementalAttribute> SupplementalAttributes = new List<SupplementalAttribute>();
 @jakarta.annotation.Nullable List<WritebackConfiguration> WritebackConfigurations = new List<WritebackConfiguration>();
+@jakarta.annotation.Nullable List<PopulateResultProperty> PopulateResultProperties = new List<PopulateResultProperty>();
 
 
 CreateMatchingRulesetRequest createMatchingRulesetRequestInstance = new CreateMatchingRulesetRequest()
@@ -52,7 +54,8 @@ CreateMatchingRulesetRequest createMatchingRulesetRequestInstance = new CreateMa
     .AggregateTolerances(AggregateTolerances)
     .AllowPartialMatching(AllowPartialMatching)
     .SupplementalAttributes(SupplementalAttributes)
-    .WritebackConfigurations(WritebackConfigurations);
+    .WritebackConfigurations(WritebackConfigurations)
+    .PopulateResultProperties(PopulateResultProperties);
 ```
 
 

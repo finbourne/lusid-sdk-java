@@ -105,6 +105,10 @@ public class FlowConventions {
   @SerializedName(SERIALIZED_NAME_COUPON_PAYMENT_LAG)
   private RelativeDateOffset couponPaymentLag;
 
+  public static final String SERIALIZED_NAME_PRINCIPAL_PAYMENT_LAG = "principalPaymentLag";
+  @SerializedName(SERIALIZED_NAME_PRINCIPAL_PAYMENT_LAG)
+  private RelativeDateOffset principalPaymentLag;
+
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
@@ -405,6 +409,27 @@ public class FlowConventions {
   }
 
 
+  public FlowConventions principalPaymentLag(RelativeDateOffset principalPaymentLag) {
+    
+    this.principalPaymentLag = principalPaymentLag;
+    return this;
+  }
+
+   /**
+   * Get principalPaymentLag
+   * @return principalPaymentLag
+  **/
+  @jakarta.annotation.Nullable
+  public RelativeDateOffset getPrincipalPaymentLag() {
+    return principalPaymentLag;
+  }
+
+
+  public void setPrincipalPaymentLag(RelativeDateOffset principalPaymentLag) {
+    this.principalPaymentLag = principalPaymentLag;
+  }
+
+
   public FlowConventions scope(String scope) {
     
     this.scope = scope;
@@ -470,6 +495,7 @@ public class FlowConventions {
         Objects.equals(this.businessDayConvention, flowConventions.businessDayConvention) &&
         Objects.equals(this.accrualDayCountConvention, flowConventions.accrualDayCountConvention) &&
         Objects.equals(this.couponPaymentLag, flowConventions.couponPaymentLag) &&
+        Objects.equals(this.principalPaymentLag, flowConventions.principalPaymentLag) &&
         Objects.equals(this.scope, flowConventions.scope) &&
         Objects.equals(this.code, flowConventions.code);
   }
@@ -480,7 +506,7 @@ public class FlowConventions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(currency, paymentFrequency, dayCountConvention, rollConvention, paymentCalendars, resetCalendars, settleDays, resetDays, leapDaysIncluded, accrualDateAdjustment, businessDayConvention, accrualDayCountConvention, couponPaymentLag, scope, code);
+    return Objects.hash(currency, paymentFrequency, dayCountConvention, rollConvention, paymentCalendars, resetCalendars, settleDays, resetDays, leapDaysIncluded, accrualDateAdjustment, businessDayConvention, accrualDayCountConvention, couponPaymentLag, principalPaymentLag, scope, code);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -507,6 +533,7 @@ public class FlowConventions {
     sb.append("    businessDayConvention: ").append(toIndentedString(businessDayConvention)).append("\n");
     sb.append("    accrualDayCountConvention: ").append(toIndentedString(accrualDayCountConvention)).append("\n");
     sb.append("    couponPaymentLag: ").append(toIndentedString(couponPaymentLag)).append("\n");
+    sb.append("    principalPaymentLag: ").append(toIndentedString(principalPaymentLag)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("}");
@@ -544,6 +571,7 @@ public class FlowConventions {
     openapiFields.add("businessDayConvention");
     openapiFields.add("accrualDayCountConvention");
     openapiFields.add("couponPaymentLag");
+    openapiFields.add("principalPaymentLag");
     openapiFields.add("scope");
     openapiFields.add("code");
 
@@ -613,6 +641,10 @@ public class FlowConventions {
       // validate the optional field `couponPaymentLag`
       if (jsonObj.get("couponPaymentLag") != null && !jsonObj.get("couponPaymentLag").isJsonNull()) {
         RelativeDateOffset.validateJsonElement(jsonObj.get("couponPaymentLag"));
+      }
+      // validate the optional field `principalPaymentLag`
+      if (jsonObj.get("principalPaymentLag") != null && !jsonObj.get("principalPaymentLag").isJsonNull()) {
+        RelativeDateOffset.validateJsonElement(jsonObj.get("principalPaymentLag"));
       }
       if ((jsonObj.get("scope") != null && !jsonObj.get("scope").isJsonNull()) && !jsonObj.get("scope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `scope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scope").toString()));

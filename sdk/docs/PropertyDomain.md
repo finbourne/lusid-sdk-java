@@ -113,6 +113,7 @@ PropertyDomain method = PropertyDomain.RECRESULT;
 PropertyDomain method = PropertyDomain.JOURNALENTRY;
 PropertyDomain method = PropertyDomain.COLLATERALAGREEMENT;
 PropertyDomain method = PropertyDomain.ELIGIBLECOLLATERALSCHEDULE;
+PropertyDomain method = PropertyDomain.RELATIONALDATASETDEFINITION;
 ```
 
 

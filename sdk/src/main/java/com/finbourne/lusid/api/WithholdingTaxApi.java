@@ -85,11 +85,11 @@ public class WithholdingTaxApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call batchDeleteWithholdingTaxRatesCall(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
-        return batchDeleteWithholdingTaxRatesCall(scope, code, requestBody, successMode,  _callback, new ConfigurationOptions());
+    private okhttp3.Call batchDeleteWithholdingTaxRatesCall(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback _callback) throws ApiException {
+        return batchDeleteWithholdingTaxRatesCall(scope, code, requestBody, successMode, ruleSource,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call batchDeleteWithholdingTaxRatesCall(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchDeleteWithholdingTaxRatesCall(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -120,6 +120,10 @@ public class WithholdingTaxApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
         }
 
+        if (ruleSource != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("ruleSource", ruleSource));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -146,7 +150,7 @@ public class WithholdingTaxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchDeleteWithholdingTaxRatesValidateBeforeCall(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchDeleteWithholdingTaxRatesValidateBeforeCall(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling batchDeleteWithholdingTaxRates(Async)");
@@ -162,34 +166,34 @@ public class WithholdingTaxApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling batchDeleteWithholdingTaxRates(Async)");
         }
 
-        return batchDeleteWithholdingTaxRatesCall(scope, code, requestBody, successMode, _callback, opts);
+        return batchDeleteWithholdingTaxRatesCall(scope, code, requestBody, successMode, ruleSource, _callback, opts);
 
     }
 
 
-    private ApiResponse<BatchDeleteRelationalDataResponse> batchDeleteWithholdingTaxRatesWithHttpInfo(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode) throws ApiException {
-        okhttp3.Call localVarCall = batchDeleteWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, null, new ConfigurationOptions());
+    private ApiResponse<BatchDeleteRelationalDataResponse> batchDeleteWithholdingTaxRatesWithHttpInfo(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource) throws ApiException {
+        okhttp3.Call localVarCall = batchDeleteWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, ruleSource, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchDeleteRelationalDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<BatchDeleteRelationalDataResponse> batchDeleteWithholdingTaxRatesWithHttpInfo(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = batchDeleteWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, null, opts);
+    private ApiResponse<BatchDeleteRelationalDataResponse> batchDeleteWithholdingTaxRatesWithHttpInfo(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchDeleteWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, ruleSource, null, opts);
         Type localVarReturnType = new TypeToken<BatchDeleteRelationalDataResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call batchDeleteWithholdingTaxRatesAsync(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback<BatchDeleteRelationalDataResponse> _callback) throws ApiException {
+    private okhttp3.Call batchDeleteWithholdingTaxRatesAsync(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback<BatchDeleteRelationalDataResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchDeleteWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = batchDeleteWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, ruleSource, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchDeleteRelationalDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call batchDeleteWithholdingTaxRatesAsync(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback<BatchDeleteRelationalDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchDeleteWithholdingTaxRatesAsync(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback<BatchDeleteRelationalDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = batchDeleteWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, _callback, opts);
+        okhttp3.Call localVarCall = batchDeleteWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, ruleSource, _callback, opts);
         Type localVarReturnType = new TypeToken<BatchDeleteRelationalDataResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -200,6 +204,7 @@ public class WithholdingTaxApi {
         private final String code;
         private final Map<String, DeleteWithholdingTaxRateRequest> requestBody;
         private String successMode;
+        private String ruleSource;
 
         private APIbatchDeleteWithholdingTaxRatesRequest(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody) {
             this.scope = scope;
@@ -218,6 +223,16 @@ public class WithholdingTaxApi {
         }
 
         /**
+         * Set ruleSource
+         * @param ruleSource The source of the rows to delete, since it is part of each row&#39;s identity. Omit it   to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not   carry ruleSource in its own series identifiers. (optional)
+         * @return APIbatchDeleteWithholdingTaxRatesRequest
+         */
+        public APIbatchDeleteWithholdingTaxRatesRequest ruleSource(String ruleSource) {
+            this.ruleSource = ruleSource;
+            return this;
+        }
+
+        /**
          * Build call for batchDeleteWithholdingTaxRates
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -231,7 +246,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return batchDeleteWithholdingTaxRatesCall(scope, code, requestBody, successMode, _callback);
+            return batchDeleteWithholdingTaxRatesCall(scope, code, requestBody, successMode, ruleSource, _callback);
         }
 
         /**
@@ -247,7 +262,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public BatchDeleteRelationalDataResponse execute() throws ApiException {
-            ApiResponse<BatchDeleteRelationalDataResponse> localVarResp = batchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode);
+            ApiResponse<BatchDeleteRelationalDataResponse> localVarResp = batchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource);
             return localVarResp.getData();
         }
 
@@ -264,7 +279,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public BatchDeleteRelationalDataResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<BatchDeleteRelationalDataResponse> localVarResp = batchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, opts);
+            ApiResponse<BatchDeleteRelationalDataResponse> localVarResp = batchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource, opts);
             return localVarResp.getData();
         }
 
@@ -281,7 +296,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public ApiResponse<BatchDeleteRelationalDataResponse> executeWithHttpInfo() throws ApiException {
-            return batchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode);
+            return batchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource);
         }
 
         /**
@@ -297,7 +312,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public ApiResponse<BatchDeleteRelationalDataResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return batchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, opts);
+            return batchDeleteWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource, opts);
         }
 
         /**
@@ -314,7 +329,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchDeleteRelationalDataResponse> _callback) throws ApiException {
-            return batchDeleteWithholdingTaxRatesAsync(scope, code, requestBody, successMode, _callback);
+            return batchDeleteWithholdingTaxRatesAsync(scope, code, requestBody, successMode, ruleSource, _callback);
         }
 
         /**
@@ -331,7 +346,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchDeleteRelationalDataResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return batchDeleteWithholdingTaxRatesAsync(scope, code, requestBody, successMode, _callback, opts);
+            return batchDeleteWithholdingTaxRatesAsync(scope, code, requestBody, successMode, ruleSource, _callback, opts);
         }
     }
 
@@ -353,11 +368,11 @@ public class WithholdingTaxApi {
     public APIbatchDeleteWithholdingTaxRatesRequest batchDeleteWithholdingTaxRates(String scope, String code, Map<String, DeleteWithholdingTaxRateRequest> requestBody) {
         return new APIbatchDeleteWithholdingTaxRatesRequest(scope, code, requestBody);
     }
-    private okhttp3.Call batchUpsertWithholdingTaxRatesCall(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
-        return batchUpsertWithholdingTaxRatesCall(scope, code, requestBody, successMode,  _callback, new ConfigurationOptions());
+    private okhttp3.Call batchUpsertWithholdingTaxRatesCall(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback _callback) throws ApiException {
+        return batchUpsertWithholdingTaxRatesCall(scope, code, requestBody, successMode, ruleSource,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call batchUpsertWithholdingTaxRatesCall(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertWithholdingTaxRatesCall(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -388,6 +403,10 @@ public class WithholdingTaxApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
         }
 
+        if (ruleSource != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("ruleSource", ruleSource));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -414,7 +433,7 @@ public class WithholdingTaxApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call batchUpsertWithholdingTaxRatesValidateBeforeCall(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertWithholdingTaxRatesValidateBeforeCall(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling batchUpsertWithholdingTaxRates(Async)");
@@ -430,34 +449,34 @@ public class WithholdingTaxApi {
             throw new ApiException("Missing the required parameter 'requestBody' when calling batchUpsertWithholdingTaxRates(Async)");
         }
 
-        return batchUpsertWithholdingTaxRatesCall(scope, code, requestBody, successMode, _callback, opts);
+        return batchUpsertWithholdingTaxRatesCall(scope, code, requestBody, successMode, ruleSource, _callback, opts);
 
     }
 
 
-    private ApiResponse<BatchUpsertWithholdingTaxRatesResponse> batchUpsertWithholdingTaxRatesWithHttpInfo(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, null, new ConfigurationOptions());
+    private ApiResponse<BatchUpsertWithholdingTaxRatesResponse> batchUpsertWithholdingTaxRatesWithHttpInfo(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, ruleSource, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchUpsertWithholdingTaxRatesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<BatchUpsertWithholdingTaxRatesResponse> batchUpsertWithholdingTaxRatesWithHttpInfo(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = batchUpsertWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, null, opts);
+    private ApiResponse<BatchUpsertWithholdingTaxRatesResponse> batchUpsertWithholdingTaxRatesWithHttpInfo(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = batchUpsertWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, ruleSource, null, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertWithholdingTaxRatesResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call batchUpsertWithholdingTaxRatesAsync(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback<BatchUpsertWithholdingTaxRatesResponse> _callback) throws ApiException {
+    private okhttp3.Call batchUpsertWithholdingTaxRatesAsync(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback<BatchUpsertWithholdingTaxRatesResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = batchUpsertWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, ruleSource, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<BatchUpsertWithholdingTaxRatesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call batchUpsertWithholdingTaxRatesAsync(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, final ApiCallback<BatchUpsertWithholdingTaxRatesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call batchUpsertWithholdingTaxRatesAsync(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody, String successMode, String ruleSource, final ApiCallback<BatchUpsertWithholdingTaxRatesResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = batchUpsertWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, _callback, opts);
+        okhttp3.Call localVarCall = batchUpsertWithholdingTaxRatesValidateBeforeCall(scope, code, requestBody, successMode, ruleSource, _callback, opts);
         Type localVarReturnType = new TypeToken<BatchUpsertWithholdingTaxRatesResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -468,6 +487,7 @@ public class WithholdingTaxApi {
         private final String code;
         private final Map<String, UpsertWithholdingTaxRateRequest> requestBody;
         private String successMode;
+        private String ruleSource;
 
         private APIbatchUpsertWithholdingTaxRatesRequest(String scope, String code, Map<String, UpsertWithholdingTaxRateRequest> requestBody) {
             this.scope = scope;
@@ -486,6 +506,16 @@ public class WithholdingTaxApi {
         }
 
         /**
+         * Set ruleSource
+         * @param ruleSource The source every row in the batch is attributed to, compared against the   configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource   in its own series identifiers. (optional)
+         * @return APIbatchUpsertWithholdingTaxRatesRequest
+         */
+        public APIbatchUpsertWithholdingTaxRatesRequest ruleSource(String ruleSource) {
+            this.ruleSource = ruleSource;
+            return this;
+        }
+
+        /**
          * Build call for batchUpsertWithholdingTaxRates
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -499,7 +529,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return batchUpsertWithholdingTaxRatesCall(scope, code, requestBody, successMode, _callback);
+            return batchUpsertWithholdingTaxRatesCall(scope, code, requestBody, successMode, ruleSource, _callback);
         }
 
         /**
@@ -515,7 +545,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public BatchUpsertWithholdingTaxRatesResponse execute() throws ApiException {
-            ApiResponse<BatchUpsertWithholdingTaxRatesResponse> localVarResp = batchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode);
+            ApiResponse<BatchUpsertWithholdingTaxRatesResponse> localVarResp = batchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource);
             return localVarResp.getData();
         }
 
@@ -532,7 +562,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public BatchUpsertWithholdingTaxRatesResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<BatchUpsertWithholdingTaxRatesResponse> localVarResp = batchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, opts);
+            ApiResponse<BatchUpsertWithholdingTaxRatesResponse> localVarResp = batchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource, opts);
             return localVarResp.getData();
         }
 
@@ -549,7 +579,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public ApiResponse<BatchUpsertWithholdingTaxRatesResponse> executeWithHttpInfo() throws ApiException {
-            return batchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode);
+            return batchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource);
         }
 
         /**
@@ -565,7 +595,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public ApiResponse<BatchUpsertWithholdingTaxRatesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return batchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, opts);
+            return batchUpsertWithholdingTaxRatesWithHttpInfo(scope, code, requestBody, successMode, ruleSource, opts);
         }
 
         /**
@@ -582,7 +612,7 @@ public class WithholdingTaxApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertWithholdingTaxRatesResponse> _callback) throws ApiException {
-            return batchUpsertWithholdingTaxRatesAsync(scope, code, requestBody, successMode, _callback);
+            return batchUpsertWithholdingTaxRatesAsync(scope, code, requestBody, successMode, ruleSource, _callback);
         }
 
         /**
@@ -599,13 +629,13 @@ public class WithholdingTaxApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<BatchUpsertWithholdingTaxRatesResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return batchUpsertWithholdingTaxRatesAsync(scope, code, requestBody, successMode, _callback, opts);
+            return batchUpsertWithholdingTaxRatesAsync(scope, code, requestBody, successMode, ruleSource, _callback, opts);
         }
     }
 
     /**
      * [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands.
-     * Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+     * Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
      * @param scope The Scope of the rate dataset&#39;s relational dataset definition. (required)
      * @param code The Code of the rate dataset&#39;s relational dataset definition. (required)
      * @param requestBody The rate rows to upsert, keyed by a correlation id echoed back in the response. (required)

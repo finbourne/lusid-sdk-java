@@ -20,7 +20,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 ## batchDeleteWithholdingTaxRates
 
-> BatchDeleteRelationalDataResponse batchDeleteWithholdingTaxRates(scope, code, requestBody, successMode)
+> BatchDeleteRelationalDataResponse batchDeleteWithholdingTaxRates(scope, code, requestBody, successMode, ruleSource)
 
 [EARLY ACCESS] BatchDeleteWithholdingTaxRates: Batch delete Withholding Tax rate rows from a rate dataset.
 
@@ -69,11 +69,12 @@ public class WithholdingTaxApiExample {
         String code = "code_example"; // String | The Code of the rate dataset's relational dataset definition.
         Map<String, DeleteWithholdingTaxRateRequest> requestBody = new HashMap(); // Map<String, DeleteWithholdingTaxRateRequest> | The rate rows to delete, keyed by a correlation id echoed back in the response.
         String successMode = "Atomic"; // String | Atomic or Partial; defaults to Atomic. In Partial mode failures are returned   in the response body with a 200 status.
+        String ruleSource = "ruleSource_example"; // String | The source of the rows to delete, since it is part of each row's identity. Omit it   to delete rows that apply at every source; a source's rows are only deleted when it is given. A row may not   carry ruleSource in its own series identifiers.
         try {
             // uncomment the below to set overrides at the request level
-            // BatchDeleteRelationalDataResponse result = apiInstance.batchDeleteWithholdingTaxRates(scope, code, requestBody, successMode).execute(opts);
+            // BatchDeleteRelationalDataResponse result = apiInstance.batchDeleteWithholdingTaxRates(scope, code, requestBody, successMode, ruleSource).execute(opts);
 
-            BatchDeleteRelationalDataResponse result = apiInstance.batchDeleteWithholdingTaxRates(scope, code, requestBody, successMode).execute();
+            BatchDeleteRelationalDataResponse result = apiInstance.batchDeleteWithholdingTaxRates(scope, code, requestBody, successMode, ruleSource).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WithholdingTaxApi#batchDeleteWithholdingTaxRates");
@@ -94,6 +95,7 @@ public class WithholdingTaxApiExample {
 | **code** | **String**| The Code of the rate dataset&#39;s relational dataset definition. | |
 | **requestBody** | [**Map&lt;String, DeleteWithholdingTaxRateRequest&gt;**](DeleteWithholdingTaxRateRequest.md)| The rate rows to delete, keyed by a correlation id echoed back in the response. | |
 | **successMode** | **String**| Atomic or Partial; defaults to Atomic. In Partial mode failures are returned   in the response body with a 200 status. | [optional] [default to Atomic] |
+| **ruleSource** | **String**| The source of the rows to delete, since it is part of each row&#39;s identity. Omit it   to delete rows that apply at every source; a source&#39;s rows are only deleted when it is given. A row may not   carry ruleSource in its own series identifiers. | [optional] |
 
 ### Return type
 
@@ -117,11 +119,11 @@ public class WithholdingTaxApiExample {
 
 ## batchUpsertWithholdingTaxRates
 
-> BatchUpsertWithholdingTaxRatesResponse batchUpsertWithholdingTaxRates(scope, code, requestBody, successMode)
+> BatchUpsertWithholdingTaxRatesResponse batchUpsertWithholdingTaxRates(scope, code, requestBody, successMode, ruleSource)
 
 [EARLY ACCESS] BatchUpsertWithholdingTaxRates: Batch upsert Withholding Tax rate rows, applying the write-time gates before any row lands.
 
-Row identity is the matching dimensions plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same dimensions.
+Row identity is the series identifiers plus effectiveAt; a rate is superseded by loading a row with a  later effectiveAt for the same series identifiers. One batch carries one rule source, so a feed mixing rows  from a source with rows that apply at every source is loaded in two calls.
 
 ### Example
 
@@ -166,11 +168,12 @@ public class WithholdingTaxApiExample {
         String code = "code_example"; // String | The Code of the rate dataset's relational dataset definition.
         Map<String, UpsertWithholdingTaxRateRequest> requestBody = new HashMap(); // Map<String, UpsertWithholdingTaxRateRequest> | The rate rows to upsert, keyed by a correlation id echoed back in the response.
         String successMode = "Atomic"; // String | Atomic or Partial; defaults to Atomic, because a partly loaded feed silently   under-withholds. In Partial mode failures are returned in the response body with a 200 status.
+        String ruleSource = "ruleSource_example"; // String | The source every row in the batch is attributed to, compared against the   configuration's source priority. Omit it for rows that apply at every source. A row may not carry ruleSource   in its own series identifiers.
         try {
             // uncomment the below to set overrides at the request level
-            // BatchUpsertWithholdingTaxRatesResponse result = apiInstance.batchUpsertWithholdingTaxRates(scope, code, requestBody, successMode).execute(opts);
+            // BatchUpsertWithholdingTaxRatesResponse result = apiInstance.batchUpsertWithholdingTaxRates(scope, code, requestBody, successMode, ruleSource).execute(opts);
 
-            BatchUpsertWithholdingTaxRatesResponse result = apiInstance.batchUpsertWithholdingTaxRates(scope, code, requestBody, successMode).execute();
+            BatchUpsertWithholdingTaxRatesResponse result = apiInstance.batchUpsertWithholdingTaxRates(scope, code, requestBody, successMode, ruleSource).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling WithholdingTaxApi#batchUpsertWithholdingTaxRates");
@@ -191,6 +194,7 @@ public class WithholdingTaxApiExample {
 | **code** | **String**| The Code of the rate dataset&#39;s relational dataset definition. | |
 | **requestBody** | [**Map&lt;String, UpsertWithholdingTaxRateRequest&gt;**](UpsertWithholdingTaxRateRequest.md)| The rate rows to upsert, keyed by a correlation id echoed back in the response. | |
 | **successMode** | **String**| Atomic or Partial; defaults to Atomic, because a partly loaded feed silently   under-withholds. In Partial mode failures are returned in the response body with a 200 status. | [optional] [default to Atomic] |
+| **ruleSource** | **String**| The source every row in the batch is attributed to, compared against the   configuration&#39;s source priority. Omit it for rows that apply at every source. A row may not carry ruleSource   in its own series identifiers. | [optional] |
 
 ### Return type
 

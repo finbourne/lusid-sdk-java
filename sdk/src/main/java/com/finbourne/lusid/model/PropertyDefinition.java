@@ -473,7 +473,9 @@ public class PropertyDefinition {
     
     COLLATERALAGREEMENT("CollateralAgreement"),
     
-    ELIGIBLECOLLATERALSCHEDULE("EligibleCollateralSchedule");
+    ELIGIBLECOLLATERALSCHEDULE("EligibleCollateralSchedule"),
+    
+    RELATIONALDATASETDEFINITION("RelationalDatasetDefinition");
 
     private String value;
 

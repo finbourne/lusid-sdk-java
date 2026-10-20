@@ -419,7 +419,7 @@ info:
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10304
+  version: 0.11.10320
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -70155,6 +70155,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -70346,6 +70347,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -70640,6 +70642,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: The scope that the identifier exists in
@@ -112858,6 +112861,7 @@ paths:
                 failed:
                   failure:
                     detail: Example Failure
+                staged: {}
               schema:
                 $ref: '#/components/schemas/InstrumentEventInstructionsResponse'
             application/json:
@@ -112891,6 +112895,7 @@ paths:
                 failed:
                   failure:
                     detail: Example Failure
+                staged: {}
               schema:
                 $ref: '#/components/schemas/InstrumentEventInstructionsResponse'
             text/json:
@@ -112924,6 +112929,7 @@ paths:
                 failed:
                   failure:
                     detail: Example Failure
+                staged: {}
               schema:
                 $ref: '#/components/schemas/InstrumentEventInstructionsResponse'
           description: The newly inserted or updated instrument event instructions
@@ -118084,6 +118090,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: Scope of the property definition
@@ -118427,6 +118434,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -118616,6 +118624,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -118925,6 +118934,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -119240,6 +119250,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -119559,6 +119570,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: The scope of the property definition to delete properties from.
@@ -119810,6 +119822,7 @@ paths:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         style: simple
       - description: The scope of the property definition to which the property is
@@ -129737,6 +129750,10 @@ paths:
               - attributeName: Custodian
                 leftFormula: "Properties[Custody/default/CustodianCode]"
                 rightFormula: custodian
+              populateResultProperties:
+              - propertyKey: RecResult/Recs/RemediationQueue
+                formula: '''HoldingBreaks'''
+                overwriteManualEditsOnReRun: false
             schema:
               $ref: '#/components/schemas/CreateMatchingRulesetRequest'
           application/json:
@@ -129778,6 +129795,10 @@ paths:
               - attributeName: Custodian
                 leftFormula: "Properties[Custody/default/CustodianCode]"
                 rightFormula: custodian
+              populateResultProperties:
+              - propertyKey: RecResult/Recs/RemediationQueue
+                formula: '''HoldingBreaks'''
+                overwriteManualEditsOnReRun: false
             schema:
               $ref: '#/components/schemas/CreateMatchingRulesetRequest'
           text/json:
@@ -129819,6 +129840,10 @@ paths:
               - attributeName: Custodian
                 leftFormula: "Properties[Custody/default/CustodianCode]"
                 rightFormula: custodian
+              populateResultProperties:
+              - propertyKey: RecResult/Recs/RemediationQueue
+                formula: '''HoldingBreaks'''
+                overwriteManualEditsOnReRun: false
             schema:
               $ref: '#/components/schemas/CreateMatchingRulesetRequest'
           application/*+json:
@@ -129860,6 +129885,10 @@ paths:
               - attributeName: Custodian
                 leftFormula: "Properties[Custody/default/CustodianCode]"
                 rightFormula: custodian
+              populateResultProperties:
+              - propertyKey: RecResult/Recs/RemediationQueue
+                formula: '''HoldingBreaks'''
+                overwriteManualEditsOnReRun: false
             schema:
               $ref: '#/components/schemas/CreateMatchingRulesetRequest'
         description: The matching ruleset to create.
@@ -129909,6 +129938,10 @@ paths:
                 - attributeName: Custodian
                   leftFormula: "Properties[Custody/default/CustodianCode]"
                   rightFormula: custodian
+                populateResultProperties:
+                - propertyKey: RecResult/Recs/RemediationQueue
+                  formula: '''HoldingBreaks'''
+                  overwriteManualEditsOnReRun: false
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -129957,6 +129990,10 @@ paths:
                 - attributeName: Custodian
                   leftFormula: "Properties[Custody/default/CustodianCode]"
                   rightFormula: custodian
+                populateResultProperties:
+                - propertyKey: RecResult/Recs/RemediationQueue
+                  formula: '''HoldingBreaks'''
+                  overwriteManualEditsOnReRun: false
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -130005,6 +130042,10 @@ paths:
                 - attributeName: Custodian
                   leftFormula: "Properties[Custody/default/CustodianCode]"
                   rightFormula: custodian
+                populateResultProperties:
+                - propertyKey: RecResult/Recs/RemediationQueue
+                  formula: '''HoldingBreaks'''
+                  overwriteManualEditsOnReRun: false
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -130195,6 +130236,10 @@ paths:
                 - attributeName: Custodian
                   leftFormula: "Properties[Custody/default/CustodianCode]"
                   rightFormula: custodian
+                populateResultProperties:
+                - propertyKey: RecResult/Recs/RemediationQueue
+                  formula: '''HoldingBreaks'''
+                  overwriteManualEditsOnReRun: false
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -130243,6 +130288,10 @@ paths:
                 - attributeName: Custodian
                   leftFormula: "Properties[Custody/default/CustodianCode]"
                   rightFormula: custodian
+                populateResultProperties:
+                - propertyKey: RecResult/Recs/RemediationQueue
+                  formula: '''HoldingBreaks'''
+                  overwriteManualEditsOnReRun: false
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -130291,6 +130340,10 @@ paths:
                 - attributeName: Custodian
                   leftFormula: "Properties[Custody/default/CustodianCode]"
                   rightFormula: custodian
+                populateResultProperties:
+                - propertyKey: RecResult/Recs/RemediationQueue
+                  formula: '''HoldingBreaks'''
+                  overwriteManualEditsOnReRun: false
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -130390,6 +130443,10 @@ paths:
               - attributeName: Custodian
                 leftFormula: "Properties[Custody/default/CustodianCode]"
                 rightFormula: custodian
+              populateResultProperties:
+              - propertyKey: RecResult/Recs/RemediationQueue
+                formula: '''HoldingBreaks'''
+                overwriteManualEditsOnReRun: false
             schema:
               $ref: '#/components/schemas/UpdateMatchingRulesetRequest'
           application/json:
@@ -130428,6 +130485,10 @@ paths:
               - attributeName: Custodian
                 leftFormula: "Properties[Custody/default/CustodianCode]"
                 rightFormula: custodian
+              populateResultProperties:
+              - propertyKey: RecResult/Recs/RemediationQueue
+                formula: '''HoldingBreaks'''
+                overwriteManualEditsOnReRun: false
             schema:
               $ref: '#/components/schemas/UpdateMatchingRulesetRequest'
           text/json:
@@ -130466,6 +130527,10 @@ paths:
               - attributeName: Custodian
                 leftFormula: "Properties[Custody/default/CustodianCode]"
                 rightFormula: custodian
+              populateResultProperties:
+              - propertyKey: RecResult/Recs/RemediationQueue
+                formula: '''HoldingBreaks'''
+                overwriteManualEditsOnReRun: false
             schema:
               $ref: '#/components/schemas/UpdateMatchingRulesetRequest'
           application/*+json:
@@ -130504,6 +130569,10 @@ paths:
               - attributeName: Custodian
                 leftFormula: "Properties[Custody/default/CustodianCode]"
                 rightFormula: custodian
+              populateResultProperties:
+              - propertyKey: RecResult/Recs/RemediationQueue
+                formula: '''HoldingBreaks'''
+                overwriteManualEditsOnReRun: false
             schema:
               $ref: '#/components/schemas/UpdateMatchingRulesetRequest'
         description: The updated matching ruleset values.
@@ -130553,6 +130622,10 @@ paths:
                 - attributeName: Custodian
                   leftFormula: "Properties[Custody/default/CustodianCode]"
                   rightFormula: custodian
+                populateResultProperties:
+                - propertyKey: RecResult/Recs/RemediationQueue
+                  formula: '''HoldingBreaks'''
+                  overwriteManualEditsOnReRun: false
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -130601,6 +130674,10 @@ paths:
                 - attributeName: Custodian
                   leftFormula: "Properties[Custody/default/CustodianCode]"
                   rightFormula: custodian
+                populateResultProperties:
+                - propertyKey: RecResult/Recs/RemediationQueue
+                  formula: '''HoldingBreaks'''
+                  overwriteManualEditsOnReRun: false
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -130649,6 +130726,10 @@ paths:
                 - attributeName: Custodian
                   leftFormula: "Properties[Custody/default/CustodianCode]"
                   rightFormula: custodian
+                populateResultProperties:
+                - propertyKey: RecResult/Recs/RemediationQueue
+                  formula: '''HoldingBreaks'''
+                  overwriteManualEditsOnReRun: false
                 href: https://example.com
                 version:
                   effectiveFrom: 2024-06-01T00:00:00.0000000+00:00
@@ -131169,7 +131250,7 @@ paths:
         style: simple
       - description: "The rec type the result belongs to (e.g. Holding). Available\
           \ values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction,\
-          \ SettlementActivity, External."
+          \ SettlementActivity, External, Instrument."
         explode: false
         in: path
         name: recType
@@ -178851,6 +178932,20 @@ paths:
           minLength: 1
           type: string
         style: form
+      - description: "The source of the rows to delete, since it is part of each row's\
+          \ identity. Omit it\r\n to delete rows that apply at every source; a source's\
+          \ rows are only deleted when it is given. A row may not\r\n carry ruleSource\
+          \ in its own series identifiers."
+        explode: true
+        in: query
+        name: ruleSource
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
       requestBody:
         content:
           application/json-patch+json:
@@ -178970,9 +179065,11 @@ paths:
       x-accepts: application/json
   /api/withholdingtax/rates/{scope}/{code}/$batchUpsert:
     post:
-      description: "Row identity is the matching dimensions plus effectiveAt; a rate\
+      description: "Row identity is the series identifiers plus effectiveAt; a rate\
         \ is superseded by loading a row with a\r\nlater effectiveAt for the same\
-        \ dimensions."
+        \ series identifiers. One batch carries one rule source, so a feed mixing\
+        \ rows\r\nfrom a source with rows that apply at every source is loaded in\
+        \ two calls."
       operationId: BatchUpsertWithholdingTaxRates
       parameters:
       - description: The Scope of the rate dataset's relational dataset definition.
@@ -179008,6 +179105,20 @@ paths:
           default: Atomic
           maxLength: 64
           minLength: 1
+          type: string
+        style: form
+      - description: "The source every row in the batch is attributed to, compared\
+          \ against the\r\n configuration's source priority. Omit it for rows that\
+          \ apply at every source. A row may not carry ruleSource\r\n in its own series\
+          \ identifiers."
+        explode: true
+        in: query
+        name: ruleSource
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: form
       requestBody:
@@ -179136,6 +179247,8 @@ paths:
                         value: TreatyEligible
                       instrumentDomicile:
                         value: US
+                      ruleSource:
+                        value: TaxVendor
                     effectiveAt: 2026-01-01T00:00:00.0000000+00:00
                     valueFields:
                       countryRate:
@@ -179163,6 +179276,8 @@ paths:
                         value: TreatyEligible
                       instrumentDomicile:
                         value: US
+                      ruleSource:
+                        value: TaxVendor
                     effectiveAt: 2026-01-01T00:00:00.0000000+00:00
                     valueFields:
                       countryRate:
@@ -179190,6 +179305,8 @@ paths:
                         value: TreatyEligible
                       instrumentDomicile:
                         value: US
+                      ruleSource:
+                        value: TaxVendor
                     effectiveAt: 2026-01-01T00:00:00.0000000+00:00
                     valueFields:
                       countryRate:
@@ -183937,6 +184054,15 @@ components:
               status: status
             accountSelector: accountSelector
           grossTransactionAmount: 9.301444243932576
+          entityLinks:
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -192170,6 +192296,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           electionKey: electionKey
         loadedEvent:
           sequenceNumber: 0
@@ -194443,7 +194575,7 @@ components:
         recType:
           description: "The rec type whose results this item targets (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
-            \ OutputTransaction, SettlementActivity, External."
+            \ OutputTransaction, SettlementActivity, External, Instrument."
           maxLength: 64
           minLength: 1
           type: string
@@ -195199,7 +195331,7 @@ components:
         recType:
           description: "The rec type whose results this item targets (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
-            \ OutputTransaction, SettlementActivity, External."
+            \ OutputTransaction, SettlementActivity, External, Instrument."
           maxLength: 64
           minLength: 1
           type: string
@@ -221216,6 +221348,7 @@ components:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -221835,6 +221968,7 @@ components:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -221943,6 +222077,22 @@ components:
           toleranceType: toleranceType
         - ruleName: ruleName
           toleranceType: toleranceType
+        populateResultProperties:
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
         aggregateRules:
         - leftOperation: leftOperation
           leftFormula: leftFormula
@@ -221984,7 +222134,7 @@ components:
           description: "The type of reconciliation to perform. External reconciles\
             \ non-native data on both sides, described by the datasetSchemas and the\
             \ externalRecType. Available values: Holding, CashHolding, Valuation,\
-            \ InputTransaction, OutputTransaction, SettlementActivity, External."
+            \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument."
           minLength: 1
           type: string
         externalRecType:
@@ -222039,6 +222189,15 @@ components:
             \ Optional, and may be empty."
           items:
             $ref: '#/components/schemas/WritebackConfiguration'
+          nullable: true
+          type: array
+        populateResultProperties:
+          description: "The RecResult properties to populate on this ruleset's results,\
+            \ each from a formula over the result. Optional, and may be empty; at\
+            \ most 20."
+          items:
+            $ref: '#/components/schemas/PopulateResultProperty'
+          maxItems: 20
           nullable: true
           type: array
       required:
@@ -222339,6 +222498,7 @@ components:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -230624,8 +230784,11 @@ components:
         seriesIdentifiers:
           additionalProperties:
             nullable: true
-          description: "The identifiers that uniquely define this DataSeries, if any,\
-            \ structured according to the FieldSchema of the parent RelationalDatasetDefinition."
+          description: "The series identifiers that, with effectiveAt, identify the\
+            \ rate row: taxCountry, profileType and the dataset's own matching dimensions,\
+            \ structured according to its field schema. ruleSource is not accepted\
+            \ here: pass it as the ruleSource query parameter, which applies it to\
+            \ every row in the batch, and omit it for rows that apply at every source."
           nullable: true
           type: object
         effectiveAt:
@@ -238890,14 +239053,65 @@ components:
         calculationBase:
           description: "The calculation base for a Fee that is calculated using a\
             \ percentage (TotalAnnualAccrualAmount and CalculationBase cannot both\
-            \ be present). When the Fee is a ShareClass Fee (i.e: when ShareClasses\
-            \ contains at least one value), each of the following would be a valid\
-            \ CalculationBase: \"10000.00\", \"ShareClass.GAV\", \"ShareClass.GAV\
-            \ - ShareClass.Fees[ShareClassFeeCode1].Amount\", \"ShareClass.Fees[ShareClassFeeCode1].CalculationBase\"\
-            . When the Fee is a NonShareClassSpecific Fee (i.e: when ShareClasses\
-            \ contains no values), each of the following would be a valid CalculationBase:\
-            \ \"10000.00\", \"GAV\", \"GAV - Fees[NonClassSpecificFeeCode1].Amount\"\
-            , \"Fees[NonClassSpecificFeeCode1].CalculationBase\". "
+            \ be present). An arithmetic expression (+, -, *, /, numeric literals)\
+            \ over data points from the valuation point being calculated and from\
+            \ the previous valuation point (via the \"Previous.\" prefix; these resolve\
+            \ to zero at a fund's first valuation point). All values are in the fund\
+            \ currency unless stated otherwise. When the Fee is a NonShareClassSpecific\
+            \ Fee (i.e: when ShareClasses contains no values), the available data\
+            \ points are: \"GAV\", \"NAVPreFees\" (GAV adjusted for external fees,\
+            \ before any fee accruals), \"Amount\" (the previous valuation point's\
+            \ NAV), \"Dealing[dealingFilterId]\", \"BackOut[backOutFilterId]\", \"\
+            PnL[pnlFilterId]\", \"ExternalFees[externalFeeFilterId]\", \"Fees[feeCode].Amount|TotalAccrual|PreviousTotalAccrual|CalculationBase\"\
+            , \"Properties[Fund/scope/code]\" (numeric, non-derived fund properties),\
+            \ and under the \"Previous.\" prefix: \"Previous.GAV\", \"Previous.NAV\"\
+            , \"Previous.Dealing[id]\", \"Previous.BackOut[id]\", \"Previous.PnL[id]\"\
+            , \"Previous.ExternalFees[id]\" and \"Previous.Fees[feeCode].Amount|TotalAccrual|CalculationBase\"\
+            . \"GAV\" is the gross asset value before any external fees, whereas \"\
+            Previous.GAV\" is the previous valuation point's reported GAV, which is\
+            \ after any external fees that apply to a PnL bucket; for a like-for-like\
+            \ period comparison use \"NAVPreFees\" against \"Previous.NAV\". \"ExternalFees[id]\"\
+            \ is the sum of the fund level external fees (positive amounts) and the\
+            \ share class external fees (booked as negative movements) matching the\
+            \ filter. Each id must be one the fund configuration defines: a filter\
+            \ id, or on a fund configuration with bucket sets, a bucket id of the\
+            \ apportionment bucket set of the matching bucket type (BackOut is not\
+            \ available with bucket sets). For example: \"10000.00\", \"GAV\", \"\
+            GAV - Fees[FeeCode1].Amount\", \"Previous.NAV - Dealing[Redemptions] +\
+            \ Dealing[Subscriptions]\". When the Fee is a ShareClass Fee (i.e: when\
+            \ ShareClasses contains at least one value), the same data points are\
+            \ available for the share class under the \"ShareClass.\" prefix (e.g.\
+            \ \"ShareClass.GAV\", \"ShareClass.Previous.NAV\", \"ShareClass.Fees[FeeCode1].Amount\"\
+            ), with \"ShareClass.PreviousNAV\" as the previous NAV, plus \"ShareClass.DealingUnits[id]\"\
+            , \"ShareClass.CapitalRatio\", \"ShareClass.Previous.SharesInIssue\",\
+            \ \"ShareClass.Previous.UnitPrice\", and the share class currency data\
+            \ points \"ShareClass.ShareClassCcyGAV\", \"ShareClass.ShareClassCcyPreviousNAV\"\
+            , \"ShareClass.ShareClassCcyNAVPreFees\", \"ShareClass.ShareClassCcyGAVPreManagementFees\"\
+            , \"ShareClass.ShareClassCcyPerformanceFeeGAV\", \"ShareClass.ShareClassToFundFxRate\"\
+            , \"ShareClass.PreviousShareClassToFundFxRate\", \"ShareClass.Previous.ShareClassCcyGAV\"\
+            \ and \"ShareClass.Previous.ShareClassCcyNAV\". The expression must evaluate\
+            \ to a fund currency amount, so convert any share class currency data\
+            \ point explicitly, e.g. \"ShareClass.Previous.ShareClassCcyNAV generate\
+            \ justfile test_sdk ShareClass.ShareClassToFundFxRate\". \"ShareClass.ExternalFees[id]\"\
+            \ and \"ShareClass.Previous.ExternalFees[id]\" are both the external fees\
+            \ booked to the share class itself. Two pre-defined bases control the\
+            \ order fees are calculated in: fees are calculated in three tiers, and\
+            \ a fee's tier is fixed by its calculation base at creation. \"GAVPreManagementFees\"\
+            \ (NAVPreFees less the accruals of all Ordinary tier fees) makes the fee\
+            \ a Management tier fee, calculated after all Ordinary fees. \"PerformanceFeeGAV\"\
+            \ (NAVPreFees less the accruals of all Ordinary and Management tier fees)\
+            \ makes the fee a Performance tier fee, calculated last. Any other base\
+            \ makes the fee an Ordinary tier fee. Fees in the same tier see the same\
+            \ pre-defined base value regardless of creation order, so each pre-defined\
+            \ base is the value of the fund after all external fees and all earlier\
+            \ tier fees have been applied, and a fee cannot reference the accrual\
+            \ of a fee in a later tier. The ShareClass forms (\"ShareClass.GAVPreManagementFees\"\
+            , \"ShareClass.PerformanceFeeGAV\") use the share class NAVPreFees less\
+            \ that share class's earlier tier fee accruals, including its capital\
+            \ ratio share of fund level fees; their share class currency forms (\"\
+            ShareClass.ShareClassCcyGAVPreManagementFees\", \"ShareClass.ShareClassCcyPerformanceFeeGAV\"\
+            ) put the fee in the same tier. No floor is applied to any calculation\
+            \ base: a negative base produces a negative accrual."
           maxLength: 1024
           minLength: 0
           nullable: true
@@ -239386,14 +239600,65 @@ components:
         calculationBase:
           description: "The calculation base for a Fee that is calculated using a\
             \ percentage (TotalAnnualAccrualAmount and CalculationBase cannot both\
-            \ be present). When the Fee is a ShareClass Fee (i.e: when ShareClasses\
-            \ contains at least one value), each of the following would be a valid\
-            \ CalculationBase: \"10000.00\", \"ShareClass.GAV\", \"ShareClass.GAV\
-            \ - ShareClass.Fees[ShareClassFeeCode1].Amount\", \"ShareClass.Fees[ShareClassFeeCode1].CalculationBase\"\
-            . When the Fee is a NonShareClassSpecific Fee (i.e: when ShareClasses\
-            \ contains no values), each of the following would be a valid CalculationBase:\
-            \ \"10000.00\", \"GAV\", \"GAV - Fees[NonClassSpecificFeeCode1].Amount\"\
-            , \"Fees[NonClassSpecificFeeCode1].CalculationBase\". "
+            \ be present). An arithmetic expression (+, -, *, /, numeric literals)\
+            \ over data points from the valuation point being calculated and from\
+            \ the previous valuation point (via the \"Previous.\" prefix; these resolve\
+            \ to zero at a fund's first valuation point). All values are in the fund\
+            \ currency unless stated otherwise. When the Fee is a NonShareClassSpecific\
+            \ Fee (i.e: when ShareClasses contains no values), the available data\
+            \ points are: \"GAV\", \"NAVPreFees\" (GAV adjusted for external fees,\
+            \ before any fee accruals), \"Amount\" (the previous valuation point's\
+            \ NAV), \"Dealing[dealingFilterId]\", \"BackOut[backOutFilterId]\", \"\
+            PnL[pnlFilterId]\", \"ExternalFees[externalFeeFilterId]\", \"Fees[feeCode].Amount|TotalAccrual|PreviousTotalAccrual|CalculationBase\"\
+            , \"Properties[Fund/scope/code]\" (numeric, non-derived fund properties),\
+            \ and under the \"Previous.\" prefix: \"Previous.GAV\", \"Previous.NAV\"\
+            , \"Previous.Dealing[id]\", \"Previous.BackOut[id]\", \"Previous.PnL[id]\"\
+            , \"Previous.ExternalFees[id]\" and \"Previous.Fees[feeCode].Amount|TotalAccrual|CalculationBase\"\
+            . \"GAV\" is the gross asset value before any external fees, whereas \"\
+            Previous.GAV\" is the previous valuation point's reported GAV, which is\
+            \ after any external fees that apply to a PnL bucket; for a like-for-like\
+            \ period comparison use \"NAVPreFees\" against \"Previous.NAV\". \"ExternalFees[id]\"\
+            \ is the sum of the fund level external fees (positive amounts) and the\
+            \ share class external fees (booked as negative movements) matching the\
+            \ filter. Each id must be one the fund configuration defines: a filter\
+            \ id, or on a fund configuration with bucket sets, a bucket id of the\
+            \ apportionment bucket set of the matching bucket type (BackOut is not\
+            \ available with bucket sets). For example: \"10000.00\", \"GAV\", \"\
+            GAV - Fees[FeeCode1].Amount\", \"Previous.NAV - Dealing[Redemptions] +\
+            \ Dealing[Subscriptions]\". When the Fee is a ShareClass Fee (i.e: when\
+            \ ShareClasses contains at least one value), the same data points are\
+            \ available for the share class under the \"ShareClass.\" prefix (e.g.\
+            \ \"ShareClass.GAV\", \"ShareClass.Previous.NAV\", \"ShareClass.Fees[FeeCode1].Amount\"\
+            ), with \"ShareClass.PreviousNAV\" as the previous NAV, plus \"ShareClass.DealingUnits[id]\"\
+            , \"ShareClass.CapitalRatio\", \"ShareClass.Previous.SharesInIssue\",\
+            \ \"ShareClass.Previous.UnitPrice\", and the share class currency data\
+            \ points \"ShareClass.ShareClassCcyGAV\", \"ShareClass.ShareClassCcyPreviousNAV\"\
+            , \"ShareClass.ShareClassCcyNAVPreFees\", \"ShareClass.ShareClassCcyGAVPreManagementFees\"\
+            , \"ShareClass.ShareClassCcyPerformanceFeeGAV\", \"ShareClass.ShareClassToFundFxRate\"\
+            , \"ShareClass.PreviousShareClassToFundFxRate\", \"ShareClass.Previous.ShareClassCcyGAV\"\
+            \ and \"ShareClass.Previous.ShareClassCcyNAV\". The expression must evaluate\
+            \ to a fund currency amount, so convert any share class currency data\
+            \ point explicitly, e.g. \"ShareClass.Previous.ShareClassCcyNAV generate\
+            \ justfile test_sdk ShareClass.ShareClassToFundFxRate\". \"ShareClass.ExternalFees[id]\"\
+            \ and \"ShareClass.Previous.ExternalFees[id]\" are both the external fees\
+            \ booked to the share class itself. Two pre-defined bases control the\
+            \ order fees are calculated in: fees are calculated in three tiers, and\
+            \ a fee's tier is fixed by its calculation base at creation. \"GAVPreManagementFees\"\
+            \ (NAVPreFees less the accruals of all Ordinary tier fees) makes the fee\
+            \ a Management tier fee, calculated after all Ordinary fees. \"PerformanceFeeGAV\"\
+            \ (NAVPreFees less the accruals of all Ordinary and Management tier fees)\
+            \ makes the fee a Performance tier fee, calculated last. Any other base\
+            \ makes the fee an Ordinary tier fee. Fees in the same tier see the same\
+            \ pre-defined base value regardless of creation order, so each pre-defined\
+            \ base is the value of the fund after all external fees and all earlier\
+            \ tier fees have been applied, and a fee cannot reference the accrual\
+            \ of a fee in a later tier. The ShareClass forms (\"ShareClass.GAVPreManagementFees\"\
+            , \"ShareClass.PerformanceFeeGAV\") use the share class NAVPreFees less\
+            \ that share class's earlier tier fee accruals, including its capital\
+            \ ratio share of fund level fees; their share class currency forms (\"\
+            ShareClass.ShareClassCcyGAVPreManagementFees\", \"ShareClass.ShareClassCcyPerformanceFeeGAV\"\
+            ) put the fee in the same tier. No floor is applied to any calculation\
+            \ base: a negative base produces a negative accrual."
           maxLength: 1024
           minLength: 0
           nullable: true
@@ -242659,6 +242924,10 @@ components:
         \ the adjusted date.\r\nFor more information, see https://support.lusid.com/docs/flow-conventions-and-index-conventions"
       example:
         code: code
+        principalPaymentLag:
+          dayType: dayType
+          businessDayConvention: businessDayConvention
+          days: 1
         leapDaysIncluded: true
         paymentCalendars:
         - paymentCalendars
@@ -242784,6 +243053,8 @@ components:
           nullable: true
           type: string
         couponPaymentLag:
+          $ref: '#/components/schemas/RelativeDateOffset'
+        principalPaymentLag:
           $ref: '#/components/schemas/RelativeDateOffset'
         scope:
           description: The scope used when updating or inserting the convention.
@@ -252884,6 +253155,10 @@ components:
             - key: errorDetails
         value:
           code: code
+          principalPaymentLag:
+            dayType: dayType
+            businessDayConvention: businessDayConvention
+            days: 1
           leapDaysIncluded: true
           paymentCalendars:
           - paymentCalendars
@@ -257856,6 +258131,7 @@ components:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         identifierScope:
           description: The scope that the identifier definition exists in.
@@ -262274,6 +262550,12 @@ components:
           href: https://openapi-generator.tech
           relation: relation
         href: https://openapi-generator.tech
+        stagedModifications:
+          hrefPending: https://openapi-generator.tech
+          countPending: 0
+          idsPreviewed:
+          - idsPreviewed
+          - idsPreviewed
         electionKey: electionKey
       properties:
         instrumentEventInstructionId:
@@ -262327,6 +262609,8 @@ components:
             \ do not add multiple instructions to the same tax lot or you will get\
             \ undefined behaviour."
           type: boolean
+        stagedModifications:
+          $ref: '#/components/schemas/StagedModificationsInfo'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -262400,8 +262684,9 @@ components:
       type: object
     InstrumentEventInstructionsResponse:
       additionalProperties: false
-      description: "The collection of successfully upserted instructions, and the\
-        \ collection of failures for those instructions that could not be upserted"
+      description: "The collection of successfully upserted instructions, the collection\
+        \ of those staged pending approval, and the collection of failures for those\
+        \ instructions that could not be upserted"
       example:
         values:
           key:
@@ -262442,6 +262727,12 @@ components:
               href: https://openapi-generator.tech
               relation: relation
             href: https://openapi-generator.tech
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
             electionKey: electionKey
         failed:
           key:
@@ -262451,6 +262742,52 @@ components:
             errorDetails:
             - key: errorDetails
             - key: errorDetails
+        staged:
+          key:
+            instrumentEventId: instrumentEventId
+            quantityInstructed:
+              amount: 1.4658129805029452
+              type: type
+            taxLotId: taxLotId
+            version:
+              stagedModificationIdModified: stagedModificationIdModified
+              reasonModified: reasonModified
+              entityUniqueId: entityUniqueId
+              requestIdModified: requestIdModified
+              reasonCreated: reasonCreated
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 1
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              requestIdCreated: requestIdCreated
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            entitlementDateInstructed: 2000-01-23T04:56:07.000+00:00
+            holdingId: 6
+            instrumentEventInstructionId: instrumentEventInstructionId
+            portfolioId:
+              code: code
+              scope: scope
+            instructionType: instructionType
+            ignoreCostImpact: true
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            href: https://openapi-generator.tech
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
+            electionKey: electionKey
       properties:
         values:
           additionalProperties:
@@ -262463,6 +262800,12 @@ components:
             $ref: '#/components/schemas/ErrorDetail'
           description: The collection of error information for instructions that could
             not be upserted
+          nullable: true
+          type: object
+        staged:
+          additionalProperties:
+            $ref: '#/components/schemas/InstrumentEventInstruction'
+          description: The instructions that have been staged pending approval.
           nullable: true
           type: object
       type: object
@@ -273564,6 +273907,13 @@ components:
           toleranceType: toleranceType
         - ruleName: ruleName
           toleranceType: toleranceType
+        populateResultProperties:
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
         aggregateRules:
         - leftOperation: leftOperation
           leftFormula: leftFormula
@@ -273614,7 +273964,7 @@ components:
           description: "The type of reconciliation to perform. External reconciles\
             \ non-native data on both sides, described by the datasetSchemas and the\
             \ externalRecType. Available values: Holding, CashHolding, Valuation,\
-            \ InputTransaction, OutputTransaction, SettlementActivity, External."
+            \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument."
           minLength: 1
           type: string
         externalRecType:
@@ -273667,6 +274017,14 @@ components:
             \ Optional, and may be empty."
           items:
             $ref: '#/components/schemas/WritebackConfiguration'
+          nullable: true
+          type: array
+        populateResultProperties:
+          description: "The RecResult properties to populate on this ruleset's results,\
+            \ each from a formula over the result. Optional, and may be empty; at\
+            \ most 20."
+          items:
+            $ref: '#/components/schemas/PopulateResultProperty'
           nullable: true
           type: array
         href:
@@ -280089,6 +280447,15 @@ components:
             status: status
           accountSelector: accountSelector
         grossTransactionAmount: 9.301444243932576
+        entityLinks:
+        - entityType: entityType
+          entityId:
+            key: entityId
+          restrictEditing: true
+        - entityType: entityType
+          entityId:
+            key: entityId
+          restrictEditing: true
         otcConfirmation:
           counterpartyAgreementId:
             code: code
@@ -280850,6 +281217,12 @@ components:
           description: Whether the transaction was excluded from the portfolio's holdings
             by the portfolio's transaction exclusion filter.
           type: boolean
+        entityLinks:
+          description: Links to the entities that manage this transaction.
+          items:
+            $ref: '#/components/schemas/TransactionEntityLink'
+          nullable: true
+          type: array
       required:
       - instrumentUid
       - settlementDate
@@ -294067,6 +294440,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           electionKey: electionKey
         - instrumentEventId: instrumentEventId
           quantityInstructed:
@@ -294105,6 +294484,12 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
           electionKey: electionKey
         links:
         - method: method
@@ -295058,6 +295443,13 @@ components:
             toleranceType: toleranceType
           - ruleName: ruleName
             toleranceType: toleranceType
+          populateResultProperties:
+          - propertyKey: propertyKey
+            formula: formula
+            overwriteManualEditsOnReRun: true
+          - propertyKey: propertyKey
+            formula: formula
+            overwriteManualEditsOnReRun: true
           aggregateRules:
           - leftOperation: leftOperation
             leftFormula: leftFormula
@@ -295149,6 +295541,13 @@ components:
             toleranceType: toleranceType
           - ruleName: ruleName
             toleranceType: toleranceType
+          populateResultProperties:
+          - propertyKey: propertyKey
+            formula: formula
+            overwriteManualEditsOnReRun: true
+          - propertyKey: propertyKey
+            formula: formula
+            overwriteManualEditsOnReRun: true
           aggregateRules:
           - leftOperation: leftOperation
             leftFormula: leftFormula
@@ -308614,6 +309013,32 @@ components:
           nullable: true
           type: array
       type: object
+    PopulateResultProperty:
+      additionalProperties: false
+      example:
+        propertyKey: propertyKey
+        formula: formula
+        overwriteManualEditsOnReRun: true
+      properties:
+        propertyKey:
+          description: "The property the formula populates. Must be an existing, single-valued\
+            \ property in the RecResult domain, and may appear only once."
+          type: string
+        formula:
+          description: The formula whose value populates the property; a null value
+            means the property has no value.
+          maxLength: 16384
+          minLength: 0
+          type: string
+        overwriteManualEditsOnReRun:
+          description: "Whether a value edited since the property was last populated\
+            \ is replaced. Defaults to false, so manual edits are kept."
+          nullable: true
+          type: boolean
+      required:
+      - formula
+      - propertyKey
+      type: object
     Portfolio:
       additionalProperties: false
       description: A portfolio of a particular type.
@@ -316152,6 +316577,7 @@ components:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -316800,6 +317226,7 @@ components:
           - JournalEntry
           - CollateralAgreement
           - EligibleCollateralSchedule
+          - RelationalDatasetDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -316962,6 +317389,7 @@ components:
       - JournalEntry
       - CollateralAgreement
       - EligibleCollateralSchedule
+      - RelationalDatasetDefinition
       type: string
     PropertyFilter:
       additionalProperties: false
@@ -320294,8 +320722,10 @@ components:
         entityType:
           description: "The entity within the dataset. Required when type is PortfolioContents,\
             \ in which case it is one of: Holding, Valuation, Transaction, OutputTransaction,\
-            \ SettlementActivity. Must be omitted when type is RelationalData. Available\
-            \ values: Holding, Valuation, Transaction, OutputTransaction, SettlementActivity."
+            \ SettlementActivity. Required when type is LusidEntity, in which case\
+            \ it is Instrument. Must be omitted when type is RelationalData. Available\
+            \ values: Holding, Valuation, Transaction, OutputTransaction, SettlementActivity,\
+            \ Instrument."
           nullable: true
           type: string
         relationalDatasetDefinitionId:
@@ -320618,7 +321048,7 @@ components:
             \ valid for the definitionType, and must match the reconciliationType\
             \ of the referenced matching ruleset. Available values: Holding, CashHolding,\
             \ Valuation, InputTransaction, OutputTransaction, SettlementActivity,\
-            \ External."
+            \ External, Instrument."
           minLength: 1
           type: string
         matchingRulesetId:
@@ -321203,7 +321633,7 @@ components:
         recType:
           description: "The rec type of the linked result. Always differs from this\
             \ result's rec type. Available values: Holding, CashHolding, Valuation,\
-            \ InputTransaction, OutputTransaction, SettlementActivity, External."
+            \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument."
           minLength: 1
           type: string
         linkedBy:
@@ -323341,7 +323771,7 @@ components:
         recType:
           description: "The type of rec that the result belongs to (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
-            \ OutputTransaction, SettlementActivity, External."
+            \ OutputTransaction, SettlementActivity, External, Instrument."
           minLength: 1
           type: string
         externalRecTypeName:
@@ -324226,7 +324656,7 @@ components:
           description: "The type of rec that this result set belongs to (e.g. Holding).\
             \ Together with the rec instance, this uniquely identifies the result\
             \ set. Available values: Holding, CashHolding, Valuation, InputTransaction,\
-            \ OutputTransaction, SettlementActivity, External."
+            \ OutputTransaction, SettlementActivity, External, Instrument."
           minLength: 1
           type: string
         externalRecTypeName:
@@ -328925,6 +329355,12 @@ components:
               href: https://openapi-generator.tech
               relation: relation
             href: https://openapi-generator.tech
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
             electionKey: electionKey
           loadedEvent:
             sequenceNumber: 0
@@ -329890,6 +330326,12 @@ components:
               href: https://openapi-generator.tech
               relation: relation
             href: https://openapi-generator.tech
+            stagedModifications:
+              hrefPending: https://openapi-generator.tech
+              countPending: 0
+              idsPreviewed:
+              - idsPreviewed
+              - idsPreviewed
             electionKey: electionKey
           loadedEvent:
             sequenceNumber: 0
@@ -333830,6 +334272,10 @@ components:
               - key: errorDetails
           value:
             code: code
+            principalPaymentLag:
+              dayType: dayType
+              businessDayConvention: businessDayConvention
+              days: 1
             leapDaysIncluded: true
             paymentCalendars:
             - paymentCalendars
@@ -333871,6 +334317,10 @@ components:
               - key: errorDetails
           value:
             code: code
+            principalPaymentLag:
+              dayType: dayType
+              businessDayConvention: businessDayConvention
+              days: 1
             leapDaysIncluded: true
             paymentCalendars:
             - paymentCalendars
@@ -341897,6 +342347,15 @@ components:
               status: status
             accountSelector: accountSelector
           grossTransactionAmount: 9.301444243932576
+          entityLinks:
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -342886,6 +343345,15 @@ components:
               status: status
             accountSelector: accountSelector
           grossTransactionAmount: 9.301444243932576
+          entityLinks:
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -352283,6 +352751,15 @@ components:
                 status: status
               accountSelector: accountSelector
             grossTransactionAmount: 9.301444243932576
+            entityLinks:
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -353364,6 +353841,15 @@ components:
                 status: status
               accountSelector: accountSelector
             grossTransactionAmount: 9.301444243932576
+            entityLinks:
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -358211,6 +358697,15 @@ components:
               status: status
             accountSelector: accountSelector
           grossTransactionAmount: 9.301444243932576
+          entityLinks:
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -359820,6 +360315,15 @@ components:
               status: status
             accountSelector: accountSelector
           grossTransactionAmount: 9.301444243932576
+          entityLinks:
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -367815,7 +368319,7 @@ components:
           nullable: true
           type: array
         entityLinks:
-          description: Links to the entities related to this transaction.
+          description: Links to the entities that manage this transaction.
           items:
             $ref: '#/components/schemas/TransactionEntityLink'
           nullable: true
@@ -378471,6 +378975,15 @@ components:
               status: status
             accountSelector: accountSelector
           grossTransactionAmount: 9.301444243932576
+          entityLinks:
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -380231,28 +380744,11 @@ components:
     UpdateMatchingRulesetRequest:
       additionalProperties: false
       example:
-        recType: recType
-        coreTolerances:
-        - ruleName: ruleName
-          toleranceType: toleranceType
-        - ruleName: ruleName
-          toleranceType: toleranceType
         aggregateTolerances:
         - ruleName: ruleName
           toleranceType: toleranceType
         - ruleName: ruleName
           toleranceType: toleranceType
-        aggregateRules:
-        - leftOperation: leftOperation
-          leftFormula: leftFormula
-          rightFormula: rightFormula
-          ruleName: ruleName
-          rightOperation: rightOperation
-        - leftOperation: leftOperation
-          leftFormula: leftFormula
-          rightFormula: rightFormula
-          ruleName: ruleName
-          rightOperation: rightOperation
         displayName: displayName
         allowPartialMatching: true
         datasetSchemas:
@@ -380268,11 +380764,6 @@ components:
             relationalDatasetDefinitionId:
               code: code
               scope: scope
-        writebackConfigurations:
-        - writebackType: writebackType
-          targetSide: targetSide
-        - writebackType: writebackType
-          targetSide: targetSide
         filters:
           left: left
           right: right
@@ -380285,6 +380776,44 @@ components:
           leftFormula: leftFormula
           rightFormula: rightFormula
           ruleName: ruleName
+        recType: recType
+        coreTolerances:
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        - ruleName: ruleName
+          toleranceType: toleranceType
+        populateResultProperties:
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        - propertyKey: propertyKey
+          formula: formula
+          overwriteManualEditsOnReRun: true
+        aggregateRules:
+        - leftOperation: leftOperation
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+          rightOperation: rightOperation
+        - leftOperation: leftOperation
+          leftFormula: leftFormula
+          rightFormula: rightFormula
+          ruleName: ruleName
+          rightOperation: rightOperation
+        writebackConfigurations:
+        - writebackType: writebackType
+          targetSide: targetSide
+        - writebackType: writebackType
+          targetSide: targetSide
         externalRecType:
           name: name
           temporality: temporality
@@ -380305,7 +380834,7 @@ components:
           description: "The type of reconciliation to perform. External reconciles\
             \ non-native data on both sides, described by the datasetSchemas and the\
             \ externalRecType. Available values: Holding, CashHolding, Valuation,\
-            \ InputTransaction, OutputTransaction, SettlementActivity, External."
+            \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument."
           minLength: 1
           type: string
         externalRecType:
@@ -380360,6 +380889,15 @@ components:
             \ Optional, and may be empty."
           items:
             $ref: '#/components/schemas/WritebackConfiguration'
+          nullable: true
+          type: array
+        populateResultProperties:
+          description: "The RecResult properties to populate on this ruleset's results,\
+            \ each from a formula over the result. Optional, and may be empty; at\
+            \ most 20."
+          items:
+            $ref: '#/components/schemas/PopulateResultProperty'
+          maxItems: 20
           nullable: true
           type: array
       required:
@@ -383504,6 +384042,10 @@ components:
       example:
         flowConventions:
           code: code
+          principalPaymentLag:
+            dayType: dayType
+            businessDayConvention: businessDayConvention
+            days: 1
           leapDaysIncluded: true
           paymentCalendars:
           - paymentCalendars
@@ -389552,9 +390094,9 @@ components:
           $ref: '#/components/schemas/ResourceId'
         sourcePriority:
           description: "The rule sources in priority order, most preferred first.\
-            \ Optional: a single-source customer configures none and leaves ruleSource\
-            \ blank on every rate row, in which case no source filter is applied and\
-            \ specificity alone decides."
+            \ Optional: a single-source customer configures none and loads its rate\
+            \ rows without a ruleSource, in which case no source filter is applied\
+            \ and specificity alone decides."
           items:
             type: string
           nullable: true
@@ -389590,8 +390132,11 @@ components:
         seriesIdentifiers:
           additionalProperties:
             nullable: true
-          description: "The identifiers that uniquely define this DataSeries, if any,\
-            \ structured according to the FieldSchema of the parent RelationalDatasetDefinition."
+          description: "The series identifiers that, with effectiveAt, identify the\
+            \ rate row: taxCountry, profileType and the dataset's own matching dimensions,\
+            \ structured according to its field schema. ruleSource is not accepted\
+            \ here: pass it as the ruleSource query parameter, which applies it to\
+            \ every row in the batch, and omit it for rows that apply at every source."
           nullable: true
           type: object
         effectiveAt:
@@ -392100,6 +392645,15 @@ components:
                 status: status
               accountSelector: accountSelector
             grossTransactionAmount: 9.301444243932576
+            entityLinks:
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -393101,6 +393655,15 @@ components:
                 status: status
               accountSelector: accountSelector
             grossTransactionAmount: 9.301444243932576
+            entityLinks:
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -395577,6 +396140,15 @@ components:
                 status: status
               accountSelector: accountSelector
             grossTransactionAmount: 9.301444243932576
+            entityLinks:
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -396581,6 +397153,15 @@ components:
                 status: status
               accountSelector: accountSelector
             grossTransactionAmount: 9.301444243932576
+            entityLinks:
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -400684,6 +401265,15 @@ components:
               status: status
             accountSelector: accountSelector
           grossTransactionAmount: 9.301444243932576
+          entityLinks:
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -401673,6 +402263,15 @@ components:
               status: status
             accountSelector: accountSelector
           grossTransactionAmount: 9.301444243932576
+          entityLinks:
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
+          - entityType: entityType
+            entityId:
+              key: entityId
+            restrictEditing: true
           otcConfirmation:
             counterpartyAgreementId:
               code: code
@@ -405470,6 +406069,15 @@ components:
                 status: status
               accountSelector: accountSelector
             grossTransactionAmount: 9.301444243932576
+            entityLinks:
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -406527,6 +407135,15 @@ components:
                 status: status
               accountSelector: accountSelector
             grossTransactionAmount: 9.301444243932576
+            entityLinks:
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
+            - entityType: entityType
+              entityId:
+                key: entityId
+              restrictEditing: true
             otcConfirmation:
               counterpartyAgreementId:
                 code: code
@@ -409963,9 +410580,9 @@ components:
           $ref: '#/components/schemas/ResourceId'
         sourcePriority:
           description: "The rule sources in priority order, most preferred first.\
-            \ Optional: a single-source customer configures none and leaves ruleSource\
-            \ blank on every rate row, in which case no source filter is applied and\
-            \ specificity alone decides."
+            \ Optional: a single-source customer configures none and loads its rate\
+            \ rows without a ruleSource, in which case no source filter is applied\
+            \ and specificity alone decides."
           items:
             type: string
           nullable: true
@@ -410461,7 +411078,7 @@ components:
         type:
           description: The type of the workspace item.
           minLength: 1
-          pattern: ^(luminesce-saved-query|luminesce-multi-query|lusid-web-rebalance-control-panel|lusid-web-rebalance-in-progress|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
+          pattern: ^(luminesce-saved-query|luminesce-multi-query|lusid-web-rebalance-control-panel|lusid-web-rebalance-in-progress|lusid-web-table-view|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
           type: string
       required:
       - content
@@ -410495,7 +411112,7 @@ components:
         type:
           description: The type of the workspace item.
           minLength: 1
-          pattern: ^(luminesce-saved-query|luminesce-multi-query|lusid-web-rebalance-control-panel|lusid-web-rebalance-in-progress|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
+          pattern: ^(luminesce-saved-query|luminesce-multi-query|lusid-web-rebalance-control-panel|lusid-web-rebalance-in-progress|lusid-web-table-view|lusid-web-dashboard|lusid-web-dashboard-set|mesa-dashboard|mesa-source-factory|lusid-web-favourites)$
           type: string
       required:
       - content

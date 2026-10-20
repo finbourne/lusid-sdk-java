@@ -2109,6 +2109,7 @@ Class | Method | HTTP request | Description
  - [PlacementSetRequest](docs/PlacementSetRequest.md)
  - [PlacementUpdateRequest](docs/PlacementUpdateRequest.md)
  - [PnlJournalEntryLine](docs/PnlJournalEntryLine.md)
+ - [PopulateResultProperty](docs/PopulateResultProperty.md)
  - [Portfolio](docs/Portfolio.md)
  - [PortfolioCashFlow](docs/PortfolioCashFlow.md)
  - [PortfolioCashLadder](docs/PortfolioCashLadder.md)

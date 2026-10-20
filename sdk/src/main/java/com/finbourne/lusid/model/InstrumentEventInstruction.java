@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.QuantityInstructed;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -105,6 +106,10 @@ public class InstrumentEventInstruction {
   public static final String SERIALIZED_NAME_IGNORE_COST_IMPACT = "ignoreCostImpact";
   @SerializedName(SERIALIZED_NAME_IGNORE_COST_IMPACT)
   private Boolean ignoreCostImpact;
+
+  public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
+  @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
+  private StagedModificationsInfo stagedModifications;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -365,6 +370,27 @@ public class InstrumentEventInstruction {
   }
 
 
+  public InstrumentEventInstruction stagedModifications(StagedModificationsInfo stagedModifications) {
+    
+    this.stagedModifications = stagedModifications;
+    return this;
+  }
+
+   /**
+   * Get stagedModifications
+   * @return stagedModifications
+  **/
+  @jakarta.annotation.Nullable
+  public StagedModificationsInfo getStagedModifications() {
+    return stagedModifications;
+  }
+
+
+  public void setStagedModifications(StagedModificationsInfo stagedModifications) {
+    this.stagedModifications = stagedModifications;
+  }
+
+
   public InstrumentEventInstruction links(List<Link> links) {
     
     this.links = links;
@@ -416,6 +442,7 @@ public class InstrumentEventInstruction {
         Objects.equals(this.quantityInstructed, instrumentEventInstruction.quantityInstructed) &&
         Objects.equals(this.taxLotId, instrumentEventInstruction.taxLotId) &&
         Objects.equals(this.ignoreCostImpact, instrumentEventInstruction.ignoreCostImpact) &&
+        Objects.equals(this.stagedModifications, instrumentEventInstruction.stagedModifications) &&
         Objects.equals(this.links, instrumentEventInstruction.links);
   }
 
@@ -425,7 +452,7 @@ public class InstrumentEventInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, entitlementDateInstructed, quantityInstructed, taxLotId, ignoreCostImpact, links);
+    return Objects.hash(instrumentEventInstructionId, portfolioId, instrumentEventId, instructionType, electionKey, holdingId, version, href, entitlementDateInstructed, quantityInstructed, taxLotId, ignoreCostImpact, stagedModifications, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -451,6 +478,7 @@ public class InstrumentEventInstruction {
     sb.append("    quantityInstructed: ").append(toIndentedString(quantityInstructed)).append("\n");
     sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
     sb.append("    ignoreCostImpact: ").append(toIndentedString(ignoreCostImpact)).append("\n");
+    sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -486,6 +514,7 @@ public class InstrumentEventInstruction {
     openapiFields.add("quantityInstructed");
     openapiFields.add("taxLotId");
     openapiFields.add("ignoreCostImpact");
+    openapiFields.add("stagedModifications");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -534,6 +563,10 @@ public class InstrumentEventInstruction {
       }
       if ((jsonObj.get("taxLotId") != null && !jsonObj.get("taxLotId").isJsonNull()) && !jsonObj.get("taxLotId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxLotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotId").toString()));
+      }
+      // validate the optional field `stagedModifications`
+      if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
+        StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

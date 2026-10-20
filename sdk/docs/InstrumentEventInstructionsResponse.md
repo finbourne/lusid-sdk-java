@@ -1,5 +1,5 @@
 # com.finbourne.lusid.model.InstrumentEventInstructionsResponse
-The collection of successfully upserted instructions, and the collection of failures for those instructions that could not be upserted
+The collection of successfully upserted instructions, the collection of those staged pending approval, and the collection of failures for those instructions that could not be upserted
 
 ## Properties
 
@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**Map&lt;String, InstrumentEventInstruction&gt;**](InstrumentEventInstruction.md) | The collection of successfully upserted instructions | [optional] [default to Map<String, InstrumentEventInstruction>]
 **failed** | [**Map&lt;String, ErrorDetail&gt;**](ErrorDetail.md) | The collection of error information for instructions that could not be upserted | [optional] [default to Map<String, ErrorDetail>]
+**staged** | [**Map&lt;String, InstrumentEventInstruction&gt;**](InstrumentEventInstruction.md) | The instructions that have been staged pending approval. | [optional] [default to Map<String, InstrumentEventInstruction>]
 
 ```java
 import com.finbourne.lusid.model.InstrumentEventInstructionsResponse;
@@ -16,11 +17,13 @@ import java.net.URI;
 
 @jakarta.annotation.Nullable Map<String, InstrumentEventInstruction> Values = new Map<String, InstrumentEventInstruction>();
 @jakarta.annotation.Nullable Map<String, ErrorDetail> Failed = new Map<String, ErrorDetail>();
+@jakarta.annotation.Nullable Map<String, InstrumentEventInstruction> Staged = new Map<String, InstrumentEventInstruction>();
 
 
 InstrumentEventInstructionsResponse instrumentEventInstructionsResponseInstance = new InstrumentEventInstructionsResponse()
     .Values(Values)
-    .Failed(Failed);
+    .Failed(Failed)
+    .Staged(Staged);
 ```
 
 

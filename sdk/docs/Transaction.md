@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 **custodianEntries** | [**List&lt;CustodianEntry&gt;**](CustodianEntry.md) | A list of Custodian Entries associated with the transaction. | [optional] [default to List<CustodianEntry>]
-**entityLinks** | [**List&lt;TransactionEntityLink&gt;**](TransactionEntityLink.md) | Links to the entities related to this transaction. | [optional] [default to List<TransactionEntityLink>]
+**entityLinks** | [**List&lt;TransactionEntityLink&gt;**](TransactionEntityLink.md) | Links to the entities that manage this transaction. | [optional] [default to List<TransactionEntityLink>]
 
 ```java
 import com.finbourne.lusid.model.Transaction;

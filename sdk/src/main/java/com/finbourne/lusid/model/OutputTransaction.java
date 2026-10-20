@@ -22,6 +22,7 @@ import com.finbourne.lusid.model.RealisedGainLoss;
 import com.finbourne.lusid.model.ResolvedCustodianAccount;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.StagedModificationsInfo;
+import com.finbourne.lusid.model.TransactionEntityLink;
 import com.finbourne.lusid.model.TransactionPrice;
 import com.finbourne.lusid.model.TransactionSettlementSummary;
 import com.finbourne.lusid.model.TransactionTypeDetails;
@@ -304,6 +305,10 @@ public class OutputTransaction {
   public static final String SERIALIZED_NAME_IS_EXCLUDED = "isExcluded";
   @SerializedName(SERIALIZED_NAME_IS_EXCLUDED)
   private Boolean isExcluded;
+
+  public static final String SERIALIZED_NAME_ENTITY_LINKS = "entityLinks";
+  @SerializedName(SERIALIZED_NAME_ENTITY_LINKS)
+  private List<TransactionEntityLink> entityLinks;
 
   public OutputTransaction() {
   }
@@ -1296,6 +1301,35 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction entityLinks(List<TransactionEntityLink> entityLinks) {
+    
+    this.entityLinks = entityLinks;
+    return this;
+  }
+
+  public OutputTransaction addEntityLinksItem(TransactionEntityLink entityLinksItem) {
+    if (this.entityLinks == null) {
+      this.entityLinks = new ArrayList<>();
+    }
+    this.entityLinks.add(entityLinksItem);
+    return this;
+  }
+
+   /**
+   * Links to the entities that manage this transaction.
+   * @return entityLinks
+  **/
+  @jakarta.annotation.Nullable
+  public List<TransactionEntityLink> getEntityLinks() {
+    return entityLinks;
+  }
+
+
+  public void setEntityLinks(List<TransactionEntityLink> entityLinks) {
+    this.entityLinks = entityLinks;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -1349,7 +1383,8 @@ public class OutputTransaction {
         Objects.equals(this.custodianEntries, outputTransaction.custodianEntries) &&
         Objects.equals(this.resolvedCustodianAccounts, outputTransaction.resolvedCustodianAccounts) &&
         Objects.equals(this.unresolvedCustodianAccounts, outputTransaction.unresolvedCustodianAccounts) &&
-        Objects.equals(this.isExcluded, outputTransaction.isExcluded);
+        Objects.equals(this.isExcluded, outputTransaction.isExcluded) &&
+        Objects.equals(this.entityLinks, outputTransaction.entityLinks);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1358,7 +1393,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications, custodianEntries, resolvedCustodianAccounts, unresolvedCustodianAccounts, isExcluded);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications, custodianEntries, resolvedCustodianAccounts, unresolvedCustodianAccounts, isExcluded, entityLinks);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1416,6 +1451,7 @@ public class OutputTransaction {
     sb.append("    resolvedCustodianAccounts: ").append(toIndentedString(resolvedCustodianAccounts)).append("\n");
     sb.append("    unresolvedCustodianAccounts: ").append(toIndentedString(unresolvedCustodianAccounts)).append("\n");
     sb.append("    isExcluded: ").append(toIndentedString(isExcluded)).append("\n");
+    sb.append("    entityLinks: ").append(toIndentedString(entityLinks)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1482,6 +1518,7 @@ public class OutputTransaction {
     openapiFields.add("resolvedCustodianAccounts");
     openapiFields.add("unresolvedCustodianAccounts");
     openapiFields.add("isExcluded");
+    openapiFields.add("entityLinks");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1664,6 +1701,20 @@ public class OutputTransaction {
           // validate the optional field `unresolvedCustodianAccounts` (array)
           for (int i = 0; i < jsonArrayunresolvedCustodianAccounts.size(); i++) {
             CustodianEntry.validateJsonElement(jsonArrayunresolvedCustodianAccounts.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("entityLinks") != null && !jsonObj.get("entityLinks").isJsonNull()) {
+        JsonArray jsonArrayentityLinks = jsonObj.getAsJsonArray("entityLinks");
+        if (jsonArrayentityLinks != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("entityLinks").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `entityLinks` to be an array in the JSON string but got `%s`", jsonObj.get("entityLinks").toString()));
+          }
+
+          // validate the optional field `entityLinks` (array)
+          for (int i = 0; i < jsonArrayentityLinks.size(); i++) {
+            TransactionEntityLink.validateJsonElement(jsonArrayentityLinks.get(i));
           };
         }
       }

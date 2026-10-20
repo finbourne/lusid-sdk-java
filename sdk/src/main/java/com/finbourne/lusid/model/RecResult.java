@@ -251,7 +251,7 @@ public class RecResult {
   }
 
    /**
-   * The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External.
+   * The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument.
    * @return recType
   **/
   @jakarta.annotation.Nonnull
