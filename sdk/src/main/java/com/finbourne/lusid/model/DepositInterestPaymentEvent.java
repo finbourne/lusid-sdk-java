@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.InstrumentEvent;
+import com.finbourne.lusid.model.LapseElection;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -19,7 +20,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,7 +51,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Event to signify the repayment of interest accrued against a deposit holding.
+ * Event to signify the repayment of interest accrued against a deposit holding. Not applied when upserted  for a period the deposit settles partly or wholly in kind, as its scheduled events settle that period&#39;s interest.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DepositInterestPaymentEvent extends InstrumentEvent {
@@ -62,6 +66,14 @@ public class DepositInterestPaymentEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
+
+  public static final String SERIALIZED_NAME_FRACTION = "fraction";
+  @SerializedName(SERIALIZED_NAME_FRACTION)
+  private java.math.BigDecimal fraction;
+
+  public static final String SERIALIZED_NAME_LAPSE_ELECTIONS = "lapseElections";
+  @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
+  private List<LapseElection> lapseElections;
 
   public DepositInterestPaymentEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -130,6 +142,56 @@ public class DepositInterestPaymentEvent extends InstrumentEvent {
   }
 
 
+  public DepositInterestPaymentEvent fraction(java.math.BigDecimal fraction) {
+    
+    this.fraction = fraction;
+    return this;
+  }
+
+   /**
+   * Fraction of the accrued interest to be paid, between 0 and 1 inclusive. Defaults to 1 if not set.
+   * @return fraction
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFraction() {
+    return fraction;
+  }
+
+
+  public void setFraction(java.math.BigDecimal fraction) {
+    this.fraction = fraction;
+  }
+
+
+  public DepositInterestPaymentEvent lapseElections(List<LapseElection> lapseElections) {
+    
+    this.lapseElections = lapseElections;
+    return this;
+  }
+
+  public DepositInterestPaymentEvent addLapseElectionsItem(LapseElection lapseElectionsItem) {
+    if (this.lapseElections == null) {
+      this.lapseElections = new ArrayList<>();
+    }
+    this.lapseElections.add(lapseElectionsItem);
+    return this;
+  }
+
+   /**
+   * Election for controlling whether the interest is paid. Stored but not yet acted on, so a chosen  lapse election does not stop the payment. Optional; if provided, exactly one.
+   * @return lapseElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<LapseElection> getLapseElections() {
+    return lapseElections;
+  }
+
+
+  public void setLapseElections(List<LapseElection> lapseElections) {
+    this.lapseElections = lapseElections;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -143,12 +205,25 @@ public class DepositInterestPaymentEvent extends InstrumentEvent {
     return Objects.equals(this.paymentDate, depositInterestPaymentEvent.paymentDate) &&
         Objects.equals(this.exDate, depositInterestPaymentEvent.exDate) &&
         Objects.equals(this.currency, depositInterestPaymentEvent.currency) &&
+        (this.fraction.compareTo(depositInterestPaymentEvent.getFraction()) == 0) &&
+        Objects.equals(this.lapseElections, depositInterestPaymentEvent.lapseElections) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, exDate, currency, super.hashCode());
+    return Objects.hash(paymentDate, exDate, currency, fraction, lapseElections, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -159,6 +234,8 @@ public class DepositInterestPaymentEvent extends InstrumentEvent {
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("    exDate: ").append(toIndentedString(exDate)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    fraction: ").append(toIndentedString(fraction)).append("\n");
+    sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -185,6 +262,8 @@ public class DepositInterestPaymentEvent extends InstrumentEvent {
     openapiFields.add("paymentDate");
     openapiFields.add("exDate");
     openapiFields.add("currency");
+    openapiFields.add("fraction");
+    openapiFields.add("lapseElections");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

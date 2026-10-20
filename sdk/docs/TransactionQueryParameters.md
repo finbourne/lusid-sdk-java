@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **includeSettlementStatus** | **Boolean** | By default is false. When set to true the Settlement Status data would be populated in the response. | [optional] [default to Boolean]
 **settlementStatusDate** | **String** | Optional date used to specify end of an extended window for settlement information. When provided, transactions will be returned between start and end date, but settlement information between start date and this date will be included. When provided, the value must be greater than or equal to end date. | [optional] [default to String]
 **returnExcludedTransactions** | **Boolean** | Option to specify whether or not to include transactions that are marked as excluded by the portfolio&#39;s transaction exclusion filter. Excluded transactions do not affect holdings. Defaults to false if not specified. | [optional] [default to Boolean]
+**allocationExpansion** | **String** | How an input transaction that was split into allocation slices (strategy tag allocations or a prorated allocation method) is presented. &#39;Expanded&#39; (the default) returns one output transaction per slice. &#39;Combined&#39; returns one output transaction per input transaction with units, consideration and realised gain/loss summed over the slices, with every realised gain/loss record of each slice, including zero-realised ones, listed with its own transaction type and sub-holding key properties. For a prorated type with no units side the combined units are the total position the slices were prorated over, not the input&#39;s units. Transaction filters apply per slice, so a filter on a slice-level property combines only the matching slices. Sequence numbers are assigned after combining. Holdings and tax lots are identical in both modes. Available values: Expanded, Combined. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.TransactionQueryParameters;
@@ -31,6 +32,7 @@ Boolean IncludeEconomics = true;
 Boolean IncludeSettlementStatus = true;
 @jakarta.annotation.Nullable String SettlementStatusDate = "example SettlementStatusDate";
 Boolean ReturnExcludedTransactions = true;
+@jakarta.annotation.Nullable String AllocationExpansion = "example AllocationExpansion";
 
 
 TransactionQueryParameters transactionQueryParametersInstance = new TransactionQueryParameters()
@@ -43,7 +45,8 @@ TransactionQueryParameters transactionQueryParametersInstance = new TransactionQ
     .IncludeEconomics(IncludeEconomics)
     .IncludeSettlementStatus(IncludeSettlementStatus)
     .SettlementStatusDate(SettlementStatusDate)
-    .ReturnExcludedTransactions(ReturnExcludedTransactions);
+    .ReturnExcludedTransactions(ReturnExcludedTransactions)
+    .AllocationExpansion(AllocationExpansion);
 ```
 
 

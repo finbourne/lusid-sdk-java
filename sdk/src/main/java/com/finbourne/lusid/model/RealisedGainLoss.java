@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
+import com.finbourne.lusid.model.PerpetualProperty;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,6 +21,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -111,6 +114,14 @@ public class RealisedGainLoss {
   public static final String SERIALIZED_NAME_TRADE_DATE_TO_SETTLEMENT_DATE_REALISED_CURRENCY = "tradeDateToSettlementDateRealisedCurrency";
   @SerializedName(SERIALIZED_NAME_TRADE_DATE_TO_SETTLEMENT_DATE_REALISED_CURRENCY)
   private CurrencyAndAmount tradeDateToSettlementDateRealisedCurrency;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_TYPE = "transactionType";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE)
+  private String transactionType;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, PerpetualProperty> properties;
 
   public RealisedGainLoss() {
   }
@@ -422,6 +433,56 @@ public class RealisedGainLoss {
   }
 
 
+  public RealisedGainLoss transactionType(String transactionType) {
+    
+    this.transactionType = transactionType;
+    return this;
+  }
+
+   /**
+   * The transaction type resolved for the allocation slice that realised this record, which can differ from the output transaction&#39;s type when a slice resolves against the opposite side of the book (for example a Buy whose slice covers a short).
+   * @return transactionType
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionType() {
+    return transactionType;
+  }
+
+
+  public void setTransactionType(String transactionType) {
+    this.transactionType = transactionType;
+  }
+
+
+  public RealisedGainLoss properties(Map<String, PerpetualProperty> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public RealisedGainLoss putPropertiesItem(String key, PerpetualProperty propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * The sub-holding key properties of the holding this record was realised against, identifying the allocation slice it belongs to.
+   * @return properties
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PerpetualProperty> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, PerpetualProperty> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -446,7 +507,9 @@ public class RealisedGainLoss {
         Objects.equals(this.realisedCurrency, realisedGainLoss.realisedCurrency) &&
         Objects.equals(this.taxLotId, realisedGainLoss.taxLotId) &&
         Objects.equals(this.realisedAmortisation, realisedGainLoss.realisedAmortisation) &&
-        Objects.equals(this.tradeDateToSettlementDateRealisedCurrency, realisedGainLoss.tradeDateToSettlementDateRealisedCurrency);
+        Objects.equals(this.tradeDateToSettlementDateRealisedCurrency, realisedGainLoss.tradeDateToSettlementDateRealisedCurrency) &&
+        Objects.equals(this.transactionType, realisedGainLoss.transactionType) &&
+        Objects.equals(this.properties, realisedGainLoss.properties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -455,7 +518,7 @@ public class RealisedGainLoss {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, units, purchaseTradeDate, purchaseSettlementDate, purchasePrice, costTradeCcy, costPortfolioCcy, realisedTradeCcy, realisedTotal, realisedMarket, realisedCurrency, taxLotId, realisedAmortisation, tradeDateToSettlementDateRealisedCurrency);
+    return Objects.hash(instrumentScope, instrumentUid, units, purchaseTradeDate, purchaseSettlementDate, purchasePrice, costTradeCcy, costPortfolioCcy, realisedTradeCcy, realisedTotal, realisedMarket, realisedCurrency, taxLotId, realisedAmortisation, tradeDateToSettlementDateRealisedCurrency, transactionType, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -484,6 +547,8 @@ public class RealisedGainLoss {
     sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
     sb.append("    realisedAmortisation: ").append(toIndentedString(realisedAmortisation)).append("\n");
     sb.append("    tradeDateToSettlementDateRealisedCurrency: ").append(toIndentedString(tradeDateToSettlementDateRealisedCurrency)).append("\n");
+    sb.append("    transactionType: ").append(toIndentedString(transactionType)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -521,6 +586,8 @@ public class RealisedGainLoss {
     openapiFields.add("taxLotId");
     openapiFields.add("realisedAmortisation");
     openapiFields.add("tradeDateToSettlementDateRealisedCurrency");
+    openapiFields.add("transactionType");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -584,6 +651,9 @@ public class RealisedGainLoss {
       // validate the optional field `tradeDateToSettlementDateRealisedCurrency`
       if (jsonObj.get("tradeDateToSettlementDateRealisedCurrency") != null && !jsonObj.get("tradeDateToSettlementDateRealisedCurrency").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("tradeDateToSettlementDateRealisedCurrency"));
+      }
+      if ((jsonObj.get("transactionType") != null && !jsonObj.get("transactionType").isJsonNull()) && !jsonObj.get("transactionType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionType").toString()));
       }
   }
 

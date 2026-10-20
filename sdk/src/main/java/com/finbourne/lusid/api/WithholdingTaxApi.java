@@ -36,11 +36,13 @@ import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.Operation;
 import com.finbourne.lusid.model.PagedResourceListOfWithholdingTaxConfiguration;
 import com.finbourne.lusid.model.PagedResourceListOfWithholdingTaxDataset;
+import com.finbourne.lusid.model.ResolveWithholdingTaxRequest;
 import com.finbourne.lusid.model.UpsertWithholdingTaxConfigurationRequest;
 import com.finbourne.lusid.model.UpsertWithholdingTaxRateRequest;
 import com.finbourne.lusid.model.WithholdingTaxConfiguration;
 import com.finbourne.lusid.model.WithholdingTaxDataset;
 import com.finbourne.lusid.model.WithholdingTaxDatasetDefinitions;
+import com.finbourne.lusid.model.WithholdingTaxResolution;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -2728,6 +2730,286 @@ public class WithholdingTaxApi {
      */
     public APIpatchWithholdingTaxDatasetDefinitionRequest patchWithholdingTaxDatasetDefinition(String scope, String code, List<Operation> operation) {
         return new APIpatchWithholdingTaxDatasetDefinitionRequest(scope, code, operation);
+    }
+    private okhttp3.Call resolveWithholdingTaxCall(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, String effectiveAt, OffsetDateTime asAt, Integer limit, final ApiCallback _callback) throws ApiException {
+        return resolveWithholdingTaxCall(resolveWithholdingTaxRequest, effectiveAt, asAt, limit,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call resolveWithholdingTaxCall(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, String effectiveAt, OffsetDateTime asAt, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = resolveWithholdingTaxRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/withholdingtax/$resolve";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call resolveWithholdingTaxValidateBeforeCall(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, String effectiveAt, OffsetDateTime asAt, Integer limit, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'resolveWithholdingTaxRequest' is set
+        if (resolveWithholdingTaxRequest == null) {
+            throw new ApiException("Missing the required parameter 'resolveWithholdingTaxRequest' when calling resolveWithholdingTax(Async)");
+        }
+
+        return resolveWithholdingTaxCall(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, _callback, opts);
+
+    }
+
+
+    private ApiResponse<WithholdingTaxResolution> resolveWithholdingTaxWithHttpInfo(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, String effectiveAt, OffsetDateTime asAt, Integer limit) throws ApiException {
+        okhttp3.Call localVarCall = resolveWithholdingTaxValidateBeforeCall(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<WithholdingTaxResolution>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<WithholdingTaxResolution> resolveWithholdingTaxWithHttpInfo(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, String effectiveAt, OffsetDateTime asAt, Integer limit, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = resolveWithholdingTaxValidateBeforeCall(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, null, opts);
+        Type localVarReturnType = new TypeToken<WithholdingTaxResolution>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call resolveWithholdingTaxAsync(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, String effectiveAt, OffsetDateTime asAt, Integer limit, final ApiCallback<WithholdingTaxResolution> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = resolveWithholdingTaxValidateBeforeCall(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<WithholdingTaxResolution>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call resolveWithholdingTaxAsync(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest, String effectiveAt, OffsetDateTime asAt, Integer limit, final ApiCallback<WithholdingTaxResolution> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = resolveWithholdingTaxValidateBeforeCall(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, _callback, opts);
+        Type localVarReturnType = new TypeToken<WithholdingTaxResolution>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIresolveWithholdingTaxRequest {
+        private final ResolveWithholdingTaxRequest resolveWithholdingTaxRequest;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private Integer limit;
+
+        private APIresolveWithholdingTaxRequest(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest) {
+            this.resolveWithholdingTaxRequest = resolveWithholdingTaxRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade   date. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIresolveWithholdingTaxRequest
+         */
+        public APIresolveWithholdingTaxRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the configuration and the rates. Defaults to the latest version   if not specified. (optional)
+         * @return APIresolveWithholdingTaxRequest
+         */
+        public APIresolveWithholdingTaxRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit The most combinations of values that couldAlsoMatch tries, fewest values first. (optional, default to 100)
+         * @return APIresolveWithholdingTaxRequest
+         */
+        public APIresolveWithholdingTaxRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Build call for resolveWithholdingTax
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Withholding Tax rate that booking would apply. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return resolveWithholdingTaxCall(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, _callback);
+        }
+
+        /**
+         * Execute resolveWithholdingTax request
+         * @return WithholdingTaxResolution
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Withholding Tax rate that booking would apply. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public WithholdingTaxResolution execute() throws ApiException {
+            ApiResponse<WithholdingTaxResolution> localVarResp = resolveWithholdingTaxWithHttpInfo(resolveWithholdingTaxRequest, effectiveAt, asAt, limit);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute resolveWithholdingTax request. Use any specified configuration options to override any other configuration for this request only.
+         * @return WithholdingTaxResolution
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Withholding Tax rate that booking would apply. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public WithholdingTaxResolution execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<WithholdingTaxResolution> localVarResp = resolveWithholdingTaxWithHttpInfo(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute resolveWithholdingTax request with HTTP info returned
+         * @return ApiResponse&lt;WithholdingTaxResolution&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Withholding Tax rate that booking would apply. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<WithholdingTaxResolution> executeWithHttpInfo() throws ApiException {
+            return resolveWithholdingTaxWithHttpInfo(resolveWithholdingTaxRequest, effectiveAt, asAt, limit);
+        }
+
+        /**
+         * Execute resolveWithholdingTax request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;WithholdingTaxResolution&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Withholding Tax rate that booking would apply. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<WithholdingTaxResolution> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return resolveWithholdingTaxWithHttpInfo(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, opts);
+        }
+
+        /**
+         * Execute resolveWithholdingTax request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Withholding Tax rate that booking would apply. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<WithholdingTaxResolution> _callback) throws ApiException {
+            return resolveWithholdingTaxAsync(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, _callback);
+        }
+
+        /**
+         * Execute resolveWithholdingTax request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Withholding Tax rate that booking would apply. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<WithholdingTaxResolution> _callback, ConfigurationOptions opts) throws ApiException {
+            return resolveWithholdingTaxAsync(resolveWithholdingTaxRequest, effectiveAt, asAt, limit, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply.
+     * A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+     * @param resolveWithholdingTaxRequest The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against. (required)
+     * @return APIresolveWithholdingTaxRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Withholding Tax rate that booking would apply. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIresolveWithholdingTaxRequest resolveWithholdingTax(ResolveWithholdingTaxRequest resolveWithholdingTaxRequest) {
+        return new APIresolveWithholdingTaxRequest(resolveWithholdingTaxRequest);
     }
     private okhttp3.Call upsertWithholdingTaxConfigurationCall(String scope, String code, UpsertWithholdingTaxConfigurationRequest upsertWithholdingTaxConfigurationRequest, final ApiCallback _callback) throws ApiException {
         return upsertWithholdingTaxConfigurationCall(scope, code, upsertWithholdingTaxConfigurationRequest,  _callback, new ConfigurationOptions());

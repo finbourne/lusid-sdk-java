@@ -419,7 +419,7 @@ info:
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10320
+  version: 0.11.10329
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -43625,6 +43625,87 @@ paths:
       security:
       - oauth2: []
       summary: "GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId"
+      tags:
+      - Entities
+      x-fbn-apistatus: Stable
+      x-accepts: application/json
+  /api/entities/instrumenteventinstructions/{entityUniqueId}:
+    get:
+      description: "Retrieve a particular instrument event instruction by its entity\
+        \ unique identifier.\r\n\r\nIf the instruction or its portfolio is deleted,\
+        \ this will return the state of the instruction immediately prior to deletion."
+      operationId: GetInstrumentEventInstructionByEntityUniqueId
+      parameters:
+      - description: "The entity unique identifier of the instrument event instruction.\
+          \ The expected format is '{portfolioEntityUniqueId}_{instrumentEventInstructionId}'."
+        explode: false
+        in: path
+        name: entityUniqueId
+        required: true
+        schema:
+          maxLength: 1061
+          minLength: 0
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the instrument event instruction.
+          Defaults to returning the latest version of the instrument event instruction
+          if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The ids of the staged modifications to be previewed in the response,\
+          \ applied in the order given."
+        explode: true
+        in: query
+        name: previews
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstrumentEventInstructionEntity'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstrumentEventInstructionEntity'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstrumentEventInstructionEntity'
+          description: The requested instrument event instruction entity
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "GetInstrumentEventInstructionByEntityUniqueId: Get instrument event\
+        \ instruction by EntityUniqueId"
       tags:
       - Entities
       x-fbn-apistatus: Stable
@@ -176878,6 +176959,274 @@ paths:
       x-fbn-apistatus: Stable
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/withholdingtax/$resolve:
+    post:
+      description: "A read-only lookup that runs the same resolution as booking, without\
+        \ a transaction: it works down the source\r\npriority and, at each source,\
+        \ checks the anomaly dataset before the main dataset. Nothing is booked, and\
+        \ only\r\nrates are returned. Supply a Withholding Tax Configuration to predict\
+        \ what booking will post; replace its\r\ndatasets or source priority to ask\
+        \ what would resolve instead. Supply the dimension values directly, or name\
+        \ an\r\ninstrument so that the configuration's value sources read them from\
+        \ it, as booking reads a transaction's instrument."
+      operationId: ResolveWithholdingTax
+      parameters:
+      - description: "The effective datetime or cut label at which to resolve, in\
+          \ place of the transaction's trade\r\n date. Defaults to the current LUSID\
+          \ system datetime if not specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: "The asAt datetime at which to read the configuration and the\
+          \ rates. Defaults to the latest version\r\n if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The most combinations of values that couldAlsoMatch tries, fewest\
+          \ values first."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 100
+          format: int32
+          maximum: 1000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              mode: InstrumentResolved
+              taxCountry: GB
+              profileType: CorporateFund
+              whtConfig:
+                scope: WithholdingTax
+                code: UK-LIFE-BLAGAB
+              instrumentIdentifiers:
+                Instrument/default/LusidInstrumentId: LUID_00003D4X
+              instrumentScope: default
+            schema:
+              $ref: '#/components/schemas/ResolveWithholdingTaxRequest'
+          application/json:
+            example:
+              mode: InstrumentResolved
+              taxCountry: GB
+              profileType: CorporateFund
+              whtConfig:
+                scope: WithholdingTax
+                code: UK-LIFE-BLAGAB
+              instrumentIdentifiers:
+                Instrument/default/LusidInstrumentId: LUID_00003D4X
+              instrumentScope: default
+            schema:
+              $ref: '#/components/schemas/ResolveWithholdingTaxRequest'
+          text/json:
+            example:
+              mode: InstrumentResolved
+              taxCountry: GB
+              profileType: CorporateFund
+              whtConfig:
+                scope: WithholdingTax
+                code: UK-LIFE-BLAGAB
+              instrumentIdentifiers:
+                Instrument/default/LusidInstrumentId: LUID_00003D4X
+              instrumentScope: default
+            schema:
+              $ref: '#/components/schemas/ResolveWithholdingTaxRequest'
+          application/*+json:
+            example:
+              mode: InstrumentResolved
+              taxCountry: GB
+              profileType: CorporateFund
+              whtConfig:
+                scope: WithholdingTax
+                code: UK-LIFE-BLAGAB
+              instrumentIdentifiers:
+                Instrument/default/LusidInstrumentId: LUID_00003D4X
+              instrumentScope: default
+            schema:
+              $ref: '#/components/schemas/ResolveWithholdingTaxRequest'
+        description: "The tax identity, the dimension values or the instrument, and\
+          \ the configuration or datasets to resolve against."
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                resolutionStatus: Match
+                matchedRule:
+                  matchedRuleId: instrumentDomicile=CH|instrumentType=Equity|profileType=CorporateFund|ruleSource=TaxVendor|taxCountry=GB@2024-01-01
+                  matchedDataset: Main
+                  ruleSource: TaxVendor
+                  effectiveAt: 2024-01-01T00:00:00.0000000+00:00
+                rateTiers:
+                  countryRate: 0.35
+                  treatyRate: 0.15
+                rasFlags:
+                  treatyRas: true
+                  betterRas: false
+                  enhancedRas: false
+                derivedSplit:
+                  stopAtSourceRate: 0.15
+                  irrecoverableRate: 0.15
+                  reliefAtSourceRate: 0.2
+                  reclaimableRate: 0
+                provenance:
+                  matchScore: 0.8
+                  matchedFieldCount: 4
+                  sourceFilterApplied: TaxVendor
+                  tieBroken: false
+                resolvedDimensions:
+                  componentType: null
+                  instrumentDomicile: CH
+                  instrumentType: Equity
+                  profileType: CorporateFund
+                  taxCountry: GB
+                isWhatIf: false
+                unresolvedDimensions:
+                  componentType:
+                    readFrom:
+                    - Transaction
+                couldAlsoMatch:
+                - ifValues:
+                    componentType: SpecialDividend
+                  matchedRuleId: componentType=SpecialDividend|instrumentDomicile=CH|instrumentType=Equity|profileType=CorporateFund|ruleSource=TaxVendor|taxCountry=GB@2024-01-01
+                  stopAtSourceRate: 0.35
+                hasMoreAlternatives: false
+              schema:
+                $ref: '#/components/schemas/WithholdingTaxResolution'
+            application/json:
+              example:
+                resolutionStatus: Match
+                matchedRule:
+                  matchedRuleId: instrumentDomicile=CH|instrumentType=Equity|profileType=CorporateFund|ruleSource=TaxVendor|taxCountry=GB@2024-01-01
+                  matchedDataset: Main
+                  ruleSource: TaxVendor
+                  effectiveAt: 2024-01-01T00:00:00.0000000+00:00
+                rateTiers:
+                  countryRate: 0.35
+                  treatyRate: 0.15
+                rasFlags:
+                  treatyRas: true
+                  betterRas: false
+                  enhancedRas: false
+                derivedSplit:
+                  stopAtSourceRate: 0.15
+                  irrecoverableRate: 0.15
+                  reliefAtSourceRate: 0.2
+                  reclaimableRate: 0
+                provenance:
+                  matchScore: 0.8
+                  matchedFieldCount: 4
+                  sourceFilterApplied: TaxVendor
+                  tieBroken: false
+                resolvedDimensions:
+                  componentType: null
+                  instrumentDomicile: CH
+                  instrumentType: Equity
+                  profileType: CorporateFund
+                  taxCountry: GB
+                isWhatIf: false
+                unresolvedDimensions:
+                  componentType:
+                    readFrom:
+                    - Transaction
+                couldAlsoMatch:
+                - ifValues:
+                    componentType: SpecialDividend
+                  matchedRuleId: componentType=SpecialDividend|instrumentDomicile=CH|instrumentType=Equity|profileType=CorporateFund|ruleSource=TaxVendor|taxCountry=GB@2024-01-01
+                  stopAtSourceRate: 0.35
+                hasMoreAlternatives: false
+              schema:
+                $ref: '#/components/schemas/WithholdingTaxResolution'
+            text/json:
+              example:
+                resolutionStatus: Match
+                matchedRule:
+                  matchedRuleId: instrumentDomicile=CH|instrumentType=Equity|profileType=CorporateFund|ruleSource=TaxVendor|taxCountry=GB@2024-01-01
+                  matchedDataset: Main
+                  ruleSource: TaxVendor
+                  effectiveAt: 2024-01-01T00:00:00.0000000+00:00
+                rateTiers:
+                  countryRate: 0.35
+                  treatyRate: 0.15
+                rasFlags:
+                  treatyRas: true
+                  betterRas: false
+                  enhancedRas: false
+                derivedSplit:
+                  stopAtSourceRate: 0.15
+                  irrecoverableRate: 0.15
+                  reliefAtSourceRate: 0.2
+                  reclaimableRate: 0
+                provenance:
+                  matchScore: 0.8
+                  matchedFieldCount: 4
+                  sourceFilterApplied: TaxVendor
+                  tieBroken: false
+                resolvedDimensions:
+                  componentType: null
+                  instrumentDomicile: CH
+                  instrumentType: Equity
+                  profileType: CorporateFund
+                  taxCountry: GB
+                isWhatIf: false
+                unresolvedDimensions:
+                  componentType:
+                    readFrom:
+                    - Transaction
+                couldAlsoMatch:
+                - ifValues:
+                    componentType: SpecialDividend
+                  matchedRuleId: componentType=SpecialDividend|instrumentDomicile=CH|instrumentType=Equity|profileType=CorporateFund|ruleSource=TaxVendor|taxCountry=GB@2024-01-01
+                  stopAtSourceRate: 0.35
+                hasMoreAlternatives: false
+              schema:
+                $ref: '#/components/schemas/WithholdingTaxResolution'
+          description: The Withholding Tax rate that booking would apply.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax\
+        \ rate that booking would apply."
+      tags:
+      - Withholding Tax
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/withholdingtax/configurations:
     get:
       description: "List the Withholding Tax Configurations across every scope the\
@@ -184527,6 +184876,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -184543,6 +184893,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -184558,6 +184924,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -184574,6 +184941,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -193228,7 +193611,7 @@ components:
           - errorDetails
         appliedInstrumentEventInstructionId: appliedInstrumentEventInstructionId
         lusidInstrumentId: lusidInstrumentId
-        eligibleBalance: 5.962133916683182
+        eligibleBalance: 6.027456183070403
       properties:
         portfolioId:
           $ref: '#/components/schemas/ResourceId'
@@ -231450,6 +231833,19 @@ components:
           currency:
             description: Currency of the repayment.
             type: string
+          fraction:
+            description: "Fraction of the accrued interest to be paid, between 0 and\
+              \ 1 inclusive. Defaults to 1 if not set."
+            format: double
+            type: number
+          lapseElections:
+            description: "Election for controlling whether the interest is paid. Stored\
+              \ but not yet acted on, so a chosen\r\nlapse election does not stop\
+              \ the payment. Optional; if provided, exactly one."
+            items:
+              $ref: '#/components/schemas/LapseElection'
+            nullable: true
+            type: array
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -231617,8 +232013,9 @@ components:
         - currency
         - instrumentEventType
         type: object
-      description: Event to signify the repayment of interest accrued against a deposit
-        holding.
+      description: "Event to signify the repayment of interest accrued against a deposit\
+        \ holding. Not applied when upserted\r\nfor a period the deposit settles partly\
+        \ or wholly in kind, as its scheduled events settle that period's interest."
     DepositRollEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -231805,7 +232202,10 @@ components:
         - interestUpdates
         - principalUpdates
         type: object
-      description: Event used to represent a roll on a FlexibleDeposit instrument.
+      description: "Event used to represent a roll on a FlexibleDeposit instrument.\
+        \ Its interest updates are not applied in a period\r\nthe deposit settles\
+        \ partly or wholly in kind, as that period's interest is settled by its scheduled\
+        \ events."
     DepositSweepEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -241261,8 +241661,9 @@ components:
         - schedules
         - startDate
         type: object
-      description: "LUSID flexible deposit instrument. Represents the basic building\
-        \ block of a bank account\r\nstructure that can handle deferred interest payments."
+      description: "LUSID flexible deposit instrument: the basic building block of\
+        \ a bank account structure that can handle deferred\r\ninterest payments.\
+        \ Its PV excludes interest accrued in kind until that interest is capitalised."
     FlexibleLoan:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -262617,6 +263018,216 @@ components:
           nullable: true
           type: array
       type: object
+    InstrumentEventInstructionEntity:
+      additionalProperties: false
+      example:
+        prevailingInstrumentEventInstruction:
+          instrumentEventId: instrumentEventId
+          quantityInstructed:
+            amount: 1.4658129805029452
+            type: type
+          taxLotId: taxLotId
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          entitlementDateInstructed: 2000-01-23T04:56:07.000+00:00
+          holdingId: 6
+          instrumentEventInstructionId: instrumentEventInstructionId
+          portfolioId:
+            code: code
+            scope: scope
+          instructionType: instructionType
+          ignoreCostImpact: true
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          electionKey: electionKey
+        asAtVersionNumber: 0
+        asAtDeleted: 2000-01-23T04:56:07.000+00:00
+        previewedInstrumentEventInstruction:
+          instrumentEventId: instrumentEventId
+          quantityInstructed:
+            amount: 1.4658129805029452
+            type: type
+          taxLotId: taxLotId
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          entitlementDateInstructed: 2000-01-23T04:56:07.000+00:00
+          holdingId: 6
+          instrumentEventInstructionId: instrumentEventInstructionId
+          portfolioId:
+            code: code
+            scope: scope
+          instructionType: instructionType
+          ignoreCostImpact: true
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          electionKey: electionKey
+        entityUniqueId: entityUniqueId
+        userIdDeleted: userIdDeleted
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        deletedInstrumentEventInstruction:
+          instrumentEventId: instrumentEventId
+          quantityInstructed:
+            amount: 1.4658129805029452
+            type: type
+          taxLotId: taxLotId
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          entitlementDateInstructed: 2000-01-23T04:56:07.000+00:00
+          holdingId: 6
+          instrumentEventInstructionId: instrumentEventInstructionId
+          portfolioId:
+            code: code
+            scope: scope
+          instructionType: instructionType
+          ignoreCostImpact: true
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          electionKey: electionKey
+        requestIdDeleted: requestIdDeleted
+        previewedStatus: previewedStatus
+        status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          type: string
+        entityUniqueId:
+          description: The unique id of the entity.
+          minLength: 1
+          type: string
+        asAtVersionNumber:
+          description: The integer version number for the entity (the entity was created
+            at version 1)
+          format: int32
+          nullable: true
+          type: integer
+        status:
+          description: "The status of the entity at the current time. Available values:\
+            \ Prevailing, Deleted, DoesNotExist."
+          minLength: 1
+          type: string
+        asAtDeleted:
+          description: The asAt datetime at which the entity was deleted.
+          format: date-time
+          nullable: true
+          type: string
+        userIdDeleted:
+          description: The unique id of the user who deleted the entity.
+          nullable: true
+          type: string
+        requestIdDeleted:
+          description: The unique request id of the command that deleted the entity.
+          nullable: true
+          type: string
+        prevailingInstrumentEventInstruction:
+          $ref: '#/components/schemas/InstrumentEventInstruction'
+        deletedInstrumentEventInstruction:
+          $ref: '#/components/schemas/InstrumentEventInstruction'
+        previewedStatus:
+          description: "The status of the previewed entity. Available values: Prevailing,\
+            \ Deleted, DoesNotExist."
+          nullable: true
+          type: string
+        previewedInstrumentEventInstruction:
+          $ref: '#/components/schemas/InstrumentEventInstruction'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - entityUniqueId
+      - href
+      - status
+      type: object
     InstrumentEventInstructionRequest:
       additionalProperties: false
       description: The request to create an instruction for an instrument event
@@ -280920,6 +281531,7 @@ components:
           purchasePrice: 2.3021358869347655
           taxLotId: taxLotId
           purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+          transactionType: transactionType
           realisedCurrency:
             amount: 0.8008281904610115
             currency: currency
@@ -280936,6 +281548,22 @@ components:
           costPortfolioCcy:
             amount: 0.8008281904610115
             currency: currency
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
           realisedTradeCcy:
             amount: 0.8008281904610115
             currency: currency
@@ -280951,6 +281579,7 @@ components:
           purchasePrice: 2.3021358869347655
           taxLotId: taxLotId
           purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+          transactionType: transactionType
           realisedCurrency:
             amount: 0.8008281904610115
             currency: currency
@@ -280967,6 +281596,22 @@ components:
           costPortfolioCcy:
             amount: 0.8008281904610115
             currency: currency
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
           realisedTradeCcy:
             amount: 0.8008281904610115
             currency: currency
@@ -308099,9 +308744,9 @@ components:
         - startDate
         type: object
       description: "A PikSchedule represents Payment-in-Kind features for a ComplexBond,\
-        \ a FlexibleLoan or a LoanFacility.\r\nIt works in conjunction with existing\
-        \ FixedSchedules or FloatSchedules to define\r\nhow interest is paid during\
-        \ duration of the schedule."
+        \ a FlexibleLoan, a LoanFacility or a FlexibleDeposit.\r\nIt works in conjunction\
+        \ with existing FixedSchedules or FloatSchedules to define\r\nhow interest\
+        \ is paid during duration of the schedule."
     PlaceBlocksRequest:
       additionalProperties: false
       example:
@@ -320246,6 +320891,7 @@ components:
         purchasePrice: 2.3021358869347655
         taxLotId: taxLotId
         purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+        transactionType: transactionType
         realisedCurrency:
           amount: 0.8008281904610115
           currency: currency
@@ -320262,6 +320908,22 @@ components:
         costPortfolioCcy:
           amount: 0.8008281904610115
           currency: currency
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
         realisedTradeCcy:
           amount: 0.8008281904610115
           currency: currency
@@ -320321,6 +320983,20 @@ components:
           $ref: '#/components/schemas/CurrencyAndAmount'
         tradeDateToSettlementDateRealisedCurrency:
           $ref: '#/components/schemas/CurrencyAndAmount'
+        transactionType:
+          description: "The transaction type resolved for the allocation slice that\
+            \ realised this record, which can differ from the output transaction's\
+            \ type when a slice resolves against the opposite side of the book (for\
+            \ example a Buy whose slice covers a short)."
+          nullable: true
+          type: string
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: "The sub-holding key properties of the holding this record\
+            \ was realised against, identifying the allocation slice it belongs to."
+          nullable: true
+          type: object
       required:
       - costPortfolioCcy
       - costTradeCcy
@@ -328270,6 +328946,97 @@ components:
       - spotDate
       - startDate
       type: object
+    ResolveWithholdingTaxRequest:
+      additionalProperties: false
+      example:
+        mode: mode
+        profileType: profileType
+        whtConfig:
+          code: code
+          scope: scope
+        instrumentScope: instrumentScope
+        taxCountry: taxCountry
+        anomalyDataset:
+          code: code
+          scope: scope
+        mainDataset:
+          code: code
+          scope: scope
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        sourcePriority:
+        - sourcePriority
+        - sourcePriority
+        dimensions:
+          key: dimensions
+      properties:
+        mode:
+          description: "Where the dimension values come from. Raw: from Dimensions.\
+            \ InstrumentResolved: from the instrument, through the configuration's\
+            \ value sources, as in booking. Available values: Raw, InstrumentResolved."
+          minLength: 1
+          type: string
+        taxCountry:
+          description: The tax country of the holder. It is matched like any other
+            dimension.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        profileType:
+          description: The profile type of the holder. It is matched like any other
+            dimension.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        dimensions:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The value of each matching dimension, keyed by its field name\
+            \ in the rate datasets. A dimension left out is null, as in booking. taxCountry,\
+            \ profileType and ruleSource are not allowed here, and a name that neither\
+            \ dataset matches on is refused. With InstrumentResolved, a value here\
+            \ overrides the derived one, or gives one that the lookup cannot derive\
+            \ (see unresolvedDimensions in the response)."
+          nullable: true
+          type: object
+        whtConfig:
+          $ref: '#/components/schemas/ResourceId'
+        anomalyDataset:
+          $ref: '#/components/schemas/ResourceId'
+        mainDataset:
+          $ref: '#/components/schemas/ResourceId'
+        sourcePriority:
+          description: "Optional. The source priority, most preferred first: it replaces\
+            \ the configuration's, or is used on its own when there is no configuration.\
+            \ An empty list applies no source filter."
+          items:
+            type: string
+          nullable: true
+          type: array
+        instrumentIdentifiers:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The identifiers of the instrument, resolved as for a transaction.\
+            \ Required with InstrumentResolved, not allowed with Raw."
+          nullable: true
+          type: object
+        instrumentScope:
+          description: "Optional. The scope to resolve the instrument in, before the\
+            \ default scope. Only with InstrumentResolved."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+      required:
+      - mode
+      - profileType
+      - taxCountry
+      type: object
     ResourceId:
       additionalProperties: false
       description: Identifiers of an entity
@@ -330287,7 +331054,7 @@ components:
             - errorDetails
           appliedInstrumentEventInstructionId: appliedInstrumentEventInstructionId
           lusidInstrumentId: lusidInstrumentId
-          eligibleBalance: 5.962133916683182
+          eligibleBalance: 6.027456183070403
         - appliedInstrumentEventInstruction:
             instrumentEventId: instrumentEventId
             quantityInstructed:
@@ -331258,7 +332025,7 @@ components:
             - errorDetails
           appliedInstrumentEventInstructionId: appliedInstrumentEventInstructionId
           lusidInstrumentId: lusidInstrumentId
-          eligibleBalance: 5.962133916683182
+          eligibleBalance: 6.027456183070403
         links:
         - method: method
           description: description
@@ -342820,6 +343587,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -342836,6 +343604,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -342851,6 +343635,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -342867,6 +343652,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -343818,6 +344619,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -343834,6 +344636,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -343849,6 +344667,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -343865,6 +344684,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -353224,6 +354059,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -353240,6 +354076,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -353255,6 +354107,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -353271,6 +354124,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -354314,6 +355183,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -354330,6 +355200,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -354345,6 +355231,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -354361,6 +355248,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -359170,6 +360073,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -359186,6 +360090,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -359201,6 +360121,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -359217,6 +360138,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -360788,6 +361725,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -360804,6 +361742,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -360819,6 +361773,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -360835,6 +361790,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -371268,6 +372239,7 @@ components:
       additionalProperties: false
       example:
         queryMode: TradeDate
+        allocationExpansion: allocationExpansion
         includeEconomics: true
         showCancelledTransactions: true
         endDate: endDate
@@ -371343,6 +372315,22 @@ components:
             Excluded transactions do not affect holdings. Defaults to false if not
             specified.
           type: boolean
+        allocationExpansion:
+          description: "How an input transaction that was split into allocation slices\
+            \ (strategy tag allocations or a prorated allocation method) is presented.\
+            \ 'Expanded' (the default) returns one output transaction per slice. 'Combined'\
+            \ returns one output transaction per input transaction with units, consideration\
+            \ and realised gain/loss summed over the slices, with every realised gain/loss\
+            \ record of each slice, including zero-realised ones, listed with its\
+            \ own transaction type and sub-holding key properties. For a prorated\
+            \ type with no units side the combined units are the total position the\
+            \ slices were prorated over, not the input's units. Transaction filters\
+            \ apply per slice, so a filter on a slice-level property combines only\
+            \ the matching slices. Sequence numbers are assigned after combining.\
+            \ Holdings and tax lots are identical in both modes. Available values:\
+            \ Expanded, Combined."
+          nullable: true
+          type: string
       required:
       - endDate
       - startDate
@@ -379448,6 +380436,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -379464,6 +380453,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -379479,6 +380484,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -379495,6 +380501,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -393118,6 +394140,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -393134,6 +394157,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -393149,6 +394188,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -393165,6 +394205,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -394128,6 +395184,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -394144,6 +395201,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -394159,6 +395232,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -394175,6 +395249,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -396613,6 +397703,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -396629,6 +397720,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -396644,6 +397751,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -396660,6 +397768,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -397626,6 +398750,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -397642,6 +398767,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -397657,6 +398798,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -397673,6 +398815,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -401738,6 +402896,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -401754,6 +402913,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -401769,6 +402944,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -401785,6 +402961,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -402736,6 +403928,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -402752,6 +403945,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -402767,6 +403976,7 @@ components:
             purchasePrice: 2.3021358869347655
             taxLotId: taxLotId
             purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+            transactionType: transactionType
             realisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -402783,6 +403993,22 @@ components:
             costPortfolioCcy:
               amount: 0.8008281904610115
               currency: currency
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
             realisedTradeCcy:
               amount: 0.8008281904610115
               currency: currency
@@ -406542,6 +407768,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -406558,6 +407785,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -406573,6 +407816,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -406589,6 +407833,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -407608,6 +408868,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -407624,6 +408885,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -407639,6 +408916,7 @@ components:
               purchasePrice: 2.3021358869347655
               taxLotId: taxLotId
               purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
+              transactionType: transactionType
               realisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -407655,6 +408933,22 @@ components:
               costPortfolioCcy:
                 amount: 0.8008281904610115
                 currency: currency
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  key: key
               realisedTradeCcy:
                 amount: 0.8008281904610115
                 currency: currency
@@ -410521,6 +411815,35 @@ components:
       - taxCountry
       - whtConfig
       type: object
+    WithholdingTaxAlternativeMatch:
+      additionalProperties: false
+      example:
+        stopAtSourceRate: 4.145608029883936
+        ifValues:
+          key: ifValues
+        matchedRuleId: matchedRuleId
+      properties:
+        ifValues:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The values of the unresolved dimensions that choose this row,\
+            \ one or more."
+          type: object
+        matchedRuleId:
+          description: The identifier booking would stamp for the row that these values
+            choose.
+          minLength: 1
+          type: string
+        stopAtSourceRate:
+          description: The rate that this row would withhold at source.
+          format: double
+          type: number
+      required:
+      - ifValues
+      - matchedRuleId
+      - stopAtSourceRate
+      type: object
     WithholdingTaxConfiguration:
       additionalProperties: false
       example:
@@ -410794,6 +412117,36 @@ components:
       - anomalyDataset
       - mainDataset
       type: object
+    WithholdingTaxMatchedRule:
+      additionalProperties: false
+      example:
+        ruleSource: ruleSource
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        matchedDataset: matchedDataset
+        matchedRuleId: matchedRuleId
+      properties:
+        matchedRuleId:
+          description: "The identifier booking stamps for the matched row: its series\
+            \ identifiers and effective date."
+          minLength: 1
+          type: string
+        matchedDataset:
+          description: "The dataset the matched row came from: Main or Anomaly."
+          minLength: 1
+          type: string
+        ruleSource:
+          description: The rule source of the matched row. Null when the row has none.
+          nullable: true
+          type: string
+        effectiveAt:
+          description: The effective date of the matched row version.
+          format: date-time
+          type: string
+      required:
+      - effectiveAt
+      - matchedDataset
+      - matchedRuleId
+      type: object
     WithholdingTaxRateResponse:
       additionalProperties: false
       example:
@@ -410859,6 +412212,240 @@ components:
       - relationalDatasetDefinitionId
       - seriesIdentifiers
       - valueFields
+      type: object
+    WithholdingTaxRateSplit:
+      additionalProperties: false
+      example:
+        reclaimableRate: 9.301444243932576
+        irrecoverableRate: 2.3021358869347655
+        reliefAtSourceRate: 7.061401241503109
+        stopAtSourceRate: 5.637376656633329
+      properties:
+        stopAtSourceRate:
+          description: The rate withheld at source.
+          format: double
+          type: number
+        irrecoverableRate:
+          description: The part of the country rate that cannot be recovered.
+          format: double
+          type: number
+        reliefAtSourceRate:
+          description: The part of the country rate relieved at source.
+          format: double
+          type: number
+        reclaimableRate:
+          description: The part of the rate withheld at source that can be reclaimed.
+          format: double
+          type: number
+      required:
+      - irrecoverableRate
+      - reclaimableRate
+      - reliefAtSourceRate
+      - stopAtSourceRate
+      type: object
+    WithholdingTaxRateTiers:
+      additionalProperties: false
+      example:
+        countryRate: 0.8008281904610115
+        treatyRate: 6.027456183070403
+        enhancedRate: 5.962133916683182
+        betterRate: 1.4658129805029452
+      properties:
+        countryRate:
+          description: "The statutory rate of the matched row, before relief."
+          format: double
+          type: number
+        treatyRate:
+          description: The treaty rate of the matched row. Null when the tier does
+            not apply.
+          format: double
+          nullable: true
+          type: number
+        betterRate:
+          description: The better rate of the matched row. Null when the tier does
+            not apply.
+          format: double
+          nullable: true
+          type: number
+        enhancedRate:
+          description: The enhanced rate of the matched row. Null when the tier does
+            not apply.
+          format: double
+          nullable: true
+          type: number
+      required:
+      - countryRate
+      type: object
+    WithholdingTaxReliefAtSourceFlags:
+      additionalProperties: false
+      example:
+        betterRas: true
+        treatyRas: true
+        enhancedRas: true
+      properties:
+        treatyRas:
+          description: Whether relief at source applies at the treaty rate.
+          type: boolean
+        betterRas:
+          description: Whether relief at source applies at the better rate.
+          type: boolean
+        enhancedRas:
+          description: Whether relief at source applies at the enhanced rate.
+          type: boolean
+      required:
+      - betterRas
+      - enhancedRas
+      - treatyRas
+      type: object
+    WithholdingTaxResolution:
+      additionalProperties: false
+      example:
+        derivedSplit:
+          reclaimableRate: 9.301444243932576
+          irrecoverableRate: 2.3021358869347655
+          reliefAtSourceRate: 7.061401241503109
+          stopAtSourceRate: 5.637376656633329
+        provenance:
+          matchScore: 3.616076749251911
+          tieBroken: true
+          sourceFilterApplied: sourceFilterApplied
+          matchedFieldCount: 2
+        resolutionStatus: resolutionStatus
+        matchedRule:
+          ruleSource: ruleSource
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          matchedDataset: matchedDataset
+          matchedRuleId: matchedRuleId
+        hasMoreAlternatives: true
+        unresolvedDimensions:
+          key:
+            readFrom:
+            - readFrom
+            - readFrom
+        rateTiers:
+          countryRate: 0.8008281904610115
+          treatyRate: 6.027456183070403
+          enhancedRate: 5.962133916683182
+          betterRate: 1.4658129805029452
+        couldAlsoMatch:
+        - stopAtSourceRate: 4.145608029883936
+          ifValues:
+            key: ifValues
+          matchedRuleId: matchedRuleId
+        - stopAtSourceRate: 4.145608029883936
+          ifValues:
+            key: ifValues
+          matchedRuleId: matchedRuleId
+        resolvedDimensions:
+          key: resolvedDimensions
+        isWhatIf: true
+        rasFlags:
+          betterRas: true
+          treatyRas: true
+          enhancedRas: true
+      properties:
+        resolutionStatus:
+          description: "Match or NoMatch: the status booking stamps on a transaction."
+          minLength: 1
+          type: string
+        matchedRule:
+          $ref: '#/components/schemas/WithholdingTaxMatchedRule'
+        rateTiers:
+          $ref: '#/components/schemas/WithholdingTaxRateTiers'
+        rasFlags:
+          $ref: '#/components/schemas/WithholdingTaxReliefAtSourceFlags'
+        derivedSplit:
+          $ref: '#/components/schemas/WithholdingTaxRateSplit'
+        provenance:
+          $ref: '#/components/schemas/WithholdingTaxResolutionProvenance'
+        resolvedDimensions:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "Each dimension of either dataset, with the value used. Null\
+            \ where there is no value."
+          type: object
+        isWhatIf:
+          description: "False when the saved configuration's datasets and source order\
+            \ are used as they are. True when a dataset or the source order differs\
+            \ from the configuration's, or when no configuration was given."
+          type: boolean
+        unresolvedDimensions:
+          additionalProperties:
+            $ref: '#/components/schemas/WithholdingTaxUnresolvedDimension'
+          description: "Each dimension that booking reads from the transaction, portfolio\
+            \ or fund, that dimensions does not supply, and that a couldAlsoMatch\
+            \ entry needs. It is null, so only rows blank on it match. Empty in Raw\
+            \ mode."
+          type: object
+        couldAlsoMatch:
+          description: "Each other row that booking would choose with its own values\
+            \ for the unresolved dimensions, fewest values first, up to the limit.\
+            \ Where one entry's values include another's, the one with more values\
+            \ applies."
+          items:
+            $ref: '#/components/schemas/WithholdingTaxAlternativeMatch'
+          type: array
+        hasMoreAlternatives:
+          description: "True when the limit stopped the lookup before it tried every\
+            \ combination of values, so couldAlsoMatch may miss rows. Ask again with\
+            \ a higher limit."
+          type: boolean
+      required:
+      - couldAlsoMatch
+      - hasMoreAlternatives
+      - isWhatIf
+      - resolutionStatus
+      - resolvedDimensions
+      - unresolvedDimensions
+      type: object
+    WithholdingTaxResolutionProvenance:
+      additionalProperties: false
+      example:
+        matchScore: 3.616076749251911
+        tieBroken: true
+        sourceFilterApplied: sourceFilterApplied
+        matchedFieldCount: 2
+      properties:
+        matchScore:
+          description: "The share of the main dataset's dimensions that the row matches,\
+            \ from 0 to 1. Null on an anomaly match."
+          format: double
+          nullable: true
+          type: number
+        matchedFieldCount:
+          description: The number of the main dataset's dimensions that the row matches.
+            Null on an anomaly match.
+          format: int32
+          nullable: true
+          type: integer
+        sourceFilterApplied:
+          description: The rule source level that matched. Null when no source priority
+            applies.
+          nullable: true
+          type: string
+        tieBroken:
+          description: "True when another row matched as well as the winner, so the\
+            \ tie-break order chose: the latest effective date, then the rule id."
+          type: boolean
+      required:
+      - tieBroken
+      type: object
+    WithholdingTaxUnresolvedDimension:
+      additionalProperties: false
+      example:
+        readFrom:
+        - readFrom
+        - readFrom
+      properties:
+        readFrom:
+          description: "What booking reads the dimension from: Transaction, Portfolio\
+            \ or Fund."
+          items:
+            type: string
+          type: array
+      required:
+      - readFrom
       type: object
     WithholdingTaxValueSource:
       additionalProperties: false

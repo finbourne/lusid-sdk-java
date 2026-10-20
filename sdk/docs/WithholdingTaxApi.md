@@ -14,6 +14,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**listWithholdingTaxConfigurations**](WithholdingTaxApi.md#listWithholdingTaxConfigurations) | **GET** /api/withholdingtax/configurations | [EARLY ACCESS] ListWithholdingTaxConfigurations: List Withholding Tax Configurations. |
 | [**listWithholdingTaxDatasetDefinitions**](WithholdingTaxApi.md#listWithholdingTaxDatasetDefinitions) | **GET** /api/withholdingtax/datasetdefinitions | [EARLY ACCESS] ListWithholdingTaxDatasetDefinitions: List Withholding Tax dataset definitions. |
 | [**patchWithholdingTaxDatasetDefinition**](WithholdingTaxApi.md#patchWithholdingTaxDatasetDefinition) | **PATCH** /api/withholdingtax/datasetdefinitions/{scope}/{code} | [EARLY ACCESS] PatchWithholdingTaxDatasetDefinition: Patch a Withholding Tax dataset definition. |
+| [**resolveWithholdingTax**](WithholdingTaxApi.md#resolveWithholdingTax) | **POST** /api/withholdingtax/$resolve | [EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply. |
 | [**upsertWithholdingTaxConfiguration**](WithholdingTaxApi.md#upsertWithholdingTaxConfiguration) | **POST** /api/withholdingtax/configurations/{scope}/{code} | [EARLY ACCESS] UpsertWithholdingTaxConfiguration: Upsert a Withholding Tax Configuration. |
 
 
@@ -970,6 +971,103 @@ public class WithholdingTaxApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The amended Withholding Tax dataset. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## resolveWithholdingTax
+
+> WithholdingTaxResolution resolveWithholdingTax(resolveWithholdingTaxRequest, effectiveAt, asAt, limit)
+
+[EARLY ACCESS] ResolveWithholdingTax: Resolve the Withholding Tax rate that booking would apply.
+
+A read-only lookup that runs the same resolution as booking, without a transaction: it works down the source  priority and, at each source, checks the anomaly dataset before the main dataset. Nothing is booked, and only  rates are returned. Supply a Withholding Tax Configuration to predict what booking will post; replace its  datasets or source priority to ask what would resolve instead. Supply the dimension values directly, or name an  instrument so that the configuration&#39;s value sources read them from it, as booking reads a transaction&#39;s instrument.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.WithholdingTaxApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class WithholdingTaxApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // WithholdingTaxApi apiInstance = apiFactory.build(WithholdingTaxApi.class);
+
+        WithholdingTaxApi apiInstance = ApiFactoryBuilder.build(fileName).build(WithholdingTaxApi.class);
+        ResolveWithholdingTaxRequest resolveWithholdingTaxRequest = new ResolveWithholdingTaxRequest(); // ResolveWithholdingTaxRequest | The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to resolve, in place of the transaction's trade   date. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the configuration and the rates. Defaults to the latest version   if not specified.
+        Integer limit = 100; // Integer | The most combinations of values that couldAlsoMatch tries, fewest values first.
+        try {
+            // uncomment the below to set overrides at the request level
+            // WithholdingTaxResolution result = apiInstance.resolveWithholdingTax(resolveWithholdingTaxRequest, effectiveAt, asAt, limit).execute(opts);
+
+            WithholdingTaxResolution result = apiInstance.resolveWithholdingTax(resolveWithholdingTaxRequest, effectiveAt, asAt, limit).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WithholdingTaxApi#resolveWithholdingTax");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **resolveWithholdingTaxRequest** | [**ResolveWithholdingTaxRequest**](ResolveWithholdingTaxRequest.md)| The tax identity, the dimension values or the instrument, and the configuration or datasets to resolve against. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to resolve, in place of the transaction&#39;s trade   date. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the configuration and the rates. Defaults to the latest version   if not specified. | [optional] |
+| **limit** | **Integer**| The most combinations of values that couldAlsoMatch tries, fewest values first. | [optional] [default to 100] |
+
+### Return type
+
+[**WithholdingTaxResolution**](WithholdingTaxResolution.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Withholding Tax rate that booking would apply. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
