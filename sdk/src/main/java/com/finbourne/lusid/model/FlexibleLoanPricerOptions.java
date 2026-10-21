@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,6 +55,10 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_SET_CLEAN_P_V_TO_ZERO)
   private Boolean setCleanPVToZero;
 
+  public static final String SERIALIZED_NAME_USE_PRICE_QUOTE_FOR_CLEAN_P_V = "usePriceQuoteForCleanPV";
+  @SerializedName(SERIALIZED_NAME_USE_PRICE_QUOTE_FOR_CLEAN_P_V)
+  private Boolean usePriceQuoteForCleanPV;
+
   public FlexibleLoanPricerOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -79,6 +84,27 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
   }
 
 
+  public FlexibleLoanPricerOptions usePriceQuoteForCleanPV(Boolean usePriceQuoteForCleanPV) {
+    
+    this.usePriceQuoteForCleanPV = usePriceQuoteForCleanPV;
+    return this;
+  }
+
+   /**
+   * If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance generate justfile test_sdk priceQuote / quoteScaleFactor
+   * @return usePriceQuoteForCleanPV
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getUsePriceQuoteForCleanPV() {
+    return usePriceQuoteForCleanPV;
+  }
+
+
+  public void setUsePriceQuoteForCleanPV(Boolean usePriceQuoteForCleanPV) {
+    this.usePriceQuoteForCleanPV = usePriceQuoteForCleanPV;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -90,12 +116,24 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
     }
     FlexibleLoanPricerOptions flexibleLoanPricerOptions = (FlexibleLoanPricerOptions) o;
     return Objects.equals(this.setCleanPVToZero, flexibleLoanPricerOptions.setCleanPVToZero) &&
+        Objects.equals(this.usePriceQuoteForCleanPV, flexibleLoanPricerOptions.usePriceQuoteForCleanPV) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(setCleanPVToZero, super.hashCode());
+    return Objects.hash(setCleanPVToZero, usePriceQuoteForCleanPV, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -104,6 +142,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
     sb.append("class FlexibleLoanPricerOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    setCleanPVToZero: ").append(toIndentedString(setCleanPVToZero)).append("\n");
+    sb.append("    usePriceQuoteForCleanPV: ").append(toIndentedString(usePriceQuoteForCleanPV)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -128,6 +167,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
     openapiFields = new HashSet<String>();
     openapiFields.add("modelOptionsType");
     openapiFields.add("setCleanPVToZero");
+    openapiFields.add("usePriceQuoteForCleanPV");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

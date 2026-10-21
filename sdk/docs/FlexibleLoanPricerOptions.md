@@ -6,6 +6,7 @@ Model options for instruments of type flexibleDeposit and flexibleLoan when used
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **setCleanPVToZero** | **Boolean** | If set to true the CleanPV will be set to zero in valuations and PV will effectively just be the Accrual. | [default to Boolean]
+**usePriceQuoteForCleanPV** | **Boolean** | If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance generate justfile test_sdk priceQuote / quoteScaleFactor | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.FlexibleLoanPricerOptions;
@@ -14,10 +15,12 @@ import java.lang.System;
 import java.net.URI;
 
 Boolean SetCleanPVToZero = true;
+@jakarta.annotation.Nullable Boolean UsePriceQuoteForCleanPV = true;
 
 
 FlexibleLoanPricerOptions flexibleLoanPricerOptionsInstance = new FlexibleLoanPricerOptions()
-    .SetCleanPVToZero(SetCleanPVToZero);
+    .SetCleanPVToZero(SetCleanPVToZero)
+    .UsePriceQuoteForCleanPV(UsePriceQuoteForCleanPV);
 ```
 
 
