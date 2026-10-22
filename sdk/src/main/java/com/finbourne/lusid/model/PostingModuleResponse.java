@@ -12,7 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.PostingModuleRule;
+import com.finbourne.lusid.model.PostingModuleRuleResponse;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
@@ -79,7 +79,7 @@ public class PostingModuleResponse {
 
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
-  private List<PostingModuleRule> rules;
+  private List<PostingModuleRuleResponse> rules;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -201,13 +201,13 @@ public class PostingModuleResponse {
   }
 
 
-  public PostingModuleResponse rules(List<PostingModuleRule> rules) {
+  public PostingModuleResponse rules(List<PostingModuleRuleResponse> rules) {
     
     this.rules = rules;
     return this;
   }
 
-  public PostingModuleResponse addRulesItem(PostingModuleRule rulesItem) {
+  public PostingModuleResponse addRulesItem(PostingModuleRuleResponse rulesItem) {
     if (this.rules == null) {
       this.rules = new ArrayList<>();
     }
@@ -220,12 +220,12 @@ public class PostingModuleResponse {
    * @return rules
   **/
   @jakarta.annotation.Nullable
-  public List<PostingModuleRule> getRules() {
+  public List<PostingModuleRuleResponse> getRules() {
     return rules;
   }
 
 
-  public void setRules(List<PostingModuleRule> rules) {
+  public void setRules(List<PostingModuleRuleResponse> rules) {
     this.rules = rules;
   }
 
@@ -435,7 +435,7 @@ public class PostingModuleResponse {
 
           // validate the optional field `rules` (array)
           for (int i = 0; i < jsonArrayrules.size(); i++) {
-            PostingModuleRule.validateJsonElement(jsonArrayrules.get(i));
+            PostingModuleRuleResponse.validateJsonElement(jsonArrayrules.get(i));
           };
         }
       }

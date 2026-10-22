@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -80,6 +81,10 @@ public class MarginRunShard {
   public static final String SERIALIZED_NAME_DETAIL = "detail";
   @SerializedName(SERIALIZED_NAME_DETAIL)
   private String detail;
+
+  public static final String SERIALIZED_NAME_AS_AT = "asAt";
+  @SerializedName(SERIALIZED_NAME_AS_AT)
+  private OffsetDateTime asAt;
 
   public MarginRunShard() {
   }
@@ -225,7 +230,7 @@ public class MarginRunShard {
   }
 
    /**
-   * Why the shard failed, when it did.
+   * Why the shard failed, or which of its netting sets it completed without figures and why.
    * @return detail
   **/
   @jakarta.annotation.Nullable
@@ -236,6 +241,27 @@ public class MarginRunShard {
 
   public void setDetail(String detail) {
     this.detail = detail;
+  }
+
+
+  public MarginRunShard asAt(OffsetDateTime asAt) {
+    
+    this.asAt = asAt;
+    return this;
+  }
+
+   /**
+   * When the shard was valued: the run&#39;s as-at, or the time of the retry that valued it. Null until the shard has finished.
+   * @return asAt
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAsAt() {
+    return asAt;
+  }
+
+
+  public void setAsAt(OffsetDateTime asAt) {
+    this.asAt = asAt;
   }
 
 
@@ -255,7 +281,8 @@ public class MarginRunShard {
         Objects.equals(this.status, marginRunShard.status) &&
         Objects.equals(this.callCount, marginRunShard.callCount) &&
         Objects.equals(this.lineCount, marginRunShard.lineCount) &&
-        Objects.equals(this.detail, marginRunShard.detail);
+        Objects.equals(this.detail, marginRunShard.detail) &&
+        Objects.equals(this.asAt, marginRunShard.asAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -264,7 +291,7 @@ public class MarginRunShard {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, recipeId, agreements, status, callCount, lineCount, detail);
+    return Objects.hash(id, recipeId, agreements, status, callCount, lineCount, detail, asAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -285,6 +312,7 @@ public class MarginRunShard {
     sb.append("    callCount: ").append(toIndentedString(callCount)).append("\n");
     sb.append("    lineCount: ").append(toIndentedString(lineCount)).append("\n");
     sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
+    sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -314,6 +342,7 @@ public class MarginRunShard {
     openapiFields.add("callCount");
     openapiFields.add("lineCount");
     openapiFields.add("detail");
+    openapiFields.add("asAt");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

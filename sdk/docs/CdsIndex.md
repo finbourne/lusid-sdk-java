@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **conventionName** | [**FlowConventionName**](FlowConventionName.md) |  | [optional] [default to FlowConventionName]
 **notional** | **java.math.BigDecimal** | The notional quantity that applies to both the premium and protection legs. | [default to java.math.BigDecimal]
 **isNonStandard** | **Boolean** | By default IsNonStandard is false, and the contract follows the IMM convention: the roll and payment  frequencies must be 3M or 6M, and the start and maturity dates are rolled onto IMM dates  (the 20th of March, June, September or December).  If IsNonStandard&#x3D;true, the premium schedule uses the stated start and maturity dates. The payment  frequency can be any whole number of days, weeks, months, quarters, half-years or years, for example  1W, 1M or 4M. Term (T) and business-day (BD) frequencies are not accepted. The payment dates roll back  from the maturity, so a term that is not a whole number of payment periods has a short first period. | [optional] [default to Boolean]
+**protectionDetailSpecification** | [**CdsProtectionDetailSpecification**](CdsProtectionDetailSpecification.md) |  | [optional] [default to CdsProtectionDetailSpecification]
 **additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. | [optional] [default to List<AdditionalPayment>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
 
@@ -32,6 +33,7 @@ Basket Basket = new Basket();
 FlowConventionName ConventionName = new FlowConventionName();
 java.math.BigDecimal Notional = new java.math.BigDecimal("100.00");
 Boolean IsNonStandard = true;
+CdsProtectionDetailSpecification ProtectionDetailSpecification = new CdsProtectionDetailSpecification();
 @jakarta.annotation.Nullable List<AdditionalPayment> AdditionalPayments = new List<AdditionalPayment>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
 
@@ -46,6 +48,7 @@ CdsIndex cdsIndexInstance = new CdsIndex()
     .ConventionName(ConventionName)
     .Notional(Notional)
     .IsNonStandard(IsNonStandard)
+    .ProtectionDetailSpecification(ProtectionDetailSpecification)
     .AdditionalPayments(AdditionalPayments)
     .TimeZoneConventions(TimeZoneConventions);
 ```

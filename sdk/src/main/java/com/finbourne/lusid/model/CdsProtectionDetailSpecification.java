@@ -60,7 +60,7 @@ public class CdsProtectionDetailSpecification {
 
   public static final String SERIALIZED_NAME_PROTECT_START_DAY = "protectStartDay";
   @SerializedName(SERIALIZED_NAME_PROTECT_START_DAY)
-  private Boolean protectStartDay = true;
+  private Boolean protectStartDay = false;
 
   public static final String SERIALIZED_NAME_PAY_ACCRUED_INTEREST_ON_DEFAULT = "payAccruedInterestOnDefault";
   @SerializedName(SERIALIZED_NAME_PAY_ACCRUED_INTEREST_ON_DEFAULT)
@@ -118,7 +118,7 @@ public class CdsProtectionDetailSpecification {
   }
 
    /**
-   * Does the protection leg pay out in the case of default on the start date. Defaults to true if not set.
+   * Does the protection leg pay out in the case of default on the start date. Defaults to false if not set.  If true, the trade date is not included in the accrued interest that a transaction pays or receives.
    * @return protectStartDay
   **/
   @jakarta.annotation.Nullable

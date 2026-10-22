@@ -66,6 +66,10 @@ public class TradingConventions {
   @SerializedName(SERIALIZED_NAME_PRICE_QUOTATION_TYPE)
   private String priceQuotationType;
 
+  public static final String SERIALIZED_NAME_PRICE_FRACTION_CONVENTION = "priceFractionConvention";
+  @SerializedName(SERIALIZED_NAME_PRICE_FRACTION_CONVENTION)
+  private String priceFractionConvention;
+
   public TradingConventions() {
   }
 
@@ -153,6 +157,27 @@ public class TradingConventions {
   }
 
 
+  public TradingConventions priceFractionConvention(String priceFractionConvention) {
+    
+    this.priceFractionConvention = priceFractionConvention;
+    return this;
+  }
+
+   /**
+   * The fractional grid on which the market conventionally quotes the instrument&#39;s price, such as 32nds for  US Treasuries. Declarative only: prices are stored and valued as decimals regardless, and consumers use  this to convert between decimal and fractional notation at entry and display.  Defaults to Decimal if not set.     Supported string (enumeration) values are: [Decimal, ThirtySeconds, SixtyFourths, OneHundredTwentyEighths, TwoHundredFiftySixths]. Available values: Decimal, ThirtySeconds, SixtyFourths, OneHundredTwentyEighths, TwoHundredFiftySixths.
+   * @return priceFractionConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getPriceFractionConvention() {
+    return priceFractionConvention;
+  }
+
+
+  public void setPriceFractionConvention(String priceFractionConvention) {
+    this.priceFractionConvention = priceFractionConvention;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -166,7 +191,8 @@ public class TradingConventions {
     return (this.priceScaleFactor.compareTo(tradingConventions.getPriceScaleFactor()) == 0) &&
         (this.minimumOrderSize.compareTo(tradingConventions.getMinimumOrderSize()) == 0) &&
         (this.minimumOrderIncrement.compareTo(tradingConventions.getMinimumOrderIncrement()) == 0) &&
-        Objects.equals(this.priceQuotationType, tradingConventions.priceQuotationType);
+        Objects.equals(this.priceQuotationType, tradingConventions.priceQuotationType) &&
+        Objects.equals(this.priceFractionConvention, tradingConventions.priceFractionConvention);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -175,7 +201,7 @@ public class TradingConventions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(priceScaleFactor, minimumOrderSize, minimumOrderIncrement, priceQuotationType);
+    return Objects.hash(priceScaleFactor, minimumOrderSize, minimumOrderIncrement, priceQuotationType, priceFractionConvention);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -193,6 +219,7 @@ public class TradingConventions {
     sb.append("    minimumOrderSize: ").append(toIndentedString(minimumOrderSize)).append("\n");
     sb.append("    minimumOrderIncrement: ").append(toIndentedString(minimumOrderIncrement)).append("\n");
     sb.append("    priceQuotationType: ").append(toIndentedString(priceQuotationType)).append("\n");
+    sb.append("    priceFractionConvention: ").append(toIndentedString(priceFractionConvention)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -219,6 +246,7 @@ public class TradingConventions {
     openapiFields.add("minimumOrderSize");
     openapiFields.add("minimumOrderIncrement");
     openapiFields.add("priceQuotationType");
+    openapiFields.add("priceFractionConvention");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -239,6 +267,9 @@ public class TradingConventions {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("priceQuotationType") != null && !jsonObj.get("priceQuotationType").isJsonNull()) && !jsonObj.get("priceQuotationType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `priceQuotationType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("priceQuotationType").toString()));
+      }
+      if ((jsonObj.get("priceFractionConvention") != null && !jsonObj.get("priceFractionConvention").isJsonNull()) && !jsonObj.get("priceFractionConvention").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `priceFractionConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("priceFractionConvention").toString()));
       }
   }
 

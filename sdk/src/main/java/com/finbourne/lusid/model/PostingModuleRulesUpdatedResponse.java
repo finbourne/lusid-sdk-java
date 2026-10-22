@@ -12,7 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.PostingModuleRule;
+import com.finbourne.lusid.model.PostingModuleRuleResponse;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -58,7 +58,7 @@ import com.finbourne.lusid.JSON;
 public class PostingModuleRulesUpdatedResponse {
   public static final String SERIALIZED_NAME_RULES = "rules";
   @SerializedName(SERIALIZED_NAME_RULES)
-  private List<PostingModuleRule> rules;
+  private List<PostingModuleRuleResponse> rules;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -75,13 +75,13 @@ public class PostingModuleRulesUpdatedResponse {
   public PostingModuleRulesUpdatedResponse() {
   }
 
-  public PostingModuleRulesUpdatedResponse rules(List<PostingModuleRule> rules) {
+  public PostingModuleRulesUpdatedResponse rules(List<PostingModuleRuleResponse> rules) {
     
     this.rules = rules;
     return this;
   }
 
-  public PostingModuleRulesUpdatedResponse addRulesItem(PostingModuleRule rulesItem) {
+  public PostingModuleRulesUpdatedResponse addRulesItem(PostingModuleRuleResponse rulesItem) {
     if (this.rules == null) {
       this.rules = new ArrayList<>();
     }
@@ -94,12 +94,12 @@ public class PostingModuleRulesUpdatedResponse {
    * @return rules
   **/
   @jakarta.annotation.Nullable
-  public List<PostingModuleRule> getRules() {
+  public List<PostingModuleRuleResponse> getRules() {
     return rules;
   }
 
 
-  public void setRules(List<PostingModuleRule> rules) {
+  public void setRules(List<PostingModuleRuleResponse> rules) {
     this.rules = rules;
   }
 
@@ -269,7 +269,7 @@ public class PostingModuleRulesUpdatedResponse {
 
           // validate the optional field `rules` (array)
           for (int i = 0; i < jsonArrayrules.size(); i++) {
-            PostingModuleRule.validateJsonElement(jsonArrayrules.get(i));
+            PostingModuleRuleResponse.validateJsonElement(jsonArrayrules.get(i));
           };
         }
       }

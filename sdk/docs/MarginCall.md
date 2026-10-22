@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **statementReference** | **String** | A reference to the counterparty&#39;s statement, such as a Drive path. | [optional] [default to String]
 **demandNote** | **String** | A note recorded with the counterparty&#39;s demand. | [optional] [default to String]
 **agreedAmount** | **java.math.BigDecimal** | The amount agreed to move, once the call is accepted or disputed. | [optional] [default to java.math.BigDecimal]
-**disputedAmount** | **java.math.BigDecimal** | The part of the counterparty&#39;s demand left in dispute. | [optional] [default to java.math.BigDecimal]
+**disputedAmount** | **java.math.BigDecimal** | The part of the larger of our call and the counterparty&#39;s demand left in dispute. | [optional] [default to java.math.BigDecimal]
 **disputeReason** | **String** | Why the call is disputed. | [optional] [default to String]
 **disputeOwner** | **String** | Who owns the dispute. | [optional] [default to String]
 **state** | **String** | Where the call is in its lifecycle. One of Calculated, Accepted or Disputed. Filterable. | [default to String]

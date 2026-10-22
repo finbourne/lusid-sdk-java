@@ -2728,7 +2728,7 @@ public class RecsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys The property keys to decorate onto the result. (optional)
+         * @param propertyKeys The property keys to decorate onto the result. The keys its matching ruleset populates always come back, so list only others here. (optional)
          * @return APIgetRecResultRequest
          */
         public APIgetRecResultRequest propertyKeys(List<String> propertyKeys) {
@@ -4765,7 +4765,7 @@ public class RecsApi {
 
         /**
          * Set propertyKeys
-         * @param propertyKeys The property keys to decorate onto each result. (optional)
+         * @param propertyKeys The property keys to decorate onto each result. The keys its matching ruleset populates always come back, so list only others here. (optional)
          * @return APIlistRecResultsRequest
          */
         public APIlistRecResultsRequest propertyKeys(List<String> propertyKeys) {

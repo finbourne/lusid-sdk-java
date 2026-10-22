@@ -51,13 +51,14 @@ import com.finbourne.lusid.model.PagedResourceListOfCleardownModuleResponse;
 import com.finbourne.lusid.model.PagedResourceListOfCleardownModuleRule;
 import com.finbourne.lusid.model.PagedResourceListOfGeneralLedgerProfileResponse;
 import com.finbourne.lusid.model.PagedResourceListOfPostingModuleResponse;
-import com.finbourne.lusid.model.PagedResourceListOfPostingModuleRule;
+import com.finbourne.lusid.model.PagedResourceListOfPostingModuleRuleResponse;
 import com.finbourne.lusid.model.PostingModuleDetails;
 import com.finbourne.lusid.model.PostingModuleRequest;
 import com.finbourne.lusid.model.PostingModuleResponse;
 import com.finbourne.lusid.model.PostingModuleRule;
 import com.finbourne.lusid.model.PostingModuleRulesUpdatedResponse;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.SupersedePostingModuleRuleRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -5983,30 +5984,30 @@ public class ChartOfAccountsApi {
     }
 
 
-    private ApiResponse<PagedResourceListOfPostingModuleRule> listPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
+    private ApiResponse<PagedResourceListOfPostingModuleRuleResponse> listPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter) throws ApiException {
         okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfPostingModuleRule> listPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+    private ApiResponse<PagedResourceListOfPostingModuleRuleResponse> listPostingModuleRulesWithHttpInfo(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
         okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, null, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listPostingModuleRulesAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleRule> _callback) throws ApiException {
+    private okhttp3.Call listPostingModuleRulesAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleRuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listPostingModuleRulesAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleRule> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listPostingModuleRulesAsync(String scope, String code, String postingModuleCode, OffsetDateTime asAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfPostingModuleRuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
         okhttp3.Call localVarCall = listPostingModuleRulesValidateBeforeCall(scope, code, postingModuleCode, asAt, page, limit, filter, _callback, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRule>(){}.getType();
+        Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleRuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -6085,7 +6086,7 @@ public class ChartOfAccountsApi {
 
         /**
          * Execute listPostingModuleRules request
-         * @return PagedResourceListOfPostingModuleRule
+         * @return PagedResourceListOfPostingModuleRuleResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -6095,14 +6096,14 @@ public class ChartOfAccountsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public PagedResourceListOfPostingModuleRule execute() throws ApiException {
-            ApiResponse<PagedResourceListOfPostingModuleRule> localVarResp = listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter);
+        public PagedResourceListOfPostingModuleRuleResponse execute() throws ApiException {
+            ApiResponse<PagedResourceListOfPostingModuleRuleResponse> localVarResp = listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter);
             return localVarResp.getData();
         }
 
         /**
          * Execute listPostingModuleRules request. Use any specified configuration options to override any other configuration for this request only.
-         * @return PagedResourceListOfPostingModuleRule
+         * @return PagedResourceListOfPostingModuleRuleResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -6112,14 +6113,14 @@ public class ChartOfAccountsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public PagedResourceListOfPostingModuleRule execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfPostingModuleRule> localVarResp = listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter, opts);
+        public PagedResourceListOfPostingModuleRuleResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfPostingModuleRuleResponse> localVarResp = listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute listPostingModuleRules request with HTTP info returned
-         * @return ApiResponse&lt;PagedResourceListOfPostingModuleRule&gt;
+         * @return ApiResponse&lt;PagedResourceListOfPostingModuleRuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -6129,13 +6130,13 @@ public class ChartOfAccountsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<PagedResourceListOfPostingModuleRule> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<PagedResourceListOfPostingModuleRuleResponse> executeWithHttpInfo() throws ApiException {
             return listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter);
         }
 
         /**
          * Execute listPostingModuleRules request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;PagedResourceListOfPostingModuleRule&gt;
+         * @return ApiResponse&lt;PagedResourceListOfPostingModuleRuleResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -6145,7 +6146,7 @@ public class ChartOfAccountsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<PagedResourceListOfPostingModuleRule> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        public ApiResponse<PagedResourceListOfPostingModuleRuleResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
             return listPostingModuleRulesWithHttpInfo(scope, code, postingModuleCode, asAt, page, limit, filter, opts);
         }
 
@@ -6162,7 +6163,7 @@ public class ChartOfAccountsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleRule> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleRuleResponse> _callback) throws ApiException {
             return listPostingModuleRulesAsync(scope, code, postingModuleCode, asAt, page, limit, filter, _callback);
         }
 
@@ -6179,7 +6180,7 @@ public class ChartOfAccountsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleRule> _callback, ConfigurationOptions opts) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPostingModuleRuleResponse> _callback, ConfigurationOptions opts) throws ApiException {
             return listPostingModuleRulesAsync(scope, code, postingModuleCode, asAt, page, limit, filter, _callback, opts);
         }
     }
@@ -8604,6 +8605,277 @@ public class ChartOfAccountsApi {
      */
     public APIsetPostingModuleRulesRequest setPostingModuleRules(String scope, String code, String postingModuleCode, List<PostingModuleRule> postingModuleRule) {
         return new APIsetPostingModuleRulesRequest(scope, code, postingModuleCode, postingModuleRule);
+    }
+    private okhttp3.Call supersedePostingModuleRuleCall(String scope, String code, String postingModuleCode, String ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest, final ApiCallback _callback) throws ApiException {
+        return supersedePostingModuleRuleCall(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call supersedePostingModuleRuleCall(String scope, String code, String postingModuleCode, String ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = supersedePostingModuleRuleRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/$supersede"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "postingModuleCode" + "}", localVarApiClient.escapeString(postingModuleCode.toString()))
+            .replace("{" + "ruleId" + "}", localVarApiClient.escapeString(ruleId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call supersedePostingModuleRuleValidateBeforeCall(String scope, String code, String postingModuleCode, String ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling supersedePostingModuleRule(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling supersedePostingModuleRule(Async)");
+        }
+
+        // verify the required parameter 'postingModuleCode' is set
+        if (postingModuleCode == null) {
+            throw new ApiException("Missing the required parameter 'postingModuleCode' when calling supersedePostingModuleRule(Async)");
+        }
+
+        // verify the required parameter 'ruleId' is set
+        if (ruleId == null) {
+            throw new ApiException("Missing the required parameter 'ruleId' when calling supersedePostingModuleRule(Async)");
+        }
+
+        // verify the required parameter 'supersedePostingModuleRuleRequest' is set
+        if (supersedePostingModuleRuleRequest == null) {
+            throw new ApiException("Missing the required parameter 'supersedePostingModuleRuleRequest' when calling supersedePostingModuleRule(Async)");
+        }
+
+        return supersedePostingModuleRuleCall(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PostingModuleRulesUpdatedResponse> supersedePostingModuleRuleWithHttpInfo(String scope, String code, String postingModuleCode, String ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest) throws ApiException {
+        okhttp3.Call localVarCall = supersedePostingModuleRuleValidateBeforeCall(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PostingModuleRulesUpdatedResponse> supersedePostingModuleRuleWithHttpInfo(String scope, String code, String postingModuleCode, String ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = supersedePostingModuleRuleValidateBeforeCall(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, null, opts);
+        Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call supersedePostingModuleRuleAsync(String scope, String code, String postingModuleCode, String ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest, final ApiCallback<PostingModuleRulesUpdatedResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = supersedePostingModuleRuleValidateBeforeCall(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call supersedePostingModuleRuleAsync(String scope, String code, String postingModuleCode, String ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest, final ApiCallback<PostingModuleRulesUpdatedResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = supersedePostingModuleRuleValidateBeforeCall(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<PostingModuleRulesUpdatedResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIsupersedePostingModuleRuleRequest {
+        private final String scope;
+        private final String code;
+        private final String postingModuleCode;
+        private final String ruleId;
+        private final List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest;
+
+        private APIsupersedePostingModuleRuleRequest(String scope, String code, String postingModuleCode, String ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.postingModuleCode = postingModuleCode;
+            this.ruleId = ruleId;
+            this.supersedePostingModuleRuleRequest = supersedePostingModuleRuleRequest;
+        }
+
+        /**
+         * Build call for supersedePostingModuleRule
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return supersedePostingModuleRuleCall(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, _callback);
+        }
+
+        /**
+         * Execute supersedePostingModuleRule request
+         * @return PostingModuleRulesUpdatedResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleRulesUpdatedResponse execute() throws ApiException {
+            ApiResponse<PostingModuleRulesUpdatedResponse> localVarResp = supersedePostingModuleRuleWithHttpInfo(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute supersedePostingModuleRule request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PostingModuleRulesUpdatedResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PostingModuleRulesUpdatedResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PostingModuleRulesUpdatedResponse> localVarResp = supersedePostingModuleRuleWithHttpInfo(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute supersedePostingModuleRule request with HTTP info returned
+         * @return ApiResponse&lt;PostingModuleRulesUpdatedResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleRulesUpdatedResponse> executeWithHttpInfo() throws ApiException {
+            return supersedePostingModuleRuleWithHttpInfo(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest);
+        }
+
+        /**
+         * Execute supersedePostingModuleRule request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PostingModuleRulesUpdatedResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PostingModuleRulesUpdatedResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return supersedePostingModuleRuleWithHttpInfo(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, opts);
+        }
+
+        /**
+         * Execute supersedePostingModuleRule request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleRulesUpdatedResponse> _callback) throws ApiException {
+            return supersedePostingModuleRuleAsync(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, _callback);
+        }
+
+        /**
+         * Execute supersedePostingModuleRule request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PostingModuleRulesUpdatedResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return supersedePostingModuleRuleAsync(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] SupersedePostingModuleRule: Supersede a rule of a Posting Module
+     * Supersede a Posting Rule by one or more rules in a single write. Every rule in the request records the superseded  ruleId as its originalRuleId. At most one of them may have the superseded ruleId: it becomes the rule&#39;s next  version, and the rule&#39;s latest version stops applying from its effectiveFrom, unless it already ends by then; it  is never extended. Any other rule is new and must not have the ruleId of an existing rule. The rules take the  latest version&#39;s place in the rule list, in the order given.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param postingModuleCode The code of the Posting Module to be updated. (required)
+     * @param ruleId The identifier of the Posting Rule to supersede. Its latest version is closed. (required)
+     * @param supersedePostingModuleRuleRequest The rules that take over from the superseded rule. (required)
+     * @return APIsupersedePostingModuleRuleRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIsupersedePostingModuleRuleRequest supersedePostingModuleRule(String scope, String code, String postingModuleCode, String ruleId, List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest) {
+        return new APIsupersedePostingModuleRuleRequest(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest);
     }
     private okhttp3.Call upsertAccountPropertiesCall(String scope, String code, String accountCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         return upsertAccountPropertiesCall(scope, code, accountCode, requestBody,  _callback, new ConfigurationOptions());

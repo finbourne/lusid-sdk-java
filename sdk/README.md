@@ -133,6 +133,7 @@ Class | Method | HTTP request | Description
 *ChartOfAccountsApi* | [**setGeneralLedgerProfileMappings**](docs/ChartOfAccountsApi.md#setgeneralledgerprofilemappings) | **PUT** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}/mappings | [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
 *ChartOfAccountsApi* | [**setPostingModuleDetails**](docs/ChartOfAccountsApi.md#setpostingmoduledetails) | **PUT** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module
 *ChartOfAccountsApi* | [**setPostingModuleRules**](docs/ChartOfAccountsApi.md#setpostingmodulerules) | **PUT** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules | [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module
+*ChartOfAccountsApi* | [**supersedePostingModuleRule**](docs/ChartOfAccountsApi.md#supersedepostingmodulerule) | **POST** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/$supersede | [EARLY ACCESS] SupersedePostingModuleRule: Supersede a rule of a Posting Module
 *ChartOfAccountsApi* | [**upsertAccountProperties**](docs/ChartOfAccountsApi.md#upsertaccountproperties) | **POST** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties/$upsert | [EARLY ACCESS] UpsertAccountProperties: Upsert account properties
 *ChartOfAccountsApi* | [**upsertAccounts**](docs/ChartOfAccountsApi.md#upsertaccounts) | **POST** /api/chartofaccounts/{scope}/{code}/accounts | [EARLY ACCESS] UpsertAccounts: Upsert Accounts
 *ChartOfAccountsApi* | [**upsertChartOfAccountsProperties**](docs/ChartOfAccountsApi.md#upsertchartofaccountsproperties) | **POST** /api/chartofaccounts/{scope}/{code}/properties/$upsert | [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
@@ -2024,7 +2025,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfPortfolioGroupSearchResult](docs/PagedResourceListOfPortfolioGroupSearchResult.md)
  - [PagedResourceListOfPortfolioSearchResult](docs/PagedResourceListOfPortfolioSearchResult.md)
  - [PagedResourceListOfPostingModuleResponse](docs/PagedResourceListOfPostingModuleResponse.md)
- - [PagedResourceListOfPostingModuleRule](docs/PagedResourceListOfPostingModuleRule.md)
+ - [PagedResourceListOfPostingModuleRuleResponse](docs/PagedResourceListOfPostingModuleRuleResponse.md)
  - [PagedResourceListOfProcessingGroup](docs/PagedResourceListOfProcessingGroup.md)
  - [PagedResourceListOfPropertyDefinition](docs/PagedResourceListOfPropertyDefinition.md)
  - [PagedResourceListOfPropertyDefinitionSearchResult](docs/PagedResourceListOfPropertyDefinitionSearchResult.md)
@@ -2157,6 +2158,7 @@ Class | Method | HTTP request | Description
  - [PostingModuleRequest](docs/PostingModuleRequest.md)
  - [PostingModuleResponse](docs/PostingModuleResponse.md)
  - [PostingModuleRule](docs/PostingModuleRule.md)
+ - [PostingModuleRuleResponse](docs/PostingModuleRuleResponse.md)
  - [PostingModuleRulesUpdatedResponse](docs/PostingModuleRulesUpdatedResponse.md)
  - [PreTradeConfiguration](docs/PreTradeConfiguration.md)
  - [PreferredShare](docs/PreferredShare.md)
@@ -2590,6 +2592,7 @@ Class | Method | HTTP request | Description
  - [SubmitRecResultSetReviewRequest](docs/SubmitRecResultSetReviewRequest.md)
  - [SubscribeElection](docs/SubscribeElection.md)
  - [SubscriptionDefinition](docs/SubscriptionDefinition.md)
+ - [SupersedePostingModuleRuleRequest](docs/SupersedePostingModuleRuleRequest.md)
  - [SupplementalAttribute](docs/SupplementalAttribute.md)
  - [SupplementalAttributeValues](docs/SupplementalAttributeValues.md)
  - [SuppressionEntryResponse](docs/SuppressionEntryResponse.md)

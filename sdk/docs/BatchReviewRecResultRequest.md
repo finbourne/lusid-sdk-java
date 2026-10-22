@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **assignedUser** | [**RecResultAssignmentUpdate**](RecResultAssignmentUpdate.md) |  | [optional] [default to RecResultAssignmentUpdate]
 **assignedRole** | [**RecResultAssignmentUpdate**](RecResultAssignmentUpdate.md) |  | [optional] [default to RecResultAssignmentUpdate]
 **addCommentText** | **String** | Optional comment text to add to each targeted result. | [optional] [default to String]
-**properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | Properties in the RecResult domain. Filterable and sortable. | [optional] [default to List<PerpetualProperty>]
+**properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet. | [optional] [default to List<PerpetualProperty>]
 
 ```java
 import com.finbourne.lusid.model.BatchReviewRecResultRequest;

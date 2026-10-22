@@ -1017,7 +1017,7 @@ public class RecsApiExample {
         Integer runNumber = 56; // Integer | The run of the instance whose view of the result is read.
         String id = "id_example"; // String | The display id of the rec result, e.g. \"break-3\".
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the result. Defaults to latest if not specified.
-        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys to decorate onto the result.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys to decorate onto the result. The keys its matching ruleset populates always come back, so list only others here.
         try {
             // uncomment the below to set overrides at the request level
             // RecResult result = apiInstance.getRecResult(instanceIdType, instanceIdValue, recType, runNumber, id, asAt, propertyKeys).execute(opts);
@@ -1045,7 +1045,7 @@ public class RecsApiExample {
 | **runNumber** | **Integer**| The run of the instance whose view of the result is read. | |
 | **id** | **String**| The display id of the rec result, e.g. \&quot;break-3\&quot;. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the result. Defaults to latest if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys to decorate onto the result. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys to decorate onto the result. The keys its matching ruleset populates always come back, so list only others here. | [optional] |
 
 ### Return type
 
@@ -1705,7 +1705,7 @@ public class RecsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> sortBy = Arrays.asList(); // List<String> | A list of field names suffixed by \" ASC\" or \" DESC\".
-        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys to decorate onto each result.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys to decorate onto each result. The keys its matching ruleset populates always come back, so list only others here.
         try {
             // uncomment the below to set overrides at the request level
             // PagedResourceListOfRecResult result = apiInstance.listRecResults(asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
@@ -1732,7 +1732,7 @@ public class RecsApiExample {
 | **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys to decorate onto each result. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys to decorate onto each result. The keys its matching ruleset populates always come back, so list only others here. | [optional] |
 
 ### Return type
 

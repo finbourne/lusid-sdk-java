@@ -12,7 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.PostingModuleRule;
+import com.finbourne.lusid.model.PostingModuleRuleResponse;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,10 +51,10 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * PagedResourceListOfPostingModuleRule
+ * PagedResourceListOfPostingModuleRuleResponse
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PagedResourceListOfPostingModuleRule {
+public class PagedResourceListOfPostingModuleRuleResponse {
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
   private String nextPage;
@@ -65,7 +65,7 @@ public class PagedResourceListOfPostingModuleRule {
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<PostingModuleRule> values = new ArrayList<>();
+  private List<PostingModuleRuleResponse> values = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -75,10 +75,10 @@ public class PagedResourceListOfPostingModuleRule {
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
-  public PagedResourceListOfPostingModuleRule() {
+  public PagedResourceListOfPostingModuleRuleResponse() {
   }
 
-  public PagedResourceListOfPostingModuleRule nextPage(String nextPage) {
+  public PagedResourceListOfPostingModuleRuleResponse nextPage(String nextPage) {
     
     this.nextPage = nextPage;
     return this;
@@ -99,7 +99,7 @@ public class PagedResourceListOfPostingModuleRule {
   }
 
 
-  public PagedResourceListOfPostingModuleRule previousPage(String previousPage) {
+  public PagedResourceListOfPostingModuleRuleResponse previousPage(String previousPage) {
     
     this.previousPage = previousPage;
     return this;
@@ -120,13 +120,13 @@ public class PagedResourceListOfPostingModuleRule {
   }
 
 
-  public PagedResourceListOfPostingModuleRule values(List<PostingModuleRule> values) {
+  public PagedResourceListOfPostingModuleRuleResponse values(List<PostingModuleRuleResponse> values) {
     
     this.values = values;
     return this;
   }
 
-  public PagedResourceListOfPostingModuleRule addValuesItem(PostingModuleRule valuesItem) {
+  public PagedResourceListOfPostingModuleRuleResponse addValuesItem(PostingModuleRuleResponse valuesItem) {
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -139,17 +139,17 @@ public class PagedResourceListOfPostingModuleRule {
    * @return values
   **/
   @jakarta.annotation.Nonnull
-  public List<PostingModuleRule> getValues() {
+  public List<PostingModuleRuleResponse> getValues() {
     return values;
   }
 
 
-  public void setValues(List<PostingModuleRule> values) {
+  public void setValues(List<PostingModuleRuleResponse> values) {
     this.values = values;
   }
 
 
-  public PagedResourceListOfPostingModuleRule href(URI href) {
+  public PagedResourceListOfPostingModuleRuleResponse href(URI href) {
     
     this.href = href;
     return this;
@@ -170,13 +170,13 @@ public class PagedResourceListOfPostingModuleRule {
   }
 
 
-  public PagedResourceListOfPostingModuleRule links(List<Link> links) {
+  public PagedResourceListOfPostingModuleRuleResponse links(List<Link> links) {
     
     this.links = links;
     return this;
   }
 
-  public PagedResourceListOfPostingModuleRule addLinksItem(Link linksItem) {
+  public PagedResourceListOfPostingModuleRuleResponse addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -208,12 +208,12 @@ public class PagedResourceListOfPostingModuleRule {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PagedResourceListOfPostingModuleRule pagedResourceListOfPostingModuleRule = (PagedResourceListOfPostingModuleRule) o;
-    return Objects.equals(this.nextPage, pagedResourceListOfPostingModuleRule.nextPage) &&
-        Objects.equals(this.previousPage, pagedResourceListOfPostingModuleRule.previousPage) &&
-        Objects.equals(this.values, pagedResourceListOfPostingModuleRule.values) &&
-        Objects.equals(this.href, pagedResourceListOfPostingModuleRule.href) &&
-        Objects.equals(this.links, pagedResourceListOfPostingModuleRule.links);
+    PagedResourceListOfPostingModuleRuleResponse pagedResourceListOfPostingModuleRuleResponse = (PagedResourceListOfPostingModuleRuleResponse) o;
+    return Objects.equals(this.nextPage, pagedResourceListOfPostingModuleRuleResponse.nextPage) &&
+        Objects.equals(this.previousPage, pagedResourceListOfPostingModuleRuleResponse.previousPage) &&
+        Objects.equals(this.values, pagedResourceListOfPostingModuleRuleResponse.values) &&
+        Objects.equals(this.href, pagedResourceListOfPostingModuleRuleResponse.href) &&
+        Objects.equals(this.links, pagedResourceListOfPostingModuleRuleResponse.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -235,7 +235,7 @@ public class PagedResourceListOfPostingModuleRule {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PagedResourceListOfPostingModuleRule {\n");
+    sb.append("class PagedResourceListOfPostingModuleRuleResponse {\n");
     sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
     sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
@@ -278,17 +278,17 @@ public class PagedResourceListOfPostingModuleRule {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to PagedResourceListOfPostingModuleRule
+  * @throws IOException if the JSON Element is invalid with respect to PagedResourceListOfPostingModuleRuleResponse
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!PagedResourceListOfPostingModuleRule.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PagedResourceListOfPostingModuleRule is not found in the empty JSON string", PagedResourceListOfPostingModuleRule.openapiRequiredFields.toString()));
+        if (!PagedResourceListOfPostingModuleRuleResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PagedResourceListOfPostingModuleRuleResponse is not found in the empty JSON string", PagedResourceListOfPostingModuleRuleResponse.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PagedResourceListOfPostingModuleRule.openapiRequiredFields) {
+      for (String requiredField : PagedResourceListOfPostingModuleRuleResponse.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -308,7 +308,7 @@ public class PagedResourceListOfPostingModuleRule {
       JsonArray jsonArrayvalues = jsonObj.getAsJsonArray("values");
       // validate the required field `values` (array)
       for (int i = 0; i < jsonArrayvalues.size(); i++) {
-        PostingModuleRule.validateJsonElement(jsonArrayvalues.get(i));
+        PostingModuleRuleResponse.validateJsonElement(jsonArrayvalues.get(i));
       };
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
@@ -333,22 +333,22 @@ public class PagedResourceListOfPostingModuleRule {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PagedResourceListOfPostingModuleRule.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PagedResourceListOfPostingModuleRule' and its subtypes
+       if (!PagedResourceListOfPostingModuleRuleResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PagedResourceListOfPostingModuleRuleResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PagedResourceListOfPostingModuleRule> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PagedResourceListOfPostingModuleRule.class));
+       final TypeAdapter<PagedResourceListOfPostingModuleRuleResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PagedResourceListOfPostingModuleRuleResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PagedResourceListOfPostingModuleRule>() {
+       return (TypeAdapter<T>) new TypeAdapter<PagedResourceListOfPostingModuleRuleResponse>() {
            @Override
-           public void write(JsonWriter out, PagedResourceListOfPostingModuleRule value) throws IOException {
+           public void write(JsonWriter out, PagedResourceListOfPostingModuleRuleResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public PagedResourceListOfPostingModuleRule read(JsonReader in) throws IOException {
+           public PagedResourceListOfPostingModuleRuleResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -359,18 +359,18 @@ public class PagedResourceListOfPostingModuleRule {
   }
 
  /**
-  * Create an instance of PagedResourceListOfPostingModuleRule given an JSON string
+  * Create an instance of PagedResourceListOfPostingModuleRuleResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of PagedResourceListOfPostingModuleRule
-  * @throws IOException if the JSON string is invalid with respect to PagedResourceListOfPostingModuleRule
+  * @return An instance of PagedResourceListOfPostingModuleRuleResponse
+  * @throws IOException if the JSON string is invalid with respect to PagedResourceListOfPostingModuleRuleResponse
   */
-  public static PagedResourceListOfPostingModuleRule fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PagedResourceListOfPostingModuleRule.class);
+  public static PagedResourceListOfPostingModuleRuleResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PagedResourceListOfPostingModuleRuleResponse.class);
   }
 
  /**
-  * Convert an instance of PagedResourceListOfPostingModuleRule to an JSON string
+  * Convert an instance of PagedResourceListOfPostingModuleRuleResponse to an JSON string
   *
   * @return JSON string
   */

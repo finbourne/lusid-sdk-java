@@ -240,7 +240,7 @@ public class BucketSetResultBucket {
   }
 
    /**
-   * The bucket&#39;s movement over the period per unit in issue (Value divided by UnitsInIssue), in the fund currency, rounded to the share class&#39;s PricePrecision. Omitted where either the share class or the bucket is not unitised, and where a unitised share class has no units in issue to divide by (UnitsInIssue is then reported as zero).
+   * The bucket&#39;s movement over the period per unit in issue (Value divided by UnitsInIssue), in the fund currency, unrounded whatever the share class&#39;s price rounding convention. Omitted where either the share class or the bucket is not unitised, and where a unitised share class has no units in issue to divide by (UnitsInIssue is then reported as zero).
    * @return perUnitValue
   **/
   @jakarta.annotation.Nullable
@@ -303,7 +303,7 @@ public class BucketSetResultBucket {
   }
 
    /**
-   * The bucket&#39;s cumulative value at the end of the period per unit in issue (CumulativeValue divided by UnitsInIssue). Omitted where either the share class or the bucket is not unitised, and where a unitised share class has no units in issue to divide by.
+   * The bucket&#39;s cumulative value at the end of the period per unit in issue (CumulativeValue divided by UnitsInIssue), unrounded. Omitted where either the share class or the bucket is not unitised, and where a unitised share class has no units in issue to divide by.
    * @return cumulativePerUnitValue
   **/
   @jakarta.annotation.Nullable

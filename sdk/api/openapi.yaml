@@ -417,9 +417,12 @@ info:
     | <a name="977">977</a>|The provided entity match request is not valid| |
     | <a name="978">978</a>|Invalid Transfer| |
     | <a name="979">979</a>|The named series matching pattern is not usable on the dataset at the requested time| |
+    | <a name="980">980</a>|The RealisedGainLoss calculation on a transaction could not be performed| |
+    | <a name="981">981</a>|The TradeToPortfolioRate on a transaction could not be resolved| |
+    | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10334
+  version: 0.11.10369
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1202,6 +1205,12 @@ info:
     "979":
       title: The named series matching pattern is not usable on the dataset at the
         requested time
+    "980":
+      title: The RealisedGainLoss calculation on a transaction could not be performed
+    "981":
+      title: The TradeToPortfolioRate on a transaction could not be resolved
+    "982":
+      title: A scenario shift could not be applied to the market data
   x-fbn-description: "LUSID is an API-first, SaaS-native investment data management\
     \ platform. It models entities such as instruments, portfolios, transactions and\
     \ holdings to manage and value portfolios, and supports data integrations, flexible\
@@ -3103,6 +3112,7 @@ paths:
                   units: 100
                   postingModuleCode: CodePostingModule
                   postingRule: Rule1
+                  postingRuleVersion: 1
                   asAtDate: 2022-02-03T00:00:00.0000000+00:00
                   activitiesDescription: Activites Description
                   sourceType: LusidTransaction
@@ -3151,6 +3161,7 @@ paths:
                   units: 100
                   postingModuleCode: CodePostingModule
                   postingRule: Rule1
+                  postingRuleVersion: 1
                   asAtDate: 2022-02-03T00:00:00.0000000+00:00
                   activitiesDescription: Activites Description
                   sourceType: LusidTransaction
@@ -3199,6 +3210,7 @@ paths:
                   units: 100
                   postingModuleCode: CodePostingModule
                   postingRule: Rule1
+                  postingRuleVersion: 1
                   asAtDate: 2022-02-03T00:00:00.0000000+00:00
                   activitiesDescription: Activites Description
                   sourceType: LusidTransaction
@@ -19575,13 +19587,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/PagedResourceListOfPostingModuleRule'
+                $ref: '#/components/schemas/PagedResourceListOfPostingModuleRuleResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/PagedResourceListOfPostingModuleRule'
+                $ref: '#/components/schemas/PagedResourceListOfPostingModuleRuleResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/PagedResourceListOfPostingModuleRule'
+                $ref: '#/components/schemas/PagedResourceListOfPostingModuleRuleResponse'
           description: The rules in the given Posting Module.
         "400":
           content:
@@ -19733,6 +19745,147 @@ paths:
       security:
       - oauth2: []
       summary: "[EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module"
+      tags:
+      - Chart Of Accounts
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/$supersede:
+    post:
+      description: "Supersede a Posting Rule by one or more rules in a single write.\
+        \ Every rule in the request records the superseded\r\nruleId as its originalRuleId.\
+        \ At most one of them may have the superseded ruleId: it becomes the rule's\
+        \ next\r\nversion, and the rule's latest version stops applying from its effectiveFrom,\
+        \ unless it already ends by then; it\r\nis never extended. Any other rule\
+        \ is new and must not have the ruleId of an existing rule. The rules take\
+        \ the\r\nlatest version's place in the rule list, in the order given."
+      operationId: SupersedePostingModuleRule
+      parameters:
+      - description: The scope of the Chart of Accounts.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Chart of Accounts. Together with the scope this
+          uniquely identifies the Chart of Accounts.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Posting Module to be updated.
+        explode: false
+        in: path
+        name: postingModuleCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The identifier of the Posting Rule to supersede. Its latest version
+          is closed.
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - ruleId: income
+              effectiveFrom: 2026-02-01T00:00:00.0000000+00:00
+              generalLedgerAccountCode: "100002355"
+              ruleFilter: EconomicBucket eq 'NA_Income'
+            schema:
+              items:
+                $ref: '#/components/schemas/SupersedePostingModuleRuleRequest'
+              type: array
+          application/json:
+            example:
+            - ruleId: income
+              effectiveFrom: 2026-02-01T00:00:00.0000000+00:00
+              generalLedgerAccountCode: "100002355"
+              ruleFilter: EconomicBucket eq 'NA_Income'
+            schema:
+              items:
+                $ref: '#/components/schemas/SupersedePostingModuleRuleRequest'
+              type: array
+          text/json:
+            example:
+            - ruleId: income
+              effectiveFrom: 2026-02-01T00:00:00.0000000+00:00
+              generalLedgerAccountCode: "100002355"
+              ruleFilter: EconomicBucket eq 'NA_Income'
+            schema:
+              items:
+                $ref: '#/components/schemas/SupersedePostingModuleRuleRequest'
+              type: array
+          application/*+json:
+            example:
+            - ruleId: income
+              effectiveFrom: 2026-02-01T00:00:00.0000000+00:00
+              generalLedgerAccountCode: "100002355"
+              ruleFilter: EconomicBucket eq 'NA_Income'
+            schema:
+              items:
+                $ref: '#/components/schemas/SupersedePostingModuleRuleRequest'
+              type: array
+        description: The rules that take over from the superseded rule.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PostingModuleRulesUpdatedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostingModuleRulesUpdatedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PostingModuleRulesUpdatedResponse'
+          description: The Posting Module with updated rules.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] SupersedePostingModuleRule: Supersede a rule of a Posting\
+        \ Module"
       tags:
       - Chart Of Accounts
       x-fbn-apistatus: EarlyAccess
@@ -40198,7 +40351,7 @@ paths:
                   checkDefinitionCode: InstrumentPriceCheck
                   checkDefinitionDisplayName: Instrument Price Validation
                   checkRunAsAt: 2024-09-08T10:30:00.0000000+00:00
-                  resultType: RuleBreachOverLimit
+                  resultType: RuleBreachesOverLimit
                   ruleSetKey: PriceValidationRuleSet
                   ruleSetDisplayName: Price Validation Rules
                   ruleKey: PriceRangeRule
@@ -40208,7 +40361,7 @@ paths:
                   ruleFormula: Price > 0 and Price < MaxExpectedPrice
                   severity: 3
                   countRuleBreaches: 15
-                  resultId: b2c3d4e5-f6g7-8901-bcde-f23456789012-RuleBreachOverLimit-PriceValidationRuleSet-PriceRangeRule
+                  resultId: b2c3d4e5-f6g7-8901-bcde-f23456789012-RuleBreachesOverLimit-PriceValidationRuleSet-PriceRangeRule
                 - checkDefinitionScope: DataQuality
                   checkDefinitionCode: CustomValidationCheck
                   checkDefinitionDisplayName: Custom Data Validation
@@ -40256,7 +40409,7 @@ paths:
                   checkDefinitionCode: InstrumentPriceCheck
                   checkDefinitionDisplayName: Instrument Price Validation
                   checkRunAsAt: 2024-09-08T10:30:00.0000000+00:00
-                  resultType: RuleBreachOverLimit
+                  resultType: RuleBreachesOverLimit
                   ruleSetKey: PriceValidationRuleSet
                   ruleSetDisplayName: Price Validation Rules
                   ruleKey: PriceRangeRule
@@ -40266,7 +40419,7 @@ paths:
                   ruleFormula: Price > 0 and Price < MaxExpectedPrice
                   severity: 3
                   countRuleBreaches: 15
-                  resultId: b2c3d4e5-f6g7-8901-bcde-f23456789012-RuleBreachOverLimit-PriceValidationRuleSet-PriceRangeRule
+                  resultId: b2c3d4e5-f6g7-8901-bcde-f23456789012-RuleBreachesOverLimit-PriceValidationRuleSet-PriceRangeRule
                 - checkDefinitionScope: DataQuality
                   checkDefinitionCode: CustomValidationCheck
                   checkDefinitionDisplayName: Custom Data Validation
@@ -40314,7 +40467,7 @@ paths:
                   checkDefinitionCode: InstrumentPriceCheck
                   checkDefinitionDisplayName: Instrument Price Validation
                   checkRunAsAt: 2024-09-08T10:30:00.0000000+00:00
-                  resultType: RuleBreachOverLimit
+                  resultType: RuleBreachesOverLimit
                   ruleSetKey: PriceValidationRuleSet
                   ruleSetDisplayName: Price Validation Rules
                   ruleKey: PriceRangeRule
@@ -40324,7 +40477,7 @@ paths:
                   ruleFormula: Price > 0 and Price < MaxExpectedPrice
                   severity: 3
                   countRuleBreaches: 15
-                  resultId: b2c3d4e5-f6g7-8901-bcde-f23456789012-RuleBreachOverLimit-PriceValidationRuleSet-PriceRangeRule
+                  resultId: b2c3d4e5-f6g7-8901-bcde-f23456789012-RuleBreachesOverLimit-PriceValidationRuleSet-PriceRangeRule
                 - checkDefinitionScope: DataQuality
                   checkDefinitionCode: CustomValidationCheck
                   checkDefinitionDisplayName: Custom Data Validation
@@ -62977,6 +63130,7 @@ paths:
                   units: 100
                   postingModuleCode: CodePostingModule
                   postingRule: Rule1
+                  postingRuleVersion: 1
                   asAtDate: 2022-02-03T00:00:00.0000000+00:00
                   activitiesDescription: Activites Description
                   sourceType: LusidTransaction
@@ -63054,6 +63208,7 @@ paths:
                   units: 100
                   postingModuleCode: CodePostingModule
                   postingRule: Rule1
+                  postingRuleVersion: 1
                   asAtDate: 2022-02-03T00:00:00.0000000+00:00
                   activitiesDescription: Activites Description
                   sourceType: LusidTransaction
@@ -63131,6 +63286,7 @@ paths:
                   units: 100
                   postingModuleCode: CodePostingModule
                   postingRule: Rule1
+                  postingRuleVersion: 1
                   asAtDate: 2022-02-03T00:00:00.0000000+00:00
                   activitiesDescription: Activites Description
                   sourceType: LusidTransaction
@@ -63372,6 +63528,7 @@ paths:
                     units: 100
                     postingModuleCode: CodePostingModule
                     postingRule: Rule1
+                    postingRuleVersion: 1
                     asAtDate: 2022-02-03T00:00:00.0000000+00:00
                     activitiesDescription: Activites Description
                     sourceType: LusidTransaction
@@ -63438,6 +63595,7 @@ paths:
                     units: 100
                     postingModuleCode: CodePostingModule
                     postingRule: Rule1
+                    postingRuleVersion: 1
                     asAtDate: 2022-02-03T00:00:00.0000000+00:00
                     activitiesDescription: Activites Description
                     sourceType: LusidTransaction
@@ -63504,6 +63662,7 @@ paths:
                     units: 100
                     postingModuleCode: CodePostingModule
                     postingRule: Rule1
+                    postingRuleVersion: 1
                     asAtDate: 2022-02-03T00:00:00.0000000+00:00
                     activitiesDescription: Activites Description
                     sourceType: LusidTransaction
@@ -130910,7 +131069,8 @@ paths:
           type: array
         style: form
         x-nullable: true
-      - description: The property keys to decorate onto each result.
+      - description: "The property keys to decorate onto each result. The keys its\
+          \ matching ruleset populates always come back, so list only others here."
         explode: true
         in: query
         name: propertyKeys
@@ -131373,7 +131533,8 @@ paths:
           type: string
         style: form
         x-nullable: true
-      - description: The property keys to decorate onto the result.
+      - description: "The property keys to decorate onto the result. The keys its\
+          \ matching ruleset populates always come back, so list only others here."
         explode: true
         in: query
         name: propertyKeys
@@ -139133,12 +139294,16 @@ paths:
       x-accepts: application/json
   /api/returns/$aggregated:
     post:
-      description: "Calculate time-weighted returns for the entity specified in the\
-        \ request body over the\r\n effective window. Currently, supports a single\
-        \ entity of type Portfolio and calculates a daily\r\n return grid. The recipe,\
-        \ fee handling, and flow-discrepancy handling are taken from the persisted\r\
-        \n Returns entity identified by the supplied returns id; the request fails\
-        \ if no such entity exists."
+      description: "Report daily returns for the entity specified in the request body\
+        \ over the effective window.\r\n Currently, supports a single entity of type\
+        \ Portfolio and a daily return grid. Returns upserted to the\r\n Returns store\
+        \ under the supplied returns id take precedence: if any exist in the window\
+        \ they are\r\n reported as-is and nothing is calculated. Otherwise time-weighted\
+        \ returns are calculated using the\r\n recipe, fee handling and flow-discrepancy\
+        \ handling of the persisted Returns entity identified by the\r\n returns id,\
+        \ and the request fails if no such entity exists. When a reporting currency\
+        \ is requested the\r\n Returns entity is also required, as its recipe supplies\
+        \ the FX rates."
       operationId: GetAggregatedReturns
       requestBody:
         content:
@@ -139202,9 +139367,9 @@ paths:
               period: Daily
             schema:
               $ref: '#/components/schemas/AggregatedReturnsEntityRequest'
-        description: "The entity to calculate returns for, the Returns entity that\
-          \ configures the\r\n calculation, the effective window and the metrics to\
-          \ calculate."
+        description: "The entity to report returns for, the returns id under which\
+          \ upserted returns\r\n are stored and the Returns entity that configures\
+          \ a calculation, the effective window and the metrics\r\n to report."
         required: true
       responses:
         "200":
@@ -161501,10 +161666,9 @@ paths:
             - scope: ScopeB
               code: Account2
               status: Active
-              accountNumber: 10003786BEUR
-              accountName: Account2 Euro
+              accountNumber: 10003786B
+              accountName: Account2
               accountingMethod: FirstInFirstOut
-              currency: EUR
               properties: {}
               custodianIdentifier:
                 idTypeScope: ScopeA
@@ -161533,10 +161697,9 @@ paths:
             - scope: ScopeB
               code: Account2
               status: Active
-              accountNumber: 10003786BEUR
-              accountName: Account2 Euro
+              accountNumber: 10003786B
+              accountName: Account2
               accountingMethod: FirstInFirstOut
-              currency: EUR
               properties: {}
               custodianIdentifier:
                 idTypeScope: ScopeA
@@ -161565,10 +161728,9 @@ paths:
             - scope: ScopeB
               code: Account2
               status: Active
-              accountNumber: 10003786BEUR
-              accountName: Account2 Euro
+              accountNumber: 10003786B
+              accountName: Account2
               accountingMethod: FirstInFirstOut
-              currency: EUR
               properties: {}
               custodianIdentifier:
                 idTypeScope: ScopeA
@@ -161597,10 +161759,9 @@ paths:
             - scope: ScopeB
               code: Account2
               status: Active
-              accountNumber: 10003786BEUR
-              accountName: Account2 Euro
+              accountNumber: 10003786B
+              accountName: Account2
               accountingMethod: FirstInFirstOut
-              currency: EUR
               properties: {}
               custodianIdentifier:
                 idTypeScope: ScopeA
@@ -187120,11 +187281,12 @@ components:
       type: object
     AggregatedReturnsEntityRequest:
       additionalProperties: false
-      description: "The request body for the aggregated-returns (TWR) endpoint: the\
-        \ entity to calculate returns for, the\r\nReturns entity that configures the\
-        \ calculation, the effective window, the metrics to calculate and the\r\n\
-        period grid granularity. Supports a single `Portfolio` entity, the period\
-        \ `Return` metric and\r\na `Daily` grid."
+      description: "The request body for the aggregated-returns endpoint: the entity\
+        \ to report returns for, the returns id\r\nunder which upserted returns are\
+        \ stored and the Returns entity that configures a calculation, the\r\neffective\
+        \ window, the metrics to report and the period grid granularity. Supports\
+        \ a single\r\n`Portfolio` entity, the period `Return` metric and a `Daily`\
+        \ grid."
       example:
         period: period
         asAt: 2000-01-23T04:56:07.000+00:00
@@ -195743,7 +195905,9 @@ components:
           nullable: true
           type: string
         properties:
-          description: Properties in the RecResult domain. Filterable and sortable.
+          description: "Properties in the RecResult domain. Filterable and sortable.\
+            \ Always includes the properties the matching ruleset populates, with\
+            \ a null value where the result holds none yet."
           items:
             $ref: '#/components/schemas/PerpetualProperty'
           nullable: true
@@ -203770,12 +203934,12 @@ components:
           type: array
         perUnitValue:
           description: "The share class's NAV per unit in issue, in the fund currency,\
-            \ rounded to the share class's PricePrecision (left unrounded where the\
-            \ share class declares none). Omitted on the fund node, for a share class\
-            \ that is not unitised, and for a unitised share class with no units in\
-            \ issue to divide by (SharesInIssue is then reported as zero). The dealing\
-            \ price - in the share class currency, with its instrument's rounding\
-            \ convention applied - is on the share class breakdown's unitisation data."
+            \ unrounded whatever the share class's price rounding convention. Omitted\
+            \ on the fund node, for a share class that is not unitised, and for a\
+            \ unitised share class with no units in issue to divide by (SharesInIssue\
+            \ is then reported as zero). The dealing price - in the share class currency,\
+            \ with its rounding convention applied - is on the share class breakdown's\
+            \ unitisation data."
           format: double
           nullable: true
           type: number
@@ -203787,9 +203951,9 @@ components:
           type: number
         previousPerUnitValue:
           description: "The share class's NAV per unit at the previous valuation point,\
-            \ on the same basis as PerUnitValue. Omitted on the fund node, for a share\
-            \ class that is not unitised, and where the share class had no units in\
-            \ issue at the previous valuation point (including the fund's first valuation\
+            \ as that point stored it. Omitted on the fund node, for a share class\
+            \ that is not unitised, and where the share class had no units in issue\
+            \ at the previous valuation point (including the fund's first valuation\
             \ point)."
           format: double
           nullable: true
@@ -204039,10 +204203,11 @@ components:
           type: object
         perUnitValue:
           description: "The bucket's movement over the period per unit in issue (Value\
-            \ divided by UnitsInIssue), in the fund currency, rounded to the share\
-            \ class's PricePrecision. Omitted where either the share class or the\
-            \ bucket is not unitised, and where a unitised share class has no units\
-            \ in issue to divide by (UnitsInIssue is then reported as zero)."
+            \ divided by UnitsInIssue), in the fund currency, unrounded whatever the\
+            \ share class's price rounding convention. Omitted where either the share\
+            \ class or the bucket is not unitised, and where a unitised share class\
+            \ has no units in issue to divide by (UnitsInIssue is then reported as\
+            \ zero)."
           format: double
           nullable: true
           type: number
@@ -204065,9 +204230,9 @@ components:
           type: number
         cumulativePerUnitValue:
           description: "The bucket's cumulative value at the end of the period per\
-            \ unit in issue (CumulativeValue divided by UnitsInIssue). Omitted where\
-            \ either the share class or the bucket is not unitised, and where a unitised\
-            \ share class has no units in issue to divide by."
+            \ unit in issue (CumulativeValue divided by UnitsInIssue), unrounded.\
+            \ Omitted where either the share class or the bucket is not unitised,\
+            \ and where a unitised share class has no units in issue to divide by."
           format: double
           nullable: true
           type: number
@@ -209610,6 +209775,8 @@ components:
               \ roll back\r\nfrom the maturity, so a term that is not a whole number\
               \ of payment periods has a short first period."
             type: boolean
+          protectionDetailSpecification:
+            $ref: '#/components/schemas/CdsProtectionDetailSpecification'
           additionalPayments:
             description: "Optional additional payments at a given date e.g. to level\
               \ off an uneven swap.\r\nThe dates must be distinct and either all payments\
@@ -209933,9 +210100,11 @@ components:
           nullable: true
           type: string
         protectStartDay:
-          default: true
-          description: Does the protection leg pay out in the case of default on the
-            start date. Defaults to true if not set.
+          default: false
+          description: "Does the protection leg pay out in the case of default on\
+            \ the start date. Defaults to false if not set.\r\nIf true, the trade\
+            \ date is not included in the accrued interest that a transaction pays\
+            \ or receives."
           type: boolean
         payAccruedInterestOnDefault:
           default: true
@@ -226609,7 +226778,8 @@ components:
           minLength: 1
           type: string
         currency:
-          description: The Currency for the Account
+          description: "The Currency for the Account. Optional, with no default."
+          nullable: true
           type: string
         properties:
           additionalProperties:
@@ -226641,7 +226811,6 @@ components:
       - accountName
       - accountNumber
       - accountingMethod
-      - currency
       - custodian
       - custodianAccountId
       - status
@@ -226787,7 +226956,8 @@ components:
           minLength: 1
           type: string
         currency:
-          description: The Currency for the Account
+          description: "The Currency for the Account. Optional, with no default."
+          nullable: true
           type: string
         properties:
           additionalProperties:
@@ -226820,7 +226990,6 @@ components:
       - accountNumber
       - accountingMethod
       - code
-      - currency
       - custodianIdentifier
       type: object
     CustodianAccountsUpsertResponse:
@@ -241842,8 +242011,7 @@ components:
           maturityDate:
             description: "The maturity date of the instrument. This is the date at\
               \ which the repurchase will occur for a TermRepo.\r\nOptional for OpenRepo,\
-              \ but if not provided, defaults to the StartDate plus a long period\
-              \ (e.g. 2099-12-31)."
+              \ but if not provided, defaults to 2100-01-01."
             format: date-time
             nullable: true
             type: string
@@ -243873,6 +244041,7 @@ components:
           name: name
           tradingConventions:
             minimumOrderIncrement: 4.145608029883936
+            priceFractionConvention: priceFractionConvention
             priceScaleFactor: 3.616076749251911
             minimumOrderSize: 2.027123023002322
             priceQuotationType: priceQuotationType
@@ -243981,6 +244150,7 @@ components:
           name: name
           tradingConventions:
             minimumOrderIncrement: 4.145608029883936
+            priceFractionConvention: priceFractionConvention
             priceScaleFactor: 3.616076749251911
             minimumOrderSize: 2.027123023002322
             priceQuotationType: priceQuotationType
@@ -246194,6 +246364,7 @@ components:
           name: name
           tradingConventions:
             minimumOrderIncrement: 4.145608029883936
+            priceFractionConvention: priceFractionConvention
             priceScaleFactor: 3.616076749251911
             minimumOrderSize: 2.027123023002322
             priceQuotationType: priceQuotationType
@@ -246249,6 +246420,7 @@ components:
           name: name
           tradingConventions:
             minimumOrderIncrement: 4.145608029883936
+            priceFractionConvention: priceFractionConvention
             priceScaleFactor: 3.616076749251911
             minimumOrderSize: 2.027123023002322
             priceQuotationType: priceQuotationType
@@ -247278,16 +247450,17 @@ components:
         postingModuleCode: postingModuleCode
         activitiesDescription: activitiesDescription
         economicBucketVariant: economicBucketVariant
+        postingRuleVersion: 6
         ledgerColumn: ledgerColumn
         postingRule: postingRule
         shareClassBreakdowns:
-        - baseValue: 5.962133916683182
-          apportionmentFactor: 6.027456183070403
-          localValue: 1.4658129805029452
+        - baseValue: 5.637376656633329
+          apportionmentFactor: 1.4658129805029452
+          localValue: 5.962133916683182
           shortCode: shortCode
-        - baseValue: 5.962133916683182
-          apportionmentFactor: 6.027456183070403
-          localValue: 1.4658129805029452
+        - baseValue: 5.637376656633329
+          apportionmentFactor: 1.4658129805029452
+          localValue: 5.962133916683182
           shortCode: shortCode
         properties:
           key:
@@ -247374,6 +247547,12 @@ components:
           description: The rule generating the Journal Entry Line.
           minLength: 1
           type: string
+        postingRuleVersion:
+          description: The version of the rule generating the Journal Entry Line.
+            Null where no rule matched the line.
+          format: int32
+          nullable: true
+          type: integer
         asAtDate:
           description: The corresponding input date and time of the Transaction generating
             the Journal Entry Line.
@@ -248644,6 +248823,7 @@ components:
             name: name
             tradingConventions:
               minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
               priceScaleFactor: 3.616076749251911
               minimumOrderSize: 2.027123023002322
               priceQuotationType: priceQuotationType
@@ -248752,6 +248932,7 @@ components:
             name: name
             tradingConventions:
               minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
               priceScaleFactor: 3.616076749251911
               minimumOrderSize: 2.027123023002322
               priceQuotationType: priceQuotationType
@@ -249173,6 +249354,7 @@ components:
             name: name
             tradingConventions:
               minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
               priceScaleFactor: 3.616076749251911
               minimumOrderSize: 2.027123023002322
               priceQuotationType: priceQuotationType
@@ -249281,6 +249463,7 @@ components:
             name: name
             tradingConventions:
               minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
               priceScaleFactor: 3.616076749251911
               minimumOrderSize: 2.027123023002322
               priceQuotationType: priceQuotationType
@@ -268899,6 +269082,7 @@ components:
         postingModuleCode: postingModuleCode
         activitiesDescription: activitiesDescription
         economicBucketVariant: economicBucketVariant
+        postingRuleVersion: 1
         ledgerColumn: ledgerColumn
         postingRule: postingRule
         properties:
@@ -268981,6 +269165,12 @@ components:
           description: The rule generating the Journal Entry Line.
           minLength: 1
           type: string
+        postingRuleVersion:
+          description: The version of the rule generating the Journal Entry Line.
+            Null where no rule matched the line.
+          format: int32
+          nullable: true
+          type: integer
         asAtDate:
           description: The corresponding input date and time of the Transaction generating
             the Journal Entry Line.
@@ -269129,9 +269319,9 @@ components:
       description: The apportionment from overall fund level journal entry Line to
         the share class.
       example:
-        baseValue: 5.962133916683182
-        apportionmentFactor: 6.027456183070403
-        localValue: 1.4658129805029452
+        baseValue: 5.637376656633329
+        apportionmentFactor: 1.4658129805029452
+        localValue: 5.962133916683182
         shortCode: shortCode
       properties:
         shortCode:
@@ -272754,7 +272944,8 @@ components:
           nullable: true
           type: number
         disputedAmount:
-          description: The part of the counterparty's demand left in dispute.
+          description: The part of the larger of our call and the counterparty's demand
+            left in dispute.
           format: double
           nullable: true
           type: number
@@ -273135,6 +273326,7 @@ components:
         failedShards: 5
         shards:
         - callCount: 2
+          asAt: 2000-01-23T04:56:07.000+00:00
           agreements:
           - code: code
             scope: scope
@@ -273148,6 +273340,7 @@ components:
           lineCount: 7
           status: status
         - callCount: 2
+          asAt: 2000-01-23T04:56:07.000+00:00
           agreements:
           - code: code
             scope: scope
@@ -273221,8 +273414,8 @@ components:
           format: int32
           type: integer
         issues:
-          description: "Agreements the run could not value, or the caller may not\
-            \ calculate margin for, with the reason."
+          description: "Agreements the run could not value or roll up into a call,\
+            \ or the caller may not calculate margin for, with the reason."
           items:
             $ref: '#/components/schemas/MarginRunIssue'
           type: array
@@ -273321,6 +273514,7 @@ components:
         \ with one recipe, and how far it has got."
       example:
         callCount: 2
+        asAt: 2000-01-23T04:56:07.000+00:00
         agreements:
         - code: code
           scope: scope
@@ -273363,11 +273557,18 @@ components:
           format: int32
           type: integer
         detail:
-          description: "Why the shard failed, when it did."
+          description: "Why the shard failed, or which of its netting sets it completed\
+            \ without figures and why."
           maxLength: 1024
           minLength: 0
           nullable: true
           pattern: "^[\\s\\S]*$"
+          type: string
+        asAt:
+          description: "When the shard was valued: the run's as-at, or the time of\
+            \ the retry that valued it. Null until the shard has finished."
+          format: date-time
+          nullable: true
           type: string
       required:
       - agreements
@@ -275436,6 +275637,30 @@ components:
           principalPerUnit:
             description: The principal amount received for each unit of the instrument
               held on the ex date
+            format: double
+            nullable: true
+            type: number
+          pricePerUnit:
+            description: "Redemption price per unit (OFFR / 100) of principal repaid.\
+              \ Clean price convention: a value of 1 is par.\r\nOptional; a null is\
+              \ read as 1, so an omitted price is par. Separates the cash paid from\
+              \ the principal extinguished."
+            format: double
+            nullable: true
+            type: number
+          previousFactor:
+            description: "The pool factor in force until the redemption (factor) date,\
+              \ as notified (AMI-SeCo Previous Factor).\r\nOptional; recorded for\
+              \ reconciliation and not consumed by the transaction template. Must\
+              \ be supplied together with nextFactor."
+            format: double
+            nullable: true
+            type: number
+          nextFactor:
+            description: "The pool factor applicable after the redemption (factor)\
+              \ date, as notified (AMI-SeCo Next Factor).\r\nOptional; recorded for\
+              \ reconciliation and not consumed by the transaction template. Must\
+              \ be supplied together with previousFactor."
             format: double
             nullable: true
             type: number
@@ -289086,6 +289311,7 @@ components:
             name: name
             tradingConventions:
               minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
               priceScaleFactor: 3.616076749251911
               minimumOrderSize: 2.027123023002322
               priceQuotationType: priceQuotationType
@@ -289194,6 +289420,7 @@ components:
             name: name
             tradingConventions:
               minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
               priceScaleFactor: 3.616076749251911
               minimumOrderSize: 2.027123023002322
               priceQuotationType: priceQuotationType
@@ -289615,6 +289842,7 @@ components:
             name: name
             tradingConventions:
               minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
               priceScaleFactor: 3.616076749251911
               minimumOrderSize: 2.027123023002322
               priceQuotationType: priceQuotationType
@@ -289723,6 +289951,7 @@ components:
             name: name
             tradingConventions:
               minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
               priceScaleFactor: 3.616076749251911
               minimumOrderSize: 2.027123023002322
               priceQuotationType: priceQuotationType
@@ -291146,6 +291375,7 @@ components:
               name: name
               tradingConventions:
                 minimumOrderIncrement: 4.145608029883936
+                priceFractionConvention: priceFractionConvention
                 priceScaleFactor: 3.616076749251911
                 minimumOrderSize: 2.027123023002322
                 priceQuotationType: priceQuotationType
@@ -291254,6 +291484,7 @@ components:
               name: name
               tradingConventions:
                 minimumOrderIncrement: 4.145608029883936
+                priceFractionConvention: priceFractionConvention
                 priceScaleFactor: 3.616076749251911
                 minimumOrderSize: 2.027123023002322
                 priceQuotationType: priceQuotationType
@@ -291675,6 +291906,7 @@ components:
               name: name
               tradingConventions:
                 minimumOrderIncrement: 4.145608029883936
+                priceFractionConvention: priceFractionConvention
                 priceScaleFactor: 3.616076749251911
                 minimumOrderSize: 2.027123023002322
                 priceQuotationType: priceQuotationType
@@ -291783,6 +292015,7 @@ components:
               name: name
               tradingConventions:
                 minimumOrderIncrement: 4.145608029883936
+                priceFractionConvention: priceFractionConvention
                 priceScaleFactor: 3.616076749251911
                 minimumOrderSize: 2.027123023002322
                 priceQuotationType: priceQuotationType
@@ -292341,6 +292574,7 @@ components:
               name: name
               tradingConventions:
                 minimumOrderIncrement: 4.145608029883936
+                priceFractionConvention: priceFractionConvention
                 priceScaleFactor: 3.616076749251911
                 minimumOrderSize: 2.027123023002322
                 priceQuotationType: priceQuotationType
@@ -292449,6 +292683,7 @@ components:
               name: name
               tradingConventions:
                 minimumOrderIncrement: 4.145608029883936
+                priceFractionConvention: priceFractionConvention
                 priceScaleFactor: 3.616076749251911
                 minimumOrderSize: 2.027123023002322
                 priceQuotationType: priceQuotationType
@@ -292870,6 +293105,7 @@ components:
               name: name
               tradingConventions:
                 minimumOrderIncrement: 4.145608029883936
+                priceFractionConvention: priceFractionConvention
                 priceScaleFactor: 3.616076749251911
                 minimumOrderSize: 2.027123023002322
                 priceQuotationType: priceQuotationType
@@ -292978,6 +293214,7 @@ components:
               name: name
               tradingConventions:
                 minimumOrderIncrement: 4.145608029883936
+                priceFractionConvention: priceFractionConvention
                 priceScaleFactor: 3.616076749251911
                 minimumOrderSize: 2.027123023002322
                 priceQuotationType: priceQuotationType
@@ -295916,6 +296153,7 @@ components:
           failedShards: 5
           shards:
           - callCount: 2
+            asAt: 2000-01-23T04:56:07.000+00:00
             agreements:
             - code: code
               scope: scope
@@ -295929,6 +296167,7 @@ components:
             lineCount: 7
             status: status
           - callCount: 2
+            asAt: 2000-01-23T04:56:07.000+00:00
             agreements:
             - code: code
               scope: scope
@@ -295973,6 +296212,7 @@ components:
           failedShards: 5
           shards:
           - callCount: 2
+            asAt: 2000-01-23T04:56:07.000+00:00
             agreements:
             - code: code
               scope: scope
@@ -295986,6 +296226,7 @@ components:
             lineCount: 7
             status: status
           - callCount: 2
+            asAt: 2000-01-23T04:56:07.000+00:00
             agreements:
             - code: code
               scope: scope
@@ -299419,14 +299660,18 @@ components:
           rules:
           - generalLedgerAccountCode: generalLedgerAccountCode
             effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            originalRuleId: originalRuleId
             ruleFilter: ruleFilter
             ruleId: ruleId
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            version: 0
           - generalLedgerAccountCode: generalLedgerAccountCode
             effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            originalRuleId: originalRuleId
             ruleFilter: ruleFilter
             ruleId: ruleId
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            version: 0
           links:
           - method: method
             description: description
@@ -299461,14 +299706,18 @@ components:
           rules:
           - generalLedgerAccountCode: generalLedgerAccountCode
             effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            originalRuleId: originalRuleId
             ruleFilter: ruleFilter
             ruleId: ruleId
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            version: 0
           - generalLedgerAccountCode: generalLedgerAccountCode
             effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            originalRuleId: originalRuleId
             ruleFilter: ruleFilter
             ruleId: ruleId
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            version: 0
           links:
           - method: method
             description: description
@@ -299530,7 +299779,7 @@ components:
       required:
       - values
       type: object
-    PagedResourceListOfPostingModuleRule:
+    PagedResourceListOfPostingModuleRuleResponse:
       additionalProperties: false
       example:
         previousPage: previousPage
@@ -299538,14 +299787,18 @@ components:
         values:
         - generalLedgerAccountCode: generalLedgerAccountCode
           effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          originalRuleId: originalRuleId
           ruleFilter: ruleFilter
           ruleId: ruleId
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          version: 0
         - generalLedgerAccountCode: generalLedgerAccountCode
           effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          originalRuleId: originalRuleId
           ruleFilter: ruleFilter
           ruleId: ruleId
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          version: 0
         links:
         - method: method
           description: description
@@ -299565,7 +299818,7 @@ components:
           type: string
         values:
           items:
-            $ref: '#/components/schemas/PostingModuleRule'
+            $ref: '#/components/schemas/PostingModuleRuleResponse'
           type: array
         href:
           format: uri
@@ -309623,6 +309876,7 @@ components:
           postingModuleCode: postingModuleCode
           activitiesDescription: activitiesDescription
           economicBucketVariant: economicBucketVariant
+          postingRuleVersion: 1
           ledgerColumn: ledgerColumn
           postingRule: postingRule
           properties:
@@ -309676,8 +309930,19 @@ components:
             \ property in the RecResult domain, and may appear only once."
           type: string
         formula:
-          description: The formula whose value populates the property; a null value
-            means the property has no value.
+          description: "The formula gives the value of the property. The value must\
+            \ be of the property's type. A formula cannot populate an Int property,\
+            \ because its numbers are decimal. A null value means that the property\
+            \ has no value. The formula can read resultType, resultCardinality, resultLifecycle,\
+            \ exception.status, exception.closureType, exception.asAtClosed, exception.asAtClosureInvalidated,\
+            \ review.status, review.decision and review.decisionGroup.groupNumber.\
+            \ It reads rules by name as CoreRules[name] and AggregateRules[name].\
+            \ Each rule has .leftValue, .rightValue and .appliedTolerance.toleranceType.\
+            \ A numeric aggregate rule also has .difference. You can compare CoreRules[name]\
+            \ with no side by eq, in or startswith. The comparison is true if either\
+            \ side matches. With neq, not in or not startswith, it is true if no side\
+            \ matches. Ordering comparisons must name the side. Comparisons ignore\
+            \ case and accents."
           maxLength: 16384
           minLength: 0
           type: string
@@ -314834,14 +315099,18 @@ components:
         rules:
         - generalLedgerAccountCode: generalLedgerAccountCode
           effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          originalRuleId: originalRuleId
           ruleFilter: ruleFilter
           ruleId: ruleId
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          version: 0
         - generalLedgerAccountCode: generalLedgerAccountCode
           effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          originalRuleId: originalRuleId
           ruleFilter: ruleFilter
           ruleId: ruleId
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          version: 0
         links:
         - method: method
           description: description
@@ -314897,7 +315166,7 @@ components:
           description: The Posting Rules that apply for the Posting Module. Rules
             are evaluated in the order they occur in this collection.
           items:
-            $ref: '#/components/schemas/PostingModuleRule'
+            $ref: '#/components/schemas/PostingModuleRuleResponse'
           nullable: true
           type: array
         status:
@@ -314965,6 +315234,68 @@ components:
       - ruleFilter
       - ruleId
       type: object
+    PostingModuleRuleResponse:
+      additionalProperties: false
+      description: A version of a Posting rule
+      example:
+        generalLedgerAccountCode: generalLedgerAccountCode
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+        originalRuleId: originalRuleId
+        ruleFilter: ruleFilter
+        ruleId: ruleId
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        version: 0
+      properties:
+        ruleId:
+          description: The identifier for the Posting Rule.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        generalLedgerAccountCode:
+          description: The general ledger account to post the Activity credit or debit
+            to.
+          maxLength: 512
+          minLength: 1
+          pattern: "^[\\s\\S]*$"
+          type: string
+        ruleFilter:
+          description: The filter syntax for the Posting Rule. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules
+            for more information on filter syntax.
+          maxLength: 16384
+          minLength: 1
+          pattern: "^[\\s\\S]*$"
+          type: string
+        effectiveFrom:
+          description: "The inclusive accounting date from which the Posting Rule\
+            \ applies. If not set, the rule applies from the beginning of time."
+          format: date-time
+          nullable: true
+          type: string
+        effectiveUntil:
+          description: "The exclusive accounting date until which the Posting Rule\
+            \ applies. If not set, the rule applies until the end of time."
+          format: date-time
+          nullable: true
+          type: string
+        version:
+          description: The version of the Posting Rule. Starts at 1 and increases
+            each time the rule is superseded.
+          format: int32
+          type: integer
+        originalRuleId:
+          description: "The identifier of the Posting Rule that this rule was created\
+            \ to supersede, if any."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+      required:
+      - generalLedgerAccountCode
+      - ruleFilter
+      - ruleId
+      type: object
     PostingModuleRulesUpdatedResponse:
       additionalProperties: false
       description: A Posting Module rules update response
@@ -314972,14 +315303,18 @@ components:
         rules:
         - generalLedgerAccountCode: generalLedgerAccountCode
           effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          originalRuleId: originalRuleId
           ruleFilter: ruleFilter
           ruleId: ruleId
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          version: 0
         - generalLedgerAccountCode: generalLedgerAccountCode
           effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          originalRuleId: originalRuleId
           ruleFilter: ruleFilter
           ruleId: ruleId
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          version: 0
         links:
         - method: method
           description: description
@@ -315009,7 +315344,7 @@ components:
           description: The Posting Rules that apply for the Posting Module. Rules
             are evaluated in the order they occur in this collection.
           items:
-            $ref: '#/components/schemas/PostingModuleRule'
+            $ref: '#/components/schemas/PostingModuleRuleResponse'
           nullable: true
           type: array
         version:
@@ -324535,7 +324870,9 @@ components:
         properties:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
-          description: Properties in the RecResult domain. Filterable and sortable.
+          description: "Properties in the RecResult domain. Filterable and sortable.\
+            \ Always includes the properties the matching ruleset populates, with\
+            \ a null value where the result holds none yet."
           nullable: true
           type: object
         assignedUser:
@@ -362148,6 +362485,7 @@ components:
         name: name
         tradingConventions:
           minimumOrderIncrement: 4.145608029883936
+          priceFractionConvention: priceFractionConvention
           priceScaleFactor: 3.616076749251911
           minimumOrderSize: 2.027123023002322
           priceQuotationType: priceQuotationType
@@ -362683,6 +363021,7 @@ components:
         name: name
         tradingConventions:
           minimumOrderIncrement: 4.145608029883936
+          priceFractionConvention: priceFractionConvention
           priceScaleFactor: 3.616076749251911
           minimumOrderSize: 2.027123023002322
           priceQuotationType: priceQuotationType
@@ -365581,6 +365920,60 @@ components:
       - portfolioId
       - scope
       - subscriptionType
+      type: object
+    SupersedePostingModuleRuleRequest:
+      additionalProperties: false
+      description: "The next version of a Posting Rule, which takes over from its\
+        \ latest version on an accounting date"
+      example:
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+        generalLedgerAccountCode: generalLedgerAccountCode
+        ruleFilter: ruleFilter
+        ruleId: ruleId
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+      properties:
+        ruleId:
+          description: "The identifier of the Posting Rule. At most one rule in the\
+            \ request may have the ruleId of the superseded rule. If it does, the\
+            \ existing rule is capped so that it stops applying from this rule's EffectiveFrom,\
+            \ and this rule is created as its next version. Otherwise this rule is\
+            \ created as a new rule."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        effectiveFrom:
+          description: "The inclusive accounting date from which this rule applies.\
+            \ If this rule has the ruleId of the superseded rule, the superseded rule's\
+            \ latest version stops applying from this date, unless it already ends\
+            \ by then; it is never extended."
+          format: date-time
+          type: string
+        effectiveUntil:
+          description: "The exclusive accounting date until which this rule applies.\
+            \ If not set, it applies until the end of time."
+          format: date-time
+          nullable: true
+          type: string
+        generalLedgerAccountCode:
+          description: The general ledger account this rule posts the Activity credit
+            or debit to.
+          maxLength: 512
+          minLength: 1
+          pattern: "^[\\s\\S]*$"
+          type: string
+        ruleFilter:
+          description: The filter syntax for this rule. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules
+            for more information on filter syntax.
+          maxLength: 16384
+          minLength: 1
+          pattern: "^[\\s\\S]*$"
+          type: string
+      required:
+      - effectiveFrom
+      - generalLedgerAccountCode
+      - ruleFilter
+      - ruleId
       type: object
     SupplementalAttribute:
       additionalProperties: false
@@ -368732,6 +369125,7 @@ components:
         and Bonds
       example:
         minimumOrderIncrement: 4.145608029883936
+        priceFractionConvention: priceFractionConvention
         priceScaleFactor: 3.616076749251911
         minimumOrderSize: 2.027123023002322
         priceQuotationType: priceQuotationType
@@ -368762,6 +369156,17 @@ components:
             \ its quoted price excludes accrued interest (Clean) or includes it (Dirty).\r\
             \nDefaults to Clean if not set.\r\n \r\nSupported string (enumeration)\
             \ values are: [Clean, Dirty]. Available values: Clean, Dirty."
+          nullable: true
+          type: string
+        priceFractionConvention:
+          description: "The fractional grid on which the market conventionally quotes\
+            \ the instrument's price, such as 32nds for\r\nUS Treasuries. Declarative\
+            \ only: prices are stored and valued as decimals regardless, and consumers\
+            \ use\r\nthis to convert between decimal and fractional notation at entry\
+            \ and display.\r\nDefaults to Decimal if not set.\r\n \r\nSupported string\
+            \ (enumeration) values are: [Decimal, ThirtySeconds, SixtyFourths, OneHundredTwentyEighths,\
+            \ TwoHundredFiftySixths]. Available values: Decimal, ThirtySeconds, SixtyFourths,\
+            \ OneHundredTwentyEighths, TwoHundredFiftySixths."
           nullable: true
           type: string
       type: object
@@ -378102,9 +378507,9 @@ components:
           nullable: true
           type: string
         currency:
-          maxLength: 64
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
+          maxLength: 5
+          minLength: 3
+          pattern: "^[a-zA-Z]*$"
           type: string
         quantity:
           format: double
@@ -395996,16 +396401,17 @@ components:
           postingModuleCode: postingModuleCode
           activitiesDescription: activitiesDescription
           economicBucketVariant: economicBucketVariant
+          postingRuleVersion: 6
           ledgerColumn: ledgerColumn
           postingRule: postingRule
           shareClassBreakdowns:
-          - baseValue: 5.962133916683182
-            apportionmentFactor: 6.027456183070403
-            localValue: 1.4658129805029452
+          - baseValue: 5.637376656633329
+            apportionmentFactor: 1.4658129805029452
+            localValue: 5.962133916683182
             shortCode: shortCode
-          - baseValue: 5.962133916683182
-            apportionmentFactor: 6.027456183070403
-            localValue: 1.4658129805029452
+          - baseValue: 5.637376656633329
+            apportionmentFactor: 1.4658129805029452
+            localValue: 5.962133916683182
             shortCode: shortCode
           properties:
             key:
@@ -396095,16 +396501,17 @@ components:
           postingModuleCode: postingModuleCode
           activitiesDescription: activitiesDescription
           economicBucketVariant: economicBucketVariant
+          postingRuleVersion: 6
           ledgerColumn: ledgerColumn
           postingRule: postingRule
           shareClassBreakdowns:
-          - baseValue: 5.962133916683182
-            apportionmentFactor: 6.027456183070403
-            localValue: 1.4658129805029452
+          - baseValue: 5.637376656633329
+            apportionmentFactor: 1.4658129805029452
+            localValue: 5.962133916683182
             shortCode: shortCode
-          - baseValue: 5.962133916683182
-            apportionmentFactor: 6.027456183070403
-            localValue: 1.4658129805029452
+          - baseValue: 5.637376656633329
+            apportionmentFactor: 1.4658129805029452
+            localValue: 5.962133916683182
             shortCode: shortCode
           properties:
             key:
@@ -396325,6 +396732,7 @@ components:
             postingModuleCode: postingModuleCode
             activitiesDescription: activitiesDescription
             economicBucketVariant: economicBucketVariant
+            postingRuleVersion: 1
             ledgerColumn: ledgerColumn
             postingRule: postingRule
             properties:
@@ -396421,6 +396829,7 @@ components:
             postingModuleCode: postingModuleCode
             activitiesDescription: activitiesDescription
             economicBucketVariant: economicBucketVariant
+            postingRuleVersion: 1
             ledgerColumn: ledgerColumn
             postingRule: postingRule
             properties:
@@ -401818,6 +402227,7 @@ components:
           postingModuleCode: postingModuleCode
           activitiesDescription: activitiesDescription
           economicBucketVariant: economicBucketVariant
+          postingRuleVersion: 1
           ledgerColumn: ledgerColumn
           postingRule: postingRule
           properties:
@@ -401903,6 +402313,7 @@ components:
           postingModuleCode: postingModuleCode
           activitiesDescription: activitiesDescription
           economicBucketVariant: economicBucketVariant
+          postingRuleVersion: 1
           ledgerColumn: ledgerColumn
           postingRule: postingRule
           properties:

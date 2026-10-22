@@ -154,7 +154,7 @@ public class FlexibleRepo extends LusidInstrument {
   }
 
    /**
-   * The maturity date of the instrument. This is the date at which the repurchase will occur for a TermRepo.  Optional for OpenRepo, but if not provided, defaults to the StartDate plus a long period (e.g. 2099-12-31).
+   * The maturity date of the instrument. This is the date at which the repurchase will occur for a TermRepo.  Optional for OpenRepo, but if not provided, defaults to 2100-01-01.
    * @return maturityDate
   **/
   @jakarta.annotation.Nullable

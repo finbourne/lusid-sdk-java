@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **items** | [**RecResultItemDetails**](RecResultItemDetails.md) |  | [default to RecResultItemDetails]
 **linkedResults** | [**List&lt;RecLinkedResult&gt;**](RecLinkedResult.md) | Results of other rec types in the same rec instance run whose items share an identifier with this result&#39;s items. Only exceptions link, and only to exceptions; symmetric. Set by the linking pass once every rec type of the run has completed, so empty until then. | [default to List<RecLinkedResult>]
 **comments** | [**List&lt;RecUserComment&gt;**](RecUserComment.md) | User-authored comments attached to the result. Carried forward across runs. | [default to List<RecUserComment>]
-**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Properties in the RecResult domain. Filterable and sortable. | [optional] [default to Map<String, PerpetualProperty>]
+**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet. | [optional] [default to Map<String, PerpetualProperty>]
 **assignedUser** | **String** | The LUSID user id assigned to the result. | [optional] [default to String]
 **assignedRole** | **String** | The LUSID IAM role id assigned to the result. | [optional] [default to String]
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. | [optional] [default to URI]

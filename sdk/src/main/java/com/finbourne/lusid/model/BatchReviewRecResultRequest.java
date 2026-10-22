@@ -288,7 +288,7 @@ public class BatchReviewRecResultRequest {
   }
 
    /**
-   * Properties in the RecResult domain. Filterable and sortable.
+   * Properties in the RecResult domain. Filterable and sortable. Always includes the properties the matching ruleset populates, with a null value where the result holds none yet.
    * @return properties
   **/
   @jakarta.annotation.Nullable

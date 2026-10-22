@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **minimumOrderSize** | **java.math.BigDecimal** | The Minimum Order Size  Must be non-negative and defaults to 0 if not set. | [optional] [default to java.math.BigDecimal]
 **minimumOrderIncrement** | **java.math.BigDecimal** | The Minimum Order Increment  Must be non-negative and defaults to 0 if not set. | [optional] [default to java.math.BigDecimal]
 **priceQuotationType** | **String** | Conventional price quotation type of the instrument.  Whether its quoted price excludes accrued interest (Clean) or includes it (Dirty).  Defaults to Clean if not set.     Supported string (enumeration) values are: [Clean, Dirty]. Available values: Clean, Dirty. | [optional] [default to String]
+**priceFractionConvention** | **String** | The fractional grid on which the market conventionally quotes the instrument&#39;s price, such as 32nds for  US Treasuries. Declarative only: prices are stored and valued as decimals regardless, and consumers use  this to convert between decimal and fractional notation at entry and display.  Defaults to Decimal if not set.     Supported string (enumeration) values are: [Decimal, ThirtySeconds, SixtyFourths, OneHundredTwentyEighths, TwoHundredFiftySixths]. Available values: Decimal, ThirtySeconds, SixtyFourths, OneHundredTwentyEighths, TwoHundredFiftySixths. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.TradingConventions;
@@ -20,13 +21,15 @@ java.math.BigDecimal PriceScaleFactor = new java.math.BigDecimal("100.00");
 java.math.BigDecimal MinimumOrderSize = new java.math.BigDecimal("100.00");
 java.math.BigDecimal MinimumOrderIncrement = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String PriceQuotationType = "example PriceQuotationType";
+@jakarta.annotation.Nullable String PriceFractionConvention = "example PriceFractionConvention";
 
 
 TradingConventions tradingConventionsInstance = new TradingConventions()
     .PriceScaleFactor(PriceScaleFactor)
     .MinimumOrderSize(MinimumOrderSize)
     .MinimumOrderIncrement(MinimumOrderIncrement)
-    .PriceQuotationType(PriceQuotationType);
+    .PriceQuotationType(PriceQuotationType)
+    .PriceFractionConvention(PriceFractionConvention);
 ```
 
 

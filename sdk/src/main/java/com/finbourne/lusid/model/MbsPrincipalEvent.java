@@ -68,6 +68,18 @@ public class MbsPrincipalEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_PRINCIPAL_PER_UNIT)
   private java.math.BigDecimal principalPerUnit;
 
+  public static final String SERIALIZED_NAME_PRICE_PER_UNIT = "pricePerUnit";
+  @SerializedName(SERIALIZED_NAME_PRICE_PER_UNIT)
+  private java.math.BigDecimal pricePerUnit;
+
+  public static final String SERIALIZED_NAME_PREVIOUS_FACTOR = "previousFactor";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_FACTOR)
+  private java.math.BigDecimal previousFactor;
+
+  public static final String SERIALIZED_NAME_NEXT_FACTOR = "nextFactor";
+  @SerializedName(SERIALIZED_NAME_NEXT_FACTOR)
+  private java.math.BigDecimal nextFactor;
+
   public MbsPrincipalEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -156,6 +168,69 @@ public class MbsPrincipalEvent extends InstrumentEvent {
   }
 
 
+  public MbsPrincipalEvent pricePerUnit(java.math.BigDecimal pricePerUnit) {
+    
+    this.pricePerUnit = pricePerUnit;
+    return this;
+  }
+
+   /**
+   * Redemption price per unit (OFFR / 100) of principal repaid. Clean price convention: a value of 1 is par.  Optional; a null is read as 1, so an omitted price is par. Separates the cash paid from the principal extinguished.
+   * @return pricePerUnit
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getPricePerUnit() {
+    return pricePerUnit;
+  }
+
+
+  public void setPricePerUnit(java.math.BigDecimal pricePerUnit) {
+    this.pricePerUnit = pricePerUnit;
+  }
+
+
+  public MbsPrincipalEvent previousFactor(java.math.BigDecimal previousFactor) {
+    
+    this.previousFactor = previousFactor;
+    return this;
+  }
+
+   /**
+   * The pool factor in force until the redemption (factor) date, as notified (AMI-SeCo Previous Factor).  Optional; recorded for reconciliation and not consumed by the transaction template. Must be supplied together with nextFactor.
+   * @return previousFactor
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getPreviousFactor() {
+    return previousFactor;
+  }
+
+
+  public void setPreviousFactor(java.math.BigDecimal previousFactor) {
+    this.previousFactor = previousFactor;
+  }
+
+
+  public MbsPrincipalEvent nextFactor(java.math.BigDecimal nextFactor) {
+    
+    this.nextFactor = nextFactor;
+    return this;
+  }
+
+   /**
+   * The pool factor applicable after the redemption (factor) date, as notified (AMI-SeCo Next Factor).  Optional; recorded for reconciliation and not consumed by the transaction template. Must be supplied together with previousFactor.
+   * @return nextFactor
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getNextFactor() {
+    return nextFactor;
+  }
+
+
+  public void setNextFactor(java.math.BigDecimal nextFactor) {
+    this.nextFactor = nextFactor;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -170,6 +245,9 @@ public class MbsPrincipalEvent extends InstrumentEvent {
         Objects.equals(this.paymentDate, mbsPrincipalEvent.paymentDate) &&
         Objects.equals(this.currency, mbsPrincipalEvent.currency) &&
         (this.principalPerUnit.compareTo(mbsPrincipalEvent.getPrincipalPerUnit()) == 0) &&
+        (this.pricePerUnit.compareTo(mbsPrincipalEvent.getPricePerUnit()) == 0) &&
+        (this.previousFactor.compareTo(mbsPrincipalEvent.getPreviousFactor()) == 0) &&
+        (this.nextFactor.compareTo(mbsPrincipalEvent.getNextFactor()) == 0) &&
         super.equals(o);
   }
 
@@ -179,7 +257,7 @@ public class MbsPrincipalEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(exDate, paymentDate, currency, principalPerUnit, super.hashCode());
+    return Objects.hash(exDate, paymentDate, currency, principalPerUnit, pricePerUnit, previousFactor, nextFactor, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -198,6 +276,9 @@ public class MbsPrincipalEvent extends InstrumentEvent {
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    principalPerUnit: ").append(toIndentedString(principalPerUnit)).append("\n");
+    sb.append("    pricePerUnit: ").append(toIndentedString(pricePerUnit)).append("\n");
+    sb.append("    previousFactor: ").append(toIndentedString(previousFactor)).append("\n");
+    sb.append("    nextFactor: ").append(toIndentedString(nextFactor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -225,6 +306,9 @@ public class MbsPrincipalEvent extends InstrumentEvent {
     openapiFields.add("paymentDate");
     openapiFields.add("currency");
     openapiFields.add("principalPerUnit");
+    openapiFields.add("pricePerUnit");
+    openapiFields.add("previousFactor");
+    openapiFields.add("nextFactor");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

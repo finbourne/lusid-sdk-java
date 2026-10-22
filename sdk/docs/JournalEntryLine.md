@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **units** | **java.math.BigDecimal** | Units held for the Journal Entry Line. | [default to java.math.BigDecimal]
 **postingModuleCode** | **String** | The code of the posting module where the posting rules derived the Journal Entry lines. | [optional] [default to String]
 **postingRule** | **String** | The rule generating the Journal Entry Line. | [default to String]
+**postingRuleVersion** | **Integer** | The version of the rule generating the Journal Entry Line. Null where no rule matched the line. | [optional] [default to Integer]
 **asAtDate** | [**OffsetDateTime**](OffsetDateTime.md) | The corresponding input date and time of the Transaction generating the Journal Entry Line. | [default to OffsetDateTime]
 **activitiesDescription** | **String** | This would be the description of the business activities this Journal Entry Line is for. | [optional] [default to String]
 **sourceType** | **String** | The type of source for the Journal Entry Line. Available values: LusidTransaction, LusidValuation, Manual, External. | [default to String]
@@ -58,6 +59,7 @@ CurrencyAndAmount Base = new CurrencyAndAmount();
 java.math.BigDecimal Units = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String PostingModuleCode = "example PostingModuleCode";
 String PostingRule = "example PostingRule";
+@jakarta.annotation.Nullable Integer PostingRuleVersion = new Integer("100.00");
 OffsetDateTime AsAtDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable String ActivitiesDescription = "example ActivitiesDescription";
 String SourceType = "example SourceType";
@@ -94,6 +96,7 @@ JournalEntryLine journalEntryLineInstance = new JournalEntryLine()
     .Units(Units)
     .PostingModuleCode(PostingModuleCode)
     .PostingRule(PostingRule)
+    .PostingRuleVersion(PostingRuleVersion)
     .AsAtDate(AsAtDate)
     .ActivitiesDescription(ActivitiesDescription)
     .SourceType(SourceType)

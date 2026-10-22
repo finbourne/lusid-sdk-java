@@ -35,6 +35,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**setGeneralLedgerProfileMappings**](ChartOfAccountsApi.md#setGeneralLedgerProfileMappings) | **PUT** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}/mappings | [EARLY ACCESS] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. |
 | [**setPostingModuleDetails**](ChartOfAccountsApi.md#setPostingModuleDetails) | **PUT** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EARLY ACCESS] SetPostingModuleDetails: Set the details of a Posting Module |
 | [**setPostingModuleRules**](ChartOfAccountsApi.md#setPostingModuleRules) | **PUT** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules | [EARLY ACCESS] SetPostingModuleRules: Set the rules of a Posting Module |
+| [**supersedePostingModuleRule**](ChartOfAccountsApi.md#supersedePostingModuleRule) | **POST** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/$supersede | [EARLY ACCESS] SupersedePostingModuleRule: Supersede a rule of a Posting Module |
 | [**upsertAccountProperties**](ChartOfAccountsApi.md#upsertAccountProperties) | **POST** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties/$upsert | [EARLY ACCESS] UpsertAccountProperties: Upsert account properties |
 | [**upsertAccounts**](ChartOfAccountsApi.md#upsertAccounts) | **POST** /api/chartofaccounts/{scope}/{code}/accounts | [EARLY ACCESS] UpsertAccounts: Upsert Accounts |
 | [**upsertChartOfAccountsProperties**](ChartOfAccountsApi.md#upsertChartOfAccountsProperties) | **POST** /api/chartofaccounts/{scope}/{code}/properties/$upsert | [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties |
@@ -2100,7 +2101,7 @@ public class ChartOfAccountsApiExample {
 
 ## listPostingModuleRules
 
-> PagedResourceListOfPostingModuleRule listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter)
+> PagedResourceListOfPostingModuleRuleResponse listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter)
 
 [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
 
@@ -2154,9 +2155,9 @@ public class ChartOfAccountsApiExample {
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the rule id, specify \"ruleId eq 'rule 1'\". For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfPostingModuleRule result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter).execute(opts);
+            // PagedResourceListOfPostingModuleRuleResponse result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter).execute(opts);
 
-            PagedResourceListOfPostingModuleRule result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter).execute();
+            PagedResourceListOfPostingModuleRuleResponse result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ChartOfAccountsApi#listPostingModuleRules");
@@ -2183,7 +2184,7 @@ public class ChartOfAccountsApiExample {
 
 ### Return type
 
-[**PagedResourceListOfPostingModuleRule**](PagedResourceListOfPostingModuleRule.md)
+[**PagedResourceListOfPostingModuleRuleResponse**](PagedResourceListOfPostingModuleRuleResponse.md)
 
 ### HTTP request headers
 
@@ -3057,6 +3058,105 @@ public class ChartOfAccountsApiExample {
 | **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
 | **postingModuleCode** | **String**| The code of the Posting Module to be updated. | |
 | **postingModuleRule** | [**List&lt;PostingModuleRule&gt;**](PostingModuleRule.md)| The new rule set for the Posting Module. | |
+
+### Return type
+
+[**PostingModuleRulesUpdatedResponse**](PostingModuleRulesUpdatedResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Posting Module with updated rules. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## supersedePostingModuleRule
+
+> PostingModuleRulesUpdatedResponse supersedePostingModuleRule(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest)
+
+[EARLY ACCESS] SupersedePostingModuleRule: Supersede a rule of a Posting Module
+
+Supersede a Posting Rule by one or more rules in a single write. Every rule in the request records the superseded  ruleId as its originalRuleId. At most one of them may have the superseded ruleId: it becomes the rule&#39;s next  version, and the rule&#39;s latest version stops applying from its effectiveFrom, unless it already ends by then; it  is never extended. Any other rule is new and must not have the ruleId of an existing rule. The rules take the  latest version&#39;s place in the rule list, in the order given.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ChartOfAccountsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
+        ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
+        String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+        String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
+        String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module to be updated.
+        String ruleId = "ruleId_example"; // String | The identifier of the Posting Rule to supersede. Its latest version is closed.
+        List<SupersedePostingModuleRuleRequest> supersedePostingModuleRuleRequest = Arrays.asList(); // List<SupersedePostingModuleRuleRequest> | The rules that take over from the superseded rule.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PostingModuleRulesUpdatedResponse result = apiInstance.supersedePostingModuleRule(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest).execute(opts);
+
+            PostingModuleRulesUpdatedResponse result = apiInstance.supersedePostingModuleRule(scope, code, postingModuleCode, ruleId, supersedePostingModuleRuleRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ChartOfAccountsApi#supersedePostingModuleRule");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
+| **postingModuleCode** | **String**| The code of the Posting Module to be updated. | |
+| **ruleId** | **String**| The identifier of the Posting Rule to supersede. Its latest version is closed. | |
+| **supersedePostingModuleRuleRequest** | [**List&lt;SupersedePostingModuleRuleRequest&gt;**](SupersedePostingModuleRuleRequest.md)| The rules that take over from the superseded rule. | |
 
 ### Return type
 

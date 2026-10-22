@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **seniority** | **String** | The seniority level of the CDS. Default value: SUB. Available values: Unknown, SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2. | [optional] [default to String]
 **restructuringType** | **String** | The restructuring clause. Default value: MM. Available values: Unknown, CR, MR, MM, XR, XR14, CR14, MR14, MM14. | [optional] [default to String]
-**protectStartDay** | **Boolean** | Does the protection leg pay out in the case of default on the start date. Defaults to true if not set. | [optional] [default to Boolean]
+**protectStartDay** | **Boolean** | Does the protection leg pay out in the case of default on the start date. Defaults to false if not set.  If true, the trade date is not included in the accrued interest that a transaction pays or receives. | [optional] [default to Boolean]
 **payAccruedInterestOnDefault** | **Boolean** | Should accrued interest on the premium leg be paid if a credit event occurs. Defaults to true if not set. | [optional] [default to Boolean]
 
 ```java

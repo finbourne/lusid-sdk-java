@@ -647,7 +647,7 @@ public class MarginCall {
   }
 
    /**
-   * The part of the counterparty&#39;s demand left in dispute.
+   * The part of the larger of our call and the counterparty&#39;s demand left in dispute.
    * @return disputedAmount
   **/
   @jakarta.annotation.Nullable

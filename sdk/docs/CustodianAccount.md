@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **accountNumber** | **String** | The Custodian Account Number | [default to String]
 **accountName** | **String** | The identifiable name given to the Custodian Account | [default to String]
 **accountingMethod** | **String** | The Accounting method to be used. Available values: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. | [default to String]
-**currency** | **String** | The Currency for the Account | [default to String]
+**currency** | **String** | The Currency for the Account. Optional, with no default. | [optional] [default to String]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain. | [optional] [default to Map<String, Property>]
 **custodian** | [**LegalEntity**](LegalEntity.md) |  | [default to LegalEntity]
 **accountType** | **String** | The type of the Custodian Account. This is a free-text field that accepts any value. Optional, with no default. | [optional] [default to String]
@@ -26,7 +26,7 @@ String Status = "example Status";
 String AccountNumber = "example AccountNumber";
 String AccountName = "example AccountName";
 String AccountingMethod = "example AccountingMethod";
-String Currency = "example Currency";
+@jakarta.annotation.Nullable String Currency = "example Currency";
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 LegalEntity Custodian = new LegalEntity();
 @jakarta.annotation.Nullable String AccountType = "example AccountType";

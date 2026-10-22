@@ -234,10 +234,10 @@ public class CustodianAccountRequest {
   }
 
    /**
-   * The Currency for the Account
+   * The Currency for the Account. Optional, with no default.
    * @return currency
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getCurrency() {
     return currency;
   }
@@ -434,7 +434,6 @@ public class CustodianAccountRequest {
     openapiRequiredFields.add("accountNumber");
     openapiRequiredFields.add("accountName");
     openapiRequiredFields.add("accountingMethod");
-    openapiRequiredFields.add("currency");
     openapiRequiredFields.add("custodianIdentifier");
   }
 
@@ -476,7 +475,7 @@ public class CustodianAccountRequest {
       if (!jsonObj.get("accountingMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountingMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountingMethod").toString()));
       }
-      if (!jsonObj.get("currency").isJsonPrimitive()) {
+      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
       // validate the required field `custodianIdentifier`

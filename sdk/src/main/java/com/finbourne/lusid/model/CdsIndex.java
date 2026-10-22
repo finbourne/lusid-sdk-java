@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.Basket;
 import com.finbourne.lusid.model.CdsFlowConventions;
+import com.finbourne.lusid.model.CdsProtectionDetailSpecification;
 import com.finbourne.lusid.model.FlowConventionName;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.TimeZoneConventions;
@@ -96,6 +97,10 @@ public class CdsIndex extends LusidInstrument {
   public static final String SERIALIZED_NAME_IS_NON_STANDARD = "isNonStandard";
   @SerializedName(SERIALIZED_NAME_IS_NON_STANDARD)
   private Boolean isNonStandard;
+
+  public static final String SERIALIZED_NAME_PROTECTION_DETAIL_SPECIFICATION = "protectionDetailSpecification";
+  @SerializedName(SERIALIZED_NAME_PROTECTION_DETAIL_SPECIFICATION)
+  private CdsProtectionDetailSpecification protectionDetailSpecification;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
@@ -306,6 +311,27 @@ public class CdsIndex extends LusidInstrument {
   }
 
 
+  public CdsIndex protectionDetailSpecification(CdsProtectionDetailSpecification protectionDetailSpecification) {
+    
+    this.protectionDetailSpecification = protectionDetailSpecification;
+    return this;
+  }
+
+   /**
+   * Get protectionDetailSpecification
+   * @return protectionDetailSpecification
+  **/
+  @jakarta.annotation.Nullable
+  public CdsProtectionDetailSpecification getProtectionDetailSpecification() {
+    return protectionDetailSpecification;
+  }
+
+
+  public void setProtectionDetailSpecification(CdsProtectionDetailSpecification protectionDetailSpecification) {
+    this.protectionDetailSpecification = protectionDetailSpecification;
+  }
+
+
   public CdsIndex additionalPayments(List<AdditionalPayment> additionalPayments) {
     
     this.additionalPayments = additionalPayments;
@@ -375,6 +401,7 @@ public class CdsIndex extends LusidInstrument {
         Objects.equals(this.conventionName, cdsIndex.conventionName) &&
         (this.notional.compareTo(cdsIndex.getNotional()) == 0) &&
         Objects.equals(this.isNonStandard, cdsIndex.isNonStandard) &&
+        Objects.equals(this.protectionDetailSpecification, cdsIndex.protectionDetailSpecification) &&
         Objects.equals(this.additionalPayments, cdsIndex.additionalPayments) &&
         Objects.equals(this.timeZoneConventions, cdsIndex.timeZoneConventions) &&
         super.equals(o);
@@ -386,7 +413,7 @@ public class CdsIndex extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, isNonStandard, additionalPayments, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, isNonStandard, protectionDetailSpecification, additionalPayments, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -410,6 +437,7 @@ public class CdsIndex extends LusidInstrument {
     sb.append("    conventionName: ").append(toIndentedString(conventionName)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
     sb.append("    isNonStandard: ").append(toIndentedString(isNonStandard)).append("\n");
+    sb.append("    protectionDetailSpecification: ").append(toIndentedString(protectionDetailSpecification)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
@@ -444,6 +472,7 @@ public class CdsIndex extends LusidInstrument {
     openapiFields.add("conventionName");
     openapiFields.add("notional");
     openapiFields.add("isNonStandard");
+    openapiFields.add("protectionDetailSpecification");
     openapiFields.add("additionalPayments");
     openapiFields.add("timeZoneConventions");
 
