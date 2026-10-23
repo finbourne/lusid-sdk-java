@@ -1,11 +1,11 @@
 # com.finbourne.lusid.model.FundPartnersTotals
-Totals across every register line of the fund, independent of paging.
+Totals across every register line of the fund, independent of paging. Commitments are totalled per commitment  currency; amounts in different currencies are never added together.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**committed** | **java.math.BigDecimal** | The total committed capital across all partners. | [default to java.math.BigDecimal]
+**committedByCurrency** | **Map&lt;String, java.math.BigDecimal&gt;** | The total committed capital across all partners, per commitment currency, keyed by currency code. Commitments in different currencies are not added together. | [default to Map<String, java.math.BigDecimal>]
 **partnerCount** | **Integer** | The number of partners (register lines) in the fund. | [default to Integer]
 
 ```java
@@ -14,12 +14,12 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-java.math.BigDecimal Committed = new java.math.BigDecimal("100.00");
+Map<String, java.math.BigDecimal> CommittedByCurrency = new Map<String, java.math.BigDecimal>();
 Integer PartnerCount = new Integer("100.00");
 
 
 FundPartnersTotals fundPartnersTotalsInstance = new FundPartnersTotals()
-    .Committed(Committed)
+    .CommittedByCurrency(CommittedByCurrency)
     .PartnerCount(PartnerCount);
 ```
 

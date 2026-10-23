@@ -9598,7 +9598,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund.
-     * Lists the register lines of a partnership-accounting fund with each partner&#39;s capital balances at the  requested effective date, together with totals across the whole register.
+     * Lists the register lines of a partnership-accounting fund with each partner&#39;s capital balances at the  requested effective date, together with totals across the whole register. Committed capital is totalled per  commitment currency, and each line&#39;s share of commitments is of the total in its own currency; amounts in  different currencies are never added together.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @return APIgetPartnersRequest

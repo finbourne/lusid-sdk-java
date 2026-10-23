@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **partnerRole** | **String** | The role of the register line. Available values: GPRegister, LPInvestment. | [default to String]
 **commitmentCurrency** | **String** | The currency of the partner&#39;s commitment. | [default to String]
 **balances** | [**FundPartnerBalances**](FundPartnerBalances.md) |  | [default to FundPartnerBalances]
-**shareOfCommitments** | **java.math.BigDecimal** | The partner&#39;s committed capital as a decimal fraction of the fund&#39;s total commitments. | [default to java.math.BigDecimal]
+**shareOfCommitments** | **java.math.BigDecimal** | The partner&#39;s committed capital as a decimal fraction of the fund&#39;s total commitments in the same commitment currency. | [default to java.math.BigDecimal]
 **admittedOn** | [**OffsetDateTime**](OffsetDateTime.md) | The date the partner was admitted, being the date of their first commitment. | [optional] [default to OffsetDateTime]
 **totals** | [**FundPartnersTotals**](FundPartnersTotals.md) |  | [default to FundPartnersTotals]
 

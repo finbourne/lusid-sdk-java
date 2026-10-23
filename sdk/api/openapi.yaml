@@ -422,7 +422,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10371
+  version: 0.11.10372
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -6651,8 +6651,13 @@ paths:
       x-accepts: application/json
   /api/allocationevents/{scope}/{code}:
     delete:
-      description: "Delete an Allocation Event from an effective datetime. The Allocation\
-        \ Event remains retrievable at earlier\r\neffective datetimes."
+      description: "Delete an Allocation Event. Given an effective datetime, the Allocation\
+        \ Event is deleted from that datetime\r\nand remains retrievable at earlier\
+        \ effective datetimes. Given none, an Allocation Event that was created\r\n\
+        without an effective datetime is removed from the beginning of time, so that\
+        \ its code can be reused;\r\notherwise it is deleted from the current LUSID\
+        \ system datetime. Only an Allocation Event that has not been\r\nbooked can\
+        \ be deleted."
       operationId: DeleteAllocationEvent
       parameters:
       - description: The scope of the Allocation Event.
@@ -6678,8 +6683,10 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
-      - description: The effective datetime or cut label from which to delete the
-          Allocation Event. Defaults to the current LUSID system datetime if not specified.
+      - description: "The effective datetime or cut label from which to delete the\
+          \ Allocation Event. If not specified, an Allocation Event created without\
+          \ an effective datetime is removed from the beginning of time; any other\
+          \ is deleted from the current LUSID system datetime."
         explode: true
         in: query
         name: effectiveAt
@@ -7443,8 +7450,10 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
-      - description: The effective datetime or cut label from which the booking applies.
-          Defaults to the current LUSID system datetime if not specified.
+      - description: "The effective datetime or cut label at which to read the Allocation\
+          \ Event to book. The booking is recorded on the version in force at that\
+          \ time, from that version's own effective date. Defaults to the current\
+          \ LUSID system datetime if not specified."
         explode: true
         in: query
         name: effectiveAt
@@ -7882,8 +7891,9 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
-      - description: The effective datetime or cut label from which the reallocation
-          applies. Defaults to the current LUSID system datetime if not specified.
+      - description: "The effective datetime or cut label from which the reallocation\
+          \ applies. If not specified, the version in force now is recomputed in place\
+          \ from its own effective date."
         explode: true
         in: query
         name: effectiveAt
@@ -8142,8 +8152,11 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
-      - description: The effective datetime or cut label from which the receipt applies.
-          Defaults to the current LUSID system datetime if not specified.
+      - description: "The effective datetime or cut label at which to read the Allocation\
+          \ Event receiving cash. The receipt is recorded on the version in force\
+          \ at that time, from that version's own effective date; the receipt postings\
+          \ are dated by the request. Defaults to the current LUSID system datetime\
+          \ if not specified."
         explode: true
         in: query
         name: effectiveAt
@@ -8468,8 +8481,11 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
-      - description: The effective datetime or cut label from which the reversal applies.
-          Defaults to the current LUSID system datetime if not specified.
+      - description: "The effective datetime or cut label at which to read the Allocation\
+          \ Event to reverse. The reversed status is recorded on the version in force\
+          \ at that time, from that version's own effective date; the mirror postings\
+          \ are dated by the request. Defaults to the current LUSID system datetime\
+          \ if not specified."
         explode: true
         in: query
         name: effectiveAt
@@ -8694,8 +8710,10 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: simple
-      - description: The effective datetime or cut label from which the unbooking
-          applies. Defaults to the current LUSID system datetime if not specified.
+      - description: "The effective datetime or cut label at which to read the Allocation\
+          \ Event to unbook. The unbooking is recorded on the version in force at\
+          \ that time, from that version's own effective date. Defaults to the current\
+          \ LUSID system datetime if not specified."
         explode: true
         in: query
         name: effectiveAt
@@ -55421,7 +55439,10 @@ paths:
     get:
       description: "Lists the register lines of a partnership-accounting fund with\
         \ each partner's capital balances at the\r\nrequested effective date, together\
-        \ with totals across the whole register."
+        \ with totals across the whole register. Committed capital is totalled per\r\
+        \ncommitment currency, and each line's share of commitments is of the total\
+        \ in its own currency; amounts in\r\ndifferent currencies are never added\
+        \ together."
       operationId: GetPartners
       parameters:
       - description: The scope of the Fund.
@@ -247750,8 +247771,9 @@ components:
         investorRecordId: investorRecordId
         shareOfCommitments: 3.616076749251911
         totals:
-          committed: 2.027123023002322
           partnerCount: 4
+          committedByCurrency:
+            key: 2.027123023002322
         admittedOn: 2000-01-23T04:56:07.000+00:00
         lusidInstrumentId: lusidInstrumentId
       properties:
@@ -247792,7 +247814,7 @@ components:
           $ref: '#/components/schemas/FundPartnerBalances'
         shareOfCommitments:
           description: The partner's committed capital as a decimal fraction of the
-            fund's total commitments.
+            fund's total commitments in the same commitment currency.
           format: double
           type: number
         admittedOn:
@@ -247876,21 +247898,27 @@ components:
     FundPartnersTotals:
       additionalProperties: false
       description: "Totals across every register line of the fund, independent of\
-        \ paging."
+        \ paging. Commitments are totalled per commitment\r\ncurrency; amounts in\
+        \ different currencies are never added together."
       example:
-        committed: 2.027123023002322
         partnerCount: 4
+        committedByCurrency:
+          key: 2.027123023002322
       properties:
-        committed:
-          description: The total committed capital across all partners.
-          format: double
-          type: number
+        committedByCurrency:
+          additionalProperties:
+            format: double
+            type: number
+          description: "The total committed capital across all partners, per commitment\
+            \ currency, keyed by currency code. Commitments in different currencies\
+            \ are not added together."
+          type: object
         partnerCount:
           description: The number of partners (register lines) in the fund.
           format: int32
           type: integer
       required:
-      - committed
+      - committedByCurrency
       - partnerCount
       type: object
     FundPartnerUnfundedReconciliation:
@@ -290981,8 +291009,9 @@ components:
           investorRecordId: investorRecordId
           shareOfCommitments: 3.616076749251911
           totals:
-            committed: 2.027123023002322
             partnerCount: 4
+            committedByCurrency:
+              key: 2.027123023002322
           admittedOn: 2000-01-23T04:56:07.000+00:00
           lusidInstrumentId: lusidInstrumentId
         - commitmentLineId: commitmentLineId
@@ -291005,8 +291034,9 @@ components:
           investorRecordId: investorRecordId
           shareOfCommitments: 3.616076749251911
           totals:
-            committed: 2.027123023002322
             partnerCount: 4
+            committedByCurrency:
+              key: 2.027123023002322
           admittedOn: 2000-01-23T04:56:07.000+00:00
           lusidInstrumentId: lusidInstrumentId
         links:

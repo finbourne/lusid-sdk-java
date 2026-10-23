@@ -301,7 +301,7 @@ public class FundPartner {
   }
 
    /**
-   * The partner&#39;s committed capital as a decimal fraction of the fund&#39;s total commitments.
+   * The partner&#39;s committed capital as a decimal fraction of the fund&#39;s total commitments in the same commitment currency.
    * @return shareOfCommitments
   **/
   @jakarta.annotation.Nonnull

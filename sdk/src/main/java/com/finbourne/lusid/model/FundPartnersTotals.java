@@ -18,6 +18,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,13 +47,13 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Totals across every register line of the fund, independent of paging.
+ * Totals across every register line of the fund, independent of paging. Commitments are totalled per commitment  currency; amounts in different currencies are never added together.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FundPartnersTotals {
-  public static final String SERIALIZED_NAME_COMMITTED = "committed";
-  @SerializedName(SERIALIZED_NAME_COMMITTED)
-  private java.math.BigDecimal committed;
+  public static final String SERIALIZED_NAME_COMMITTED_BY_CURRENCY = "committedByCurrency";
+  @SerializedName(SERIALIZED_NAME_COMMITTED_BY_CURRENCY)
+  private Map<String, java.math.BigDecimal> committedByCurrency = new HashMap<>();
 
   public static final String SERIALIZED_NAME_PARTNER_COUNT = "partnerCount";
   @SerializedName(SERIALIZED_NAME_PARTNER_COUNT)
@@ -60,24 +62,32 @@ public class FundPartnersTotals {
   public FundPartnersTotals() {
   }
 
-  public FundPartnersTotals committed(java.math.BigDecimal committed) {
+  public FundPartnersTotals committedByCurrency(Map<String, java.math.BigDecimal> committedByCurrency) {
     
-    this.committed = committed;
+    this.committedByCurrency = committedByCurrency;
+    return this;
+  }
+
+  public FundPartnersTotals putCommittedByCurrencyItem(String key, java.math.BigDecimal committedByCurrencyItem) {
+    if (this.committedByCurrency == null) {
+      this.committedByCurrency = new HashMap<>();
+    }
+    this.committedByCurrency.put(key, committedByCurrencyItem);
     return this;
   }
 
    /**
-   * The total committed capital across all partners.
-   * @return committed
+   * The total committed capital across all partners, per commitment currency, keyed by currency code. Commitments in different currencies are not added together.
+   * @return committedByCurrency
   **/
   @jakarta.annotation.Nonnull
-  public java.math.BigDecimal getCommitted() {
-    return committed;
+  public Map<String, java.math.BigDecimal> getCommittedByCurrency() {
+    return committedByCurrency;
   }
 
 
-  public void setCommitted(java.math.BigDecimal committed) {
-    this.committed = committed;
+  public void setCommittedByCurrency(Map<String, java.math.BigDecimal> committedByCurrency) {
+    this.committedByCurrency = committedByCurrency;
   }
 
 
@@ -112,20 +122,20 @@ public class FundPartnersTotals {
       return false;
     }
     FundPartnersTotals fundPartnersTotals = (FundPartnersTotals) o;
-    return (this.committed.compareTo(fundPartnersTotals.getCommitted()) == 0) &&
+    return Objects.equals(this.committedByCurrency, fundPartnersTotals.committedByCurrency) &&
         Objects.equals(this.partnerCount, fundPartnersTotals.partnerCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(committed, partnerCount);
+    return Objects.hash(committedByCurrency, partnerCount);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FundPartnersTotals {\n");
-    sb.append("    committed: ").append(toIndentedString(committed)).append("\n");
+    sb.append("    committedByCurrency: ").append(toIndentedString(committedByCurrency)).append("\n");
     sb.append("    partnerCount: ").append(toIndentedString(partnerCount)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -149,12 +159,12 @@ public class FundPartnersTotals {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("committed");
+    openapiFields.add("committedByCurrency");
     openapiFields.add("partnerCount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("committed");
+    openapiRequiredFields.add("committedByCurrency");
     openapiRequiredFields.add("partnerCount");
   }
 
