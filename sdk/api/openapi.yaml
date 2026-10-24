@@ -422,7 +422,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10372
+  version: 0.11.10385
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -3549,9 +3549,11 @@ paths:
       description: "Gets the Trial Balance for the given Abor.\r\n\r\nThe Trial Balance\
         \ has been generated from transactions, translated via Posting Rules\r\nand\
         \ aggregated based on a General Ledger Profile (where specified).\r\n \r\n\
-        Supplying the X-LUSID-SuppressImbalanceValidation header suppresses the imbalance\
-        \ check.\r\nAny caller with access to this endpoint may use it; it is not\
-        \ role-restricted."
+        Rows are returned ordered by General Ledger Account Code (ordinal, with rows\
+        \ no posting rule mapped first) and then by Levels, so the order is stable\
+        \ across pages.\r\n \r\nSupplying the X-LUSID-SuppressImbalanceValidation\
+        \ header suppresses the imbalance check.\r\nAny caller with access to this\
+        \ endpoint may use it; it is not role-restricted."
       operationId: GetTrialBalance
       parameters:
       - description: The scope of the Abor.
@@ -19562,8 +19564,8 @@ paths:
         x-nullable: true
       - description: "The pagination token to use to continue listing posting module\
           \ rules; this\r\n value is returned from the previous call. If a pagination\
-          \ token is provided, the filter\r\n and asAt fields must not have changed\
-          \ since the original request."
+          \ token is provided, the filter, effectiveAt\r\n and asAt fields must not\
+          \ have changed since the original request."
         explode: true
         in: query
         name: page
@@ -19598,6 +19600,17 @@ paths:
           maxLength: 16384
           minLength: 0
           pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: "The effective datetime or cut label at which to list the rules.\
+          \ If specified, only\r\n the rules whose effective window contains this\
+          \ date are returned. Defaults to returning all rules if not specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
           type: string
         style: form
       responses:
@@ -40393,7 +40406,7 @@ paths:
                   ruleFormula: InvalidFormula.UnknownFunction()
                   severity: 1
                   errorDetail: "Invalid formula syntax: UnknownFunction() is not recognized"
-                  resultId: c3d4e5f6-g7h8-9012-cdef-345678901234-RuleInvalid-CustomRuleSet-ComplexCalculationRule-null
+                  resultId: c3d4e5f6-g7h8-9012-cdef-345678901234-RuleInvalid-CustomRuleSet-ComplexCalculationRule
               schema:
                 $ref: '#/components/schemas/RunCheckResponse'
             application/json:
@@ -40451,7 +40464,7 @@ paths:
                   ruleFormula: InvalidFormula.UnknownFunction()
                   severity: 1
                   errorDetail: "Invalid formula syntax: UnknownFunction() is not recognized"
-                  resultId: c3d4e5f6-g7h8-9012-cdef-345678901234-RuleInvalid-CustomRuleSet-ComplexCalculationRule-null
+                  resultId: c3d4e5f6-g7h8-9012-cdef-345678901234-RuleInvalid-CustomRuleSet-ComplexCalculationRule
               schema:
                 $ref: '#/components/schemas/RunCheckResponse'
             text/json:
@@ -40509,7 +40522,7 @@ paths:
                   ruleFormula: InvalidFormula.UnknownFunction()
                   severity: 1
                   errorDetail: "Invalid formula syntax: UnknownFunction() is not recognized"
-                  resultId: c3d4e5f6-g7h8-9012-cdef-345678901234-RuleInvalid-CustomRuleSet-ComplexCalculationRule-null
+                  resultId: c3d4e5f6-g7h8-9012-cdef-345678901234-RuleInvalid-CustomRuleSet-ComplexCalculationRule
               schema:
                 $ref: '#/components/schemas/RunCheckResponse'
           description: OK
@@ -58244,6 +58257,13 @@ paths:
               variant: first
               name: ValuationJan2024
               properties: {}
+              bucketSetSeeds:
+              - bucketSetCode: Distribution
+                classSeeds:
+                - shareClassShortCode: ClassA
+                  buckets:
+                  - bucketId: Capital
+                    absoluteValue: 50000
             schema:
               $ref: '#/components/schemas/UpdateValuationPointRequest'
           application/json:
@@ -58252,6 +58272,13 @@ paths:
               variant: first
               name: ValuationJan2024
               properties: {}
+              bucketSetSeeds:
+              - bucketSetCode: Distribution
+                classSeeds:
+                - shareClassShortCode: ClassA
+                  buckets:
+                  - bucketId: Capital
+                    absoluteValue: 50000
             schema:
               $ref: '#/components/schemas/UpdateValuationPointRequest'
           text/json:
@@ -58260,6 +58287,13 @@ paths:
               variant: first
               name: ValuationJan2024
               properties: {}
+              bucketSetSeeds:
+              - bucketSetCode: Distribution
+                classSeeds:
+                - shareClassShortCode: ClassA
+                  buckets:
+                  - bucketId: Capital
+                    absoluteValue: 50000
             schema:
               $ref: '#/components/schemas/UpdateValuationPointRequest'
           application/*+json:
@@ -58268,6 +58302,13 @@ paths:
               variant: first
               name: ValuationJan2024
               properties: {}
+              bucketSetSeeds:
+              - bucketSetCode: Distribution
+                classSeeds:
+                - shareClassShortCode: ClassA
+                  buckets:
+                  - bucketId: Capital
+                    absoluteValue: 50000
             schema:
               $ref: '#/components/schemas/UpdateValuationPointRequest'
         description: The Valuation Point Estimate definition to upsert.
@@ -58592,6 +58633,7 @@ paths:
                       previousNavShareClassCurrency: 179999.98
                     displayName: Bucket Set Display Name
                     isBackfilled: false
+                    isSeeded: false
                   isBackfilled: false
                   applyClearDown: false
                 latestValuationPoint:
@@ -58719,6 +58761,7 @@ paths:
                       previousNavShareClassCurrency: 179999.98
                     displayName: Bucket Set Display Name
                     isBackfilled: false
+                    isSeeded: false
                   isBackfilled: false
                   applyClearDown: false
               schema:
@@ -58851,6 +58894,7 @@ paths:
                       previousNavShareClassCurrency: 179999.98
                     displayName: Bucket Set Display Name
                     isBackfilled: false
+                    isSeeded: false
                   isBackfilled: false
                   applyClearDown: false
                 latestValuationPoint:
@@ -58978,6 +59022,7 @@ paths:
                       previousNavShareClassCurrency: 179999.98
                     displayName: Bucket Set Display Name
                     isBackfilled: false
+                    isSeeded: false
                   isBackfilled: false
                   applyClearDown: false
               schema:
@@ -59110,6 +59155,7 @@ paths:
                       previousNavShareClassCurrency: 179999.98
                     displayName: Bucket Set Display Name
                     isBackfilled: false
+                    isSeeded: false
                   isBackfilled: false
                   applyClearDown: false
                 latestValuationPoint:
@@ -59237,6 +59283,7 @@ paths:
                       previousNavShareClassCurrency: 179999.98
                     displayName: Bucket Set Display Name
                     isBackfilled: false
+                    isSeeded: false
                   isBackfilled: false
                   applyClearDown: false
               schema:
@@ -59323,6 +59370,13 @@ paths:
               holdingsAsAtOverride: 2024-01-31T23:59:59.0000000+00:00
               valuationsAsAtOverride: 2024-01-31T23:59:59.0000000+00:00
               updateInclusionDateNavAdjustments: false
+              bucketSetSeeds:
+              - bucketSetCode: Distribution
+                classSeeds:
+                - shareClassShortCode: ClassA
+                  buckets:
+                  - bucketId: Capital
+                    absoluteValue: 50000
             schema:
               $ref: '#/components/schemas/CreateValuationPointRequest'
           application/json:
@@ -59337,6 +59391,13 @@ paths:
               holdingsAsAtOverride: 2024-01-31T23:59:59.0000000+00:00
               valuationsAsAtOverride: 2024-01-31T23:59:59.0000000+00:00
               updateInclusionDateNavAdjustments: false
+              bucketSetSeeds:
+              - bucketSetCode: Distribution
+                classSeeds:
+                - shareClassShortCode: ClassA
+                  buckets:
+                  - bucketId: Capital
+                    absoluteValue: 50000
             schema:
               $ref: '#/components/schemas/CreateValuationPointRequest'
           text/json:
@@ -59351,6 +59412,13 @@ paths:
               holdingsAsAtOverride: 2024-01-31T23:59:59.0000000+00:00
               valuationsAsAtOverride: 2024-01-31T23:59:59.0000000+00:00
               updateInclusionDateNavAdjustments: false
+              bucketSetSeeds:
+              - bucketSetCode: Distribution
+                classSeeds:
+                - shareClassShortCode: ClassA
+                  buckets:
+                  - bucketId: Capital
+                    absoluteValue: 50000
             schema:
               $ref: '#/components/schemas/CreateValuationPointRequest'
           application/*+json:
@@ -59365,6 +59433,13 @@ paths:
               holdingsAsAtOverride: 2024-01-31T23:59:59.0000000+00:00
               valuationsAsAtOverride: 2024-01-31T23:59:59.0000000+00:00
               updateInclusionDateNavAdjustments: false
+              bucketSetSeeds:
+              - bucketSetCode: Distribution
+                classSeeds:
+                - shareClassShortCode: ClassA
+                  buckets:
+                  - bucketId: Capital
+                    absoluteValue: 50000
             schema:
               $ref: '#/components/schemas/CreateValuationPointRequest'
         description: The Valuation Point Estimate definition to create.
@@ -59671,6 +59746,7 @@ paths:
                     previousNavShareClassCurrency: 179999.98
                   displayName: Bucket Set Display Name
                   isBackfilled: false
+                  isSeeded: false
                 isBackfilled: false
                 applyClearDown: false
               schema:
@@ -59801,6 +59877,7 @@ paths:
                     previousNavShareClassCurrency: 179999.98
                   displayName: Bucket Set Display Name
                   isBackfilled: false
+                  isSeeded: false
                 isBackfilled: false
                 applyClearDown: false
               schema:
@@ -59931,6 +60008,7 @@ paths:
                     previousNavShareClassCurrency: 179999.98
                   displayName: Bucket Set Display Name
                   isBackfilled: false
+                  isSeeded: false
                 isBackfilled: false
                 applyClearDown: false
               schema:
@@ -60179,6 +60257,7 @@ paths:
                     previousNavShareClassCurrency: 179999.98
                   displayName: Bucket Set Display Name
                   isBackfilled: false
+                  isSeeded: false
                 isBackfilled: false
                 applyClearDown: false
               schema:
@@ -60309,6 +60388,7 @@ paths:
                     previousNavShareClassCurrency: 179999.98
                   displayName: Bucket Set Display Name
                   isBackfilled: false
+                  isSeeded: false
                 isBackfilled: false
                 applyClearDown: false
               schema:
@@ -60439,6 +60519,7 @@ paths:
                     previousNavShareClassCurrency: 179999.98
                   displayName: Bucket Set Display Name
                   isBackfilled: false
+                  isSeeded: false
                 isBackfilled: false
                 applyClearDown: false
               schema:
@@ -64623,9 +64704,11 @@ paths:
       description: "Gets the Trial Balance for the given Valuation Point for a Fund.\r\
         \n \r\nThe Trial Balance has been generated from transactions, translated\
         \ via Posting Rules\r\nand aggregated based on a General Ledger Profile (where\
-        \ specified).\r\n \r\nSupplying the X-LUSID-SuppressImbalanceValidation header\
-        \ suppresses the imbalance check.\r\nAny caller with access to this endpoint\
-        \ may use it; it is not role-restricted."
+        \ specified).\r\n \r\nRows are returned ordered by General Ledger Account\
+        \ Code (ordinal, with rows no posting rule mapped first) and then by Levels,\
+        \ so the order is stable across pages.\r\n \r\nSupplying the X-LUSID-SuppressImbalanceValidation\
+        \ header suppresses the imbalance check.\r\nAny caller with access to this\
+        \ endpoint may use it; it is not role-restricted."
       operationId: GetValuationPointTrialBalance
       parameters:
       - description: The scope of the Fund.
@@ -182430,6 +182513,7 @@ components:
             pricingBasis: pricingBasis
           bucketSetResults:
           - isApportionment: true
+            isSeeded: true
             bucketSetCode: bucketSetCode
             nodes:
             - sharesInIssue: 4.459605034958679
@@ -182525,6 +182609,7 @@ components:
             displayName: displayName
             isBackfilled: true
           - isApportionment: true
+            isSeeded: true
             bucketSetCode: bucketSetCode
             nodes:
             - sharesInIssue: 4.459605034958679
@@ -182943,6 +183028,43 @@ components:
               key: details
             type: type
             message: message
+          bucketSetSeeds:
+          - bucketSetCode: bucketSetCode
+            classSeeds:
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+          - bucketSetCode: bucketSetCode
+            classSeeds:
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
           links:
           - method: method
             description: description
@@ -183094,6 +183216,7 @@ components:
             pricingBasis: pricingBasis
           bucketSetResults:
           - isApportionment: true
+            isSeeded: true
             bucketSetCode: bucketSetCode
             nodes:
             - sharesInIssue: 4.459605034958679
@@ -183189,6 +183312,7 @@ components:
             displayName: displayName
             isBackfilled: true
           - isApportionment: true
+            isSeeded: true
             bucketSetCode: bucketSetCode
             nodes:
             - sharesInIssue: 4.459605034958679
@@ -183607,6 +183731,43 @@ components:
               key: details
             type: type
             message: message
+          bucketSetSeeds:
+          - bucketSetCode: bucketSetCode
+            classSeeds:
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+          - bucketSetCode: bucketSetCode
+            classSeeds:
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
           links:
           - method: method
             description: description
@@ -188268,6 +188429,24 @@ components:
       - portfolioId
       - quantity
       type: object
+    AllocationBasisRule:
+      additionalProperties: false
+      example:
+        character: character
+        basis: basis
+      properties:
+        character:
+          maxLength: 64
+          minLength: 1
+          type: string
+        basis:
+          description: "Available values: CommittedCapital, PaidInCapital, DealPaidIn."
+          minLength: 1
+          type: string
+      required:
+      - basis
+      - character
+      type: object
     AllocationEvent:
       additionalProperties: false
       description: "One economic event shared across the participants of an Allocation\
@@ -191234,6 +191413,7 @@ components:
         portfolio:
           code: code
           scope: scope
+        partnershipTransactionType: partnershipTransactionType
         viaVehicle: viaVehicle
         investorRecordId: investorRecordId
         admissionVehicle: admissionVehicle
@@ -191247,8 +191427,14 @@ components:
         portfolio:
           $ref: '#/components/schemas/ResourceId'
         transactionType:
-          description: "The transaction type written on the fund side, for instance\
-            \ PA.ContributionCalled."
+          description: "The transaction type the booking writes on the fund side,\
+            \ for instance PECall: the type the fund's configuration maps the partnership\
+            \ transaction type to."
+          nullable: true
+          type: string
+        partnershipTransactionType:
+          description: "The partnership transaction type the fund-side posting is\
+            \ classified as, for instance PA.ContributionCalled."
           nullable: true
           type: string
         amount:
@@ -191336,6 +191522,7 @@ components:
           portfolio:
             code: code
             scope: scope
+          partnershipTransactionType: partnershipTransactionType
           viaVehicle: viaVehicle
           investorRecordId: investorRecordId
           admissionVehicle: admissionVehicle
@@ -191346,6 +191533,7 @@ components:
           portfolio:
             code: code
             scope: scope
+          partnershipTransactionType: partnershipTransactionType
           viaVehicle: viaVehicle
           investorRecordId: investorRecordId
           admissionVehicle: admissionVehicle
@@ -203823,6 +204011,120 @@ components:
           nullable: true
           type: string
       type: object
+    BucketSeedValue:
+      additionalProperties: false
+      description: "One bucket's seeded cumulative value, as stored."
+      example:
+        absoluteValue: 1.4658129805029452
+        bucketId: bucketId
+        perUnitValue: 5.962133916683182
+      properties:
+        bucketId:
+          description: The identifier of the seeded bucket.
+          minLength: 1
+          type: string
+        absoluteValue:
+          description: "The bucket's seeded cumulative value at the valuation point,\
+            \ in the fund currency."
+          format: double
+          type: number
+        perUnitValue:
+          description: "The per-unit value given with the seed, unrounded. Omitted\
+            \ where none was given, in which case the valuation point reads it off\
+            \ the share class's units in issue."
+          format: double
+          nullable: true
+          type: number
+      required:
+      - absoluteValue
+      - bucketId
+      type: object
+    BucketSeedValueRequest:
+      additionalProperties: false
+      description: One bucket's cumulative value to seed.
+      example:
+        absoluteValue: 0.8008281904610115
+        bucketId: bucketId
+        perUnitValue: 6.027456183070403
+      properties:
+        bucketId:
+          description: The identifier of the seeded bucket.
+          maxLength: 64
+          minLength: 1
+          type: string
+        absoluteValue:
+          description: "The bucket's cumulative value at the valuation point, in the\
+            \ fund currency. It is trusted input: nothing reconciles it to the share\
+            \ class NAV."
+          format: double
+          type: number
+        perUnitValue:
+          description: The bucket's cumulative value per unit in issue. It is stored
+            rounded to the share class's price precision. When omitted on a unitised
+            bucket it is the absolute value over the share class's units in issue
+            at the valuation point. Must be omitted on a bucket that is not unitised.
+          format: double
+          nullable: true
+          type: number
+      required:
+      - absoluteValue
+      - bucketId
+      type: object
+    BucketSetClassSeed:
+      additionalProperties: false
+      description: One share class's seeded bucket values.
+      example:
+        shareClassShortCode: shareClassShortCode
+        buckets:
+        - absoluteValue: 1.4658129805029452
+          bucketId: bucketId
+          perUnitValue: 5.962133916683182
+        - absoluteValue: 1.4658129805029452
+          bucketId: bucketId
+          perUnitValue: 5.962133916683182
+      properties:
+        shareClassShortCode:
+          description: The short code of the seeded share class.
+          minLength: 1
+          type: string
+        buckets:
+          description: The seeded buckets of the share class.
+          items:
+            $ref: '#/components/schemas/BucketSeedValue'
+          type: array
+      required:
+      - buckets
+      - shareClassShortCode
+      type: object
+    BucketSetClassSeedRequest:
+      additionalProperties: false
+      description: One share class's bucket values to seed.
+      example:
+        shareClassShortCode: shareClassShortCode
+        buckets:
+        - absoluteValue: 0.8008281904610115
+          bucketId: bucketId
+          perUnitValue: 6.027456183070403
+        - absoluteValue: 0.8008281904610115
+          bucketId: bucketId
+          perUnitValue: 6.027456183070403
+      properties:
+        shareClassShortCode:
+          description: The short code of the seeded share class.
+          maxLength: 64
+          minLength: 1
+          type: string
+        buckets:
+          description: "The seeded buckets of the share class. Only the bucket set's\
+            \ flow buckets (dealing, P&L and fees) accumulate, so only they can be\
+            \ seeded."
+          items:
+            $ref: '#/components/schemas/BucketSeedValueRequest'
+          type: array
+      required:
+      - buckets
+      - shareClassShortCode
+      type: object
     BucketSetDefinition:
       additionalProperties: false
       example:
@@ -204040,6 +204342,7 @@ components:
         \ via\r\nthe apportionment results."
       example:
         isApportionment: true
+        isSeeded: true
         bucketSetCode: bucketSetCode
         nodes:
         - sharesInIssue: 4.459605034958679
@@ -204161,6 +204464,12 @@ components:
             \ results for it. Its values then hold the whole history, and its previous\
             \ cumulative values are zero. False otherwise."
           type: boolean
+        isSeeded:
+          description: Set to True if this bucket set's flow bucket values at this
+            valuation point are the seed set on this variant of the valuation point
+            rather than its journal entry lines. The next valuation point opens from
+            them. False otherwise.
+          type: boolean
       required:
       - bucketSetCode
       - isApportionment
@@ -204268,6 +204577,86 @@ components:
       - cumulativeValue
       - previousCumulativeValue
       - value
+      type: object
+    BucketSetSeed:
+      additionalProperties: false
+      description: The closing balances seeded for a bucket set on a valuation point.
+      example:
+        bucketSetCode: bucketSetCode
+        classSeeds:
+        - shareClassShortCode: shareClassShortCode
+          buckets:
+          - absoluteValue: 1.4658129805029452
+            bucketId: bucketId
+            perUnitValue: 5.962133916683182
+          - absoluteValue: 1.4658129805029452
+            bucketId: bucketId
+            perUnitValue: 5.962133916683182
+        - shareClassShortCode: shareClassShortCode
+          buckets:
+          - absoluteValue: 1.4658129805029452
+            bucketId: bucketId
+            perUnitValue: 5.962133916683182
+          - absoluteValue: 1.4658129805029452
+            bucketId: bucketId
+            perUnitValue: 5.962133916683182
+      properties:
+        bucketSetCode:
+          description: The code of the seeded bucket set on the fund configuration.
+          minLength: 1
+          type: string
+        classSeeds:
+          description: "The bucket set's seeded closing balances at the valuation\
+            \ point, per share class. They replace everything the bucket set holds\
+            \ up to and including the valuation point. A share class or bucket not\
+            \ listed is zero."
+          items:
+            $ref: '#/components/schemas/BucketSetClassSeed'
+          type: array
+      required:
+      - bucketSetCode
+      - classSeeds
+      type: object
+    BucketSetSeedRequest:
+      additionalProperties: false
+      description: The closing balances to seed for a bucket set on an estimate valuation
+        point.
+      example:
+        bucketSetCode: bucketSetCode
+        classSeeds:
+        - shareClassShortCode: shareClassShortCode
+          buckets:
+          - absoluteValue: 0.8008281904610115
+            bucketId: bucketId
+            perUnitValue: 6.027456183070403
+          - absoluteValue: 0.8008281904610115
+            bucketId: bucketId
+            perUnitValue: 6.027456183070403
+        - shareClassShortCode: shareClassShortCode
+          buckets:
+          - absoluteValue: 0.8008281904610115
+            bucketId: bucketId
+            perUnitValue: 6.027456183070403
+          - absoluteValue: 0.8008281904610115
+            bucketId: bucketId
+            perUnitValue: 6.027456183070403
+      properties:
+        bucketSetCode:
+          description: The code of the bucket set on the fund configuration to seed.
+          maxLength: 64
+          minLength: 1
+          type: string
+        classSeeds:
+          description: "The bucket set's closing balances at the valuation point,\
+            \ per share class. They replace everything the bucket set holds up to\
+            \ and including the valuation point. A share class or bucket left out\
+            \ is zero."
+          items:
+            $ref: '#/components/schemas/BucketSetClassSeedRequest'
+          type: array
+      required:
+      - bucketSetCode
+      - classSeeds
       type: object
     BucketSetShareClassDetails:
       additionalProperties: false
@@ -207617,6 +208006,13 @@ components:
               \ a line whose drawdowns were booked against the stored funded balance\
               \ rather than paid-in capital. Used on the 'In' side only; must not\
               \ be negative."
+            format: double
+            nullable: true
+            type: number
+          excessCapitalReturnedAmount:
+            description: The cumulative excess capital returned that the destination
+              line takes over from the source line. Used on the 'In' side only; must
+              not be negative.
             format: double
             nullable: true
             type: number
@@ -225491,6 +225887,43 @@ components:
       description: A definition for the period you wish to close.
       example:
         applyClearDown: true
+        bucketSetSeeds:
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
         variant: variant
         name: name
         effectiveAt: 2000-01-23T04:56:07.000+00:00
@@ -225575,6 +226008,18 @@ components:
             and want the InclusionDate property values to be used to determine whether
             items should be automatically included in the post close activities.
           type: boolean
+        bucketSetSeeds:
+          description: "Defaults to null. The closing balances to seed for bucket\
+            \ sets at this estimate valuation point, at most one per bucket set. While\
+            \ the valuation point is an estimate, each seeded bucket set's flow bucket\
+            \ values are its seed; finalising the valuation point stores them, and\
+            \ the next valuation point opens from them. A bucket set can only be seeded\
+            \ when the previous final valuation point has no values for it. The seed\
+            \ is trusted input: it is not reconciled to the share class NAVs."
+          items:
+            $ref: '#/components/schemas/BucketSetSeedRequest'
+          nullable: true
+          type: array
       required:
       - effectiveAt
       - valuationPointCode
@@ -229712,8 +230157,8 @@ components:
           type: string
         resultId:
           description: "Unique, stable identifier for this result, scoped to the check\
-            \ definition, ruleset, rule and breaching\r\nentity. Treat as opaque —\
-            \ composition varies by entityType."
+            \ definition, result type, ruleset, rule and\r\nbreaching entity. Treat\
+            \ as opaque — composition varies by entityType."
           nullable: true
           type: string
         portfolioHolding:
@@ -238481,8 +238926,7 @@ components:
           type: string
         definitionType:
           description: "What this definition reconciles, and so which shape of details\
-            \ it carries. PortfolioContents and External are supported; LusidEntity\
-            \ is not yet. Available values: PortfolioContents, LusidEntity, External."
+            \ it carries. Available values: PortfolioContents, LusidEntity, External."
           minLength: 1
           type: string
       required:
@@ -243838,6 +244282,7 @@ components:
       additionalProperties: false
       description: A Fund entity.
       example:
+        instrumentScope: instrumentScope
         displayName: displayName
         yearEndDate:
           month: 7
@@ -244476,6 +244921,15 @@ components:
           description: "Whether to create instruments for the Fund's share classes,\
             \ series, or partner classes upon creation. Defaults to false."
           type: boolean
+        instrumentScope:
+          description: The scope in which the instruments are created when CreateInstrument
+            is true. Defaults to the default instrument scope. Legacy share class
+            instruments are resolved in ShareClassInstrumentScopes instead.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
         allocationGroups:
           description: An optional list of Allocation Group definitions for the Fund.
           items:
@@ -245787,6 +246241,11 @@ components:
           - reason: reason
             capability: capability
             setting: setting
+          allocationBases:
+          - character: character
+            basis: basis
+          - character: character
+            basis: basis
         links:
         - method: method
           description: description
@@ -246196,6 +246655,11 @@ components:
           - reason: reason
             capability: capability
             setting: setting
+          allocationBases:
+          - character: character
+            basis: basis
+          - character: character
+            basis: basis
         closings:
         - closingId: closingId
           description: description
@@ -246319,6 +246783,7 @@ components:
       description: The request used to create a Fund.
       example:
         code: code
+        instrumentScope: instrumentScope
         displayName: displayName
         reportingPrices:
         - source: source
@@ -246783,6 +247248,15 @@ components:
           description: "Whether to create instruments for the Fund's share classes,\
             \ series, or partner classes upon creation. Defaults to false."
           type: boolean
+        instrumentScope:
+          description: The scope in which the instruments are created when CreateInstrument
+            is true. Defaults to the default instrument scope. Legacy share class
+            instruments are resolved in ShareClassInstrumentScopes instead.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
         shareClasses:
           description: An optional list of Share Class definitions for the Fund.
           items:
@@ -247752,6 +248226,15 @@ components:
         \ and its capital balances at an effective date."
       example:
         commitmentLineId: commitmentLineId
+        commitmentCurrency: commitmentCurrency
+        displayName: displayName
+        partnerRole: partnerRole
+        shareOfCommitments: 3.616076749251911
+        totals:
+          partnerCount: 4
+          committedByCurrency:
+            key: 2.027123023002322
+        registerRole: registerRole
         balances:
           committed: 0.8008281904610115
           uncalledCommitment: 6.027456183070403
@@ -247764,16 +248247,8 @@ components:
         portfolioId:
           code: code
           scope: scope
-        commitmentCurrency: commitmentCurrency
-        displayName: displayName
         isVehicle: true
-        partnerRole: partnerRole
         investorRecordId: investorRecordId
-        shareOfCommitments: 3.616076749251911
-        totals:
-          partnerCount: 4
-          committedByCurrency:
-            key: 2.027123023002322
         admittedOn: 2000-01-23T04:56:07.000+00:00
         lusidInstrumentId: lusidInstrumentId
       properties:
@@ -247802,8 +248277,14 @@ components:
             fund) rather than an end investor.
           type: boolean
         partnerRole:
+          description: "The role the partner plays in the partnership. Available values:\
+            \ LimitedPartner (the default), GeneralPartner, GPAffiliate, Employee,\
+            \ CarryVehicle."
+          minLength: 1
+          type: string
+        registerRole:
           description: "The role of the register line. Available values: GPRegister,\
-            \ LPInvestment."
+            \ LPInvestment (the default)."
           minLength: 1
           type: string
         commitmentCurrency:
@@ -247834,6 +248315,7 @@ components:
       - lusidInstrumentId
       - partnerRole
       - portfolioId
+      - registerRole
       - shareOfCommitments
       - totals
       type: object
@@ -248627,7 +249109,8 @@ components:
         - navTypeCodes
         - navTypeCodes
         funds:
-        - displayName: displayName
+        - instrumentScope: instrumentScope
+          displayName: displayName
           yearEndDate:
             month: 7
             day: 5
@@ -249158,7 +249641,8 @@ components:
             pricingBasis: pricingBasis
             status: status
           createInstrument: true
-        - displayName: displayName
+        - instrumentScope: instrumentScope
+          displayName: displayName
           yearEndDate:
             month: 7
             day: 5
@@ -250161,12 +250645,13 @@ components:
         allocationBasis:
           $ref: '#/components/schemas/FundStructureAllocationBasis'
         pnlFlowMode:
-          description: "How profit and loss reaches this member from the members it\
-            \ holds. EquityPickup (the default) revalues the position in each held\
-            \ member; BucketFlowThrough receives one line per economic bucket, tagged\
-            \ with its origin; TransactionFlowThrough receives every line, tagged\
-            \ with its origin and path. Available values: EquityPickup, BucketFlowThrough,\
-            \ TransactionFlowThrough."
+          description: "How this member's profit and loss reaches the member that\
+            \ holds it. Set on the held member, not on the holder: it has no effect\
+            \ on a member no edge holds. EquityPickup (the default) leaves the holder\
+            \ revaluing its position in this member; BucketFlowThrough passes the\
+            \ holder one line per economic bucket, tagged with its origin; TransactionFlowThrough\
+            \ passes the holder every line, tagged with its origin and path. Available\
+            \ values: EquityPickup, BucketFlowThrough, TransactionFlowThrough."
           nullable: true
           type: string
         allocationMapId:
@@ -258117,12 +258602,16 @@ components:
         holdingPropertyKey:
           description: "The running balance on the holding to adjust. Allowed values:\
             \ 'CommittedCapital', 'UncalledCommitment', 'PaidInCapital', 'ReturnedCapital',\
-            \ 'RecallableCapital', 'NonRecallableCapital', 'FundedCapital' and 'UnfundedCapital'.\
-            \ 'UnfundedCapital' is a deprecated alias of 'UncalledCommitment'; 'FundedCapital'\
-            \ is served as PaidInCapital less ReturnedCapital and new configuration\
-            \ should target those two instead. Available values: CommittedCapital,\
-            \ FundedCapital, UnfundedCapital, RecallableCapital, NonRecallableCapital,\
-            \ PaidInCapital, ReturnedCapital, UncalledCommitment."
+            \ 'RecallableCapital', 'NonRecallableCapital', 'ExcessCapitalReturned',\
+            \ 'FundedCapital' and 'UnfundedCapital'. 'ExcessCapitalReturned' is the\
+            \ cumulative excess capital the fund has handed back, kept separately\
+            \ because a return of excess lowers PaidInCapital and restores UncalledCommitment\
+            \ at the same time. 'UnfundedCapital' is a deprecated alias of 'UncalledCommitment';\
+            \ 'FundedCapital' is served as PaidInCapital less ReturnedCapital and\
+            \ new configuration should target those two instead. Available values:\
+            \ CommittedCapital, FundedCapital, UnfundedCapital, RecallableCapital,\
+            \ NonRecallableCapital, PaidInCapital, ReturnedCapital, UncalledCommitment,\
+            \ ExcessCapitalReturned."
           minLength: 1
           type: string
         source:
@@ -271890,6 +272379,47 @@ components:
             external identifiers.
           nullable: true
           type: string
+      type: object
+    LusidEntityRecDefinitionDetails:
+      additionalProperties: false
+      description: "A definition that reconciles one type of LUSID entity. A filter\
+        \ selects the population of each side, and a single\r\nmatching ruleset of\
+        \ that entity type drives the definition."
+      properties:
+        entityType:
+          description: "The type of LUSID entity to reconcile, which is also the rec\
+            \ type of the results. Supported types: Instrument. Must equal the reconciliationType\
+            \ of the matching ruleset. Available values: Holding, CashHolding, Valuation,\
+            \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument."
+          minLength: 1
+          type: string
+        matchingRulesetId:
+          $ref: '#/components/schemas/ResourceId'
+        leftFilter:
+          description: "Optional filter that selects the population of the left side,\
+            \ e.g. \"scope eq 'default'\". It resolves against the left side entity\
+            \ fields. Null reads the whole population of the side."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          type: string
+        rightFilter:
+          description: Optional filter that selects the population of the right side.
+            It resolves against the right side entity fields. Null reads the whole
+            population of the side.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          type: string
+        definitionType:
+          description: "What this definition reconciles, and so which shape of details\
+            \ it carries. Available values: PortfolioContents, LusidEntity, External."
+          minLength: 1
+          type: string
+      required:
+      - definitionType
+      - entityType
+      - matchingRulesetId
       type: object
     LusidEntityResult:
       additionalProperties: false
@@ -289115,7 +289645,8 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - displayName: displayName
+        - instrumentScope: instrumentScope
+          displayName: displayName
           yearEndDate:
             month: 7
             day: 5
@@ -289646,7 +290177,8 @@ components:
             pricingBasis: pricingBasis
             status: status
           createInstrument: true
-        - displayName: displayName
+        - instrumentScope: instrumentScope
+          displayName: displayName
           yearEndDate:
             month: 7
             day: 5
@@ -290641,6 +291173,11 @@ components:
             - reason: reason
               capability: capability
               setting: setting
+            allocationBases:
+            - character: character
+              basis: basis
+            - character: character
+              basis: basis
           links:
           - method: method
             description: description
@@ -290905,6 +291442,11 @@ components:
             - reason: reason
               capability: capability
               setting: setting
+            allocationBases:
+            - character: character
+              basis: basis
+            - character: character
+              basis: basis
           links:
           - method: method
             description: description
@@ -290990,6 +291532,15 @@ components:
         nextPage: nextPage
         values:
         - commitmentLineId: commitmentLineId
+          commitmentCurrency: commitmentCurrency
+          displayName: displayName
+          partnerRole: partnerRole
+          shareOfCommitments: 3.616076749251911
+          totals:
+            partnerCount: 4
+            committedByCurrency:
+              key: 2.027123023002322
+          registerRole: registerRole
           balances:
             committed: 0.8008281904610115
             uncalledCommitment: 6.027456183070403
@@ -291002,19 +291553,20 @@ components:
           portfolioId:
             code: code
             scope: scope
-          commitmentCurrency: commitmentCurrency
-          displayName: displayName
           isVehicle: true
-          partnerRole: partnerRole
           investorRecordId: investorRecordId
-          shareOfCommitments: 3.616076749251911
-          totals:
-            partnerCount: 4
-            committedByCurrency:
-              key: 2.027123023002322
           admittedOn: 2000-01-23T04:56:07.000+00:00
           lusidInstrumentId: lusidInstrumentId
         - commitmentLineId: commitmentLineId
+          commitmentCurrency: commitmentCurrency
+          displayName: displayName
+          partnerRole: partnerRole
+          shareOfCommitments: 3.616076749251911
+          totals:
+            partnerCount: 4
+            committedByCurrency:
+              key: 2.027123023002322
+          registerRole: registerRole
           balances:
             committed: 0.8008281904610115
             uncalledCommitment: 6.027456183070403
@@ -291027,16 +291579,8 @@ components:
           portfolioId:
             code: code
             scope: scope
-          commitmentCurrency: commitmentCurrency
-          displayName: displayName
           isVehicle: true
-          partnerRole: partnerRole
           investorRecordId: investorRecordId
-          shareOfCommitments: 3.616076749251911
-          totals:
-            partnerCount: 4
-            committedByCurrency:
-              key: 2.027123023002322
           admittedOn: 2000-01-23T04:56:07.000+00:00
           lusidInstrumentId: lusidInstrumentId
         links:
@@ -291181,7 +291725,8 @@ components:
           - navTypeCodes
           - navTypeCodes
           funds:
-          - displayName: displayName
+          - instrumentScope: instrumentScope
+            displayName: displayName
             yearEndDate:
               month: 7
               day: 5
@@ -291712,7 +292257,8 @@ components:
               pricingBasis: pricingBasis
               status: status
             createInstrument: true
-          - displayName: displayName
+          - instrumentScope: instrumentScope
+            displayName: displayName
             yearEndDate:
               month: 7
               day: 5
@@ -292380,7 +292926,8 @@ components:
           - navTypeCodes
           - navTypeCodes
           funds:
-          - displayName: displayName
+          - instrumentScope: instrumentScope
+            displayName: displayName
             yearEndDate:
               month: 7
               day: 5
@@ -292911,7 +293458,8 @@ components:
               pricingBasis: pricingBasis
               status: status
             createInstrument: true
-          - displayName: displayName
+          - instrumentScope: instrumentScope
+            displayName: displayName
             yearEndDate:
               month: 7
               day: 5
@@ -303386,6 +303934,11 @@ components:
             preserveTaxLotStructure: true
             displayName: displayName
           scope: scope
+          warnings:
+          - entityId: entityId
+            message: message
+          - entityId: entityId
+            message: message
           description: description
           links:
           - method: method
@@ -303454,6 +304007,11 @@ components:
             preserveTaxLotStructure: true
             displayName: displayName
           scope: scope
+          warnings:
+          - entityId: entityId
+            message: message
+          - entityId: entityId
+            message: message
           description: description
           links:
           - method: method
@@ -304195,6 +304753,43 @@ components:
           type: type
           valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
           effectiveTo: 2000-01-23T04:56:07.000+00:00
+          bucketSetSeeds:
+          - bucketSetCode: bucketSetCode
+            classSeeds:
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+          - bucketSetCode: bucketSetCode
+            classSeeds:
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
           diaryEntryVariant: diaryEntryVariant
           links:
           - method: method
@@ -304234,6 +304829,43 @@ components:
           type: type
           valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
           effectiveTo: 2000-01-23T04:56:07.000+00:00
+          bucketSetSeeds:
+          - bucketSetCode: bucketSetCode
+            classSeeds:
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+          - bucketSetCode: bucketSetCode
+            classSeeds:
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+            - shareClassShortCode: shareClassShortCode
+              buckets:
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
+              - absoluteValue: 1.4658129805029452
+                bucketId: bucketId
+                perUnitValue: 5.962133916683182
           diaryEntryVariant: diaryEntryVariant
           links:
           - method: method
@@ -306122,6 +306754,11 @@ components:
         - reason: reason
           capability: capability
           setting: setting
+        allocationBases:
+        - character: character
+          basis: basis
+        - character: character
+          basis: basis
       properties:
         enabled:
           type: boolean
@@ -306153,6 +306790,11 @@ components:
           type: object
         presentation:
           $ref: '#/components/schemas/PresentationConfiguration'
+        allocationBases:
+          items:
+            $ref: '#/components/schemas/AllocationBasisRule'
+          nullable: true
+          type: array
       required:
       - enabled
       type: object
@@ -306167,9 +306809,10 @@ components:
         configPackScope: configPackScope
       properties:
         unallocatedIncomeSummary:
-          description: The balance on the income summary account over the valuation
-            point's period that has not yet been allocated to the partners. Must be
-            zero before the valuation point can be finalised.
+          description: "The profit and loss of the valuation point's period that has\
+            \ not yet been allocated to the partners: what the period's income, gain\
+            \ and expense lines would pool, less what the partner allocation has posted\
+            \ for the period. Must be zero before the valuation point can be finalised."
           format: double
           type: number
         configPackScope:
@@ -311018,8 +311661,7 @@ components:
           type: array
         definitionType:
           description: "What this definition reconciles, and so which shape of details\
-            \ it carries. PortfolioContents and External are supported; LusidEntity\
-            \ is not yet. Available values: PortfolioContents, LusidEntity, External."
+            \ it carries. Available values: PortfolioContents, LusidEntity, External."
           minLength: 1
           type: string
       required:
@@ -322062,18 +322704,19 @@ components:
       discriminator:
         mapping:
           PortfolioContents: '#/components/schemas/PortfolioContentsRecDefinitionDetails'
+          LusidEntity: '#/components/schemas/LusidEntityRecDefinitionDetails'
           External: '#/components/schemas/ExternalRecDefinitionDetails'
         propertyName: definitionType
       example:
         definitionType: definitionType
       oneOf:
       - $ref: '#/components/schemas/ExternalRecDefinitionDetails'
+      - $ref: '#/components/schemas/LusidEntityRecDefinitionDetails'
       - $ref: '#/components/schemas/PortfolioContentsRecDefinitionDetails'
       properties:
         definitionType:
           description: "What this definition reconciles, and so which shape of details\
-            \ it carries. PortfolioContents and External are supported; LusidEntity\
-            \ is not yet. Available values: PortfolioContents, LusidEntity, External."
+            \ it carries. Available values: PortfolioContents, LusidEntity, External."
           minLength: 1
           type: string
       required:
@@ -376366,6 +377009,11 @@ components:
           preserveTaxLotStructure: true
           displayName: displayName
         scope: scope
+        warnings:
+        - entityId: entityId
+          message: message
+        - entityId: entityId
+          message: message
         description: description
         links:
         - method: method
@@ -376398,6 +377046,11 @@ components:
             to be created.
           items:
             $ref: '#/components/schemas/ComponentTransaction'
+          type: array
+        warnings:
+          items:
+            $ref: '#/components/schemas/Warning'
+          nullable: true
           type: array
         links:
           items:
@@ -383564,6 +384217,43 @@ components:
         pricingMethodologyOverride:
           reason: reason
           decision: decision
+        bucketSetSeeds:
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
+            - absoluteValue: 0.8008281904610115
+              bucketId: bucketId
+              perUnitValue: 6.027456183070403
         variant: variant
         name: name
         valuationPointCode: valuationPointCode
@@ -383627,6 +384317,20 @@ components:
           type: boolean
         pricingMethodologyOverride:
           $ref: '#/components/schemas/PricingMethodologyOverrideRequest'
+        bucketSetSeeds:
+          description: "Defaults to null. The closing balances to seed for bucket\
+            \ sets at this estimate valuation point, at most one per bucket set. They\
+            \ replace the seeds this variant of the valuation point had, and none\
+            \ removes them. Null leaves them as they are. While the valuation point\
+            \ is an estimate, each seeded bucket set's flow bucket values are its\
+            \ seed; finalising the valuation point stores them, and the next valuation\
+            \ point opens from them. A bucket set can only be seeded when the previous\
+            \ final valuation point has no values for it. The seed is trusted input:\
+            \ it is not reconciled to the share class NAVs."
+          items:
+            $ref: '#/components/schemas/BucketSetSeedRequest'
+          nullable: true
+          type: array
       required:
       - valuationPointCode
       type: object
@@ -391662,6 +392366,43 @@ components:
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
         applyClearDown: true
+        bucketSetSeeds:
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
         variant: variant
         name: name
         valuationAsAt: 2000-01-23T04:56:07.000+00:00
@@ -391763,6 +392504,13 @@ components:
           $ref: '#/components/schemas/Version'
         stagedModifications:
           $ref: '#/components/schemas/StagedModificationsInfo'
+        bucketSetSeeds:
+          description: The bucket set seeds set on this variant of the Valuation Point.
+            Null when it has none.
+          items:
+            $ref: '#/components/schemas/BucketSetSeed'
+          nullable: true
+          type: array
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -391895,6 +392643,7 @@ components:
           pricingBasis: pricingBasis
         bucketSetResults:
         - isApportionment: true
+          isSeeded: true
           bucketSetCode: bucketSetCode
           nodes:
           - sharesInIssue: 4.459605034958679
@@ -391990,6 +392739,7 @@ components:
           displayName: displayName
           isBackfilled: true
         - isApportionment: true
+          isSeeded: true
           bucketSetCode: bucketSetCode
           nodes:
           - sharesInIssue: 4.459605034958679
@@ -392408,6 +393158,43 @@ components:
             key: details
           type: type
           message: message
+        bucketSetSeeds:
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
         links:
         - method: method
           description: description
@@ -392553,6 +393340,13 @@ components:
             \ none."
           items:
             $ref: '#/components/schemas/ValuationPointDiagnostic'
+          nullable: true
+          type: array
+        bucketSetSeeds:
+          description: "The bucket set seeds set on the Valuation Point, when the\
+            \ request resolved to the Valuation Point itself. Null when it has none."
+          items:
+            $ref: '#/components/schemas/BucketSetSeed'
           nullable: true
           type: array
         links:
@@ -393172,6 +393966,43 @@ components:
         type: type
         valuationsAsAtOverride: 2000-01-23T04:56:07.000+00:00
         effectiveTo: 2000-01-23T04:56:07.000+00:00
+        bucketSetSeeds:
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+        - bucketSetCode: bucketSetCode
+          classSeeds:
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+          - shareClassShortCode: shareClassShortCode
+            buckets:
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
+            - absoluteValue: 1.4658129805029452
+              bucketId: bucketId
+              perUnitValue: 5.962133916683182
         diaryEntryVariant: diaryEntryVariant
         links:
         - method: method
@@ -393273,6 +394104,13 @@ components:
           description: The Fee properties. These will be from the 'Fee' domain.
           nullable: true
           type: object
+        bucketSetSeeds:
+          description: The bucket set seeds set on this variant of the Valuation Point.
+            Null when it has none.
+          items:
+            $ref: '#/components/schemas/BucketSetSeed'
+          nullable: true
+          type: array
         links:
           items:
             $ref: '#/components/schemas/Link'

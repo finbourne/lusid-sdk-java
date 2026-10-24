@@ -150,6 +150,10 @@ public class Fund {
   @SerializedName(SERIALIZED_NAME_CREATE_INSTRUMENT)
   private Boolean createInstrument;
 
+  public static final String SERIALIZED_NAME_INSTRUMENT_SCOPE = "instrumentScope";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPE)
+  private String instrumentScope;
+
   public static final String SERIALIZED_NAME_ALLOCATION_GROUPS = "allocationGroups";
   @SerializedName(SERIALIZED_NAME_ALLOCATION_GROUPS)
   private List<AllocationGroup> allocationGroups;
@@ -639,6 +643,27 @@ public class Fund {
   }
 
 
+  public Fund instrumentScope(String instrumentScope) {
+    
+    this.instrumentScope = instrumentScope;
+    return this;
+  }
+
+   /**
+   * The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead.
+   * @return instrumentScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getInstrumentScope() {
+    return instrumentScope;
+  }
+
+
+  public void setInstrumentScope(String instrumentScope) {
+    this.instrumentScope = instrumentScope;
+  }
+
+
   public Fund allocationGroups(List<AllocationGroup> allocationGroups) {
     
     this.allocationGroups = allocationGroups;
@@ -869,6 +894,7 @@ public class Fund {
         Objects.equals(this.additionalNavTypes, fund.additionalNavTypes) &&
         Objects.equals(this.properties, fund.properties) &&
         Objects.equals(this.createInstrument, fund.createInstrument) &&
+        Objects.equals(this.instrumentScope, fund.instrumentScope) &&
         Objects.equals(this.allocationGroups, fund.allocationGroups) &&
         Objects.equals(this.shareClasses, fund.shareClasses) &&
         Objects.equals(this.fundInstrument, fund.fundInstrument) &&
@@ -885,7 +911,7 @@ public class Fund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shortCode, aborId, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, allocationGroups, shareClasses, fundInstrument, pricingMethodology, reportingPrices, version, whtParameters, links);
+    return Objects.hash(href, id, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shortCode, aborId, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, yearEndDate, primaryNavType, additionalNavTypes, properties, createInstrument, instrumentScope, allocationGroups, shareClasses, fundInstrument, pricingMethodology, reportingPrices, version, whtParameters, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -919,6 +945,7 @@ public class Fund {
     sb.append("    additionalNavTypes: ").append(toIndentedString(additionalNavTypes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    createInstrument: ").append(toIndentedString(createInstrument)).append("\n");
+    sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
     sb.append("    allocationGroups: ").append(toIndentedString(allocationGroups)).append("\n");
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("    fundInstrument: ").append(toIndentedString(fundInstrument)).append("\n");
@@ -969,6 +996,7 @@ public class Fund {
     openapiFields.add("additionalNavTypes");
     openapiFields.add("properties");
     openapiFields.add("createInstrument");
+    openapiFields.add("instrumentScope");
     openapiFields.add("allocationGroups");
     openapiFields.add("shareClasses");
     openapiFields.add("fundInstrument");
@@ -1088,6 +1116,9 @@ public class Fund {
             NavType.validateJsonElement(jsonArrayadditionalNavTypes.get(i));
           };
         }
+      }
+      if ((jsonObj.get("instrumentScope") != null && !jsonObj.get("instrumentScope").isJsonNull()) && !jsonObj.get("instrumentScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
       }
       if (jsonObj.get("allocationGroups") != null && !jsonObj.get("allocationGroups").isJsonNull()) {
         JsonArray jsonArrayallocationGroups = jsonObj.getAsJsonArray("allocationGroups");

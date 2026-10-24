@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **additionalNavTypes** | [**List&lt;NavTypeDefinition&gt;**](NavTypeDefinition.md) | The definitions for any additional NAVs on the Fund. | [optional] [default to List<NavTypeDefinition>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund. | [optional] [default to Map<String, Property>]
 **createInstrument** | **Boolean** | Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false. | [optional] [default to Boolean]
+**instrumentScope** | **String** | The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead. | [optional] [default to String]
 **shareClasses** | [**List&lt;ShareClassDefinition&gt;**](ShareClassDefinition.md) | An optional list of Share Class definitions for the Fund. | [optional] [default to List<ShareClassDefinition>]
 **pricingMethodology** | [**PricingMethodology**](PricingMethodology.md) |  | [optional] [default to PricingMethodology]
 **reportingPrices** | [**List&lt;ReportingPrice&gt;**](ReportingPrice.md) | Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices. | [optional] [default to List<ReportingPrice>]
@@ -52,6 +53,7 @@ NavTypeDefinition PrimaryNavType = new NavTypeDefinition();
 @jakarta.annotation.Nullable List<NavTypeDefinition> AdditionalNavTypes = new List<NavTypeDefinition>();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Boolean CreateInstrument = true;
+@jakarta.annotation.Nullable String InstrumentScope = "example InstrumentScope";
 @jakarta.annotation.Nullable List<ShareClassDefinition> ShareClasses = new List<ShareClassDefinition>();
 PricingMethodology PricingMethodology = new PricingMethodology();
 @jakarta.annotation.Nullable List<ReportingPrice> ReportingPrices = new List<ReportingPrice>();
@@ -77,6 +79,7 @@ FundDefinitionRequest fundDefinitionRequestInstance = new FundDefinitionRequest(
     .AdditionalNavTypes(AdditionalNavTypes)
     .Properties(Properties)
     .CreateInstrument(CreateInstrument)
+    .InstrumentScope(InstrumentScope)
     .ShareClasses(ShareClasses)
     .PricingMethodology(PricingMethodology)
     .ReportingPrices(ReportingPrices)

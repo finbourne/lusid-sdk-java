@@ -71,7 +71,7 @@ public class PartnershipAccountingValuationPointData {
   }
 
    /**
-   * The balance on the income summary account over the valuation point&#39;s period that has not yet been allocated to the partners. Must be zero before the valuation point can be finalised.
+   * The profit and loss of the valuation point&#39;s period that has not yet been allocated to the partners: what the period&#39;s income, gain and expense lines would pool, less what the partner allocation has posted for the period. Must be zero before the valuation point can be finalised.
    * @return unallocatedIncomeSummary
   **/
   @jakarta.annotation.Nonnull

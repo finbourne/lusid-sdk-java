@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **lusidInstrumentId** | **String** | The LUSID instrument identifier of the register line&#39;s capital-interest instrument. | [default to String]
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **isVehicle** | **Boolean** | Whether the partner is a vehicle (for example a feeder or parallel fund) rather than an end investor. | [default to Boolean]
-**partnerRole** | **String** | The role of the register line. Available values: GPRegister, LPInvestment. | [default to String]
+**partnerRole** | **String** | The role the partner plays in the partnership. Available values: LimitedPartner (the default), GeneralPartner, GPAffiliate, Employee, CarryVehicle. | [default to String]
+**registerRole** | **String** | The role of the register line. Available values: GPRegister, LPInvestment (the default). | [default to String]
 **commitmentCurrency** | **String** | The currency of the partner&#39;s commitment. | [default to String]
 **balances** | [**FundPartnerBalances**](FundPartnerBalances.md) |  | [default to FundPartnerBalances]
 **shareOfCommitments** | **java.math.BigDecimal** | The partner&#39;s committed capital as a decimal fraction of the fund&#39;s total commitments in the same commitment currency. | [default to java.math.BigDecimal]
@@ -31,6 +32,7 @@ String LusidInstrumentId = "example LusidInstrumentId";
 ResourceId PortfolioId = new ResourceId();
 Boolean IsVehicle = true;
 String PartnerRole = "example PartnerRole";
+String RegisterRole = "example RegisterRole";
 String CommitmentCurrency = "example CommitmentCurrency";
 FundPartnerBalances Balances = new FundPartnerBalances();
 java.math.BigDecimal ShareOfCommitments = new java.math.BigDecimal("100.00");
@@ -46,6 +48,7 @@ FundPartner fundPartnerInstance = new FundPartner()
     .PortfolioId(PortfolioId)
     .IsVehicle(IsVehicle)
     .PartnerRole(PartnerRole)
+    .RegisterRole(RegisterRole)
     .CommitmentCurrency(CommitmentCurrency)
     .Balances(Balances)
     .ShareOfCommitments(ShareOfCommitments)

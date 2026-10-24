@@ -136,6 +136,10 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_FUNDED_CAPITAL_AMOUNT)
   private java.math.BigDecimal fundedCapitalAmount;
 
+  public static final String SERIALIZED_NAME_EXCESS_CAPITAL_RETURNED_AMOUNT = "excessCapitalReturnedAmount";
+  @SerializedName(SERIALIZED_NAME_EXCESS_CAPITAL_RETURNED_AMOUNT)
+  private java.math.BigDecimal excessCapitalReturnedAmount;
+
   public CapitalInterestTransferEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -581,6 +585,27 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
 
+  public CapitalInterestTransferEvent excessCapitalReturnedAmount(java.math.BigDecimal excessCapitalReturnedAmount) {
+    
+    this.excessCapitalReturnedAmount = excessCapitalReturnedAmount;
+    return this;
+  }
+
+   /**
+   * The cumulative excess capital returned that the destination line takes over from the source line. Used on the &#39;In&#39; side only; must not be negative.
+   * @return excessCapitalReturnedAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getExcessCapitalReturnedAmount() {
+    return excessCapitalReturnedAmount;
+  }
+
+
+  public void setExcessCapitalReturnedAmount(java.math.BigDecimal excessCapitalReturnedAmount) {
+    this.excessCapitalReturnedAmount = excessCapitalReturnedAmount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -612,6 +637,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
         (this.recallableCapitalAmount.compareTo(capitalInterestTransferEvent.getRecallableCapitalAmount()) == 0) &&
         (this.nonRecallableCapitalAmount.compareTo(capitalInterestTransferEvent.getNonRecallableCapitalAmount()) == 0) &&
         (this.fundedCapitalAmount.compareTo(capitalInterestTransferEvent.getFundedCapitalAmount()) == 0) &&
+        (this.excessCapitalReturnedAmount.compareTo(capitalInterestTransferEvent.getExcessCapitalReturnedAmount()) == 0) &&
         super.equals(o);
   }
 
@@ -621,7 +647,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, direction, fraction, fromLineId, toLineId, mode, toPortfolioId, considerationAmount, considerationCurrency, considerationRecordOnly, reason, scope, dealId, taxTreatmentAcknowledged, committedCapitalAmount, calledCommitmentAmount, paidInCapitalAmount, returnedCapitalAmount, recallableCapitalAmount, nonRecallableCapitalAmount, fundedCapitalAmount, super.hashCode());
+    return Objects.hash(date, direction, fraction, fromLineId, toLineId, mode, toPortfolioId, considerationAmount, considerationCurrency, considerationRecordOnly, reason, scope, dealId, taxTreatmentAcknowledged, committedCapitalAmount, calledCommitmentAmount, paidInCapitalAmount, returnedCapitalAmount, recallableCapitalAmount, nonRecallableCapitalAmount, fundedCapitalAmount, excessCapitalReturnedAmount, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -657,6 +683,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
     sb.append("    recallableCapitalAmount: ").append(toIndentedString(recallableCapitalAmount)).append("\n");
     sb.append("    nonRecallableCapitalAmount: ").append(toIndentedString(nonRecallableCapitalAmount)).append("\n");
     sb.append("    fundedCapitalAmount: ").append(toIndentedString(fundedCapitalAmount)).append("\n");
+    sb.append("    excessCapitalReturnedAmount: ").append(toIndentedString(excessCapitalReturnedAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -701,6 +728,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
     openapiFields.add("recallableCapitalAmount");
     openapiFields.add("nonRecallableCapitalAmount");
     openapiFields.add("fundedCapitalAmount");
+    openapiFields.add("excessCapitalReturnedAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

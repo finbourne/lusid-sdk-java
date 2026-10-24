@@ -218,7 +218,7 @@ public class PortfolioContentsRecDefinitionDetails {
   }
 
    /**
-   * What this definition reconciles, and so which shape of details it carries. PortfolioContents and External are supported; LusidEntity is not yet. Available values: PortfolioContents, LusidEntity, External.
+   * What this definition reconciles, and so which shape of details it carries. Available values: PortfolioContents, LusidEntity, External.
    * @return definitionType
   **/
   @jakarta.annotation.Nonnull

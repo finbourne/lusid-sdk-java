@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **matchingRulesetId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **leftFilter** | **String** | Optional filter over the left dataset&#39;s rows, in the dataset&#39;s own grammar, e.g. \&quot;Values[custodian] eq &#39;something&#39;\&quot;. | [optional] [default to String]
 **rightFilter** | **String** | Optional filter over the right dataset&#39;s rows, in the dataset&#39;s own grammar. | [optional] [default to String]
-**definitionType** | **String** | What this definition reconciles, and so which shape of details it carries. PortfolioContents and External are supported; LusidEntity is not yet. Available values: PortfolioContents, LusidEntity, External. | [default to String]
+**definitionType** | **String** | What this definition reconciles, and so which shape of details it carries. Available values: PortfolioContents, LusidEntity, External. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.ExternalRecDefinitionDetails;

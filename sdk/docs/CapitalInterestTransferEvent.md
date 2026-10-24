@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **recallableCapitalAmount** | **java.math.BigDecimal** | The recallable capital received by the destination line. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
 **nonRecallableCapitalAmount** | **java.math.BigDecimal** | The non-recallable capital received by the destination line. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
 **fundedCapitalAmount** | **java.math.BigDecimal** | The funded capital received by the destination line, for a line whose drawdowns were booked against the stored funded balance rather than paid-in capital. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
+**excessCapitalReturnedAmount** | **java.math.BigDecimal** | The cumulative excess capital returned that the destination line takes over from the source line. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.CapitalInterestTransferEvent;
@@ -54,6 +55,7 @@ String ToLineId = "example ToLineId";
 @jakarta.annotation.Nullable java.math.BigDecimal RecallableCapitalAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal NonRecallableCapitalAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal FundedCapitalAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal ExcessCapitalReturnedAmount = new java.math.BigDecimal("100.00");
 
 
 CapitalInterestTransferEvent capitalInterestTransferEventInstance = new CapitalInterestTransferEvent()
@@ -77,7 +79,8 @@ CapitalInterestTransferEvent capitalInterestTransferEventInstance = new CapitalI
     .ReturnedCapitalAmount(ReturnedCapitalAmount)
     .RecallableCapitalAmount(RecallableCapitalAmount)
     .NonRecallableCapitalAmount(NonRecallableCapitalAmount)
-    .FundedCapitalAmount(FundedCapitalAmount);
+    .FundedCapitalAmount(FundedCapitalAmount)
+    .ExcessCapitalReturnedAmount(ExcessCapitalReturnedAmount);
 ```
 
 

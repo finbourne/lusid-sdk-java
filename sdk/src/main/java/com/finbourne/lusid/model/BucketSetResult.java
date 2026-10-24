@@ -73,6 +73,10 @@ public class BucketSetResult {
   @SerializedName(SERIALIZED_NAME_IS_BACKFILLED)
   private Boolean isBackfilled;
 
+  public static final String SERIALIZED_NAME_IS_SEEDED = "isSeeded";
+  @SerializedName(SERIALIZED_NAME_IS_SEEDED)
+  private Boolean isSeeded;
+
   public BucketSetResult() {
   }
 
@@ -189,6 +193,27 @@ public class BucketSetResult {
   }
 
 
+  public BucketSetResult isSeeded(Boolean isSeeded) {
+    
+    this.isSeeded = isSeeded;
+    return this;
+  }
+
+   /**
+   * Set to True if this bucket set&#39;s flow bucket values at this valuation point are the seed set on this variant of the valuation point rather than its journal entry lines. The next valuation point opens from them. False otherwise.
+   * @return isSeeded
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsSeeded() {
+    return isSeeded;
+  }
+
+
+  public void setIsSeeded(Boolean isSeeded) {
+    this.isSeeded = isSeeded;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -203,7 +228,8 @@ public class BucketSetResult {
         Objects.equals(this.isApportionment, bucketSetResult.isApportionment) &&
         Objects.equals(this.nodes, bucketSetResult.nodes) &&
         Objects.equals(this.displayName, bucketSetResult.displayName) &&
-        Objects.equals(this.isBackfilled, bucketSetResult.isBackfilled);
+        Objects.equals(this.isBackfilled, bucketSetResult.isBackfilled) &&
+        Objects.equals(this.isSeeded, bucketSetResult.isSeeded);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -212,7 +238,7 @@ public class BucketSetResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bucketSetCode, isApportionment, nodes, displayName, isBackfilled);
+    return Objects.hash(bucketSetCode, isApportionment, nodes, displayName, isBackfilled, isSeeded);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -231,6 +257,7 @@ public class BucketSetResult {
     sb.append("    nodes: ").append(toIndentedString(nodes)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    isBackfilled: ").append(toIndentedString(isBackfilled)).append("\n");
+    sb.append("    isSeeded: ").append(toIndentedString(isSeeded)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -258,6 +285,7 @@ public class BucketSetResult {
     openapiFields.add("nodes");
     openapiFields.add("displayName");
     openapiFields.add("isBackfilled");
+    openapiFields.add("isSeeded");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

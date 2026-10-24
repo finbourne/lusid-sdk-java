@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **additionalNavTypes** | [**List&lt;NavType&gt;**](NavType.md) | The definitions for any additional NAVs on the Fund. | [optional] [default to List<NavType>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund. | [optional] [default to Map<String, Property>]
 **createInstrument** | **Boolean** | Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false. | [optional] [default to Boolean]
+**instrumentScope** | **String** | The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead. | [optional] [default to String]
 **allocationGroups** | [**List&lt;AllocationGroup&gt;**](AllocationGroup.md) | An optional list of Allocation Group definitions for the Fund. | [optional] [default to List<AllocationGroup>]
 **shareClasses** | [**List&lt;ShareClass&gt;**](ShareClass.md) | An optional list of Share Class definitions for the Fund. | [optional] [default to List<ShareClass>]
 **fundInstrument** | [**FundInstrument**](FundInstrument.md) |  | [optional] [default to FundInstrument]
@@ -60,6 +61,7 @@ NavType PrimaryNavType = new NavType();
 @jakarta.annotation.Nullable List<NavType> AdditionalNavTypes = new List<NavType>();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 Boolean CreateInstrument = true;
+@jakarta.annotation.Nullable String InstrumentScope = "example InstrumentScope";
 @jakarta.annotation.Nullable List<AllocationGroup> AllocationGroups = new List<AllocationGroup>();
 @jakarta.annotation.Nullable List<ShareClass> ShareClasses = new List<ShareClass>();
 FundInstrument FundInstrument = new FundInstrument();
@@ -91,6 +93,7 @@ Fund fundInstance = new Fund()
     .AdditionalNavTypes(AdditionalNavTypes)
     .Properties(Properties)
     .CreateInstrument(CreateInstrument)
+    .InstrumentScope(InstrumentScope)
     .AllocationGroups(AllocationGroups)
     .ShareClasses(ShareClasses)
     .FundInstrument(FundInstrument)

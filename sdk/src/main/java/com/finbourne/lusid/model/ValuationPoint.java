@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.BucketSetSeed;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.PreviousValuationPoint;
 import com.finbourne.lusid.model.Property;
@@ -116,6 +117,10 @@ public class ValuationPoint {
   public static final String SERIALIZED_NAME_STAGED_MODIFICATIONS = "stagedModifications";
   @SerializedName(SERIALIZED_NAME_STAGED_MODIFICATIONS)
   private StagedModificationsInfo stagedModifications;
+
+  public static final String SERIALIZED_NAME_BUCKET_SET_SEEDS = "bucketSetSeeds";
+  @SerializedName(SERIALIZED_NAME_BUCKET_SET_SEEDS)
+  private List<BucketSetSeed> bucketSetSeeds;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -426,6 +431,35 @@ public class ValuationPoint {
   }
 
 
+  public ValuationPoint bucketSetSeeds(List<BucketSetSeed> bucketSetSeeds) {
+    
+    this.bucketSetSeeds = bucketSetSeeds;
+    return this;
+  }
+
+  public ValuationPoint addBucketSetSeedsItem(BucketSetSeed bucketSetSeedsItem) {
+    if (this.bucketSetSeeds == null) {
+      this.bucketSetSeeds = new ArrayList<>();
+    }
+    this.bucketSetSeeds.add(bucketSetSeedsItem);
+    return this;
+  }
+
+   /**
+   * The bucket set seeds set on this variant of the Valuation Point. Null when it has none.
+   * @return bucketSetSeeds
+  **/
+  @jakarta.annotation.Nullable
+  public List<BucketSetSeed> getBucketSetSeeds() {
+    return bucketSetSeeds;
+  }
+
+
+  public void setBucketSetSeeds(List<BucketSetSeed> bucketSetSeeds) {
+    this.bucketSetSeeds = bucketSetSeeds;
+  }
+
+
   public ValuationPoint links(List<Link> links) {
     
     this.links = links;
@@ -479,6 +513,7 @@ public class ValuationPoint {
         Objects.equals(this.properties, valuationPoint.properties) &&
         Objects.equals(this.version, valuationPoint.version) &&
         Objects.equals(this.stagedModifications, valuationPoint.stagedModifications) &&
+        Objects.equals(this.bucketSetSeeds, valuationPoint.bucketSetSeeds) &&
         Objects.equals(this.links, valuationPoint.links);
   }
 
@@ -488,7 +523,7 @@ public class ValuationPoint {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, valuationPointCode, variant, name, status, applyClearDown, effectiveAt, queryAsAt, holdingsAsAt, valuationAsAt, previous, properties, version, stagedModifications, links);
+    return Objects.hash(href, valuationPointCode, variant, name, status, applyClearDown, effectiveAt, queryAsAt, holdingsAsAt, valuationAsAt, previous, properties, version, stagedModifications, bucketSetSeeds, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -516,6 +551,7 @@ public class ValuationPoint {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
+    sb.append("    bucketSetSeeds: ").append(toIndentedString(bucketSetSeeds)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -553,6 +589,7 @@ public class ValuationPoint {
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("stagedModifications");
+    openapiFields.add("bucketSetSeeds");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -607,6 +644,20 @@ public class ValuationPoint {
       // validate the optional field `stagedModifications`
       if (jsonObj.get("stagedModifications") != null && !jsonObj.get("stagedModifications").isJsonNull()) {
         StagedModificationsInfo.validateJsonElement(jsonObj.get("stagedModifications"));
+      }
+      if (jsonObj.get("bucketSetSeeds") != null && !jsonObj.get("bucketSetSeeds").isJsonNull()) {
+        JsonArray jsonArraybucketSetSeeds = jsonObj.getAsJsonArray("bucketSetSeeds");
+        if (jsonArraybucketSetSeeds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("bucketSetSeeds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `bucketSetSeeds` to be an array in the JSON string but got `%s`", jsonObj.get("bucketSetSeeds").toString()));
+          }
+
+          // validate the optional field `bucketSetSeeds` (array)
+          for (int i = 0; i < jsonArraybucketSetSeeds.size(); i++) {
+            BucketSetSeed.validateJsonElement(jsonArraybucketSetSeeds.get(i));
+          };
+        }
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

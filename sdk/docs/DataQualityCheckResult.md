@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **lusidEntity** | [**LusidEntityResult**](LusidEntityResult.md) |  | [optional] [default to LusidEntityResult]
 **countRuleBreaches** | **Integer** | The count of rule breaches (1 for RuleBreached, multiple for RuleBreachesOverLimit) | [optional] [default to Integer]
 **errorDetail** | **String** | Error details (for RulesetInvalid, RuleInvalid) | [optional] [default to String]
-**resultId** | **String** | Unique, stable identifier for this result, scoped to the check definition, ruleset, rule and breaching  entity. Treat as opaque — composition varies by entityType. | [optional] [default to String]
+**resultId** | **String** | Unique, stable identifier for this result, scoped to the check definition, result type, ruleset, rule and  breaching entity. Treat as opaque — composition varies by entityType. | [optional] [default to String]
 **portfolioHolding** | [**PortfolioHoldingResult**](PortfolioHoldingResult.md) |  | [optional] [default to PortfolioHoldingResult]
 **portfolioTransaction** | [**PortfolioTransactionResult**](PortfolioTransactionResult.md) |  | [optional] [default to PortfolioTransactionResult]
 **structuredResultData** | [**StructuredResultDataResult**](StructuredResultDataResult.md) |  | [optional] [default to StructuredResultDataResult]

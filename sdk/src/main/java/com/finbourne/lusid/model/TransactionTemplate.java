@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.ComponentTransaction;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.Warning;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -73,6 +74,10 @@ public class TransactionTemplate {
   public static final String SERIALIZED_NAME_COMPONENT_TRANSACTIONS = "componentTransactions";
   @SerializedName(SERIALIZED_NAME_COMPONENT_TRANSACTIONS)
   private List<ComponentTransaction> componentTransactions = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<Warning> warnings;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -194,6 +199,35 @@ public class TransactionTemplate {
   }
 
 
+  public TransactionTemplate warnings(List<Warning> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public TransactionTemplate addWarningsItem(Warning warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<Warning> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<Warning> warnings) {
+    this.warnings = warnings;
+  }
+
+
   public TransactionTemplate links(List<Link> links) {
     
     this.links = links;
@@ -238,6 +272,7 @@ public class TransactionTemplate {
         Objects.equals(this.description, transactionTemplate.description) &&
         Objects.equals(this.scope, transactionTemplate.scope) &&
         Objects.equals(this.componentTransactions, transactionTemplate.componentTransactions) &&
+        Objects.equals(this.warnings, transactionTemplate.warnings) &&
         Objects.equals(this.links, transactionTemplate.links);
   }
 
@@ -247,7 +282,7 @@ public class TransactionTemplate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentType, instrumentEventType, description, scope, componentTransactions, links);
+    return Objects.hash(instrumentType, instrumentEventType, description, scope, componentTransactions, warnings, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -266,6 +301,7 @@ public class TransactionTemplate {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
     sb.append("    componentTransactions: ").append(toIndentedString(componentTransactions)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -294,6 +330,7 @@ public class TransactionTemplate {
     openapiFields.add("description");
     openapiFields.add("scope");
     openapiFields.add("componentTransactions");
+    openapiFields.add("warnings");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -347,6 +384,20 @@ public class TransactionTemplate {
       for (int i = 0; i < jsonArraycomponentTransactions.size(); i++) {
         ComponentTransaction.validateJsonElement(jsonArraycomponentTransactions.get(i));
       };
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            Warning.validateJsonElement(jsonArraywarnings.get(i));
+          };
+        }
+      }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         if (jsonArraylinks != null) {

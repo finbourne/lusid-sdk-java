@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **series** | [**SeriesConfiguration**](SeriesConfiguration.md) |  | [optional] [default to SeriesConfiguration]
 **effectiveCapabilities** | **Map&lt;String, String&gt;** | Derived on the way out; ignored on the way in. | [optional] [default to Map<String, String>]
 **presentation** | [**PresentationConfiguration**](PresentationConfiguration.md) |  | [optional] [default to PresentationConfiguration]
+**allocationBases** | [**List&lt;AllocationBasisRule&gt;**](AllocationBasisRule.md) |  | [optional] [default to List<AllocationBasisRule>]
 
 ```java
 import com.finbourne.lusid.model.PartnershipAccountingConfiguration;
@@ -29,6 +30,7 @@ ResourceId RegisterPortfolioGroup = new ResourceId();
 SeriesConfiguration Series = new SeriesConfiguration();
 @jakarta.annotation.Nullable Map<String, String> EffectiveCapabilities = new Map<String, String>();
 PresentationConfiguration Presentation = new PresentationConfiguration();
+@jakarta.annotation.Nullable List<AllocationBasisRule> AllocationBases = new List<AllocationBasisRule>();
 
 
 PartnershipAccountingConfiguration partnershipAccountingConfigurationInstance = new PartnershipAccountingConfiguration()
@@ -40,7 +42,8 @@ PartnershipAccountingConfiguration partnershipAccountingConfigurationInstance = 
     .CapabilityOverrides(CapabilityOverrides)
     .Series(Series)
     .EffectiveCapabilities(EffectiveCapabilities)
-    .Presentation(Presentation);
+    .Presentation(Presentation)
+    .AllocationBases(AllocationBases);
 ```
 
 

@@ -5,10 +5,11 @@ Base class for the part of a rec definition whose shape depends on what it recon
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**definitionType** | **String** | What this definition reconciles, and so which shape of details it carries. PortfolioContents and External are supported; LusidEntity is not yet. Available values: PortfolioContents, LusidEntity, External. | [default to String]
+**definitionType** | **String** | What this definition reconciles, and so which shape of details it carries. Available values: PortfolioContents, LusidEntity, External. | [default to String]
 **matchingRulesetId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
-**leftFilter** | **String** | Optional filter over the left dataset&#39;s rows, in the dataset&#39;s own grammar, e.g. \&quot;Values[custodian] eq &#39;something&#39;\&quot;. | [optional] [default to String]
-**rightFilter** | **String** | Optional filter over the right dataset&#39;s rows, in the dataset&#39;s own grammar. | [optional] [default to String]
+**leftFilter** | **String** | Optional filter that selects the population of the left side, e.g. \&quot;scope eq &#39;default&#39;\&quot;. It resolves against the left side entity fields. Null reads the whole population of the side. | [optional] [default to String]
+**rightFilter** | **String** | Optional filter that selects the population of the right side. It resolves against the right side entity fields. Null reads the whole population of the side. | [optional] [default to String]
+**entityType** | **String** | The type of LUSID entity to reconcile, which is also the rec type of the results. Supported types: Instrument. Must equal the reconciliationType of the matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. | [default to String]
 **leftPortfolioSources** | [**List&lt;RecDefSource&gt;**](RecDefSource.md) | The portfolios, portfolio groups and funds contributing to the left side. Empty when the left side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty. | [default to List<RecDefSource>]
 **rightPortfolioSources** | [**List&lt;RecDefSource&gt;**](RecDefSource.md) | The portfolios, portfolio groups and funds contributing to the right side. Empty when the right side draws on relational data instead, which requires every ruleset to declare relational data for that side. Both sides cannot be empty. | [default to List<RecDefSource>]
 **valuationRecipes** | [**RecDefRecipeIds**](RecDefRecipeIds.md) |  | [optional] [default to RecDefRecipeIds]
@@ -29,6 +30,8 @@ RecDefinitionDetails config = new RecDefinitionDetails(recDefinitionDetails);
 ```
  See all compatible oneOf types with RecDefinitionDetails
 * [ExternalRecDefinitionDetails](./ExternalRecDefinitionDetails.md)
+
+* [LusidEntityRecDefinitionDetails](./LusidEntityRecDefinitionDetails.md)
 
 * [PortfolioContentsRecDefinitionDetails](./PortfolioContentsRecDefinitionDetails.md)
 

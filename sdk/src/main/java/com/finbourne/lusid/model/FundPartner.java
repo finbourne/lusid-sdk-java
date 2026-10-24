@@ -82,6 +82,10 @@ public class FundPartner {
   @SerializedName(SERIALIZED_NAME_PARTNER_ROLE)
   private String partnerRole;
 
+  public static final String SERIALIZED_NAME_REGISTER_ROLE = "registerRole";
+  @SerializedName(SERIALIZED_NAME_REGISTER_ROLE)
+  private String registerRole;
+
   public static final String SERIALIZED_NAME_COMMITMENT_CURRENCY = "commitmentCurrency";
   @SerializedName(SERIALIZED_NAME_COMMITMENT_CURRENCY)
   private String commitmentCurrency;
@@ -238,7 +242,7 @@ public class FundPartner {
   }
 
    /**
-   * The role of the register line. Available values: GPRegister, LPInvestment.
+   * The role the partner plays in the partnership. Available values: LimitedPartner (the default), GeneralPartner, GPAffiliate, Employee, CarryVehicle.
    * @return partnerRole
   **/
   @jakarta.annotation.Nonnull
@@ -249,6 +253,27 @@ public class FundPartner {
 
   public void setPartnerRole(String partnerRole) {
     this.partnerRole = partnerRole;
+  }
+
+
+  public FundPartner registerRole(String registerRole) {
+    
+    this.registerRole = registerRole;
+    return this;
+  }
+
+   /**
+   * The role of the register line. Available values: GPRegister, LPInvestment (the default).
+   * @return registerRole
+  **/
+  @jakarta.annotation.Nonnull
+  public String getRegisterRole() {
+    return registerRole;
+  }
+
+
+  public void setRegisterRole(String registerRole) {
+    this.registerRole = registerRole;
   }
 
 
@@ -374,6 +399,7 @@ public class FundPartner {
         Objects.equals(this.portfolioId, fundPartner.portfolioId) &&
         Objects.equals(this.isVehicle, fundPartner.isVehicle) &&
         Objects.equals(this.partnerRole, fundPartner.partnerRole) &&
+        Objects.equals(this.registerRole, fundPartner.registerRole) &&
         Objects.equals(this.commitmentCurrency, fundPartner.commitmentCurrency) &&
         Objects.equals(this.balances, fundPartner.balances) &&
         (this.shareOfCommitments.compareTo(fundPartner.getShareOfCommitments()) == 0) &&
@@ -387,7 +413,7 @@ public class FundPartner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, displayName, commitmentLineId, lusidInstrumentId, portfolioId, isVehicle, partnerRole, commitmentCurrency, balances, shareOfCommitments, admittedOn, totals);
+    return Objects.hash(investorRecordId, displayName, commitmentLineId, lusidInstrumentId, portfolioId, isVehicle, partnerRole, registerRole, commitmentCurrency, balances, shareOfCommitments, admittedOn, totals);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -408,6 +434,7 @@ public class FundPartner {
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    isVehicle: ").append(toIndentedString(isVehicle)).append("\n");
     sb.append("    partnerRole: ").append(toIndentedString(partnerRole)).append("\n");
+    sb.append("    registerRole: ").append(toIndentedString(registerRole)).append("\n");
     sb.append("    commitmentCurrency: ").append(toIndentedString(commitmentCurrency)).append("\n");
     sb.append("    balances: ").append(toIndentedString(balances)).append("\n");
     sb.append("    shareOfCommitments: ").append(toIndentedString(shareOfCommitments)).append("\n");
@@ -442,6 +469,7 @@ public class FundPartner {
     openapiFields.add("portfolioId");
     openapiFields.add("isVehicle");
     openapiFields.add("partnerRole");
+    openapiFields.add("registerRole");
     openapiFields.add("commitmentCurrency");
     openapiFields.add("balances");
     openapiFields.add("shareOfCommitments");
@@ -456,6 +484,7 @@ public class FundPartner {
     openapiRequiredFields.add("portfolioId");
     openapiRequiredFields.add("isVehicle");
     openapiRequiredFields.add("partnerRole");
+    openapiRequiredFields.add("registerRole");
     openapiRequiredFields.add("commitmentCurrency");
     openapiRequiredFields.add("balances");
     openapiRequiredFields.add("shareOfCommitments");
@@ -498,6 +527,9 @@ public class FundPartner {
       ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
       if (!jsonObj.get("partnerRole").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `partnerRole` to be a primitive type in the JSON string but got `%s`", jsonObj.get("partnerRole").toString()));
+      }
+      if (!jsonObj.get("registerRole").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `registerRole` to be a primitive type in the JSON string but got `%s`", jsonObj.get("registerRole").toString()));
       }
       if (!jsonObj.get("commitmentCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `commitmentCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("commitmentCurrency").toString()));

@@ -2101,7 +2101,7 @@ public class ChartOfAccountsApiExample {
 
 ## listPostingModuleRules
 
-> PagedResourceListOfPostingModuleRuleResponse listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter)
+> PagedResourceListOfPostingModuleRuleResponse listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter, effectiveAt)
 
 [EARLY ACCESS] ListPostingModuleRules: List Posting Module Rules
 
@@ -2150,14 +2150,15 @@ public class ChartOfAccountsApiExample {
         String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
         String postingModuleCode = "postingModuleCode_example"; // String | The code of the posting module.
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified.
-        String page = "page_example"; // String | The pagination token to use to continue listing posting module rules; this   value is returned from the previous call. If a pagination token is provided, the filter   and asAt fields must not have changed since the original request.
+        String page = "page_example"; // String | The pagination token to use to continue listing posting module rules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the rule id, specify \"ruleId eq 'rule 1'\". For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the rules. If specified, only   the rules whose effective window contains this date are returned. Defaults to returning all rules if not specified.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfPostingModuleRuleResponse result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter).execute(opts);
+            // PagedResourceListOfPostingModuleRuleResponse result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter, effectiveAt).execute(opts);
 
-            PagedResourceListOfPostingModuleRuleResponse result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter).execute();
+            PagedResourceListOfPostingModuleRuleResponse result = apiInstance.listPostingModuleRules(scope, code, postingModuleCode, asAt, page, limit, filter, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ChartOfAccountsApi#listPostingModuleRules");
@@ -2178,9 +2179,10 @@ public class ChartOfAccountsApiExample {
 | **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
 | **postingModuleCode** | **String**| The code of the posting module. | |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument. Defaults to   returning the latest version if not specified. | [optional] |
-| **page** | **String**| The pagination token to use to continue listing posting module rules; this   value is returned from the previous call. If a pagination token is provided, the filter   and asAt fields must not have changed since the original request. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing posting module rules; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the rule id, specify \&quot;ruleId eq &#39;rule 1&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the rules. If specified, only   the rules whose effective window contains this date are returned. Defaults to returning all rules if not specified. | [optional] |
 
 ### Return type
 

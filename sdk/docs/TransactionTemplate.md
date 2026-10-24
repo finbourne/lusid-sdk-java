@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **String** | The description of the transaction template. | [default to String]
 **scope** | **String** | The scope in which the transaction template resides. | [default to String]
 **componentTransactions** | [**List&lt;ComponentTransaction&gt;**](ComponentTransaction.md) | A set of component transactions that relate to the template to be created. | [default to List<ComponentTransaction>]
+**warnings** | [**List&lt;Warning&gt;**](Warning.md) |  | [optional] [default to List<Warning>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -22,6 +23,7 @@ String InstrumentEventType = "example InstrumentEventType";
 String Description = "example Description";
 String Scope = "example Scope";
 List<ComponentTransaction> ComponentTransactions = new List<ComponentTransaction>();
+@jakarta.annotation.Nullable List<Warning> Warnings = new List<Warning>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -31,6 +33,7 @@ TransactionTemplate transactionTemplateInstance = new TransactionTemplate()
     .Description(Description)
     .Scope(Scope)
     .ComponentTransactions(ComponentTransactions)
+    .Warnings(Warnings)
     .Links(Links);
 ```
 

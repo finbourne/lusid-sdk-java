@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AllocationBasisRule;
 import com.finbourne.lusid.model.CapabilityOverride;
 import com.finbourne.lusid.model.PresentationConfiguration;
 import com.finbourne.lusid.model.ResourceId;
@@ -93,6 +94,10 @@ public class PartnershipAccountingConfiguration {
   public static final String SERIALIZED_NAME_PRESENTATION = "presentation";
   @SerializedName(SERIALIZED_NAME_PRESENTATION)
   private PresentationConfiguration presentation;
+
+  public static final String SERIALIZED_NAME_ALLOCATION_BASES = "allocationBases";
+  @SerializedName(SERIALIZED_NAME_ALLOCATION_BASES)
+  private List<AllocationBasisRule> allocationBases;
 
   public PartnershipAccountingConfiguration() {
   }
@@ -302,6 +307,35 @@ public class PartnershipAccountingConfiguration {
   }
 
 
+  public PartnershipAccountingConfiguration allocationBases(List<AllocationBasisRule> allocationBases) {
+    
+    this.allocationBases = allocationBases;
+    return this;
+  }
+
+  public PartnershipAccountingConfiguration addAllocationBasesItem(AllocationBasisRule allocationBasesItem) {
+    if (this.allocationBases == null) {
+      this.allocationBases = new ArrayList<>();
+    }
+    this.allocationBases.add(allocationBasesItem);
+    return this;
+  }
+
+   /**
+   * Get allocationBases
+   * @return allocationBases
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationBasisRule> getAllocationBases() {
+    return allocationBases;
+  }
+
+
+  public void setAllocationBases(List<AllocationBasisRule> allocationBases) {
+    this.allocationBases = allocationBases;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -320,7 +354,8 @@ public class PartnershipAccountingConfiguration {
         Objects.equals(this.capabilityOverrides, partnershipAccountingConfiguration.capabilityOverrides) &&
         Objects.equals(this.series, partnershipAccountingConfiguration.series) &&
         Objects.equals(this.effectiveCapabilities, partnershipAccountingConfiguration.effectiveCapabilities) &&
-        Objects.equals(this.presentation, partnershipAccountingConfiguration.presentation);
+        Objects.equals(this.presentation, partnershipAccountingConfiguration.presentation) &&
+        Objects.equals(this.allocationBases, partnershipAccountingConfiguration.allocationBases);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -329,7 +364,7 @@ public class PartnershipAccountingConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(enabled, configPack, commitmentCurrencyPolicy, registerPortfolioGroup, capitalModel, capabilityOverrides, series, effectiveCapabilities, presentation);
+    return Objects.hash(enabled, configPack, commitmentCurrencyPolicy, registerPortfolioGroup, capitalModel, capabilityOverrides, series, effectiveCapabilities, presentation, allocationBases);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -352,6 +387,7 @@ public class PartnershipAccountingConfiguration {
     sb.append("    series: ").append(toIndentedString(series)).append("\n");
     sb.append("    effectiveCapabilities: ").append(toIndentedString(effectiveCapabilities)).append("\n");
     sb.append("    presentation: ").append(toIndentedString(presentation)).append("\n");
+    sb.append("    allocationBases: ").append(toIndentedString(allocationBases)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -383,6 +419,7 @@ public class PartnershipAccountingConfiguration {
     openapiFields.add("series");
     openapiFields.add("effectiveCapabilities");
     openapiFields.add("presentation");
+    openapiFields.add("allocationBases");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -444,6 +481,20 @@ public class PartnershipAccountingConfiguration {
       // validate the optional field `presentation`
       if (jsonObj.get("presentation") != null && !jsonObj.get("presentation").isJsonNull()) {
         PresentationConfiguration.validateJsonElement(jsonObj.get("presentation"));
+      }
+      if (jsonObj.get("allocationBases") != null && !jsonObj.get("allocationBases").isJsonNull()) {
+        JsonArray jsonArrayallocationBases = jsonObj.getAsJsonArray("allocationBases");
+        if (jsonArrayallocationBases != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("allocationBases").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `allocationBases` to be an array in the JSON string but got `%s`", jsonObj.get("allocationBases").toString()));
+          }
+
+          // validate the optional field `allocationBases` (array)
+          for (int i = 0; i < jsonArrayallocationBases.size(); i++) {
+            AllocationBasisRule.validateJsonElement(jsonArrayallocationBases.get(i));
+          };
+        }
       }
   }
 

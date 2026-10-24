@@ -5,7 +5,7 @@ The partnership accounting view of a valuation point: what is left on the income
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**unallocatedIncomeSummary** | **java.math.BigDecimal** | The balance on the income summary account over the valuation point&#39;s period that has not yet been allocated to the partners. Must be zero before the valuation point can be finalised. | [default to java.math.BigDecimal]
+**unallocatedIncomeSummary** | **java.math.BigDecimal** | The profit and loss of the valuation point&#39;s period that has not yet been allocated to the partners: what the period&#39;s income, gain and expense lines would pool, less what the partner allocation has posted for the period. Must be zero before the valuation point can be finalised. | [default to java.math.BigDecimal]
 **configPackScope** | **String** | The scope of the configuration pack. | [default to String]
 **configPackCode** | **String** | The code of the configuration pack. | [default to String]
 

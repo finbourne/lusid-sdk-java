@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **nodes** | [**List&lt;BucketSetNode&gt;**](BucketSetNode.md) | The nodes making up the bucket set: the fund aggregate and one per share class. | [default to List<BucketSetNode>]
 **displayName** | **String** | The display name of the bucket set, as configured on the fund configuration. | [optional] [default to String]
 **isBackfilled** | **Boolean** | Set to True if this bucket set was backfilled from fund inception at this valuation point, because the previous valuation point has no results for it. Its values then hold the whole history, and its previous cumulative values are zero. False otherwise. | [optional] [default to Boolean]
+**isSeeded** | **Boolean** | Set to True if this bucket set&#39;s flow bucket values at this valuation point are the seed set on this variant of the valuation point rather than its journal entry lines. The next valuation point opens from them. False otherwise. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.BucketSetResult;
@@ -22,6 +23,7 @@ Boolean IsApportionment = true;
 List<BucketSetNode> Nodes = new List<BucketSetNode>();
 @jakarta.annotation.Nullable String DisplayName = "example DisplayName";
 Boolean IsBackfilled = true;
+Boolean IsSeeded = true;
 
 
 BucketSetResult bucketSetResultInstance = new BucketSetResult()
@@ -29,7 +31,8 @@ BucketSetResult bucketSetResultInstance = new BucketSetResult()
     .IsApportionment(IsApportionment)
     .Nodes(Nodes)
     .DisplayName(DisplayName)
-    .IsBackfilled(IsBackfilled);
+    .IsBackfilled(IsBackfilled)
+    .IsSeeded(IsSeeded);
 ```
 
 

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.BucketSetSeedRequest;
 import com.finbourne.lusid.model.PricingMethodologyOverrideRequest;
 import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
@@ -19,8 +20,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -81,6 +84,10 @@ public class UpdateValuationPointRequest {
   public static final String SERIALIZED_NAME_PRICING_METHODOLOGY_OVERRIDE = "pricingMethodologyOverride";
   @SerializedName(SERIALIZED_NAME_PRICING_METHODOLOGY_OVERRIDE)
   private PricingMethodologyOverrideRequest pricingMethodologyOverride;
+
+  public static final String SERIALIZED_NAME_BUCKET_SET_SEEDS = "bucketSetSeeds";
+  @SerializedName(SERIALIZED_NAME_BUCKET_SET_SEEDS)
+  private List<BucketSetSeedRequest> bucketSetSeeds;
 
   public UpdateValuationPointRequest() {
   }
@@ -240,6 +247,35 @@ public class UpdateValuationPointRequest {
   }
 
 
+  public UpdateValuationPointRequest bucketSetSeeds(List<BucketSetSeedRequest> bucketSetSeeds) {
+    
+    this.bucketSetSeeds = bucketSetSeeds;
+    return this;
+  }
+
+  public UpdateValuationPointRequest addBucketSetSeedsItem(BucketSetSeedRequest bucketSetSeedsItem) {
+    if (this.bucketSetSeeds == null) {
+      this.bucketSetSeeds = new ArrayList<>();
+    }
+    this.bucketSetSeeds.add(bucketSetSeedsItem);
+    return this;
+  }
+
+   /**
+   * Defaults to null. The closing balances to seed for bucket sets at this estimate valuation point, at most one per bucket set. They replace the seeds this variant of the valuation point had, and none removes them. Null leaves them as they are. While the valuation point is an estimate, each seeded bucket set&#39;s flow bucket values are its seed; finalising the valuation point stores them, and the next valuation point opens from them. A bucket set can only be seeded when the previous final valuation point has no values for it. The seed is trusted input: it is not reconciled to the share class NAVs.
+   * @return bucketSetSeeds
+  **/
+  @jakarta.annotation.Nullable
+  public List<BucketSetSeedRequest> getBucketSetSeeds() {
+    return bucketSetSeeds;
+  }
+
+
+  public void setBucketSetSeeds(List<BucketSetSeedRequest> bucketSetSeeds) {
+    this.bucketSetSeeds = bucketSetSeeds;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -256,7 +292,8 @@ public class UpdateValuationPointRequest {
         Objects.equals(this.properties, updateValuationPointRequest.properties) &&
         Objects.equals(this.applyClearDown, updateValuationPointRequest.applyClearDown) &&
         Objects.equals(this.updateInclusionDateNavAdjustments, updateValuationPointRequest.updateInclusionDateNavAdjustments) &&
-        Objects.equals(this.pricingMethodologyOverride, updateValuationPointRequest.pricingMethodologyOverride);
+        Objects.equals(this.pricingMethodologyOverride, updateValuationPointRequest.pricingMethodologyOverride) &&
+        Objects.equals(this.bucketSetSeeds, updateValuationPointRequest.bucketSetSeeds);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -265,7 +302,7 @@ public class UpdateValuationPointRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(valuationPointCode, variant, name, properties, applyClearDown, updateInclusionDateNavAdjustments, pricingMethodologyOverride);
+    return Objects.hash(valuationPointCode, variant, name, properties, applyClearDown, updateInclusionDateNavAdjustments, pricingMethodologyOverride, bucketSetSeeds);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -286,6 +323,7 @@ public class UpdateValuationPointRequest {
     sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
     sb.append("    updateInclusionDateNavAdjustments: ").append(toIndentedString(updateInclusionDateNavAdjustments)).append("\n");
     sb.append("    pricingMethodologyOverride: ").append(toIndentedString(pricingMethodologyOverride)).append("\n");
+    sb.append("    bucketSetSeeds: ").append(toIndentedString(bucketSetSeeds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -315,6 +353,7 @@ public class UpdateValuationPointRequest {
     openapiFields.add("applyClearDown");
     openapiFields.add("updateInclusionDateNavAdjustments");
     openapiFields.add("pricingMethodologyOverride");
+    openapiFields.add("bucketSetSeeds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -353,6 +392,20 @@ public class UpdateValuationPointRequest {
       // validate the optional field `pricingMethodologyOverride`
       if (jsonObj.get("pricingMethodologyOverride") != null && !jsonObj.get("pricingMethodologyOverride").isJsonNull()) {
         PricingMethodologyOverrideRequest.validateJsonElement(jsonObj.get("pricingMethodologyOverride"));
+      }
+      if (jsonObj.get("bucketSetSeeds") != null && !jsonObj.get("bucketSetSeeds").isJsonNull()) {
+        JsonArray jsonArraybucketSetSeeds = jsonObj.getAsJsonArray("bucketSetSeeds");
+        if (jsonArraybucketSetSeeds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("bucketSetSeeds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `bucketSetSeeds` to be an array in the JSON string but got `%s`", jsonObj.get("bucketSetSeeds").toString()));
+          }
+
+          // validate the optional field `bucketSetSeeds` (array)
+          for (int i = 0; i < jsonArraybucketSetSeeds.size(); i++) {
+            BucketSetSeedRequest.validateJsonElement(jsonArraybucketSetSeeds.get(i));
+          };
+        }
       }
   }
 

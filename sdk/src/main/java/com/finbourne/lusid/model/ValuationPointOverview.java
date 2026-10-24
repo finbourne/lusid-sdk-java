@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.BucketSetSeed;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
@@ -109,6 +110,10 @@ public class ValuationPointOverview {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
+
+  public static final String SERIALIZED_NAME_BUCKET_SET_SEEDS = "bucketSetSeeds";
+  @SerializedName(SERIALIZED_NAME_BUCKET_SET_SEEDS)
+  private List<BucketSetSeed> bucketSetSeeds;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -398,6 +403,35 @@ public class ValuationPointOverview {
   }
 
 
+  public ValuationPointOverview bucketSetSeeds(List<BucketSetSeed> bucketSetSeeds) {
+    
+    this.bucketSetSeeds = bucketSetSeeds;
+    return this;
+  }
+
+  public ValuationPointOverview addBucketSetSeedsItem(BucketSetSeed bucketSetSeedsItem) {
+    if (this.bucketSetSeeds == null) {
+      this.bucketSetSeeds = new ArrayList<>();
+    }
+    this.bucketSetSeeds.add(bucketSetSeedsItem);
+    return this;
+  }
+
+   /**
+   * The bucket set seeds set on this variant of the Valuation Point. Null when it has none.
+   * @return bucketSetSeeds
+  **/
+  @jakarta.annotation.Nullable
+  public List<BucketSetSeed> getBucketSetSeeds() {
+    return bucketSetSeeds;
+  }
+
+
+  public void setBucketSetSeeds(List<BucketSetSeed> bucketSetSeeds) {
+    this.bucketSetSeeds = bucketSetSeeds;
+  }
+
+
   public ValuationPointOverview links(List<Link> links) {
     
     this.links = links;
@@ -450,6 +484,7 @@ public class ValuationPointOverview {
         Objects.equals(this.holdingsAsAtOverride, valuationPointOverview.holdingsAsAtOverride) &&
         Objects.equals(this.valuationsAsAtOverride, valuationPointOverview.valuationsAsAtOverride) &&
         Objects.equals(this.properties, valuationPointOverview.properties) &&
+        Objects.equals(this.bucketSetSeeds, valuationPointOverview.bucketSetSeeds) &&
         Objects.equals(this.links, valuationPointOverview.links);
   }
 
@@ -459,7 +494,7 @@ public class ValuationPointOverview {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, diaryEntryCode, diaryEntryVariant, effectiveFrom, effectiveTo, queryAsAt, type, status, gav, nav, holdingsAsAtOverride, valuationsAsAtOverride, properties, links);
+    return Objects.hash(href, diaryEntryCode, diaryEntryVariant, effectiveFrom, effectiveTo, queryAsAt, type, status, gav, nav, holdingsAsAtOverride, valuationsAsAtOverride, properties, bucketSetSeeds, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -486,6 +521,7 @@ public class ValuationPointOverview {
     sb.append("    holdingsAsAtOverride: ").append(toIndentedString(holdingsAsAtOverride)).append("\n");
     sb.append("    valuationsAsAtOverride: ").append(toIndentedString(valuationsAsAtOverride)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    bucketSetSeeds: ").append(toIndentedString(bucketSetSeeds)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -522,6 +558,7 @@ public class ValuationPointOverview {
     openapiFields.add("holdingsAsAtOverride");
     openapiFields.add("valuationsAsAtOverride");
     openapiFields.add("properties");
+    openapiFields.add("bucketSetSeeds");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -569,6 +606,20 @@ public class ValuationPointOverview {
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+      }
+      if (jsonObj.get("bucketSetSeeds") != null && !jsonObj.get("bucketSetSeeds").isJsonNull()) {
+        JsonArray jsonArraybucketSetSeeds = jsonObj.getAsJsonArray("bucketSetSeeds");
+        if (jsonArraybucketSetSeeds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("bucketSetSeeds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `bucketSetSeeds` to be an array in the JSON string but got `%s`", jsonObj.get("bucketSetSeeds").toString()));
+          }
+
+          // validate the optional field `bucketSetSeeds` (array)
+          for (int i = 0; i < jsonArraybucketSetSeeds.size(); i++) {
+            BucketSetSeed.validateJsonElement(jsonArraybucketSetSeeds.get(i));
+          };
+        }
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

@@ -71,7 +71,7 @@ public class HoldingPropertyDelta {
   }
 
    /**
-   * The running balance on the holding to adjust. Allowed values: &#39;CommittedCapital&#39;, &#39;UncalledCommitment&#39;, &#39;PaidInCapital&#39;, &#39;ReturnedCapital&#39;, &#39;RecallableCapital&#39;, &#39;NonRecallableCapital&#39;, &#39;FundedCapital&#39; and &#39;UnfundedCapital&#39;. &#39;UnfundedCapital&#39; is a deprecated alias of &#39;UncalledCommitment&#39;; &#39;FundedCapital&#39; is served as PaidInCapital less ReturnedCapital and new configuration should target those two instead. Available values: CommittedCapital, FundedCapital, UnfundedCapital, RecallableCapital, NonRecallableCapital, PaidInCapital, ReturnedCapital, UncalledCommitment.
+   * The running balance on the holding to adjust. Allowed values: &#39;CommittedCapital&#39;, &#39;UncalledCommitment&#39;, &#39;PaidInCapital&#39;, &#39;ReturnedCapital&#39;, &#39;RecallableCapital&#39;, &#39;NonRecallableCapital&#39;, &#39;ExcessCapitalReturned&#39;, &#39;FundedCapital&#39; and &#39;UnfundedCapital&#39;. &#39;ExcessCapitalReturned&#39; is the cumulative excess capital the fund has handed back, kept separately because a return of excess lowers PaidInCapital and restores UncalledCommitment at the same time. &#39;UnfundedCapital&#39; is a deprecated alias of &#39;UncalledCommitment&#39;; &#39;FundedCapital&#39; is served as PaidInCapital less ReturnedCapital and new configuration should target those two instead. Available values: CommittedCapital, FundedCapital, UnfundedCapital, RecallableCapital, NonRecallableCapital, PaidInCapital, ReturnedCapital, UncalledCommitment, ExcessCapitalReturned.
    * @return holdingPropertyKey
   **/
   @jakarta.annotation.Nonnull

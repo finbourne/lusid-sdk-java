@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **holdingsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for building holdings in the Valuation Point. Defaults to QueryAsAt. | [optional] [default to OffsetDateTime]
 **valuationsAsAtOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAt Override to use for performing valuations in the Valuation Point. Defaults to QueryAsAt. | [optional] [default to OffsetDateTime]
 **updateInclusionDateNavAdjustments** | **Boolean** | Defaults to false. Set to true if you have the required licence and want the InclusionDate property values to be used to determine whether items should be automatically included in the post close activities. | [optional] [default to Boolean]
+**bucketSetSeeds** | [**List&lt;BucketSetSeedRequest&gt;**](BucketSetSeedRequest.md) | Defaults to null. The closing balances to seed for bucket sets at this estimate valuation point, at most one per bucket set. While the valuation point is an estimate, each seeded bucket set&#39;s flow bucket values are its seed; finalising the valuation point stores them, and the next valuation point opens from them. A bucket set can only be seeded when the previous final valuation point has no values for it. The seed is trusted input: it is not reconciled to the share class NAVs. | [optional] [default to List<BucketSetSeedRequest>]
 
 ```java
 import com.finbourne.lusid.model.CreateValuationPointRequest;
@@ -32,6 +33,7 @@ Boolean ApplyClearDown = true;
 @jakarta.annotation.Nullable OffsetDateTime HoldingsAsAtOverride = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime ValuationsAsAtOverride = OffsetDateTime.now();
 Boolean UpdateInclusionDateNavAdjustments = true;
+@jakarta.annotation.Nullable List<BucketSetSeedRequest> BucketSetSeeds = new List<BucketSetSeedRequest>();
 
 
 CreateValuationPointRequest createValuationPointRequestInstance = new CreateValuationPointRequest()
@@ -44,7 +46,8 @@ CreateValuationPointRequest createValuationPointRequestInstance = new CreateValu
     .ApplyClearDown(ApplyClearDown)
     .HoldingsAsAtOverride(HoldingsAsAtOverride)
     .ValuationsAsAtOverride(ValuationsAsAtOverride)
-    .UpdateInclusionDateNavAdjustments(UpdateInclusionDateNavAdjustments);
+    .UpdateInclusionDateNavAdjustments(UpdateInclusionDateNavAdjustments)
+    .BucketSetSeeds(BucketSetSeeds);
 ```
 
 

@@ -136,6 +136,10 @@ public class FundDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_CREATE_INSTRUMENT)
   private Boolean createInstrument;
 
+  public static final String SERIALIZED_NAME_INSTRUMENT_SCOPE = "instrumentScope";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPE)
+  private String instrumentScope;
+
   public static final String SERIALIZED_NAME_SHARE_CLASSES = "shareClasses";
   @SerializedName(SERIALIZED_NAME_SHARE_CLASSES)
   private List<ShareClassDefinition> shareClasses;
@@ -575,6 +579,27 @@ public class FundDefinitionRequest {
   }
 
 
+  public FundDefinitionRequest instrumentScope(String instrumentScope) {
+    
+    this.instrumentScope = instrumentScope;
+    return this;
+  }
+
+   /**
+   * The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead.
+   * @return instrumentScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getInstrumentScope() {
+    return instrumentScope;
+  }
+
+
+  public void setInstrumentScope(String instrumentScope) {
+    this.instrumentScope = instrumentScope;
+  }
+
+
   public FundDefinitionRequest shareClasses(List<ShareClassDefinition> shareClasses) {
     
     this.shareClasses = shareClasses;
@@ -703,6 +728,7 @@ public class FundDefinitionRequest {
         Objects.equals(this.additionalNavTypes, fundDefinitionRequest.additionalNavTypes) &&
         Objects.equals(this.properties, fundDefinitionRequest.properties) &&
         Objects.equals(this.createInstrument, fundDefinitionRequest.createInstrument) &&
+        Objects.equals(this.instrumentScope, fundDefinitionRequest.instrumentScope) &&
         Objects.equals(this.shareClasses, fundDefinitionRequest.shareClasses) &&
         Objects.equals(this.pricingMethodology, fundDefinitionRequest.pricingMethodology) &&
         Objects.equals(this.reportingPrices, fundDefinitionRequest.reportingPrices) &&
@@ -715,7 +741,7 @@ public class FundDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, shareClasses, pricingMethodology, reportingPrices, whtParameters);
+    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, instrumentScope, shareClasses, pricingMethodology, reportingPrices, whtParameters);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -747,6 +773,7 @@ public class FundDefinitionRequest {
     sb.append("    additionalNavTypes: ").append(toIndentedString(additionalNavTypes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    createInstrument: ").append(toIndentedString(createInstrument)).append("\n");
+    sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("    pricingMethodology: ").append(toIndentedString(pricingMethodology)).append("\n");
     sb.append("    reportingPrices: ").append(toIndentedString(reportingPrices)).append("\n");
@@ -791,6 +818,7 @@ public class FundDefinitionRequest {
     openapiFields.add("additionalNavTypes");
     openapiFields.add("properties");
     openapiFields.add("createInstrument");
+    openapiFields.add("instrumentScope");
     openapiFields.add("shareClasses");
     openapiFields.add("pricingMethodology");
     openapiFields.add("reportingPrices");
@@ -896,6 +924,9 @@ public class FundDefinitionRequest {
             NavTypeDefinition.validateJsonElement(jsonArrayadditionalNavTypes.get(i));
           };
         }
+      }
+      if ((jsonObj.get("instrumentScope") != null && !jsonObj.get("instrumentScope").isJsonNull()) && !jsonObj.get("instrumentScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
       }
       if (jsonObj.get("shareClasses") != null && !jsonObj.get("shareClasses").isJsonNull()) {
         JsonArray jsonArrayshareClasses = jsonObj.getAsJsonArray("shareClasses");
