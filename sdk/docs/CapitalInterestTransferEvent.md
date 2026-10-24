@@ -27,6 +27,9 @@ Name | Type | Description | Notes
 **nonRecallableCapitalAmount** | **java.math.BigDecimal** | The non-recallable capital received by the destination line. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
 **fundedCapitalAmount** | **java.math.BigDecimal** | The funded capital received by the destination line, for a line whose drawdowns were booked against the stored funded balance rather than paid-in capital. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
 **excessCapitalReturnedAmount** | **java.math.BigDecimal** | The cumulative excess capital returned that the destination line takes over from the source line. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
+**paidInCapitalPortfolioCcyAmount** | **java.math.BigDecimal** | The paid-in capital the destination line takes over, already in the portfolio&#39;s base currency: the source line&#39;s PaidInCapitalPortfolioCcy balance share, accumulated at historical rates, not a spot conversion of PaidInCapitalAmount. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
+**returnedCapitalPortfolioCcyAmount** | **java.math.BigDecimal** | The returned capital the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
+**excessCapitalReturnedPortfolioCcyAmount** | **java.math.BigDecimal** | The cumulative excess capital returned that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.CapitalInterestTransferEvent;
@@ -56,6 +59,9 @@ String ToLineId = "example ToLineId";
 @jakarta.annotation.Nullable java.math.BigDecimal NonRecallableCapitalAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal FundedCapitalAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal ExcessCapitalReturnedAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal PaidInCapitalPortfolioCcyAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal ReturnedCapitalPortfolioCcyAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal ExcessCapitalReturnedPortfolioCcyAmount = new java.math.BigDecimal("100.00");
 
 
 CapitalInterestTransferEvent capitalInterestTransferEventInstance = new CapitalInterestTransferEvent()
@@ -80,7 +86,10 @@ CapitalInterestTransferEvent capitalInterestTransferEventInstance = new CapitalI
     .RecallableCapitalAmount(RecallableCapitalAmount)
     .NonRecallableCapitalAmount(NonRecallableCapitalAmount)
     .FundedCapitalAmount(FundedCapitalAmount)
-    .ExcessCapitalReturnedAmount(ExcessCapitalReturnedAmount);
+    .ExcessCapitalReturnedAmount(ExcessCapitalReturnedAmount)
+    .PaidInCapitalPortfolioCcyAmount(PaidInCapitalPortfolioCcyAmount)
+    .ReturnedCapitalPortfolioCcyAmount(ReturnedCapitalPortfolioCcyAmount)
+    .ExcessCapitalReturnedPortfolioCcyAmount(ExcessCapitalReturnedPortfolioCcyAmount);
 ```
 
 

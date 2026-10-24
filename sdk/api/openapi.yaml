@@ -422,7 +422,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10386
+  version: 0.11.10388
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -208016,6 +208016,28 @@ components:
             format: double
             nullable: true
             type: number
+          paidInCapitalPortfolioCcyAmount:
+            description: "The paid-in capital the destination line takes over, already\
+              \ in the portfolio's base currency: the source line's PaidInCapitalPortfolioCcy\
+              \ balance share, accumulated at historical rates, not a spot conversion\
+              \ of PaidInCapitalAmount. Used on the 'In' side only; must not be negative."
+            format: double
+            nullable: true
+            type: number
+          returnedCapitalPortfolioCcyAmount:
+            description: "The returned capital the destination line takes over, already\
+              \ in the portfolio's base currency at the source line's historical rates.\
+              \ Used on the 'In' side only; must not be negative."
+            format: double
+            nullable: true
+            type: number
+          excessCapitalReturnedPortfolioCcyAmount:
+            description: "The cumulative excess capital returned that the destination\
+              \ line takes over, already in the portfolio's base currency at the source\
+              \ line's historical rates. Used on the 'In' side only; must not be negative."
+            format: double
+            nullable: true
+            type: number
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -258603,15 +258625,20 @@ components:
           description: "The running balance on the holding to adjust. Allowed values:\
             \ 'CommittedCapital', 'UncalledCommitment', 'PaidInCapital', 'ReturnedCapital',\
             \ 'RecallableCapital', 'NonRecallableCapital', 'ExcessCapitalReturned',\
-            \ 'FundedCapital' and 'UnfundedCapital'. 'ExcessCapitalReturned' is the\
-            \ cumulative excess capital the fund has handed back, kept separately\
-            \ because a return of excess lowers PaidInCapital and restores UncalledCommitment\
-            \ at the same time. 'UnfundedCapital' is a deprecated alias of 'UncalledCommitment';\
-            \ 'FundedCapital' is served as PaidInCapital less ReturnedCapital and\
-            \ new configuration should target those two instead. Available values:\
-            \ CommittedCapital, FundedCapital, UnfundedCapital, RecallableCapital,\
-            \ NonRecallableCapital, PaidInCapital, ReturnedCapital, UncalledCommitment,\
-            \ ExcessCapitalReturned."
+            \ 'PaidInCapitalPortfolioCcy', 'ReturnedCapitalPortfolioCcy', 'ExcessCapitalReturnedPortfolioCcy',\
+            \ 'FundedCapital' and 'UnfundedCapital'. The '...PortfolioCcy' balances\
+            \ are the same balances in the portfolio's base currency, each movement\
+            \ converted at its own RateToPortfolio on the day it was booked and never\
+            \ re-translated at a later spot rate; source them from 'PortfolioAmount'.\
+            \ 'ExcessCapitalReturned' is the cumulative excess capital the fund has\
+            \ handed back, kept separately because a return of excess lowers PaidInCapital\
+            \ and restores UncalledCommitment at the same time. 'UnfundedCapital'\
+            \ is a deprecated alias of 'UncalledCommitment'; 'FundedCapital' is served\
+            \ as PaidInCapital less ReturnedCapital and new configuration should target\
+            \ those two instead. Available values: CommittedCapital, FundedCapital,\
+            \ UnfundedCapital, RecallableCapital, NonRecallableCapital, PaidInCapital,\
+            \ ReturnedCapital, UncalledCommitment, ExcessCapitalReturned, PaidInCapitalPortfolioCcy,\
+            \ ReturnedCapitalPortfolioCcy, ExcessCapitalReturnedPortfolioCcy."
           minLength: 1
           type: string
         source:
@@ -258621,7 +258648,9 @@ components:
             \ amount converted to portfolio currency) and 'ProportionOfBalance' (the\
             \ movement's amount is read as a proportion between 0 and 1 of the balance\
             \ already held under the key, and the adjustment is that proportion of\
-            \ the balance rounded to the holding currency's minor unit). Available\
+            \ the balance rounded to the holding currency's minor unit). 'PortfolioAmount'\
+            \ is accepted only on the '...PortfolioCcy' keys, which are kept in the\
+            \ portfolio's base currency; 'Units' is not accepted on any key. Available\
             \ values: Amount, Units, PortfolioAmount, ProportionOfBalance."
           minLength: 1
           type: string
@@ -273911,6 +273940,9 @@ components:
             scope: scope
           lineCount: 7
           status: status
+        scenario:
+          code: code
+          scope: scope
         href: https://openapi-generator.tech
         id: id
         shardCount: 1
@@ -273924,7 +273956,8 @@ components:
           type: string
         id:
           description: "The identifier of the run: the effective date and the asAt\
-            \ it was valued at. Filterable."
+            \ it was valued at, with a suffix naming the scenario for a stress run.\
+            \ Filterable."
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9\\-_]+$"
@@ -273982,6 +274015,8 @@ components:
           items:
             $ref: '#/components/schemas/MarginRunShard'
           type: array
+        scenario:
+          $ref: '#/components/schemas/ResourceId'
       required:
       - agreements
       - asAt
@@ -274036,6 +274071,9 @@ components:
       description: A request to value collateral agreements for a business date and
         publish their margin calls.
       example:
+        scenario:
+          code: code
+          scope: scope
         effectiveAt: effectiveAt
         asAt: 2000-01-23T04:56:07.000+00:00
         agreementFilter: agreementFilter
@@ -274063,6 +274101,8 @@ components:
           nullable: true
           pattern: "^[\\s\\S]*$"
           type: string
+        scenario:
+          $ref: '#/components/schemas/ResourceId'
       required:
       - effectiveAt
       type: object
@@ -296758,6 +296798,9 @@ components:
               scope: scope
             lineCount: 7
             status: status
+          scenario:
+            code: code
+            scope: scope
           href: https://openapi-generator.tech
           id: id
           shardCount: 1
@@ -296817,6 +296860,9 @@ components:
               scope: scope
             lineCount: 7
             status: status
+          scenario:
+            code: code
+            scope: scope
           href: https://openapi-generator.tech
           id: id
           shardCount: 1

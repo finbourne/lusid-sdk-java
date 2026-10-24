@@ -140,6 +140,18 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_EXCESS_CAPITAL_RETURNED_AMOUNT)
   private java.math.BigDecimal excessCapitalReturnedAmount;
 
+  public static final String SERIALIZED_NAME_PAID_IN_CAPITAL_PORTFOLIO_CCY_AMOUNT = "paidInCapitalPortfolioCcyAmount";
+  @SerializedName(SERIALIZED_NAME_PAID_IN_CAPITAL_PORTFOLIO_CCY_AMOUNT)
+  private java.math.BigDecimal paidInCapitalPortfolioCcyAmount;
+
+  public static final String SERIALIZED_NAME_RETURNED_CAPITAL_PORTFOLIO_CCY_AMOUNT = "returnedCapitalPortfolioCcyAmount";
+  @SerializedName(SERIALIZED_NAME_RETURNED_CAPITAL_PORTFOLIO_CCY_AMOUNT)
+  private java.math.BigDecimal returnedCapitalPortfolioCcyAmount;
+
+  public static final String SERIALIZED_NAME_EXCESS_CAPITAL_RETURNED_PORTFOLIO_CCY_AMOUNT = "excessCapitalReturnedPortfolioCcyAmount";
+  @SerializedName(SERIALIZED_NAME_EXCESS_CAPITAL_RETURNED_PORTFOLIO_CCY_AMOUNT)
+  private java.math.BigDecimal excessCapitalReturnedPortfolioCcyAmount;
+
   public CapitalInterestTransferEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -606,6 +618,69 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
 
+  public CapitalInterestTransferEvent paidInCapitalPortfolioCcyAmount(java.math.BigDecimal paidInCapitalPortfolioCcyAmount) {
+    
+    this.paidInCapitalPortfolioCcyAmount = paidInCapitalPortfolioCcyAmount;
+    return this;
+  }
+
+   /**
+   * The paid-in capital the destination line takes over, already in the portfolio&#39;s base currency: the source line&#39;s PaidInCapitalPortfolioCcy balance share, accumulated at historical rates, not a spot conversion of PaidInCapitalAmount. Used on the &#39;In&#39; side only; must not be negative.
+   * @return paidInCapitalPortfolioCcyAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getPaidInCapitalPortfolioCcyAmount() {
+    return paidInCapitalPortfolioCcyAmount;
+  }
+
+
+  public void setPaidInCapitalPortfolioCcyAmount(java.math.BigDecimal paidInCapitalPortfolioCcyAmount) {
+    this.paidInCapitalPortfolioCcyAmount = paidInCapitalPortfolioCcyAmount;
+  }
+
+
+  public CapitalInterestTransferEvent returnedCapitalPortfolioCcyAmount(java.math.BigDecimal returnedCapitalPortfolioCcyAmount) {
+    
+    this.returnedCapitalPortfolioCcyAmount = returnedCapitalPortfolioCcyAmount;
+    return this;
+  }
+
+   /**
+   * The returned capital the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative.
+   * @return returnedCapitalPortfolioCcyAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getReturnedCapitalPortfolioCcyAmount() {
+    return returnedCapitalPortfolioCcyAmount;
+  }
+
+
+  public void setReturnedCapitalPortfolioCcyAmount(java.math.BigDecimal returnedCapitalPortfolioCcyAmount) {
+    this.returnedCapitalPortfolioCcyAmount = returnedCapitalPortfolioCcyAmount;
+  }
+
+
+  public CapitalInterestTransferEvent excessCapitalReturnedPortfolioCcyAmount(java.math.BigDecimal excessCapitalReturnedPortfolioCcyAmount) {
+    
+    this.excessCapitalReturnedPortfolioCcyAmount = excessCapitalReturnedPortfolioCcyAmount;
+    return this;
+  }
+
+   /**
+   * The cumulative excess capital returned that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative.
+   * @return excessCapitalReturnedPortfolioCcyAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getExcessCapitalReturnedPortfolioCcyAmount() {
+    return excessCapitalReturnedPortfolioCcyAmount;
+  }
+
+
+  public void setExcessCapitalReturnedPortfolioCcyAmount(java.math.BigDecimal excessCapitalReturnedPortfolioCcyAmount) {
+    this.excessCapitalReturnedPortfolioCcyAmount = excessCapitalReturnedPortfolioCcyAmount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -638,6 +713,9 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
         (this.nonRecallableCapitalAmount.compareTo(capitalInterestTransferEvent.getNonRecallableCapitalAmount()) == 0) &&
         (this.fundedCapitalAmount.compareTo(capitalInterestTransferEvent.getFundedCapitalAmount()) == 0) &&
         (this.excessCapitalReturnedAmount.compareTo(capitalInterestTransferEvent.getExcessCapitalReturnedAmount()) == 0) &&
+        (this.paidInCapitalPortfolioCcyAmount.compareTo(capitalInterestTransferEvent.getPaidInCapitalPortfolioCcyAmount()) == 0) &&
+        (this.returnedCapitalPortfolioCcyAmount.compareTo(capitalInterestTransferEvent.getReturnedCapitalPortfolioCcyAmount()) == 0) &&
+        (this.excessCapitalReturnedPortfolioCcyAmount.compareTo(capitalInterestTransferEvent.getExcessCapitalReturnedPortfolioCcyAmount()) == 0) &&
         super.equals(o);
   }
 
@@ -647,7 +725,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, direction, fraction, fromLineId, toLineId, mode, toPortfolioId, considerationAmount, considerationCurrency, considerationRecordOnly, reason, scope, dealId, taxTreatmentAcknowledged, committedCapitalAmount, calledCommitmentAmount, paidInCapitalAmount, returnedCapitalAmount, recallableCapitalAmount, nonRecallableCapitalAmount, fundedCapitalAmount, excessCapitalReturnedAmount, super.hashCode());
+    return Objects.hash(date, direction, fraction, fromLineId, toLineId, mode, toPortfolioId, considerationAmount, considerationCurrency, considerationRecordOnly, reason, scope, dealId, taxTreatmentAcknowledged, committedCapitalAmount, calledCommitmentAmount, paidInCapitalAmount, returnedCapitalAmount, recallableCapitalAmount, nonRecallableCapitalAmount, fundedCapitalAmount, excessCapitalReturnedAmount, paidInCapitalPortfolioCcyAmount, returnedCapitalPortfolioCcyAmount, excessCapitalReturnedPortfolioCcyAmount, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -684,6 +762,9 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
     sb.append("    nonRecallableCapitalAmount: ").append(toIndentedString(nonRecallableCapitalAmount)).append("\n");
     sb.append("    fundedCapitalAmount: ").append(toIndentedString(fundedCapitalAmount)).append("\n");
     sb.append("    excessCapitalReturnedAmount: ").append(toIndentedString(excessCapitalReturnedAmount)).append("\n");
+    sb.append("    paidInCapitalPortfolioCcyAmount: ").append(toIndentedString(paidInCapitalPortfolioCcyAmount)).append("\n");
+    sb.append("    returnedCapitalPortfolioCcyAmount: ").append(toIndentedString(returnedCapitalPortfolioCcyAmount)).append("\n");
+    sb.append("    excessCapitalReturnedPortfolioCcyAmount: ").append(toIndentedString(excessCapitalReturnedPortfolioCcyAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -729,6 +810,9 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
     openapiFields.add("nonRecallableCapitalAmount");
     openapiFields.add("fundedCapitalAmount");
     openapiFields.add("excessCapitalReturnedAmount");
+    openapiFields.add("paidInCapitalPortfolioCcyAmount");
+    openapiFields.add("returnedCapitalPortfolioCcyAmount");
+    openapiFields.add("excessCapitalReturnedPortfolioCcyAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

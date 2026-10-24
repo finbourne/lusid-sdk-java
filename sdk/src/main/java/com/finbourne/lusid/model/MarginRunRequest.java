@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -62,6 +63,10 @@ public class MarginRunRequest {
   public static final String SERIALIZED_NAME_AGREEMENT_FILTER = "agreementFilter";
   @SerializedName(SERIALIZED_NAME_AGREEMENT_FILTER)
   private String agreementFilter;
+
+  public static final String SERIALIZED_NAME_SCENARIO = "scenario";
+  @SerializedName(SERIALIZED_NAME_SCENARIO)
+  private ResourceId scenario;
 
   public MarginRunRequest() {
   }
@@ -129,6 +134,27 @@ public class MarginRunRequest {
   }
 
 
+  public MarginRunRequest scenario(ResourceId scenario) {
+    
+    this.scenario = scenario;
+    return this;
+  }
+
+   /**
+   * Get scenario
+   * @return scenario
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getScenario() {
+    return scenario;
+  }
+
+
+  public void setScenario(ResourceId scenario) {
+    this.scenario = scenario;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,7 +167,8 @@ public class MarginRunRequest {
     MarginRunRequest marginRunRequest = (MarginRunRequest) o;
     return Objects.equals(this.effectiveAt, marginRunRequest.effectiveAt) &&
         Objects.equals(this.asAt, marginRunRequest.asAt) &&
-        Objects.equals(this.agreementFilter, marginRunRequest.agreementFilter);
+        Objects.equals(this.agreementFilter, marginRunRequest.agreementFilter) &&
+        Objects.equals(this.scenario, marginRunRequest.scenario);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -150,7 +177,7 @@ public class MarginRunRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, asAt, agreementFilter);
+    return Objects.hash(effectiveAt, asAt, agreementFilter, scenario);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -167,6 +194,7 @@ public class MarginRunRequest {
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    agreementFilter: ").append(toIndentedString(agreementFilter)).append("\n");
+    sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -192,6 +220,7 @@ public class MarginRunRequest {
     openapiFields.add("effectiveAt");
     openapiFields.add("asAt");
     openapiFields.add("agreementFilter");
+    openapiFields.add("scenario");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -223,6 +252,10 @@ public class MarginRunRequest {
       }
       if ((jsonObj.get("agreementFilter") != null && !jsonObj.get("agreementFilter").isJsonNull()) && !jsonObj.get("agreementFilter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `agreementFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agreementFilter").toString()));
+      }
+      // validate the optional field `scenario`
+      if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("scenario"));
       }
   }
 

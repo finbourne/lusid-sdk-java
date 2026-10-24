@@ -109,6 +109,10 @@ public class MarginRun {
   @SerializedName(SERIALIZED_NAME_SHARDS)
   private List<MarginRunShard> shards = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_SCENARIO = "scenario";
+  @SerializedName(SERIALIZED_NAME_SCENARIO)
+  private ResourceId scenario;
+
   public MarginRun() {
   }
 
@@ -140,7 +144,7 @@ public class MarginRun {
   }
 
    /**
-   * The identifier of the run: the effective date and the asAt it was valued at. Filterable.
+   * The identifier of the run: the effective date and the asAt it was valued at, with a suffix naming the scenario for a stress run. Filterable.
    * @return id
   **/
   @jakarta.annotation.Nonnull
@@ -409,6 +413,27 @@ public class MarginRun {
   }
 
 
+  public MarginRun scenario(ResourceId scenario) {
+    
+    this.scenario = scenario;
+    return this;
+  }
+
+   /**
+   * Get scenario
+   * @return scenario
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getScenario() {
+    return scenario;
+  }
+
+
+  public void setScenario(ResourceId scenario) {
+    this.scenario = scenario;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -431,7 +456,8 @@ public class MarginRun {
         Objects.equals(this.completedShards, marginRun.completedShards) &&
         Objects.equals(this.failedShards, marginRun.failedShards) &&
         Objects.equals(this.issues, marginRun.issues) &&
-        Objects.equals(this.shards, marginRun.shards);
+        Objects.equals(this.shards, marginRun.shards) &&
+        Objects.equals(this.scenario, marginRun.scenario);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -440,7 +466,7 @@ public class MarginRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, effectiveAt, asAt, status, agreements, callCount, lineCount, shardCount, completedShards, failedShards, issues, shards);
+    return Objects.hash(href, id, effectiveAt, asAt, status, agreements, callCount, lineCount, shardCount, completedShards, failedShards, issues, shards, scenario);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -467,6 +493,7 @@ public class MarginRun {
     sb.append("    failedShards: ").append(toIndentedString(failedShards)).append("\n");
     sb.append("    issues: ").append(toIndentedString(issues)).append("\n");
     sb.append("    shards: ").append(toIndentedString(shards)).append("\n");
+    sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -502,6 +529,7 @@ public class MarginRun {
     openapiFields.add("failedShards");
     openapiFields.add("issues");
     openapiFields.add("shards");
+    openapiFields.add("scenario");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -578,6 +606,10 @@ public class MarginRun {
       for (int i = 0; i < jsonArrayshards.size(); i++) {
         MarginRunShard.validateJsonElement(jsonArrayshards.get(i));
       };
+      // validate the optional field `scenario`
+      if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("scenario"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
