@@ -422,7 +422,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10391
+  version: 0.11.10397
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -6657,8 +6657,10 @@ paths:
         \ Event is deleted from that datetime\r\nand remains retrievable at earlier\
         \ effective datetimes. Given none, an Allocation Event that was created\r\n\
         without an effective datetime is removed from the beginning of time, so that\
-        \ its code can be reused;\r\notherwise it is deleted from the current LUSID\
-        \ system datetime. Only an Allocation Event that has not been\r\nbooked can\
+        \ its code can be reused;\r\nthis includes an event first created without\
+        \ an effective datetime and later upserted with dated versions,\r\nwhose dated\
+        \ versions are removed with it. Otherwise it is deleted from the current LUSID\
+        \ system datetime.\r\nOnly an Allocation Event that has not been booked can\
         \ be deleted."
       operationId: DeleteAllocationEvent
       parameters:
@@ -6687,8 +6689,9 @@ paths:
         style: simple
       - description: "The effective datetime or cut label from which to delete the\
           \ Allocation Event. If not specified, an Allocation Event created without\
-          \ an effective datetime is removed from the beginning of time; any other\
-          \ is deleted from the current LUSID system datetime."
+          \ an effective datetime is removed from the beginning of time, dated versions\
+          \ upserted since included; any other is deleted from the current LUSID system\
+          \ datetime."
         explode: true
         in: query
         name: effectiveAt
@@ -208020,21 +208023,32 @@ components:
             description: "The paid-in capital the destination line takes over, already\
               \ in the portfolio's base currency: the source line's PaidInCapitalPortfolioCcy\
               \ balance share, accumulated at historical rates, not a spot conversion\
-              \ of PaidInCapitalAmount. Used on the 'In' side only; must not be negative."
+              \ of PaidInCapitalAmount. Used on the 'In' side only; must not be negative.\
+              \ An In side that omits it books zero for PaidInCapitalPortfolioCcy\
+              \ while the Out side gives up its share, and the transaction type configuration\
+              \ must include the PaidInCapitalPortfolioCcy movement for the twin to\
+              \ move."
             format: double
             nullable: true
             type: number
           returnedCapitalPortfolioCcyAmount:
             description: "The returned capital the destination line takes over, already\
               \ in the portfolio's base currency at the source line's historical rates.\
-              \ Used on the 'In' side only; must not be negative."
+              \ Used on the 'In' side only; must not be negative. An In side that\
+              \ omits it books zero for ReturnedCapitalPortfolioCcy while the Out\
+              \ side gives up its share, and the transaction type configuration must\
+              \ include the ReturnedCapitalPortfolioCcy movement for the twin to move."
             format: double
             nullable: true
             type: number
           excessCapitalReturnedPortfolioCcyAmount:
             description: "The cumulative excess capital returned that the destination\
               \ line takes over, already in the portfolio's base currency at the source\
-              \ line's historical rates. Used on the 'In' side only; must not be negative."
+              \ line's historical rates. Used on the 'In' side only; must not be negative.\
+              \ An In side that omits it books zero for ExcessCapitalReturnedPortfolioCcy\
+              \ while the Out side gives up its share, and the transaction type configuration\
+              \ must include the ExcessCapitalReturnedPortfolioCcy movement for the\
+              \ twin to move."
             format: double
             nullable: true
             type: number
@@ -208212,7 +208226,13 @@ components:
         \ balances from one line to another.\r\nThe source (Out) side moves every\
         \ balance by the fraction; the destination (In) side receives the\r\namounts\
         \ given on the event. Mode distinguishes a genuine transfer between investors\
-        \ from a correction\r\nof a mis-booked position."
+        \ from a correction\r\nof a mis-booked position. The portfolio-currency twin\
+        \ amounts (PaidInCapitalPortfolioCcyAmount,\r\nReturnedCapitalPortfolioCcyAmount\
+        \ and ExcessCapitalReturnedPortfolioCcyAmount) are not derived: an In side\r\
+        \nthat omits them books zero for the ...PortfolioCcy twins while the Out side\
+        \ gives up its share, and a\r\nclient-maintained transaction type configuration\
+        \ must include the ...PortfolioCcy twin movements for the\r\ntwins to move\
+        \ at all."
     CapletFloorletCashFlowEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -273762,6 +273782,8 @@ components:
           key: instrumentIdentifiers
         units: 0.8008281904610115
         holdingId: holdingId
+        initialMarginItem: initialMarginItem
+        initialMargin: 5.637376656633329
         portfolioId:
           code: code
           scope: scope
@@ -273841,6 +273863,20 @@ components:
         collateralValue:
           description: "The holding's value as collateral after haircuts, when it\
             \ is held as collateral."
+          format: double
+          nullable: true
+          type: number
+        initialMarginItem:
+          description: "The initial-margin item the line falls under, when the holding\
+            \ matched one. Filterable."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        initialMargin:
+          description: "The holding's share of its netting set's initial margin, before\
+            \ the threshold, when it contributes to it."
           format: double
           nullable: true
           type: number
@@ -296677,6 +296713,8 @@ components:
             key: instrumentIdentifiers
           units: 0.8008281904610115
           holdingId: holdingId
+          initialMarginItem: initialMarginItem
+          initialMargin: 5.637376656633329
           portfolioId:
             code: code
             scope: scope
@@ -296695,6 +296733,8 @@ components:
             key: instrumentIdentifiers
           units: 0.8008281904610115
           holdingId: holdingId
+          initialMarginItem: initialMarginItem
+          initialMargin: 5.637376656633329
           portfolioId:
             code: code
             scope: scope

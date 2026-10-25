@@ -105,6 +105,14 @@ public class MarginLine {
   @SerializedName(SERIALIZED_NAME_COLLATERAL_VALUE)
   private java.math.BigDecimal collateralValue;
 
+  public static final String SERIALIZED_NAME_INITIAL_MARGIN_ITEM = "initialMarginItem";
+  @SerializedName(SERIALIZED_NAME_INITIAL_MARGIN_ITEM)
+  private String initialMarginItem;
+
+  public static final String SERIALIZED_NAME_INITIAL_MARGIN = "initialMargin";
+  @SerializedName(SERIALIZED_NAME_INITIAL_MARGIN)
+  private java.math.BigDecimal initialMargin;
+
   public MarginLine() {
   }
 
@@ -389,6 +397,48 @@ public class MarginLine {
   }
 
 
+  public MarginLine initialMarginItem(String initialMarginItem) {
+    
+    this.initialMarginItem = initialMarginItem;
+    return this;
+  }
+
+   /**
+   * The initial-margin item the line falls under, when the holding matched one. Filterable.
+   * @return initialMarginItem
+  **/
+  @jakarta.annotation.Nullable
+  public String getInitialMarginItem() {
+    return initialMarginItem;
+  }
+
+
+  public void setInitialMarginItem(String initialMarginItem) {
+    this.initialMarginItem = initialMarginItem;
+  }
+
+
+  public MarginLine initialMargin(java.math.BigDecimal initialMargin) {
+    
+    this.initialMargin = initialMargin;
+    return this;
+  }
+
+   /**
+   * The holding&#39;s share of its netting set&#39;s initial margin, before the threshold, when it contributes to it.
+   * @return initialMargin
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getInitialMargin() {
+    return initialMargin;
+  }
+
+
+  public void setInitialMargin(java.math.BigDecimal initialMargin) {
+    this.initialMargin = initialMargin;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -411,7 +461,9 @@ public class MarginLine {
         (this.units.compareTo(marginLine.getUnits()) == 0) &&
         (this.pv.compareTo(marginLine.getPv()) == 0) &&
         (this.variationMargin.compareTo(marginLine.getVariationMargin()) == 0) &&
-        (this.collateralValue.compareTo(marginLine.getCollateralValue()) == 0);
+        (this.collateralValue.compareTo(marginLine.getCollateralValue()) == 0) &&
+        Objects.equals(this.initialMarginItem, marginLine.initialMarginItem) &&
+        (this.initialMargin.compareTo(marginLine.getInitialMargin()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -420,7 +472,7 @@ public class MarginLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(runId, agreementId, item, portfolioId, holdingId, custodianAccountScope, custodianAccountCode, custodianAccountName, instrumentIdentifiers, units, pv, variationMargin, collateralValue);
+    return Objects.hash(runId, agreementId, item, portfolioId, holdingId, custodianAccountScope, custodianAccountCode, custodianAccountName, instrumentIdentifiers, units, pv, variationMargin, collateralValue, initialMarginItem, initialMargin);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -447,6 +499,8 @@ public class MarginLine {
     sb.append("    pv: ").append(toIndentedString(pv)).append("\n");
     sb.append("    variationMargin: ").append(toIndentedString(variationMargin)).append("\n");
     sb.append("    collateralValue: ").append(toIndentedString(collateralValue)).append("\n");
+    sb.append("    initialMarginItem: ").append(toIndentedString(initialMarginItem)).append("\n");
+    sb.append("    initialMargin: ").append(toIndentedString(initialMargin)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -482,6 +536,8 @@ public class MarginLine {
     openapiFields.add("pv");
     openapiFields.add("variationMargin");
     openapiFields.add("collateralValue");
+    openapiFields.add("initialMarginItem");
+    openapiFields.add("initialMargin");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -535,6 +591,9 @@ public class MarginLine {
       }
       if ((jsonObj.get("custodianAccountName") != null && !jsonObj.get("custodianAccountName").isJsonNull()) && !jsonObj.get("custodianAccountName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `custodianAccountName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("custodianAccountName").toString()));
+      }
+      if ((jsonObj.get("initialMarginItem") != null && !jsonObj.get("initialMarginItem").isJsonNull()) && !jsonObj.get("initialMarginItem").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `initialMarginItem` to be a primitive type in the JSON string but got `%s`", jsonObj.get("initialMarginItem").toString()));
       }
   }
 

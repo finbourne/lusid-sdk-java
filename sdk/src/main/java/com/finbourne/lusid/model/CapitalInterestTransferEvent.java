@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The movement of a proportion of a CapitalInterest line&#39;s capital balances from one line to another.  The source (Out) side moves every balance by the fraction; the destination (In) side receives the  amounts given on the event. Mode distinguishes a genuine transfer between investors from a correction  of a mis-booked position.
+ * The movement of a proportion of a CapitalInterest line&#39;s capital balances from one line to another.  The source (Out) side moves every balance by the fraction; the destination (In) side receives the  amounts given on the event. Mode distinguishes a genuine transfer between investors from a correction  of a mis-booked position. The portfolio-currency twin amounts (PaidInCapitalPortfolioCcyAmount,  ReturnedCapitalPortfolioCcyAmount and ExcessCapitalReturnedPortfolioCcyAmount) are not derived: an In side  that omits them books zero for the ...PortfolioCcy twins while the Out side gives up its share, and a  client-maintained transaction type configuration must include the ...PortfolioCcy twin movements for the  twins to move at all.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CapitalInterestTransferEvent extends InstrumentEvent {
@@ -625,7 +625,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
    /**
-   * The paid-in capital the destination line takes over, already in the portfolio&#39;s base currency: the source line&#39;s PaidInCapitalPortfolioCcy balance share, accumulated at historical rates, not a spot conversion of PaidInCapitalAmount. Used on the &#39;In&#39; side only; must not be negative.
+   * The paid-in capital the destination line takes over, already in the portfolio&#39;s base currency: the source line&#39;s PaidInCapitalPortfolioCcy balance share, accumulated at historical rates, not a spot conversion of PaidInCapitalAmount. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for PaidInCapitalPortfolioCcy while the Out side gives up its share, and the transaction type configuration must include the PaidInCapitalPortfolioCcy movement for the twin to move.
    * @return paidInCapitalPortfolioCcyAmount
   **/
   @jakarta.annotation.Nullable
@@ -646,7 +646,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
    /**
-   * The returned capital the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative.
+   * The returned capital the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for ReturnedCapitalPortfolioCcy while the Out side gives up its share, and the transaction type configuration must include the ReturnedCapitalPortfolioCcy movement for the twin to move.
    * @return returnedCapitalPortfolioCcyAmount
   **/
   @jakarta.annotation.Nullable
@@ -667,7 +667,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
    /**
-   * The cumulative excess capital returned that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative.
+   * The cumulative excess capital returned that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for ExcessCapitalReturnedPortfolioCcy while the Out side gives up its share, and the transaction type configuration must include the ExcessCapitalReturnedPortfolioCcy movement for the twin to move.
    * @return excessCapitalReturnedPortfolioCcyAmount
   **/
   @jakarta.annotation.Nullable
