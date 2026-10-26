@@ -19,7 +19,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -64,9 +66,13 @@ public class MarginRunRequest {
   @SerializedName(SERIALIZED_NAME_AGREEMENT_FILTER)
   private String agreementFilter;
 
-  public static final String SERIALIZED_NAME_SCENARIO = "scenario";
-  @SerializedName(SERIALIZED_NAME_SCENARIO)
-  private ResourceId scenario;
+  public static final String SERIALIZED_NAME_SCENARIOS = "scenarios";
+  @SerializedName(SERIALIZED_NAME_SCENARIOS)
+  private List<ResourceId> scenarios;
+
+  public static final String SERIALIZED_NAME_EFFECTIVE_FROM = "effectiveFrom";
+  @SerializedName(SERIALIZED_NAME_EFFECTIVE_FROM)
+  private String effectiveFrom;
 
   public MarginRunRequest() {
   }
@@ -78,7 +84,7 @@ public class MarginRunRequest {
   }
 
    /**
-   * The business date, datetime or cut label to value the agreements at.
+   * The business date, datetime or cut label to value the agreements at. With an effectiveFrom, the last date of the span.
    * @return effectiveAt
   **/
   @jakarta.annotation.Nonnull
@@ -134,24 +140,53 @@ public class MarginRunRequest {
   }
 
 
-  public MarginRunRequest scenario(ResourceId scenario) {
+  public MarginRunRequest scenarios(List<ResourceId> scenarios) {
     
-    this.scenario = scenario;
+    this.scenarios = scenarios;
+    return this;
+  }
+
+  public MarginRunRequest addScenariosItem(ResourceId scenariosItem) {
+    if (this.scenarios == null) {
+      this.scenarios = new ArrayList<>();
+    }
+    this.scenarios.add(scenariosItem);
     return this;
   }
 
    /**
-   * Get scenario
-   * @return scenario
+   * The stored scenarios to value the agreements under, each as a what-if beside the base market, which the run always values. A scenario&#39;s calls are served beside the base calls only when asked for, and cannot be accepted, disputed or matched to a counterparty demand. At most 20. Only the base market is valued if not specified.
+   * @return scenarios
   **/
   @jakarta.annotation.Nullable
-  public ResourceId getScenario() {
-    return scenario;
+  public List<ResourceId> getScenarios() {
+    return scenarios;
   }
 
 
-  public void setScenario(ResourceId scenario) {
-    this.scenario = scenario;
+  public void setScenarios(List<ResourceId> scenarios) {
+    this.scenarios = scenarios;
+  }
+
+
+  public MarginRunRequest effectiveFrom(String effectiveFrom) {
+    
+    this.effectiveFrom = effectiveFrom;
+    return this;
+  }
+
+   /**
+   * The first business date, datetime or cut label of a span ending at effectiveAt. Each weekday from it to effectiveAt is valued as a run of its own, all at the same asAt, and a date after the asAt is a projection valued on the market as at the asAt that cannot be accepted, disputed or matched to a counterparty demand. At most 130 weekdays. Only effectiveAt is valued if not specified.
+   * @return effectiveFrom
+  **/
+  @jakarta.annotation.Nullable
+  public String getEffectiveFrom() {
+    return effectiveFrom;
+  }
+
+
+  public void setEffectiveFrom(String effectiveFrom) {
+    this.effectiveFrom = effectiveFrom;
   }
 
 
@@ -168,7 +203,8 @@ public class MarginRunRequest {
     return Objects.equals(this.effectiveAt, marginRunRequest.effectiveAt) &&
         Objects.equals(this.asAt, marginRunRequest.asAt) &&
         Objects.equals(this.agreementFilter, marginRunRequest.agreementFilter) &&
-        Objects.equals(this.scenario, marginRunRequest.scenario);
+        Objects.equals(this.scenarios, marginRunRequest.scenarios) &&
+        Objects.equals(this.effectiveFrom, marginRunRequest.effectiveFrom);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -177,7 +213,7 @@ public class MarginRunRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, asAt, agreementFilter, scenario);
+    return Objects.hash(effectiveAt, asAt, agreementFilter, scenarios, effectiveFrom);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -194,7 +230,8 @@ public class MarginRunRequest {
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
     sb.append("    agreementFilter: ").append(toIndentedString(agreementFilter)).append("\n");
-    sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
+    sb.append("    scenarios: ").append(toIndentedString(scenarios)).append("\n");
+    sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -220,7 +257,8 @@ public class MarginRunRequest {
     openapiFields.add("effectiveAt");
     openapiFields.add("asAt");
     openapiFields.add("agreementFilter");
-    openapiFields.add("scenario");
+    openapiFields.add("scenarios");
+    openapiFields.add("effectiveFrom");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -253,9 +291,22 @@ public class MarginRunRequest {
       if ((jsonObj.get("agreementFilter") != null && !jsonObj.get("agreementFilter").isJsonNull()) && !jsonObj.get("agreementFilter").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `agreementFilter` to be a primitive type in the JSON string but got `%s`", jsonObj.get("agreementFilter").toString()));
       }
-      // validate the optional field `scenario`
-      if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
-        ResourceId.validateJsonElement(jsonObj.get("scenario"));
+      if (jsonObj.get("scenarios") != null && !jsonObj.get("scenarios").isJsonNull()) {
+        JsonArray jsonArrayscenarios = jsonObj.getAsJsonArray("scenarios");
+        if (jsonArrayscenarios != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("scenarios").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `scenarios` to be an array in the JSON string but got `%s`", jsonObj.get("scenarios").toString()));
+          }
+
+          // validate the optional field `scenarios` (array)
+          for (int i = 0; i < jsonArrayscenarios.size(); i++) {
+            ResourceId.validateJsonElement(jsonArrayscenarios.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("effectiveFrom") != null && !jsonObj.get("effectiveFrom").isJsonNull()) && !jsonObj.get("effectiveFrom").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `effectiveFrom` to be a primitive type in the JSON string but got `%s`", jsonObj.get("effectiveFrom").toString()));
       }
   }
 

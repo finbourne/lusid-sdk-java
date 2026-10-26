@@ -113,6 +113,10 @@ public class MarginLine {
   @SerializedName(SERIALIZED_NAME_INITIAL_MARGIN)
   private java.math.BigDecimal initialMargin;
 
+  public static final String SERIALIZED_NAME_SCENARIO = "scenario";
+  @SerializedName(SERIALIZED_NAME_SCENARIO)
+  private ResourceId scenario;
+
   public MarginLine() {
   }
 
@@ -439,6 +443,27 @@ public class MarginLine {
   }
 
 
+  public MarginLine scenario(ResourceId scenario) {
+    
+    this.scenario = scenario;
+    return this;
+  }
+
+   /**
+   * Get scenario
+   * @return scenario
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getScenario() {
+    return scenario;
+  }
+
+
+  public void setScenario(ResourceId scenario) {
+    this.scenario = scenario;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -463,7 +488,8 @@ public class MarginLine {
         (this.variationMargin.compareTo(marginLine.getVariationMargin()) == 0) &&
         (this.collateralValue.compareTo(marginLine.getCollateralValue()) == 0) &&
         Objects.equals(this.initialMarginItem, marginLine.initialMarginItem) &&
-        (this.initialMargin.compareTo(marginLine.getInitialMargin()) == 0);
+        (this.initialMargin.compareTo(marginLine.getInitialMargin()) == 0) &&
+        Objects.equals(this.scenario, marginLine.scenario);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -472,7 +498,7 @@ public class MarginLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(runId, agreementId, item, portfolioId, holdingId, custodianAccountScope, custodianAccountCode, custodianAccountName, instrumentIdentifiers, units, pv, variationMargin, collateralValue, initialMarginItem, initialMargin);
+    return Objects.hash(runId, agreementId, item, portfolioId, holdingId, custodianAccountScope, custodianAccountCode, custodianAccountName, instrumentIdentifiers, units, pv, variationMargin, collateralValue, initialMarginItem, initialMargin, scenario);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -501,6 +527,7 @@ public class MarginLine {
     sb.append("    collateralValue: ").append(toIndentedString(collateralValue)).append("\n");
     sb.append("    initialMarginItem: ").append(toIndentedString(initialMarginItem)).append("\n");
     sb.append("    initialMargin: ").append(toIndentedString(initialMargin)).append("\n");
+    sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -538,6 +565,7 @@ public class MarginLine {
     openapiFields.add("collateralValue");
     openapiFields.add("initialMarginItem");
     openapiFields.add("initialMargin");
+    openapiFields.add("scenario");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -594,6 +622,10 @@ public class MarginLine {
       }
       if ((jsonObj.get("initialMarginItem") != null && !jsonObj.get("initialMarginItem").isJsonNull()) && !jsonObj.get("initialMarginItem").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `initialMarginItem` to be a primitive type in the JSON string but got `%s`", jsonObj.get("initialMarginItem").toString()));
+      }
+      // validate the optional field `scenario`
+      if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("scenario"));
       }
   }
 

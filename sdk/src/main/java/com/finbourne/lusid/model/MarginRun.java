@@ -109,9 +109,9 @@ public class MarginRun {
   @SerializedName(SERIALIZED_NAME_SHARDS)
   private List<MarginRunShard> shards = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_SCENARIO = "scenario";
-  @SerializedName(SERIALIZED_NAME_SCENARIO)
-  private ResourceId scenario;
+  public static final String SERIALIZED_NAME_SCENARIOS = "scenarios";
+  @SerializedName(SERIALIZED_NAME_SCENARIOS)
+  private List<ResourceId> scenarios = new ArrayList<>();
 
   public MarginRun() {
   }
@@ -413,24 +413,32 @@ public class MarginRun {
   }
 
 
-  public MarginRun scenario(ResourceId scenario) {
+  public MarginRun scenarios(List<ResourceId> scenarios) {
     
-    this.scenario = scenario;
+    this.scenarios = scenarios;
+    return this;
+  }
+
+  public MarginRun addScenariosItem(ResourceId scenariosItem) {
+    if (this.scenarios == null) {
+      this.scenarios = new ArrayList<>();
+    }
+    this.scenarios.add(scenariosItem);
     return this;
   }
 
    /**
-   * Get scenario
-   * @return scenario
+   * The stored scenarios the run values the agreements under, each beside the base market the run always values. Empty if only the base market was valued.
+   * @return scenarios
   **/
-  @jakarta.annotation.Nullable
-  public ResourceId getScenario() {
-    return scenario;
+  @jakarta.annotation.Nonnull
+  public List<ResourceId> getScenarios() {
+    return scenarios;
   }
 
 
-  public void setScenario(ResourceId scenario) {
-    this.scenario = scenario;
+  public void setScenarios(List<ResourceId> scenarios) {
+    this.scenarios = scenarios;
   }
 
 
@@ -457,7 +465,7 @@ public class MarginRun {
         Objects.equals(this.failedShards, marginRun.failedShards) &&
         Objects.equals(this.issues, marginRun.issues) &&
         Objects.equals(this.shards, marginRun.shards) &&
-        Objects.equals(this.scenario, marginRun.scenario);
+        Objects.equals(this.scenarios, marginRun.scenarios);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -466,7 +474,7 @@ public class MarginRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, effectiveAt, asAt, status, agreements, callCount, lineCount, shardCount, completedShards, failedShards, issues, shards, scenario);
+    return Objects.hash(href, id, effectiveAt, asAt, status, agreements, callCount, lineCount, shardCount, completedShards, failedShards, issues, shards, scenarios);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -493,7 +501,7 @@ public class MarginRun {
     sb.append("    failedShards: ").append(toIndentedString(failedShards)).append("\n");
     sb.append("    issues: ").append(toIndentedString(issues)).append("\n");
     sb.append("    shards: ").append(toIndentedString(shards)).append("\n");
-    sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
+    sb.append("    scenarios: ").append(toIndentedString(scenarios)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -529,7 +537,7 @@ public class MarginRun {
     openapiFields.add("failedShards");
     openapiFields.add("issues");
     openapiFields.add("shards");
-    openapiFields.add("scenario");
+    openapiFields.add("scenarios");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -545,6 +553,7 @@ public class MarginRun {
     openapiRequiredFields.add("failedShards");
     openapiRequiredFields.add("issues");
     openapiRequiredFields.add("shards");
+    openapiRequiredFields.add("scenarios");
   }
 
  /**
@@ -606,10 +615,16 @@ public class MarginRun {
       for (int i = 0; i < jsonArrayshards.size(); i++) {
         MarginRunShard.validateJsonElement(jsonArrayshards.get(i));
       };
-      // validate the optional field `scenario`
-      if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
-        ResourceId.validateJsonElement(jsonObj.get("scenario"));
+      // ensure the json data is an array
+      if (!jsonObj.get("scenarios").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `scenarios` to be an array in the JSON string but got `%s`", jsonObj.get("scenarios").toString()));
       }
+
+      JsonArray jsonArrayscenarios = jsonObj.getAsJsonArray("scenarios");
+      // validate the required field `scenarios` (array)
+      for (int i = 0; i < jsonArrayscenarios.size(); i++) {
+        ResourceId.validateJsonElement(jsonArrayscenarios.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

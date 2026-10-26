@@ -617,11 +617,11 @@ public class CollateralApiExample {
 
 ## listMarginCalls
 
-> PagedResourceListOfMarginCall listMarginCalls(effectiveAt, runId, page, limit, filter)
+> PagedResourceListOfMarginCall listMarginCalls(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom)
 
 [EXPERIMENTAL] ListMarginCalls: List margin calls.
 
-List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
 
 ### Example
 
@@ -662,16 +662,18 @@ public class CollateralApiExample {
         // CollateralApi apiInstance = apiFactory.build(CollateralApi.class);
 
         CollateralApi apiInstance = ApiFactoryBuilder.build(fileName).build(CollateralApi.class);
-        String effectiveAt = "effectiveAt_example"; // String | The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given.
+        String effectiveAt = "effectiveAt_example"; // String | The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given.
         String runId = "runId_example"; // String | The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified.
         String page = "page_example"; // String | The pagination token to use to continue listing margin calls; this value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \"MatchStatus eq 'Break'\". For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
+        List<String> scenarios = Arrays.asList(); // List<String> | The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified.
+        String effectiveFrom = "effectiveFrom_example"; // String | The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfMarginCall result = apiInstance.listMarginCalls(effectiveAt, runId, page, limit, filter).execute(opts);
+            // PagedResourceListOfMarginCall result = apiInstance.listMarginCalls(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom).execute(opts);
 
-            PagedResourceListOfMarginCall result = apiInstance.listMarginCalls(effectiveAt, runId, page, limit, filter).execute();
+            PagedResourceListOfMarginCall result = apiInstance.listMarginCalls(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CollateralApi#listMarginCalls");
@@ -688,11 +690,13 @@ public class CollateralApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **effectiveAt** | **String**| The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. | [optional] |
+| **effectiveAt** | **String**| The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. | [optional] |
 | **runId** | **String**| The identifier of the margin run to list the calls of. Lists the current calls for the business date if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing margin calls; this value is returned from the previous call. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results. The filterable fields are RunId, AgreementId.Scope, AgreementId.Code, Counterparty.Code, Counterparty.IdTypeScope, Counterparty.IdTypeCode, Item, MarginType, Method, Settlement, Direction, Currency, Required, Held, Call, CounterpartyDemand, Difference, MatchStatus, AgreedAmount, DisputedAmount, DisputeOwner, State and Deadline. For example, to find the breaks, specify \&quot;MatchStatus eq &#39;Break&#39;\&quot;. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
+| **scenarios** | [**List&lt;String&gt;**](String.md)| The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. | [optional] |
+| **effectiveFrom** | **String**| The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. | [optional] |
 
 ### Return type
 
@@ -716,7 +720,7 @@ public class CollateralApiExample {
 
 ## listMarginLines
 
-> PagedResourceListOfMarginLine listMarginLines(runId, page, limit, filter)
+> PagedResourceListOfMarginLine listMarginLines(runId, page, limit, filter, scenarios)
 
 [EXPERIMENTAL] ListMarginLines: List the margin lines of a run.
 
@@ -765,11 +769,12 @@ public class CollateralApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing margin lines; this value is returned from the previous call.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
+        List<String> scenarios = Arrays.asList(); // List<String> | The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfMarginLine result = apiInstance.listMarginLines(runId, page, limit, filter).execute(opts);
+            // PagedResourceListOfMarginLine result = apiInstance.listMarginLines(runId, page, limit, filter, scenarios).execute(opts);
 
-            PagedResourceListOfMarginLine result = apiInstance.listMarginLines(runId, page, limit, filter).execute();
+            PagedResourceListOfMarginLine result = apiInstance.listMarginLines(runId, page, limit, filter, scenarios).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CollateralApi#listMarginLines");
@@ -790,6 +795,7 @@ public class CollateralApiExample {
 | **page** | **String**| The pagination token to use to continue listing margin lines; this value is returned from the previous call. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results. The filterable fields are AgreementId.Scope, AgreementId.Code, Item, PortfolioId.Scope, PortfolioId.Code, HoldingId, CustodianAccountScope, CustodianAccountCode, CustodianAccountName, Units, Pv, VariationMargin and CollateralValue. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
+| **scenarios** | [**List&lt;String&gt;**](String.md)| The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. | [optional] |
 
 ### Return type
 
@@ -1102,11 +1108,11 @@ public class CollateralApiExample {
 
 ## runMarginCalculation
 
-> MarginRun runMarginCalculation(marginRunRequest)
+> PagedResourceListOfMarginRun runMarginCalculation(marginRunRequest)
 
 [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation.
 
-Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
+Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
 
 ### Example
 
@@ -1147,12 +1153,12 @@ public class CollateralApiExample {
         // CollateralApi apiInstance = apiFactory.build(CollateralApi.class);
 
         CollateralApi apiInstance = ApiFactoryBuilder.build(fileName).build(CollateralApi.class);
-        MarginRunRequest marginRunRequest = new MarginRunRequest(); // MarginRunRequest | The business date to value, and optionally the asAt and the agreements to include.
+        MarginRunRequest marginRunRequest = new MarginRunRequest(); // MarginRunRequest | The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case.
         try {
             // uncomment the below to set overrides at the request level
-            // MarginRun result = apiInstance.runMarginCalculation(marginRunRequest).execute(opts);
+            // PagedResourceListOfMarginRun result = apiInstance.runMarginCalculation(marginRunRequest).execute(opts);
 
-            MarginRun result = apiInstance.runMarginCalculation(marginRunRequest).execute();
+            PagedResourceListOfMarginRun result = apiInstance.runMarginCalculation(marginRunRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling CollateralApi#runMarginCalculation");
@@ -1169,11 +1175,11 @@ public class CollateralApiExample {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **marginRunRequest** | [**MarginRunRequest**](MarginRunRequest.md)| The business date to value, and optionally the asAt and the agreements to include. | |
+| **marginRunRequest** | [**MarginRunRequest**](MarginRunRequest.md)| The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case. | |
 
 ### Return type
 
-[**MarginRun**](MarginRun.md)
+[**PagedResourceListOfMarginRun**](PagedResourceListOfMarginRun.md)
 
 ### HTTP request headers
 
@@ -1184,7 +1190,7 @@ public class CollateralApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **202** | The margin run as planned. |  -  |
+| **202** | The margin runs as planned, one for each date valued. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

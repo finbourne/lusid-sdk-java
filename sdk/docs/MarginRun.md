@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **failedShards** | **Integer** | The number of shards that failed to value. | [default to Integer]
 **issues** | [**List&lt;MarginRunIssue&gt;**](MarginRunIssue.md) | Agreements the run could not value or roll up into a call, or the caller may not calculate margin for, with the reason. | [default to List<MarginRunIssue>]
 **shards** | [**List&lt;MarginRunShard&gt;**](MarginRunShard.md) | The valuation shards the run is planned as, with their progress. | [default to List<MarginRunShard>]
-**scenario** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**scenarios** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The stored scenarios the run values the agreements under, each beside the base market the run always values. Empty if only the base market was valued. | [default to List<ResourceId>]
 
 ```java
 import com.finbourne.lusid.model.MarginRun;
@@ -39,7 +39,7 @@ Integer CompletedShards = new Integer("100.00");
 Integer FailedShards = new Integer("100.00");
 List<MarginRunIssue> Issues = new List<MarginRunIssue>();
 List<MarginRunShard> Shards = new List<MarginRunShard>();
-ResourceId Scenario = new ResourceId();
+List<ResourceId> Scenarios = new List<ResourceId>();
 
 
 MarginRun marginRunInstance = new MarginRun()
@@ -56,7 +56,7 @@ MarginRun marginRunInstance = new MarginRun()
     .FailedShards(FailedShards)
     .Issues(Issues)
     .Shards(Shards)
-    .Scenario(Scenario);
+    .Scenarios(Scenarios);
 ```
 
 

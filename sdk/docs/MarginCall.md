@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **supersedes** | [**MarginCallReference**](MarginCallReference.md) |  | [optional] [default to MarginCallReference]
 **carriedFrom** | [**MarginCallReference**](MarginCallReference.md) |  | [optional] [default to MarginCallReference]
 **carriedDisputedAmount** | **java.math.BigDecimal** | The amount left in dispute on the carried call. Informational; not added to this call. | [optional] [default to java.math.BigDecimal]
+**scenario** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.MarginCall;
@@ -72,6 +73,7 @@ String State = "example State";
 MarginCallReference Supersedes = new MarginCallReference();
 MarginCallReference CarriedFrom = new MarginCallReference();
 @jakarta.annotation.Nullable java.math.BigDecimal CarriedDisputedAmount = new java.math.BigDecimal("100.00");
+ResourceId Scenario = new ResourceId();
 
 
 MarginCall marginCallInstance = new MarginCall()
@@ -104,7 +106,8 @@ MarginCall marginCallInstance = new MarginCall()
     .Deadline(Deadline)
     .Supersedes(Supersedes)
     .CarriedFrom(CarriedFrom)
-    .CarriedDisputedAmount(CarriedDisputedAmount);
+    .CarriedDisputedAmount(CarriedDisputedAmount)
+    .Scenario(Scenario);
 ```
 
 

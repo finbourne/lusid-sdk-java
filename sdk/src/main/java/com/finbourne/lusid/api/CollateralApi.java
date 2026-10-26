@@ -1729,11 +1729,11 @@ public class CollateralApi {
     public APIlistMarginCallLinesRequest listMarginCallLines(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) {
         return new APIlistMarginCallLinesRequest(runId, agreementScope, agreementCode, item, marginType, direction);
     }
-    private okhttp3.Call listMarginCallsCall(String effectiveAt, String runId, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listMarginCallsCall(effectiveAt, runId, page, limit, filter,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listMarginCallsCall(String effectiveAt, String runId, String page, Integer limit, String filter, List<String> scenarios, String effectiveFrom, final ApiCallback _callback) throws ApiException {
+        return listMarginCallsCall(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listMarginCallsCall(String effectiveAt, String runId, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listMarginCallsCall(String effectiveAt, String runId, String page, Integer limit, String filter, List<String> scenarios, String effectiveFrom, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1778,6 +1778,14 @@ public class CollateralApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (scenarios != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "scenarios", scenarios));
+        }
+
+        if (effectiveFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveFrom", effectiveFrom));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1800,35 +1808,35 @@ public class CollateralApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMarginCallsValidateBeforeCall(String effectiveAt, String runId, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listMarginCallsCall(effectiveAt, runId, page, limit, filter, _callback, opts);
+    private okhttp3.Call listMarginCallsValidateBeforeCall(String effectiveAt, String runId, String page, Integer limit, String filter, List<String> scenarios, String effectiveFrom, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listMarginCallsCall(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfMarginCall> listMarginCallsWithHttpInfo(String effectiveAt, String runId, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listMarginCallsValidateBeforeCall(effectiveAt, runId, page, limit, filter, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfMarginCall> listMarginCallsWithHttpInfo(String effectiveAt, String runId, String page, Integer limit, String filter, List<String> scenarios, String effectiveFrom) throws ApiException {
+        okhttp3.Call localVarCall = listMarginCallsValidateBeforeCall(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfMarginCall>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfMarginCall> listMarginCallsWithHttpInfo(String effectiveAt, String runId, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listMarginCallsValidateBeforeCall(effectiveAt, runId, page, limit, filter, null, opts);
+    private ApiResponse<PagedResourceListOfMarginCall> listMarginCallsWithHttpInfo(String effectiveAt, String runId, String page, Integer limit, String filter, List<String> scenarios, String effectiveFrom, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listMarginCallsValidateBeforeCall(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfMarginCall>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listMarginCallsAsync(String effectiveAt, String runId, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfMarginCall> _callback) throws ApiException {
+    private okhttp3.Call listMarginCallsAsync(String effectiveAt, String runId, String page, Integer limit, String filter, List<String> scenarios, String effectiveFrom, final ApiCallback<PagedResourceListOfMarginCall> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listMarginCallsValidateBeforeCall(effectiveAt, runId, page, limit, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listMarginCallsValidateBeforeCall(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfMarginCall>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listMarginCallsAsync(String effectiveAt, String runId, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfMarginCall> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listMarginCallsAsync(String effectiveAt, String runId, String page, Integer limit, String filter, List<String> scenarios, String effectiveFrom, final ApiCallback<PagedResourceListOfMarginCall> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listMarginCallsValidateBeforeCall(effectiveAt, runId, page, limit, filter, _callback, opts);
+        okhttp3.Call localVarCall = listMarginCallsValidateBeforeCall(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfMarginCall>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1840,13 +1848,15 @@ public class CollateralApi {
         private String page;
         private Integer limit;
         private String filter;
+        private List<String> scenarios;
+        private String effectiveFrom;
 
         private APIlistMarginCallsRequest() {
         }
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The business date, datetime or cut label to list the current margin calls for. Defaults to today if not specified. Ignored when a run id is given. (optional)
+         * @param effectiveAt The business date, datetime or cut label to list the current margin calls for, or the last date of the range when effectiveFrom is given. Defaults to today if not specified. Ignored when a run id is given. (optional)
          * @return APIlistMarginCallsRequest
          */
         public APIlistMarginCallsRequest effectiveAt(String effectiveAt) {
@@ -1895,6 +1905,26 @@ public class CollateralApi {
         }
 
         /**
+         * Set scenarios
+         * @param scenarios The scenarios, each as scope/code, whose calls are listed beside the base case calls, which are always listed. Lists the base case calls only if not specified. (optional)
+         * @return APIlistMarginCallsRequest
+         */
+        public APIlistMarginCallsRequest scenarios(List<String> scenarios) {
+            this.scenarios = scenarios;
+            return this;
+        }
+
+        /**
+         * Set effectiveFrom
+         * @param effectiveFrom The first business date, datetime or cut label of a range ending at effectiveAt, for a time series of calls. Lists the one business date if not specified. Ignored when a run id is given. (optional)
+         * @return APIlistMarginCallsRequest
+         */
+        public APIlistMarginCallsRequest effectiveFrom(String effectiveFrom) {
+            this.effectiveFrom = effectiveFrom;
+            return this;
+        }
+
+        /**
          * Build call for listMarginCalls
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1908,7 +1938,7 @@ public class CollateralApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listMarginCallsCall(effectiveAt, runId, page, limit, filter, _callback);
+            return listMarginCallsCall(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, _callback);
         }
 
         /**
@@ -1924,7 +1954,7 @@ public class CollateralApi {
          </table>
          */
         public PagedResourceListOfMarginCall execute() throws ApiException {
-            ApiResponse<PagedResourceListOfMarginCall> localVarResp = listMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter);
+            ApiResponse<PagedResourceListOfMarginCall> localVarResp = listMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom);
             return localVarResp.getData();
         }
 
@@ -1941,7 +1971,7 @@ public class CollateralApi {
          </table>
          */
         public PagedResourceListOfMarginCall execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfMarginCall> localVarResp = listMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter, opts);
+            ApiResponse<PagedResourceListOfMarginCall> localVarResp = listMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, opts);
             return localVarResp.getData();
         }
 
@@ -1958,7 +1988,7 @@ public class CollateralApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfMarginCall> executeWithHttpInfo() throws ApiException {
-            return listMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter);
+            return listMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom);
         }
 
         /**
@@ -1974,7 +2004,7 @@ public class CollateralApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfMarginCall> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter, opts);
+            return listMarginCallsWithHttpInfo(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, opts);
         }
 
         /**
@@ -1991,7 +2021,7 @@ public class CollateralApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfMarginCall> _callback) throws ApiException {
-            return listMarginCallsAsync(effectiveAt, runId, page, limit, filter, _callback);
+            return listMarginCallsAsync(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, _callback);
         }
 
         /**
@@ -2008,13 +2038,13 @@ public class CollateralApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfMarginCall> _callback, ConfigurationOptions opts) throws ApiException {
-            return listMarginCallsAsync(effectiveAt, runId, page, limit, filter, _callback, opts);
+            return listMarginCallsAsync(effectiveAt, runId, page, limit, filter, scenarios, effectiveFrom, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] ListMarginCalls: List margin calls.
-     * List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. Restricted to the agreements the caller may read.
+     * List the margin calls of one run when a run id is given. Otherwise list the current calls for a business date:  those of the latest run for the date, with an agreement that run could not value served from the most recent run  that did. With an effectiveFrom the current calls of each date from it to effectiveAt are listed, in date order.  Restricted to the agreements the caller may read.
      * @return APIlistMarginCallsRequest
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2027,11 +2057,11 @@ public class CollateralApi {
     public APIlistMarginCallsRequest listMarginCalls() {
         return new APIlistMarginCallsRequest();
     }
-    private okhttp3.Call listMarginLinesCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
-        return listMarginLinesCall(runId, page, limit, filter,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listMarginLinesCall(String runId, String page, Integer limit, String filter, List<String> scenarios, final ApiCallback _callback) throws ApiException {
+        return listMarginLinesCall(runId, page, limit, filter, scenarios,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listMarginLinesCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listMarginLinesCall(String runId, String page, Integer limit, String filter, List<String> scenarios, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2069,6 +2099,10 @@ public class CollateralApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        if (scenarios != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "scenarios", scenarios));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2091,40 +2125,40 @@ public class CollateralApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listMarginLinesValidateBeforeCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listMarginLinesValidateBeforeCall(String runId, String page, Integer limit, String filter, List<String> scenarios, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'runId' is set
         if (runId == null) {
             throw new ApiException("Missing the required parameter 'runId' when calling listMarginLines(Async)");
         }
 
-        return listMarginLinesCall(runId, page, limit, filter, _callback, opts);
+        return listMarginLinesCall(runId, page, limit, filter, scenarios, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfMarginLine> listMarginLinesWithHttpInfo(String runId, String page, Integer limit, String filter) throws ApiException {
-        okhttp3.Call localVarCall = listMarginLinesValidateBeforeCall(runId, page, limit, filter, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfMarginLine> listMarginLinesWithHttpInfo(String runId, String page, Integer limit, String filter, List<String> scenarios) throws ApiException {
+        okhttp3.Call localVarCall = listMarginLinesValidateBeforeCall(runId, page, limit, filter, scenarios, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfMarginLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfMarginLine> listMarginLinesWithHttpInfo(String runId, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listMarginLinesValidateBeforeCall(runId, page, limit, filter, null, opts);
+    private ApiResponse<PagedResourceListOfMarginLine> listMarginLinesWithHttpInfo(String runId, String page, Integer limit, String filter, List<String> scenarios, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listMarginLinesValidateBeforeCall(runId, page, limit, filter, scenarios, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfMarginLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listMarginLinesAsync(String runId, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfMarginLine> _callback) throws ApiException {
+    private okhttp3.Call listMarginLinesAsync(String runId, String page, Integer limit, String filter, List<String> scenarios, final ApiCallback<PagedResourceListOfMarginLine> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listMarginLinesValidateBeforeCall(runId, page, limit, filter, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listMarginLinesValidateBeforeCall(runId, page, limit, filter, scenarios, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfMarginLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listMarginLinesAsync(String runId, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfMarginLine> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listMarginLinesAsync(String runId, String page, Integer limit, String filter, List<String> scenarios, final ApiCallback<PagedResourceListOfMarginLine> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listMarginLinesValidateBeforeCall(runId, page, limit, filter, _callback, opts);
+        okhttp3.Call localVarCall = listMarginLinesValidateBeforeCall(runId, page, limit, filter, scenarios, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfMarginLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2135,6 +2169,7 @@ public class CollateralApi {
         private String page;
         private Integer limit;
         private String filter;
+        private List<String> scenarios;
 
         private APIlistMarginLinesRequest(String runId) {
             this.runId = runId;
@@ -2171,6 +2206,16 @@ public class CollateralApi {
         }
 
         /**
+         * Set scenarios
+         * @param scenarios The scenarios, each as scope/code, whose lines are listed beside the base case lines, which are always listed. Lists the base case lines only if not specified. (optional)
+         * @return APIlistMarginLinesRequest
+         */
+        public APIlistMarginLinesRequest scenarios(List<String> scenarios) {
+            this.scenarios = scenarios;
+            return this;
+        }
+
+        /**
          * Build call for listMarginLines
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -2184,7 +2229,7 @@ public class CollateralApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listMarginLinesCall(runId, page, limit, filter, _callback);
+            return listMarginLinesCall(runId, page, limit, filter, scenarios, _callback);
         }
 
         /**
@@ -2200,7 +2245,7 @@ public class CollateralApi {
          </table>
          */
         public PagedResourceListOfMarginLine execute() throws ApiException {
-            ApiResponse<PagedResourceListOfMarginLine> localVarResp = listMarginLinesWithHttpInfo(runId, page, limit, filter);
+            ApiResponse<PagedResourceListOfMarginLine> localVarResp = listMarginLinesWithHttpInfo(runId, page, limit, filter, scenarios);
             return localVarResp.getData();
         }
 
@@ -2217,7 +2262,7 @@ public class CollateralApi {
          </table>
          */
         public PagedResourceListOfMarginLine execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfMarginLine> localVarResp = listMarginLinesWithHttpInfo(runId, page, limit, filter, opts);
+            ApiResponse<PagedResourceListOfMarginLine> localVarResp = listMarginLinesWithHttpInfo(runId, page, limit, filter, scenarios, opts);
             return localVarResp.getData();
         }
 
@@ -2234,7 +2279,7 @@ public class CollateralApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfMarginLine> executeWithHttpInfo() throws ApiException {
-            return listMarginLinesWithHttpInfo(runId, page, limit, filter);
+            return listMarginLinesWithHttpInfo(runId, page, limit, filter, scenarios);
         }
 
         /**
@@ -2250,7 +2295,7 @@ public class CollateralApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfMarginLine> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listMarginLinesWithHttpInfo(runId, page, limit, filter, opts);
+            return listMarginLinesWithHttpInfo(runId, page, limit, filter, scenarios, opts);
         }
 
         /**
@@ -2267,7 +2312,7 @@ public class CollateralApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfMarginLine> _callback) throws ApiException {
-            return listMarginLinesAsync(runId, page, limit, filter, _callback);
+            return listMarginLinesAsync(runId, page, limit, filter, scenarios, _callback);
         }
 
         /**
@@ -2284,7 +2329,7 @@ public class CollateralApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfMarginLine> _callback, ConfigurationOptions opts) throws ApiException {
-            return listMarginLinesAsync(runId, page, limit, filter, _callback, opts);
+            return listMarginLinesAsync(runId, page, limit, filter, scenarios, _callback, opts);
         }
     }
 
@@ -3159,30 +3204,30 @@ public class CollateralApi {
     }
 
 
-    private ApiResponse<MarginRun> runMarginCalculationWithHttpInfo(MarginRunRequest marginRunRequest) throws ApiException {
+    private ApiResponse<PagedResourceListOfMarginRun> runMarginCalculationWithHttpInfo(MarginRunRequest marginRunRequest) throws ApiException {
         okhttp3.Call localVarCall = runMarginCalculationValidateBeforeCall(marginRunRequest, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<MarginRun>(){}.getType();
+        Type localVarReturnType = new TypeToken<PagedResourceListOfMarginRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<MarginRun> runMarginCalculationWithHttpInfo(MarginRunRequest marginRunRequest, ConfigurationOptions opts) throws ApiException {
+    private ApiResponse<PagedResourceListOfMarginRun> runMarginCalculationWithHttpInfo(MarginRunRequest marginRunRequest, ConfigurationOptions opts) throws ApiException {
         okhttp3.Call localVarCall = runMarginCalculationValidateBeforeCall(marginRunRequest, null, opts);
-        Type localVarReturnType = new TypeToken<MarginRun>(){}.getType();
+        Type localVarReturnType = new TypeToken<PagedResourceListOfMarginRun>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call runMarginCalculationAsync(MarginRunRequest marginRunRequest, final ApiCallback<MarginRun> _callback) throws ApiException {
+    private okhttp3.Call runMarginCalculationAsync(MarginRunRequest marginRunRequest, final ApiCallback<PagedResourceListOfMarginRun> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = runMarginCalculationValidateBeforeCall(marginRunRequest, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<MarginRun>(){}.getType();
+        Type localVarReturnType = new TypeToken<PagedResourceListOfMarginRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call runMarginCalculationAsync(MarginRunRequest marginRunRequest, final ApiCallback<MarginRun> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call runMarginCalculationAsync(MarginRunRequest marginRunRequest, final ApiCallback<PagedResourceListOfMarginRun> _callback, ConfigurationOptions opts) throws ApiException {
 
         okhttp3.Call localVarCall = runMarginCalculationValidateBeforeCall(marginRunRequest, _callback, opts);
-        Type localVarReturnType = new TypeToken<MarginRun>(){}.getType();
+        Type localVarReturnType = new TypeToken<PagedResourceListOfMarginRun>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -3202,7 +3247,7 @@ public class CollateralApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 202 </td><td> The margin run as planned. </td><td>  -  </td></tr>
+            <tr><td> 202 </td><td> The margin runs as planned, one for each date valued. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -3213,67 +3258,67 @@ public class CollateralApi {
 
         /**
          * Execute runMarginCalculation request
-         * @return MarginRun
+         * @return PagedResourceListOfMarginRun
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 202 </td><td> The margin run as planned. </td><td>  -  </td></tr>
+            <tr><td> 202 </td><td> The margin runs as planned, one for each date valued. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public MarginRun execute() throws ApiException {
-            ApiResponse<MarginRun> localVarResp = runMarginCalculationWithHttpInfo(marginRunRequest);
+        public PagedResourceListOfMarginRun execute() throws ApiException {
+            ApiResponse<PagedResourceListOfMarginRun> localVarResp = runMarginCalculationWithHttpInfo(marginRunRequest);
             return localVarResp.getData();
         }
 
         /**
          * Execute runMarginCalculation request. Use any specified configuration options to override any other configuration for this request only.
-         * @return MarginRun
+         * @return PagedResourceListOfMarginRun
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 202 </td><td> The margin run as planned. </td><td>  -  </td></tr>
+            <tr><td> 202 </td><td> The margin runs as planned, one for each date valued. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public MarginRun execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<MarginRun> localVarResp = runMarginCalculationWithHttpInfo(marginRunRequest, opts);
+        public PagedResourceListOfMarginRun execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfMarginRun> localVarResp = runMarginCalculationWithHttpInfo(marginRunRequest, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute runMarginCalculation request with HTTP info returned
-         * @return ApiResponse&lt;MarginRun&gt;
+         * @return ApiResponse&lt;PagedResourceListOfMarginRun&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 202 </td><td> The margin run as planned. </td><td>  -  </td></tr>
+            <tr><td> 202 </td><td> The margin runs as planned, one for each date valued. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<MarginRun> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<PagedResourceListOfMarginRun> executeWithHttpInfo() throws ApiException {
             return runMarginCalculationWithHttpInfo(marginRunRequest);
         }
 
         /**
          * Execute runMarginCalculation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;MarginRun&gt;
+         * @return ApiResponse&lt;PagedResourceListOfMarginRun&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 202 </td><td> The margin run as planned. </td><td>  -  </td></tr>
+            <tr><td> 202 </td><td> The margin runs as planned, one for each date valued. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<MarginRun> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        public ApiResponse<PagedResourceListOfMarginRun> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
             return runMarginCalculationWithHttpInfo(marginRunRequest, opts);
         }
 
@@ -3285,12 +3330,12 @@ public class CollateralApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 202 </td><td> The margin run as planned. </td><td>  -  </td></tr>
+            <tr><td> 202 </td><td> The margin runs as planned, one for each date valued. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<MarginRun> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfMarginRun> _callback) throws ApiException {
             return runMarginCalculationAsync(marginRunRequest, _callback);
         }
 
@@ -3302,25 +3347,25 @@ public class CollateralApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 202 </td><td> The margin run as planned. </td><td>  -  </td></tr>
+            <tr><td> 202 </td><td> The margin runs as planned, one for each date valued. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<MarginRun> _callback, ConfigurationOptions opts) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfMarginRun> _callback, ConfigurationOptions opts) throws ApiException {
             return runMarginCalculationAsync(marginRunRequest, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation.
-     * Value the collateral agreements for a business date in the background and publish their margin calls as a run.  The run is returned as planned; poll GetMarginRun for its progress, and list its calls as they are published.
-     * @param marginRunRequest The business date to value, and optionally the asAt and the agreements to include. (required)
+     * Value the collateral agreements for a business date, or for each weekday of a span, in the background and publish  their margin calls as a run for each date. The base case is always valued, with each scenario named in the request  valued beside it as a case of the same run. A date after the asAt is a projection on the market as at the asAt.  The runs are returned as planned, in date order; poll GetMarginRun for the progress of each, and list the calls as they are published.
+     * @param marginRunRequest The business date to value, or the span of dates ending at it, and optionally the asAt, the agreements to include and the scenarios to value beside the base case. (required)
      * @return APIrunMarginCalculationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 202 </td><td> The margin run as planned. </td><td>  -  </td></tr>
+        <tr><td> 202 </td><td> The margin runs as planned, one for each date valued. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

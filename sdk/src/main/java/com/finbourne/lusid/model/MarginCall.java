@@ -175,6 +175,10 @@ public class MarginCall {
   @SerializedName(SERIALIZED_NAME_CARRIED_DISPUTED_AMOUNT)
   private java.math.BigDecimal carriedDisputedAmount;
 
+  public static final String SERIALIZED_NAME_SCENARIO = "scenario";
+  @SerializedName(SERIALIZED_NAME_SCENARIO)
+  private ResourceId scenario;
+
   public MarginCall() {
   }
 
@@ -808,6 +812,27 @@ public class MarginCall {
   }
 
 
+  public MarginCall scenario(ResourceId scenario) {
+    
+    this.scenario = scenario;
+    return this;
+  }
+
+   /**
+   * Get scenario
+   * @return scenario
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getScenario() {
+    return scenario;
+  }
+
+
+  public void setScenario(ResourceId scenario) {
+    this.scenario = scenario;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -847,7 +872,8 @@ public class MarginCall {
         Objects.equals(this.deadline, marginCall.deadline) &&
         Objects.equals(this.supersedes, marginCall.supersedes) &&
         Objects.equals(this.carriedFrom, marginCall.carriedFrom) &&
-        (this.carriedDisputedAmount.compareTo(marginCall.getCarriedDisputedAmount()) == 0);
+        (this.carriedDisputedAmount.compareTo(marginCall.getCarriedDisputedAmount()) == 0) &&
+        Objects.equals(this.scenario, marginCall.scenario);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -856,7 +882,7 @@ public class MarginCall {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, runId, agreementId, counterparty, item, marginType, method, settlement, direction, currency, required, held, call, matchTolerance, counterpartyDemand, difference, matchStatus, demandReceivedAt, statementReference, demandNote, agreedAmount, disputedAmount, disputeReason, disputeOwner, state, deadline, supersedes, carriedFrom, carriedDisputedAmount);
+    return Objects.hash(href, id, runId, agreementId, counterparty, item, marginType, method, settlement, direction, currency, required, held, call, matchTolerance, counterpartyDemand, difference, matchStatus, demandReceivedAt, statementReference, demandNote, agreedAmount, disputedAmount, disputeReason, disputeOwner, state, deadline, supersedes, carriedFrom, carriedDisputedAmount, scenario);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -900,6 +926,7 @@ public class MarginCall {
     sb.append("    supersedes: ").append(toIndentedString(supersedes)).append("\n");
     sb.append("    carriedFrom: ").append(toIndentedString(carriedFrom)).append("\n");
     sb.append("    carriedDisputedAmount: ").append(toIndentedString(carriedDisputedAmount)).append("\n");
+    sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -952,6 +979,7 @@ public class MarginCall {
     openapiFields.add("supersedes");
     openapiFields.add("carriedFrom");
     openapiFields.add("carriedDisputedAmount");
+    openapiFields.add("scenario");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1047,6 +1075,10 @@ public class MarginCall {
       // validate the optional field `carriedFrom`
       if (jsonObj.get("carriedFrom") != null && !jsonObj.get("carriedFrom").isJsonNull()) {
         MarginCallReference.validateJsonElement(jsonObj.get("carriedFrom"));
+      }
+      // validate the optional field `scenario`
+      if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("scenario"));
       }
   }
 

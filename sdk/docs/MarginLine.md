@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **collateralValue** | **java.math.BigDecimal** | The holding&#39;s value as collateral after haircuts, when it is held as collateral. | [optional] [default to java.math.BigDecimal]
 **initialMarginItem** | **String** | The initial-margin item the line falls under, when the holding matched one. Filterable. | [optional] [default to String]
 **initialMargin** | **java.math.BigDecimal** | The holding&#39;s share of its netting set&#39;s initial margin, before the threshold, when it contributes to it. | [optional] [default to java.math.BigDecimal]
+**scenario** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.MarginLine;
@@ -42,6 +43,7 @@ java.math.BigDecimal Units = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal CollateralValue = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String InitialMarginItem = "example InitialMarginItem";
 @jakarta.annotation.Nullable java.math.BigDecimal InitialMargin = new java.math.BigDecimal("100.00");
+ResourceId Scenario = new ResourceId();
 
 
 MarginLine marginLineInstance = new MarginLine()
@@ -59,7 +61,8 @@ MarginLine marginLineInstance = new MarginLine()
     .VariationMargin(VariationMargin)
     .CollateralValue(CollateralValue)
     .InitialMarginItem(InitialMarginItem)
-    .InitialMargin(InitialMargin);
+    .InitialMargin(InitialMargin)
+    .Scenario(Scenario);
 ```
 
 
