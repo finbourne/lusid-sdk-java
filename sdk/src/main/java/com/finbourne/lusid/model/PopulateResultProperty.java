@@ -114,7 +114,7 @@ public class PopulateResultProperty {
   }
 
    /**
-   * Whether a value edited since the property was last populated is replaced. Defaults to false, so manual edits are kept.
+   * Whether a run replaces a value that a user has set or removed on the property. After a run replaces it, later runs populate it again, even if this flag is then false. Defaults to false.
    * @return overwriteManualEditsOnReRun
   **/
   @jakarta.annotation.Nullable

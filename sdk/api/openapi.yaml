@@ -422,7 +422,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10401
+  version: 0.11.10407
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -89464,6 +89464,16 @@ paths:
           type: boolean
         style: form
         x-nullable: true
+      - description: "Include Swept Order Blocks. (default: true)"
+        explode: true
+        in: query
+        name: includeSwept
+        required: false
+        schema:
+          default: true
+          type: boolean
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -139462,15 +139472,19 @@ paths:
   /api/returns/$aggregated:
     post:
       description: "Report daily returns for the entity specified in the request body\
-        \ over the effective window.\r\n Currently, supports a single entity of type\
-        \ Portfolio and a daily return grid. Returns upserted to the\r\n Returns store\
-        \ under the supplied returns id take precedence: if any exist in the window\
-        \ they are\r\n reported as-is and nothing is calculated. Otherwise time-weighted\
-        \ returns are calculated using the\r\n recipe, fee handling and flow-discrepancy\
-        \ handling of the persisted Returns entity identified by the\r\n returns id,\
-        \ and the request fails if no such entity exists. When a reporting currency\
-        \ is requested the\r\n Returns entity is also required, as its recipe supplies\
-        \ the FX rates."
+        \ over the effective window.\r\n Supports a Portfolio, or a PortfolioGroup\
+        \ whose members' returns are rolled up in their common base\r\n currency,\
+        \ on a daily return grid. Returns upserted to the Returns store under the\
+        \ supplied returns id\r\n take precedence: if any exist in the window for\
+        \ a portfolio they are reported as-is and nothing is\r\n calculated for it.\
+        \ A group member's upserted returns are weighted by their stored (net) opening\
+        \ market\r\n value and contribute only on the days they cover; a day with\
+        \ no upserted return for that member is\r\n reported from the other members\
+        \ alone. Otherwise time-weighted returns are calculated using the\r\n recipe,\
+        \ fee handling and flow-discrepancy handling of the persisted Returns entity\
+        \ identified by the\r\n returns id, and the request fails if no such entity\
+        \ exists. When a reporting currency is requested the\r\n Returns entity is\
+        \ also required, as its recipe supplies the FX rates."
       operationId: GetAggregatedReturns
       requestBody:
         content:
@@ -187498,7 +187512,8 @@ components:
       additionalProperties: false
       description: "Identifies an entity whose aggregated (time-weighted) returns\
         \ are calculated: its scope, code and\r\ntype. Mirrors the valuation endpoint's\
-        \ entity identifier. Currently, supports only the\r\n`Portfolio` entity type."
+        \ entity identifier. Supports the `Portfolio` and\r\n`PortfolioGroup` entity\
+        \ types."
       example:
         code: code
         entityType: entityType
@@ -187515,7 +187530,7 @@ components:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         entityType:
-          description: "Available values: Portfolio."
+          description: "Available values: Portfolio, PortfolioGroup."
           maxLength: 128
           minLength: 0
           type: string
@@ -187530,8 +187545,8 @@ components:
         \ to report returns for, the returns id\r\nunder which upserted returns are\
         \ stored and the Returns entity that configures a calculation, the\r\neffective\
         \ window, the metrics to report and the period grid granularity. Supports\
-        \ a single\r\n`Portfolio` entity, the period `Return` metric and a `Daily`\
-        \ grid."
+        \ a `Portfolio` or a\r\n`PortfolioGroup` entity, the period `Return` metric\
+        \ and a `Daily` grid."
       example:
         period: period
         asAt: 2000-01-23T04:56:07.000+00:00
@@ -310832,8 +310847,9 @@ components:
           minLength: 0
           type: string
         overwriteManualEditsOnReRun:
-          description: "Whether a value edited since the property was last populated\
-            \ is replaced. Defaults to false, so manual edits are kept."
+          description: "Whether a run replaces a value that a user has set or removed\
+            \ on the property. After a run replaces it, later runs populate it again,\
+            \ even if this flag is then false. Defaults to false."
           nullable: true
           type: boolean
       required:

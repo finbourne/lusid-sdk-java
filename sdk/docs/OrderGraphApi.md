@@ -12,7 +12,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 ## listOrderGraphBlocks
 
-> PagedResourceListOfOrderGraphBlock listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2)
+> PagedResourceListOfOrderGraphBlock listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept)
 
 ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
 
@@ -64,11 +64,12 @@ public class OrderGraphApiExample {
         String filter = ""; // String | See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid
         List<String> propertyKeys = Arrays.asList(); // List<String> | Must be block-level properties. See https://support.lusid.com/docs/properties
         Boolean useComplianceV2 = false; // Boolean | Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false)
+        Boolean includeSwept = true; // Boolean | Include Swept Order Blocks. (default: true)
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfOrderGraphBlock result = apiInstance.listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2).execute(opts);
+            // PagedResourceListOfOrderGraphBlock result = apiInstance.listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept).execute(opts);
 
-            PagedResourceListOfOrderGraphBlock result = apiInstance.listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2).execute();
+            PagedResourceListOfOrderGraphBlock result = apiInstance.listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrderGraphApi#listOrderGraphBlocks");
@@ -92,6 +93,7 @@ public class OrderGraphApiExample {
 | **filter** | **String**| See https://support.lusid.com/docs/filtering-information-retrieved-from-lusid | [optional] [default to ] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| Must be block-level properties. See https://support.lusid.com/docs/properties | [optional] |
 | **useComplianceV2** | **Boolean**| Whether to use the V2 compliance engine when deriving compliance statuses for orders. (default: false) | [optional] [default to false] |
+| **includeSwept** | **Boolean**| Include Swept Order Blocks. (default: true) | [optional] [default to true] |
 
 ### Return type
 

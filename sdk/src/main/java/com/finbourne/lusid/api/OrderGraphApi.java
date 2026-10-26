@@ -74,11 +74,11 @@ public class OrderGraphApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call listOrderGraphBlocksCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, final ApiCallback _callback) throws ApiException {
-        return listOrderGraphBlocksCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2,  _callback, new ConfigurationOptions());
+    private okhttp3.Call listOrderGraphBlocksCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, Boolean includeSwept, final ApiCallback _callback) throws ApiException {
+        return listOrderGraphBlocksCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call listOrderGraphBlocksCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listOrderGraphBlocksCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, Boolean includeSwept, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -131,6 +131,10 @@ public class OrderGraphApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("useComplianceV2", useComplianceV2));
         }
 
+        if (includeSwept != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("includeSwept", includeSwept));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -153,35 +157,35 @@ public class OrderGraphApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listOrderGraphBlocksValidateBeforeCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
-        return listOrderGraphBlocksCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, _callback, opts);
+    private okhttp3.Call listOrderGraphBlocksValidateBeforeCall(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, Boolean includeSwept, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listOrderGraphBlocksCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, _callback, opts);
 
     }
 
 
-    private ApiResponse<PagedResourceListOfOrderGraphBlock> listOrderGraphBlocksWithHttpInfo(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2) throws ApiException {
-        okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, null, new ConfigurationOptions());
+    private ApiResponse<PagedResourceListOfOrderGraphBlock> listOrderGraphBlocksWithHttpInfo(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, Boolean includeSwept) throws ApiException {
+        okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphBlock>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfOrderGraphBlock> listOrderGraphBlocksWithHttpInfo(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, null, opts);
+    private ApiResponse<PagedResourceListOfOrderGraphBlock> listOrderGraphBlocksWithHttpInfo(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, Boolean includeSwept, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, null, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphBlock>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listOrderGraphBlocksAsync(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, final ApiCallback<PagedResourceListOfOrderGraphBlock> _callback) throws ApiException {
+    private okhttp3.Call listOrderGraphBlocksAsync(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, Boolean includeSwept, final ApiCallback<PagedResourceListOfOrderGraphBlock> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphBlock>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listOrderGraphBlocksAsync(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, final ApiCallback<PagedResourceListOfOrderGraphBlock> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listOrderGraphBlocksAsync(OffsetDateTime asAt, String paginationToken, List<String> sortBy, Integer limit, String filter, List<String> propertyKeys, Boolean useComplianceV2, Boolean includeSwept, final ApiCallback<PagedResourceListOfOrderGraphBlock> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, _callback, opts);
+        okhttp3.Call localVarCall = listOrderGraphBlocksValidateBeforeCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, _callback, opts);
         Type localVarReturnType = new TypeToken<PagedResourceListOfOrderGraphBlock>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -195,6 +199,7 @@ public class OrderGraphApi {
         private String filter;
         private List<String> propertyKeys;
         private Boolean useComplianceV2;
+        private Boolean includeSwept;
 
         private APIlistOrderGraphBlocksRequest() {
         }
@@ -270,6 +275,16 @@ public class OrderGraphApi {
         }
 
         /**
+         * Set includeSwept
+         * @param includeSwept Include Swept Order Blocks. (default: true) (optional, default to true)
+         * @return APIlistOrderGraphBlocksRequest
+         */
+        public APIlistOrderGraphBlocksRequest includeSwept(Boolean includeSwept) {
+            this.includeSwept = includeSwept;
+            return this;
+        }
+
+        /**
          * Build call for listOrderGraphBlocks
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -283,7 +298,7 @@ public class OrderGraphApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return listOrderGraphBlocksCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, _callback);
+            return listOrderGraphBlocksCall(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, _callback);
         }
 
         /**
@@ -299,7 +314,7 @@ public class OrderGraphApi {
          </table>
          */
         public PagedResourceListOfOrderGraphBlock execute() throws ApiException {
-            ApiResponse<PagedResourceListOfOrderGraphBlock> localVarResp = listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2);
+            ApiResponse<PagedResourceListOfOrderGraphBlock> localVarResp = listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept);
             return localVarResp.getData();
         }
 
@@ -316,7 +331,7 @@ public class OrderGraphApi {
          </table>
          */
         public PagedResourceListOfOrderGraphBlock execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfOrderGraphBlock> localVarResp = listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, opts);
+            ApiResponse<PagedResourceListOfOrderGraphBlock> localVarResp = listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, opts);
             return localVarResp.getData();
         }
 
@@ -333,7 +348,7 @@ public class OrderGraphApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfOrderGraphBlock> executeWithHttpInfo() throws ApiException {
-            return listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2);
+            return listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept);
         }
 
         /**
@@ -349,7 +364,7 @@ public class OrderGraphApi {
          </table>
          */
         public ApiResponse<PagedResourceListOfOrderGraphBlock> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, opts);
+            return listOrderGraphBlocksWithHttpInfo(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, opts);
         }
 
         /**
@@ -366,7 +381,7 @@ public class OrderGraphApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrderGraphBlock> _callback) throws ApiException {
-            return listOrderGraphBlocksAsync(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, _callback);
+            return listOrderGraphBlocksAsync(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, _callback);
         }
 
         /**
@@ -383,7 +398,7 @@ public class OrderGraphApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfOrderGraphBlock> _callback, ConfigurationOptions opts) throws ApiException {
-            return listOrderGraphBlocksAsync(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, _callback, opts);
+            return listOrderGraphBlocksAsync(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2, includeSwept, _callback, opts);
         }
     }
 
