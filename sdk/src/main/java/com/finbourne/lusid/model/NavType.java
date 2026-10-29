@@ -143,6 +143,10 @@ public class NavType {
   @SerializedName(SERIALIZED_NAME_NOTIONAL_DEALING_COST_TABLE_ID)
   private ResourceId notionalDealingCostTableId;
 
+  public static final String SERIALIZED_NAME_VALUATION_TEMPLATE_ID = "valuationTemplateId";
+  @SerializedName(SERIALIZED_NAME_VALUATION_TEMPLATE_ID)
+  private ResourceId valuationTemplateId;
+
   public NavType() {
   }
 
@@ -632,6 +636,27 @@ public class NavType {
   }
 
 
+  public NavType valuationTemplateId(ResourceId valuationTemplateId) {
+    
+    this.valuationTemplateId = valuationTemplateId;
+    return this;
+  }
+
+   /**
+   * Get valuationTemplateId
+   * @return valuationTemplateId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getValuationTemplateId() {
+    return valuationTemplateId;
+  }
+
+
+  public void setValuationTemplateId(ResourceId valuationTemplateId) {
+    this.valuationTemplateId = valuationTemplateId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -663,7 +688,8 @@ public class NavType {
         Objects.equals(this.transactionExclusionFilter, navType.transactionExclusionFilter) &&
         Objects.equals(this.pricingBasis, navType.pricingBasis) &&
         Objects.equals(this.swingPricing, navType.swingPricing) &&
-        Objects.equals(this.notionalDealingCostTableId, navType.notionalDealingCostTableId);
+        Objects.equals(this.notionalDealingCostTableId, navType.notionalDealingCostTableId) &&
+        Objects.equals(this.valuationTemplateId, navType.valuationTemplateId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -672,7 +698,7 @@ public class NavType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing, notionalDealingCostTableId);
+    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing, notionalDealingCostTableId, valuationTemplateId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -708,6 +734,7 @@ public class NavType {
     sb.append("    pricingBasis: ").append(toIndentedString(pricingBasis)).append("\n");
     sb.append("    swingPricing: ").append(toIndentedString(swingPricing)).append("\n");
     sb.append("    notionalDealingCostTableId: ").append(toIndentedString(notionalDealingCostTableId)).append("\n");
+    sb.append("    valuationTemplateId: ").append(toIndentedString(valuationTemplateId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -752,6 +779,7 @@ public class NavType {
     openapiFields.add("pricingBasis");
     openapiFields.add("swingPricing");
     openapiFields.add("notionalDealingCostTableId");
+    openapiFields.add("valuationTemplateId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -854,6 +882,10 @@ public class NavType {
       // validate the optional field `notionalDealingCostTableId`
       if (jsonObj.get("notionalDealingCostTableId") != null && !jsonObj.get("notionalDealingCostTableId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("notionalDealingCostTableId"));
+      }
+      // validate the optional field `valuationTemplateId`
+      if (jsonObj.get("valuationTemplateId") != null && !jsonObj.get("valuationTemplateId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("valuationTemplateId"));
       }
   }
 

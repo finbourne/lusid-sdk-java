@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.FloatingLeg;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.TimeZoneConventions;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -83,6 +84,10 @@ public class CapFloor extends LusidInstrument {
   public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public CapFloor() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -243,6 +248,27 @@ public class CapFloor extends LusidInstrument {
   }
 
 
+  public CapFloor tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -260,6 +286,7 @@ public class CapFloor extends LusidInstrument {
         Objects.equals(this.underlyingFloatingLeg, capFloor.underlyingFloatingLeg) &&
         Objects.equals(this.additionalPayments, capFloor.additionalPayments) &&
         Objects.equals(this.timeZoneConventions, capFloor.timeZoneConventions) &&
+        Objects.equals(this.tradingConventions, capFloor.tradingConventions) &&
         super.equals(o);
   }
 
@@ -269,7 +296,7 @@ public class CapFloor extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(capFloorType, capStrike, floorStrike, includeFirstCaplet, underlyingFloatingLeg, additionalPayments, timeZoneConventions, super.hashCode());
+    return Objects.hash(capFloorType, capStrike, floorStrike, includeFirstCaplet, underlyingFloatingLeg, additionalPayments, timeZoneConventions, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -291,6 +318,7 @@ public class CapFloor extends LusidInstrument {
     sb.append("    underlyingFloatingLeg: ").append(toIndentedString(underlyingFloatingLeg)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -321,6 +349,7 @@ public class CapFloor extends LusidInstrument {
     openapiFields.add("underlyingFloatingLeg");
     openapiFields.add("additionalPayments");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

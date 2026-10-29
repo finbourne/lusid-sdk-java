@@ -11,6 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AllocationServiceRunAllocation;
+import com.finbourne.lusid.model.AllocationServiceRunWarning;
 import com.finbourne.lusid.model.ErrorDetail;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -64,6 +66,14 @@ public class AllocationServiceRunResponse {
   @SerializedName(SERIALIZED_NAME_FAILED)
   private Map<String, ErrorDetail> failed;
 
+  public static final String SERIALIZED_NAME_ALLOCATIONS = "allocations";
+  @SerializedName(SERIALIZED_NAME_ALLOCATIONS)
+  private List<AllocationServiceRunAllocation> allocations;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<AllocationServiceRunWarning> warnings;
+
   public AllocationServiceRunResponse() {
   }
 
@@ -82,7 +92,7 @@ public class AllocationServiceRunResponse {
   }
 
    /**
-   * Get values
+   * The placements that were allocated successfully.
    * @return values
   **/
   @jakarta.annotation.Nullable
@@ -111,7 +121,7 @@ public class AllocationServiceRunResponse {
   }
 
    /**
-   * Get failed
+   * The placements that could not be allocated, keyed by placement, with the reason.
    * @return failed
   **/
   @jakarta.annotation.Nullable
@@ -122,6 +132,64 @@ public class AllocationServiceRunResponse {
 
   public void setFailed(Map<String, ErrorDetail> failed) {
     this.failed = failed;
+  }
+
+
+  public AllocationServiceRunResponse allocations(List<AllocationServiceRunAllocation> allocations) {
+    
+    this.allocations = allocations;
+    return this;
+  }
+
+  public AllocationServiceRunResponse addAllocationsItem(AllocationServiceRunAllocation allocationsItem) {
+    if (this.allocations == null) {
+      this.allocations = new ArrayList<>();
+    }
+    this.allocations.add(allocationsItem);
+    return this;
+  }
+
+   /**
+   * Every allocation the run touched across the successful placements, each with its outcome.
+   * @return allocations
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationServiceRunAllocation> getAllocations() {
+    return allocations;
+  }
+
+
+  public void setAllocations(List<AllocationServiceRunAllocation> allocations) {
+    this.allocations = allocations;
+  }
+
+
+  public AllocationServiceRunResponse warnings(List<AllocationServiceRunWarning> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public AllocationServiceRunResponse addWarningsItem(AllocationServiceRunWarning warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Warnings raised while allocating the successful placements.
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationServiceRunWarning> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<AllocationServiceRunWarning> warnings) {
+    this.warnings = warnings;
   }
 
 
@@ -136,7 +204,9 @@ public class AllocationServiceRunResponse {
     }
     AllocationServiceRunResponse allocationServiceRunResponse = (AllocationServiceRunResponse) o;
     return Objects.equals(this.values, allocationServiceRunResponse.values) &&
-        Objects.equals(this.failed, allocationServiceRunResponse.failed);
+        Objects.equals(this.failed, allocationServiceRunResponse.failed) &&
+        Objects.equals(this.allocations, allocationServiceRunResponse.allocations) &&
+        Objects.equals(this.warnings, allocationServiceRunResponse.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -145,7 +215,7 @@ public class AllocationServiceRunResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, failed);
+    return Objects.hash(values, failed, allocations, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -161,6 +231,8 @@ public class AllocationServiceRunResponse {
     sb.append("class AllocationServiceRunResponse {\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
+    sb.append("    allocations: ").append(toIndentedString(allocations)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -185,6 +257,8 @@ public class AllocationServiceRunResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("values");
     openapiFields.add("failed");
+    openapiFields.add("allocations");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -214,6 +288,34 @@ public class AllocationServiceRunResponse {
           // validate the optional field `values` (array)
           for (int i = 0; i < jsonArrayvalues.size(); i++) {
             ResourceId.validateJsonElement(jsonArrayvalues.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("allocations") != null && !jsonObj.get("allocations").isJsonNull()) {
+        JsonArray jsonArrayallocations = jsonObj.getAsJsonArray("allocations");
+        if (jsonArrayallocations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("allocations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `allocations` to be an array in the JSON string but got `%s`", jsonObj.get("allocations").toString()));
+          }
+
+          // validate the optional field `allocations` (array)
+          for (int i = 0; i < jsonArrayallocations.size(); i++) {
+            AllocationServiceRunAllocation.validateJsonElement(jsonArrayallocations.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            AllocationServiceRunWarning.validateJsonElement(jsonArraywarnings.get(i));
           };
         }
       }

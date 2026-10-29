@@ -37,7 +37,9 @@ public enum VendorLibrary {
   
   YIELDBOOK("YieldBook"),
   
-  LUSIDCALC("LusidCalc");
+  LUSIDCALC("LusidCalc"),
+  
+  CLIENT("Client");
 
   private String value;
 

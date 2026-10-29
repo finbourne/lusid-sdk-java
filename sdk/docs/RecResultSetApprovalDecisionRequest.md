@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **approvalCode** | **String** | The approval slot being decided. Must match a required approval code. | [default to String]
 **decision** | **String** | The decision made. Available values: Approve, RequestRevisions. | [default to String]
 **reason** | **String** | Rationale for the decision. | [optional] [default to String]
-**requestedResultRevisions** | [**List&lt;RecRequestedResultRevision&gt;**](RecRequestedResultRevision.md) | The results flagged for re-review. Only applicable when the decision is Request Revisions. | [optional] [default to List<RecRequestedResultRevision>]
+**requestedResultRevisions** | [**List&lt;RecRequestedResultRevision&gt;**](RecRequestedResultRevision.md) | The results flagged for re-review. Only applicable when the decision is Request Revisions. Each result must be Reviewed. A flagged result returns to Required and keeps its decision. The reviewer must affirm or change that decision before the review can be resubmitted. Clearing the decision does not count. | [optional] [default to List<RecRequestedResultRevision>]
 
 ```java
 import com.finbourne.lusid.model.RecResultSetApprovalDecisionRequest;

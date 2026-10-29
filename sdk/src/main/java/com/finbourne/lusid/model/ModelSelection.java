@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ModelSelection {
   /**
-   * Available values: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc.
+   * Available values: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc, Client.
    */
   @JsonAdapter(LibraryEnum.Adapter.class)
   public enum LibraryEnum {
@@ -66,7 +66,9 @@ public class ModelSelection {
     
     YIELDBOOK("YieldBook"),
     
-    LUSIDCALC("LusidCalc");
+    LUSIDCALC("LusidCalc"),
+    
+    CLIENT("Client");
 
     private String value;
 
@@ -221,7 +223,7 @@ public class ModelSelection {
   }
 
    /**
-   * Available values: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc.
+   * Available values: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc, Client.
    * @return library
   **/
   @jakarta.annotation.Nonnull

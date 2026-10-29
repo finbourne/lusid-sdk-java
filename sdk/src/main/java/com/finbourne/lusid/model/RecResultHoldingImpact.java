@@ -46,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * One holding, and where known the tax lot within it, that a transaction or settlement activity item impacted.
+ * One holding, and where known the tax lot within it, that a transaction or settlement activity item impacted.  Also holds the display names of the holding&#39;s instrument.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecResultHoldingImpact {
@@ -57,6 +57,18 @@ public class RecResultHoldingImpact {
   public static final String SERIALIZED_NAME_TAX_LOT_ID = "taxLotId";
   @SerializedName(SERIALIZED_NAME_TAX_LOT_ID)
   private String taxLotId;
+
+  public static final String SERIALIZED_NAME_HOLDING_INSTRUMENT_SCOPE = "holdingInstrumentScope";
+  @SerializedName(SERIALIZED_NAME_HOLDING_INSTRUMENT_SCOPE)
+  private String holdingInstrumentScope;
+
+  public static final String SERIALIZED_NAME_HOLDING_LUSID_INSTRUMENT_ID = "holdingLusidInstrumentId";
+  @SerializedName(SERIALIZED_NAME_HOLDING_LUSID_INSTRUMENT_ID)
+  private String holdingLusidInstrumentId;
+
+  public static final String SERIALIZED_NAME_HOLDING_INSTRUMENT_NAME = "holdingInstrumentName";
+  @SerializedName(SERIALIZED_NAME_HOLDING_INSTRUMENT_NAME)
+  private String holdingInstrumentName;
 
   public RecResultHoldingImpact() {
   }
@@ -103,6 +115,69 @@ public class RecResultHoldingImpact {
   }
 
 
+  public RecResultHoldingImpact holdingInstrumentScope(String holdingInstrumentScope) {
+    
+    this.holdingInstrumentScope = holdingInstrumentScope;
+    return this;
+  }
+
+   /**
+   * The scope of the impacted holding&#39;s instrument. Null where the source does not state one.
+   * @return holdingInstrumentScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getHoldingInstrumentScope() {
+    return holdingInstrumentScope;
+  }
+
+
+  public void setHoldingInstrumentScope(String holdingInstrumentScope) {
+    this.holdingInstrumentScope = holdingInstrumentScope;
+  }
+
+
+  public RecResultHoldingImpact holdingLusidInstrumentId(String holdingLusidInstrumentId) {
+    
+    this.holdingLusidInstrumentId = holdingLusidInstrumentId;
+    return this;
+  }
+
+   /**
+   * The LUID of the impacted holding&#39;s instrument. Null where the source does not state it.
+   * @return holdingLusidInstrumentId
+  **/
+  @jakarta.annotation.Nullable
+  public String getHoldingLusidInstrumentId() {
+    return holdingLusidInstrumentId;
+  }
+
+
+  public void setHoldingLusidInstrumentId(String holdingLusidInstrumentId) {
+    this.holdingLusidInstrumentId = holdingLusidInstrumentId;
+  }
+
+
+  public RecResultHoldingImpact holdingInstrumentName(String holdingInstrumentName) {
+    
+    this.holdingInstrumentName = holdingInstrumentName;
+    return this;
+  }
+
+   /**
+   * The name of the impacted holding&#39;s instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it.
+   * @return holdingInstrumentName
+  **/
+  @jakarta.annotation.Nullable
+  public String getHoldingInstrumentName() {
+    return holdingInstrumentName;
+  }
+
+
+  public void setHoldingInstrumentName(String holdingInstrumentName) {
+    this.holdingInstrumentName = holdingInstrumentName;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,7 +189,10 @@ public class RecResultHoldingImpact {
     }
     RecResultHoldingImpact recResultHoldingImpact = (RecResultHoldingImpact) o;
     return Objects.equals(this.holdingId, recResultHoldingImpact.holdingId) &&
-        Objects.equals(this.taxLotId, recResultHoldingImpact.taxLotId);
+        Objects.equals(this.taxLotId, recResultHoldingImpact.taxLotId) &&
+        Objects.equals(this.holdingInstrumentScope, recResultHoldingImpact.holdingInstrumentScope) &&
+        Objects.equals(this.holdingLusidInstrumentId, recResultHoldingImpact.holdingLusidInstrumentId) &&
+        Objects.equals(this.holdingInstrumentName, recResultHoldingImpact.holdingInstrumentName);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -123,7 +201,7 @@ public class RecResultHoldingImpact {
 
   @Override
   public int hashCode() {
-    return Objects.hash(holdingId, taxLotId);
+    return Objects.hash(holdingId, taxLotId, holdingInstrumentScope, holdingLusidInstrumentId, holdingInstrumentName);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -139,6 +217,9 @@ public class RecResultHoldingImpact {
     sb.append("class RecResultHoldingImpact {\n");
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
     sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
+    sb.append("    holdingInstrumentScope: ").append(toIndentedString(holdingInstrumentScope)).append("\n");
+    sb.append("    holdingLusidInstrumentId: ").append(toIndentedString(holdingLusidInstrumentId)).append("\n");
+    sb.append("    holdingInstrumentName: ").append(toIndentedString(holdingInstrumentName)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -163,6 +244,9 @@ public class RecResultHoldingImpact {
     openapiFields = new HashSet<String>();
     openapiFields.add("holdingId");
     openapiFields.add("taxLotId");
+    openapiFields.add("holdingInstrumentScope");
+    openapiFields.add("holdingLusidInstrumentId");
+    openapiFields.add("holdingInstrumentName");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -194,6 +278,15 @@ public class RecResultHoldingImpact {
       }
       if ((jsonObj.get("taxLotId") != null && !jsonObj.get("taxLotId").isJsonNull()) && !jsonObj.get("taxLotId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxLotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotId").toString()));
+      }
+      if ((jsonObj.get("holdingInstrumentScope") != null && !jsonObj.get("holdingInstrumentScope").isJsonNull()) && !jsonObj.get("holdingInstrumentScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingInstrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingInstrumentScope").toString()));
+      }
+      if ((jsonObj.get("holdingLusidInstrumentId") != null && !jsonObj.get("holdingLusidInstrumentId").isJsonNull()) && !jsonObj.get("holdingLusidInstrumentId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingLusidInstrumentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingLusidInstrumentId").toString()));
+      }
+      if ((jsonObj.get("holdingInstrumentName") != null && !jsonObj.get("holdingInstrumentName").isJsonNull()) && !jsonObj.get("holdingInstrumentName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingInstrumentName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingInstrumentName").toString()));
       }
   }
 

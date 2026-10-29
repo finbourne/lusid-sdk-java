@@ -74,7 +74,7 @@ public class ValuationPointDiagnostic {
   }
 
    /**
-   * What kind of finding this is. &#39;OwnershipDrift&#39;: a fund structure holder&#39;s declared sharing percentage in a held member differs from the share its contributions make of that member&#39;s capital by enough to misallocate more of the period&#39;s P&amp;L than the holder&#39;s drift materiality warning amount allows.
+   * What kind of finding this is. &#39;OwnershipDrift&#39;: a fund structure holder&#39;s declared sharing percentage in a held member differs from the share its contributions make of that member&#39;s capital by enough to misallocate more of the period&#39;s P&amp;L than the holder&#39;s drift materiality warning amount allows. &#39;FeeStrikeFailed&#39;: the fees struck when the valuation point was last created or updated failed, so its lines carry no fee transactions and it cannot be accepted until they are struck again.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -124,7 +124,7 @@ public class ValuationPointDiagnostic {
   }
 
    /**
-   * The values the finding was made on, by name. For &#39;OwnershipDrift&#39;: holder, member, declaredShare, actualShare, delta (actual less declared) and impact (the P&amp;L the drift would misallocate this period).
+   * The values the finding was made on, by name. For &#39;OwnershipDrift&#39;: holder, member, declaredShare, actualShare, delta (actual less declared) and impact (the P&amp;L the drift would misallocate this period). For &#39;FeeStrikeFailed&#39;: failureType and failureMessage, the cause of the failed strike.
    * @return details
   **/
   @jakarta.annotation.Nullable

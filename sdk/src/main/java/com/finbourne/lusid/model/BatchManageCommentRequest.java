@@ -59,10 +59,6 @@ public class BatchManageCommentRequest {
   @SerializedName(SERIALIZED_NAME_REC_TYPE)
   private String recType;
 
-  public static final String SERIALIZED_NAME_RUN_NUMBER = "runNumber";
-  @SerializedName(SERIALIZED_NAME_RUN_NUMBER)
-  private Integer runNumber;
-
   public static final String SERIALIZED_NAME_REC_RESULT_ID = "recResultId";
   @SerializedName(SERIALIZED_NAME_REC_RESULT_ID)
   private String recResultId;
@@ -117,29 +113,6 @@ public class BatchManageCommentRequest {
 
   public void setRecType(String recType) {
     this.recType = recType;
-  }
-
-
-  public BatchManageCommentRequest runNumber(Integer runNumber) {
-    
-    this.runNumber = runNumber;
-    return this;
-  }
-
-   /**
-   * The run of the instance whose results this item targets.
-   * minimum: 1
-   * maximum: 2147483647
-   * @return runNumber
-  **/
-  @jakarta.annotation.Nonnull
-  public Integer getRunNumber() {
-    return runNumber;
-  }
-
-
-  public void setRunNumber(Integer runNumber) {
-    this.runNumber = runNumber;
   }
 
 
@@ -218,7 +191,6 @@ public class BatchManageCommentRequest {
     BatchManageCommentRequest batchManageCommentRequest = (BatchManageCommentRequest) o;
     return Objects.equals(this.instanceId, batchManageCommentRequest.instanceId) &&
         Objects.equals(this.recType, batchManageCommentRequest.recType) &&
-        Objects.equals(this.runNumber, batchManageCommentRequest.runNumber) &&
         Objects.equals(this.recResultId, batchManageCommentRequest.recResultId) &&
         Objects.equals(this.commentId, batchManageCommentRequest.commentId) &&
         Objects.equals(this.commentText, batchManageCommentRequest.commentText);
@@ -230,7 +202,7 @@ public class BatchManageCommentRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instanceId, recType, runNumber, recResultId, commentId, commentText);
+    return Objects.hash(instanceId, recType, recResultId, commentId, commentText);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -246,7 +218,6 @@ public class BatchManageCommentRequest {
     sb.append("class BatchManageCommentRequest {\n");
     sb.append("    instanceId: ").append(toIndentedString(instanceId)).append("\n");
     sb.append("    recType: ").append(toIndentedString(recType)).append("\n");
-    sb.append("    runNumber: ").append(toIndentedString(runNumber)).append("\n");
     sb.append("    recResultId: ").append(toIndentedString(recResultId)).append("\n");
     sb.append("    commentId: ").append(toIndentedString(commentId)).append("\n");
     sb.append("    commentText: ").append(toIndentedString(commentText)).append("\n");
@@ -274,7 +245,6 @@ public class BatchManageCommentRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("instanceId");
     openapiFields.add("recType");
-    openapiFields.add("runNumber");
     openapiFields.add("recResultId");
     openapiFields.add("commentId");
     openapiFields.add("commentText");
@@ -283,7 +253,6 @@ public class BatchManageCommentRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("instanceId");
     openapiRequiredFields.add("recType");
-    openapiRequiredFields.add("runNumber");
     openapiRequiredFields.add("recResultId");
   }
 

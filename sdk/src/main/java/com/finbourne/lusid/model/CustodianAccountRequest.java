@@ -108,7 +108,7 @@ public class CustodianAccountRequest {
   }
 
    /**
-   * The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used
+   * The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used. A new Custodian Account must be in the parent Portfolio Scope. An existing Custodian Account in a different scope can still be updated
    * @return scope
   **/
   @jakarta.annotation.Nullable

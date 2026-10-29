@@ -147,7 +147,7 @@ public class RelationshipDefinition {
   }
 
    /**
-   * The entity type of the source entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction.
+   * The entity type of the source entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity.
    * @return sourceEntityType
   **/
   @jakarta.annotation.Nonnull
@@ -168,7 +168,7 @@ public class RelationshipDefinition {
   }
 
    /**
-   * The entity type of the target entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity, NextBestAction.
+   * The entity type of the target entity object. Available values: Portfolio, PortfolioGroup, Person, LegalEntity.
    * @return targetEntityType
   **/
   @jakarta.annotation.Nonnull

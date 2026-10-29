@@ -188,7 +188,7 @@ public class RecResult {
   }
 
    /**
-   * The id of the result within its run: its result type and result number, e.g. &#39;break-3&#39;. Unique within one run of one rec type of an instance; the same id in another run of the instance names the same result, for as long as it keeps its result type.
+   * The id of the result within its instance: its rec type, result type and result number, e.g. &#39;Holding-break-3&#39;. Unique within the instance, and kept across its runs for as long as the result keeps its result type.
    * @return id
   **/
   @jakarta.annotation.Nonnull

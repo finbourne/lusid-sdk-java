@@ -1,12 +1,16 @@
 # com.finbourne.lusid.model.RecResultTransactionItem
-A transaction item within a rec result.
+A transaction item within a rec result. Names the portfolio and the transaction's resolved instrument alongside,  for display.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
+**portfolioDisplayName** | **String** | The display name of the item&#39;s portfolio, as it stood at the asAt the run read its data. Null where the run did not read it. | [optional] [default to String]
 **transactionId** | **String** | The transaction identifier. | [optional] [default to String]
+**transactionInstrumentScope** | **String** | The scope of the transaction&#39;s resolved instrument. Null where the source does not state one. | [optional] [default to String]
+**transactionLusidInstrumentId** | **String** | The LUID of the transaction&#39;s resolved instrument. Null where the source does not state it. | [optional] [default to String]
+**transactionInstrumentName** | **String** | The name of the transaction&#39;s resolved instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it. | [optional] [default to String]
 **holdingImpacts** | [**List&lt;RecResultHoldingImpact&gt;**](RecResultHoldingImpact.md) | The holdings, and where the source states them the tax lots, the item impacted. A distinct set ordered by holdingId then taxLotId; may be empty. An input transaction has not run the movements engine and impacts nothing yet. | [default to List<RecResultHoldingImpact>]
 **itemType** | **String** | The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity or RelationalDataPoint. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint. | [default to String]
 **ruleAndAttributeValues** | **Map&lt;String, String&gt;** | The core rule, aggregate rule and supplemental attribute values for the item, keyed by name. | [optional] [default to Map<String, String>]
@@ -19,7 +23,11 @@ import java.lang.System;
 import java.net.URI;
 
 ResourceId PortfolioId = new ResourceId();
+@jakarta.annotation.Nullable String PortfolioDisplayName = "example PortfolioDisplayName";
 @jakarta.annotation.Nullable String TransactionId = "example TransactionId";
+@jakarta.annotation.Nullable String TransactionInstrumentScope = "example TransactionInstrumentScope";
+@jakarta.annotation.Nullable String TransactionLusidInstrumentId = "example TransactionLusidInstrumentId";
+@jakarta.annotation.Nullable String TransactionInstrumentName = "example TransactionInstrumentName";
 List<RecResultHoldingImpact> HoldingImpacts = new List<RecResultHoldingImpact>();
 String ItemType = "example ItemType";
 @jakarta.annotation.Nullable Map<String, String> RuleAndAttributeValues = new Map<String, String>();
@@ -28,7 +36,11 @@ List<WritebackSuggestion> WritebackSuggestions = new List<WritebackSuggestion>()
 
 RecResultTransactionItem recResultTransactionItemInstance = new RecResultTransactionItem()
     .PortfolioId(PortfolioId)
+    .PortfolioDisplayName(PortfolioDisplayName)
     .TransactionId(TransactionId)
+    .TransactionInstrumentScope(TransactionInstrumentScope)
+    .TransactionLusidInstrumentId(TransactionLusidInstrumentId)
+    .TransactionInstrumentName(TransactionInstrumentName)
     .HoldingImpacts(HoldingImpacts)
     .ItemType(ItemType)
     .RuleAndAttributeValues(RuleAndAttributeValues)

@@ -5,6 +5,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**calculateOrderDates**](TransferAgencyApi.md#calculateOrderDates) | **POST** /api/transferagency/orderdates | [EXPERIMENTAL] CalculateOrderDates: Calculate the key dates associated with transfer agency orders |
+| [**cancelTransferAgencyTransactions**](TransferAgencyApi.md#cancelTransferAgencyTransactions) | **POST** /api/transferagency/transactions/cancel | [EXPERIMENTAL] CancelTransferAgencyTransactions: Cancel transfer agency transactions, un-pricing their orders |
 | [**deleteTransferAgencyOrders**](TransferAgencyApi.md#deleteTransferAgencyOrders) | **POST** /api/transferagency/orders/$delete | [EXPERIMENTAL] DeleteTransferAgencyOrders: Delete transfer agency orders |
 | [**estimateTransferAgencyOrders**](TransferAgencyApi.md#estimateTransferAgencyOrders) | **POST** /api/transferagency/orders/$estimate | [EXPERIMENTAL] EstimateTransferAgencyOrders: Estimate the values of transfer agency orders |
 | [**upsertTransferAgencyOrders**](TransferAgencyApi.md#upsertTransferAgencyOrders) | **POST** /api/transferagency/orders | [EXPERIMENTAL] UpsertTransferAgencyOrders: Upsert transfer agency orders |
@@ -97,6 +98,99 @@ public class TransferAgencyApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Successfully calculated dates and any failed calculations. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## cancelTransferAgencyTransactions
+
+> CancelTransferAgencyTransactionsResponse cancelTransferAgencyTransactions(requestBody, successMode)
+
+[EXPERIMENTAL] CancelTransferAgencyTransactions: Cancel transfer agency transactions, un-pricing their orders
+
+Reverses the pricing of a transfer agency order, identified by the security transaction that pricing booked:  cancels that transaction in the investor&#39;s portfolio, amends the paired cash transaction back to its  pre-pricing amount, and moves the order from &#39;Priced&#39; back to &#39;New&#39;. Both changes are bitemporal, so the  priced state is still visible at an earlier as-at.  A transaction that was never booked, that names no order, that is the cash leg rather than the security leg,  or whose order is not in &#39;Priced&#39; fails on its own. A leg already cancelled outside this flow is left alone and  the order is still returned to &#39;New&#39;. A transaction named under two request keys fails the whole request.  The response contains both successfully un-priced orders and any failures, each in the form of a  dictionary keyed by the request&#39;s keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TransferAgencyApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TransferAgencyApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransferAgencyApi apiInstance = apiFactory.build(TransferAgencyApi.class);
+
+        TransferAgencyApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransferAgencyApi.class);
+        Map<String, CancelTransferAgencyTransactionRequest> requestBody = new HashMap(); // Map<String, CancelTransferAgencyTransactionRequest> | The security transactions to cancel, keyed by a unique request identifier.
+        String successMode = "Partial"; // String | Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial
+        try {
+            // uncomment the below to set overrides at the request level
+            // CancelTransferAgencyTransactionsResponse result = apiInstance.cancelTransferAgencyTransactions(requestBody, successMode).execute(opts);
+
+            CancelTransferAgencyTransactionsResponse result = apiInstance.cancelTransferAgencyTransactions(requestBody, successMode).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransferAgencyApi#cancelTransferAgencyTransactions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **requestBody** | [**Map&lt;String, CancelTransferAgencyTransactionRequest&gt;**](CancelTransferAgencyTransactionRequest.md)| The security transactions to cancel, keyed by a unique request identifier. | |
+| **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial | [optional] [default to Partial] |
+
+### Return type
+
+[**CancelTransferAgencyTransactionsResponse**](CancelTransferAgencyTransactionsResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successfully un-priced orders and any failures. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

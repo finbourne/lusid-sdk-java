@@ -72,7 +72,7 @@ public class RecLinkedResult {
   }
 
    /**
-   * The id of the linked result within the same run, as carried in that result&#39;s own id field, e.g. &#39;break-3&#39;. With recType, names the result uniquely.
+   * The id of the linked result, as carried in that result&#39;s own id field, e.g. &#39;CashHolding-break-3&#39;. Unique within the instance.
    * @return id
   **/
   @jakarta.annotation.Nonnull

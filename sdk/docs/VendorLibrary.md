@@ -20,6 +20,7 @@ VendorLibrary method = VendorLibrary.VOLMASTER;
 VendorLibrary method = VendorLibrary.ISDACDS;
 VendorLibrary method = VendorLibrary.YIELDBOOK;
 VendorLibrary method = VendorLibrary.LUSIDCALC;
+VendorLibrary method = VendorLibrary.CLIENT;
 ```
 
 

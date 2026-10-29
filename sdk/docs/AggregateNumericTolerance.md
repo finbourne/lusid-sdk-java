@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **referenceSide** | **String** | Reference side (source of truth). Available values: Left, Right. | [default to String]
 **absoluteThreshold** | **java.math.BigDecimal** | Numeric tolerance absolute value (allowable diff compared to the reference side value). | [optional] [default to java.math.BigDecimal]
-**relativeThreshold** | **java.math.BigDecimal** | Numeric tolerance value as a relative % of the reference value. | [optional] [default to java.math.BigDecimal]
+**relativeThreshold** | **java.math.BigDecimal** | Allowed difference as a fraction of the reference side value, e.g. 0.01 allows a 1% difference. The fraction is applied to the magnitude of the reference value, so a negative reference is tolerated in the same way as a positive one. | [optional] [default to java.math.BigDecimal]
 **thresholdPriority** | **String** | Whether to apply the GreaterOf or LesserOf the absoluteThreshold vs relativeThreshold. Required when both thresholds are provided; must be omitted when only one is. Available values: GreaterOf, LesserOf. | [optional] [default to String]
 **offset** | **String** | How the threshold should be applied to the reference side value. Defaults to Either. Available values: Above, Below, Either. | [optional] [default to String]
 **toleranceType** | **String** | Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. | [default to String]

@@ -130,7 +130,7 @@ public class AggregateNumericTolerance {
   }
 
    /**
-   * Numeric tolerance value as a relative % of the reference value.
+   * Allowed difference as a fraction of the reference side value, e.g. 0.01 allows a 1% difference. The fraction is applied to the magnitude of the reference value, so a negative reference is tolerated in the same way as a positive one.
    * @return relativeThreshold
   **/
   @jakarta.annotation.Nullable

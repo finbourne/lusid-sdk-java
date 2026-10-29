@@ -27,6 +27,8 @@ import java.io.IOException;
 
 import com.finbourne.lusid.model.CalculateOrderDatesRequest;
 import com.finbourne.lusid.model.CalculateOrderDatesResponse;
+import com.finbourne.lusid.model.CancelTransferAgencyTransactionRequest;
+import com.finbourne.lusid.model.CancelTransferAgencyTransactionsResponse;
 import com.finbourne.lusid.model.DeleteTransferAgencyOrderRequest;
 import com.finbourne.lusid.model.DeleteTransferAgencyOrdersResponse;
 import com.finbourne.lusid.model.EstimateTransferAgencyOrderRequest;
@@ -315,6 +317,256 @@ public class TransferAgencyApi {
      */
     public APIcalculateOrderDatesRequest calculateOrderDates(Map<String, CalculateOrderDatesRequest> requestBody) {
         return new APIcalculateOrderDatesRequest(requestBody);
+    }
+    private okhttp3.Call cancelTransferAgencyTransactionsCall(Map<String, CancelTransferAgencyTransactionRequest> requestBody, String successMode, final ApiCallback _callback) throws ApiException {
+        return cancelTransferAgencyTransactionsCall(requestBody, successMode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call cancelTransferAgencyTransactionsCall(Map<String, CancelTransferAgencyTransactionRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/transferagency/transactions/cancel";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call cancelTransferAgencyTransactionsValidateBeforeCall(Map<String, CancelTransferAgencyTransactionRequest> requestBody, String successMode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling cancelTransferAgencyTransactions(Async)");
+        }
+
+        return cancelTransferAgencyTransactionsCall(requestBody, successMode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<CancelTransferAgencyTransactionsResponse> cancelTransferAgencyTransactionsWithHttpInfo(Map<String, CancelTransferAgencyTransactionRequest> requestBody, String successMode) throws ApiException {
+        okhttp3.Call localVarCall = cancelTransferAgencyTransactionsValidateBeforeCall(requestBody, successMode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CancelTransferAgencyTransactionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CancelTransferAgencyTransactionsResponse> cancelTransferAgencyTransactionsWithHttpInfo(Map<String, CancelTransferAgencyTransactionRequest> requestBody, String successMode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = cancelTransferAgencyTransactionsValidateBeforeCall(requestBody, successMode, null, opts);
+        Type localVarReturnType = new TypeToken<CancelTransferAgencyTransactionsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call cancelTransferAgencyTransactionsAsync(Map<String, CancelTransferAgencyTransactionRequest> requestBody, String successMode, final ApiCallback<CancelTransferAgencyTransactionsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelTransferAgencyTransactionsValidateBeforeCall(requestBody, successMode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CancelTransferAgencyTransactionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call cancelTransferAgencyTransactionsAsync(Map<String, CancelTransferAgencyTransactionRequest> requestBody, String successMode, final ApiCallback<CancelTransferAgencyTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = cancelTransferAgencyTransactionsValidateBeforeCall(requestBody, successMode, _callback, opts);
+        Type localVarReturnType = new TypeToken<CancelTransferAgencyTransactionsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcancelTransferAgencyTransactionsRequest {
+        private final Map<String, CancelTransferAgencyTransactionRequest> requestBody;
+        private String successMode;
+
+        private APIcancelTransferAgencyTransactionsRequest(Map<String, CancelTransferAgencyTransactionRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set successMode
+         * @param successMode Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial (optional, default to Partial)
+         * @return APIcancelTransferAgencyTransactionsRequest
+         */
+        public APIcancelTransferAgencyTransactionsRequest successMode(String successMode) {
+            this.successMode = successMode;
+            return this;
+        }
+
+        /**
+         * Build call for cancelTransferAgencyTransactions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully un-priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return cancelTransferAgencyTransactionsCall(requestBody, successMode, _callback);
+        }
+
+        /**
+         * Execute cancelTransferAgencyTransactions request
+         * @return CancelTransferAgencyTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully un-priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CancelTransferAgencyTransactionsResponse execute() throws ApiException {
+            ApiResponse<CancelTransferAgencyTransactionsResponse> localVarResp = cancelTransferAgencyTransactionsWithHttpInfo(requestBody, successMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelTransferAgencyTransactions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CancelTransferAgencyTransactionsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully un-priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CancelTransferAgencyTransactionsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CancelTransferAgencyTransactionsResponse> localVarResp = cancelTransferAgencyTransactionsWithHttpInfo(requestBody, successMode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancelTransferAgencyTransactions request with HTTP info returned
+         * @return ApiResponse&lt;CancelTransferAgencyTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully un-priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CancelTransferAgencyTransactionsResponse> executeWithHttpInfo() throws ApiException {
+            return cancelTransferAgencyTransactionsWithHttpInfo(requestBody, successMode);
+        }
+
+        /**
+         * Execute cancelTransferAgencyTransactions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CancelTransferAgencyTransactionsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully un-priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CancelTransferAgencyTransactionsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return cancelTransferAgencyTransactionsWithHttpInfo(requestBody, successMode, opts);
+        }
+
+        /**
+         * Execute cancelTransferAgencyTransactions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully un-priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CancelTransferAgencyTransactionsResponse> _callback) throws ApiException {
+            return cancelTransferAgencyTransactionsAsync(requestBody, successMode, _callback);
+        }
+
+        /**
+         * Execute cancelTransferAgencyTransactions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> Successfully un-priced orders and any failures. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CancelTransferAgencyTransactionsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return cancelTransferAgencyTransactionsAsync(requestBody, successMode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] CancelTransferAgencyTransactions: Cancel transfer agency transactions, un-pricing their orders
+     * Reverses the pricing of a transfer agency order, identified by the security transaction that pricing booked:  cancels that transaction in the investor&#39;s portfolio, amends the paired cash transaction back to its  pre-pricing amount, and moves the order from &#39;Priced&#39; back to &#39;New&#39;. Both changes are bitemporal, so the  priced state is still visible at an earlier as-at.  A transaction that was never booked, that names no order, that is the cash leg rather than the security leg,  or whose order is not in &#39;Priced&#39; fails on its own. A leg already cancelled outside this flow is left alone and  the order is still returned to &#39;New&#39;. A transaction named under two request keys fails the whole request.  The response contains both successfully un-priced orders and any failures, each in the form of a  dictionary keyed by the request&#39;s keys. For each failure, a reason is provided. It is important to  check the failed set for unsuccessful results.
+     * @param requestBody The security transactions to cancel, keyed by a unique request identifier. (required)
+     * @return APIcancelTransferAgencyTransactionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successfully un-priced orders and any failures. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcancelTransferAgencyTransactionsRequest cancelTransferAgencyTransactions(Map<String, CancelTransferAgencyTransactionRequest> requestBody) {
+        return new APIcancelTransferAgencyTransactionsRequest(requestBody);
     }
     private okhttp3.Call deleteTransferAgencyOrdersCall(Map<String, DeleteTransferAgencyOrderRequest> requestBody, final ApiCallback _callback) throws ApiException {
         return deleteTransferAgencyOrdersCall(requestBody,  _callback, new ConfigurationOptions());

@@ -150,7 +150,7 @@ public class RecResultSetApprovalDecisionRequest {
   }
 
    /**
-   * The results flagged for re-review. Only applicable when the decision is Request Revisions.
+   * The results flagged for re-review. Only applicable when the decision is Request Revisions. Each result must be Reviewed. A flagged result returns to Required and keeps its decision. The reviewer must affirm or change that decision before the review can be resubmitted. Clearing the decision does not count.
    * @return requestedResultRevisions
   **/
   @jakarta.annotation.Nullable

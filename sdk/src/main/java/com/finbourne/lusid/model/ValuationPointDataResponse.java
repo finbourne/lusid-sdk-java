@@ -441,7 +441,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * Findings made while striking the valuation point that did not stop it but should be looked at, such as a fund structure holder whose declared sharing percentage in a member has drifted from the share its contributions make of that member&#39;s capital. Absent when there are none.
+   * Findings made while striking the valuation point that did not stop it but should be looked at, such as a fund structure holder whose declared sharing percentage in a member has drifted from the share its contributions make of that member&#39;s capital, or fees that failed to strike. Absent when there are none.
    * @return diagnostics
   **/
   @jakarta.annotation.Nullable

@@ -52,13 +52,17 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A holding-shaped item within a rec result: the holding a Holding or CashHolding rec reconciled  (itemType Holding), or the one a Valuation rec valued (itemType ValuedHolding).
+ * A holding-shaped item within a rec result: the holding a Holding or CashHolding rec reconciled  (itemType Holding), or the one a Valuation rec valued (itemType ValuedHolding). Also holds the display names  of the portfolio and the holding&#39;s instrument.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecResultHoldingItem {
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
   private ResourceId portfolioId;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO_DISPLAY_NAME = "portfolioDisplayName";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_DISPLAY_NAME)
+  private String portfolioDisplayName;
 
   public static final String SERIALIZED_NAME_HOLDING_ID = "holdingId";
   @SerializedName(SERIALIZED_NAME_HOLDING_ID)
@@ -67,6 +71,18 @@ public class RecResultHoldingItem {
   public static final String SERIALIZED_NAME_TAX_LOT_ID = "taxLotId";
   @SerializedName(SERIALIZED_NAME_TAX_LOT_ID)
   private String taxLotId;
+
+  public static final String SERIALIZED_NAME_HOLDING_INSTRUMENT_SCOPE = "holdingInstrumentScope";
+  @SerializedName(SERIALIZED_NAME_HOLDING_INSTRUMENT_SCOPE)
+  private String holdingInstrumentScope;
+
+  public static final String SERIALIZED_NAME_HOLDING_LUSID_INSTRUMENT_ID = "holdingLusidInstrumentId";
+  @SerializedName(SERIALIZED_NAME_HOLDING_LUSID_INSTRUMENT_ID)
+  private String holdingLusidInstrumentId;
+
+  public static final String SERIALIZED_NAME_HOLDING_INSTRUMENT_NAME = "holdingInstrumentName";
+  @SerializedName(SERIALIZED_NAME_HOLDING_INSTRUMENT_NAME)
+  private String holdingInstrumentName;
 
   public static final String SERIALIZED_NAME_ITEM_TYPE = "itemType";
   @SerializedName(SERIALIZED_NAME_ITEM_TYPE)
@@ -112,6 +128,27 @@ public class RecResultHoldingItem {
   }
 
 
+  public RecResultHoldingItem portfolioDisplayName(String portfolioDisplayName) {
+    
+    this.portfolioDisplayName = portfolioDisplayName;
+    return this;
+  }
+
+   /**
+   * The display name of the item&#39;s portfolio, as it stood at the asAt the run read its data. Null where the run did not read it.
+   * @return portfolioDisplayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getPortfolioDisplayName() {
+    return portfolioDisplayName;
+  }
+
+
+  public void setPortfolioDisplayName(String portfolioDisplayName) {
+    this.portfolioDisplayName = portfolioDisplayName;
+  }
+
+
   public RecResultHoldingItem holdingId(String holdingId) {
     
     this.holdingId = holdingId;
@@ -151,6 +188,69 @@ public class RecResultHoldingItem {
 
   public void setTaxLotId(String taxLotId) {
     this.taxLotId = taxLotId;
+  }
+
+
+  public RecResultHoldingItem holdingInstrumentScope(String holdingInstrumentScope) {
+    
+    this.holdingInstrumentScope = holdingInstrumentScope;
+    return this;
+  }
+
+   /**
+   * The scope of the holding&#39;s instrument. Null where the source does not state one.
+   * @return holdingInstrumentScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getHoldingInstrumentScope() {
+    return holdingInstrumentScope;
+  }
+
+
+  public void setHoldingInstrumentScope(String holdingInstrumentScope) {
+    this.holdingInstrumentScope = holdingInstrumentScope;
+  }
+
+
+  public RecResultHoldingItem holdingLusidInstrumentId(String holdingLusidInstrumentId) {
+    
+    this.holdingLusidInstrumentId = holdingLusidInstrumentId;
+    return this;
+  }
+
+   /**
+   * The LUID of the holding&#39;s instrument. Null where the source does not state it.
+   * @return holdingLusidInstrumentId
+  **/
+  @jakarta.annotation.Nullable
+  public String getHoldingLusidInstrumentId() {
+    return holdingLusidInstrumentId;
+  }
+
+
+  public void setHoldingLusidInstrumentId(String holdingLusidInstrumentId) {
+    this.holdingLusidInstrumentId = holdingLusidInstrumentId;
+  }
+
+
+  public RecResultHoldingItem holdingInstrumentName(String holdingInstrumentName) {
+    
+    this.holdingInstrumentName = holdingInstrumentName;
+    return this;
+  }
+
+   /**
+   * The name of the holding&#39;s instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it.
+   * @return holdingInstrumentName
+  **/
+  @jakarta.annotation.Nullable
+  public String getHoldingInstrumentName() {
+    return holdingInstrumentName;
+  }
+
+
+  public void setHoldingInstrumentName(String holdingInstrumentName) {
+    this.holdingInstrumentName = holdingInstrumentName;
   }
 
 
@@ -227,8 +327,12 @@ public class RecResultHoldingItem {
     }
     RecResultHoldingItem recResultHoldingItem = (RecResultHoldingItem) o;
     return Objects.equals(this.portfolioId, recResultHoldingItem.portfolioId) &&
+        Objects.equals(this.portfolioDisplayName, recResultHoldingItem.portfolioDisplayName) &&
         Objects.equals(this.holdingId, recResultHoldingItem.holdingId) &&
         Objects.equals(this.taxLotId, recResultHoldingItem.taxLotId) &&
+        Objects.equals(this.holdingInstrumentScope, recResultHoldingItem.holdingInstrumentScope) &&
+        Objects.equals(this.holdingLusidInstrumentId, recResultHoldingItem.holdingLusidInstrumentId) &&
+        Objects.equals(this.holdingInstrumentName, recResultHoldingItem.holdingInstrumentName) &&
         Objects.equals(this.itemType, recResultHoldingItem.itemType) &&
         Objects.equals(this.ruleAndAttributeValues, recResultHoldingItem.ruleAndAttributeValues) &&
         Objects.equals(this.writebackSuggestions, recResultHoldingItem.writebackSuggestions);
@@ -240,7 +344,7 @@ public class RecResultHoldingItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, holdingId, taxLotId, itemType, ruleAndAttributeValues, writebackSuggestions);
+    return Objects.hash(portfolioId, portfolioDisplayName, holdingId, taxLotId, holdingInstrumentScope, holdingLusidInstrumentId, holdingInstrumentName, itemType, ruleAndAttributeValues, writebackSuggestions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -255,8 +359,12 @@ public class RecResultHoldingItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecResultHoldingItem {\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
+    sb.append("    portfolioDisplayName: ").append(toIndentedString(portfolioDisplayName)).append("\n");
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
     sb.append("    taxLotId: ").append(toIndentedString(taxLotId)).append("\n");
+    sb.append("    holdingInstrumentScope: ").append(toIndentedString(holdingInstrumentScope)).append("\n");
+    sb.append("    holdingLusidInstrumentId: ").append(toIndentedString(holdingLusidInstrumentId)).append("\n");
+    sb.append("    holdingInstrumentName: ").append(toIndentedString(holdingInstrumentName)).append("\n");
     sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
     sb.append("    ruleAndAttributeValues: ").append(toIndentedString(ruleAndAttributeValues)).append("\n");
     sb.append("    writebackSuggestions: ").append(toIndentedString(writebackSuggestions)).append("\n");
@@ -283,8 +391,12 @@ public class RecResultHoldingItem {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("portfolioId");
+    openapiFields.add("portfolioDisplayName");
     openapiFields.add("holdingId");
     openapiFields.add("taxLotId");
+    openapiFields.add("holdingInstrumentScope");
+    openapiFields.add("holdingLusidInstrumentId");
+    openapiFields.add("holdingInstrumentName");
     openapiFields.add("itemType");
     openapiFields.add("ruleAndAttributeValues");
     openapiFields.add("writebackSuggestions");
@@ -318,11 +430,23 @@ public class RecResultHoldingItem {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `portfolioId`
       ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
+      if ((jsonObj.get("portfolioDisplayName") != null && !jsonObj.get("portfolioDisplayName").isJsonNull()) && !jsonObj.get("portfolioDisplayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `portfolioDisplayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("portfolioDisplayName").toString()));
+      }
       if ((jsonObj.get("holdingId") != null && !jsonObj.get("holdingId").isJsonNull()) && !jsonObj.get("holdingId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingId").toString()));
       }
       if ((jsonObj.get("taxLotId") != null && !jsonObj.get("taxLotId").isJsonNull()) && !jsonObj.get("taxLotId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxLotId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotId").toString()));
+      }
+      if ((jsonObj.get("holdingInstrumentScope") != null && !jsonObj.get("holdingInstrumentScope").isJsonNull()) && !jsonObj.get("holdingInstrumentScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingInstrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingInstrumentScope").toString()));
+      }
+      if ((jsonObj.get("holdingLusidInstrumentId") != null && !jsonObj.get("holdingLusidInstrumentId").isJsonNull()) && !jsonObj.get("holdingLusidInstrumentId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingLusidInstrumentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingLusidInstrumentId").toString()));
+      }
+      if ((jsonObj.get("holdingInstrumentName") != null && !jsonObj.get("holdingInstrumentName").isJsonNull()) && !jsonObj.get("holdingInstrumentName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `holdingInstrumentName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingInstrumentName").toString()));
       }
       if (!jsonObj.get("itemType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `itemType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("itemType").toString()));

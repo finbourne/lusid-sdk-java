@@ -6,7 +6,7 @@ LUSID representation of a TBA (To Be Announced) forward contract for generic age
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **startDate** | [**OffsetDateTime**](OffsetDateTime.md) | The trade inception date of the TBA. | [default to OffsetDateTime]
-**maturityDate** | [**OffsetDateTime**](OffsetDateTime.md) | The contractual settlement date of the TBA (e.g. the agency&#39;s announced settlement date for the month). | [default to OffsetDateTime]
+**maturityDate** | [**OffsetDateTime**](OffsetDateTime.md) | The contractual settlement date of the TBA (e.g. the agency&#39;s announced settlement date for the month). This is a reference date only: LUSID keeps valuing a TBA that is still held after it, until the holder&#39;s own transactions close the position. | [default to OffsetDateTime]
 **domCcy** | **String** | The domestic currency of the TBA. | [default to String]
 **agency** | **String** | The issuing agency of the underlying generic collateral, e.g. \&quot;FNMA\&quot;, \&quot;FHLMC\&quot;, \&quot;GNMA\&quot;.  Note this property does not impact valuation. From a LUSID analytics perspective, it is purely informational. | [optional] [default to String]
 **coupon** | **java.math.BigDecimal** | The stated coupon rate of the underlying generic collateral, e.g. 3.0, 4.5.  Note this property does not impact valuation - there are no coupon cash flows on the TBA itself.  From a LUSID analytics perspective, it is purely informational. | [optional] [default to java.math.BigDecimal]

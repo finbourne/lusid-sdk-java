@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **reportingPrices** | [**List&lt;ReportingPrice&gt;**](ReportingPrice.md) | Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices. | [optional] [default to List<ReportingPrice>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **whtParameters** | [**WhtParameters**](WhtParameters.md) |  | [optional] [default to WhtParameters]
+**valuationTemplateId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -69,6 +70,7 @@ PricingMethodology PricingMethodology = new PricingMethodology();
 @jakarta.annotation.Nullable List<ReportingPrice> ReportingPrices = new List<ReportingPrice>();
 Version Version = new Version();
 WhtParameters WhtParameters = new WhtParameters();
+ResourceId ValuationTemplateId = new ResourceId();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -101,6 +103,7 @@ Fund fundInstance = new Fund()
     .ReportingPrices(ReportingPrices)
     .Version(Version)
     .WhtParameters(WhtParameters)
+    .ValuationTemplateId(ValuationTemplateId)
     .Links(Links);
 ```
 

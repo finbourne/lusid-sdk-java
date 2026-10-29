@@ -1,11 +1,12 @@
 # com.finbourne.lusid.model.RecResultRelationalDataItem
-A relational data point item within a rec result: one row of a relational dataset. The dataset and the unique  id of the data point identify the row. All rec types use this item shape.
+A relational data point item within a rec result: one row of a relational dataset. The dataset and the unique  id of the data point identify the row. All rec types use this item shape. Also holds the display name of the  dataset.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **relationalDatasetDefinitionId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
+**relationalDatasetDefinitionDisplayName** | **String** | The display name of the relational dataset definition the item&#39;s row belongs to, as it stood at the asAt the run read its data. Null where the run did not read it. | [optional] [default to String]
 **relationalDataPointUniqueId** | **String** | The unique id of the relational data point the run read, as minted by the relational dataset store. Opaque: compare it whole, do not parse it. | [default to String]
 **itemType** | **String** | The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity or RelationalDataPoint. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint. | [default to String]
 **ruleAndAttributeValues** | **Map&lt;String, String&gt;** | The core rule, aggregate rule and supplemental attribute values for the item, keyed by name. | [optional] [default to Map<String, String>]
@@ -18,6 +19,7 @@ import java.lang.System;
 import java.net.URI;
 
 ResourceId RelationalDatasetDefinitionId = new ResourceId();
+@jakarta.annotation.Nullable String RelationalDatasetDefinitionDisplayName = "example RelationalDatasetDefinitionDisplayName";
 String RelationalDataPointUniqueId = "example RelationalDataPointUniqueId";
 String ItemType = "example ItemType";
 @jakarta.annotation.Nullable Map<String, String> RuleAndAttributeValues = new Map<String, String>();
@@ -26,6 +28,7 @@ List<WritebackSuggestion> WritebackSuggestions = new List<WritebackSuggestion>()
 
 RecResultRelationalDataItem recResultRelationalDataItemInstance = new RecResultRelationalDataItem()
     .RelationalDatasetDefinitionId(RelationalDatasetDefinitionId)
+    .RelationalDatasetDefinitionDisplayName(RelationalDatasetDefinitionDisplayName)
     .RelationalDataPointUniqueId(RelationalDataPointUniqueId)
     .ItemType(ItemType)
     .RuleAndAttributeValues(RuleAndAttributeValues)

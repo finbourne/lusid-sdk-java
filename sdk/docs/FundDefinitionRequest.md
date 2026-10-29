@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **pricingMethodology** | [**PricingMethodology**](PricingMethodology.md) |  | [optional] [default to PricingMethodology]
 **reportingPrices** | [**List&lt;ReportingPrice&gt;**](ReportingPrice.md) | Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices. | [optional] [default to List<ReportingPrice>]
 **whtParameters** | [**WhtParameters**](WhtParameters.md) |  | [optional] [default to WhtParameters]
+**valuationTemplateId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.FundDefinitionRequest;
@@ -58,6 +59,7 @@ Boolean CreateInstrument = true;
 PricingMethodology PricingMethodology = new PricingMethodology();
 @jakarta.annotation.Nullable List<ReportingPrice> ReportingPrices = new List<ReportingPrice>();
 WhtParameters WhtParameters = new WhtParameters();
+ResourceId ValuationTemplateId = new ResourceId();
 
 
 FundDefinitionRequest fundDefinitionRequestInstance = new FundDefinitionRequest()
@@ -83,7 +85,8 @@ FundDefinitionRequest fundDefinitionRequestInstance = new FundDefinitionRequest(
     .ShareClasses(ShareClasses)
     .PricingMethodology(PricingMethodology)
     .ReportingPrices(ReportingPrices)
-    .WhtParameters(WhtParameters);
+    .WhtParameters(WhtParameters)
+    .ValuationTemplateId(ValuationTemplateId);
 ```
 
 

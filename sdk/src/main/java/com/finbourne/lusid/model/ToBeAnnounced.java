@@ -118,7 +118,7 @@ public class ToBeAnnounced extends LusidInstrument {
   }
 
    /**
-   * The contractual settlement date of the TBA (e.g. the agency&#39;s announced settlement date for the month).
+   * The contractual settlement date of the TBA (e.g. the agency&#39;s announced settlement date for the month). This is a reference date only: LUSID keeps valuing a TBA that is still held after it, until the holder&#39;s own transactions close the position.
    * @return maturityDate
   **/
   @jakarta.annotation.Nonnull

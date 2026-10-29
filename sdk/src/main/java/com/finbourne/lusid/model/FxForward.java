@@ -158,7 +158,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * The amount that is to be paid in the domestic currency on the maturity date.  Required unless isPooled is set. On a pooled FX forward the domestic amount is the contract size and  not a traded amount: leave it absent and it is populated as one, so that holding units are amounts of  the domestic currency.
+   * The amount that is to be paid in the domestic currency on the maturity date.  Required unless isPooled is set. On a pooled FX forward it must be absent or zero, because the domestic  amount of each trade is carried by the transactions booked against the pool.
    * @return domAmount
   **/
   @jakarta.annotation.Nullable
@@ -200,7 +200,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * The amount that is to be paid in the foreign currency on the maturity date.  Required unless isPooled is set. On a pooled FX forward it must be absent or zero, because the whole  foreign consideration is carried by the transactions booked against the pool.
+   * The amount that is to be paid in the foreign currency on the maturity date.  Required unless isPooled is set. On a pooled FX forward the foreign amount is the contract size and  not a traded amount: leave it absent and it is populated as one, so that holding units are amounts of  the foreign currency.
    * @return fgnAmount
   **/
   @jakarta.annotation.Nullable
@@ -368,7 +368,7 @@ public class FxForward extends LusidInstrument {
   }
 
    /**
-   * Declares the contract to be a pool, carrying no traded amounts of its own. A pool is defined once for a  currency pair and maturity date and traded repeatedly at different rates, so the traded amounts are carried  by the transactions booked against it rather than by the instrument. The domestic amount of a pool is  therefore the contract size and not a traded amount, and is pinned to one so that holding units are amounts  of the domestic currency; the foreign amount and the reference spot rate must be absent, because the whole  foreign consideration is carried by the transaction.     Orientation is part of a pool&#39;s identity: the domestic currency is the unit currency and the foreign  currency the consideration currency, so a USD/JPY pool and a JPY/USD pool are distinct instruments, and  transactions must be booked in the pool&#39;s own direction (transaction currency equal to the domestic  currency, settlement currency equal to the foreign currency). This will default to False if not provided.
+   * Declares the contract to be a pool, carrying no traded amounts of its own. A pool is defined once for a  currency pair and maturity date and traded repeatedly at different rates, so the traded amounts are carried  by the transactions booked against it rather than by the instrument. The foreign amount of a pool is  therefore the contract size and not a traded amount, and is pinned to one so that holding units are amounts  of the foreign currency; the domestic amount and the reference spot rate must be absent, because each  trade&#39;s domestic amount is carried by the transaction as its notional amount.     Orientation is part of a pool&#39;s identity: the foreign currency is the unit currency and the domestic  currency is the currency of the holding, so a USD/JPY pool and a JPY/USD pool are distinct instruments, and  transactions must be booked in the pool&#39;s own direction (transaction and settlement currency equal to the  domestic currency). This will default to False if not provided.
    * @return isPooled
   **/
   @jakarta.annotation.Nullable

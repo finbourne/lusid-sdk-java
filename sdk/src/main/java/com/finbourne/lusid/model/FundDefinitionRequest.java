@@ -156,6 +156,10 @@ public class FundDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
   private WhtParameters whtParameters;
 
+  public static final String SERIALIZED_NAME_VALUATION_TEMPLATE_ID = "valuationTemplateId";
+  @SerializedName(SERIALIZED_NAME_VALUATION_TEMPLATE_ID)
+  private ResourceId valuationTemplateId;
+
   public FundDefinitionRequest() {
   }
 
@@ -700,6 +704,27 @@ public class FundDefinitionRequest {
   }
 
 
+  public FundDefinitionRequest valuationTemplateId(ResourceId valuationTemplateId) {
+    
+    this.valuationTemplateId = valuationTemplateId;
+    return this;
+  }
+
+   /**
+   * Get valuationTemplateId
+   * @return valuationTemplateId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getValuationTemplateId() {
+    return valuationTemplateId;
+  }
+
+
+  public void setValuationTemplateId(ResourceId valuationTemplateId) {
+    this.valuationTemplateId = valuationTemplateId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -732,7 +757,8 @@ public class FundDefinitionRequest {
         Objects.equals(this.shareClasses, fundDefinitionRequest.shareClasses) &&
         Objects.equals(this.pricingMethodology, fundDefinitionRequest.pricingMethodology) &&
         Objects.equals(this.reportingPrices, fundDefinitionRequest.reportingPrices) &&
-        Objects.equals(this.whtParameters, fundDefinitionRequest.whtParameters);
+        Objects.equals(this.whtParameters, fundDefinitionRequest.whtParameters) &&
+        Objects.equals(this.valuationTemplateId, fundDefinitionRequest.valuationTemplateId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -741,7 +767,7 @@ public class FundDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, instrumentScope, shareClasses, pricingMethodology, reportingPrices, whtParameters);
+    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, instrumentScope, shareClasses, pricingMethodology, reportingPrices, whtParameters, valuationTemplateId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -778,6 +804,7 @@ public class FundDefinitionRequest {
     sb.append("    pricingMethodology: ").append(toIndentedString(pricingMethodology)).append("\n");
     sb.append("    reportingPrices: ").append(toIndentedString(reportingPrices)).append("\n");
     sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
+    sb.append("    valuationTemplateId: ").append(toIndentedString(valuationTemplateId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -823,6 +850,7 @@ public class FundDefinitionRequest {
     openapiFields.add("pricingMethodology");
     openapiFields.add("reportingPrices");
     openapiFields.add("whtParameters");
+    openapiFields.add("valuationTemplateId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -963,6 +991,10 @@ public class FundDefinitionRequest {
       // validate the optional field `whtParameters`
       if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {
         WhtParameters.validateJsonElement(jsonObj.get("whtParameters"));
+      }
+      // validate the optional field `valuationTemplateId`
+      if (jsonObj.get("valuationTemplateId") != null && !jsonObj.get("valuationTemplateId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("valuationTemplateId"));
       }
   }
 

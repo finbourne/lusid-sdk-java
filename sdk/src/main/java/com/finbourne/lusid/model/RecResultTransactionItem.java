@@ -53,7 +53,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A transaction item within a rec result.
+ * A transaction item within a rec result. Names the portfolio and the transaction&#39;s resolved instrument alongside,  for display.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecResultTransactionItem {
@@ -61,9 +61,25 @@ public class RecResultTransactionItem {
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
   private ResourceId portfolioId;
 
+  public static final String SERIALIZED_NAME_PORTFOLIO_DISPLAY_NAME = "portfolioDisplayName";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_DISPLAY_NAME)
+  private String portfolioDisplayName;
+
   public static final String SERIALIZED_NAME_TRANSACTION_ID = "transactionId";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
   private String transactionId;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_INSTRUMENT_SCOPE = "transactionInstrumentScope";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_INSTRUMENT_SCOPE)
+  private String transactionInstrumentScope;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_LUSID_INSTRUMENT_ID = "transactionLusidInstrumentId";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_LUSID_INSTRUMENT_ID)
+  private String transactionLusidInstrumentId;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_INSTRUMENT_NAME = "transactionInstrumentName";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_INSTRUMENT_NAME)
+  private String transactionInstrumentName;
 
   public static final String SERIALIZED_NAME_HOLDING_IMPACTS = "holdingImpacts";
   @SerializedName(SERIALIZED_NAME_HOLDING_IMPACTS)
@@ -113,6 +129,27 @@ public class RecResultTransactionItem {
   }
 
 
+  public RecResultTransactionItem portfolioDisplayName(String portfolioDisplayName) {
+    
+    this.portfolioDisplayName = portfolioDisplayName;
+    return this;
+  }
+
+   /**
+   * The display name of the item&#39;s portfolio, as it stood at the asAt the run read its data. Null where the run did not read it.
+   * @return portfolioDisplayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getPortfolioDisplayName() {
+    return portfolioDisplayName;
+  }
+
+
+  public void setPortfolioDisplayName(String portfolioDisplayName) {
+    this.portfolioDisplayName = portfolioDisplayName;
+  }
+
+
   public RecResultTransactionItem transactionId(String transactionId) {
     
     this.transactionId = transactionId;
@@ -131,6 +168,69 @@ public class RecResultTransactionItem {
 
   public void setTransactionId(String transactionId) {
     this.transactionId = transactionId;
+  }
+
+
+  public RecResultTransactionItem transactionInstrumentScope(String transactionInstrumentScope) {
+    
+    this.transactionInstrumentScope = transactionInstrumentScope;
+    return this;
+  }
+
+   /**
+   * The scope of the transaction&#39;s resolved instrument. Null where the source does not state one.
+   * @return transactionInstrumentScope
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionInstrumentScope() {
+    return transactionInstrumentScope;
+  }
+
+
+  public void setTransactionInstrumentScope(String transactionInstrumentScope) {
+    this.transactionInstrumentScope = transactionInstrumentScope;
+  }
+
+
+  public RecResultTransactionItem transactionLusidInstrumentId(String transactionLusidInstrumentId) {
+    
+    this.transactionLusidInstrumentId = transactionLusidInstrumentId;
+    return this;
+  }
+
+   /**
+   * The LUID of the transaction&#39;s resolved instrument. Null where the source does not state it.
+   * @return transactionLusidInstrumentId
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionLusidInstrumentId() {
+    return transactionLusidInstrumentId;
+  }
+
+
+  public void setTransactionLusidInstrumentId(String transactionLusidInstrumentId) {
+    this.transactionLusidInstrumentId = transactionLusidInstrumentId;
+  }
+
+
+  public RecResultTransactionItem transactionInstrumentName(String transactionInstrumentName) {
+    
+    this.transactionInstrumentName = transactionInstrumentName;
+    return this;
+  }
+
+   /**
+   * The name of the transaction&#39;s resolved instrument, as it stood at the asAt the run read its data. Null where the run did not resolve it.
+   * @return transactionInstrumentName
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionInstrumentName() {
+    return transactionInstrumentName;
+  }
+
+
+  public void setTransactionInstrumentName(String transactionInstrumentName) {
+    this.transactionInstrumentName = transactionInstrumentName;
   }
 
 
@@ -236,7 +336,11 @@ public class RecResultTransactionItem {
     }
     RecResultTransactionItem recResultTransactionItem = (RecResultTransactionItem) o;
     return Objects.equals(this.portfolioId, recResultTransactionItem.portfolioId) &&
+        Objects.equals(this.portfolioDisplayName, recResultTransactionItem.portfolioDisplayName) &&
         Objects.equals(this.transactionId, recResultTransactionItem.transactionId) &&
+        Objects.equals(this.transactionInstrumentScope, recResultTransactionItem.transactionInstrumentScope) &&
+        Objects.equals(this.transactionLusidInstrumentId, recResultTransactionItem.transactionLusidInstrumentId) &&
+        Objects.equals(this.transactionInstrumentName, recResultTransactionItem.transactionInstrumentName) &&
         Objects.equals(this.holdingImpacts, recResultTransactionItem.holdingImpacts) &&
         Objects.equals(this.itemType, recResultTransactionItem.itemType) &&
         Objects.equals(this.ruleAndAttributeValues, recResultTransactionItem.ruleAndAttributeValues) &&
@@ -249,7 +353,7 @@ public class RecResultTransactionItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, transactionId, holdingImpacts, itemType, ruleAndAttributeValues, writebackSuggestions);
+    return Objects.hash(portfolioId, portfolioDisplayName, transactionId, transactionInstrumentScope, transactionLusidInstrumentId, transactionInstrumentName, holdingImpacts, itemType, ruleAndAttributeValues, writebackSuggestions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -264,7 +368,11 @@ public class RecResultTransactionItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecResultTransactionItem {\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
+    sb.append("    portfolioDisplayName: ").append(toIndentedString(portfolioDisplayName)).append("\n");
     sb.append("    transactionId: ").append(toIndentedString(transactionId)).append("\n");
+    sb.append("    transactionInstrumentScope: ").append(toIndentedString(transactionInstrumentScope)).append("\n");
+    sb.append("    transactionLusidInstrumentId: ").append(toIndentedString(transactionLusidInstrumentId)).append("\n");
+    sb.append("    transactionInstrumentName: ").append(toIndentedString(transactionInstrumentName)).append("\n");
     sb.append("    holdingImpacts: ").append(toIndentedString(holdingImpacts)).append("\n");
     sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
     sb.append("    ruleAndAttributeValues: ").append(toIndentedString(ruleAndAttributeValues)).append("\n");
@@ -292,7 +400,11 @@ public class RecResultTransactionItem {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("portfolioId");
+    openapiFields.add("portfolioDisplayName");
     openapiFields.add("transactionId");
+    openapiFields.add("transactionInstrumentScope");
+    openapiFields.add("transactionLusidInstrumentId");
+    openapiFields.add("transactionInstrumentName");
     openapiFields.add("holdingImpacts");
     openapiFields.add("itemType");
     openapiFields.add("ruleAndAttributeValues");
@@ -328,8 +440,20 @@ public class RecResultTransactionItem {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `portfolioId`
       ResourceId.validateJsonElement(jsonObj.get("portfolioId"));
+      if ((jsonObj.get("portfolioDisplayName") != null && !jsonObj.get("portfolioDisplayName").isJsonNull()) && !jsonObj.get("portfolioDisplayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `portfolioDisplayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("portfolioDisplayName").toString()));
+      }
       if ((jsonObj.get("transactionId") != null && !jsonObj.get("transactionId").isJsonNull()) && !jsonObj.get("transactionId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionId").toString()));
+      }
+      if ((jsonObj.get("transactionInstrumentScope") != null && !jsonObj.get("transactionInstrumentScope").isJsonNull()) && !jsonObj.get("transactionInstrumentScope").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionInstrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionInstrumentScope").toString()));
+      }
+      if ((jsonObj.get("transactionLusidInstrumentId") != null && !jsonObj.get("transactionLusidInstrumentId").isJsonNull()) && !jsonObj.get("transactionLusidInstrumentId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionLusidInstrumentId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionLusidInstrumentId").toString()));
+      }
+      if ((jsonObj.get("transactionInstrumentName") != null && !jsonObj.get("transactionInstrumentName").isJsonNull()) && !jsonObj.get("transactionInstrumentName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionInstrumentName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionInstrumentName").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("holdingImpacts").isJsonArray()) {

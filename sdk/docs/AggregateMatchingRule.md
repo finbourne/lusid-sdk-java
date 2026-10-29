@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ruleName** | **String** | The reference name of the rule. | [default to String]
 **leftFormula** | **String** | Derivation formula evaluated against the left side of the reconciliation. | [default to String]
-**leftOperation** | **String** | Group-level operation applied to the left side&#39;s per-item values during reconciliation, e.g. Sum, Average, Count. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. | [default to String]
+**leftOperation** | **String** | Group-level operation applied to the left side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. | [default to String]
 **rightFormula** | **String** | Derivation formula evaluated against the right side of the reconciliation. | [default to String]
-**rightOperation** | **String** | Group-level operation applied to the right side&#39;s per-item values during reconciliation, e.g. Sum, Average, Count. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. | [default to String]
+**rightOperation** | **String** | Group-level operation applied to the right side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. | [default to String]
 
 ```java
 import com.finbourne.lusid.model.AggregateMatchingRule;

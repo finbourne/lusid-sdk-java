@@ -52,13 +52,17 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A relational data point item within a rec result: one row of a relational dataset. The dataset and the unique  id of the data point identify the row. All rec types use this item shape.
+ * A relational data point item within a rec result: one row of a relational dataset. The dataset and the unique  id of the data point identify the row. All rec types use this item shape. Also holds the display name of the  dataset.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecResultRelationalDataItem {
   public static final String SERIALIZED_NAME_RELATIONAL_DATASET_DEFINITION_ID = "relationalDatasetDefinitionId";
   @SerializedName(SERIALIZED_NAME_RELATIONAL_DATASET_DEFINITION_ID)
   private ResourceId relationalDatasetDefinitionId;
+
+  public static final String SERIALIZED_NAME_RELATIONAL_DATASET_DEFINITION_DISPLAY_NAME = "relationalDatasetDefinitionDisplayName";
+  @SerializedName(SERIALIZED_NAME_RELATIONAL_DATASET_DEFINITION_DISPLAY_NAME)
+  private String relationalDatasetDefinitionDisplayName;
 
   public static final String SERIALIZED_NAME_RELATIONAL_DATA_POINT_UNIQUE_ID = "relationalDataPointUniqueId";
   @SerializedName(SERIALIZED_NAME_RELATIONAL_DATA_POINT_UNIQUE_ID)
@@ -105,6 +109,27 @@ public class RecResultRelationalDataItem {
 
   public void setRelationalDatasetDefinitionId(ResourceId relationalDatasetDefinitionId) {
     this.relationalDatasetDefinitionId = relationalDatasetDefinitionId;
+  }
+
+
+  public RecResultRelationalDataItem relationalDatasetDefinitionDisplayName(String relationalDatasetDefinitionDisplayName) {
+    
+    this.relationalDatasetDefinitionDisplayName = relationalDatasetDefinitionDisplayName;
+    return this;
+  }
+
+   /**
+   * The display name of the relational dataset definition the item&#39;s row belongs to, as it stood at the asAt the run read its data. Null where the run did not read it.
+   * @return relationalDatasetDefinitionDisplayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getRelationalDatasetDefinitionDisplayName() {
+    return relationalDatasetDefinitionDisplayName;
+  }
+
+
+  public void setRelationalDatasetDefinitionDisplayName(String relationalDatasetDefinitionDisplayName) {
+    this.relationalDatasetDefinitionDisplayName = relationalDatasetDefinitionDisplayName;
   }
 
 
@@ -202,6 +227,7 @@ public class RecResultRelationalDataItem {
     }
     RecResultRelationalDataItem recResultRelationalDataItem = (RecResultRelationalDataItem) o;
     return Objects.equals(this.relationalDatasetDefinitionId, recResultRelationalDataItem.relationalDatasetDefinitionId) &&
+        Objects.equals(this.relationalDatasetDefinitionDisplayName, recResultRelationalDataItem.relationalDatasetDefinitionDisplayName) &&
         Objects.equals(this.relationalDataPointUniqueId, recResultRelationalDataItem.relationalDataPointUniqueId) &&
         Objects.equals(this.itemType, recResultRelationalDataItem.itemType) &&
         Objects.equals(this.ruleAndAttributeValues, recResultRelationalDataItem.ruleAndAttributeValues) &&
@@ -214,7 +240,7 @@ public class RecResultRelationalDataItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(relationalDatasetDefinitionId, relationalDataPointUniqueId, itemType, ruleAndAttributeValues, writebackSuggestions);
+    return Objects.hash(relationalDatasetDefinitionId, relationalDatasetDefinitionDisplayName, relationalDataPointUniqueId, itemType, ruleAndAttributeValues, writebackSuggestions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -229,6 +255,7 @@ public class RecResultRelationalDataItem {
     StringBuilder sb = new StringBuilder();
     sb.append("class RecResultRelationalDataItem {\n");
     sb.append("    relationalDatasetDefinitionId: ").append(toIndentedString(relationalDatasetDefinitionId)).append("\n");
+    sb.append("    relationalDatasetDefinitionDisplayName: ").append(toIndentedString(relationalDatasetDefinitionDisplayName)).append("\n");
     sb.append("    relationalDataPointUniqueId: ").append(toIndentedString(relationalDataPointUniqueId)).append("\n");
     sb.append("    itemType: ").append(toIndentedString(itemType)).append("\n");
     sb.append("    ruleAndAttributeValues: ").append(toIndentedString(ruleAndAttributeValues)).append("\n");
@@ -256,6 +283,7 @@ public class RecResultRelationalDataItem {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("relationalDatasetDefinitionId");
+    openapiFields.add("relationalDatasetDefinitionDisplayName");
     openapiFields.add("relationalDataPointUniqueId");
     openapiFields.add("itemType");
     openapiFields.add("ruleAndAttributeValues");
@@ -291,6 +319,9 @@ public class RecResultRelationalDataItem {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `relationalDatasetDefinitionId`
       ResourceId.validateJsonElement(jsonObj.get("relationalDatasetDefinitionId"));
+      if ((jsonObj.get("relationalDatasetDefinitionDisplayName") != null && !jsonObj.get("relationalDatasetDefinitionDisplayName").isJsonNull()) && !jsonObj.get("relationalDatasetDefinitionDisplayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `relationalDatasetDefinitionDisplayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("relationalDatasetDefinitionDisplayName").toString()));
+      }
       if (!jsonObj.get("relationalDataPointUniqueId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `relationalDataPointUniqueId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("relationalDataPointUniqueId").toString()));
       }
