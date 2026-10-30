@@ -68,6 +68,7 @@ InstrumentType method = InstrumentType.BONDFORWARD;
 InstrumentType method = InstrumentType.PREFERREDSHARE;
 InstrumentType method = InstrumentType.CAPITALINTEREST;
 InstrumentType method = InstrumentType.WHOLELOANFACILITY;
+InstrumentType method = InstrumentType.STRIPBOND;
 ```
 
 

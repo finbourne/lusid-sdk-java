@@ -471,7 +471,7 @@ public class InflationLinkedBond extends LusidInstrument {
   }
 
    /**
-   * Optional. The date on which the first coupon is paid. Set this date for an irregular first coupon period.  When SecondPeriodStartDate is not set, this date is also the end of the first coupon period and the regular coupon periods roll forward from it.  If this date is an adjusted date, also set SecondPeriodStartDate.
+   * Optional. The date on which the first coupon is paid. Set this date for an irregular first coupon period.  When SecondPeriodStartDate is not set, the first coupon period ends on the roll grid date nearest to this date, so a business day adjusted pay date stands for the grid date it was adjusted from.  The regular coupon periods roll forward from there.  Without a roll convention the coupon periods roll on the day of the month of the maturity date, or of the start date for a back stub. A date more than ten days from that grid is the grid date itself.
    * @return firstCouponPayDate
   **/
   @jakarta.annotation.Nullable
@@ -492,7 +492,7 @@ public class InflationLinkedBond extends LusidInstrument {
   }
 
    /**
-   * Optional. The date on which the second coupon period starts. This is also the accrual end date of the first coupon period.  The regular coupon periods roll forward from this date, whatever the stub type, and the last period ends on the maturity date.  Set this date together with FirstCouponPayDate when the first coupon pay date is an adjusted date.
+   * Optional. The date on which the second coupon period starts. This is also the accrual end date of the first coupon period.  The regular coupon periods roll forward from the roll grid date nearest to this date, so a business day adjusted date stands for the grid date it was adjusted from.  Without a roll convention the coupon periods roll on the day of the month of the maturity date, or of the start date for a back stub. A date more than ten days from that grid is the grid date itself.
    * @return secondPeriodStartDate
   **/
   @jakarta.annotation.Nullable
@@ -513,7 +513,7 @@ public class InflationLinkedBond extends LusidInstrument {
   }
 
    /**
-   * Optional. The date on which the penultimate coupon is paid. Set this date for an irregular last coupon period.  When LastPeriodStartDate is not set, this date is also the start of the last coupon period.  If this date is an adjusted date, also set LastPeriodStartDate.
+   * Optional. The date on which the penultimate coupon is paid. Set this date for an irregular last coupon period.  When LastPeriodStartDate is not set, the last coupon period starts on the roll grid date nearest to this date, so a business day adjusted pay date stands for the grid date it was adjusted from.  Without a roll convention the coupon periods roll on the day of the month of the maturity date, or of the start date for a back stub. A date more than ten days from that grid is the grid date itself.
    * @return penultimateCouponPayDate
   **/
   @jakarta.annotation.Nullable
@@ -534,7 +534,7 @@ public class InflationLinkedBond extends LusidInstrument {
   }
 
    /**
-   * Optional. The date on which the last coupon period starts. This is also the accrual end date of the penultimate coupon period.  When the first coupon period is not given explicitly, the regular coupon periods roll backward from this date, whatever the stub type.  Set this date together with PenultimateCouponPayDate when the penultimate coupon pay date is an adjusted date.
+   * Optional. The date on which the last coupon period starts. This is also the accrual end date of the penultimate coupon period.  When the first coupon period is not given, the regular coupon periods roll backward from the roll grid date nearest to this date, so a business day adjusted date stands for the grid date it was adjusted from.  Without a roll convention the coupon periods roll on the day of the month of the maturity date, or of the start date for a back stub. A date more than ten days from that grid is the grid date itself.
    * @return lastPeriodStartDate
   **/
   @jakarta.annotation.Nullable

@@ -49,7 +49,9 @@ public enum ModelOptionsType {
   
   BONDFORWARDMODELOPTIONS("BondForwardModelOptions"),
   
-  SIMPLEMODELOPTIONS("SimpleModelOptions");
+  SIMPLEMODELOPTIONS("SimpleModelOptions"),
+  
+  STRIPBONDMODELOPTIONS("StripBondModelOptions");
 
   private String value;
 

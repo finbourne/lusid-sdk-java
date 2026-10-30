@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MarketQuote {
   /**
-   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed.
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed, EffectiveYield.
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -94,7 +94,9 @@ public class MarketQuote {
     
     DISCOUNTFACTOR("DiscountFactor"),
     
-    PRINCIPALDISTRIBUTED("PrincipalDistributed");
+    PRINCIPALDISTRIBUTED("PrincipalDistributed"),
+    
+    EFFECTIVEYIELD("EffectiveYield");
 
     private String value;
 
@@ -152,7 +154,7 @@ public class MarketQuote {
   }
 
    /**
-   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed.
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed, EffectiveYield.
    * @return quoteType
   **/
   @jakarta.annotation.Nonnull

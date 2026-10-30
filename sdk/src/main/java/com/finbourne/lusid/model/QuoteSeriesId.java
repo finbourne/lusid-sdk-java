@@ -128,7 +128,7 @@ public class QuoteSeriesId {
   private InstrumentIdTypeEnum instrumentIdType;
 
   /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed.
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed, EffectiveYield.
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -172,7 +172,9 @@ public class QuoteSeriesId {
     
     DISCOUNTFACTOR("DiscountFactor"),
     
-    PRINCIPALDISTRIBUTED("PrincipalDistributed");
+    PRINCIPALDISTRIBUTED("PrincipalDistributed"),
+    
+    EFFECTIVEYIELD("EffectiveYield");
 
     private String value;
 
@@ -326,7 +328,7 @@ public class QuoteSeriesId {
   }
 
    /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed.
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed, EffectiveYield.
    * @return quoteType
   **/
   @jakarta.annotation.Nonnull

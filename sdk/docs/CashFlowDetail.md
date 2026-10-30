@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **reportCurrencyAmount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **tradeToReportCurrencyRate** | **java.math.BigDecimal** | The FX rate used to convert the cashflow amount from its own payment currency (see Amount) into the request&#39;s report currency. For the default FxSpot rate type it is resolved at the cashflow&#39;s transaction (trade) date, not its payment date; for FxForward it is the forward rate for the payment date (see QueryBucketCashFlowDrillDownRequest.FxRateType and FxRateTypeApplied). Only present when ReportCurrency was supplied on the request; not present when it was omitted, or when the rate could not be resolved (see Error). | [optional] [default to java.math.BigDecimal]
 **fxRateTypeApplied** | **String** | Which rate type produced TradeToReportCurrencyRate: FxSpot or FxForward. Under the ForwardThenSpot request option this shows whether a cashflow received the forward rate or fell back to spot. Only present when the cashflow was converted into the ReportCurrency. | [optional] [default to String]
+**subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The sub-holding keys of the holding that produced the cashflow, keyed by property key. Each cashflow carries the keys of its own portfolio&#39;s holding, so when drilling into a portfolio group whose portfolios share the same sub-holding keys, those keys are reported on every cashflow. Empty when the portfolio defines no sub-holding keys. | [optional] [default to Map<String, PerpetualProperty>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -47,6 +48,7 @@ CurrencyAndAmount NetAmount = new CurrencyAndAmount();
 CurrencyAndAmount ReportCurrencyAmount = new CurrencyAndAmount();
 @jakarta.annotation.Nullable java.math.BigDecimal TradeToReportCurrencyRate = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String FxRateTypeApplied = "example FxRateTypeApplied";
+@jakarta.annotation.Nullable Map<String, PerpetualProperty> SubHoldingKeys = new Map<String, PerpetualProperty>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -68,6 +70,7 @@ CashFlowDetail cashFlowDetailInstance = new CashFlowDetail()
     .ReportCurrencyAmount(ReportCurrencyAmount)
     .TradeToReportCurrencyRate(TradeToReportCurrencyRate)
     .FxRateTypeApplied(FxRateTypeApplied)
+    .SubHoldingKeys(SubHoldingKeys)
     .Links(Links);
 ```
 

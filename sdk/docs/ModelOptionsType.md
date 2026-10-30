@@ -26,6 +26,7 @@ ModelOptionsType method = ModelOptionsType.HULLWHITEMODELOPTIONS;
 ModelOptionsType method = ModelOptionsType.BONDLOOKUPMODELOPTIONS;
 ModelOptionsType method = ModelOptionsType.BONDFORWARDMODELOPTIONS;
 ModelOptionsType method = ModelOptionsType.SIMPLEMODELOPTIONS;
+ModelOptionsType method = ModelOptionsType.STRIPBONDMODELOPTIONS;
 ```
 
 

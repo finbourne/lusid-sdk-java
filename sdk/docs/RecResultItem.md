@@ -5,9 +5,13 @@ An individual item that makes up (one side of) a rec result. Polymorphic by item
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**itemType** | **String** | The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity or RelationalDataPoint. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint. | [default to String]
+**itemType** | **String** | The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity, RelationalDataPoint or Instrument. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. An instrument side of a LusidEntity rec produces Instrument items. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument. | [default to String]
 **ruleAndAttributeValues** | **Map&lt;String, String&gt;** | The core rule, aggregate rule and supplemental attribute values for the item, keyed by name. | [optional] [default to Map<String, String>]
 **writebackSuggestions** | [**List&lt;WritebackSuggestion&gt;**](WritebackSuggestion.md) | The writebacks suggested against this item, as configured by the matching ruleset&#39;s writebackConfigurations. Only ever populated on target-side items. Suggestions only: a user is expected to review them before acting. Required, but may be empty. | [readonly] [default to List<WritebackSuggestion>]
+**entityScope** | **String** | The scope of the entity the run read. Null for an entity type that has no scope. | [optional] [default to String]
+**entityUniqueId** | **String** | The unique id of the entity the run read. It identifies the entity across scopes. | [default to String]
+**entityDisplayName** | **String** | The display name of the entity, as it stood at the dates the run read its side. | [optional] [default to String]
+**identifiers** | **Map&lt;String, String&gt;** | The unique identifiers of the entity, keyed by identifier property key. The values are as at the dates the run read the side of the item, so they can differ from the current values. | [default to Map<String, String>]
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **portfolioDisplayName** | **String** | The display name of the item&#39;s portfolio, as it stood at the asAt the run read its data. Null where the run did not read it. | [optional] [default to String]
 **holdingId** | **String** | The holding identifier, at holding level: the same id whichever granularity the holding was read at, so that items of different rec types over one holding name it alike. | [optional] [default to String]
@@ -35,13 +39,15 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-// Example with RecResultHoldingItem RecResultItem
-RecResultHoldingItem recResultItem = new RecResultHoldingItem();
-recResultItem.setType(RecResultHoldingItem.TypeEnum.RECRESULTHOLDINGITEM);
+// Example with RecResultExternalIdentifiersItem RecResultItem
+RecResultExternalIdentifiersItem recResultItem = new RecResultExternalIdentifiersItem();
+recResultItem.setType(RecResultExternalIdentifiersItem.TypeEnum.RECRESULTEXTERNALIDENTIFIERSITEM);
 RecResultItem config = new RecResultItem(recResultItem);
 
 ```
  See all compatible oneOf types with RecResultItem
+* [RecResultExternalIdentifiersItem](./RecResultExternalIdentifiersItem.md)
+
 * [RecResultHoldingItem](./RecResultHoldingItem.md)
 
 * [RecResultRelationalDataItem](./RecResultRelationalDataItem.md)

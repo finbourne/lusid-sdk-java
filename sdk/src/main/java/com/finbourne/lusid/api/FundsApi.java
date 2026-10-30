@@ -17009,7 +17009,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] PatchFund: Patch a Fund.
-     * Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: ShortCode, DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, TaxTransparency, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, ShareClasses, PricingMethodology, ReportingPrices, WhtParameters, ValuationTemplateId.
+     * Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: ShortCode, DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, TaxTransparency, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, ShareClasses, PricingMethodology, ReportingPrices, DealingEstimates, WhtParameters, ValuationTemplateId.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)

@@ -65,7 +65,7 @@ public class MarketDataSpecificRule {
   private String dataScope;
 
   /**
-   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed.
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed, EffectiveYield.
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -109,7 +109,9 @@ public class MarketDataSpecificRule {
     
     DISCOUNTFACTOR("DiscountFactor"),
     
-    PRINCIPALDISTRIBUTED("PrincipalDistributed");
+    PRINCIPALDISTRIBUTED("PrincipalDistributed"),
+    
+    EFFECTIVEYIELD("EffectiveYield");
 
     private String value;
 
@@ -258,7 +260,7 @@ public class MarketDataSpecificRule {
   }
 
    /**
-   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed.
+   * Available values: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice, PrincipalWriteOff, InterestDeferred, InterestShortfall, ConstituentWeightFactor, ForwardPrice, DiscountFactor, PrincipalDistributed, EffectiveYield.
    * @return quoteType
   **/
   @jakarta.annotation.Nonnull

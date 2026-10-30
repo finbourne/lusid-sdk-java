@@ -125,7 +125,7 @@ public class CommodityForwardCashSettlementEvent extends InstrumentEvent {
   }
 
    /**
-   * The pre-netted settlement amount per unit (current forward price minus strike), supplied  externally via the quote store. Optional — absent until the settlement price has been loaded.  Negative when the position is out of the money.
+   * The pre-netted settlement amount per unit (current forward price minus strike), supplied  externally via the quote store, after the instrument price scale factor. Optional — absent until the  settlement price has been loaded.  Negative when the position is out of the money.
    * @return cashFlowPerUnit
   **/
   @jakarta.annotation.Nullable

@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.Schedule;
 import com.finbourne.lusid.model.TimeZoneConventions;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -85,6 +86,10 @@ public class FlexibleLoan extends LusidInstrument {
   public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public FlexibleLoan() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -237,6 +242,27 @@ public class FlexibleLoan extends LusidInstrument {
   }
 
 
+  public FlexibleLoan tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -254,6 +280,7 @@ public class FlexibleLoan extends LusidInstrument {
         Objects.equals(this.parentFacilityDetails, flexibleLoan.parentFacilityDetails) &&
         Objects.equals(this.schedules, flexibleLoan.schedules) &&
         Objects.equals(this.timeZoneConventions, flexibleLoan.timeZoneConventions) &&
+        Objects.equals(this.tradingConventions, flexibleLoan.tradingConventions) &&
         super.equals(o);
   }
 
@@ -263,7 +290,7 @@ public class FlexibleLoan extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, parentFacility, parentFacilityDetails, schedules, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, parentFacility, parentFacilityDetails, schedules, timeZoneConventions, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -285,6 +312,7 @@ public class FlexibleLoan extends LusidInstrument {
     sb.append("    parentFacilityDetails: ").append(toIndentedString(parentFacilityDetails)).append("\n");
     sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -315,6 +343,7 @@ public class FlexibleLoan extends LusidInstrument {
     openapiFields.add("parentFacilityDetails");
     openapiFields.add("schedules");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

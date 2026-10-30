@@ -4,21 +4,21 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**bookAllocationEvent**](AllocationEventsApi.md#bookAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/book | [EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event. |
-| [**createAllocationEvent**](AllocationEventsApi.md#createAllocationEvent) | **POST** /api/allocationevents/{scope} | [EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event. |
-| [**deleteAllocationEvent**](AllocationEventsApi.md#deleteAllocationEvent) | **DELETE** /api/allocationevents/{scope}/{code} | [EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event. |
-| [**getAllocationEvent**](AllocationEventsApi.md#getAllocationEvent) | **GET** /api/allocationevents/{scope}/{code} | [EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event. |
+| [**bookAllocationEvent**](AllocationEventsApi.md#bookAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/book | [EARLY ACCESS] BookAllocationEvent: Book an Allocation Event. |
+| [**createAllocationEvent**](AllocationEventsApi.md#createAllocationEvent) | **POST** /api/allocationevents/{scope} | [EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event. |
+| [**deleteAllocationEvent**](AllocationEventsApi.md#deleteAllocationEvent) | **DELETE** /api/allocationevents/{scope}/{code} | [EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event. |
+| [**getAllocationEvent**](AllocationEventsApi.md#getAllocationEvent) | **GET** /api/allocationevents/{scope}/{code} | [EARLY ACCESS] GetAllocationEvent: Get an Allocation Event. |
 | [**getAllocationEventNotices**](AllocationEventsApi.md#getAllocationEventNotices) | **GET** /api/allocationevents/{scope}/{code}/notices | [EARLY ACCESS] GetAllocationEventNotices: [EARLY ACCESS] GetAllocationEventNotices: Get the notices an allocation event issues to its partners. |
-| [**getAllocationEventReceivables**](AllocationEventsApi.md#getAllocationEventReceivables) | **GET** /api/allocationevents/{scope}/{code}/receivables | [EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event. |
-| [**listAllocationEvents**](AllocationEventsApi.md#listAllocationEvents) | **GET** /api/allocationevents | [EXPERIMENTAL] ListAllocationEvents: List Allocation Events. |
+| [**getAllocationEventReceivables**](AllocationEventsApi.md#getAllocationEventReceivables) | **GET** /api/allocationevents/{scope}/{code}/receivables | [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event. |
+| [**listAllocationEvents**](AllocationEventsApi.md#listAllocationEvents) | **GET** /api/allocationevents | [EARLY ACCESS] ListAllocationEvents: List Allocation Events. |
 | [**listAllocationPaymentHolds**](AllocationEventsApi.md#listAllocationPaymentHolds) | **GET** /api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/holds | [EARLY ACCESS] ListAllocationPaymentHolds: [EARLY ACCESS] ListAllocationPaymentHolds: List the holds placed on a partner&#39;s payment. |
-| [**planAllocationEventBooking**](AllocationEventsApi.md#planAllocationEventBooking) | **POST** /api/allocationevents/{scope}/{code}/plan | [EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event. |
+| [**planAllocationEventBooking**](AllocationEventsApi.md#planAllocationEventBooking) | **POST** /api/allocationevents/{scope}/{code}/plan | [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event. |
 | [**putAllocationPaymentHold**](AllocationEventsApi.md#putAllocationPaymentHold) | **PUT** /api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/hold | [EARLY ACCESS] PutAllocationPaymentHold: [EARLY ACCESS] PutAllocationPaymentHold: Place, move or release a hold on a partner&#39;s payment. |
-| [**reallocateAllocationEvent**](AllocationEventsApi.md#reallocateAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/reallocate | [EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event. |
-| [**receiveAllocationEvent**](AllocationEventsApi.md#receiveAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/receipts | [EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event. |
-| [**reverseAllocationEvent**](AllocationEventsApi.md#reverseAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/reverse | [EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event. |
-| [**unbookAllocationEvent**](AllocationEventsApi.md#unbookAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/unbook | [EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event. |
-| [**upsertAllocationEvent**](AllocationEventsApi.md#upsertAllocationEvent) | **PUT** /api/allocationevents/{scope}/{code} | [EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event. |
+| [**reallocateAllocationEvent**](AllocationEventsApi.md#reallocateAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/reallocate | [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event. |
+| [**receiveAllocationEvent**](AllocationEventsApi.md#receiveAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/receipts | [EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event. |
+| [**reverseAllocationEvent**](AllocationEventsApi.md#reverseAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/reverse | [EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event. |
+| [**unbookAllocationEvent**](AllocationEventsApi.md#unbookAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/unbook | [EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event. |
+| [**upsertAllocationEvent**](AllocationEventsApi.md#upsertAllocationEvent) | **PUT** /api/allocationevents/{scope}/{code} | [EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event. |
 
 
 
@@ -26,7 +26,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > AllocationEvent bookAllocationEvent(scope, code, allocationEventBookRequest, effectiveAt)
 
-[EXPERIMENTAL] BookAllocationEvent: Book an Allocation Event.
+[EARLY ACCESS] BookAllocationEvent: Book an Allocation Event.
 
 Freeze a computed Allocation Event under a booking reference, from an effective datetime. Once booked the  event can no longer be replaced or reallocated. Booking again under the same reference returns the event  unchanged; booking under a different reference is refused.
 
@@ -123,7 +123,7 @@ public class AllocationEventsApiExample {
 
 > AllocationEvent createAllocationEvent(scope, allocationEventRequest)
 
-[EXPERIMENTAL] CreateAllocationEvent: Create an Allocation Event.
+[EARLY ACCESS] CreateAllocationEvent: Create an Allocation Event.
 
 Raise a new Allocation Event. The scope is provided in the route and the code in the request body. The event  names the Allocation Map it is shared by, the kind of event, the amount and the date. Its per-investor shares  are computed on creation from the map as it stood on the event date, so the response comes back Computed.
 
@@ -216,7 +216,7 @@ public class AllocationEventsApiExample {
 
 > DeletedEntityResponse deleteAllocationEvent(scope, code, effectiveAt)
 
-[EXPERIMENTAL] DeleteAllocationEvent: Delete an Allocation Event.
+[EARLY ACCESS] DeleteAllocationEvent: Delete an Allocation Event.
 
 Delete an Allocation Event. Given an effective datetime, the Allocation Event is deleted from that datetime  and remains retrievable at earlier effective datetimes. Given none, an Allocation Event that was created  without an effective datetime is removed from the beginning of time, so that its code can be reused;  this includes an event first created without an effective datetime and later upserted with dated versions,  whose dated versions are removed with it. Otherwise it is deleted from the current LUSID system datetime.  Only an Allocation Event that has not been booked can be deleted.
 
@@ -311,7 +311,7 @@ public class AllocationEventsApiExample {
 
 > AllocationEvent getAllocationEvent(scope, code, effectiveAt, asAt)
 
-[EXPERIMENTAL] GetAllocationEvent: Get an Allocation Event.
+[EARLY ACCESS] GetAllocationEvent: Get an Allocation Event.
 
 Retrieve a particular Allocation Event at an effective and asAt datetime, including its computed  per-investor shares and, once booked, its booking reference.
 
@@ -507,7 +507,7 @@ public class AllocationEventsApiExample {
 
 > AllocationReceivablesAgeing getAllocationEventReceivables(scope, code, effectiveAt, asAt)
 
-[EXPERIMENTAL] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
+[EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
 
 What each investor still owes on a booked capital call as of the effective datetime, with how many days past  due it is and the ageing bucket that puts it in.
 
@@ -604,7 +604,7 @@ public class AllocationEventsApiExample {
 
 > PagedResourceListOfAllocationEvent listAllocationEvents(effectiveAt, asAt, page, limit, filter, sortBy)
 
-[EXPERIMENTAL] ListAllocationEvents: List Allocation Events.
+[EARLY ACCESS] ListAllocationEvents: List Allocation Events.
 
 List all the Allocation Events matching a particular criteria.
 
@@ -800,7 +800,7 @@ public class AllocationEventsApiExample {
 
 > AllocationPostingPlan planAllocationEventBooking(scope, code, allocationEventBookRequest, effectiveAt)
 
-[EXPERIMENTAL] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
+[EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
 
 Show everything booking a computed Allocation Event under a booking reference would write, validated as the  booking itself would be, without writing any of it: the investors&#39; lines, the roll-ups above them through the  fund structure and the fund-side transactions. A booking that would be refused fails here with every problem  listed; warnings the map&#39;s policy lets through come back on the plan.
 
@@ -994,7 +994,7 @@ public class AllocationEventsApiExample {
 
 > AllocationEvent reallocateAllocationEvent(scope, code, allocationEventReallocateRequest, effectiveAt)
 
-[EXPERIMENTAL] ReallocateAllocationEvent: Reallocate an Allocation Event.
+[EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event.
 
 Recompute the per-investor shares of an unbooked Allocation Event against its map, from an effective  datetime, recording the reason. Any basis values supplied replace those used before. A booked Allocation  Event cannot be reallocated.
 
@@ -1091,7 +1091,7 @@ public class AllocationEventsApiExample {
 
 > AllocationEvent receiveAllocationEvent(scope, code, allocationEventReceiptRequest, effectiveAt)
 
-[EXPERIMENTAL] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
+[EARLY ACCESS] ReceiveAllocationEvent: Record a receipt against an Allocation Event.
 
 Record cash received from an investor against a booked capital call. The receipt is applied to what the  investor owes on the call; anything over is recorded as a refund payable, so the outstanding amount never  goes negative. A bank charge is borne by the partner or the fund as the map&#39;s policy says, and a receipt in  another currency is converted at the rate given.
 
@@ -1188,7 +1188,7 @@ public class AllocationEventsApiExample {
 
 > AllocationEvent reverseAllocationEvent(scope, code, allocationEventReverseRequest, effectiveAt)
 
-[EXPERIMENTAL] ReverseAllocationEvent: Reverse an Allocation Event.
+[EARLY ACCESS] ReverseAllocationEvent: Reverse an Allocation Event.
 
 Reverse a booked Allocation Event: every posting the booking wrote is mirrored under the reversal reference and  the event is left Reversed. A reversal falling in a closed period posts in the current period unless it is  marked backdated. A reversal cannot itself be reversed; raise a new event naming the reversed one in its  replaces field to put corrected shares in the books.
 
@@ -1285,7 +1285,7 @@ public class AllocationEventsApiExample {
 
 > AllocationEvent unbookAllocationEvent(scope, code, allocationEventUnbookRequest, effectiveAt)
 
-[EXPERIMENTAL] UnbookAllocationEvent: Unbook an Allocation Event.
+[EARLY ACCESS] UnbookAllocationEvent: Unbook an Allocation Event.
 
 Take an Allocation Event whose booking stopped half way back to Computed, cancelling every posting the  booking wrote, and record why. Only an event in the Booking status can be unbooked: one that is Booked is  reversed instead.
 
@@ -1382,7 +1382,7 @@ public class AllocationEventsApiExample {
 
 > AllocationEvent upsertAllocationEvent(scope, code, allocationEventRequest)
 
-[EXPERIMENTAL] UpsertAllocationEvent: Upsert an Allocation Event.
+[EARLY ACCESS] UpsertAllocationEvent: Upsert an Allocation Event.
 
 Update or insert an Allocation Event. If the Allocation Event does not exist it is created, otherwise it is  replaced and its shares recomputed. The code in the request body must match the code in the route. A booked  Allocation Event is frozen and cannot be replaced.
 

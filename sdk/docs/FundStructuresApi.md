@@ -4,14 +4,14 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addFundStructureMember**](FundStructuresApi.md#addFundStructureMember) | **POST** /api/fundstructures/{scope}/{code}/members | [EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure. |
+| [**addFundStructureMember**](FundStructuresApi.md#addFundStructureMember) | **POST** /api/fundstructures/{scope}/{code}/members | [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure. |
 | [**closeFundStructure**](FundStructuresApi.md#closeFundStructure) | **POST** /api/fundstructures/{scope}/{code}/$close | [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure. |
-| [**createFundStructure**](FundStructuresApi.md#createFundStructure) | **POST** /api/fundstructures/{scope} | [EXPERIMENTAL] CreateFundStructure: Create a Fund Structure. |
-| [**deleteFundStructure**](FundStructuresApi.md#deleteFundStructure) | **DELETE** /api/fundstructures/{scope}/{code} | [EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure. |
-| [**getFundStructure**](FundStructuresApi.md#getFundStructure) | **GET** /api/fundstructures/{scope}/{code} | [EXPERIMENTAL] GetFundStructure: Get a Fund Structure. |
-| [**listFundStructures**](FundStructuresApi.md#listFundStructures) | **GET** /api/fundstructures | [EXPERIMENTAL] ListFundStructures: List Fund Structures. |
-| [**removeFundStructureMember**](FundStructuresApi.md#removeFundStructureMember) | **DELETE** /api/fundstructures/{scope}/{code}/members/{nodeCode} | [EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure. |
-| [**upsertFundStructure**](FundStructuresApi.md#upsertFundStructure) | **PUT** /api/fundstructures/{scope}/{code} | [EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure. |
+| [**createFundStructure**](FundStructuresApi.md#createFundStructure) | **POST** /api/fundstructures/{scope} | [EARLY ACCESS] CreateFundStructure: Create a Fund Structure. |
+| [**deleteFundStructure**](FundStructuresApi.md#deleteFundStructure) | **DELETE** /api/fundstructures/{scope}/{code} | [EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure. |
+| [**getFundStructure**](FundStructuresApi.md#getFundStructure) | **GET** /api/fundstructures/{scope}/{code} | [EARLY ACCESS] GetFundStructure: Get a Fund Structure. |
+| [**listFundStructures**](FundStructuresApi.md#listFundStructures) | **GET** /api/fundstructures | [EARLY ACCESS] ListFundStructures: List Fund Structures. |
+| [**removeFundStructureMember**](FundStructuresApi.md#removeFundStructureMember) | **DELETE** /api/fundstructures/{scope}/{code}/members/{nodeCode} | [EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure. |
+| [**upsertFundStructure**](FundStructuresApi.md#upsertFundStructure) | **PUT** /api/fundstructures/{scope}/{code} | [EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure. |
 
 
 
@@ -19,7 +19,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 > FundStructure addFundStructureMember(scope, code, fundStructureMemberRequest, effectiveAt)
 
-[EXPERIMENTAL] AddFundStructureMember: Add a member to a Fund Structure.
+[EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure.
 
 Add a node and the links that join it to existing members, from an effective datetime. The result is a new  bitemporal version of the structure. The change applies to the version in force at that datetime; if a  later version of the structure already exists the request is rejected, since the member would otherwise  drop out when that version begins. Upsert the full definition for each affected version in that case.
 
@@ -213,7 +213,7 @@ public class FundStructuresApiExample {
 
 > FundStructure createFundStructure(scope, fundStructureRequest)
 
-[EXPERIMENTAL] CreateFundStructure: Create a Fund Structure.
+[EARLY ACCESS] CreateFundStructure: Create a Fund Structure.
 
 Create a new Fund Structure Model. The scope and code of the Fund Structure are provided in the request body.
 
@@ -306,7 +306,7 @@ public class FundStructuresApiExample {
 
 > DeletedEntityResponse deleteFundStructure(scope, code, effectiveAt)
 
-[EXPERIMENTAL] DeleteFundStructure: Delete a Fund Structure.
+[EARLY ACCESS] DeleteFundStructure: Delete a Fund Structure.
 
 Delete a Fund Structure from the given effective datetime. It remains retrievable at earlier effective datetimes.
 
@@ -401,7 +401,7 @@ public class FundStructuresApiExample {
 
 > FundStructure getFundStructure(scope, code, effectiveAt, asAt, propertyKeys)
 
-[EXPERIMENTAL] GetFundStructure: Get a Fund Structure.
+[EARLY ACCESS] GetFundStructure: Get a Fund Structure.
 
 Retrieve the definition of a particular Fund Structure at an effective and asAt datetime, including its nodes,  edges, allocation groups and the funds its nodes refer to.
 
@@ -500,7 +500,7 @@ public class FundStructuresApiExample {
 
 > PagedResourceListOfFundStructure listFundStructures(effectiveAt, asAt, page, limit, filter, sortBy, propertyKeys)
 
-[EXPERIMENTAL] ListFundStructures: List Fund Structures.
+[EARLY ACCESS] ListFundStructures: List Fund Structures.
 
 List all the Fund Structures matching the given criteria.
 
@@ -603,7 +603,7 @@ public class FundStructuresApiExample {
 
 > FundStructure removeFundStructureMember(scope, code, nodeCode, effectiveAt)
 
-[EXPERIMENTAL] RemoveFundStructureMember: Remove a member from a Fund Structure.
+[EARLY ACCESS] RemoveFundStructureMember: Remove a member from a Fund Structure.
 
 Remove a node and every link that touches it, from an effective datetime. The result is a new bitemporal  version of the structure. The change applies to the version in force at that datetime; if a later version  of the structure already exists the request is rejected, since the member would otherwise reappear when  that version begins. Upsert the full definition for each affected version in that case.
 
@@ -700,7 +700,7 @@ public class FundStructuresApiExample {
 
 > FundStructure upsertFundStructure(scope, code, fundStructureRequest)
 
-[EXPERIMENTAL] UpsertFundStructure: Upsert a Fund Structure.
+[EARLY ACCESS] UpsertFundStructure: Upsert a Fund Structure.
 
 Create or replace the full definition of a Fund Structure from an effective datetime. A change to the  definition becomes a new bitemporal version: the structure as it was declared at earlier effective datetimes,  and as of earlier asAt datetimes, remains retrievable.
 

@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -152,10 +153,10 @@ public class ExchangeTradedOption extends LusidInstrument {
   }
 
    /**
-   * The reference spot price for the option at which the contract was entered into.
+   * The reference price at which the contract was entered into. Optional.  If omitted, the option has no reference price of its own.  Under ConstantTimeValueOfMoney, a holding with a notional cost (for example from Transaction/default/NotionalAmount) is then valued like a future, against its notional cost plus the variation margin settled to date.  A holding without a notional cost is then valued at its full market price.  If 0, the reference is taken from the holding&#39;s cost.  Any other value is used as given.  Writes through Luminesce that do not supply RefSpotPrice store 0.
    * @return refSpotPrice
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getRefSpotPrice() {
     return refSpotPrice;
   }
@@ -227,9 +228,20 @@ public class ExchangeTradedOption extends LusidInstrument {
         super.equals(o);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(startDate, contractDetails, contracts, refSpotPrice, tradingConventions, timeZoneConventions, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -278,7 +290,6 @@ public class ExchangeTradedOption extends LusidInstrument {
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("contractDetails");
     openapiRequiredFields.add("contracts");
-    openapiRequiredFields.add("refSpotPrice");
     openapiRequiredFields.add("instrumentType");
   }
 

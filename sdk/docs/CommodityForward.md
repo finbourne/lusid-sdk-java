@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **strike** | **java.math.BigDecimal** | Agreed forward price at trade inception. Reference only — not used in the market value calculation,  which consumes the pre-netted price from the quote store. | [optional] [default to java.math.BigDecimal]
 **deliveryType** | **String** | Whether the forward settles in cash or through physical delivery of the underlying.     Supported string (enumeration) values are: [Cash, Physical]. Available values: Cash, Physical. | [default to String]
 **underlying** | [**LusidInstrument**](LusidInstrument.md) |  | [optional] [default to LusidInstrument]
+**tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
 
 ```java
 import com.finbourne.lusid.model.CommodityForward;
@@ -24,6 +25,7 @@ String DomCcy = "example DomCcy";
 @jakarta.annotation.Nullable java.math.BigDecimal Strike = new java.math.BigDecimal("100.00");
 String DeliveryType = "example DeliveryType";
 LusidInstrument Underlying = new LusidInstrument();
+TradingConventions TradingConventions = new TradingConventions();
 
 
 CommodityForward commodityForwardInstance = new CommodityForward()
@@ -32,7 +34,8 @@ CommodityForward commodityForwardInstance = new CommodityForward()
     .DomCcy(DomCcy)
     .Strike(Strike)
     .DeliveryType(DeliveryType)
-    .Underlying(Underlying);
+    .Underlying(Underlying)
+    .TradingConventions(TradingConventions);
 ```
 
 

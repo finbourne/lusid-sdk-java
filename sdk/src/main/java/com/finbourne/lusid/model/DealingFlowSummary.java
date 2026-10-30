@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The transfer agency estimates a swing decision was made on: how many orders were dealt at the valuation point and what they summed.
+ * The transfer agency estimates a swing decision was made on: the orders dealt at the valuation point, what they summed, and how many pending orders were left out.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DealingFlowSummary {
@@ -60,6 +60,10 @@ public class DealingFlowSummary {
   public static final String SERIALIZED_NAME_GROSS_OUTFLOW = "grossOutflow";
   @SerializedName(SERIALIZED_NAME_GROSS_OUTFLOW)
   private java.math.BigDecimal grossOutflow;
+
+  public static final String SERIALIZED_NAME_PENDING_NOT_COUNTED = "pendingNotCounted";
+  @SerializedName(SERIALIZED_NAME_PENDING_NOT_COUNTED)
+  private Integer pendingNotCounted;
 
   public DealingFlowSummary() {
   }
@@ -127,6 +131,27 @@ public class DealingFlowSummary {
   }
 
 
+  public DealingFlowSummary pendingNotCounted(Integer pendingNotCounted) {
+    
+    this.pendingNotCounted = pendingNotCounted;
+    return this;
+  }
+
+   /**
+   * How many pending orders at the valuation point were left out of the sums because the fund&#39;s dealing estimates do not count pending orders. Zero when the fund counts them.
+   * @return pendingNotCounted
+  **/
+  @jakarta.annotation.Nonnull
+  public Integer getPendingNotCounted() {
+    return pendingNotCounted;
+  }
+
+
+  public void setPendingNotCounted(Integer pendingNotCounted) {
+    this.pendingNotCounted = pendingNotCounted;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +164,13 @@ public class DealingFlowSummary {
     DealingFlowSummary dealingFlowSummary = (DealingFlowSummary) o;
     return Objects.equals(this.count, dealingFlowSummary.count) &&
         (this.grossInflow.compareTo(dealingFlowSummary.getGrossInflow()) == 0) &&
-        (this.grossOutflow.compareTo(dealingFlowSummary.getGrossOutflow()) == 0);
+        (this.grossOutflow.compareTo(dealingFlowSummary.getGrossOutflow()) == 0) &&
+        Objects.equals(this.pendingNotCounted, dealingFlowSummary.pendingNotCounted);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, grossInflow, grossOutflow);
+    return Objects.hash(count, grossInflow, grossOutflow, pendingNotCounted);
   }
 
   @Override
@@ -154,6 +180,7 @@ public class DealingFlowSummary {
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    grossInflow: ").append(toIndentedString(grossInflow)).append("\n");
     sb.append("    grossOutflow: ").append(toIndentedString(grossOutflow)).append("\n");
+    sb.append("    pendingNotCounted: ").append(toIndentedString(pendingNotCounted)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,12 +206,14 @@ public class DealingFlowSummary {
     openapiFields.add("count");
     openapiFields.add("grossInflow");
     openapiFields.add("grossOutflow");
+    openapiFields.add("pendingNotCounted");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("count");
     openapiRequiredFields.add("grossInflow");
     openapiRequiredFields.add("grossOutflow");
+    openapiRequiredFields.add("pendingNotCounted");
   }
 
  /**

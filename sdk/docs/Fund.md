@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **fundInstrument** | [**FundInstrument**](FundInstrument.md) |  | [optional] [default to FundInstrument]
 **pricingMethodology** | [**PricingMethodology**](PricingMethodology.md) |  | [optional] [default to PricingMethodology]
 **reportingPrices** | [**List&lt;ReportingPrice&gt;**](ReportingPrice.md) | Share class prices the Fund publishes at each valuation point under labels of its own, alongside the dealing price, for example a mid price for performance reporting. Optional. Each source other than Mid must be published by the valuation recipe of every active NAV type. Labels must be unique and cannot be dealingPrice, dealingBid or dealingOffer. Patch the list whole at /reportingPrices. | [optional] [default to List<ReportingPrice>]
+**dealingEstimates** | [**DealingEstimates**](DealingEstimates.md) |  | [optional] [default to DealingEstimates]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **whtParameters** | [**WhtParameters**](WhtParameters.md) |  | [optional] [default to WhtParameters]
 **valuationTemplateId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
@@ -68,6 +69,7 @@ Boolean CreateInstrument = true;
 FundInstrument FundInstrument = new FundInstrument();
 PricingMethodology PricingMethodology = new PricingMethodology();
 @jakarta.annotation.Nullable List<ReportingPrice> ReportingPrices = new List<ReportingPrice>();
+DealingEstimates DealingEstimates = new DealingEstimates();
 Version Version = new Version();
 WhtParameters WhtParameters = new WhtParameters();
 ResourceId ValuationTemplateId = new ResourceId();
@@ -101,6 +103,7 @@ Fund fundInstance = new Fund()
     .FundInstrument(FundInstrument)
     .PricingMethodology(PricingMethodology)
     .ReportingPrices(ReportingPrices)
+    .DealingEstimates(DealingEstimates)
     .Version(Version)
     .WhtParameters(WhtParameters)
     .ValuationTemplateId(ValuationTemplateId)

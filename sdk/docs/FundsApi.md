@@ -5730,7 +5730,7 @@ public class FundsApiExample {
 
 [EARLY ACCESS] PatchFund: Patch a Fund.
 
-Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: ShortCode, DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, TaxTransparency, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, ShareClasses, PricingMethodology, ReportingPrices, WhtParameters, ValuationTemplateId.
+Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: ShortCode, DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, TaxTransparency, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, ShareClasses, PricingMethodology, ReportingPrices, DealingEstimates, WhtParameters, ValuationTemplateId.
 
 ### Example
 

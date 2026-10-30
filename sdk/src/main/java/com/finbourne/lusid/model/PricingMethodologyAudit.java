@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.DealingFlowSummary;
+import com.finbourne.lusid.model.EstimateValuation;
 import com.finbourne.lusid.model.PricingMethodologyEngineProposal;
 import com.finbourne.lusid.model.PricingMethodologyOverride;
 import com.finbourne.lusid.model.SwingSpreadApplied;
@@ -86,6 +87,10 @@ public class PricingMethodologyAudit {
   public static final String SERIALIZED_NAME_DEALING_FLOWS = "dealingFlows";
   @SerializedName(SERIALIZED_NAME_DEALING_FLOWS)
   private DealingFlowSummary dealingFlows;
+
+  public static final String SERIALIZED_NAME_ESTIMATE_VALUATION = "estimateValuation";
+  @SerializedName(SERIALIZED_NAME_ESTIMATE_VALUATION)
+  private EstimateValuation estimateValuation;
 
   public PricingMethodologyAudit() {
   }
@@ -258,6 +263,27 @@ public class PricingMethodologyAudit {
   }
 
 
+  public PricingMethodologyAudit estimateValuation(EstimateValuation estimateValuation) {
+    
+    this.estimateValuation = estimateValuation;
+    return this;
+  }
+
+   /**
+   * Get estimateValuation
+   * @return estimateValuation
+  **/
+  @jakarta.annotation.Nullable
+  public EstimateValuation getEstimateValuation() {
+    return estimateValuation;
+  }
+
+
+  public void setEstimateValuation(EstimateValuation estimateValuation) {
+    this.estimateValuation = estimateValuation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -275,7 +301,8 @@ public class PricingMethodologyAudit {
         Objects.equals(this.override, pricingMethodologyAudit.override) &&
         Objects.equals(this.inflowTrigger, pricingMethodologyAudit.inflowTrigger) &&
         Objects.equals(this.outflowTrigger, pricingMethodologyAudit.outflowTrigger) &&
-        Objects.equals(this.dealingFlows, pricingMethodologyAudit.dealingFlows);
+        Objects.equals(this.dealingFlows, pricingMethodologyAudit.dealingFlows) &&
+        Objects.equals(this.estimateValuation, pricingMethodologyAudit.estimateValuation);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -284,7 +311,7 @@ public class PricingMethodologyAudit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(netCashflow, netCashflowPctOfNav, spreadsApplied, engineProposal, override, inflowTrigger, outflowTrigger, dealingFlows);
+    return Objects.hash(netCashflow, netCashflowPctOfNav, spreadsApplied, engineProposal, override, inflowTrigger, outflowTrigger, dealingFlows, estimateValuation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -306,6 +333,7 @@ public class PricingMethodologyAudit {
     sb.append("    inflowTrigger: ").append(toIndentedString(inflowTrigger)).append("\n");
     sb.append("    outflowTrigger: ").append(toIndentedString(outflowTrigger)).append("\n");
     sb.append("    dealingFlows: ").append(toIndentedString(dealingFlows)).append("\n");
+    sb.append("    estimateValuation: ").append(toIndentedString(estimateValuation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -336,6 +364,7 @@ public class PricingMethodologyAudit {
     openapiFields.add("inflowTrigger");
     openapiFields.add("outflowTrigger");
     openapiFields.add("dealingFlows");
+    openapiFields.add("estimateValuation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -384,6 +413,10 @@ public class PricingMethodologyAudit {
       // validate the optional field `dealingFlows`
       if (jsonObj.get("dealingFlows") != null && !jsonObj.get("dealingFlows").isJsonNull()) {
         DealingFlowSummary.validateJsonElement(jsonObj.get("dealingFlows"));
+      }
+      // validate the optional field `estimateValuation`
+      if (jsonObj.get("estimateValuation") != null && !jsonObj.get("estimateValuation").isJsonNull()) {
+        EstimateValuation.validateJsonElement(jsonObj.get("estimateValuation"));
       }
   }
 

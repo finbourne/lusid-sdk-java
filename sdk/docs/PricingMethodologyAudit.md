@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **inflowTrigger** | [**SwingTriggerEvaluation**](SwingTriggerEvaluation.md) |  | [optional] [default to SwingTriggerEvaluation]
 **outflowTrigger** | [**SwingTriggerEvaluation**](SwingTriggerEvaluation.md) |  | [optional] [default to SwingTriggerEvaluation]
 **dealingFlows** | [**DealingFlowSummary**](DealingFlowSummary.md) |  | [optional] [default to DealingFlowSummary]
+**estimateValuation** | [**EstimateValuation**](EstimateValuation.md) |  | [optional] [default to EstimateValuation]
 
 ```java
 import com.finbourne.lusid.model.PricingMethodologyAudit;
@@ -28,6 +29,7 @@ PricingMethodologyOverride Override = new PricingMethodologyOverride();
 SwingTriggerEvaluation InflowTrigger = new SwingTriggerEvaluation();
 SwingTriggerEvaluation OutflowTrigger = new SwingTriggerEvaluation();
 DealingFlowSummary DealingFlows = new DealingFlowSummary();
+EstimateValuation EstimateValuation = new EstimateValuation();
 
 
 PricingMethodologyAudit pricingMethodologyAuditInstance = new PricingMethodologyAudit()
@@ -38,7 +40,8 @@ PricingMethodologyAudit pricingMethodologyAuditInstance = new PricingMethodology
     .Override(Override)
     .InflowTrigger(InflowTrigger)
     .OutflowTrigger(OutflowTrigger)
-    .DealingFlows(DealingFlows);
+    .DealingFlows(DealingFlows)
+    .EstimateValuation(EstimateValuation);
 ```
 
 

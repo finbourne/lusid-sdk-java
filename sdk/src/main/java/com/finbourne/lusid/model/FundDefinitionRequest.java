@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.DealingEstimates;
 import com.finbourne.lusid.model.InstrumentResolutionDetail;
 import com.finbourne.lusid.model.NavTypeDefinition;
 import com.finbourne.lusid.model.PortfolioEntityId;
@@ -151,6 +152,10 @@ public class FundDefinitionRequest {
   public static final String SERIALIZED_NAME_REPORTING_PRICES = "reportingPrices";
   @SerializedName(SERIALIZED_NAME_REPORTING_PRICES)
   private List<ReportingPrice> reportingPrices;
+
+  public static final String SERIALIZED_NAME_DEALING_ESTIMATES = "dealingEstimates";
+  @SerializedName(SERIALIZED_NAME_DEALING_ESTIMATES)
+  private DealingEstimates dealingEstimates;
 
   public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
   @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
@@ -683,6 +688,27 @@ public class FundDefinitionRequest {
   }
 
 
+  public FundDefinitionRequest dealingEstimates(DealingEstimates dealingEstimates) {
+    
+    this.dealingEstimates = dealingEstimates;
+    return this;
+  }
+
+   /**
+   * Get dealingEstimates
+   * @return dealingEstimates
+  **/
+  @jakarta.annotation.Nullable
+  public DealingEstimates getDealingEstimates() {
+    return dealingEstimates;
+  }
+
+
+  public void setDealingEstimates(DealingEstimates dealingEstimates) {
+    this.dealingEstimates = dealingEstimates;
+  }
+
+
   public FundDefinitionRequest whtParameters(WhtParameters whtParameters) {
     
     this.whtParameters = whtParameters;
@@ -757,6 +783,7 @@ public class FundDefinitionRequest {
         Objects.equals(this.shareClasses, fundDefinitionRequest.shareClasses) &&
         Objects.equals(this.pricingMethodology, fundDefinitionRequest.pricingMethodology) &&
         Objects.equals(this.reportingPrices, fundDefinitionRequest.reportingPrices) &&
+        Objects.equals(this.dealingEstimates, fundDefinitionRequest.dealingEstimates) &&
         Objects.equals(this.whtParameters, fundDefinitionRequest.whtParameters) &&
         Objects.equals(this.valuationTemplateId, fundDefinitionRequest.valuationTemplateId);
   }
@@ -767,7 +794,7 @@ public class FundDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, instrumentScope, shareClasses, pricingMethodology, reportingPrices, whtParameters, valuationTemplateId);
+    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, instrumentScope, shareClasses, pricingMethodology, reportingPrices, dealingEstimates, whtParameters, valuationTemplateId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -803,6 +830,7 @@ public class FundDefinitionRequest {
     sb.append("    shareClasses: ").append(toIndentedString(shareClasses)).append("\n");
     sb.append("    pricingMethodology: ").append(toIndentedString(pricingMethodology)).append("\n");
     sb.append("    reportingPrices: ").append(toIndentedString(reportingPrices)).append("\n");
+    sb.append("    dealingEstimates: ").append(toIndentedString(dealingEstimates)).append("\n");
     sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("    valuationTemplateId: ").append(toIndentedString(valuationTemplateId)).append("\n");
     sb.append("}");
@@ -849,6 +877,7 @@ public class FundDefinitionRequest {
     openapiFields.add("shareClasses");
     openapiFields.add("pricingMethodology");
     openapiFields.add("reportingPrices");
+    openapiFields.add("dealingEstimates");
     openapiFields.add("whtParameters");
     openapiFields.add("valuationTemplateId");
 
@@ -987,6 +1016,10 @@ public class FundDefinitionRequest {
             ReportingPrice.validateJsonElement(jsonArrayreportingPrices.get(i));
           };
         }
+      }
+      // validate the optional field `dealingEstimates`
+      if (jsonObj.get("dealingEstimates") != null && !jsonObj.get("dealingEstimates").isJsonNull()) {
+        DealingEstimates.validateJsonElement(jsonObj.get("dealingEstimates"));
       }
       // validate the optional field `whtParameters`
       if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {

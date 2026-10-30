@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,7 +24,9 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -123,6 +126,10 @@ public class CashFlowDetail {
   public static final String SERIALIZED_NAME_FX_RATE_TYPE_APPLIED = "fxRateTypeApplied";
   @SerializedName(SERIALIZED_NAME_FX_RATE_TYPE_APPLIED)
   private String fxRateTypeApplied;
+
+  public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
+  @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
+  private Map<String, PerpetualProperty> subHoldingKeys;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -488,6 +495,35 @@ public class CashFlowDetail {
   }
 
 
+  public CashFlowDetail subHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
+    
+    this.subHoldingKeys = subHoldingKeys;
+    return this;
+  }
+
+  public CashFlowDetail putSubHoldingKeysItem(String key, PerpetualProperty subHoldingKeysItem) {
+    if (this.subHoldingKeys == null) {
+      this.subHoldingKeys = new HashMap<>();
+    }
+    this.subHoldingKeys.put(key, subHoldingKeysItem);
+    return this;
+  }
+
+   /**
+   * The sub-holding keys of the holding that produced the cashflow, keyed by property key. Each cashflow carries the keys of its own portfolio&#39;s holding, so when drilling into a portfolio group whose portfolios share the same sub-holding keys, those keys are reported on every cashflow. Empty when the portfolio defines no sub-holding keys.
+   * @return subHoldingKeys
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, PerpetualProperty> getSubHoldingKeys() {
+    return subHoldingKeys;
+  }
+
+
+  public void setSubHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
+    this.subHoldingKeys = subHoldingKeys;
+  }
+
+
   public CashFlowDetail links(List<Link> links) {
     
     this.links = links;
@@ -544,6 +580,7 @@ public class CashFlowDetail {
         Objects.equals(this.reportCurrencyAmount, cashFlowDetail.reportCurrencyAmount) &&
         (this.tradeToReportCurrencyRate.compareTo(cashFlowDetail.getTradeToReportCurrencyRate()) == 0) &&
         Objects.equals(this.fxRateTypeApplied, cashFlowDetail.fxRateTypeApplied) &&
+        Objects.equals(this.subHoldingKeys, cashFlowDetail.subHoldingKeys) &&
         Objects.equals(this.links, cashFlowDetail.links);
   }
 
@@ -553,7 +590,7 @@ public class CashFlowDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, amount, sourceType, instrumentId, instrumentDisplayName, transactionId, portfolioId, flowType, movementName, grossAmount, haircutFraction, netAmount, haircutRuleApplied, error, reportCurrencyAmount, tradeToReportCurrencyRate, fxRateTypeApplied, links);
+    return Objects.hash(paymentDate, amount, sourceType, instrumentId, instrumentDisplayName, transactionId, portfolioId, flowType, movementName, grossAmount, haircutFraction, netAmount, haircutRuleApplied, error, reportCurrencyAmount, tradeToReportCurrencyRate, fxRateTypeApplied, subHoldingKeys, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -584,6 +621,7 @@ public class CashFlowDetail {
     sb.append("    reportCurrencyAmount: ").append(toIndentedString(reportCurrencyAmount)).append("\n");
     sb.append("    tradeToReportCurrencyRate: ").append(toIndentedString(tradeToReportCurrencyRate)).append("\n");
     sb.append("    fxRateTypeApplied: ").append(toIndentedString(fxRateTypeApplied)).append("\n");
+    sb.append("    subHoldingKeys: ").append(toIndentedString(subHoldingKeys)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -624,6 +662,7 @@ public class CashFlowDetail {
     openapiFields.add("reportCurrencyAmount");
     openapiFields.add("tradeToReportCurrencyRate");
     openapiFields.add("fxRateTypeApplied");
+    openapiFields.add("subHoldingKeys");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

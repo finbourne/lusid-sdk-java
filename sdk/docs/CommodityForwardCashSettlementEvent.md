@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **maturityDate** | [**OffsetDateTime**](OffsetDateTime.md) | The single settlement / maturity date of the forward. Required. | [optional] [default to OffsetDateTime]
 **domCcy** | **String** | Settlement currency of the forward. Required. | [default to String]
-**cashFlowPerUnit** | **java.math.BigDecimal** | The pre-netted settlement amount per unit (current forward price minus strike), supplied  externally via the quote store. Optional — absent until the settlement price has been loaded.  Negative when the position is out of the money. | [optional] [default to java.math.BigDecimal]
+**cashFlowPerUnit** | **java.math.BigDecimal** | The pre-netted settlement amount per unit (current forward price minus strike), supplied  externally via the quote store, after the instrument price scale factor. Optional — absent until the  settlement price has been loaded.  Negative when the position is out of the money. | [optional] [default to java.math.BigDecimal]
 **cashFlowAmount** | **java.math.BigDecimal** | The realised cash amount, calculated as CashFlowPerUnit multiplied by the eligible balance.  Optional — it needs holdings-level data so it is never populated by the instrument layer.  Carries the sign of CashFlowPerUnit. | [optional] [default to java.math.BigDecimal]
 **strike** | **java.math.BigDecimal** | Agreed forward price at trade inception. Optional, and reference only — it is not used in the  settlement calculation; it is carried for auditability. | [optional] [default to java.math.BigDecimal]
 

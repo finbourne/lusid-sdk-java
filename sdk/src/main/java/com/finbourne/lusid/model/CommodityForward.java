@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.LusidInstrument;
+import com.finbourne.lusid.model.TradingConventions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -75,6 +76,10 @@ public class CommodityForward extends LusidInstrument {
   public static final String SERIALIZED_NAME_UNDERLYING = "underlying";
   @SerializedName(SERIALIZED_NAME_UNDERLYING)
   private LusidInstrument underlying;
+
+  public static final String SERIALIZED_NAME_TRADING_CONVENTIONS = "tradingConventions";
+  @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
+  private TradingConventions tradingConventions;
 
   public CommodityForward() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -206,6 +211,27 @@ public class CommodityForward extends LusidInstrument {
   }
 
 
+  public CommodityForward tradingConventions(TradingConventions tradingConventions) {
+    
+    this.tradingConventions = tradingConventions;
+    return this;
+  }
+
+   /**
+   * Get tradingConventions
+   * @return tradingConventions
+  **/
+  @jakarta.annotation.Nullable
+  public TradingConventions getTradingConventions() {
+    return tradingConventions;
+  }
+
+
+  public void setTradingConventions(TradingConventions tradingConventions) {
+    this.tradingConventions = tradingConventions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -222,6 +248,7 @@ public class CommodityForward extends LusidInstrument {
         (this.strike.compareTo(commodityForward.getStrike()) == 0) &&
         Objects.equals(this.deliveryType, commodityForward.deliveryType) &&
         Objects.equals(this.underlying, commodityForward.underlying) &&
+        Objects.equals(this.tradingConventions, commodityForward.tradingConventions) &&
         super.equals(o);
   }
 
@@ -231,7 +258,7 @@ public class CommodityForward extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, strike, deliveryType, underlying, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, strike, deliveryType, underlying, tradingConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -252,6 +279,7 @@ public class CommodityForward extends LusidInstrument {
     sb.append("    strike: ").append(toIndentedString(strike)).append("\n");
     sb.append("    deliveryType: ").append(toIndentedString(deliveryType)).append("\n");
     sb.append("    underlying: ").append(toIndentedString(underlying)).append("\n");
+    sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -281,6 +309,7 @@ public class CommodityForward extends LusidInstrument {
     openapiFields.add("strike");
     openapiFields.add("deliveryType");
     openapiFields.add("underlying");
+    openapiFields.add("tradingConventions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

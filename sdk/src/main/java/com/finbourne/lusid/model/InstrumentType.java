@@ -133,7 +133,9 @@ public enum InstrumentType {
   
   CAPITALINTEREST("CapitalInterest"),
   
-  WHOLELOANFACILITY("WholeLoanFacility");
+  WHOLELOANFACILITY("WholeLoanFacility"),
+  
+  STRIPBOND("StripBond");
 
   private String value;
 

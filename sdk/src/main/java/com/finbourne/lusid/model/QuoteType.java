@@ -65,7 +65,9 @@ public enum QuoteType {
   
   DISCOUNTFACTOR("DiscountFactor"),
   
-  PRINCIPALDISTRIBUTED("PrincipalDistributed");
+  PRINCIPALDISTRIBUTED("PrincipalDistributed"),
+  
+  EFFECTIVEYIELD("EffectiveYield");
 
   private String value;
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **parentFacilityDetails** | **Map&lt;String, String&gt;** | The details of the parent loan facility of this loan if this loan is a contract on a facility. | [optional] [readonly] [default to Map<String, String>]
 **schedules** | [**List&lt;Schedule&gt;**](Schedule.md) | Repayment schedules for the loan. | [default to List<Schedule>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
+**tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
 
 ```java
 import com.finbourne.lusid.model.FlexibleLoan;
@@ -26,6 +27,7 @@ String DomCcy = "example DomCcy";
 @jakarta.annotation.Nullable Map<String, String> ParentFacilityDetails = new Map<String, String>();
 List<Schedule> Schedules = new List<Schedule>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
+TradingConventions TradingConventions = new TradingConventions();
 
 
 FlexibleLoan flexibleLoanInstance = new FlexibleLoan()
@@ -35,7 +37,8 @@ FlexibleLoan flexibleLoanInstance = new FlexibleLoan()
     .ParentFacility(ParentFacility)
     .ParentFacilityDetails(ParentFacilityDetails)
     .Schedules(Schedules)
-    .TimeZoneConventions(TimeZoneConventions);
+    .TimeZoneConventions(TimeZoneConventions)
+    .TradingConventions(TradingConventions);
 ```
 
 
