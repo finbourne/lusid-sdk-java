@@ -6,7 +6,7 @@ Tender Event (TEND).
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **announcementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date the tender is announced. | [optional] [default to OffsetDateTime]
-**exDate** | [**OffsetDateTime**](OffsetDateTime.md) | The ex date (entitlement date) of the event. | [optional] [default to OffsetDateTime]
+**exDate** | [**OffsetDateTime**](OffsetDateTime.md) | The ex date (entitlement date) of the event. Optional: if not supplied, it is set to the earliest of the record date, response deadline, market deadline and payment date that is present. | [optional] [default to OffsetDateTime]
 **recordDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date you have to be the holder of record in order to participate in the tender. | [optional] [default to OffsetDateTime]
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | The payment date of the event. | [optional] [default to OffsetDateTime]
 **newInstrument** | [**NewInstrument**](NewInstrument.md) |  | [optional] [default to NewInstrument]
@@ -39,7 +39,7 @@ import java.lang.System;
 import java.net.URI;
 
 @jakarta.annotation.Nullable OffsetDateTime AnnouncementDate = OffsetDateTime.now();
-OffsetDateTime ExDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime ExDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime RecordDate = OffsetDateTime.now();
 OffsetDateTime PaymentDate = OffsetDateTime.now();
 NewInstrument NewInstrument = new NewInstrument();

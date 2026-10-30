@@ -200,7 +200,7 @@ public class TenderEvent extends InstrumentEvent {
   }
 
    /**
-   * The ex date (entitlement date) of the event.
+   * The ex date (entitlement date) of the event. Optional: if not supplied, it is set to the earliest of the record date, response deadline, market deadline and payment date that is present.
    * @return exDate
   **/
   @jakarta.annotation.Nullable
