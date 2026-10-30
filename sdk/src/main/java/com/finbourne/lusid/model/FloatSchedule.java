@@ -408,7 +408,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * Optional. The date on which the second coupon period starts. This is also the accrual end date of the first coupon period.  The regular coupon periods roll forward from the roll grid date nearest to this date, so a business day adjusted date stands for the grid date it was adjusted from.  Without a roll convention the coupon periods roll on the day of the month of the maturity date, or of the start date for a back stub. A date more than ten days from that grid is the grid date itself.
+   * Optional. The date on which the second coupon period starts. This is also the accrual end date of the first coupon period.  The regular coupon periods roll forward from the roll grid date nearest to this date, so a business day adjusted date stands for the grid date it was adjusted from.  When the last coupon period is not given, a LongBack stub type gives a long last period; any other stub type gives a short last period when the dates are not tenor aligned.  Without a roll convention the coupon periods roll on the day of the month of the maturity date, or of the start date for a back stub. A date more than ten days from that grid is the grid date itself.
    * @return secondPeriodStartDate
   **/
   @jakarta.annotation.Nullable
@@ -450,7 +450,7 @@ public class FloatSchedule extends Schedule {
   }
 
    /**
-   * Optional. The date on which the last coupon period starts. This is also the accrual end date of the penultimate coupon period.  When the first coupon period is not given, the regular coupon periods roll backward from the roll grid date nearest to this date, so a business day adjusted date stands for the grid date it was adjusted from.  Without a roll convention the coupon periods roll on the day of the month of the maturity date, or of the start date for a back stub. A date more than ten days from that grid is the grid date itself.
+   * Optional. The date on which the last coupon period starts. This is also the accrual end date of the penultimate coupon period.  When the first coupon period is not given, the regular coupon periods roll backward from the roll grid date nearest to this date, so a business day adjusted date stands for the grid date it was adjusted from.  A LongFront stub type then gives a long first period; any other stub type gives a short first period when the dates are not tenor aligned.  Without a roll convention the coupon periods roll on the day of the month of the maturity date, or of the start date for a back stub. A date more than ten days from that grid is the grid date itself.
    * @return lastPeriodStartDate
   **/
   @jakarta.annotation.Nullable

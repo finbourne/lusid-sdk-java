@@ -86,7 +86,7 @@ public class DealingEstimates {
   }
 
    /**
-   * Reserved; not yet enforced. Where the Fund&#39;s dealing estimates are read from: LusidTA, orders held in LUSID Transfer Agency, or External, estimates supplied from outside LUSID. At least one, each at most once. Available values: LusidTA, External.
+   * Where the Fund&#39;s dealing estimates are read from: LusidTA, orders held in LUSID Transfer Agency, or External, orders dealt outside LUSID and reported to it. At least one, each at most once. Available values: LusidTA, External.
    * @return sources
   **/
   @jakarta.annotation.Nonnull

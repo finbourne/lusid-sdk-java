@@ -94,9 +94,17 @@ public class RecResult {
   @SerializedName(SERIALIZED_NAME_INSTANCE_ID)
   private RecInstanceId instanceId;
 
+  public static final String SERIALIZED_NAME_AS_AT_INSTANTIATED = "asAtInstantiated";
+  @SerializedName(SERIALIZED_NAME_AS_AT_INSTANTIATED)
+  private OffsetDateTime asAtInstantiated;
+
   public static final String SERIALIZED_NAME_REC_DEFINITION_ID = "recDefinitionId";
   @SerializedName(SERIALIZED_NAME_REC_DEFINITION_ID)
   private ResourceId recDefinitionId;
+
+  public static final String SERIALIZED_NAME_REC_DEFINITION_DISPLAY_NAME = "recDefinitionDisplayName";
+  @SerializedName(SERIALIZED_NAME_REC_DEFINITION_DISPLAY_NAME)
+  private String recDefinitionDisplayName;
 
   public static final String SERIALIZED_NAME_RUN_NUMBER = "runNumber";
   @SerializedName(SERIALIZED_NAME_RUN_NUMBER)
@@ -307,6 +315,27 @@ public class RecResult {
   }
 
 
+  public RecResult asAtInstantiated(OffsetDateTime asAtInstantiated) {
+    
+    this.asAtInstantiated = asAtInstantiated;
+    return this;
+  }
+
+   /**
+   * The asAt datetime at which the instance was first created.
+   * @return asAtInstantiated
+  **/
+  @jakarta.annotation.Nonnull
+  public OffsetDateTime getAsAtInstantiated() {
+    return asAtInstantiated;
+  }
+
+
+  public void setAsAtInstantiated(OffsetDateTime asAtInstantiated) {
+    this.asAtInstantiated = asAtInstantiated;
+  }
+
+
   public RecResult recDefinitionId(ResourceId recDefinitionId) {
     
     this.recDefinitionId = recDefinitionId;
@@ -325,6 +354,27 @@ public class RecResult {
 
   public void setRecDefinitionId(ResourceId recDefinitionId) {
     this.recDefinitionId = recDefinitionId;
+  }
+
+
+  public RecResult recDefinitionDisplayName(String recDefinitionDisplayName) {
+    
+    this.recDefinitionDisplayName = recDefinitionDisplayName;
+    return this;
+  }
+
+   /**
+   * The display name of the rec definition the rec was instantiated for, as it stood as-at instantiation. Not re-synchronised if the definition is later renamed.
+   * @return recDefinitionDisplayName
+  **/
+  @jakarta.annotation.Nonnull
+  public String getRecDefinitionDisplayName() {
+    return recDefinitionDisplayName;
+  }
+
+
+  public void setRecDefinitionDisplayName(String recDefinitionDisplayName) {
+    this.recDefinitionDisplayName = recDefinitionDisplayName;
   }
 
 
@@ -820,7 +870,9 @@ public class RecResult {
         Objects.equals(this.recType, recResult.recType) &&
         Objects.equals(this.externalRecTypeName, recResult.externalRecTypeName) &&
         Objects.equals(this.instanceId, recResult.instanceId) &&
+        Objects.equals(this.asAtInstantiated, recResult.asAtInstantiated) &&
         Objects.equals(this.recDefinitionId, recResult.recDefinitionId) &&
+        Objects.equals(this.recDefinitionDisplayName, recResult.recDefinitionDisplayName) &&
         Objects.equals(this.runNumber, recResult.runNumber) &&
         Objects.equals(this.runAsAt, recResult.runAsAt) &&
         Objects.equals(this.datesReconciled, recResult.datesReconciled) &&
@@ -849,7 +901,7 @@ public class RecResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, resultNumber, firstRunSeen, recType, externalRecTypeName, instanceId, recDefinitionId, runNumber, runAsAt, datesReconciled, resultType, resultCardinality, resultLifeCycle, exception, review, coreRules, aggregateRules, supplementalAttributes, items, linkedResults, comments, properties, assignedUser, assignedRole, href, version, links);
+    return Objects.hash(id, resultNumber, firstRunSeen, recType, externalRecTypeName, instanceId, asAtInstantiated, recDefinitionId, recDefinitionDisplayName, runNumber, runAsAt, datesReconciled, resultType, resultCardinality, resultLifeCycle, exception, review, coreRules, aggregateRules, supplementalAttributes, items, linkedResults, comments, properties, assignedUser, assignedRole, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -869,7 +921,9 @@ public class RecResult {
     sb.append("    recType: ").append(toIndentedString(recType)).append("\n");
     sb.append("    externalRecTypeName: ").append(toIndentedString(externalRecTypeName)).append("\n");
     sb.append("    instanceId: ").append(toIndentedString(instanceId)).append("\n");
+    sb.append("    asAtInstantiated: ").append(toIndentedString(asAtInstantiated)).append("\n");
     sb.append("    recDefinitionId: ").append(toIndentedString(recDefinitionId)).append("\n");
+    sb.append("    recDefinitionDisplayName: ").append(toIndentedString(recDefinitionDisplayName)).append("\n");
     sb.append("    runNumber: ").append(toIndentedString(runNumber)).append("\n");
     sb.append("    runAsAt: ").append(toIndentedString(runAsAt)).append("\n");
     sb.append("    datesReconciled: ").append(toIndentedString(datesReconciled)).append("\n");
@@ -918,7 +972,9 @@ public class RecResult {
     openapiFields.add("recType");
     openapiFields.add("externalRecTypeName");
     openapiFields.add("instanceId");
+    openapiFields.add("asAtInstantiated");
     openapiFields.add("recDefinitionId");
+    openapiFields.add("recDefinitionDisplayName");
     openapiFields.add("runNumber");
     openapiFields.add("runAsAt");
     openapiFields.add("datesReconciled");
@@ -947,7 +1003,9 @@ public class RecResult {
     openapiRequiredFields.add("firstRunSeen");
     openapiRequiredFields.add("recType");
     openapiRequiredFields.add("instanceId");
+    openapiRequiredFields.add("asAtInstantiated");
     openapiRequiredFields.add("recDefinitionId");
+    openapiRequiredFields.add("recDefinitionDisplayName");
     openapiRequiredFields.add("runNumber");
     openapiRequiredFields.add("runAsAt");
     openapiRequiredFields.add("datesReconciled");
@@ -996,6 +1054,9 @@ public class RecResult {
       RecInstanceId.validateJsonElement(jsonObj.get("instanceId"));
       // validate the required field `recDefinitionId`
       ResourceId.validateJsonElement(jsonObj.get("recDefinitionId"));
+      if (!jsonObj.get("recDefinitionDisplayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `recDefinitionDisplayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("recDefinitionDisplayName").toString()));
+      }
       // validate the required field `datesReconciled`
       RecDatesReconciled.validateJsonElement(jsonObj.get("datesReconciled"));
       if (!jsonObj.get("resultType").isJsonPrimitive()) {

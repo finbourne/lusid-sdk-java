@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **recType** | **String** | The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument. | [default to String]
 **externalRecTypeName** | **String** | The client&#39;s name for an External rec type, as stamped from the matching ruleset&#39;s externalRecType when the run executed. Null for native rec types. Filterable. | [optional] [default to String]
 **instanceId** | [**RecInstanceId**](RecInstanceId.md) |  | [default to RecInstanceId]
+**asAtInstantiated** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime at which the instance was first created. | [default to OffsetDateTime]
 **recDefinitionId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
+**recDefinitionDisplayName** | **String** | The display name of the rec definition the rec was instantiated for, as it stood as-at instantiation. Not re-synchronised if the definition is later renamed. | [default to String]
 **runNumber** | **Integer** | The run number within the instance. Increments with each re-run. | [default to Integer]
 **runAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime at which the run happened. | [default to OffsetDateTime]
 **datesReconciled** | [**RecDatesReconciled**](RecDatesReconciled.md) |  | [default to RecDatesReconciled]
@@ -45,7 +47,9 @@ Integer FirstRunSeen = new Integer("100.00");
 String RecType = "example RecType";
 @jakarta.annotation.Nullable String ExternalRecTypeName = "example ExternalRecTypeName";
 RecInstanceId InstanceId = new RecInstanceId();
+OffsetDateTime AsAtInstantiated = OffsetDateTime.now();
 ResourceId RecDefinitionId = new ResourceId();
+String RecDefinitionDisplayName = "example RecDefinitionDisplayName";
 Integer RunNumber = new Integer("100.00");
 OffsetDateTime RunAsAt = OffsetDateTime.now();
 RecDatesReconciled DatesReconciled = new RecDatesReconciled();
@@ -75,7 +79,9 @@ RecResult recResultInstance = new RecResult()
     .RecType(RecType)
     .ExternalRecTypeName(ExternalRecTypeName)
     .InstanceId(InstanceId)
+    .AsAtInstantiated(AsAtInstantiated)
     .RecDefinitionId(RecDefinitionId)
+    .RecDefinitionDisplayName(RecDefinitionDisplayName)
     .RunNumber(RunNumber)
     .RunAsAt(RunAsAt)
     .DatesReconciled(DatesReconciled)
