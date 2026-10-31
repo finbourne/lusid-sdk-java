@@ -422,7 +422,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10466
+  version: 0.11.10467
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -233479,8 +233479,9 @@ components:
         sources:
           description: "Where the Fund's dealing estimates are read from: LusidTA,\
             \ orders held in LUSID Transfer Agency, or External, orders dealt outside\
-            \ LUSID and reported to it. At least one, each at most once. Available\
-            \ values: LusidTA, External."
+            \ LUSID and reported to it. At least one, each at most once. Naming both\
+            \ sums the two books with no de-duplication between them; each source's\
+            \ completeness is tracked on its own. Available values: LusidTA, External."
           items:
             type: string
           type: array

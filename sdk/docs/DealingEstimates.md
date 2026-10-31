@@ -5,7 +5,7 @@ How a fund treats estimated dealing when it strikes a valuation point before dea
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**sources** | **List&lt;String&gt;** | Where the Fund&#39;s dealing estimates are read from: LusidTA, orders held in LUSID Transfer Agency, or External, orders dealt outside LUSID and reported to it. At least one, each at most once. Available values: LusidTA, External. | [default to List<String>]
+**sources** | **List&lt;String&gt;** | Where the Fund&#39;s dealing estimates are read from: LusidTA, orders held in LUSID Transfer Agency, or External, orders dealt outside LUSID and reported to it. At least one, each at most once. Naming both sums the two books with no de-duplication between them; each source&#39;s completeness is tracked on its own. Available values: LusidTA, External. | [default to List<String>]
 **requireComplete** | **Boolean** | Reserved; not yet enforced. Whether every source must have reported before the valuation point can be struck. Defaults to true. | [optional] [default to Boolean]
 **countPending** | **Boolean** | Whether pending orders count towards the estimated flow alongside confirmed ones. Defaults to false. | [optional] [default to Boolean]
 **unitValuation** | **String** | The price estimated flows are turned into units at: EstimatePrice, the estimate struck at this valuation point, or LastOfficialPrice, the last official dealing price the Fund published. Available values: EstimatePrice, LastOfficialPrice. | [default to String]
