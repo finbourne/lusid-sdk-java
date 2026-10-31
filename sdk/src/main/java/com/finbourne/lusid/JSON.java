@@ -447,6 +447,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "instrumentEventType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.CapitalisationEvent.class, new TypeSelector<com.finbourne.lusid.model.CapitalisationEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.CapitalisationEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CapitalisationEvent", com.finbourne.lusid.model.CapitalisationEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.CapletFloorletCashFlowEvent.class, new TypeSelector<com.finbourne.lusid.model.CapletFloorletCashFlowEvent>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.CapletFloorletCashFlowEvent> getClassForElement(JsonElement readElement) {
@@ -1889,6 +1898,7 @@ public class JSON {
                         classByDiscriminatorValue.put("CapitalDistributionEvent", com.finbourne.lusid.model.CapitalDistributionEvent.class);
                         classByDiscriminatorValue.put("CapitalGainsDistributionEvent", com.finbourne.lusid.model.CapitalGainsDistributionEvent.class);
                         classByDiscriminatorValue.put("CapitalInterestTransferEvent", com.finbourne.lusid.model.CapitalInterestTransferEvent.class);
+                        classByDiscriminatorValue.put("CapitalisationEvent", com.finbourne.lusid.model.CapitalisationEvent.class);
                         classByDiscriminatorValue.put("CapletFloorletCashFlowEvent", com.finbourne.lusid.model.CapletFloorletCashFlowEvent.class);
                         classByDiscriminatorValue.put("CashDividendEvent", com.finbourne.lusid.model.CashDividendEvent.class);
                         classByDiscriminatorValue.put("CashFlowEvent", com.finbourne.lusid.model.CashFlowEvent.class);
@@ -3815,6 +3825,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CapitalGainsDistributionEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CapitalInterest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CapitalInterestTransferEvent.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CapitalisationEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CapletFloorletCashFlowEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CarryAccrualAmount.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CarryAccrualLine.CustomTypeAdapterFactory());
@@ -3853,6 +3864,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ChangeInterval.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ChangeIntervalWithOrderManagementDetail.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ChangeItem.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ChargeableGainsTakeOn.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ChartOfAccounts.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ChartOfAccountsProperties.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.ChartOfAccountsRequest.CustomTypeAdapterFactory());

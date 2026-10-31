@@ -273,7 +273,9 @@ public enum InstrumentEventType {
   
   PARTIALREDEMPTIONWITHOUTREDUCTIONOFNOMINALVALUEEVENT("PartialRedemptionWithoutReductionOfNominalValueEvent"),
   
-  STRIPBONDCASHFLOWEVENT("StripBondCashflowEvent");
+  STRIPBONDCASHFLOWEVENT("StripBondCashflowEvent"),
+  
+  CAPITALISATIONEVENT("CapitalisationEvent");
 
   private String value;
 

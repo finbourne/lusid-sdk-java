@@ -73,6 +73,10 @@ public class SwingPolicy {
   @SerializedName(SERIALIZED_NAME_OUTFLOW_TRIGGER)
   private SwingTrigger outflowTrigger;
 
+  public static final String SERIALIZED_NAME_APPROVAL_MODE = "approvalMode";
+  @SerializedName(SERIALIZED_NAME_APPROVAL_MODE)
+  private String approvalMode;
+
   public SwingPolicy() {
   }
 
@@ -181,6 +185,27 @@ public class SwingPolicy {
   }
 
 
+  public SwingPolicy approvalMode(String approvalMode) {
+    
+    this.approvalMode = approvalMode;
+    return this;
+  }
+
+   /**
+   * Who settles the swing decision a valuation point deals at. Automatic, the default, finalises the valuation point on the engine&#39;s proposal. Manual holds the proposal: the valuation point cannot be finalised until a manager has submitted a pricingMethodologyOverride on it, equal to the proposal to approve it or different to overrule it. Must be Automatic when defaultSpreadSource is omitted, because a price that never swings has no decision to approve. Available values: Automatic, Manual.
+   * @return approvalMode
+  **/
+  @jakarta.annotation.Nullable
+  public String getApprovalMode() {
+    return approvalMode;
+  }
+
+
+  public void setApprovalMode(String approvalMode) {
+    this.approvalMode = approvalMode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -195,7 +220,8 @@ public class SwingPolicy {
         Objects.equals(this.defaultSpreadSource, swingPolicy.defaultSpreadSource) &&
         Objects.equals(this.spreads, swingPolicy.spreads) &&
         Objects.equals(this.inflowTrigger, swingPolicy.inflowTrigger) &&
-        Objects.equals(this.outflowTrigger, swingPolicy.outflowTrigger);
+        Objects.equals(this.outflowTrigger, swingPolicy.outflowTrigger) &&
+        Objects.equals(this.approvalMode, swingPolicy.approvalMode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -204,7 +230,7 @@ public class SwingPolicy {
 
   @Override
   public int hashCode() {
-    return Objects.hash(baseline, defaultSpreadSource, spreads, inflowTrigger, outflowTrigger);
+    return Objects.hash(baseline, defaultSpreadSource, spreads, inflowTrigger, outflowTrigger, approvalMode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -223,6 +249,7 @@ public class SwingPolicy {
     sb.append("    spreads: ").append(toIndentedString(spreads)).append("\n");
     sb.append("    inflowTrigger: ").append(toIndentedString(inflowTrigger)).append("\n");
     sb.append("    outflowTrigger: ").append(toIndentedString(outflowTrigger)).append("\n");
+    sb.append("    approvalMode: ").append(toIndentedString(approvalMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -250,6 +277,7 @@ public class SwingPolicy {
     openapiFields.add("spreads");
     openapiFields.add("inflowTrigger");
     openapiFields.add("outflowTrigger");
+    openapiFields.add("approvalMode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -292,6 +320,9 @@ public class SwingPolicy {
       // validate the optional field `outflowTrigger`
       if (jsonObj.get("outflowTrigger") != null && !jsonObj.get("outflowTrigger").isJsonNull()) {
         SwingTrigger.validateJsonElement(jsonObj.get("outflowTrigger"));
+      }
+      if ((jsonObj.get("approvalMode") != null && !jsonObj.get("approvalMode").isJsonNull()) && !jsonObj.get("approvalMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `approvalMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("approvalMode").toString()));
       }
   }
 

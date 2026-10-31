@@ -92,6 +92,10 @@ public class PricingMethodologyAudit {
   @SerializedName(SERIALIZED_NAME_ESTIMATE_VALUATION)
   private EstimateValuation estimateValuation;
 
+  public static final String SERIALIZED_NAME_APPROVAL_STATUS = "approvalStatus";
+  @SerializedName(SERIALIZED_NAME_APPROVAL_STATUS)
+  private String approvalStatus;
+
   public PricingMethodologyAudit() {
   }
 
@@ -284,6 +288,27 @@ public class PricingMethodologyAudit {
   }
 
 
+  public PricingMethodologyAudit approvalStatus(String approvalStatus) {
+    
+    this.approvalStatus = approvalStatus;
+    return this;
+  }
+
+   /**
+   * Where a manually approved swing decision stands. Pending until a manager approves or overrides the engine&#39;s proposal, or when the proposal has changed since the decision was taken; Approved when the decision equals the proposal; Overridden when it differs. Absent when the swing policy approves automatically.
+   * @return approvalStatus
+  **/
+  @jakarta.annotation.Nullable
+  public String getApprovalStatus() {
+    return approvalStatus;
+  }
+
+
+  public void setApprovalStatus(String approvalStatus) {
+    this.approvalStatus = approvalStatus;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -302,7 +327,8 @@ public class PricingMethodologyAudit {
         Objects.equals(this.inflowTrigger, pricingMethodologyAudit.inflowTrigger) &&
         Objects.equals(this.outflowTrigger, pricingMethodologyAudit.outflowTrigger) &&
         Objects.equals(this.dealingFlows, pricingMethodologyAudit.dealingFlows) &&
-        Objects.equals(this.estimateValuation, pricingMethodologyAudit.estimateValuation);
+        Objects.equals(this.estimateValuation, pricingMethodologyAudit.estimateValuation) &&
+        Objects.equals(this.approvalStatus, pricingMethodologyAudit.approvalStatus);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -311,7 +337,7 @@ public class PricingMethodologyAudit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(netCashflow, netCashflowPctOfNav, spreadsApplied, engineProposal, override, inflowTrigger, outflowTrigger, dealingFlows, estimateValuation);
+    return Objects.hash(netCashflow, netCashflowPctOfNav, spreadsApplied, engineProposal, override, inflowTrigger, outflowTrigger, dealingFlows, estimateValuation, approvalStatus);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -334,6 +360,7 @@ public class PricingMethodologyAudit {
     sb.append("    outflowTrigger: ").append(toIndentedString(outflowTrigger)).append("\n");
     sb.append("    dealingFlows: ").append(toIndentedString(dealingFlows)).append("\n");
     sb.append("    estimateValuation: ").append(toIndentedString(estimateValuation)).append("\n");
+    sb.append("    approvalStatus: ").append(toIndentedString(approvalStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -365,6 +392,7 @@ public class PricingMethodologyAudit {
     openapiFields.add("outflowTrigger");
     openapiFields.add("dealingFlows");
     openapiFields.add("estimateValuation");
+    openapiFields.add("approvalStatus");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -417,6 +445,9 @@ public class PricingMethodologyAudit {
       // validate the optional field `estimateValuation`
       if (jsonObj.get("estimateValuation") != null && !jsonObj.get("estimateValuation").isJsonNull()) {
         EstimateValuation.validateJsonElement(jsonObj.get("estimateValuation"));
+      }
+      if ((jsonObj.get("approvalStatus") != null && !jsonObj.get("approvalStatus").isJsonNull()) && !jsonObj.get("approvalStatus").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `approvalStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("approvalStatus").toString()));
       }
   }
 

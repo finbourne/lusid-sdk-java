@@ -69,6 +69,10 @@ public class CreatePortfolioDetails {
   @SerializedName(SERIALIZED_NAME_HOLDINGS_FUNGIBILITY)
   private String holdingsFungibility;
 
+  public static final String SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME = "chargeableGainsRegime";
+  @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME)
+  private String chargeableGainsRegime;
+
   public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
   @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
   private WhtParameters whtParameters;
@@ -160,6 +164,27 @@ public class CreatePortfolioDetails {
   }
 
 
+  public CreatePortfolioDetails chargeableGainsRegime(String chargeableGainsRegime) {
+    
+    this.chargeableGainsRegime = chargeableGainsRegime;
+    return this;
+  }
+
+   /**
+   * The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. If not supplied, the portfolio&#39;s current value is left unchanged; supply Default to reset it. A reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains.
+   * @return chargeableGainsRegime
+  **/
+  @jakarta.annotation.Nullable
+  public String getChargeableGainsRegime() {
+    return chargeableGainsRegime;
+  }
+
+
+  public void setChargeableGainsRegime(String chargeableGainsRegime) {
+    this.chargeableGainsRegime = chargeableGainsRegime;
+  }
+
+
   public CreatePortfolioDetails whtParameters(WhtParameters whtParameters) {
     
     this.whtParameters = whtParameters;
@@ -195,6 +220,7 @@ public class CreatePortfolioDetails {
         Objects.equals(this.taxLotSelectionCostBasis, createPortfolioDetails.taxLotSelectionCostBasis) &&
         Objects.equals(this.fractionalUnitsTrueUpConfiguration, createPortfolioDetails.fractionalUnitsTrueUpConfiguration) &&
         Objects.equals(this.holdingsFungibility, createPortfolioDetails.holdingsFungibility) &&
+        Objects.equals(this.chargeableGainsRegime, createPortfolioDetails.chargeableGainsRegime) &&
         Objects.equals(this.whtParameters, createPortfolioDetails.whtParameters);
   }
 
@@ -204,7 +230,7 @@ public class CreatePortfolioDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(corporateActionSourceId, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, whtParameters);
+    return Objects.hash(corporateActionSourceId, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime, whtParameters);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -222,6 +248,7 @@ public class CreatePortfolioDetails {
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("    holdingsFungibility: ").append(toIndentedString(holdingsFungibility)).append("\n");
+    sb.append("    chargeableGainsRegime: ").append(toIndentedString(chargeableGainsRegime)).append("\n");
     sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -249,6 +276,7 @@ public class CreatePortfolioDetails {
     openapiFields.add("taxLotSelectionCostBasis");
     openapiFields.add("fractionalUnitsTrueUpConfiguration");
     openapiFields.add("holdingsFungibility");
+    openapiFields.add("chargeableGainsRegime");
     openapiFields.add("whtParameters");
 
     // a set of required properties/fields (JSON key names)
@@ -281,6 +309,9 @@ public class CreatePortfolioDetails {
       }
       if ((jsonObj.get("holdingsFungibility") != null && !jsonObj.get("holdingsFungibility").isJsonNull()) && !jsonObj.get("holdingsFungibility").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingsFungibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingsFungibility").toString()));
+      }
+      if ((jsonObj.get("chargeableGainsRegime") != null && !jsonObj.get("chargeableGainsRegime").isJsonNull()) && !jsonObj.get("chargeableGainsRegime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `chargeableGainsRegime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chargeableGainsRegime").toString()));
       }
       // validate the optional field `whtParameters`
       if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {

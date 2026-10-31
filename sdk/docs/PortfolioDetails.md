@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **taxLotSelectionCostBasis** | **String** | The cost figure that cost-referencing accounting methods evaluate when selecting tax lots for a disposal. This can be: Cost or AmortisedCost. Defaults to Cost if not specified. Supply Default to explicitly reset it; a reset or never-configured basis reads back as absent. Available values: Default, Cost, AmortisedCost. | [optional] [default to String]
 **fractionalUnitsTrueUpConfiguration** | [**FractionalUnitsTrueUpConfiguration**](FractionalUnitsTrueUpConfiguration.md) |  | [optional] [default to FractionalUnitsTrueUpConfiguration]
 **holdingsFungibility** | **String** | Whether the portfolio&#39;s holdings are fungible across the currencies of a currency group. This can be: Default or Enabled. Defaults to Default if not specified, which currently means holdings fungibility is not applied. Supply Default to explicitly reset it; a reset or never-configured flag reads back as absent. Available values: Default, Enabled. | [optional] [default to String]
+**chargeableGainsRegime** | **String** | The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. Defaults to Default if not specified, which means no chargeable gains pooling is applied. Under UkChargeableGains, in-scope holdings (equities, preferred shares, fund share classes and simple instruments) are depleted under the UK chargeable gains rules regardless of the accounting method on the portfolio, transaction or custodian account; other holdings use the portfolio&#39;s accounting method. Supply Default to explicitly reset it; a reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains. | [optional] [default to String]
 **whtParameters** | [**WhtParameters**](WhtParameters.md) |  | [optional] [default to WhtParameters]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
@@ -53,6 +54,7 @@ StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 @jakarta.annotation.Nullable String TaxLotSelectionCostBasis = "example TaxLotSelectionCostBasis";
 FractionalUnitsTrueUpConfiguration FractionalUnitsTrueUpConfiguration = new FractionalUnitsTrueUpConfiguration();
 @jakarta.annotation.Nullable String HoldingsFungibility = "example HoldingsFungibility";
+@jakarta.annotation.Nullable String ChargeableGainsRegime = "example ChargeableGainsRegime";
 WhtParameters WhtParameters = new WhtParameters();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
@@ -78,6 +80,7 @@ PortfolioDetails portfolioDetailsInstance = new PortfolioDetails()
     .TaxLotSelectionCostBasis(TaxLotSelectionCostBasis)
     .FractionalUnitsTrueUpConfiguration(FractionalUnitsTrueUpConfiguration)
     .HoldingsFungibility(HoldingsFungibility)
+    .ChargeableGainsRegime(ChargeableGainsRegime)
     .WhtParameters(WhtParameters)
     .Links(Links);
 ```

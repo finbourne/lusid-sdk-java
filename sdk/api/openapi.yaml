@@ -422,7 +422,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10460
+  version: 0.11.10466
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -72674,7 +72674,7 @@ paths:
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
-          \ StripBondCashflowEvent."
+          \ StripBondCashflowEvent, CapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -72795,7 +72795,7 @@ paths:
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
-          \ StripBondCashflowEvent."
+          \ StripBondCashflowEvent, CapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -72924,7 +72924,7 @@ paths:
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
-          \ StripBondCashflowEvent."
+          \ StripBondCashflowEvent, CapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -73159,7 +73159,7 @@ paths:
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
-          \ StripBondCashflowEvent."
+          \ StripBondCashflowEvent, CapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -73395,7 +73395,7 @@ paths:
           \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
-          \ StripBondCashflowEvent."
+          \ StripBondCashflowEvent, CapitalisationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -163471,7 +163471,7 @@ paths:
         \ AmortisationMethod, TransactionTypeScope, CashGainLossCalculationDate, InstrumentEventConfiguration,\
         \ AmortisationRuleSetId, TaxRuleSetScope, SettlementConfiguration, TransactionExclusionFilter,\
         \ TaxLotSelectionCostBasis, FractionalUnitsTrueUpConfiguration, HoldingsFungibility,\
-        \ WhtParameters."
+        \ ChargeableGainsRegime, WhtParameters."
       operationId: PatchPortfolioDetails
       parameters:
       - description: The scope of the transaction portfolio.
@@ -164363,6 +164363,12 @@ paths:
                 notionalCost: 100
                 variationMargin: 25
                 variationMarginPortfolioCcy: 25
+                chargeableGainsTakeOn:
+                  role: Holding1982
+                  indexation: 125050
+                  originalCost: 10000
+                  marketValue1982: 50000
+                  rebasingElection: false
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164399,6 +164405,12 @@ paths:
                 notionalCost: 100
                 variationMargin: 25
                 variationMarginPortfolioCcy: 25
+                chargeableGainsTakeOn:
+                  role: Holding1982
+                  indexation: 125050
+                  originalCost: 10000
+                  marketValue1982: 50000
+                  rebasingElection: false
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164435,6 +164447,12 @@ paths:
                 notionalCost: 100
                 variationMargin: 25
                 variationMarginPortfolioCcy: 25
+                chargeableGainsTakeOn:
+                  role: Holding1982
+                  indexation: 125050
+                  originalCost: 10000
+                  marketValue1982: 50000
+                  rebasingElection: false
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164471,6 +164489,12 @@ paths:
                 notionalCost: 100
                 variationMargin: 25
                 variationMarginPortfolioCcy: 25
+                chargeableGainsTakeOn:
+                  role: Holding1982
+                  indexation: 125050
+                  originalCost: 10000
+                  marketValue1982: 50000
+                  rebasingElection: false
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164627,6 +164651,12 @@ paths:
                 notionalCost: 100
                 variationMargin: 25
                 variationMarginPortfolioCcy: 25
+                chargeableGainsTakeOn:
+                  role: Holding1982
+                  indexation: 125050
+                  originalCost: 10000
+                  marketValue1982: 50000
+                  rebasingElection: false
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164663,6 +164693,12 @@ paths:
                 notionalCost: 100
                 variationMargin: 25
                 variationMarginPortfolioCcy: 25
+                chargeableGainsTakeOn:
+                  role: Holding1982
+                  indexation: 125050
+                  originalCost: 10000
+                  marketValue1982: 50000
+                  rebasingElection: false
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164699,6 +164735,12 @@ paths:
                 notionalCost: 100
                 variationMargin: 25
                 variationMarginPortfolioCcy: 25
+                chargeableGainsTakeOn:
+                  role: Holding1982
+                  indexation: 125050
+                  originalCost: 10000
+                  marketValue1982: 50000
+                  rebasingElection: false
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164735,6 +164777,12 @@ paths:
                 notionalCost: 100
                 variationMargin: 25
                 variationMarginPortfolioCcy: 25
+                chargeableGainsTakeOn:
+                  role: Holding1982
+                  indexation: 125050
+                  originalCost: 10000
+                  marketValue1982: 50000
+                  rebasingElection: false
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -183922,6 +183970,7 @@ components:
                 dealingBid: 9.132027271330688
                 offerPerValuationSource: offerPerValuationSource
               audit:
+                approvalStatus: approvalStatus
                 inflowTrigger:
                   fired: true
                   metric: metric
@@ -184110,6 +184159,7 @@ components:
                 dealingBid: 9.132027271330688
                 offerPerValuationSource: offerPerValuationSource
               audit:
+                approvalStatus: approvalStatus
                 inflowTrigger:
                   fired: true
                   metric: metric
@@ -184691,6 +184741,7 @@ components:
                 dealingBid: 9.132027271330688
                 offerPerValuationSource: offerPerValuationSource
               audit:
+                approvalStatus: approvalStatus
                 inflowTrigger:
                   fired: true
                   metric: metric
@@ -184879,6 +184930,7 @@ components:
                 dealingBid: 9.132027271330688
                 offerPerValuationSource: offerPerValuationSource
               audit:
+                approvalStatus: approvalStatus
                 inflowTrigger:
                   fired: true
                   metric: metric
@@ -187550,7 +187602,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -187677,6 +187730,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - dividendCurrency
@@ -188205,7 +188259,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -188332,6 +188387,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -188438,6 +188494,13 @@ components:
           cost:
             amount: 0.8008281904610115
             currency: currency
+          chargeableGainsTakeOn:
+            role: role
+            rebasingElection: true
+            indexation: 3.616076749251911
+            indexedTo: 2000-01-23T04:56:07.000+00:00
+            originalCost: 2.027123023002322
+            marketValue1982: 4.145608029883936
           price: 1.4658129805029452
           currentFace: 9.301444243932576
           units: 0.8008281904610115
@@ -188451,6 +188514,13 @@ components:
           cost:
             amount: 0.8008281904610115
             currency: currency
+          chargeableGainsTakeOn:
+            role: role
+            rebasingElection: true
+            indexation: 3.616076749251911
+            indexedTo: 2000-01-23T04:56:07.000+00:00
+            originalCost: 2.027123023002322
+            marketValue1982: 4.145608029883936
           price: 1.4658129805029452
           currentFace: 9.301444243932576
           units: 0.8008281904610115
@@ -188556,6 +188626,13 @@ components:
           cost:
             amount: 0.8008281904610115
             currency: currency
+          chargeableGainsTakeOn:
+            role: role
+            rebasingElection: true
+            indexation: 3.616076749251911
+            indexedTo: 2000-01-23T04:56:07.000+00:00
+            originalCost: 2.027123023002322
+            marketValue1982: 4.145608029883936
           price: 1.4658129805029452
           currentFace: 9.301444243932576
           units: 0.8008281904610115
@@ -188569,6 +188646,13 @@ components:
           cost:
             amount: 0.8008281904610115
             currency: currency
+          chargeableGainsTakeOn:
+            role: role
+            rebasingElection: true
+            indexation: 3.616076749251911
+            indexedTo: 2000-01-23T04:56:07.000+00:00
+            originalCost: 2.027123023002322
+            marketValue1982: 4.145608029883936
           price: 1.4658129805029452
           currentFace: 9.301444243932576
           units: 0.8008281904610115
@@ -193822,7 +193906,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -193949,6 +194034,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -194015,7 +194101,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -194142,6 +194229,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amountReduced
@@ -196145,7 +196233,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -196272,6 +196361,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -196616,6 +196706,13 @@ components:
               cost:
                 amount: 0.8008281904610115
                 currency: currency
+              chargeableGainsTakeOn:
+                role: role
+                rebasingElection: true
+                indexation: 3.616076749251911
+                indexedTo: 2000-01-23T04:56:07.000+00:00
+                originalCost: 2.027123023002322
+                marketValue1982: 4.145608029883936
               price: 1.4658129805029452
               currentFace: 9.301444243932576
               units: 0.8008281904610115
@@ -196629,6 +196726,13 @@ components:
               cost:
                 amount: 0.8008281904610115
                 currency: currency
+              chargeableGainsTakeOn:
+                role: role
+                rebasingElection: true
+                indexation: 3.616076749251911
+                indexedTo: 2000-01-23T04:56:07.000+00:00
+                originalCost: 2.027123023002322
+                marketValue1982: 4.145608029883936
               price: 1.4658129805029452
               currentFace: 9.301444243932576
               units: 0.8008281904610115
@@ -201924,7 +202028,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202051,6 +202156,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -202124,7 +202230,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202251,6 +202358,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -202523,7 +202631,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202650,6 +202759,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - agreedCleanPrice
@@ -202813,7 +202923,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -202940,6 +203051,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - agreedCleanPrice
@@ -203276,7 +203388,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -203403,6 +203516,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - callPrice
@@ -203474,7 +203588,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -203601,6 +203716,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -203719,7 +203835,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -203846,6 +203963,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -206921,7 +207039,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207048,6 +207167,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - exerciseCurrency
@@ -208296,7 +208416,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208423,6 +208544,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -208761,7 +208883,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -208888,6 +209011,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -209022,7 +209146,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209149,6 +209274,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -209233,7 +209359,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209360,6 +209487,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashElections
@@ -209436,7 +209564,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -209563,6 +209692,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -209952,7 +210082,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -210079,6 +210210,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - direction
@@ -210098,6 +210230,232 @@ components:
         \ gives up its share, and a\r\nclient-maintained transaction type configuration\
         \ must include the ...PortfolioCcy twin movements for the\r\ntwins to move\
         \ at all."
+    CapitalisationEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          effectiveDate:
+            description: The date the next factor applies (:98A::EFFD). Required.
+            format: date-time
+            type: string
+          paymentDate:
+            description: The payment date (:98A::PAYD). Optional and informational;
+              it may fall before effectiveDate.
+            format: date-time
+            nullable: true
+            type: string
+          recordDate:
+            description: "The record date (:98A::RDTE). Optional and informational;\
+              \ when supplied it must not fall after\r\neffectiveDate."
+            format: date-time
+            nullable: true
+            type: string
+          previousFactor:
+            description: "The factor, current principal per unit of nominal, in force\
+              \ before the event (:92A::PRFC). Optional, but\r\nsupplied together\
+              \ with nextFactor or not at all; greater than 0 when supplied. An event\
+              \ without the\r\nfactors is stored as economically incomplete."
+            format: double
+            nullable: true
+            type: number
+          nextFactor:
+            description: "The factor, current principal per unit of nominal, in force\
+              \ from effectiveDate (:92A::NWFC). Optional, but\r\nsupplied together\
+              \ with previousFactor or not at all; not less than previousFactor when\
+              \ supplied."
+            format: double
+            nullable: true
+            type: number
+          interestRate:
+            description: "The annual interest rate capitalised, as a fraction, so\
+              \ 6 per cent is 0.06 (:92A::INTP). Optional and\r\ninformational; not\
+              \ negative when supplied."
+            format: double
+            nullable: true
+            type: number
+          currency:
+            description: The currency of the capitalised principal (:11A::DENO). Optional
+              and informational.
+            nullable: true
+            type: string
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
+              \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent, TotalReturnSwapCashFlowEvent,\
+              \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
+              \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
+              \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            - PikBondInterestEvent
+            - CommodityForwardCashSettlementEvent
+            - PaymentInKindEvent
+            - CommodityForwardPhysicalSettlementEvent
+            - CancelSwapEvent
+            - BondOptionTerminationEvent
+            - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
+            - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
+            - AmendCommitmentEvent
+            - CapitalCallEvent
+            - FundDistributionEvent
+            - NavReportEvent
+            - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
+            - TotalReturnSwapCashFlowEvent
+            - GlobalLoanFacilityReinitialisationEvent
+            - InvestorLoanFacilityReinitialisationEvent
+            - CapitalCallReceiptEvent
+            - RecallableCapitalExpiryEvent
+            - CapitalInterestTransferEvent
+            - FacilityDrawEvent
+            - FacilityRepaymentEvent
+            - FacilityInterestEvent
+            - FacilityCommitmentFeeEvent
+            - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
+            - PartialRedemptionWithoutReductionOfNominalValueEvent
+            - StripBondCashflowEvent
+            - CapitalisationEvent
+            type: string
+        required:
+        - instrumentEventType
+        type: object
+      description: "Capitalisation (CAPI, AMI-SeCo SCoRE section 4.10): an increase\
+        \ in the current principal of a debt instrument\r\nwithout an increase in\
+        \ its nominal value, normally from incorporating due but unpaid interest into\
+        \ the\r\nprincipal. A notified CAPI on a ComplexBond, recording the factor\
+        \ before (previousFactor) and after\r\n(nextFactor) the event. Mandatory and\
+        \ purely informational: it generates no cash flow, movements or\r\ntransactions.\
+        \ The capitalisation itself is booked by the bond's PikSchedule."
     CapletFloorletCashFlowEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -210157,7 +210515,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -210284,6 +210643,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -210786,7 +211146,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -210913,6 +211274,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashElections
@@ -211191,7 +211553,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211318,6 +211681,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashFlowValue
@@ -211828,7 +212192,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211955,6 +212320,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -212551,7 +212917,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -212678,6 +213045,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - constituentWeight
@@ -212838,7 +213206,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -212965,6 +213334,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - changeType
@@ -213266,6 +213636,44 @@ components:
           type: string
       required:
       - fieldName
+      type: object
+    ChargeableGainsTakeOn:
+      additionalProperties: false
+      description: Carried-forward chargeable-gains balances for a tax-lot taken on
+        under the UK chargeable gains accounting method
+      example:
+        role: role
+        rebasingElection: true
+        indexation: 3.616076749251911
+        indexedTo: 2000-01-23T04:56:07.000+00:00
+        originalCost: 2.027123023002322
+        marketValue1982: 4.145608029883936
+      properties:
+        role:
+          description: "Available values: Section104Pool, Holding1982, Holding1965."
+          minLength: 1
+          type: string
+        indexation:
+          format: double
+          nullable: true
+          type: number
+        indexedTo:
+          format: date-time
+          nullable: true
+          type: string
+        originalCost:
+          format: double
+          nullable: true
+          type: number
+        marketValue1982:
+          format: double
+          nullable: true
+          type: number
+        rebasingElection:
+          nullable: true
+          type: boolean
+      required:
+      - role
       type: object
     ChartOfAccounts:
       additionalProperties: false
@@ -213878,7 +214286,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214005,6 +214414,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -214460,7 +214870,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214587,6 +214998,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -215615,7 +216027,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215742,6 +216155,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -215952,7 +216366,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216079,6 +216494,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - domCcy
@@ -216152,7 +216568,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216279,6 +216696,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -221595,7 +222013,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -221722,6 +222141,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -222108,7 +222528,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -222235,6 +222656,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - contractDetails
@@ -222443,7 +222865,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -222570,6 +222993,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -224410,6 +224834,7 @@ components:
             calculateTradeDateToSettlementFxPnL: true
             calculateInLieuSettlementAmount: true
         cashGainLossCalculationDate: cashGainLossCalculationDate
+        chargeableGainsRegime: chargeableGainsRegime
         accountingMethod: Default
         corporateActionSourceId:
           code: code
@@ -224558,6 +224983,18 @@ components:
             \ if not specified, which currently means holdings fungibility is not\
             \ applied. Supply Default to explicitly reset it; a reset or never-configured\
             \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
+        chargeableGainsRegime:
+          description: "The chargeable gains regime the portfolio is elected into.\
+            \ This can be: Default or UkChargeableGains. Defaults to Default if not\
+            \ specified, which means no chargeable gains pooling is applied. Under\
+            \ UkChargeableGains, in-scope holdings (equities, preferred shares, fund\
+            \ share classes and simple instruments) are depleted under the UK chargeable\
+            \ gains rules regardless of the accounting method on the portfolio, transaction\
+            \ or custodian account; other holdings use the portfolio's accounting\
+            \ method. Supply Default to explicitly reset it; a reset or never-configured\
+            \ regime reads back as absent. Available values: Default, UkChargeableGains."
           nullable: true
           type: string
       required:
@@ -225180,6 +225617,7 @@ components:
           nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
           fractionalUnitsHandling: fractionalUnitsHandling
           nominatedSubHoldingKey: nominatedSubHoldingKey
+        chargeableGainsRegime: chargeableGainsRegime
         corporateActionSourceId:
           code: code
           scope: scope
@@ -225203,6 +225641,14 @@ components:
             \ the portfolio's current value is left unchanged; supply Default to reset\
             \ it. A reset or never-configured flag reads back as absent. Available\
             \ values: Default, Enabled."
+          nullable: true
+          type: string
+        chargeableGainsRegime:
+          description: "The chargeable gains regime the portfolio is elected into.\
+            \ This can be: Default or UkChargeableGains. If not supplied, the portfolio's\
+            \ current value is left unchanged; supply Default to reset it. A reset\
+            \ or never-configured regime reads back as absent. Available values: Default,\
+            \ UkChargeableGains."
           nullable: true
           type: string
         whtParameters:
@@ -227345,6 +227791,7 @@ components:
             calculateTradeDateToSettlementFxPnL: true
             calculateInLieuSettlementAmount: true
         cashGainLossCalculationDate: cashGainLossCalculationDate
+        chargeableGainsRegime: chargeableGainsRegime
         accountingMethod: Default
         corporateActionSourceId:
           code: code
@@ -227523,6 +227970,18 @@ components:
             \ if not specified, which currently means holdings fungibility is not\
             \ applied. Supply Default to explicitly reset it; a reset or never-configured\
             \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
+        chargeableGainsRegime:
+          description: "The chargeable gains regime the portfolio is elected into.\
+            \ This can be: Default or UkChargeableGains. Defaults to Default if not\
+            \ specified, which means no chargeable gains pooling is applied. Under\
+            \ UkChargeableGains, in-scope holdings (equities, preferred shares, fund\
+            \ share classes and simple instruments) are depleted under the UK chargeable\
+            \ gains rules regardless of the accounting method on the portfolio, transaction\
+            \ or custodian account; other holdings use the portfolio's accounting\
+            \ method. Supply Default to explicitly reset it; a reset or never-configured\
+            \ regime reads back as absent. Available values: Default, UkChargeableGains."
           nullable: true
           type: string
         whtParameters:
@@ -228318,7 +228777,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228445,6 +228905,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -233963,7 +234424,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -234090,6 +234552,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -234223,7 +234686,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -234350,6 +234814,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -234422,7 +234887,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -234549,6 +235015,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -234622,7 +235089,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -234749,6 +235217,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -234813,7 +235282,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -234940,6 +235410,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -234999,7 +235470,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235126,6 +235598,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -235855,7 +236328,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -235982,6 +236456,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashElections
@@ -236067,7 +236542,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236194,6 +236670,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashElections
@@ -236256,7 +236733,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236383,6 +236861,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -236450,7 +236929,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236577,6 +237057,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -236658,7 +237139,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236785,6 +237267,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -237059,7 +237542,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237186,6 +237670,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -237288,7 +237773,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237415,6 +237901,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - closeOutAmount
@@ -237519,7 +238006,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237646,6 +238134,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -239339,9 +239828,9 @@ components:
         decisionPrice:
           description: "The unit price the swing decision was taken on. 'EstimatePrice'\
             \ is the price struck at this valuation point; 'LastOfficialPrice' is\
-            \ the unit price the previous valuation point published. 'EstimatePrice'\
-            \ when the fund asked for the last official price but has none yet, as\
-            \ on its first valuation point."
+            \ the unit price the previous valuation point published or, for a share\
+            \ class that has not published one yet, the launch price the class was\
+            \ set up with."
           minLength: 1
           type: string
         atEstimatePrice:
@@ -239351,9 +239840,9 @@ components:
         difference:
           $ref: '#/components/schemas/EstimateValuationDifference'
         unitBasedShare:
-          description: "The fraction of the decision's net cashflow that came from\
-            \ unit-denominated orders, from 0 to 1. Zero when the net cashflow is\
-            \ zero."
+          description: "DEPRECATED: always 0 and no longer computed. Kept on the response\
+            \ for one release so clients on a public SDK that requires the field can\
+            \ still read it; it will be removed once an SDK without it has shipped."
           format: double
           type: number
       required:
@@ -239726,7 +240215,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -239853,6 +240343,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - eventSource
@@ -240532,7 +241023,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -240659,6 +241151,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - anchorDate
@@ -241029,7 +241522,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -241156,6 +241650,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -241433,7 +241928,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -241560,6 +242056,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -241638,7 +242135,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -241765,6 +242263,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -241850,7 +242349,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -241977,6 +242477,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -242050,7 +242551,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242177,6 +242679,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -245053,7 +245556,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -245180,6 +245684,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -245248,7 +245753,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -245375,6 +245881,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -245437,7 +245944,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -245564,6 +246072,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -245632,7 +246141,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -245759,6 +246269,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -245844,7 +246355,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -245971,6 +246483,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -246724,6 +247237,7 @@ components:
                   lowerBoundExclusive: 1.2315135367772556
                   upperBoundInclusive: 1.0246457001441578
                 basis: basis
+            approvalMode: approvalMode
             inflowTrigger:
               threshold: 6.84685269835264
               type: type
@@ -249218,6 +249732,7 @@ components:
                   lowerBoundExclusive: 1.2315135367772556
                   upperBoundInclusive: 1.0246457001441578
                 basis: basis
+            approvalMode: approvalMode
             inflowTrigger:
               threshold: 6.84685269835264
               type: type
@@ -249873,7 +250388,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -250000,6 +250516,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -251604,6 +252121,7 @@ components:
                     lowerBoundExclusive: 1.2315135367772556
                     upperBoundInclusive: 1.0246457001441578
                   basis: basis
+              approvalMode: approvalMode
               inflowTrigger:
                 threshold: 6.84685269835264
                 type: type
@@ -252155,6 +252673,7 @@ components:
                     lowerBoundExclusive: 1.2315135367772556
                     upperBoundInclusive: 1.0246457001441578
                   basis: basis
+              approvalMode: approvalMode
               inflowTrigger:
                 threshold: 6.84685269835264
                 type: type
@@ -254082,7 +254601,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -254209,6 +254729,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -254270,7 +254791,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -254397,6 +254919,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -255243,7 +255766,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -255370,6 +255894,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - domAmountPerUnit
@@ -258233,7 +258758,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -258360,6 +258886,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - contractStates
@@ -260269,6 +260796,13 @@ components:
           cost:
             amount: 0.8008281904610115
             currency: currency
+          chargeableGainsTakeOn:
+            role: role
+            rebasingElection: true
+            indexation: 3.616076749251911
+            indexedTo: 2000-01-23T04:56:07.000+00:00
+            originalCost: 2.027123023002322
+            marketValue1982: 4.145608029883936
           price: 1.4658129805029452
           currentFace: 9.301444243932576
           units: 0.8008281904610115
@@ -260282,6 +260816,13 @@ components:
           cost:
             amount: 0.8008281904610115
             currency: currency
+          chargeableGainsTakeOn:
+            role: role
+            rebasingElection: true
+            indexation: 3.616076749251911
+            indexedTo: 2000-01-23T04:56:07.000+00:00
+            originalCost: 2.027123023002322
+            marketValue1982: 4.145608029883936
           price: 1.4658129805029452
           currentFace: 9.301444243932576
           units: 0.8008281904610115
@@ -260389,6 +260930,13 @@ components:
           cost:
             amount: 0.8008281904610115
             currency: currency
+          chargeableGainsTakeOn:
+            role: role
+            rebasingElection: true
+            indexation: 3.616076749251911
+            indexedTo: 2000-01-23T04:56:07.000+00:00
+            originalCost: 2.027123023002322
+            marketValue1982: 4.145608029883936
           price: 1.4658129805029452
           currentFace: 9.301444243932576
           units: 0.8008281904610115
@@ -260402,6 +260950,13 @@ components:
           cost:
             amount: 0.8008281904610115
             currency: currency
+          chargeableGainsTakeOn:
+            role: role
+            rebasingElection: true
+            indexation: 3.616076749251911
+            indexedTo: 2000-01-23T04:56:07.000+00:00
+            originalCost: 2.027123023002322
+            marketValue1982: 4.145608029883936
           price: 1.4658129805029452
           currentFace: 9.301444243932576
           units: 0.8008281904610115
@@ -261141,6 +261696,13 @@ components:
             cost:
               amount: 0.8008281904610115
               currency: currency
+            chargeableGainsTakeOn:
+              role: role
+              rebasingElection: true
+              indexation: 3.616076749251911
+              indexedTo: 2000-01-23T04:56:07.000+00:00
+              originalCost: 2.027123023002322
+              marketValue1982: 4.145608029883936
             price: 1.4658129805029452
             currentFace: 9.301444243932576
             units: 0.8008281904610115
@@ -261154,6 +261716,13 @@ components:
             cost:
               amount: 0.8008281904610115
               currency: currency
+            chargeableGainsTakeOn:
+              role: role
+              rebasingElection: true
+              indexation: 3.616076749251911
+              indexedTo: 2000-01-23T04:56:07.000+00:00
+              originalCost: 2.027123023002322
+              marketValue1982: 4.145608029883936
             price: 1.4658129805029452
             currentFace: 9.301444243932576
             units: 0.8008281904610115
@@ -261208,6 +261777,13 @@ components:
             cost:
               amount: 0.8008281904610115
               currency: currency
+            chargeableGainsTakeOn:
+              role: role
+              rebasingElection: true
+              indexation: 3.616076749251911
+              indexedTo: 2000-01-23T04:56:07.000+00:00
+              originalCost: 2.027123023002322
+              marketValue1982: 4.145608029883936
             price: 1.4658129805029452
             currentFace: 9.301444243932576
             units: 0.8008281904610115
@@ -261221,6 +261797,13 @@ components:
             cost:
               amount: 0.8008281904610115
               currency: currency
+            chargeableGainsTakeOn:
+              role: role
+              rebasingElection: true
+              indexation: 3.616076749251911
+              indexedTo: 2000-01-23T04:56:07.000+00:00
+              originalCost: 2.027123023002322
+              marketValue1982: 4.145608029883936
             price: 1.4658129805029452
             currentFace: 9.301444243932576
             units: 0.8008281904610115
@@ -263026,7 +263609,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -263153,6 +263737,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - effectiveAt
@@ -263224,7 +263809,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -263351,6 +263937,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - anchorDate
@@ -263972,7 +264559,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -264099,6 +264687,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - callCurrency
@@ -265587,7 +266176,7 @@ components:
             \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
             \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
             \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
-            \ StripBondCashflowEvent."
+            \ StripBondCashflowEvent, CapitalisationEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -265714,6 +266303,7 @@ components:
           - DepositInterestCapitalisationEvent
           - PartialRedemptionWithoutReductionOfNominalValueEvent
           - StripBondCashflowEvent
+          - CapitalisationEvent
           type: string
       required:
       - instrumentEventType
@@ -266761,6 +267351,7 @@ components:
       - DepositInterestCapitalisationEvent
       - PartialRedemptionWithoutReductionOfNominalValueEvent
       - StripBondCashflowEvent
+      - CapitalisationEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -267762,7 +268353,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -267889,6 +268481,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashElections
@@ -268365,7 +268958,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -268492,6 +269086,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -268681,6 +269276,7 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
                 calculateInLieuSettlementAmount: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
+            chargeableGainsRegime: chargeableGainsRegime
             accountingMethod: Default
             links:
             - method: method
@@ -268915,6 +269511,7 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
                 calculateInLieuSettlementAmount: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
+            chargeableGainsRegime: chargeableGainsRegime
             accountingMethod: Default
             links:
             - method: method
@@ -270487,6 +271084,7 @@ components:
               calculateTradeDateToSettlementFxPnL: true
               calculateInLieuSettlementAmount: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
           accountingMethod: Default
           links:
           - method: method
@@ -271118,7 +271716,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271245,6 +271844,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -273060,7 +273660,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -273187,6 +273788,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashOfferElections
@@ -273756,7 +274358,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -273883,6 +274486,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -273958,7 +274562,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -274085,6 +274690,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -274276,7 +274882,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -274403,6 +275010,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -274476,7 +275084,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -274603,6 +275212,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -274704,7 +275314,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -274831,6 +275442,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -278088,7 +278700,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -278215,6 +278828,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -278280,7 +278894,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -278407,6 +279022,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -278474,7 +279090,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -278601,6 +279218,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -278670,7 +279288,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -278797,6 +279416,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -278890,7 +279510,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279017,6 +279638,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -279085,7 +279707,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279212,6 +279835,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -279582,7 +280206,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279709,6 +280334,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -280566,7 +281192,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -280693,6 +281320,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -281391,7 +282019,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -281518,6 +282147,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -281748,7 +282378,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -281875,6 +282506,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - exerciseType
@@ -282003,7 +282635,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -282130,6 +282763,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - exerciseType
@@ -292397,6 +293031,7 @@ components:
                     lowerBoundExclusive: 1.2315135367772556
                     upperBoundInclusive: 1.0246457001441578
                   basis: basis
+              approvalMode: approvalMode
               inflowTrigger:
                 threshold: 6.84685269835264
                 type: type
@@ -292948,6 +293583,7 @@ components:
                     lowerBoundExclusive: 1.2315135367772556
                     upperBoundInclusive: 1.0246457001441578
                   basis: basis
+              approvalMode: approvalMode
               inflowTrigger:
                 threshold: 6.84685269835264
                 type: type
@@ -294515,6 +295151,7 @@ components:
                       lowerBoundExclusive: 1.2315135367772556
                       upperBoundInclusive: 1.0246457001441578
                     basis: basis
+                approvalMode: approvalMode
                 inflowTrigger:
                   threshold: 6.84685269835264
                   type: type
@@ -295066,6 +295703,7 @@ components:
                       lowerBoundExclusive: 1.2315135367772556
                       upperBoundInclusive: 1.0246457001441578
                     basis: basis
+                approvalMode: approvalMode
                 inflowTrigger:
                   threshold: 6.84685269835264
                   type: type
@@ -295754,6 +296392,7 @@ components:
                       lowerBoundExclusive: 1.2315135367772556
                       upperBoundInclusive: 1.0246457001441578
                     basis: basis
+                approvalMode: approvalMode
                 inflowTrigger:
                   threshold: 6.84685269835264
                   type: type
@@ -296305,6 +296944,7 @@ components:
                       lowerBoundExclusive: 1.2315135367772556
                       upperBoundInclusive: 1.0246457001441578
                     basis: basis
+                approvalMode: approvalMode
                 inflowTrigger:
                   threshold: 6.84685269835264
                   type: type
@@ -308470,7 +309110,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -308597,6 +309238,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -308739,7 +309381,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -308866,6 +309509,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -308965,7 +309609,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -309092,6 +309737,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -310553,7 +311199,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -310680,6 +311327,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -311707,7 +312355,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -311834,6 +312483,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -311898,7 +312548,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312025,6 +312676,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -312109,7 +312761,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312236,6 +312889,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -312365,7 +313019,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312492,6 +313147,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -312564,7 +313220,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -312691,6 +313348,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -313971,6 +314629,7 @@ components:
             calculateTradeDateToSettlementFxPnL: true
             calculateInLieuSettlementAmount: true
         cashGainLossCalculationDate: cashGainLossCalculationDate
+        chargeableGainsRegime: chargeableGainsRegime
         accountingMethod: Default
         links:
         - method: method
@@ -314188,6 +314847,18 @@ components:
             \ if not specified, which currently means holdings fungibility is not\
             \ applied. Supply Default to explicitly reset it; a reset or never-configured\
             \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
+        chargeableGainsRegime:
+          description: "The chargeable gains regime the portfolio is elected into.\
+            \ This can be: Default or UkChargeableGains. Defaults to Default if not\
+            \ specified, which means no chargeable gains pooling is applied. Under\
+            \ UkChargeableGains, in-scope holdings (equities, preferred shares, fund\
+            \ share classes and simple instruments) are depleted under the UK chargeable\
+            \ gains rules regardless of the accounting method on the portfolio, transaction\
+            \ or custodian account; other holdings use the portfolio's accounting\
+            \ method. Supply Default to explicitly reset it; a reset or never-configured\
+            \ regime reads back as absent. Available values: Default, UkChargeableGains."
           nullable: true
           type: string
         whtParameters:
@@ -314920,6 +315591,7 @@ components:
             calculateTradeDateToSettlementFxPnL: true
             calculateInLieuSettlementAmount: true
         cashGainLossCalculationDate: cashGainLossCalculationDate
+        chargeableGainsRegime: chargeableGainsRegime
         originPortfolioId:
           code: code
           scope: scope
@@ -315057,6 +315729,18 @@ components:
             \ if not specified, which currently means holdings fungibility is not\
             \ applied. Supply Default to explicitly reset it; a reset or never-configured\
             \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
+        chargeableGainsRegime:
+          description: "The chargeable gains regime the portfolio is elected into.\
+            \ This can be: Default or UkChargeableGains. Defaults to Default if not\
+            \ specified, which means no chargeable gains pooling is applied. Under\
+            \ UkChargeableGains, in-scope holdings (equities, preferred shares, fund\
+            \ share classes and simple instruments) are depleted under the UK chargeable\
+            \ gains rules regardless of the accounting method on the portfolio, transaction\
+            \ or custodian account; other holdings use the portfolio's accounting\
+            \ method. Supply Default to explicitly reset it; a reset or never-configured\
+            \ regime reads back as absent. Available values: Default, UkChargeableGains."
           nullable: true
           type: string
         whtParameters:
@@ -315233,6 +315917,7 @@ components:
               calculateTradeDateToSettlementFxPnL: true
               calculateInLieuSettlementAmount: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
           accountingMethod: Default
           links:
           - method: method
@@ -315466,6 +316151,7 @@ components:
               calculateTradeDateToSettlementFxPnL: true
               calculateInLieuSettlementAmount: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
           accountingMethod: Default
           links:
           - method: method
@@ -315706,6 +316392,7 @@ components:
               calculateTradeDateToSettlementFxPnL: true
               calculateInLieuSettlementAmount: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
           accountingMethod: Default
           links:
           - method: method
@@ -318564,6 +319251,7 @@ components:
             calculateTradeDateToSettlementFxPnL: true
             calculateInLieuSettlementAmount: true
         cashGainLossCalculationDate: cashGainLossCalculationDate
+        chargeableGainsRegime: chargeableGainsRegime
         accountingMethod: Default
         links:
         - method: method
@@ -318774,6 +319462,18 @@ components:
             \ if not specified, which currently means holdings fungibility is not\
             \ applied. Supply Default to explicitly reset it; a reset or never-configured\
             \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
+        chargeableGainsRegime:
+          description: "The chargeable gains regime the portfolio is elected into.\
+            \ This can be: Default or UkChargeableGains. Defaults to Default if not\
+            \ specified, which means no chargeable gains pooling is applied. Under\
+            \ UkChargeableGains, in-scope holdings (equities, preferred shares, fund\
+            \ share classes and simple instruments) are depleted under the UK chargeable\
+            \ gains rules regardless of the accounting method on the portfolio, transaction\
+            \ or custodian account; other holdings use the portfolio's accounting\
+            \ method. Supply Default to explicitly reset it; a reset or never-configured\
+            \ regime reads back as absent. Available values: Default, UkChargeableGains."
           nullable: true
           type: string
         whtParameters:
@@ -319905,6 +320605,7 @@ components:
                 lowerBoundExclusive: 1.2315135367772556
                 upperBoundInclusive: 1.0246457001441578
               basis: basis
+          approvalMode: approvalMode
           inflowTrigger:
             threshold: 6.84685269835264
             type: type
@@ -319951,6 +320652,7 @@ components:
         \ it was decided on, the spread applied and\r\nwhat the methodology alone\
         \ proposed, with how any Market swing triggers were evaluated."
       example:
+        approvalStatus: approvalStatus
         inflowTrigger:
           fired: true
           metric: metric
@@ -320040,6 +320742,14 @@ components:
           $ref: '#/components/schemas/DealingFlowSummary'
         estimateValuation:
           $ref: '#/components/schemas/EstimateValuation'
+        approvalStatus:
+          description: "Where a manually approved swing decision stands. Pending until\
+            \ a manager approves or overrides the engine's proposal, or when the proposal\
+            \ has changed since the decision was taken; Approved when the decision\
+            \ equals the proposal; Overridden when it differs. Absent when the swing\
+            \ policy approves automatically."
+          nullable: true
+          type: string
       required:
       - engineProposal
       - netCashflow
@@ -320169,6 +320879,7 @@ components:
           dealingBid: 9.132027271330688
           offerPerValuationSource: offerPerValuationSource
         audit:
+          approvalStatus: approvalStatus
           inflowTrigger:
             fired: true
             metric: metric
@@ -320713,7 +321424,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -320840,6 +321552,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -322803,7 +323516,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -322930,6 +323644,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -323071,7 +323786,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -323198,6 +323914,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashOfferElections
@@ -325028,7 +325745,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -325155,6 +325873,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - effectiveAt
@@ -325392,7 +326111,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -325519,6 +326239,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -332151,7 +332872,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -332278,6 +333000,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -332357,7 +333080,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -332484,6 +333208,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -332751,7 +333476,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -332878,6 +333604,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashOfferElections
@@ -332968,7 +333695,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -333095,6 +333823,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - fixingDate
@@ -341200,6 +341929,7 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
                   calculateInLieuSettlementAmount: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
+              chargeableGainsRegime: chargeableGainsRegime
               accountingMethod: Default
               links:
               - method: method
@@ -341434,6 +342164,7 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
                   calculateInLieuSettlementAmount: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
+              chargeableGainsRegime: chargeableGainsRegime
               accountingMethod: Default
               links:
               - method: method
@@ -342956,6 +343687,7 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
                   calculateInLieuSettlementAmount: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
+              chargeableGainsRegime: chargeableGainsRegime
               accountingMethod: Default
               links:
               - method: method
@@ -343190,6 +343922,7 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
                   calculateInLieuSettlementAmount: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
+              chargeableGainsRegime: chargeableGainsRegime
               accountingMethod: Default
               links:
               - method: method
@@ -350512,6 +351245,7 @@ components:
               calculateTradeDateToSettlementFxPnL: true
               calculateInLieuSettlementAmount: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
           accountingMethod: Default
           links:
           - method: method
@@ -350740,6 +351474,7 @@ components:
               calculateTradeDateToSettlementFxPnL: true
               calculateInLieuSettlementAmount: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
           accountingMethod: Default
           links:
           - method: method
@@ -360764,7 +361499,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -360891,6 +361627,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -362387,7 +363124,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -362514,6 +363252,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -362701,7 +363440,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -362828,6 +363568,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -367020,6 +367761,7 @@ components:
             dealingBid: 9.132027271330688
             offerPerValuationSource: offerPerValuationSource
           audit:
+            approvalStatus: approvalStatus
             inflowTrigger:
               fired: true
               metric: metric
@@ -368268,7 +369010,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -368395,6 +369138,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -369138,7 +369882,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -369265,6 +370010,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -369360,7 +370106,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -369487,6 +370234,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -369976,7 +370724,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -370103,6 +370852,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -370742,7 +371492,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -370869,6 +371620,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -370935,7 +371687,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -371062,6 +371815,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -371174,6 +371928,7 @@ components:
               lowerBoundExclusive: 1.2315135367772556
               upperBoundInclusive: 1.0246457001441578
             basis: basis
+        approvalMode: approvalMode
         inflowTrigger:
           threshold: 6.84685269835264
           type: type
@@ -371202,6 +371957,16 @@ components:
           $ref: '#/components/schemas/SwingTrigger'
         outflowTrigger:
           $ref: '#/components/schemas/SwingTrigger'
+        approvalMode:
+          description: "Who settles the swing decision a valuation point deals at.\
+            \ Automatic, the default, finalises the valuation point on the engine's\
+            \ proposal. Manual holds the proposal: the valuation point cannot be finalised\
+            \ until a manager has submitted a pricingMethodologyOverride on it, equal\
+            \ to the proposal to approve it or different to overrule it. Must be Automatic\
+            \ when defaultSpreadSource is omitted, because a price that never swings\
+            \ has no decision to approve. Available values: Automatic, Manual."
+          nullable: true
+          type: string
       required:
       - baseline
       type: object
@@ -371439,6 +372204,13 @@ components:
         cost:
           amount: 0.8008281904610115
           currency: currency
+        chargeableGainsTakeOn:
+          role: role
+          rebasingElection: true
+          indexation: 3.616076749251911
+          indexedTo: 2000-01-23T04:56:07.000+00:00
+          originalCost: 2.027123023002322
+          marketValue1982: 4.145608029883936
         price: 1.4658129805029452
         currentFace: 9.301444243932576
         units: 0.8008281904610115
@@ -371509,6 +372281,8 @@ components:
           format: double
           nullable: true
           type: number
+        chargeableGainsTakeOn:
+          $ref: '#/components/schemas/ChargeableGainsTakeOn'
       required:
       - units
       type: object
@@ -371523,6 +372297,13 @@ components:
         cost:
           amount: 0.8008281904610115
           currency: currency
+        chargeableGainsTakeOn:
+          role: role
+          rebasingElection: true
+          indexation: 3.616076749251911
+          indexedTo: 2000-01-23T04:56:07.000+00:00
+          originalCost: 2.027123023002322
+          marketValue1982: 4.145608029883936
         price: 1.4658129805029452
         currentFace: 9.301444243932576
         units: 0.8008281904610115
@@ -371593,6 +372374,8 @@ components:
           format: double
           nullable: true
           type: number
+        chargeableGainsTakeOn:
+          $ref: '#/components/schemas/ChargeableGainsTakeOn'
       required:
       - units
       type: object
@@ -372000,7 +372783,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -372127,6 +372911,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -372332,7 +373117,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -372459,6 +373245,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -372520,7 +373307,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -372647,6 +373435,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - currency
@@ -372711,7 +373500,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             minLength: 1
             type: string
           triggeringEventId:
@@ -372799,7 +373589,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -372926,6 +373717,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -373597,7 +374389,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -373724,6 +374517,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - component
@@ -375158,6 +375952,7 @@ components:
               calculateTradeDateToSettlementFxPnL: true
               calculateInLieuSettlementAmount: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
           accountingMethod: Default
           links:
           - method: method
@@ -375786,6 +376581,7 @@ components:
               calculateTradeDateToSettlementFxPnL: true
               calculateInLieuSettlementAmount: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
           accountingMethod: Default
           links:
           - method: method
@@ -376818,6 +377614,7 @@ components:
               calculateTradeDateToSettlementFxPnL: true
               calculateInLieuSettlementAmount: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
           accountingMethod: Default
           links:
           - method: method
@@ -381213,7 +382010,7 @@ components:
             \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
             \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
             \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
-            \ StripBondCashflowEvent."
+            \ StripBondCashflowEvent, CapitalisationEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -383321,7 +384118,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -383448,6 +384246,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -384253,7 +385052,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -384380,6 +385180,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -386225,7 +387026,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -386352,6 +387154,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - amount
@@ -391516,6 +392319,7 @@ components:
                     calculateTradeDateToSettlementFxPnL: true
                     calculateInLieuSettlementAmount: true
                 cashGainLossCalculationDate: cashGainLossCalculationDate
+                chargeableGainsRegime: chargeableGainsRegime
                 accountingMethod: Default
                 links:
                 - method: method
@@ -391750,6 +392554,7 @@ components:
                     calculateTradeDateToSettlementFxPnL: true
                     calculateInLieuSettlementAmount: true
                 cashGainLossCalculationDate: cashGainLossCalculationDate
+                chargeableGainsRegime: chargeableGainsRegime
                 accountingMethod: Default
                 links:
                 - method: method
@@ -397037,6 +397842,7 @@ components:
               dealingBid: 9.132027271330688
               offerPerValuationSource: offerPerValuationSource
             audit:
+              approvalStatus: approvalStatus
               inflowTrigger:
                 fired: true
                 metric: metric
@@ -397225,6 +398031,7 @@ components:
               dealingBid: 9.132027271330688
               offerPerValuationSource: offerPerValuationSource
             audit:
+              approvalStatus: approvalStatus
               inflowTrigger:
                 fired: true
                 metric: metric
@@ -416933,7 +417740,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -417060,6 +417868,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType
@@ -418346,7 +419155,8 @@ components:
               \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
-              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent."
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -418473,6 +419283,7 @@ components:
             - DepositInterestCapitalisationEvent
             - PartialRedemptionWithoutReductionOfNominalValueEvent
             - StripBondCashflowEvent
+            - CapitalisationEvent
             type: string
         required:
         - instrumentEventType

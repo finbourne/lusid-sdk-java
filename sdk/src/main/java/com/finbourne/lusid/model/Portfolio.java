@@ -300,6 +300,10 @@ public class Portfolio {
   @SerializedName(SERIALIZED_NAME_HOLDINGS_FUNGIBILITY)
   private String holdingsFungibility;
 
+  public static final String SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME = "chargeableGainsRegime";
+  @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME)
+  private String chargeableGainsRegime;
+
   public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
   @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
   private WhtParameters whtParameters;
@@ -902,6 +906,27 @@ public class Portfolio {
   }
 
 
+  public Portfolio chargeableGainsRegime(String chargeableGainsRegime) {
+    
+    this.chargeableGainsRegime = chargeableGainsRegime;
+    return this;
+  }
+
+   /**
+   * The chargeable gains regime the portfolio is elected into. This can be: Default or UkChargeableGains. Defaults to Default if not specified, which means no chargeable gains pooling is applied. Under UkChargeableGains, in-scope holdings (equities, preferred shares, fund share classes and simple instruments) are depleted under the UK chargeable gains rules regardless of the accounting method on the portfolio, transaction or custodian account; other holdings use the portfolio&#39;s accounting method. Supply Default to explicitly reset it; a reset or never-configured regime reads back as absent. Available values: Default, UkChargeableGains.
+   * @return chargeableGainsRegime
+  **/
+  @jakarta.annotation.Nullable
+  public String getChargeableGainsRegime() {
+    return chargeableGainsRegime;
+  }
+
+
+  public void setChargeableGainsRegime(String chargeableGainsRegime) {
+    this.chargeableGainsRegime = chargeableGainsRegime;
+  }
+
+
   public Portfolio whtParameters(WhtParameters whtParameters) {
     
     this.whtParameters = whtParameters;
@@ -989,6 +1014,7 @@ public class Portfolio {
         Objects.equals(this.taxLotSelectionCostBasis, portfolio.taxLotSelectionCostBasis) &&
         Objects.equals(this.fractionalUnitsTrueUpConfiguration, portfolio.fractionalUnitsTrueUpConfiguration) &&
         Objects.equals(this.holdingsFungibility, portfolio.holdingsFungibility) &&
+        Objects.equals(this.chargeableGainsRegime, portfolio.chargeableGainsRegime) &&
         Objects.equals(this.whtParameters, portfolio.whtParameters) &&
         Objects.equals(this.links, portfolio.links);
   }
@@ -999,7 +1025,7 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, whtParameters, links);
+    return Objects.hash(href, id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime, whtParameters, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1040,6 +1066,7 @@ public class Portfolio {
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
     sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("    holdingsFungibility: ").append(toIndentedString(holdingsFungibility)).append("\n");
+    sb.append("    chargeableGainsRegime: ").append(toIndentedString(chargeableGainsRegime)).append("\n");
     sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -1091,6 +1118,7 @@ public class Portfolio {
     openapiFields.add("taxLotSelectionCostBasis");
     openapiFields.add("fractionalUnitsTrueUpConfiguration");
     openapiFields.add("holdingsFungibility");
+    openapiFields.add("chargeableGainsRegime");
     openapiFields.add("whtParameters");
     openapiFields.add("links");
 
@@ -1208,6 +1236,9 @@ public class Portfolio {
       }
       if ((jsonObj.get("holdingsFungibility") != null && !jsonObj.get("holdingsFungibility").isJsonNull()) && !jsonObj.get("holdingsFungibility").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingsFungibility` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingsFungibility").toString()));
+      }
+      if ((jsonObj.get("chargeableGainsRegime") != null && !jsonObj.get("chargeableGainsRegime").isJsonNull()) && !jsonObj.get("chargeableGainsRegime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `chargeableGainsRegime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chargeableGainsRegime").toString()));
       }
       // validate the optional field `whtParameters`
       if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {

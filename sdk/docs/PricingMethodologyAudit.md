@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **outflowTrigger** | [**SwingTriggerEvaluation**](SwingTriggerEvaluation.md) |  | [optional] [default to SwingTriggerEvaluation]
 **dealingFlows** | [**DealingFlowSummary**](DealingFlowSummary.md) |  | [optional] [default to DealingFlowSummary]
 **estimateValuation** | [**EstimateValuation**](EstimateValuation.md) |  | [optional] [default to EstimateValuation]
+**approvalStatus** | **String** | Where a manually approved swing decision stands. Pending until a manager approves or overrides the engine&#39;s proposal, or when the proposal has changed since the decision was taken; Approved when the decision equals the proposal; Overridden when it differs. Absent when the swing policy approves automatically. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.PricingMethodologyAudit;
@@ -30,6 +31,7 @@ SwingTriggerEvaluation InflowTrigger = new SwingTriggerEvaluation();
 SwingTriggerEvaluation OutflowTrigger = new SwingTriggerEvaluation();
 DealingFlowSummary DealingFlows = new DealingFlowSummary();
 EstimateValuation EstimateValuation = new EstimateValuation();
+@jakarta.annotation.Nullable String ApprovalStatus = "example ApprovalStatus";
 
 
 PricingMethodologyAudit pricingMethodologyAuditInstance = new PricingMethodologyAudit()
@@ -41,7 +43,8 @@ PricingMethodologyAudit pricingMethodologyAuditInstance = new PricingMethodology
     .InflowTrigger(InflowTrigger)
     .OutflowTrigger(OutflowTrigger)
     .DealingFlows(DealingFlows)
-    .EstimateValuation(EstimateValuation);
+    .EstimateValuation(EstimateValuation)
+    .ApprovalStatus(ApprovalStatus);
 ```
 
 

@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ChargeableGainsTakeOn;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -95,6 +96,10 @@ public class TargetTaxLot {
   public static final String SERIALIZED_NAME_CURRENT_FACE = "currentFace";
   @SerializedName(SERIALIZED_NAME_CURRENT_FACE)
   private java.math.BigDecimal currentFace;
+
+  public static final String SERIALIZED_NAME_CHARGEABLE_GAINS_TAKE_ON = "chargeableGainsTakeOn";
+  @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS_TAKE_ON)
+  private ChargeableGainsTakeOn chargeableGainsTakeOn;
 
   public TargetTaxLot() {
   }
@@ -330,6 +335,27 @@ public class TargetTaxLot {
   }
 
 
+  public TargetTaxLot chargeableGainsTakeOn(ChargeableGainsTakeOn chargeableGainsTakeOn) {
+    
+    this.chargeableGainsTakeOn = chargeableGainsTakeOn;
+    return this;
+  }
+
+   /**
+   * Get chargeableGainsTakeOn
+   * @return chargeableGainsTakeOn
+  **/
+  @jakarta.annotation.Nullable
+  public ChargeableGainsTakeOn getChargeableGainsTakeOn() {
+    return chargeableGainsTakeOn;
+  }
+
+
+  public void setChargeableGainsTakeOn(ChargeableGainsTakeOn chargeableGainsTakeOn) {
+    this.chargeableGainsTakeOn = chargeableGainsTakeOn;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -350,7 +376,8 @@ public class TargetTaxLot {
         (this.variationMargin.compareTo(targetTaxLot.getVariationMargin()) == 0) &&
         (this.variationMarginPortfolioCcy.compareTo(targetTaxLot.getVariationMarginPortfolioCcy()) == 0) &&
         (this.amortisedCost.compareTo(targetTaxLot.getAmortisedCost()) == 0) &&
-        (this.currentFace.compareTo(targetTaxLot.getCurrentFace()) == 0);
+        (this.currentFace.compareTo(targetTaxLot.getCurrentFace()) == 0) &&
+        Objects.equals(this.chargeableGainsTakeOn, targetTaxLot.chargeableGainsTakeOn);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -359,7 +386,7 @@ public class TargetTaxLot {
 
   @Override
   public int hashCode() {
-    return Objects.hash(units, cost, portfolioCost, price, purchaseDate, settlementDate, notionalCost, variationMargin, variationMarginPortfolioCcy, amortisedCost, currentFace);
+    return Objects.hash(units, cost, portfolioCost, price, purchaseDate, settlementDate, notionalCost, variationMargin, variationMarginPortfolioCcy, amortisedCost, currentFace, chargeableGainsTakeOn);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -384,6 +411,7 @@ public class TargetTaxLot {
     sb.append("    variationMarginPortfolioCcy: ").append(toIndentedString(variationMarginPortfolioCcy)).append("\n");
     sb.append("    amortisedCost: ").append(toIndentedString(amortisedCost)).append("\n");
     sb.append("    currentFace: ").append(toIndentedString(currentFace)).append("\n");
+    sb.append("    chargeableGainsTakeOn: ").append(toIndentedString(chargeableGainsTakeOn)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -417,6 +445,7 @@ public class TargetTaxLot {
     openapiFields.add("variationMarginPortfolioCcy");
     openapiFields.add("amortisedCost");
     openapiFields.add("currentFace");
+    openapiFields.add("chargeableGainsTakeOn");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -446,6 +475,10 @@ public class TargetTaxLot {
       // validate the optional field `cost`
       if (jsonObj.get("cost") != null && !jsonObj.get("cost").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("cost"));
+      }
+      // validate the optional field `chargeableGainsTakeOn`
+      if (jsonObj.get("chargeableGainsTakeOn") != null && !jsonObj.get("chargeableGainsTakeOn").isJsonNull()) {
+        ChargeableGainsTakeOn.validateJsonElement(jsonObj.get("chargeableGainsTakeOn"));
       }
   }
 
