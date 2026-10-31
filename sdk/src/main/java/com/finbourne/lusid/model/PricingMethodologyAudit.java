@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.DealingFlowSummary;
+import com.finbourne.lusid.model.DealingLineNotValued;
 import com.finbourne.lusid.model.EstimateValuation;
 import com.finbourne.lusid.model.PricingMethodologyEngineProposal;
 import com.finbourne.lusid.model.PricingMethodologyOverride;
@@ -23,7 +24,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -95,6 +98,10 @@ public class PricingMethodologyAudit {
   public static final String SERIALIZED_NAME_APPROVAL_STATUS = "approvalStatus";
   @SerializedName(SERIALIZED_NAME_APPROVAL_STATUS)
   private String approvalStatus;
+
+  public static final String SERIALIZED_NAME_DEALING_LINES_NOT_VALUED = "dealingLinesNotValued";
+  @SerializedName(SERIALIZED_NAME_DEALING_LINES_NOT_VALUED)
+  private List<DealingLineNotValued> dealingLinesNotValued;
 
   public PricingMethodologyAudit() {
   }
@@ -309,6 +316,35 @@ public class PricingMethodologyAudit {
   }
 
 
+  public PricingMethodologyAudit dealingLinesNotValued(List<DealingLineNotValued> dealingLinesNotValued) {
+    
+    this.dealingLinesNotValued = dealingLinesNotValued;
+    return this;
+  }
+
+  public PricingMethodologyAudit addDealingLinesNotValuedItem(DealingLineNotValued dealingLinesNotValuedItem) {
+    if (this.dealingLinesNotValued == null) {
+      this.dealingLinesNotValued = new ArrayList<>();
+    }
+    this.dealingLinesNotValued.add(dealingLinesNotValuedItem);
+    return this;
+  }
+
+   /**
+   * The dealing lines read for the swing decision that could not be valued into the share class currency: an amount in a currency that is neither the fund&#39;s nor any share class&#39;s, or a weight-only line. While any are present and no pricingMethodologyOverride has been submitted, no swing decision is taken, the dealing price is absent and the valuation point cannot be finalised; under an override the override&#39;s price stands and the lines remain listed here. Absent when every line was valued or the methodology does not swing.
+   * @return dealingLinesNotValued
+  **/
+  @jakarta.annotation.Nullable
+  public List<DealingLineNotValued> getDealingLinesNotValued() {
+    return dealingLinesNotValued;
+  }
+
+
+  public void setDealingLinesNotValued(List<DealingLineNotValued> dealingLinesNotValued) {
+    this.dealingLinesNotValued = dealingLinesNotValued;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -328,7 +364,8 @@ public class PricingMethodologyAudit {
         Objects.equals(this.outflowTrigger, pricingMethodologyAudit.outflowTrigger) &&
         Objects.equals(this.dealingFlows, pricingMethodologyAudit.dealingFlows) &&
         Objects.equals(this.estimateValuation, pricingMethodologyAudit.estimateValuation) &&
-        Objects.equals(this.approvalStatus, pricingMethodologyAudit.approvalStatus);
+        Objects.equals(this.approvalStatus, pricingMethodologyAudit.approvalStatus) &&
+        Objects.equals(this.dealingLinesNotValued, pricingMethodologyAudit.dealingLinesNotValued);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -337,7 +374,7 @@ public class PricingMethodologyAudit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(netCashflow, netCashflowPctOfNav, spreadsApplied, engineProposal, override, inflowTrigger, outflowTrigger, dealingFlows, estimateValuation, approvalStatus);
+    return Objects.hash(netCashflow, netCashflowPctOfNav, spreadsApplied, engineProposal, override, inflowTrigger, outflowTrigger, dealingFlows, estimateValuation, approvalStatus, dealingLinesNotValued);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -361,6 +398,7 @@ public class PricingMethodologyAudit {
     sb.append("    dealingFlows: ").append(toIndentedString(dealingFlows)).append("\n");
     sb.append("    estimateValuation: ").append(toIndentedString(estimateValuation)).append("\n");
     sb.append("    approvalStatus: ").append(toIndentedString(approvalStatus)).append("\n");
+    sb.append("    dealingLinesNotValued: ").append(toIndentedString(dealingLinesNotValued)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -393,6 +431,7 @@ public class PricingMethodologyAudit {
     openapiFields.add("dealingFlows");
     openapiFields.add("estimateValuation");
     openapiFields.add("approvalStatus");
+    openapiFields.add("dealingLinesNotValued");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -448,6 +487,20 @@ public class PricingMethodologyAudit {
       }
       if ((jsonObj.get("approvalStatus") != null && !jsonObj.get("approvalStatus").isJsonNull()) && !jsonObj.get("approvalStatus").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `approvalStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("approvalStatus").toString()));
+      }
+      if (jsonObj.get("dealingLinesNotValued") != null && !jsonObj.get("dealingLinesNotValued").isJsonNull()) {
+        JsonArray jsonArraydealingLinesNotValued = jsonObj.getAsJsonArray("dealingLinesNotValued");
+        if (jsonArraydealingLinesNotValued != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("dealingLinesNotValued").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `dealingLinesNotValued` to be an array in the JSON string but got `%s`", jsonObj.get("dealingLinesNotValued").toString()));
+          }
+
+          // validate the optional field `dealingLinesNotValued` (array)
+          for (int i = 0; i < jsonArraydealingLinesNotValued.size(); i++) {
+            DealingLineNotValued.validateJsonElement(jsonArraydealingLinesNotValued.get(i));
+          };
+        }
       }
   }
 

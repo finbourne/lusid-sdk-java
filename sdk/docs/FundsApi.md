@@ -6429,7 +6429,7 @@ public class FundsApiExample {
 
 [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point.
 
-Updates an existing Valuation Point.
+Updates an existing Valuation Point. Supplying a pricingMethodologyOverride approves or overrides the swing  decision the Valuation Point deals at, which additionally requires the ApprovePricingMethodology action on the Fund.
 
 ### Example
 

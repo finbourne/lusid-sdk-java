@@ -33,6 +33,7 @@ info:
     | Notification | Notification service. | [Swagger](../../../notification/swagger/index.html) |
     | Configuration | File store for secrets and other sensitive information. | [Swagger](../../../configuration/swagger/index.html) |
     | Workflow | Workflow service. | [Swagger](../../../workflow/swagger/index.html) |
+    | Candela | AI agent framework for LUSID. | [Swagger](../../../candela/swagger/index.html) |
 
 
     # Error Codes
@@ -422,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10467
+  version: 0.11.10471
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -58221,7 +58222,10 @@ paths:
       x-content-type: application/json-patch+json
       x-accepts: application/json
     put:
-      description: Updates an existing Valuation Point.
+      description: "Updates an existing Valuation Point. Supplying a pricingMethodologyOverride\
+        \ approves or overrides the swing\r\ndecision the Valuation Point deals at,\
+        \ which additionally requires the ApprovePricingMethodology action on the\
+        \ Fund."
       operationId: UpdateValuationPoint
       parameters:
       - description: The scope of the Fund.
@@ -175614,6 +175618,273 @@ paths:
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/transferagency/orders/$external:
+    post:
+      description: "Loads the orders a third-party transfer agent dealt for a fund\
+        \ at a dealing point. Each request key names one\r\nset: a fund, a dealing\
+        \ point, the sending source and the orders it dealt, each keyed by the source's\
+        \ own\r\nline id. The orders are written in the fund's scope with the code\r\
+        \n`{fundCode}-{source}-{yyyyMMddHHmmss}-{lineId}`, the dealing point written\
+        \ in UTC to the second, in the\r\nExternal order state, priced at the dealing\
+        \ point, so the fund's External dealing source reads them at that\r\nvaluation\
+        \ point. A line whose code would exceed 64 characters is refused.\r\n \r\n\
+        A set replaces what the same source sent before: every External order of that\
+        \ source for the fund's share\r\nclasses at the dealing point that the set\
+        \ does not restate is deleted, and the response names them. Two\r\nsets in\
+        \ one request naming the same fund, source and dealing point are refused after\
+        \ the first.\r\n \r\nThe fund must list External among its dealing estimate\
+        \ sources. Each line must name a share class of the\r\nfund and exactly one\
+        \ of a positive number of units or a positive amount in a valid currency.\
+        \ A set sent\r\nafter its dealing point is loaded and flagged late; one sent\
+        \ exactly at the dealing point is on time.\r\nWhether the set is complete\
+        \ is recorded on each order and is not yet enforced at pricing.\r\n \r\nEach\
+        \ order carries the properties `Order/TA/PriceDate` (date), `Order/TA/DealingSource`\
+        \ (string),\r\n`Order/TA/DealingSourceReference` (string), `Order/TA/Complete`\
+        \ (string, `True` or `False`),\r\n`Order/TA/Late` (string, `True` or `False`)\
+        \ and `Order/TA/SentAt` (date). LUSID does not create these\r\nproperty definitions:\
+        \ define them in the domain, with those data types, before loading, as for\
+        \ the other\r\ntransfer agency order properties. A domain missing any of them\
+        \ fails the request with a property-not-defined\r\nerror and nothing is written.\r\
+        \n \r\nSets are validated independently: a set that fails validation is reported\
+        \ under failures and the others\r\nstill load. The sets that pass are then\
+        \ written together in one command, so a reader never sees half a\r\ndealing\
+        \ point, and a refusal at write time fails the whole request and leaves the\
+        \ book as it was. A request\r\ncarries at most 200 sets and at most 2000 lines\
+        \ across all of them."
+      operationId: UpsertExternalTransferAgencyOrders
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              Set1:
+                fundId:
+                  scope: example-scope
+                  code: fund-1
+                dealingPoint: 2025-06-02T12:00:00.0000000+00:00
+                source:
+                  system: ExampleTA
+                  reference: BATCH-20250602-001
+                complete: true
+                sentAt: 2025-06-02T11:45:00.0000000+00:00
+                lines:
+                  line-1:
+                    instrumentIdentifierType: ClientInternal
+                    instrumentIdentifier: FUND-1-CLASS-A
+                    instrumentScope: example-scope
+                    tradeType: Subscription
+                    amount:
+                      value: 100000
+                      currency: GBP
+                  line-2:
+                    instrumentIdentifierType: ClientInternal
+                    instrumentIdentifier: FUND-1-CLASS-A
+                    instrumentScope: example-scope
+                    tradeType: Redemption
+                    units: 2500
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/UpsertExternalTransferAgencyOrdersRequest'
+              type: object
+          application/json:
+            example:
+              Set1:
+                fundId:
+                  scope: example-scope
+                  code: fund-1
+                dealingPoint: 2025-06-02T12:00:00.0000000+00:00
+                source:
+                  system: ExampleTA
+                  reference: BATCH-20250602-001
+                complete: true
+                sentAt: 2025-06-02T11:45:00.0000000+00:00
+                lines:
+                  line-1:
+                    instrumentIdentifierType: ClientInternal
+                    instrumentIdentifier: FUND-1-CLASS-A
+                    instrumentScope: example-scope
+                    tradeType: Subscription
+                    amount:
+                      value: 100000
+                      currency: GBP
+                  line-2:
+                    instrumentIdentifierType: ClientInternal
+                    instrumentIdentifier: FUND-1-CLASS-A
+                    instrumentScope: example-scope
+                    tradeType: Redemption
+                    units: 2500
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/UpsertExternalTransferAgencyOrdersRequest'
+              type: object
+          text/json:
+            example:
+              Set1:
+                fundId:
+                  scope: example-scope
+                  code: fund-1
+                dealingPoint: 2025-06-02T12:00:00.0000000+00:00
+                source:
+                  system: ExampleTA
+                  reference: BATCH-20250602-001
+                complete: true
+                sentAt: 2025-06-02T11:45:00.0000000+00:00
+                lines:
+                  line-1:
+                    instrumentIdentifierType: ClientInternal
+                    instrumentIdentifier: FUND-1-CLASS-A
+                    instrumentScope: example-scope
+                    tradeType: Subscription
+                    amount:
+                      value: 100000
+                      currency: GBP
+                  line-2:
+                    instrumentIdentifierType: ClientInternal
+                    instrumentIdentifier: FUND-1-CLASS-A
+                    instrumentScope: example-scope
+                    tradeType: Redemption
+                    units: 2500
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/UpsertExternalTransferAgencyOrdersRequest'
+              type: object
+          application/*+json:
+            example:
+              Set1:
+                fundId:
+                  scope: example-scope
+                  code: fund-1
+                dealingPoint: 2025-06-02T12:00:00.0000000+00:00
+                source:
+                  system: ExampleTA
+                  reference: BATCH-20250602-001
+                complete: true
+                sentAt: 2025-06-02T11:45:00.0000000+00:00
+                lines:
+                  line-1:
+                    instrumentIdentifierType: ClientInternal
+                    instrumentIdentifier: FUND-1-CLASS-A
+                    instrumentScope: example-scope
+                    tradeType: Subscription
+                    amount:
+                      value: 100000
+                      currency: GBP
+                  line-2:
+                    instrumentIdentifierType: ClientInternal
+                    instrumentIdentifier: FUND-1-CLASS-A
+                    instrumentScope: example-scope
+                    tradeType: Redemption
+                    units: 2500
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/UpsertExternalTransferAgencyOrdersRequest'
+              type: object
+        description: "The sets to load, keyed by a correlation key of the caller's\
+          \ choosing."
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                successes:
+                  Set1:
+                    fundId:
+                      scope: example-scope
+                      code: fund-1
+                    dealingPoint: 2025-06-02T12:00:00.0000000+00:00
+                    late: false
+                    upsertedOrders:
+                    - scope: example-scope
+                      code: ExampleTA-202506021200-line-1
+                    - scope: example-scope
+                      code: ExampleTA-202506021200-line-2
+                    deletedOrders:
+                    - scope: example-scope
+                      code: ExampleTA-202506021200-line-3
+                failed:
+                  Set2:
+                    id: Set2
+                    type: ExampleFailure
+                    detail: One or more problems occurred.
+              schema:
+                $ref: '#/components/schemas/UpsertExternalTransferAgencyOrdersResponse'
+            application/json:
+              example:
+                successes:
+                  Set1:
+                    fundId:
+                      scope: example-scope
+                      code: fund-1
+                    dealingPoint: 2025-06-02T12:00:00.0000000+00:00
+                    late: false
+                    upsertedOrders:
+                    - scope: example-scope
+                      code: ExampleTA-202506021200-line-1
+                    - scope: example-scope
+                      code: ExampleTA-202506021200-line-2
+                    deletedOrders:
+                    - scope: example-scope
+                      code: ExampleTA-202506021200-line-3
+                failed:
+                  Set2:
+                    id: Set2
+                    type: ExampleFailure
+                    detail: One or more problems occurred.
+              schema:
+                $ref: '#/components/schemas/UpsertExternalTransferAgencyOrdersResponse'
+            text/json:
+              example:
+                successes:
+                  Set1:
+                    fundId:
+                      scope: example-scope
+                      code: fund-1
+                    dealingPoint: 2025-06-02T12:00:00.0000000+00:00
+                    late: false
+                    upsertedOrders:
+                    - scope: example-scope
+                      code: ExampleTA-202506021200-line-1
+                    - scope: example-scope
+                      code: ExampleTA-202506021200-line-2
+                    deletedOrders:
+                    - scope: example-scope
+                      code: ExampleTA-202506021200-line-3
+                failed:
+                  Set2:
+                    id: Set2
+                    type: ExampleFailure
+                    detail: One or more problems occurred.
+              schema:
+                $ref: '#/components/schemas/UpsertExternalTransferAgencyOrdersResponse'
+          description: "The sets loaded and any that failed, keyed by the request\
+            \ key."
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] UpsertExternalTransferAgencyOrders: Load transfer agency\
+        \ orders sent by an external transfer agent"
+      tags:
+      - TransferAgency
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/transferagency/transactions/$fromOrders:
     post:
       description: "This endpoint derives transactions from existing transfer agency\
@@ -184001,6 +184272,15 @@ components:
                   tierMatched:
                     lowerBoundExclusive: 7.058770351582356
                     upperBoundInclusive: 6.519180951018382
+                dealingLinesNotValued:
+                - reason: reason
+                  orderId: orderId
+                  shareClass: shareClass
+                  currency: currency
+                - reason: reason
+                  orderId: orderId
+                  shareClass: shareClass
+                  currency: currency
                 estimateValuation:
                   atEstimatePrice:
                     netCashflow: 5.533258397034986
@@ -184190,6 +184470,15 @@ components:
                   tierMatched:
                     lowerBoundExclusive: 7.058770351582356
                     upperBoundInclusive: 6.519180951018382
+                dealingLinesNotValued:
+                - reason: reason
+                  orderId: orderId
+                  shareClass: shareClass
+                  currency: currency
+                - reason: reason
+                  orderId: orderId
+                  shareClass: shareClass
+                  currency: currency
                 estimateValuation:
                   atEstimatePrice:
                     netCashflow: 5.533258397034986
@@ -184772,6 +185061,15 @@ components:
                   tierMatched:
                     lowerBoundExclusive: 7.058770351582356
                     upperBoundInclusive: 6.519180951018382
+                dealingLinesNotValued:
+                - reason: reason
+                  orderId: orderId
+                  shareClass: shareClass
+                  currency: currency
+                - reason: reason
+                  orderId: orderId
+                  shareClass: shareClass
+                  currency: currency
                 estimateValuation:
                   atEstimatePrice:
                     netCashflow: 5.533258397034986
@@ -184961,6 +185259,15 @@ components:
                   tierMatched:
                     lowerBoundExclusive: 7.058770351582356
                     upperBoundInclusive: 6.519180951018382
+                dealingLinesNotValued:
+                - reason: reason
+                  orderId: orderId
+                  shareClass: shareClass
+                  currency: currency
+                - reason: reason
+                  orderId: orderId
+                  shareClass: shareClass
+                  currency: currency
                 estimateValuation:
                   atEstimatePrice:
                     netCashflow: 5.533258397034986
@@ -233589,6 +233896,39 @@ components:
       - grossOutflow
       - netCashflow
       type: object
+    DealingLineNotValued:
+      additionalProperties: false
+      description: "A dealing line read for a swing decision that could not be valued\
+        \ into its share class currency, and why."
+      example:
+        reason: reason
+        orderId: orderId
+        shareClass: shareClass
+        currency: currency
+      properties:
+        orderId:
+          description: "The identifier of the dealing order that could not be valued,\
+            \ as scope/code."
+          minLength: 1
+          type: string
+        shareClass:
+          description: "The share class the order deals in, keyed as the valuation\
+            \ point's share classes are."
+          nullable: true
+          type: string
+        currency:
+          description: The currency the order's amount is in. Absent when the line
+            carries no amount.
+          nullable: true
+          type: string
+        reason:
+          description: Why the line could not be valued into the share class currency.
+          minLength: 1
+          type: string
+      required:
+      - orderId
+      - reason
+      type: object
     DecimalComplianceParameter:
       allOf:
       - $ref: '#/components/schemas/ComplianceParameter'
@@ -241737,6 +242077,92 @@ components:
           type: string
       required:
       - name
+      type: object
+    ExternalTransferAgencyOrderAmount:
+      additionalProperties: false
+      description: A cash amount in a stated currency.
+      example:
+        currency: currency
+        value: 6.027456183070403
+      properties:
+        value:
+          format: double
+          type: number
+        currency:
+          maxLength: 5
+          minLength: 3
+          pattern: "^[a-zA-Z]*$"
+          type: string
+      required:
+      - currency
+      - value
+      type: object
+    ExternalTransferAgencyOrderLine:
+      additionalProperties: false
+      description: "One order within an external order set: a share class, a direction\
+        \ and either a number of units or an amount."
+      example:
+        amount:
+          currency: currency
+          value: 6.027456183070403
+        instrumentIdentifier: instrumentIdentifier
+        instrumentScope: instrumentScope
+        instrumentIdentifierType: instrumentIdentifierType
+        units: 0.8008281904610115
+        tradeType: tradeType
+      properties:
+        instrumentIdentifierType:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        instrumentIdentifier:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        instrumentScope:
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        tradeType:
+          description: "Available values: Subscription, Redemption, SwitchOut, SwitchIn,\
+            \ TransferOut, TransferIn."
+          minLength: 1
+          type: string
+        units:
+          format: double
+          nullable: true
+          type: number
+        amount:
+          $ref: '#/components/schemas/ExternalTransferAgencyOrderAmount'
+      required:
+      - instrumentIdentifier
+      - instrumentIdentifierType
+      - tradeType
+      type: object
+    ExternalTransferAgencyOrderSource:
+      additionalProperties: false
+      description: "The system that sent an external order set, and its own reference\
+        \ for the batch."
+      example:
+        reference: reference
+        system: system
+      properties:
+        system:
+          maxLength: 32
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        reference:
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+      - system
       type: object
     Facility:
       additionalProperties: false
@@ -320684,6 +321110,15 @@ components:
           tierMatched:
             lowerBoundExclusive: 7.058770351582356
             upperBoundInclusive: 6.519180951018382
+        dealingLinesNotValued:
+        - reason: reason
+          orderId: orderId
+          shareClass: shareClass
+          currency: currency
+        - reason: reason
+          orderId: orderId
+          shareClass: shareClass
+          currency: currency
         estimateValuation:
           atEstimatePrice:
             netCashflow: 5.533258397034986
@@ -320751,6 +321186,19 @@ components:
             \ policy approves automatically."
           nullable: true
           type: string
+        dealingLinesNotValued:
+          description: "The dealing lines read for the swing decision that could not\
+            \ be valued into the share class currency: an amount in a currency that\
+            \ is neither the fund's nor any share class's, or a weight-only line.\
+            \ While any are present and no pricingMethodologyOverride has been submitted,\
+            \ no swing decision is taken, the dealing price is absent and the valuation\
+            \ point cannot be finalised; under an override the override's price stands\
+            \ and the lines remain listed here. Absent when every line was valued\
+            \ or the methodology does not swing."
+          items:
+            $ref: '#/components/schemas/DealingLineNotValued'
+          nullable: true
+          type: array
       required:
       - engineProposal
       - netCashflow
@@ -320911,6 +321359,15 @@ components:
             tierMatched:
               lowerBoundExclusive: 7.058770351582356
               upperBoundInclusive: 6.519180951018382
+          dealingLinesNotValued:
+          - reason: reason
+            orderId: orderId
+            shareClass: shareClass
+            currency: currency
+          - reason: reason
+            orderId: orderId
+            shareClass: shareClass
+            currency: currency
           estimateValuation:
             atEstimatePrice:
               netCashflow: 5.533258397034986
@@ -367793,6 +368250,15 @@ components:
               tierMatched:
                 lowerBoundExclusive: 7.058770351582356
                 upperBoundInclusive: 6.519180951018382
+            dealingLinesNotValued:
+            - reason: reason
+              orderId: orderId
+              shareClass: shareClass
+              currency: currency
+            - reason: reason
+              orderId: orderId
+              shareClass: shareClass
+              currency: currency
             estimateValuation:
               atEstimatePrice:
                 netCashflow: 5.533258397034986
@@ -391028,6 +391494,149 @@ components:
       - entityType
       - identifierMatchingOrder
       type: object
+    UpsertExternalTransferAgencyOrderResult:
+      additionalProperties: false
+      example:
+        fundId:
+          code: code
+          scope: scope
+        dealingPoint: 2000-01-23T04:56:07.000+00:00
+        late: true
+        deletedOrders:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+        upsertedOrders:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+      properties:
+        fundId:
+          $ref: '#/components/schemas/ResourceId'
+        dealingPoint:
+          format: date-time
+          type: string
+        late:
+          type: boolean
+        upsertedOrders:
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
+        deletedOrders:
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
+      type: object
+    UpsertExternalTransferAgencyOrdersRequest:
+      additionalProperties: false
+      description: "One dealing point's orders for one fund, as a third-party transfer\
+        \ agent sends them."
+      example:
+        fundId:
+          code: code
+          scope: scope
+        dealingPoint: 2000-01-23T04:56:07.000+00:00
+        source:
+          reference: reference
+          system: system
+        sentAt: 2000-01-23T04:56:07.000+00:00
+        complete: true
+        lines:
+          key:
+            amount:
+              currency: currency
+              value: 6.027456183070403
+            instrumentIdentifier: instrumentIdentifier
+            instrumentScope: instrumentScope
+            instrumentIdentifierType: instrumentIdentifierType
+            units: 0.8008281904610115
+            tradeType: tradeType
+      properties:
+        fundId:
+          $ref: '#/components/schemas/ResourceId'
+        dealingPoint:
+          format: date-time
+          type: string
+        source:
+          $ref: '#/components/schemas/ExternalTransferAgencyOrderSource'
+        complete:
+          type: boolean
+        sentAt:
+          format: date-time
+          nullable: true
+          type: string
+        lines:
+          additionalProperties:
+            $ref: '#/components/schemas/ExternalTransferAgencyOrderLine'
+          type: object
+      required:
+      - dealingPoint
+      - fundId
+      - lines
+      - source
+      type: object
+    UpsertExternalTransferAgencyOrdersResponse:
+      additionalProperties: false
+      example:
+        successes:
+          key:
+            fundId:
+              code: code
+              scope: scope
+            dealingPoint: 2000-01-23T04:56:07.000+00:00
+            late: true
+            deletedOrders:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+            upsertedOrders:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        failed:
+          key:
+            id: id
+            detail: detail
+            type: type
+            errorDetails:
+            - key: errorDetails
+            - key: errorDetails
+      properties:
+        successes:
+          additionalProperties:
+            $ref: '#/components/schemas/UpsertExternalTransferAgencyOrderResult'
+          description: "A dictionary of successfully loaded sets, keyed by the request\
+            \ key."
+          nullable: true
+          type: object
+        failed:
+          additionalProperties:
+            $ref: '#/components/schemas/ErrorDetail'
+          description: "A dictionary of sets that could not be loaded, keyed by the\
+            \ request key, containing error details."
+          nullable: true
+          type: object
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      type: object
     UpsertFlowConventionsRequest:
       additionalProperties: false
       description: "Flow conventions that is to be stored in the convention data store.\r\
@@ -397874,6 +398483,15 @@ components:
                 tierMatched:
                   lowerBoundExclusive: 7.058770351582356
                   upperBoundInclusive: 6.519180951018382
+              dealingLinesNotValued:
+              - reason: reason
+                orderId: orderId
+                shareClass: shareClass
+                currency: currency
+              - reason: reason
+                orderId: orderId
+                shareClass: shareClass
+                currency: currency
               estimateValuation:
                 atEstimatePrice:
                   netCashflow: 5.533258397034986
@@ -398063,6 +398681,15 @@ components:
                 tierMatched:
                   lowerBoundExclusive: 7.058770351582356
                   upperBoundInclusive: 6.519180951018382
+              dealingLinesNotValued:
+              - reason: reason
+                orderId: orderId
+                shareClass: shareClass
+                currency: currency
+              - reason: reason
+                orderId: orderId
+                shareClass: shareClass
+                currency: currency
               estimateValuation:
                 atEstimatePrice:
                   netCashflow: 5.533258397034986

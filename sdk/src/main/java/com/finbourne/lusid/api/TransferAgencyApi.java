@@ -36,6 +36,8 @@ import com.finbourne.lusid.model.EstimateTransferAgencyOrdersResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.TransferAgencyOrdersResponse;
+import com.finbourne.lusid.model.UpsertExternalTransferAgencyOrdersRequest;
+import com.finbourne.lusid.model.UpsertExternalTransferAgencyOrdersResponse;
 import com.finbourne.lusid.model.UpsertTransferAgencyOrderRequest;
 import com.finbourne.lusid.model.UpsertTransferAgencyTransactionFromOrderRequest;
 import com.finbourne.lusid.model.UpsertTransferAgencyTransactionsFromOrdersResponse;
@@ -1037,6 +1039,241 @@ public class TransferAgencyApi {
      */
     public APIestimateTransferAgencyOrdersRequest estimateTransferAgencyOrders(Map<String, EstimateTransferAgencyOrderRequest> requestBody) {
         return new APIestimateTransferAgencyOrdersRequest(requestBody);
+    }
+    private okhttp3.Call upsertExternalTransferAgencyOrdersCall(Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertExternalTransferAgencyOrdersCall(requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertExternalTransferAgencyOrdersCall(Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/transferagency/orders/$external";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertExternalTransferAgencyOrdersValidateBeforeCall(Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling upsertExternalTransferAgencyOrders(Async)");
+        }
+
+        return upsertExternalTransferAgencyOrdersCall(requestBody, _callback, opts);
+
+    }
+
+
+    private ApiResponse<UpsertExternalTransferAgencyOrdersResponse> upsertExternalTransferAgencyOrdersWithHttpInfo(Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = upsertExternalTransferAgencyOrdersValidateBeforeCall(requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertExternalTransferAgencyOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertExternalTransferAgencyOrdersResponse> upsertExternalTransferAgencyOrdersWithHttpInfo(Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertExternalTransferAgencyOrdersValidateBeforeCall(requestBody, null, opts);
+        Type localVarReturnType = new TypeToken<UpsertExternalTransferAgencyOrdersResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertExternalTransferAgencyOrdersAsync(Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody, final ApiCallback<UpsertExternalTransferAgencyOrdersResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertExternalTransferAgencyOrdersValidateBeforeCall(requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertExternalTransferAgencyOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertExternalTransferAgencyOrdersAsync(Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody, final ApiCallback<UpsertExternalTransferAgencyOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertExternalTransferAgencyOrdersValidateBeforeCall(requestBody, _callback, opts);
+        Type localVarReturnType = new TypeToken<UpsertExternalTransferAgencyOrdersResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertExternalTransferAgencyOrdersRequest {
+        private final Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody;
+
+        private APIupsertExternalTransferAgencyOrdersRequest(Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody) {
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertExternalTransferAgencyOrders
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertExternalTransferAgencyOrdersCall(requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertExternalTransferAgencyOrders request
+         * @return UpsertExternalTransferAgencyOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertExternalTransferAgencyOrdersResponse execute() throws ApiException {
+            ApiResponse<UpsertExternalTransferAgencyOrdersResponse> localVarResp = upsertExternalTransferAgencyOrdersWithHttpInfo(requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertExternalTransferAgencyOrders request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertExternalTransferAgencyOrdersResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertExternalTransferAgencyOrdersResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertExternalTransferAgencyOrdersResponse> localVarResp = upsertExternalTransferAgencyOrdersWithHttpInfo(requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertExternalTransferAgencyOrders request with HTTP info returned
+         * @return ApiResponse&lt;UpsertExternalTransferAgencyOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertExternalTransferAgencyOrdersResponse> executeWithHttpInfo() throws ApiException {
+            return upsertExternalTransferAgencyOrdersWithHttpInfo(requestBody);
+        }
+
+        /**
+         * Execute upsertExternalTransferAgencyOrders request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertExternalTransferAgencyOrdersResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertExternalTransferAgencyOrdersResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertExternalTransferAgencyOrdersWithHttpInfo(requestBody, opts);
+        }
+
+        /**
+         * Execute upsertExternalTransferAgencyOrders request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertExternalTransferAgencyOrdersResponse> _callback) throws ApiException {
+            return upsertExternalTransferAgencyOrdersAsync(requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertExternalTransferAgencyOrders request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertExternalTransferAgencyOrdersResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertExternalTransferAgencyOrdersAsync(requestBody, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpsertExternalTransferAgencyOrders: Load transfer agency orders sent by an external transfer agent
+     * Loads the orders a third-party transfer agent dealt for a fund at a dealing point. Each request key names one  set: a fund, a dealing point, the sending source and the orders it dealt, each keyed by the source&#39;s own  line id. The orders are written in the fund&#39;s scope with the code  &#x60;{fundCode}-{source}-{yyyyMMddHHmmss}-{lineId}&#x60;, the dealing point written in UTC to the second, in the  External order state, priced at the dealing point, so the fund&#39;s External dealing source reads them at that  valuation point. A line whose code would exceed 64 characters is refused.     A set replaces what the same source sent before: every External order of that source for the fund&#39;s share  classes at the dealing point that the set does not restate is deleted, and the response names them. Two  sets in one request naming the same fund, source and dealing point are refused after the first.     The fund must list External among its dealing estimate sources. Each line must name a share class of the  fund and exactly one of a positive number of units or a positive amount in a valid currency. A set sent  after its dealing point is loaded and flagged late; one sent exactly at the dealing point is on time.  Whether the set is complete is recorded on each order and is not yet enforced at pricing.     Each order carries the properties &#x60;Order/TA/PriceDate&#x60; (date), &#x60;Order/TA/DealingSource&#x60; (string),  &#x60;Order/TA/DealingSourceReference&#x60; (string), &#x60;Order/TA/Complete&#x60; (string, &#x60;True&#x60; or &#x60;False&#x60;),  &#x60;Order/TA/Late&#x60; (string, &#x60;True&#x60; or &#x60;False&#x60;) and &#x60;Order/TA/SentAt&#x60; (date). LUSID does not create these  property definitions: define them in the domain, with those data types, before loading, as for the other  transfer agency order properties. A domain missing any of them fails the request with a property-not-defined  error and nothing is written.     Sets are validated independently: a set that fails validation is reported under failures and the others  still load. The sets that pass are then written together in one command, so a reader never sees half a  dealing point, and a refusal at write time fails the whole request and leaves the book as it was. A request  carries at most 200 sets and at most 2000 lines across all of them.
+     * @param requestBody The sets to load, keyed by a correlation key of the caller&#39;s choosing. (required)
+     * @return APIupsertExternalTransferAgencyOrdersRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertExternalTransferAgencyOrdersRequest upsertExternalTransferAgencyOrders(Map<String, UpsertExternalTransferAgencyOrdersRequest> requestBody) {
+        return new APIupsertExternalTransferAgencyOrdersRequest(requestBody);
     }
     private okhttp3.Call upsertTransferAgencyOrdersCall(Map<String, UpsertTransferAgencyOrderRequest> requestBody, final ApiCallback _callback) throws ApiException {
         return upsertTransferAgencyOrdersCall(requestBody,  _callback, new ConfigurationOptions());

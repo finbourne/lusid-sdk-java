@@ -19036,7 +19036,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point.
-     * Updates an existing Valuation Point.
+     * Updates an existing Valuation Point. Supplying a pricingMethodologyOverride approves or overrides the swing  decision the Valuation Point deals at, which additionally requires the ApprovePricingMethodology action on the Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param updateValuationPointRequest The Valuation Point Estimate definition to upsert. (required)
