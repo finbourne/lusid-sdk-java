@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10471
+  version: 0.11.10472
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -164373,6 +164373,11 @@ paths:
                   originalCost: 10000
                   marketValue1982: 50000
                   rebasingElection: false
+                  additions:
+                  - date: 1990-06-01T00:00:00.0000000+00:00
+                    cost: 130908.33
+                    indexation: 48500
+                    paidCost: 172500
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164415,6 +164420,11 @@ paths:
                   originalCost: 10000
                   marketValue1982: 50000
                   rebasingElection: false
+                  additions:
+                  - date: 1990-06-01T00:00:00.0000000+00:00
+                    cost: 130908.33
+                    indexation: 48500
+                    paidCost: 172500
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164457,6 +164467,11 @@ paths:
                   originalCost: 10000
                   marketValue1982: 50000
                   rebasingElection: false
+                  additions:
+                  - date: 1990-06-01T00:00:00.0000000+00:00
+                    cost: 130908.33
+                    indexation: 48500
+                    paidCost: 172500
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164499,6 +164514,11 @@ paths:
                   originalCost: 10000
                   marketValue1982: 50000
                   rebasingElection: false
+                  additions:
+                  - date: 1990-06-01T00:00:00.0000000+00:00
+                    cost: 130908.33
+                    indexation: 48500
+                    paidCost: 172500
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164661,6 +164681,11 @@ paths:
                   originalCost: 10000
                   marketValue1982: 50000
                   rebasingElection: false
+                  additions:
+                  - date: 1990-06-01T00:00:00.0000000+00:00
+                    cost: 130908.33
+                    indexation: 48500
+                    paidCost: 172500
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164703,6 +164728,11 @@ paths:
                   originalCost: 10000
                   marketValue1982: 50000
                   rebasingElection: false
+                  additions:
+                  - date: 1990-06-01T00:00:00.0000000+00:00
+                    cost: 130908.33
+                    indexation: 48500
+                    paidCost: 172500
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164745,6 +164775,11 @@ paths:
                   originalCost: 10000
                   marketValue1982: 50000
                   rebasingElection: false
+                  additions:
+                  - date: 1990-06-01T00:00:00.0000000+00:00
+                    cost: 130908.33
+                    indexation: 48500
+                    paidCost: 172500
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -164787,6 +164822,11 @@ paths:
                   originalCost: 10000
                   marketValue1982: 50000
                   rebasingElection: false
+                  additions:
+                  - date: 1990-06-01T00:00:00.0000000+00:00
+                    cost: 130908.33
+                    indexation: 48500
+                    paidCost: 172500
               currency: GBP
               custodianAccountId:
                 scope: CustodianAccountScope
@@ -188804,6 +188844,15 @@ components:
           chargeableGainsTakeOn:
             role: role
             rebasingElection: true
+            additions:
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
             indexation: 3.616076749251911
             indexedTo: 2000-01-23T04:56:07.000+00:00
             originalCost: 2.027123023002322
@@ -188824,6 +188873,15 @@ components:
           chargeableGainsTakeOn:
             role: role
             rebasingElection: true
+            additions:
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
             indexation: 3.616076749251911
             indexedTo: 2000-01-23T04:56:07.000+00:00
             originalCost: 2.027123023002322
@@ -188936,6 +188994,15 @@ components:
           chargeableGainsTakeOn:
             role: role
             rebasingElection: true
+            additions:
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
             indexation: 3.616076749251911
             indexedTo: 2000-01-23T04:56:07.000+00:00
             originalCost: 2.027123023002322
@@ -188956,6 +189023,15 @@ components:
           chargeableGainsTakeOn:
             role: role
             rebasingElection: true
+            additions:
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
             indexation: 3.616076749251911
             indexedTo: 2000-01-23T04:56:07.000+00:00
             originalCost: 2.027123023002322
@@ -197016,6 +197092,15 @@ components:
               chargeableGainsTakeOn:
                 role: role
                 rebasingElection: true
+                additions:
+                - date: 2000-01-23T04:56:07.000+00:00
+                  cost: 7.386281948385884
+                  indexation: 1.2315135367772556
+                  paidCost: 1.0246457001441578
+                - date: 2000-01-23T04:56:07.000+00:00
+                  cost: 7.386281948385884
+                  indexation: 1.2315135367772556
+                  paidCost: 1.0246457001441578
                 indexation: 3.616076749251911
                 indexedTo: 2000-01-23T04:56:07.000+00:00
                 originalCost: 2.027123023002322
@@ -197036,6 +197121,15 @@ components:
               chargeableGainsTakeOn:
                 role: role
                 rebasingElection: true
+                additions:
+                - date: 2000-01-23T04:56:07.000+00:00
+                  cost: 7.386281948385884
+                  indexation: 1.2315135367772556
+                  paidCost: 1.0246457001441578
+                - date: 2000-01-23T04:56:07.000+00:00
+                  cost: 7.386281948385884
+                  indexation: 1.2315135367772556
+                  paidCost: 1.0246457001441578
                 indexation: 3.616076749251911
                 indexedTo: 2000-01-23T04:56:07.000+00:00
                 originalCost: 2.027123023002322
@@ -213951,6 +214045,15 @@ components:
       example:
         role: role
         rebasingElection: true
+        additions:
+        - date: 2000-01-23T04:56:07.000+00:00
+          cost: 7.386281948385884
+          indexation: 1.2315135367772556
+          paidCost: 1.0246457001441578
+        - date: 2000-01-23T04:56:07.000+00:00
+          cost: 7.386281948385884
+          indexation: 1.2315135367772556
+          paidCost: 1.0246457001441578
         indexation: 3.616076749251911
         indexedTo: 2000-01-23T04:56:07.000+00:00
         originalCost: 2.027123023002322
@@ -213979,8 +214082,41 @@ components:
         rebasingElection:
           nullable: true
           type: boolean
+        additions:
+          items:
+            $ref: '#/components/schemas/ChargeableGainsTakeOnAddition'
+          nullable: true
+          type: array
       required:
       - role
+      type: object
+    ChargeableGainsTakeOnAddition:
+      additionalProperties: false
+      description: "One acquisition added to a taken-on 1982 holding since 31 March\
+        \ 1982, carried as its own record inside the holding"
+      example:
+        date: 2000-01-23T04:56:07.000+00:00
+        cost: 7.386281948385884
+        indexation: 1.2315135367772556
+        paidCost: 1.0246457001441578
+      properties:
+        date:
+          format: date-time
+          type: string
+        cost:
+          format: double
+          type: number
+        indexation:
+          format: double
+          type: number
+        paidCost:
+          format: double
+          nullable: true
+          type: number
+      required:
+      - cost
+      - date
+      - indexation
       type: object
     ChartOfAccounts:
       additionalProperties: false
@@ -261226,6 +261362,15 @@ components:
           chargeableGainsTakeOn:
             role: role
             rebasingElection: true
+            additions:
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
             indexation: 3.616076749251911
             indexedTo: 2000-01-23T04:56:07.000+00:00
             originalCost: 2.027123023002322
@@ -261246,6 +261391,15 @@ components:
           chargeableGainsTakeOn:
             role: role
             rebasingElection: true
+            additions:
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
             indexation: 3.616076749251911
             indexedTo: 2000-01-23T04:56:07.000+00:00
             originalCost: 2.027123023002322
@@ -261360,6 +261514,15 @@ components:
           chargeableGainsTakeOn:
             role: role
             rebasingElection: true
+            additions:
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
             indexation: 3.616076749251911
             indexedTo: 2000-01-23T04:56:07.000+00:00
             originalCost: 2.027123023002322
@@ -261380,6 +261543,15 @@ components:
           chargeableGainsTakeOn:
             role: role
             rebasingElection: true
+            additions:
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
+            - date: 2000-01-23T04:56:07.000+00:00
+              cost: 7.386281948385884
+              indexation: 1.2315135367772556
+              paidCost: 1.0246457001441578
             indexation: 3.616076749251911
             indexedTo: 2000-01-23T04:56:07.000+00:00
             originalCost: 2.027123023002322
@@ -262126,6 +262298,15 @@ components:
             chargeableGainsTakeOn:
               role: role
               rebasingElection: true
+              additions:
+              - date: 2000-01-23T04:56:07.000+00:00
+                cost: 7.386281948385884
+                indexation: 1.2315135367772556
+                paidCost: 1.0246457001441578
+              - date: 2000-01-23T04:56:07.000+00:00
+                cost: 7.386281948385884
+                indexation: 1.2315135367772556
+                paidCost: 1.0246457001441578
               indexation: 3.616076749251911
               indexedTo: 2000-01-23T04:56:07.000+00:00
               originalCost: 2.027123023002322
@@ -262146,6 +262327,15 @@ components:
             chargeableGainsTakeOn:
               role: role
               rebasingElection: true
+              additions:
+              - date: 2000-01-23T04:56:07.000+00:00
+                cost: 7.386281948385884
+                indexation: 1.2315135367772556
+                paidCost: 1.0246457001441578
+              - date: 2000-01-23T04:56:07.000+00:00
+                cost: 7.386281948385884
+                indexation: 1.2315135367772556
+                paidCost: 1.0246457001441578
               indexation: 3.616076749251911
               indexedTo: 2000-01-23T04:56:07.000+00:00
               originalCost: 2.027123023002322
@@ -262207,6 +262397,15 @@ components:
             chargeableGainsTakeOn:
               role: role
               rebasingElection: true
+              additions:
+              - date: 2000-01-23T04:56:07.000+00:00
+                cost: 7.386281948385884
+                indexation: 1.2315135367772556
+                paidCost: 1.0246457001441578
+              - date: 2000-01-23T04:56:07.000+00:00
+                cost: 7.386281948385884
+                indexation: 1.2315135367772556
+                paidCost: 1.0246457001441578
               indexation: 3.616076749251911
               indexedTo: 2000-01-23T04:56:07.000+00:00
               originalCost: 2.027123023002322
@@ -262227,6 +262426,15 @@ components:
             chargeableGainsTakeOn:
               role: role
               rebasingElection: true
+              additions:
+              - date: 2000-01-23T04:56:07.000+00:00
+                cost: 7.386281948385884
+                indexation: 1.2315135367772556
+                paidCost: 1.0246457001441578
+              - date: 2000-01-23T04:56:07.000+00:00
+                cost: 7.386281948385884
+                indexation: 1.2315135367772556
+                paidCost: 1.0246457001441578
               indexation: 3.616076749251911
               indexedTo: 2000-01-23T04:56:07.000+00:00
               originalCost: 2.027123023002322
@@ -372674,6 +372882,15 @@ components:
         chargeableGainsTakeOn:
           role: role
           rebasingElection: true
+          additions:
+          - date: 2000-01-23T04:56:07.000+00:00
+            cost: 7.386281948385884
+            indexation: 1.2315135367772556
+            paidCost: 1.0246457001441578
+          - date: 2000-01-23T04:56:07.000+00:00
+            cost: 7.386281948385884
+            indexation: 1.2315135367772556
+            paidCost: 1.0246457001441578
           indexation: 3.616076749251911
           indexedTo: 2000-01-23T04:56:07.000+00:00
           originalCost: 2.027123023002322
@@ -372767,6 +372984,15 @@ components:
         chargeableGainsTakeOn:
           role: role
           rebasingElection: true
+          additions:
+          - date: 2000-01-23T04:56:07.000+00:00
+            cost: 7.386281948385884
+            indexation: 1.2315135367772556
+            paidCost: 1.0246457001441578
+          - date: 2000-01-23T04:56:07.000+00:00
+            cost: 7.386281948385884
+            indexation: 1.2315135367772556
+            paidCost: 1.0246457001441578
           indexation: 3.616076749251911
           indexedTo: 2000-01-23T04:56:07.000+00:00
           originalCost: 2.027123023002322

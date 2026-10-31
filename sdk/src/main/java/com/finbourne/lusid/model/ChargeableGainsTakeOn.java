@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ChargeableGainsTakeOnAddition;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -18,7 +19,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -74,6 +77,10 @@ public class ChargeableGainsTakeOn {
   public static final String SERIALIZED_NAME_REBASING_ELECTION = "rebasingElection";
   @SerializedName(SERIALIZED_NAME_REBASING_ELECTION)
   private Boolean rebasingElection;
+
+  public static final String SERIALIZED_NAME_ADDITIONS = "additions";
+  @SerializedName(SERIALIZED_NAME_ADDITIONS)
+  private List<ChargeableGainsTakeOnAddition> additions;
 
   public ChargeableGainsTakeOn() {
   }
@@ -204,6 +211,35 @@ public class ChargeableGainsTakeOn {
   }
 
 
+  public ChargeableGainsTakeOn additions(List<ChargeableGainsTakeOnAddition> additions) {
+    
+    this.additions = additions;
+    return this;
+  }
+
+  public ChargeableGainsTakeOn addAdditionsItem(ChargeableGainsTakeOnAddition additionsItem) {
+    if (this.additions == null) {
+      this.additions = new ArrayList<>();
+    }
+    this.additions.add(additionsItem);
+    return this;
+  }
+
+   /**
+   * Get additions
+   * @return additions
+  **/
+  @jakarta.annotation.Nullable
+  public List<ChargeableGainsTakeOnAddition> getAdditions() {
+    return additions;
+  }
+
+
+  public void setAdditions(List<ChargeableGainsTakeOnAddition> additions) {
+    this.additions = additions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -219,7 +255,8 @@ public class ChargeableGainsTakeOn {
         Objects.equals(this.indexedTo, chargeableGainsTakeOn.indexedTo) &&
         (this.originalCost.compareTo(chargeableGainsTakeOn.getOriginalCost()) == 0) &&
         (this.marketValue1982.compareTo(chargeableGainsTakeOn.getMarketValue1982()) == 0) &&
-        Objects.equals(this.rebasingElection, chargeableGainsTakeOn.rebasingElection);
+        Objects.equals(this.rebasingElection, chargeableGainsTakeOn.rebasingElection) &&
+        Objects.equals(this.additions, chargeableGainsTakeOn.additions);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -228,7 +265,7 @@ public class ChargeableGainsTakeOn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(role, indexation, indexedTo, originalCost, marketValue1982, rebasingElection);
+    return Objects.hash(role, indexation, indexedTo, originalCost, marketValue1982, rebasingElection, additions);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -248,6 +285,7 @@ public class ChargeableGainsTakeOn {
     sb.append("    originalCost: ").append(toIndentedString(originalCost)).append("\n");
     sb.append("    marketValue1982: ").append(toIndentedString(marketValue1982)).append("\n");
     sb.append("    rebasingElection: ").append(toIndentedString(rebasingElection)).append("\n");
+    sb.append("    additions: ").append(toIndentedString(additions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -276,6 +314,7 @@ public class ChargeableGainsTakeOn {
     openapiFields.add("originalCost");
     openapiFields.add("marketValue1982");
     openapiFields.add("rebasingElection");
+    openapiFields.add("additions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -304,6 +343,20 @@ public class ChargeableGainsTakeOn {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("role").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));
+      }
+      if (jsonObj.get("additions") != null && !jsonObj.get("additions").isJsonNull()) {
+        JsonArray jsonArrayadditions = jsonObj.getAsJsonArray("additions");
+        if (jsonArrayadditions != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("additions").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `additions` to be an array in the JSON string but got `%s`", jsonObj.get("additions").toString()));
+          }
+
+          // validate the optional field `additions` (array)
+          for (int i = 0; i < jsonArrayadditions.size(); i++) {
+            ChargeableGainsTakeOnAddition.validateJsonElement(jsonArrayadditions.get(i));
+          };
+        }
       }
   }
 

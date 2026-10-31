@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **originalCost** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
 **marketValue1982** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
 **rebasingElection** | **Boolean** |  | [optional] [default to Boolean]
+**additions** | [**List&lt;ChargeableGainsTakeOnAddition&gt;**](ChargeableGainsTakeOnAddition.md) |  | [optional] [default to List<ChargeableGainsTakeOnAddition>]
 
 ```java
 import com.finbourne.lusid.model.ChargeableGainsTakeOn;
@@ -24,6 +25,7 @@ String Role = "example Role";
 @jakarta.annotation.Nullable java.math.BigDecimal OriginalCost = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal MarketValue1982 = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable Boolean RebasingElection = true;
+@jakarta.annotation.Nullable List<ChargeableGainsTakeOnAddition> Additions = new List<ChargeableGainsTakeOnAddition>();
 
 
 ChargeableGainsTakeOn chargeableGainsTakeOnInstance = new ChargeableGainsTakeOn()
@@ -32,7 +34,8 @@ ChargeableGainsTakeOn chargeableGainsTakeOnInstance = new ChargeableGainsTakeOn(
     .IndexedTo(IndexedTo)
     .OriginalCost(OriginalCost)
     .MarketValue1982(MarketValue1982)
-    .RebasingElection(RebasingElection);
+    .RebasingElection(RebasingElection)
+    .Additions(Additions);
 ```
 
 
