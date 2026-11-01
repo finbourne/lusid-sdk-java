@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **atEstimatePrice** | [**DealingFlowValuation**](DealingFlowValuation.md) |  | [default to DealingFlowValuation]
 **atLastOfficialPrice** | [**DealingFlowValuation**](DealingFlowValuation.md) |  | [optional] [default to DealingFlowValuation]
 **difference** | [**EstimateValuationDifference**](EstimateValuationDifference.md) |  | [optional] [default to EstimateValuationDifference]
-**unitBasedShare** | **java.math.BigDecimal** | DEPRECATED: always 0 and no longer computed. Kept on the response for one release so clients on a public SDK that requires the field can still read it; it will be removed once an SDK without it has shipped. | [default to java.math.BigDecimal]
+**unitBasedShare** | **java.math.BigDecimal** | DEPRECATED: always 0 and no longer computed. Kept on the response for one release so clients on a public SDK that requires the field can still read it; it will be removed once an SDK without it has shipped. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.EstimateValuation;

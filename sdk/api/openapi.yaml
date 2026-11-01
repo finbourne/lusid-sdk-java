@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10474
+  version: 0.11.10475
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -184001,56 +184001,56 @@ components:
             allocationGroupCode: allocationGroupCode
             apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
             factors:
-            - baseValue: 5.507386964179881
+            - baseValue: 4.459605034958679
               fundCode: fundCode
               inputs:
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
+                value: 0.43431398824148815
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
-              apportionmentFactor: 4.86315908102884
+                value: 0.43431398824148815
+              apportionmentFactor: 3.901545264248647
               memberIdentifier: memberIdentifier
               fundScope: fundScope
-            - baseValue: 5.507386964179881
+            - baseValue: 4.459605034958679
               fundCode: fundCode
               inputs:
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
+                value: 0.43431398824148815
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
-              apportionmentFactor: 4.86315908102884
+                value: 0.43431398824148815
+              apportionmentFactor: 3.901545264248647
               memberIdentifier: memberIdentifier
               fundScope: fundScope
           - apportionmentLevel: apportionmentLevel
             allocationGroupCode: allocationGroupCode
             apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
             factors:
-            - baseValue: 5.507386964179881
+            - baseValue: 4.459605034958679
               fundCode: fundCode
               inputs:
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
+                value: 0.43431398824148815
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
-              apportionmentFactor: 4.86315908102884
+                value: 0.43431398824148815
+              apportionmentFactor: 3.901545264248647
               memberIdentifier: memberIdentifier
               fundScope: fundScope
-            - baseValue: 5.507386964179881
+            - baseValue: 4.459605034958679
               fundCode: fundCode
               inputs:
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
+                value: 0.43431398824148815
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
-              apportionmentFactor: 4.86315908102884
+                value: 0.43431398824148815
+              apportionmentFactor: 3.901545264248647
               memberIdentifier: memberIdentifier
               fundScope: fundScope
           fundDetails:
@@ -184067,10 +184067,10 @@ components:
             isSeeded: true
             bucketSetCode: bucketSetCode
             nodes:
-            - sharesInIssue: 1.8268702177058116
-              previousSharesInIssue: 9.183123594773994
-              shareClassToFundFxRate: 5.312489704336296
-              nav: 8.251625748923757
+            - sharesInIssue: 0.4182561061793122
+              previousSharesInIssue: 5.312489704336296
+              shareClassToFundFxRate: 3.111202833403195
+              nav: 2.9409642974827896
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -184079,43 +184079,43 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.623518433804886
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              - unitsInIssue: 6.623518433804886
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              previousNav: 8.761432466225475
-              netDealingUnits: 0.4182561061793122
-              previousNavShareClassCurrency: 8.37823741034869
-              previousPerUnitValue: 3.502657762086401
-              navShareClassCurrency: 5.299143560275359
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              previousNav: 8.37823741034869
+              netDealingUnits: 7.606863723092579
+              previousNavShareClassCurrency: 9.897492629215506
+              previousPerUnitValue: 5.299143560275359
+              navShareClassCurrency: 3.7814124730767915
               label: label
               nodeType: nodeType
-              capitalRatio: 4.459605034958679
-              perUnitValue: 9.254183946267839
-            - sharesInIssue: 1.8268702177058116
-              previousSharesInIssue: 9.183123594773994
-              shareClassToFundFxRate: 5.312489704336296
-              nav: 8.251625748923757
+              capitalRatio: 1.7325933120207193
+              perUnitValue: 8.761432466225475
+            - sharesInIssue: 0.4182561061793122
+              previousSharesInIssue: 5.312489704336296
+              shareClassToFundFxRate: 3.111202833403195
+              nav: 2.9409642974827896
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -184124,49 +184124,49 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.623518433804886
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              - unitsInIssue: 6.623518433804886
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              previousNav: 8.761432466225475
-              netDealingUnits: 0.4182561061793122
-              previousNavShareClassCurrency: 8.37823741034869
-              previousPerUnitValue: 3.502657762086401
-              navShareClassCurrency: 5.299143560275359
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              previousNav: 8.37823741034869
+              netDealingUnits: 7.606863723092579
+              previousNavShareClassCurrency: 9.897492629215506
+              previousPerUnitValue: 5.299143560275359
+              navShareClassCurrency: 3.7814124730767915
               label: label
               nodeType: nodeType
-              capitalRatio: 4.459605034958679
-              perUnitValue: 9.254183946267839
+              capitalRatio: 1.7325933120207193
+              perUnitValue: 8.761432466225475
             displayName: displayName
             isBackfilled: true
           - isApportionment: true
             isSeeded: true
             bucketSetCode: bucketSetCode
             nodes:
-            - sharesInIssue: 1.8268702177058116
-              previousSharesInIssue: 9.183123594773994
-              shareClassToFundFxRate: 5.312489704336296
-              nav: 8.251625748923757
+            - sharesInIssue: 0.4182561061793122
+              previousSharesInIssue: 5.312489704336296
+              shareClassToFundFxRate: 3.111202833403195
+              nav: 2.9409642974827896
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -184175,43 +184175,43 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.623518433804886
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              - unitsInIssue: 6.623518433804886
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              previousNav: 8.761432466225475
-              netDealingUnits: 0.4182561061793122
-              previousNavShareClassCurrency: 8.37823741034869
-              previousPerUnitValue: 3.502657762086401
-              navShareClassCurrency: 5.299143560275359
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              previousNav: 8.37823741034869
+              netDealingUnits: 7.606863723092579
+              previousNavShareClassCurrency: 9.897492629215506
+              previousPerUnitValue: 5.299143560275359
+              navShareClassCurrency: 3.7814124730767915
               label: label
               nodeType: nodeType
-              capitalRatio: 4.459605034958679
-              perUnitValue: 9.254183946267839
-            - sharesInIssue: 1.8268702177058116
-              previousSharesInIssue: 9.183123594773994
-              shareClassToFundFxRate: 5.312489704336296
-              nav: 8.251625748923757
+              capitalRatio: 1.7325933120207193
+              perUnitValue: 8.761432466225475
+            - sharesInIssue: 0.4182561061793122
+              previousSharesInIssue: 5.312489704336296
+              shareClassToFundFxRate: 3.111202833403195
+              nav: 2.9409642974827896
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -184220,39 +184220,39 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.623518433804886
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              - unitsInIssue: 6.623518433804886
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              previousNav: 8.761432466225475
-              netDealingUnits: 0.4182561061793122
-              previousNavShareClassCurrency: 8.37823741034869
-              previousPerUnitValue: 3.502657762086401
-              navShareClassCurrency: 5.299143560275359
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              previousNav: 8.37823741034869
+              netDealingUnits: 7.606863723092579
+              previousNavShareClassCurrency: 9.897492629215506
+              previousPerUnitValue: 5.299143560275359
+              navShareClassCurrency: 3.7814124730767915
               label: label
               nodeType: nodeType
-              capitalRatio: 4.459605034958679
-              perUnitValue: 9.254183946267839
+              capitalRatio: 1.7325933120207193
+              perUnitValue: 8.761432466225475
             displayName: displayName
             isBackfilled: true
           previousValuationPointCode: previousValuationPointCode
@@ -184274,11 +184274,11 @@ components:
                 swingDirection: swingDirection
                 dealingPrice: 6.704019297950036
               dualDealing:
-                dealingOffer: 0.8774076871421566
-                bidSpreadBps: 9.702963800023566
+                dealingOffer: 5.507386964179881
+                bidSpreadBps: 4.86315908102884
                 bidPerValuationSource: bidPerValuationSource
-                offerSpreadBps: 0.5199002018724985
-                dealingBid: 9.132027271330688
+                offerSpreadBps: 6.073898085781152
+                dealingBid: 7.933506881737151
                 offerPerValuationSource: offerPerValuationSource
               audit:
                 approvalStatus: approvalStatus
@@ -184289,8 +184289,11 @@ components:
                 dealingFlows:
                   pendingNotCounted: 7
                   count: 7
+                  pendingGrossInflow: 5.533258397034986
                   grossOutflow: 3.0576100241049344
+                  pendingGrossOutflow: 3.2588565619047607
                   grossInflow: 3.0205796992916243
+                  pendingUnvaluedCount: 4
                 outflowTrigger:
                   fired: true
                   metric: metric
@@ -184306,6 +184309,11 @@ components:
                   decision: decision
                   user: user
                   timestamp: 2000-01-23T04:56:07.000+00:00
+                completeness:
+                  note: note
+                  lateNotCounted: 0
+                  cutOff: 2000-01-23T04:56:07.000+00:00
+                  complete: true
                 netCashflow: 3.0937452626664474
                 spreadsApplied:
                   bps: 0.8851374739011653
@@ -184323,39 +184331,39 @@ components:
                   currency: currency
                 estimateValuation:
                   atEstimatePrice:
-                    netCashflow: 5.533258397034986
-                    grossOutflow: 0.2025324113236393
+                    netCashflow: 0.2025324113236393
+                    grossOutflow: 1.041444916118296
                     outcome:
-                      spreadBps: 6.628464275087742
+                      spreadBps: 4.678947989005849
                       swung: true
                       swingDirection: swingDirection
-                      dealingPrice: 4.258773108174356
+                      dealingPrice: 7.260521264802104
                       tierMatched:
                         lowerBoundExclusive: 7.058770351582356
                         upperBoundInclusive: 6.519180951018382
-                    netCashflowPctOfNav: 3.2588565619047607
-                    grossInflow: 4.078845849666752
-                  unitBasedShare: 7.260521264802104
+                    netCashflowPctOfNav: 6.628464275087742
+                    grossInflow: 4.258773108174356
+                  unitBasedShare: 9.702963800023566
                   decisionPrice: decisionPrice
                   difference:
-                    amount: 1.041444916118296
-                    pctOfNav: 4.678947989005849
+                    amount: 9.132027271330688
+                    pctOfNav: 0.8774076871421566
                   atLastOfficialPrice:
-                    netCashflow: 5.533258397034986
-                    grossOutflow: 0.2025324113236393
+                    netCashflow: 0.2025324113236393
+                    grossOutflow: 1.041444916118296
                     outcome:
-                      spreadBps: 6.628464275087742
+                      spreadBps: 4.678947989005849
                       swung: true
                       swingDirection: swingDirection
-                      dealingPrice: 4.258773108174356
+                      dealingPrice: 7.260521264802104
                       tierMatched:
                         lowerBoundExclusive: 7.058770351582356
                         upperBoundInclusive: 6.519180951018382
-                    netCashflowPctOfNav: 3.2588565619047607
-                    grossInflow: 4.078845849666752
+                    netCashflowPctOfNav: 6.628464275087742
+                    grossInflow: 4.258773108174356
                 netCashflowPctOfNav: 7.143538047012306
               reporting:
-                key: 7.933506881737151
+                key: 8.251625748923757
             shareClassBreakdown:
               unitisation:
                 sharesInIssue: 1.1730742509559433
@@ -184472,11 +184480,11 @@ components:
                 swingDirection: swingDirection
                 dealingPrice: 6.704019297950036
               dualDealing:
-                dealingOffer: 0.8774076871421566
-                bidSpreadBps: 9.702963800023566
+                dealingOffer: 5.507386964179881
+                bidSpreadBps: 4.86315908102884
                 bidPerValuationSource: bidPerValuationSource
-                offerSpreadBps: 0.5199002018724985
-                dealingBid: 9.132027271330688
+                offerSpreadBps: 6.073898085781152
+                dealingBid: 7.933506881737151
                 offerPerValuationSource: offerPerValuationSource
               audit:
                 approvalStatus: approvalStatus
@@ -184487,8 +184495,11 @@ components:
                 dealingFlows:
                   pendingNotCounted: 7
                   count: 7
+                  pendingGrossInflow: 5.533258397034986
                   grossOutflow: 3.0576100241049344
+                  pendingGrossOutflow: 3.2588565619047607
                   grossInflow: 3.0205796992916243
+                  pendingUnvaluedCount: 4
                 outflowTrigger:
                   fired: true
                   metric: metric
@@ -184504,6 +184515,11 @@ components:
                   decision: decision
                   user: user
                   timestamp: 2000-01-23T04:56:07.000+00:00
+                completeness:
+                  note: note
+                  lateNotCounted: 0
+                  cutOff: 2000-01-23T04:56:07.000+00:00
+                  complete: true
                 netCashflow: 3.0937452626664474
                 spreadsApplied:
                   bps: 0.8851374739011653
@@ -184521,39 +184537,39 @@ components:
                   currency: currency
                 estimateValuation:
                   atEstimatePrice:
-                    netCashflow: 5.533258397034986
-                    grossOutflow: 0.2025324113236393
+                    netCashflow: 0.2025324113236393
+                    grossOutflow: 1.041444916118296
                     outcome:
-                      spreadBps: 6.628464275087742
+                      spreadBps: 4.678947989005849
                       swung: true
                       swingDirection: swingDirection
-                      dealingPrice: 4.258773108174356
+                      dealingPrice: 7.260521264802104
                       tierMatched:
                         lowerBoundExclusive: 7.058770351582356
                         upperBoundInclusive: 6.519180951018382
-                    netCashflowPctOfNav: 3.2588565619047607
-                    grossInflow: 4.078845849666752
-                  unitBasedShare: 7.260521264802104
+                    netCashflowPctOfNav: 6.628464275087742
+                    grossInflow: 4.258773108174356
+                  unitBasedShare: 9.702963800023566
                   decisionPrice: decisionPrice
                   difference:
-                    amount: 1.041444916118296
-                    pctOfNav: 4.678947989005849
+                    amount: 9.132027271330688
+                    pctOfNav: 0.8774076871421566
                   atLastOfficialPrice:
-                    netCashflow: 5.533258397034986
-                    grossOutflow: 0.2025324113236393
+                    netCashflow: 0.2025324113236393
+                    grossOutflow: 1.041444916118296
                     outcome:
-                      spreadBps: 6.628464275087742
+                      spreadBps: 4.678947989005849
                       swung: true
                       swingDirection: swingDirection
-                      dealingPrice: 4.258773108174356
+                      dealingPrice: 7.260521264802104
                       tierMatched:
                         lowerBoundExclusive: 7.058770351582356
                         upperBoundInclusive: 6.519180951018382
-                    netCashflowPctOfNav: 3.2588565619047607
-                    grossInflow: 4.078845849666752
+                    netCashflowPctOfNav: 6.628464275087742
+                    grossInflow: 4.258773108174356
                 netCashflowPctOfNav: 7.143538047012306
               reporting:
-                key: 7.933506881737151
+                key: 8.251625748923757
             shareClassBreakdown:
               unitisation:
                 sharesInIssue: 1.1730742509559433
@@ -184790,56 +184806,56 @@ components:
             allocationGroupCode: allocationGroupCode
             apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
             factors:
-            - baseValue: 5.507386964179881
+            - baseValue: 4.459605034958679
               fundCode: fundCode
               inputs:
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
+                value: 0.43431398824148815
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
-              apportionmentFactor: 4.86315908102884
+                value: 0.43431398824148815
+              apportionmentFactor: 3.901545264248647
               memberIdentifier: memberIdentifier
               fundScope: fundScope
-            - baseValue: 5.507386964179881
+            - baseValue: 4.459605034958679
               fundCode: fundCode
               inputs:
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
+                value: 0.43431398824148815
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
-              apportionmentFactor: 4.86315908102884
+                value: 0.43431398824148815
+              apportionmentFactor: 3.901545264248647
               memberIdentifier: memberIdentifier
               fundScope: fundScope
           - apportionmentLevel: apportionmentLevel
             allocationGroupCode: allocationGroupCode
             apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
             factors:
-            - baseValue: 5.507386964179881
+            - baseValue: 4.459605034958679
               fundCode: fundCode
               inputs:
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
+                value: 0.43431398824148815
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
-              apportionmentFactor: 4.86315908102884
+                value: 0.43431398824148815
+              apportionmentFactor: 3.901545264248647
               memberIdentifier: memberIdentifier
               fundScope: fundScope
-            - baseValue: 5.507386964179881
+            - baseValue: 4.459605034958679
               fundCode: fundCode
               inputs:
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
+                value: 0.43431398824148815
               - code: code
                 displayName: displayName
-                value: 6.073898085781152
-              apportionmentFactor: 4.86315908102884
+                value: 0.43431398824148815
+              apportionmentFactor: 3.901545264248647
               memberIdentifier: memberIdentifier
               fundScope: fundScope
           fundDetails:
@@ -184856,10 +184872,10 @@ components:
             isSeeded: true
             bucketSetCode: bucketSetCode
             nodes:
-            - sharesInIssue: 1.8268702177058116
-              previousSharesInIssue: 9.183123594773994
-              shareClassToFundFxRate: 5.312489704336296
-              nav: 8.251625748923757
+            - sharesInIssue: 0.4182561061793122
+              previousSharesInIssue: 5.312489704336296
+              shareClassToFundFxRate: 3.111202833403195
+              nav: 2.9409642974827896
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -184868,43 +184884,43 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.623518433804886
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              - unitsInIssue: 6.623518433804886
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              previousNav: 8.761432466225475
-              netDealingUnits: 0.4182561061793122
-              previousNavShareClassCurrency: 8.37823741034869
-              previousPerUnitValue: 3.502657762086401
-              navShareClassCurrency: 5.299143560275359
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              previousNav: 8.37823741034869
+              netDealingUnits: 7.606863723092579
+              previousNavShareClassCurrency: 9.897492629215506
+              previousPerUnitValue: 5.299143560275359
+              navShareClassCurrency: 3.7814124730767915
               label: label
               nodeType: nodeType
-              capitalRatio: 4.459605034958679
-              perUnitValue: 9.254183946267839
-            - sharesInIssue: 1.8268702177058116
-              previousSharesInIssue: 9.183123594773994
-              shareClassToFundFxRate: 5.312489704336296
-              nav: 8.251625748923757
+              capitalRatio: 1.7325933120207193
+              perUnitValue: 8.761432466225475
+            - sharesInIssue: 0.4182561061793122
+              previousSharesInIssue: 5.312489704336296
+              shareClassToFundFxRate: 3.111202833403195
+              nav: 2.9409642974827896
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -184913,49 +184929,49 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.623518433804886
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              - unitsInIssue: 6.623518433804886
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              previousNav: 8.761432466225475
-              netDealingUnits: 0.4182561061793122
-              previousNavShareClassCurrency: 8.37823741034869
-              previousPerUnitValue: 3.502657762086401
-              navShareClassCurrency: 5.299143560275359
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              previousNav: 8.37823741034869
+              netDealingUnits: 7.606863723092579
+              previousNavShareClassCurrency: 9.897492629215506
+              previousPerUnitValue: 5.299143560275359
+              navShareClassCurrency: 3.7814124730767915
               label: label
               nodeType: nodeType
-              capitalRatio: 4.459605034958679
-              perUnitValue: 9.254183946267839
+              capitalRatio: 1.7325933120207193
+              perUnitValue: 8.761432466225475
             displayName: displayName
             isBackfilled: true
           - isApportionment: true
             isSeeded: true
             bucketSetCode: bucketSetCode
             nodes:
-            - sharesInIssue: 1.8268702177058116
-              previousSharesInIssue: 9.183123594773994
-              shareClassToFundFxRate: 5.312489704336296
-              nav: 8.251625748923757
+            - sharesInIssue: 0.4182561061793122
+              previousSharesInIssue: 5.312489704336296
+              shareClassToFundFxRate: 3.111202833403195
+              nav: 2.9409642974827896
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -184964,43 +184980,43 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.623518433804886
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              - unitsInIssue: 6.623518433804886
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              previousNav: 8.761432466225475
-              netDealingUnits: 0.4182561061793122
-              previousNavShareClassCurrency: 8.37823741034869
-              previousPerUnitValue: 3.502657762086401
-              navShareClassCurrency: 5.299143560275359
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              previousNav: 8.37823741034869
+              netDealingUnits: 7.606863723092579
+              previousNavShareClassCurrency: 9.897492629215506
+              previousPerUnitValue: 5.299143560275359
+              navShareClassCurrency: 3.7814124730767915
               label: label
               nodeType: nodeType
-              capitalRatio: 4.459605034958679
-              perUnitValue: 9.254183946267839
-            - sharesInIssue: 1.8268702177058116
-              previousSharesInIssue: 9.183123594773994
-              shareClassToFundFxRate: 5.312489704336296
-              nav: 8.251625748923757
+              capitalRatio: 1.7325933120207193
+              perUnitValue: 8.761432466225475
+            - sharesInIssue: 0.4182561061793122
+              previousSharesInIssue: 5.312489704336296
+              shareClassToFundFxRate: 3.111202833403195
+              nav: 2.9409642974827896
               shareClassDetails:
                 domCurrency: domCurrency
                 instrumentScope: instrumentScope
@@ -185009,39 +185025,39 @@ components:
                 shortCode: shortCode
               shareClassShortCode: shareClassShortCode
               buckets:
-              - unitsInIssue: 6.623518433804886
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              - unitsInIssue: 6.623518433804886
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              - unitsInIssue: 1.8268702177058116
                 bucketType: bucketType
-                previousCumulativePerUnitValue: 4.573936264232251
-                previousCumulativeValue: 0.43431398824148815
+                previousCumulativePerUnitValue: 3.502657762086401
+                previousCumulativeValue: 6.623518433804886
                 displayName: displayName
                 bucketId: bucketId
                 sourceBreakdown:
-                  key: 1.7325933120207193
-                cumulativePerUnitValue: 8.863729185622827
-                perUnitValue: 8.28965939814297
-                value: 3.901545264248647
-                cumulativeValue: 2.9409642974827896
-              previousNav: 8.761432466225475
-              netDealingUnits: 0.4182561061793122
-              previousNavShareClassCurrency: 8.37823741034869
-              previousPerUnitValue: 3.502657762086401
-              navShareClassCurrency: 5.299143560275359
+                  key: 8.863729185622827
+                cumulativePerUnitValue: 9.183123594773994
+                perUnitValue: 9.254183946267839
+                value: 8.28965939814297
+                cumulativeValue: 4.573936264232251
+              previousNav: 8.37823741034869
+              netDealingUnits: 7.606863723092579
+              previousNavShareClassCurrency: 9.897492629215506
+              previousPerUnitValue: 5.299143560275359
+              navShareClassCurrency: 3.7814124730767915
               label: label
               nodeType: nodeType
-              capitalRatio: 4.459605034958679
-              perUnitValue: 9.254183946267839
+              capitalRatio: 1.7325933120207193
+              perUnitValue: 8.761432466225475
             displayName: displayName
             isBackfilled: true
           previousValuationPointCode: previousValuationPointCode
@@ -185063,11 +185079,11 @@ components:
                 swingDirection: swingDirection
                 dealingPrice: 6.704019297950036
               dualDealing:
-                dealingOffer: 0.8774076871421566
-                bidSpreadBps: 9.702963800023566
+                dealingOffer: 5.507386964179881
+                bidSpreadBps: 4.86315908102884
                 bidPerValuationSource: bidPerValuationSource
-                offerSpreadBps: 0.5199002018724985
-                dealingBid: 9.132027271330688
+                offerSpreadBps: 6.073898085781152
+                dealingBid: 7.933506881737151
                 offerPerValuationSource: offerPerValuationSource
               audit:
                 approvalStatus: approvalStatus
@@ -185078,8 +185094,11 @@ components:
                 dealingFlows:
                   pendingNotCounted: 7
                   count: 7
+                  pendingGrossInflow: 5.533258397034986
                   grossOutflow: 3.0576100241049344
+                  pendingGrossOutflow: 3.2588565619047607
                   grossInflow: 3.0205796992916243
+                  pendingUnvaluedCount: 4
                 outflowTrigger:
                   fired: true
                   metric: metric
@@ -185095,6 +185114,11 @@ components:
                   decision: decision
                   user: user
                   timestamp: 2000-01-23T04:56:07.000+00:00
+                completeness:
+                  note: note
+                  lateNotCounted: 0
+                  cutOff: 2000-01-23T04:56:07.000+00:00
+                  complete: true
                 netCashflow: 3.0937452626664474
                 spreadsApplied:
                   bps: 0.8851374739011653
@@ -185112,39 +185136,39 @@ components:
                   currency: currency
                 estimateValuation:
                   atEstimatePrice:
-                    netCashflow: 5.533258397034986
-                    grossOutflow: 0.2025324113236393
+                    netCashflow: 0.2025324113236393
+                    grossOutflow: 1.041444916118296
                     outcome:
-                      spreadBps: 6.628464275087742
+                      spreadBps: 4.678947989005849
                       swung: true
                       swingDirection: swingDirection
-                      dealingPrice: 4.258773108174356
+                      dealingPrice: 7.260521264802104
                       tierMatched:
                         lowerBoundExclusive: 7.058770351582356
                         upperBoundInclusive: 6.519180951018382
-                    netCashflowPctOfNav: 3.2588565619047607
-                    grossInflow: 4.078845849666752
-                  unitBasedShare: 7.260521264802104
+                    netCashflowPctOfNav: 6.628464275087742
+                    grossInflow: 4.258773108174356
+                  unitBasedShare: 9.702963800023566
                   decisionPrice: decisionPrice
                   difference:
-                    amount: 1.041444916118296
-                    pctOfNav: 4.678947989005849
+                    amount: 9.132027271330688
+                    pctOfNav: 0.8774076871421566
                   atLastOfficialPrice:
-                    netCashflow: 5.533258397034986
-                    grossOutflow: 0.2025324113236393
+                    netCashflow: 0.2025324113236393
+                    grossOutflow: 1.041444916118296
                     outcome:
-                      spreadBps: 6.628464275087742
+                      spreadBps: 4.678947989005849
                       swung: true
                       swingDirection: swingDirection
-                      dealingPrice: 4.258773108174356
+                      dealingPrice: 7.260521264802104
                       tierMatched:
                         lowerBoundExclusive: 7.058770351582356
                         upperBoundInclusive: 6.519180951018382
-                    netCashflowPctOfNav: 3.2588565619047607
-                    grossInflow: 4.078845849666752
+                    netCashflowPctOfNav: 6.628464275087742
+                    grossInflow: 4.258773108174356
                 netCashflowPctOfNav: 7.143538047012306
               reporting:
-                key: 7.933506881737151
+                key: 8.251625748923757
             shareClassBreakdown:
               unitisation:
                 sharesInIssue: 1.1730742509559433
@@ -185261,11 +185285,11 @@ components:
                 swingDirection: swingDirection
                 dealingPrice: 6.704019297950036
               dualDealing:
-                dealingOffer: 0.8774076871421566
-                bidSpreadBps: 9.702963800023566
+                dealingOffer: 5.507386964179881
+                bidSpreadBps: 4.86315908102884
                 bidPerValuationSource: bidPerValuationSource
-                offerSpreadBps: 0.5199002018724985
-                dealingBid: 9.132027271330688
+                offerSpreadBps: 6.073898085781152
+                dealingBid: 7.933506881737151
                 offerPerValuationSource: offerPerValuationSource
               audit:
                 approvalStatus: approvalStatus
@@ -185276,8 +185300,11 @@ components:
                 dealingFlows:
                   pendingNotCounted: 7
                   count: 7
+                  pendingGrossInflow: 5.533258397034986
                   grossOutflow: 3.0576100241049344
+                  pendingGrossOutflow: 3.2588565619047607
                   grossInflow: 3.0205796992916243
+                  pendingUnvaluedCount: 4
                 outflowTrigger:
                   fired: true
                   metric: metric
@@ -185293,6 +185320,11 @@ components:
                   decision: decision
                   user: user
                   timestamp: 2000-01-23T04:56:07.000+00:00
+                completeness:
+                  note: note
+                  lateNotCounted: 0
+                  cutOff: 2000-01-23T04:56:07.000+00:00
+                  complete: true
                 netCashflow: 3.0937452626664474
                 spreadsApplied:
                   bps: 0.8851374739011653
@@ -185310,39 +185342,39 @@ components:
                   currency: currency
                 estimateValuation:
                   atEstimatePrice:
-                    netCashflow: 5.533258397034986
-                    grossOutflow: 0.2025324113236393
+                    netCashflow: 0.2025324113236393
+                    grossOutflow: 1.041444916118296
                     outcome:
-                      spreadBps: 6.628464275087742
+                      spreadBps: 4.678947989005849
                       swung: true
                       swingDirection: swingDirection
-                      dealingPrice: 4.258773108174356
+                      dealingPrice: 7.260521264802104
                       tierMatched:
                         lowerBoundExclusive: 7.058770351582356
                         upperBoundInclusive: 6.519180951018382
-                    netCashflowPctOfNav: 3.2588565619047607
-                    grossInflow: 4.078845849666752
-                  unitBasedShare: 7.260521264802104
+                    netCashflowPctOfNav: 6.628464275087742
+                    grossInflow: 4.258773108174356
+                  unitBasedShare: 9.702963800023566
                   decisionPrice: decisionPrice
                   difference:
-                    amount: 1.041444916118296
-                    pctOfNav: 4.678947989005849
+                    amount: 9.132027271330688
+                    pctOfNav: 0.8774076871421566
                   atLastOfficialPrice:
-                    netCashflow: 5.533258397034986
-                    grossOutflow: 0.2025324113236393
+                    netCashflow: 0.2025324113236393
+                    grossOutflow: 1.041444916118296
                     outcome:
-                      spreadBps: 6.628464275087742
+                      spreadBps: 4.678947989005849
                       swung: true
                       swingDirection: swingDirection
-                      dealingPrice: 4.258773108174356
+                      dealingPrice: 7.260521264802104
                       tierMatched:
                         lowerBoundExclusive: 7.058770351582356
                         upperBoundInclusive: 6.519180951018382
-                    netCashflowPctOfNav: 3.2588565619047607
-                    grossInflow: 4.078845849666752
+                    netCashflowPctOfNav: 6.628464275087742
+                    grossInflow: 4.258773108174356
                 netCashflowPctOfNav: 7.143538047012306
               reporting:
-                key: 7.933506881737151
+                key: 8.251625748923757
             shareClassBreakdown:
               unitisation:
                 sharesInIssue: 1.1730742509559433
@@ -196309,28 +196341,28 @@ components:
         allocationGroupCode: allocationGroupCode
         apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
         factors:
-        - baseValue: 5.507386964179881
+        - baseValue: 4.459605034958679
           fundCode: fundCode
           inputs:
           - code: code
             displayName: displayName
-            value: 6.073898085781152
+            value: 0.43431398824148815
           - code: code
             displayName: displayName
-            value: 6.073898085781152
-          apportionmentFactor: 4.86315908102884
+            value: 0.43431398824148815
+          apportionmentFactor: 3.901545264248647
           memberIdentifier: memberIdentifier
           fundScope: fundScope
-        - baseValue: 5.507386964179881
+        - baseValue: 4.459605034958679
           fundCode: fundCode
           inputs:
           - code: code
             displayName: displayName
-            value: 6.073898085781152
+            value: 0.43431398824148815
           - code: code
             displayName: displayName
-            value: 6.073898085781152
-          apportionmentFactor: 4.86315908102884
+            value: 0.43431398824148815
+          apportionmentFactor: 3.901545264248647
           memberIdentifier: memberIdentifier
           fundScope: fundScope
       properties:
@@ -196368,7 +196400,7 @@ components:
       example:
         code: code
         displayName: displayName
-        value: 6.073898085781152
+        value: 0.43431398824148815
       properties:
         code:
           description: "The input's identifier within its apportionment method, for\
@@ -196394,16 +196426,16 @@ components:
         \ the base value the method produced for it\r\nand the resulting apportionment\
         \ factor."
       example:
-        baseValue: 5.507386964179881
+        baseValue: 4.459605034958679
         fundCode: fundCode
         inputs:
         - code: code
           displayName: displayName
-          value: 6.073898085781152
+          value: 0.43431398824148815
         - code: code
           displayName: displayName
-          value: 6.073898085781152
-        apportionmentFactor: 4.86315908102884
+          value: 0.43431398824148815
+        apportionmentFactor: 3.901545264248647
         memberIdentifier: memberIdentifier
         fundScope: fundScope
       properties:
@@ -206478,10 +206510,10 @@ components:
         \ counts and the per-unit values belong to share class nodes and are omitted\
         \ on the fund node."
       example:
-        sharesInIssue: 1.8268702177058116
-        previousSharesInIssue: 9.183123594773994
-        shareClassToFundFxRate: 5.312489704336296
-        nav: 8.251625748923757
+        sharesInIssue: 0.4182561061793122
+        previousSharesInIssue: 5.312489704336296
+        shareClassToFundFxRate: 3.111202833403195
+        nav: 2.9409642974827896
         shareClassDetails:
           domCurrency: domCurrency
           instrumentScope: instrumentScope
@@ -206490,39 +206522,39 @@ components:
           shortCode: shortCode
         shareClassShortCode: shareClassShortCode
         buckets:
-        - unitsInIssue: 6.623518433804886
+        - unitsInIssue: 1.8268702177058116
           bucketType: bucketType
-          previousCumulativePerUnitValue: 4.573936264232251
-          previousCumulativeValue: 0.43431398824148815
+          previousCumulativePerUnitValue: 3.502657762086401
+          previousCumulativeValue: 6.623518433804886
           displayName: displayName
           bucketId: bucketId
           sourceBreakdown:
-            key: 1.7325933120207193
-          cumulativePerUnitValue: 8.863729185622827
-          perUnitValue: 8.28965939814297
-          value: 3.901545264248647
-          cumulativeValue: 2.9409642974827896
-        - unitsInIssue: 6.623518433804886
+            key: 8.863729185622827
+          cumulativePerUnitValue: 9.183123594773994
+          perUnitValue: 9.254183946267839
+          value: 8.28965939814297
+          cumulativeValue: 4.573936264232251
+        - unitsInIssue: 1.8268702177058116
           bucketType: bucketType
-          previousCumulativePerUnitValue: 4.573936264232251
-          previousCumulativeValue: 0.43431398824148815
+          previousCumulativePerUnitValue: 3.502657762086401
+          previousCumulativeValue: 6.623518433804886
           displayName: displayName
           bucketId: bucketId
           sourceBreakdown:
-            key: 1.7325933120207193
-          cumulativePerUnitValue: 8.863729185622827
-          perUnitValue: 8.28965939814297
-          value: 3.901545264248647
-          cumulativeValue: 2.9409642974827896
-        previousNav: 8.761432466225475
-        netDealingUnits: 0.4182561061793122
-        previousNavShareClassCurrency: 8.37823741034869
-        previousPerUnitValue: 3.502657762086401
-        navShareClassCurrency: 5.299143560275359
+            key: 8.863729185622827
+          cumulativePerUnitValue: 9.183123594773994
+          perUnitValue: 9.254183946267839
+          value: 8.28965939814297
+          cumulativeValue: 4.573936264232251
+        previousNav: 8.37823741034869
+        netDealingUnits: 7.606863723092579
+        previousNavShareClassCurrency: 9.897492629215506
+        previousPerUnitValue: 5.299143560275359
+        navShareClassCurrency: 3.7814124730767915
         label: label
         nodeType: nodeType
-        capitalRatio: 4.459605034958679
-        perUnitValue: 9.254183946267839
+        capitalRatio: 1.7325933120207193
+        perUnitValue: 8.761432466225475
       properties:
         nodeType:
           description: "The kind of node: the fund aggregate or a single share class.\
@@ -206641,10 +206673,10 @@ components:
         isSeeded: true
         bucketSetCode: bucketSetCode
         nodes:
-        - sharesInIssue: 1.8268702177058116
-          previousSharesInIssue: 9.183123594773994
-          shareClassToFundFxRate: 5.312489704336296
-          nav: 8.251625748923757
+        - sharesInIssue: 0.4182561061793122
+          previousSharesInIssue: 5.312489704336296
+          shareClassToFundFxRate: 3.111202833403195
+          nav: 2.9409642974827896
           shareClassDetails:
             domCurrency: domCurrency
             instrumentScope: instrumentScope
@@ -206653,43 +206685,43 @@ components:
             shortCode: shortCode
           shareClassShortCode: shareClassShortCode
           buckets:
-          - unitsInIssue: 6.623518433804886
+          - unitsInIssue: 1.8268702177058116
             bucketType: bucketType
-            previousCumulativePerUnitValue: 4.573936264232251
-            previousCumulativeValue: 0.43431398824148815
+            previousCumulativePerUnitValue: 3.502657762086401
+            previousCumulativeValue: 6.623518433804886
             displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
-              key: 1.7325933120207193
-            cumulativePerUnitValue: 8.863729185622827
-            perUnitValue: 8.28965939814297
-            value: 3.901545264248647
-            cumulativeValue: 2.9409642974827896
-          - unitsInIssue: 6.623518433804886
+              key: 8.863729185622827
+            cumulativePerUnitValue: 9.183123594773994
+            perUnitValue: 9.254183946267839
+            value: 8.28965939814297
+            cumulativeValue: 4.573936264232251
+          - unitsInIssue: 1.8268702177058116
             bucketType: bucketType
-            previousCumulativePerUnitValue: 4.573936264232251
-            previousCumulativeValue: 0.43431398824148815
+            previousCumulativePerUnitValue: 3.502657762086401
+            previousCumulativeValue: 6.623518433804886
             displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
-              key: 1.7325933120207193
-            cumulativePerUnitValue: 8.863729185622827
-            perUnitValue: 8.28965939814297
-            value: 3.901545264248647
-            cumulativeValue: 2.9409642974827896
-          previousNav: 8.761432466225475
-          netDealingUnits: 0.4182561061793122
-          previousNavShareClassCurrency: 8.37823741034869
-          previousPerUnitValue: 3.502657762086401
-          navShareClassCurrency: 5.299143560275359
+              key: 8.863729185622827
+            cumulativePerUnitValue: 9.183123594773994
+            perUnitValue: 9.254183946267839
+            value: 8.28965939814297
+            cumulativeValue: 4.573936264232251
+          previousNav: 8.37823741034869
+          netDealingUnits: 7.606863723092579
+          previousNavShareClassCurrency: 9.897492629215506
+          previousPerUnitValue: 5.299143560275359
+          navShareClassCurrency: 3.7814124730767915
           label: label
           nodeType: nodeType
-          capitalRatio: 4.459605034958679
-          perUnitValue: 9.254183946267839
-        - sharesInIssue: 1.8268702177058116
-          previousSharesInIssue: 9.183123594773994
-          shareClassToFundFxRate: 5.312489704336296
-          nav: 8.251625748923757
+          capitalRatio: 1.7325933120207193
+          perUnitValue: 8.761432466225475
+        - sharesInIssue: 0.4182561061793122
+          previousSharesInIssue: 5.312489704336296
+          shareClassToFundFxRate: 3.111202833403195
+          nav: 2.9409642974827896
           shareClassDetails:
             domCurrency: domCurrency
             instrumentScope: instrumentScope
@@ -206698,39 +206730,39 @@ components:
             shortCode: shortCode
           shareClassShortCode: shareClassShortCode
           buckets:
-          - unitsInIssue: 6.623518433804886
+          - unitsInIssue: 1.8268702177058116
             bucketType: bucketType
-            previousCumulativePerUnitValue: 4.573936264232251
-            previousCumulativeValue: 0.43431398824148815
+            previousCumulativePerUnitValue: 3.502657762086401
+            previousCumulativeValue: 6.623518433804886
             displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
-              key: 1.7325933120207193
-            cumulativePerUnitValue: 8.863729185622827
-            perUnitValue: 8.28965939814297
-            value: 3.901545264248647
-            cumulativeValue: 2.9409642974827896
-          - unitsInIssue: 6.623518433804886
+              key: 8.863729185622827
+            cumulativePerUnitValue: 9.183123594773994
+            perUnitValue: 9.254183946267839
+            value: 8.28965939814297
+            cumulativeValue: 4.573936264232251
+          - unitsInIssue: 1.8268702177058116
             bucketType: bucketType
-            previousCumulativePerUnitValue: 4.573936264232251
-            previousCumulativeValue: 0.43431398824148815
+            previousCumulativePerUnitValue: 3.502657762086401
+            previousCumulativeValue: 6.623518433804886
             displayName: displayName
             bucketId: bucketId
             sourceBreakdown:
-              key: 1.7325933120207193
-            cumulativePerUnitValue: 8.863729185622827
-            perUnitValue: 8.28965939814297
-            value: 3.901545264248647
-            cumulativeValue: 2.9409642974827896
-          previousNav: 8.761432466225475
-          netDealingUnits: 0.4182561061793122
-          previousNavShareClassCurrency: 8.37823741034869
-          previousPerUnitValue: 3.502657762086401
-          navShareClassCurrency: 5.299143560275359
+              key: 8.863729185622827
+            cumulativePerUnitValue: 9.183123594773994
+            perUnitValue: 9.254183946267839
+            value: 8.28965939814297
+            cumulativeValue: 4.573936264232251
+          previousNav: 8.37823741034869
+          netDealingUnits: 7.606863723092579
+          previousNavShareClassCurrency: 9.897492629215506
+          previousPerUnitValue: 5.299143560275359
+          navShareClassCurrency: 3.7814124730767915
           label: label
           nodeType: nodeType
-          capitalRatio: 4.459605034958679
-          perUnitValue: 9.254183946267839
+          capitalRatio: 1.7325933120207193
+          perUnitValue: 8.761432466225475
         displayName: displayName
         isBackfilled: true
       properties:
@@ -206779,18 +206811,18 @@ components:
         \nof the movement by the source that contributed it and the same values restated\
         \ per unit in issue."
       example:
-        unitsInIssue: 6.623518433804886
+        unitsInIssue: 1.8268702177058116
         bucketType: bucketType
-        previousCumulativePerUnitValue: 4.573936264232251
-        previousCumulativeValue: 0.43431398824148815
+        previousCumulativePerUnitValue: 3.502657762086401
+        previousCumulativeValue: 6.623518433804886
         displayName: displayName
         bucketId: bucketId
         sourceBreakdown:
-          key: 1.7325933120207193
-        cumulativePerUnitValue: 8.863729185622827
-        perUnitValue: 8.28965939814297
-        value: 3.901545264248647
-        cumulativeValue: 2.9409642974827896
+          key: 8.863729185622827
+        cumulativePerUnitValue: 9.183123594773994
+        perUnitValue: 9.254183946267839
+        value: 8.28965939814297
+        cumulativeValue: 4.573936264232251
       properties:
         bucketId:
           description: The identifier of the bucket.
@@ -233907,6 +233939,41 @@ components:
       - Friday
       - Saturday
       type: string
+    DealingBookCompleteness:
+      additionalProperties: false
+      example:
+        note: note
+        lateNotCounted: 0
+        cutOff: 2000-01-23T04:56:07.000+00:00
+        complete: true
+      properties:
+        complete:
+          description: Whether every share class's dealing cut-off had passed at the
+            strike's as-at. True when no cut-off is configured.
+          type: boolean
+        cutOff:
+          description: The latest dealing cut-off among the share classes that configure
+            one. Absent when none does.
+          format: date-time
+          nullable: true
+          type: string
+        lateNotCounted:
+          description: How many orders at the valuation point were written to the
+            book after their class's cut-off and so were reported but not counted.
+            Absent when a cut-off is configured but lateness could not be judged because
+            an order at the valuation point carries no version.
+          format: int32
+          nullable: true
+          type: integer
+        note:
+          description: "Why the book was judged complete or incomplete: the cut-off\
+            \ that had or had not passed, or that none is configured and completeness\
+            \ was assumed."
+          nullable: true
+          type: string
+      required:
+      - complete
+      type: object
     DealingEstimates:
       additionalProperties: false
       description: How a fund treats estimated dealing when it strikes a valuation
@@ -233929,13 +233996,22 @@ components:
             type: string
           type: array
         requireComplete:
-          description: Reserved; not yet enforced. Whether every source must have
-            reported before the valuation point can be struck. Defaults to true.
+          description: "Whether the dealing book must be complete before a swing is\
+            \ proposed. For the LusidTA source the book is complete once each share\
+            \ class's TA/DealingSchedule cut-off has passed at the strike's as-at;\
+            \ a class with no cut-off configured is treated as complete and the audit\
+            \ says so. An order written after its class's cut-off is late: reported\
+            \ on the audit but not counted. When true and the book is incomplete the\
+            \ valuation point is still struck, at the unswung baseline, and no swing\
+            \ is proposed; the audit says why. Defaults to true."
           nullable: true
           type: boolean
         countPending:
-          description: Whether pending orders count towards the estimated flow alongside
-            confirmed ones. Defaults to false.
+          description: "Whether a Pending order at the valuation point counts towards\
+            \ the estimated flow. Orders in the New and Priced states always count.\
+            \ When true a Pending order is folded into the flows like them; when false\
+            \ it is left out of the decision and reported on the audit as pending\
+            \ and not counted, with its value where one can be read. Defaults to false."
           nullable: true
           type: boolean
         unitValuation:
@@ -233953,12 +234029,15 @@ components:
       additionalProperties: false
       description: "The transfer agency estimates a swing decision was made on: the\
         \ orders dealt at the valuation point, what they summed, and how many pending\
-        \ orders were left out."
+        \ orders were left out and what those were worth."
       example:
         pendingNotCounted: 7
         count: 7
+        pendingGrossInflow: 5.533258397034986
         grossOutflow: 3.0576100241049344
+        pendingGrossOutflow: 3.2588565619047607
         grossInflow: 3.0205796992916243
+        pendingUnvaluedCount: 4
       properties:
         count:
           description: How many orders were summed.
@@ -233979,11 +234058,32 @@ components:
             orders. Zero when the fund counts them.
           format: int32
           type: integer
+        pendingGrossInflow:
+          description: "The sum of the inflows among the pending orders left out,\
+            \ in the fund currency, with units at the estimate price. Zero or more;\
+            \ zero when the fund counts pending orders."
+          format: double
+          type: number
+        pendingGrossOutflow:
+          description: "The sum of the outflows among the pending orders left out,\
+            \ in the fund currency, as a magnitude, with units at the estimate price.\
+            \ Zero or more; zero when the fund counts pending orders."
+          format: double
+          type: number
+        pendingUnvaluedCount:
+          description: "How many of the pending orders left out could not be valued,\
+            \ such as a unit order with no price yet. They are in pendingNotCounted\
+            \ but absent from pendingGrossInflow and pendingGrossOutflow."
+          format: int32
+          type: integer
       required:
       - count
       - grossInflow
       - grossOutflow
+      - pendingGrossInflow
+      - pendingGrossOutflow
       - pendingNotCounted
+      - pendingUnvaluedCount
       type: object
     DealingFlowValuation:
       additionalProperties: false
@@ -233991,18 +234091,18 @@ components:
         \ valued at one unit price, and the swing outcome that net flow leads the\
         \ methodology to."
       example:
-        netCashflow: 5.533258397034986
-        grossOutflow: 0.2025324113236393
+        netCashflow: 0.2025324113236393
+        grossOutflow: 1.041444916118296
         outcome:
-          spreadBps: 6.628464275087742
+          spreadBps: 4.678947989005849
           swung: true
           swingDirection: swingDirection
-          dealingPrice: 4.258773108174356
+          dealingPrice: 7.260521264802104
           tierMatched:
             lowerBoundExclusive: 7.058770351582356
             upperBoundInclusive: 6.519180951018382
-        netCashflowPctOfNav: 3.2588565619047607
-        grossInflow: 4.078845849666752
+        netCashflowPctOfNav: 6.628464275087742
+        grossInflow: 4.258773108174356
       properties:
         netCashflow:
           description: "The inflows less the outflows at this unit price, in the fund\
@@ -237762,11 +237862,11 @@ components:
       description: The bid and offer dealing prices a share class of a Dual fund publishes
         at a valuation point.
       example:
-        dealingOffer: 0.8774076871421566
-        bidSpreadBps: 9.702963800023566
+        dealingOffer: 5.507386964179881
+        bidSpreadBps: 4.86315908102884
         bidPerValuationSource: bidPerValuationSource
-        offerSpreadBps: 0.5199002018724985
-        dealingBid: 9.132027271330688
+        offerSpreadBps: 6.073898085781152
+        dealingBid: 7.933506881737151
         offerPerValuationSource: offerPerValuationSource
       properties:
         dealingBid:
@@ -240271,36 +240371,36 @@ components:
         \ how far apart they are."
       example:
         atEstimatePrice:
-          netCashflow: 5.533258397034986
-          grossOutflow: 0.2025324113236393
+          netCashflow: 0.2025324113236393
+          grossOutflow: 1.041444916118296
           outcome:
-            spreadBps: 6.628464275087742
+            spreadBps: 4.678947989005849
             swung: true
             swingDirection: swingDirection
-            dealingPrice: 4.258773108174356
+            dealingPrice: 7.260521264802104
             tierMatched:
               lowerBoundExclusive: 7.058770351582356
               upperBoundInclusive: 6.519180951018382
-          netCashflowPctOfNav: 3.2588565619047607
-          grossInflow: 4.078845849666752
-        unitBasedShare: 7.260521264802104
+          netCashflowPctOfNav: 6.628464275087742
+          grossInflow: 4.258773108174356
+        unitBasedShare: 9.702963800023566
         decisionPrice: decisionPrice
         difference:
-          amount: 1.041444916118296
-          pctOfNav: 4.678947989005849
+          amount: 9.132027271330688
+          pctOfNav: 0.8774076871421566
         atLastOfficialPrice:
-          netCashflow: 5.533258397034986
-          grossOutflow: 0.2025324113236393
+          netCashflow: 0.2025324113236393
+          grossOutflow: 1.041444916118296
           outcome:
-            spreadBps: 6.628464275087742
+            spreadBps: 4.678947989005849
             swung: true
             swingDirection: swingDirection
-            dealingPrice: 4.258773108174356
+            dealingPrice: 7.260521264802104
             tierMatched:
               lowerBoundExclusive: 7.058770351582356
               upperBoundInclusive: 6.519180951018382
-          netCashflowPctOfNav: 3.2588565619047607
-          grossInflow: 4.078845849666752
+          netCashflowPctOfNav: 6.628464275087742
+          grossInflow: 4.258773108174356
       properties:
         decisionPrice:
           description: "The unit price the swing decision was taken on. 'EstimatePrice'\
@@ -240325,15 +240425,14 @@ components:
       required:
       - atEstimatePrice
       - decisionPrice
-      - unitBasedShare
       type: object
     EstimateValuationDifference:
       additionalProperties: false
       description: How far apart the estimate-price and last-official-price valuations
         of the net dealing flow are.
       example:
-        amount: 1.041444916118296
-        pctOfNav: 4.678947989005849
+        amount: 9.132027271330688
+        pctOfNav: 0.8774076871421566
       properties:
         amount:
           description: "The estimate-price net cashflow less the last-official-price\
@@ -240356,10 +240455,10 @@ components:
         \ way it swings, the spread and tier it lands in, and the dealing price that\
         \ results."
       example:
-        spreadBps: 6.628464275087742
+        spreadBps: 4.678947989005849
         swung: true
         swingDirection: swingDirection
-        dealingPrice: 4.258773108174356
+        dealingPrice: 7.260521264802104
         tierMatched:
           lowerBoundExclusive: 7.058770351582356
           upperBoundInclusive: 6.519180951018382
@@ -321295,8 +321394,11 @@ components:
         dealingFlows:
           pendingNotCounted: 7
           count: 7
+          pendingGrossInflow: 5.533258397034986
           grossOutflow: 3.0576100241049344
+          pendingGrossOutflow: 3.2588565619047607
           grossInflow: 3.0205796992916243
+          pendingUnvaluedCount: 4
         outflowTrigger:
           fired: true
           metric: metric
@@ -321312,6 +321414,11 @@ components:
           decision: decision
           user: user
           timestamp: 2000-01-23T04:56:07.000+00:00
+        completeness:
+          note: note
+          lateNotCounted: 0
+          cutOff: 2000-01-23T04:56:07.000+00:00
+          complete: true
         netCashflow: 3.0937452626664474
         spreadsApplied:
           bps: 0.8851374739011653
@@ -321329,36 +321436,36 @@ components:
           currency: currency
         estimateValuation:
           atEstimatePrice:
-            netCashflow: 5.533258397034986
-            grossOutflow: 0.2025324113236393
+            netCashflow: 0.2025324113236393
+            grossOutflow: 1.041444916118296
             outcome:
-              spreadBps: 6.628464275087742
+              spreadBps: 4.678947989005849
               swung: true
               swingDirection: swingDirection
-              dealingPrice: 4.258773108174356
+              dealingPrice: 7.260521264802104
               tierMatched:
                 lowerBoundExclusive: 7.058770351582356
                 upperBoundInclusive: 6.519180951018382
-            netCashflowPctOfNav: 3.2588565619047607
-            grossInflow: 4.078845849666752
-          unitBasedShare: 7.260521264802104
+            netCashflowPctOfNav: 6.628464275087742
+            grossInflow: 4.258773108174356
+          unitBasedShare: 9.702963800023566
           decisionPrice: decisionPrice
           difference:
-            amount: 1.041444916118296
-            pctOfNav: 4.678947989005849
+            amount: 9.132027271330688
+            pctOfNav: 0.8774076871421566
           atLastOfficialPrice:
-            netCashflow: 5.533258397034986
-            grossOutflow: 0.2025324113236393
+            netCashflow: 0.2025324113236393
+            grossOutflow: 1.041444916118296
             outcome:
-              spreadBps: 6.628464275087742
+              spreadBps: 4.678947989005849
               swung: true
               swingDirection: swingDirection
-              dealingPrice: 4.258773108174356
+              dealingPrice: 7.260521264802104
               tierMatched:
                 lowerBoundExclusive: 7.058770351582356
                 upperBoundInclusive: 6.519180951018382
-            netCashflowPctOfNav: 3.2588565619047607
-            grossInflow: 4.078845849666752
+            netCashflowPctOfNav: 6.628464275087742
+            grossInflow: 4.258773108174356
         netCashflowPctOfNav: 7.143538047012306
       properties:
         netCashflow:
@@ -321407,6 +321514,8 @@ components:
             $ref: '#/components/schemas/DealingLineNotValued'
           nullable: true
           type: array
+        completeness:
+          $ref: '#/components/schemas/DealingBookCompleteness'
       required:
       - engineProposal
       - netCashflow
@@ -321529,11 +321638,11 @@ components:
           swingDirection: swingDirection
           dealingPrice: 6.704019297950036
         dualDealing:
-          dealingOffer: 0.8774076871421566
-          bidSpreadBps: 9.702963800023566
+          dealingOffer: 5.507386964179881
+          bidSpreadBps: 4.86315908102884
           bidPerValuationSource: bidPerValuationSource
-          offerSpreadBps: 0.5199002018724985
-          dealingBid: 9.132027271330688
+          offerSpreadBps: 6.073898085781152
+          dealingBid: 7.933506881737151
           offerPerValuationSource: offerPerValuationSource
         audit:
           approvalStatus: approvalStatus
@@ -321544,8 +321653,11 @@ components:
           dealingFlows:
             pendingNotCounted: 7
             count: 7
+            pendingGrossInflow: 5.533258397034986
             grossOutflow: 3.0576100241049344
+            pendingGrossOutflow: 3.2588565619047607
             grossInflow: 3.0205796992916243
+            pendingUnvaluedCount: 4
           outflowTrigger:
             fired: true
             metric: metric
@@ -321561,6 +321673,11 @@ components:
             decision: decision
             user: user
             timestamp: 2000-01-23T04:56:07.000+00:00
+          completeness:
+            note: note
+            lateNotCounted: 0
+            cutOff: 2000-01-23T04:56:07.000+00:00
+            complete: true
           netCashflow: 3.0937452626664474
           spreadsApplied:
             bps: 0.8851374739011653
@@ -321578,39 +321695,39 @@ components:
             currency: currency
           estimateValuation:
             atEstimatePrice:
-              netCashflow: 5.533258397034986
-              grossOutflow: 0.2025324113236393
+              netCashflow: 0.2025324113236393
+              grossOutflow: 1.041444916118296
               outcome:
-                spreadBps: 6.628464275087742
+                spreadBps: 4.678947989005849
                 swung: true
                 swingDirection: swingDirection
-                dealingPrice: 4.258773108174356
+                dealingPrice: 7.260521264802104
                 tierMatched:
                   lowerBoundExclusive: 7.058770351582356
                   upperBoundInclusive: 6.519180951018382
-              netCashflowPctOfNav: 3.2588565619047607
-              grossInflow: 4.078845849666752
-            unitBasedShare: 7.260521264802104
+              netCashflowPctOfNav: 6.628464275087742
+              grossInflow: 4.258773108174356
+            unitBasedShare: 9.702963800023566
             decisionPrice: decisionPrice
             difference:
-              amount: 1.041444916118296
-              pctOfNav: 4.678947989005849
+              amount: 9.132027271330688
+              pctOfNav: 0.8774076871421566
             atLastOfficialPrice:
-              netCashflow: 5.533258397034986
-              grossOutflow: 0.2025324113236393
+              netCashflow: 0.2025324113236393
+              grossOutflow: 1.041444916118296
               outcome:
-                spreadBps: 6.628464275087742
+                spreadBps: 4.678947989005849
                 swung: true
                 swingDirection: swingDirection
-                dealingPrice: 4.258773108174356
+                dealingPrice: 7.260521264802104
                 tierMatched:
                   lowerBoundExclusive: 7.058770351582356
                   upperBoundInclusive: 6.519180951018382
-              netCashflowPctOfNav: 3.2588565619047607
-              grossInflow: 4.078845849666752
+              netCashflowPctOfNav: 6.628464275087742
+              grossInflow: 4.258773108174356
           netCashflowPctOfNav: 7.143538047012306
         reporting:
-          key: 7.933506881737151
+          key: 8.251625748923757
       properties:
         dealing:
           $ref: '#/components/schemas/SinglePriceDealing'
@@ -368420,11 +368537,11 @@ components:
             swingDirection: swingDirection
             dealingPrice: 6.704019297950036
           dualDealing:
-            dealingOffer: 0.8774076871421566
-            bidSpreadBps: 9.702963800023566
+            dealingOffer: 5.507386964179881
+            bidSpreadBps: 4.86315908102884
             bidPerValuationSource: bidPerValuationSource
-            offerSpreadBps: 0.5199002018724985
-            dealingBid: 9.132027271330688
+            offerSpreadBps: 6.073898085781152
+            dealingBid: 7.933506881737151
             offerPerValuationSource: offerPerValuationSource
           audit:
             approvalStatus: approvalStatus
@@ -368435,8 +368552,11 @@ components:
             dealingFlows:
               pendingNotCounted: 7
               count: 7
+              pendingGrossInflow: 5.533258397034986
               grossOutflow: 3.0576100241049344
+              pendingGrossOutflow: 3.2588565619047607
               grossInflow: 3.0205796992916243
+              pendingUnvaluedCount: 4
             outflowTrigger:
               fired: true
               metric: metric
@@ -368452,6 +368572,11 @@ components:
               decision: decision
               user: user
               timestamp: 2000-01-23T04:56:07.000+00:00
+            completeness:
+              note: note
+              lateNotCounted: 0
+              cutOff: 2000-01-23T04:56:07.000+00:00
+              complete: true
             netCashflow: 3.0937452626664474
             spreadsApplied:
               bps: 0.8851374739011653
@@ -368469,39 +368594,39 @@ components:
               currency: currency
             estimateValuation:
               atEstimatePrice:
-                netCashflow: 5.533258397034986
-                grossOutflow: 0.2025324113236393
+                netCashflow: 0.2025324113236393
+                grossOutflow: 1.041444916118296
                 outcome:
-                  spreadBps: 6.628464275087742
+                  spreadBps: 4.678947989005849
                   swung: true
                   swingDirection: swingDirection
-                  dealingPrice: 4.258773108174356
+                  dealingPrice: 7.260521264802104
                   tierMatched:
                     lowerBoundExclusive: 7.058770351582356
                     upperBoundInclusive: 6.519180951018382
-                netCashflowPctOfNav: 3.2588565619047607
-                grossInflow: 4.078845849666752
-              unitBasedShare: 7.260521264802104
+                netCashflowPctOfNav: 6.628464275087742
+                grossInflow: 4.258773108174356
+              unitBasedShare: 9.702963800023566
               decisionPrice: decisionPrice
               difference:
-                amount: 1.041444916118296
-                pctOfNav: 4.678947989005849
+                amount: 9.132027271330688
+                pctOfNav: 0.8774076871421566
               atLastOfficialPrice:
-                netCashflow: 5.533258397034986
-                grossOutflow: 0.2025324113236393
+                netCashflow: 0.2025324113236393
+                grossOutflow: 1.041444916118296
                 outcome:
-                  spreadBps: 6.628464275087742
+                  spreadBps: 4.678947989005849
                   swung: true
                   swingDirection: swingDirection
-                  dealingPrice: 4.258773108174356
+                  dealingPrice: 7.260521264802104
                   tierMatched:
                     lowerBoundExclusive: 7.058770351582356
                     upperBoundInclusive: 6.519180951018382
-                netCashflowPctOfNav: 3.2588565619047607
-                grossInflow: 4.078845849666752
+                netCashflowPctOfNav: 6.628464275087742
+                grossInflow: 4.258773108174356
             netCashflowPctOfNav: 7.143538047012306
           reporting:
-            key: 7.933506881737151
+            key: 8.251625748923757
         shareClassBreakdown:
           unitisation:
             sharesInIssue: 1.1730742509559433
@@ -398398,56 +398523,56 @@ components:
           allocationGroupCode: allocationGroupCode
           apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
           factors:
-          - baseValue: 5.507386964179881
+          - baseValue: 4.459605034958679
             fundCode: fundCode
             inputs:
             - code: code
               displayName: displayName
-              value: 6.073898085781152
+              value: 0.43431398824148815
             - code: code
               displayName: displayName
-              value: 6.073898085781152
-            apportionmentFactor: 4.86315908102884
+              value: 0.43431398824148815
+            apportionmentFactor: 3.901545264248647
             memberIdentifier: memberIdentifier
             fundScope: fundScope
-          - baseValue: 5.507386964179881
+          - baseValue: 4.459605034958679
             fundCode: fundCode
             inputs:
             - code: code
               displayName: displayName
-              value: 6.073898085781152
+              value: 0.43431398824148815
             - code: code
               displayName: displayName
-              value: 6.073898085781152
-            apportionmentFactor: 4.86315908102884
+              value: 0.43431398824148815
+            apportionmentFactor: 3.901545264248647
             memberIdentifier: memberIdentifier
             fundScope: fundScope
         - apportionmentLevel: apportionmentLevel
           allocationGroupCode: allocationGroupCode
           apportionmentMethodPropertyKey: apportionmentMethodPropertyKey
           factors:
-          - baseValue: 5.507386964179881
+          - baseValue: 4.459605034958679
             fundCode: fundCode
             inputs:
             - code: code
               displayName: displayName
-              value: 6.073898085781152
+              value: 0.43431398824148815
             - code: code
               displayName: displayName
-              value: 6.073898085781152
-            apportionmentFactor: 4.86315908102884
+              value: 0.43431398824148815
+            apportionmentFactor: 3.901545264248647
             memberIdentifier: memberIdentifier
             fundScope: fundScope
-          - baseValue: 5.507386964179881
+          - baseValue: 4.459605034958679
             fundCode: fundCode
             inputs:
             - code: code
               displayName: displayName
-              value: 6.073898085781152
+              value: 0.43431398824148815
             - code: code
               displayName: displayName
-              value: 6.073898085781152
-            apportionmentFactor: 4.86315908102884
+              value: 0.43431398824148815
+            apportionmentFactor: 3.901545264248647
             memberIdentifier: memberIdentifier
             fundScope: fundScope
         fundDetails:
@@ -398464,10 +398589,10 @@ components:
           isSeeded: true
           bucketSetCode: bucketSetCode
           nodes:
-          - sharesInIssue: 1.8268702177058116
-            previousSharesInIssue: 9.183123594773994
-            shareClassToFundFxRate: 5.312489704336296
-            nav: 8.251625748923757
+          - sharesInIssue: 0.4182561061793122
+            previousSharesInIssue: 5.312489704336296
+            shareClassToFundFxRate: 3.111202833403195
+            nav: 2.9409642974827896
             shareClassDetails:
               domCurrency: domCurrency
               instrumentScope: instrumentScope
@@ -398476,43 +398601,43 @@ components:
               shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
-            - unitsInIssue: 6.623518433804886
+            - unitsInIssue: 1.8268702177058116
               bucketType: bucketType
-              previousCumulativePerUnitValue: 4.573936264232251
-              previousCumulativeValue: 0.43431398824148815
+              previousCumulativePerUnitValue: 3.502657762086401
+              previousCumulativeValue: 6.623518433804886
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 1.7325933120207193
-              cumulativePerUnitValue: 8.863729185622827
-              perUnitValue: 8.28965939814297
-              value: 3.901545264248647
-              cumulativeValue: 2.9409642974827896
-            - unitsInIssue: 6.623518433804886
+                key: 8.863729185622827
+              cumulativePerUnitValue: 9.183123594773994
+              perUnitValue: 9.254183946267839
+              value: 8.28965939814297
+              cumulativeValue: 4.573936264232251
+            - unitsInIssue: 1.8268702177058116
               bucketType: bucketType
-              previousCumulativePerUnitValue: 4.573936264232251
-              previousCumulativeValue: 0.43431398824148815
+              previousCumulativePerUnitValue: 3.502657762086401
+              previousCumulativeValue: 6.623518433804886
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 1.7325933120207193
-              cumulativePerUnitValue: 8.863729185622827
-              perUnitValue: 8.28965939814297
-              value: 3.901545264248647
-              cumulativeValue: 2.9409642974827896
-            previousNav: 8.761432466225475
-            netDealingUnits: 0.4182561061793122
-            previousNavShareClassCurrency: 8.37823741034869
-            previousPerUnitValue: 3.502657762086401
-            navShareClassCurrency: 5.299143560275359
+                key: 8.863729185622827
+              cumulativePerUnitValue: 9.183123594773994
+              perUnitValue: 9.254183946267839
+              value: 8.28965939814297
+              cumulativeValue: 4.573936264232251
+            previousNav: 8.37823741034869
+            netDealingUnits: 7.606863723092579
+            previousNavShareClassCurrency: 9.897492629215506
+            previousPerUnitValue: 5.299143560275359
+            navShareClassCurrency: 3.7814124730767915
             label: label
             nodeType: nodeType
-            capitalRatio: 4.459605034958679
-            perUnitValue: 9.254183946267839
-          - sharesInIssue: 1.8268702177058116
-            previousSharesInIssue: 9.183123594773994
-            shareClassToFundFxRate: 5.312489704336296
-            nav: 8.251625748923757
+            capitalRatio: 1.7325933120207193
+            perUnitValue: 8.761432466225475
+          - sharesInIssue: 0.4182561061793122
+            previousSharesInIssue: 5.312489704336296
+            shareClassToFundFxRate: 3.111202833403195
+            nav: 2.9409642974827896
             shareClassDetails:
               domCurrency: domCurrency
               instrumentScope: instrumentScope
@@ -398521,49 +398646,49 @@ components:
               shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
-            - unitsInIssue: 6.623518433804886
+            - unitsInIssue: 1.8268702177058116
               bucketType: bucketType
-              previousCumulativePerUnitValue: 4.573936264232251
-              previousCumulativeValue: 0.43431398824148815
+              previousCumulativePerUnitValue: 3.502657762086401
+              previousCumulativeValue: 6.623518433804886
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 1.7325933120207193
-              cumulativePerUnitValue: 8.863729185622827
-              perUnitValue: 8.28965939814297
-              value: 3.901545264248647
-              cumulativeValue: 2.9409642974827896
-            - unitsInIssue: 6.623518433804886
+                key: 8.863729185622827
+              cumulativePerUnitValue: 9.183123594773994
+              perUnitValue: 9.254183946267839
+              value: 8.28965939814297
+              cumulativeValue: 4.573936264232251
+            - unitsInIssue: 1.8268702177058116
               bucketType: bucketType
-              previousCumulativePerUnitValue: 4.573936264232251
-              previousCumulativeValue: 0.43431398824148815
+              previousCumulativePerUnitValue: 3.502657762086401
+              previousCumulativeValue: 6.623518433804886
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 1.7325933120207193
-              cumulativePerUnitValue: 8.863729185622827
-              perUnitValue: 8.28965939814297
-              value: 3.901545264248647
-              cumulativeValue: 2.9409642974827896
-            previousNav: 8.761432466225475
-            netDealingUnits: 0.4182561061793122
-            previousNavShareClassCurrency: 8.37823741034869
-            previousPerUnitValue: 3.502657762086401
-            navShareClassCurrency: 5.299143560275359
+                key: 8.863729185622827
+              cumulativePerUnitValue: 9.183123594773994
+              perUnitValue: 9.254183946267839
+              value: 8.28965939814297
+              cumulativeValue: 4.573936264232251
+            previousNav: 8.37823741034869
+            netDealingUnits: 7.606863723092579
+            previousNavShareClassCurrency: 9.897492629215506
+            previousPerUnitValue: 5.299143560275359
+            navShareClassCurrency: 3.7814124730767915
             label: label
             nodeType: nodeType
-            capitalRatio: 4.459605034958679
-            perUnitValue: 9.254183946267839
+            capitalRatio: 1.7325933120207193
+            perUnitValue: 8.761432466225475
           displayName: displayName
           isBackfilled: true
         - isApportionment: true
           isSeeded: true
           bucketSetCode: bucketSetCode
           nodes:
-          - sharesInIssue: 1.8268702177058116
-            previousSharesInIssue: 9.183123594773994
-            shareClassToFundFxRate: 5.312489704336296
-            nav: 8.251625748923757
+          - sharesInIssue: 0.4182561061793122
+            previousSharesInIssue: 5.312489704336296
+            shareClassToFundFxRate: 3.111202833403195
+            nav: 2.9409642974827896
             shareClassDetails:
               domCurrency: domCurrency
               instrumentScope: instrumentScope
@@ -398572,43 +398697,43 @@ components:
               shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
-            - unitsInIssue: 6.623518433804886
+            - unitsInIssue: 1.8268702177058116
               bucketType: bucketType
-              previousCumulativePerUnitValue: 4.573936264232251
-              previousCumulativeValue: 0.43431398824148815
+              previousCumulativePerUnitValue: 3.502657762086401
+              previousCumulativeValue: 6.623518433804886
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 1.7325933120207193
-              cumulativePerUnitValue: 8.863729185622827
-              perUnitValue: 8.28965939814297
-              value: 3.901545264248647
-              cumulativeValue: 2.9409642974827896
-            - unitsInIssue: 6.623518433804886
+                key: 8.863729185622827
+              cumulativePerUnitValue: 9.183123594773994
+              perUnitValue: 9.254183946267839
+              value: 8.28965939814297
+              cumulativeValue: 4.573936264232251
+            - unitsInIssue: 1.8268702177058116
               bucketType: bucketType
-              previousCumulativePerUnitValue: 4.573936264232251
-              previousCumulativeValue: 0.43431398824148815
+              previousCumulativePerUnitValue: 3.502657762086401
+              previousCumulativeValue: 6.623518433804886
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 1.7325933120207193
-              cumulativePerUnitValue: 8.863729185622827
-              perUnitValue: 8.28965939814297
-              value: 3.901545264248647
-              cumulativeValue: 2.9409642974827896
-            previousNav: 8.761432466225475
-            netDealingUnits: 0.4182561061793122
-            previousNavShareClassCurrency: 8.37823741034869
-            previousPerUnitValue: 3.502657762086401
-            navShareClassCurrency: 5.299143560275359
+                key: 8.863729185622827
+              cumulativePerUnitValue: 9.183123594773994
+              perUnitValue: 9.254183946267839
+              value: 8.28965939814297
+              cumulativeValue: 4.573936264232251
+            previousNav: 8.37823741034869
+            netDealingUnits: 7.606863723092579
+            previousNavShareClassCurrency: 9.897492629215506
+            previousPerUnitValue: 5.299143560275359
+            navShareClassCurrency: 3.7814124730767915
             label: label
             nodeType: nodeType
-            capitalRatio: 4.459605034958679
-            perUnitValue: 9.254183946267839
-          - sharesInIssue: 1.8268702177058116
-            previousSharesInIssue: 9.183123594773994
-            shareClassToFundFxRate: 5.312489704336296
-            nav: 8.251625748923757
+            capitalRatio: 1.7325933120207193
+            perUnitValue: 8.761432466225475
+          - sharesInIssue: 0.4182561061793122
+            previousSharesInIssue: 5.312489704336296
+            shareClassToFundFxRate: 3.111202833403195
+            nav: 2.9409642974827896
             shareClassDetails:
               domCurrency: domCurrency
               instrumentScope: instrumentScope
@@ -398617,39 +398742,39 @@ components:
               shortCode: shortCode
             shareClassShortCode: shareClassShortCode
             buckets:
-            - unitsInIssue: 6.623518433804886
+            - unitsInIssue: 1.8268702177058116
               bucketType: bucketType
-              previousCumulativePerUnitValue: 4.573936264232251
-              previousCumulativeValue: 0.43431398824148815
+              previousCumulativePerUnitValue: 3.502657762086401
+              previousCumulativeValue: 6.623518433804886
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 1.7325933120207193
-              cumulativePerUnitValue: 8.863729185622827
-              perUnitValue: 8.28965939814297
-              value: 3.901545264248647
-              cumulativeValue: 2.9409642974827896
-            - unitsInIssue: 6.623518433804886
+                key: 8.863729185622827
+              cumulativePerUnitValue: 9.183123594773994
+              perUnitValue: 9.254183946267839
+              value: 8.28965939814297
+              cumulativeValue: 4.573936264232251
+            - unitsInIssue: 1.8268702177058116
               bucketType: bucketType
-              previousCumulativePerUnitValue: 4.573936264232251
-              previousCumulativeValue: 0.43431398824148815
+              previousCumulativePerUnitValue: 3.502657762086401
+              previousCumulativeValue: 6.623518433804886
               displayName: displayName
               bucketId: bucketId
               sourceBreakdown:
-                key: 1.7325933120207193
-              cumulativePerUnitValue: 8.863729185622827
-              perUnitValue: 8.28965939814297
-              value: 3.901545264248647
-              cumulativeValue: 2.9409642974827896
-            previousNav: 8.761432466225475
-            netDealingUnits: 0.4182561061793122
-            previousNavShareClassCurrency: 8.37823741034869
-            previousPerUnitValue: 3.502657762086401
-            navShareClassCurrency: 5.299143560275359
+                key: 8.863729185622827
+              cumulativePerUnitValue: 9.183123594773994
+              perUnitValue: 9.254183946267839
+              value: 8.28965939814297
+              cumulativeValue: 4.573936264232251
+            previousNav: 8.37823741034869
+            netDealingUnits: 7.606863723092579
+            previousNavShareClassCurrency: 9.897492629215506
+            previousPerUnitValue: 5.299143560275359
+            navShareClassCurrency: 3.7814124730767915
             label: label
             nodeType: nodeType
-            capitalRatio: 4.459605034958679
-            perUnitValue: 9.254183946267839
+            capitalRatio: 1.7325933120207193
+            perUnitValue: 8.761432466225475
           displayName: displayName
           isBackfilled: true
         previousValuationPointCode: previousValuationPointCode
@@ -398671,11 +398796,11 @@ components:
               swingDirection: swingDirection
               dealingPrice: 6.704019297950036
             dualDealing:
-              dealingOffer: 0.8774076871421566
-              bidSpreadBps: 9.702963800023566
+              dealingOffer: 5.507386964179881
+              bidSpreadBps: 4.86315908102884
               bidPerValuationSource: bidPerValuationSource
-              offerSpreadBps: 0.5199002018724985
-              dealingBid: 9.132027271330688
+              offerSpreadBps: 6.073898085781152
+              dealingBid: 7.933506881737151
               offerPerValuationSource: offerPerValuationSource
             audit:
               approvalStatus: approvalStatus
@@ -398686,8 +398811,11 @@ components:
               dealingFlows:
                 pendingNotCounted: 7
                 count: 7
+                pendingGrossInflow: 5.533258397034986
                 grossOutflow: 3.0576100241049344
+                pendingGrossOutflow: 3.2588565619047607
                 grossInflow: 3.0205796992916243
+                pendingUnvaluedCount: 4
               outflowTrigger:
                 fired: true
                 metric: metric
@@ -398703,6 +398831,11 @@ components:
                 decision: decision
                 user: user
                 timestamp: 2000-01-23T04:56:07.000+00:00
+              completeness:
+                note: note
+                lateNotCounted: 0
+                cutOff: 2000-01-23T04:56:07.000+00:00
+                complete: true
               netCashflow: 3.0937452626664474
               spreadsApplied:
                 bps: 0.8851374739011653
@@ -398720,39 +398853,39 @@ components:
                 currency: currency
               estimateValuation:
                 atEstimatePrice:
-                  netCashflow: 5.533258397034986
-                  grossOutflow: 0.2025324113236393
+                  netCashflow: 0.2025324113236393
+                  grossOutflow: 1.041444916118296
                   outcome:
-                    spreadBps: 6.628464275087742
+                    spreadBps: 4.678947989005849
                     swung: true
                     swingDirection: swingDirection
-                    dealingPrice: 4.258773108174356
+                    dealingPrice: 7.260521264802104
                     tierMatched:
                       lowerBoundExclusive: 7.058770351582356
                       upperBoundInclusive: 6.519180951018382
-                  netCashflowPctOfNav: 3.2588565619047607
-                  grossInflow: 4.078845849666752
-                unitBasedShare: 7.260521264802104
+                  netCashflowPctOfNav: 6.628464275087742
+                  grossInflow: 4.258773108174356
+                unitBasedShare: 9.702963800023566
                 decisionPrice: decisionPrice
                 difference:
-                  amount: 1.041444916118296
-                  pctOfNav: 4.678947989005849
+                  amount: 9.132027271330688
+                  pctOfNav: 0.8774076871421566
                 atLastOfficialPrice:
-                  netCashflow: 5.533258397034986
-                  grossOutflow: 0.2025324113236393
+                  netCashflow: 0.2025324113236393
+                  grossOutflow: 1.041444916118296
                   outcome:
-                    spreadBps: 6.628464275087742
+                    spreadBps: 4.678947989005849
                     swung: true
                     swingDirection: swingDirection
-                    dealingPrice: 4.258773108174356
+                    dealingPrice: 7.260521264802104
                     tierMatched:
                       lowerBoundExclusive: 7.058770351582356
                       upperBoundInclusive: 6.519180951018382
-                  netCashflowPctOfNav: 3.2588565619047607
-                  grossInflow: 4.078845849666752
+                  netCashflowPctOfNav: 6.628464275087742
+                  grossInflow: 4.258773108174356
               netCashflowPctOfNav: 7.143538047012306
             reporting:
-              key: 7.933506881737151
+              key: 8.251625748923757
           shareClassBreakdown:
             unitisation:
               sharesInIssue: 1.1730742509559433
@@ -398869,11 +399002,11 @@ components:
               swingDirection: swingDirection
               dealingPrice: 6.704019297950036
             dualDealing:
-              dealingOffer: 0.8774076871421566
-              bidSpreadBps: 9.702963800023566
+              dealingOffer: 5.507386964179881
+              bidSpreadBps: 4.86315908102884
               bidPerValuationSource: bidPerValuationSource
-              offerSpreadBps: 0.5199002018724985
-              dealingBid: 9.132027271330688
+              offerSpreadBps: 6.073898085781152
+              dealingBid: 7.933506881737151
               offerPerValuationSource: offerPerValuationSource
             audit:
               approvalStatus: approvalStatus
@@ -398884,8 +399017,11 @@ components:
               dealingFlows:
                 pendingNotCounted: 7
                 count: 7
+                pendingGrossInflow: 5.533258397034986
                 grossOutflow: 3.0576100241049344
+                pendingGrossOutflow: 3.2588565619047607
                 grossInflow: 3.0205796992916243
+                pendingUnvaluedCount: 4
               outflowTrigger:
                 fired: true
                 metric: metric
@@ -398901,6 +399037,11 @@ components:
                 decision: decision
                 user: user
                 timestamp: 2000-01-23T04:56:07.000+00:00
+              completeness:
+                note: note
+                lateNotCounted: 0
+                cutOff: 2000-01-23T04:56:07.000+00:00
+                complete: true
               netCashflow: 3.0937452626664474
               spreadsApplied:
                 bps: 0.8851374739011653
@@ -398918,39 +399059,39 @@ components:
                 currency: currency
               estimateValuation:
                 atEstimatePrice:
-                  netCashflow: 5.533258397034986
-                  grossOutflow: 0.2025324113236393
+                  netCashflow: 0.2025324113236393
+                  grossOutflow: 1.041444916118296
                   outcome:
-                    spreadBps: 6.628464275087742
+                    spreadBps: 4.678947989005849
                     swung: true
                     swingDirection: swingDirection
-                    dealingPrice: 4.258773108174356
+                    dealingPrice: 7.260521264802104
                     tierMatched:
                       lowerBoundExclusive: 7.058770351582356
                       upperBoundInclusive: 6.519180951018382
-                  netCashflowPctOfNav: 3.2588565619047607
-                  grossInflow: 4.078845849666752
-                unitBasedShare: 7.260521264802104
+                  netCashflowPctOfNav: 6.628464275087742
+                  grossInflow: 4.258773108174356
+                unitBasedShare: 9.702963800023566
                 decisionPrice: decisionPrice
                 difference:
-                  amount: 1.041444916118296
-                  pctOfNav: 4.678947989005849
+                  amount: 9.132027271330688
+                  pctOfNav: 0.8774076871421566
                 atLastOfficialPrice:
-                  netCashflow: 5.533258397034986
-                  grossOutflow: 0.2025324113236393
+                  netCashflow: 0.2025324113236393
+                  grossOutflow: 1.041444916118296
                   outcome:
-                    spreadBps: 6.628464275087742
+                    spreadBps: 4.678947989005849
                     swung: true
                     swingDirection: swingDirection
-                    dealingPrice: 4.258773108174356
+                    dealingPrice: 7.260521264802104
                     tierMatched:
                       lowerBoundExclusive: 7.058770351582356
                       upperBoundInclusive: 6.519180951018382
-                  netCashflowPctOfNav: 3.2588565619047607
-                  grossInflow: 4.078845849666752
+                  netCashflowPctOfNav: 6.628464275087742
+                  grossInflow: 4.258773108174356
               netCashflowPctOfNav: 7.143538047012306
             reporting:
-              key: 7.933506881737151
+              key: 8.251625748923757
           shareClassBreakdown:
             unitisation:
               sharesInIssue: 1.1730742509559433

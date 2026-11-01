@@ -168,7 +168,7 @@ public class EstimateValuation {
    * DEPRECATED: always 0 and no longer computed. Kept on the response for one release so clients on a public SDK that requires the field can still read it; it will be removed once an SDK without it has shipped.
    * @return unitBasedShare
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public java.math.BigDecimal getUnitBasedShare() {
     return unitBasedShare;
   }
@@ -242,7 +242,6 @@ public class EstimateValuation {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("decisionPrice");
     openapiRequiredFields.add("atEstimatePrice");
-    openapiRequiredFields.add("unitBasedShare");
   }
 
  /**

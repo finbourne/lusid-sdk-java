@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.DealingBookCompleteness;
 import com.finbourne.lusid.model.DealingFlowSummary;
 import com.finbourne.lusid.model.DealingLineNotValued;
 import com.finbourne.lusid.model.EstimateValuation;
@@ -102,6 +103,10 @@ public class PricingMethodologyAudit {
   public static final String SERIALIZED_NAME_DEALING_LINES_NOT_VALUED = "dealingLinesNotValued";
   @SerializedName(SERIALIZED_NAME_DEALING_LINES_NOT_VALUED)
   private List<DealingLineNotValued> dealingLinesNotValued;
+
+  public static final String SERIALIZED_NAME_COMPLETENESS = "completeness";
+  @SerializedName(SERIALIZED_NAME_COMPLETENESS)
+  private DealingBookCompleteness completeness;
 
   public PricingMethodologyAudit() {
   }
@@ -345,6 +350,27 @@ public class PricingMethodologyAudit {
   }
 
 
+  public PricingMethodologyAudit completeness(DealingBookCompleteness completeness) {
+    
+    this.completeness = completeness;
+    return this;
+  }
+
+   /**
+   * Get completeness
+   * @return completeness
+  **/
+  @jakarta.annotation.Nullable
+  public DealingBookCompleteness getCompleteness() {
+    return completeness;
+  }
+
+
+  public void setCompleteness(DealingBookCompleteness completeness) {
+    this.completeness = completeness;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -365,7 +391,8 @@ public class PricingMethodologyAudit {
         Objects.equals(this.dealingFlows, pricingMethodologyAudit.dealingFlows) &&
         Objects.equals(this.estimateValuation, pricingMethodologyAudit.estimateValuation) &&
         Objects.equals(this.approvalStatus, pricingMethodologyAudit.approvalStatus) &&
-        Objects.equals(this.dealingLinesNotValued, pricingMethodologyAudit.dealingLinesNotValued);
+        Objects.equals(this.dealingLinesNotValued, pricingMethodologyAudit.dealingLinesNotValued) &&
+        Objects.equals(this.completeness, pricingMethodologyAudit.completeness);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -374,7 +401,7 @@ public class PricingMethodologyAudit {
 
   @Override
   public int hashCode() {
-    return Objects.hash(netCashflow, netCashflowPctOfNav, spreadsApplied, engineProposal, override, inflowTrigger, outflowTrigger, dealingFlows, estimateValuation, approvalStatus, dealingLinesNotValued);
+    return Objects.hash(netCashflow, netCashflowPctOfNav, spreadsApplied, engineProposal, override, inflowTrigger, outflowTrigger, dealingFlows, estimateValuation, approvalStatus, dealingLinesNotValued, completeness);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -399,6 +426,7 @@ public class PricingMethodologyAudit {
     sb.append("    estimateValuation: ").append(toIndentedString(estimateValuation)).append("\n");
     sb.append("    approvalStatus: ").append(toIndentedString(approvalStatus)).append("\n");
     sb.append("    dealingLinesNotValued: ").append(toIndentedString(dealingLinesNotValued)).append("\n");
+    sb.append("    completeness: ").append(toIndentedString(completeness)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -432,6 +460,7 @@ public class PricingMethodologyAudit {
     openapiFields.add("estimateValuation");
     openapiFields.add("approvalStatus");
     openapiFields.add("dealingLinesNotValued");
+    openapiFields.add("completeness");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -501,6 +530,10 @@ public class PricingMethodologyAudit {
             DealingLineNotValued.validateJsonElement(jsonArraydealingLinesNotValued.get(i));
           };
         }
+      }
+      // validate the optional field `completeness`
+      if (jsonObj.get("completeness") != null && !jsonObj.get("completeness").isJsonNull()) {
+        DealingBookCompleteness.validateJsonElement(jsonObj.get("completeness"));
       }
   }
 

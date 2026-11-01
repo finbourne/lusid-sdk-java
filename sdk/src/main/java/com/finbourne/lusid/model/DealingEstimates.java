@@ -107,7 +107,7 @@ public class DealingEstimates {
   }
 
    /**
-   * Reserved; not yet enforced. Whether every source must have reported before the valuation point can be struck. Defaults to true.
+   * Whether the dealing book must be complete before a swing is proposed. For the LusidTA source the book is complete once each share class&#39;s TA/DealingSchedule cut-off has passed at the strike&#39;s as-at; a class with no cut-off configured is treated as complete and the audit says so. An order written after its class&#39;s cut-off is late: reported on the audit but not counted. When true and the book is incomplete the valuation point is still struck, at the unswung baseline, and no swing is proposed; the audit says why. Defaults to true.
    * @return requireComplete
   **/
   @jakarta.annotation.Nullable
@@ -128,7 +128,7 @@ public class DealingEstimates {
   }
 
    /**
-   * Whether pending orders count towards the estimated flow alongside confirmed ones. Defaults to false.
+   * Whether a Pending order at the valuation point counts towards the estimated flow. Orders in the New and Priced states always count. When true a Pending order is folded into the flows like them; when false it is left out of the decision and reported on the audit as pending and not counted, with its value where one can be read. Defaults to false.
    * @return countPending
   **/
   @jakarta.annotation.Nullable

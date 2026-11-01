@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The transfer agency estimates a swing decision was made on: the orders dealt at the valuation point, what they summed, and how many pending orders were left out.
+ * The transfer agency estimates a swing decision was made on: the orders dealt at the valuation point, what they summed, and how many pending orders were left out and what those were worth.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DealingFlowSummary {
@@ -64,6 +64,18 @@ public class DealingFlowSummary {
   public static final String SERIALIZED_NAME_PENDING_NOT_COUNTED = "pendingNotCounted";
   @SerializedName(SERIALIZED_NAME_PENDING_NOT_COUNTED)
   private Integer pendingNotCounted;
+
+  public static final String SERIALIZED_NAME_PENDING_GROSS_INFLOW = "pendingGrossInflow";
+  @SerializedName(SERIALIZED_NAME_PENDING_GROSS_INFLOW)
+  private java.math.BigDecimal pendingGrossInflow;
+
+  public static final String SERIALIZED_NAME_PENDING_GROSS_OUTFLOW = "pendingGrossOutflow";
+  @SerializedName(SERIALIZED_NAME_PENDING_GROSS_OUTFLOW)
+  private java.math.BigDecimal pendingGrossOutflow;
+
+  public static final String SERIALIZED_NAME_PENDING_UNVALUED_COUNT = "pendingUnvaluedCount";
+  @SerializedName(SERIALIZED_NAME_PENDING_UNVALUED_COUNT)
+  private Integer pendingUnvaluedCount;
 
   public DealingFlowSummary() {
   }
@@ -152,6 +164,69 @@ public class DealingFlowSummary {
   }
 
 
+  public DealingFlowSummary pendingGrossInflow(java.math.BigDecimal pendingGrossInflow) {
+    
+    this.pendingGrossInflow = pendingGrossInflow;
+    return this;
+  }
+
+   /**
+   * The sum of the inflows among the pending orders left out, in the fund currency, with units at the estimate price. Zero or more; zero when the fund counts pending orders.
+   * @return pendingGrossInflow
+  **/
+  @jakarta.annotation.Nonnull
+  public java.math.BigDecimal getPendingGrossInflow() {
+    return pendingGrossInflow;
+  }
+
+
+  public void setPendingGrossInflow(java.math.BigDecimal pendingGrossInflow) {
+    this.pendingGrossInflow = pendingGrossInflow;
+  }
+
+
+  public DealingFlowSummary pendingGrossOutflow(java.math.BigDecimal pendingGrossOutflow) {
+    
+    this.pendingGrossOutflow = pendingGrossOutflow;
+    return this;
+  }
+
+   /**
+   * The sum of the outflows among the pending orders left out, in the fund currency, as a magnitude, with units at the estimate price. Zero or more; zero when the fund counts pending orders.
+   * @return pendingGrossOutflow
+  **/
+  @jakarta.annotation.Nonnull
+  public java.math.BigDecimal getPendingGrossOutflow() {
+    return pendingGrossOutflow;
+  }
+
+
+  public void setPendingGrossOutflow(java.math.BigDecimal pendingGrossOutflow) {
+    this.pendingGrossOutflow = pendingGrossOutflow;
+  }
+
+
+  public DealingFlowSummary pendingUnvaluedCount(Integer pendingUnvaluedCount) {
+    
+    this.pendingUnvaluedCount = pendingUnvaluedCount;
+    return this;
+  }
+
+   /**
+   * How many of the pending orders left out could not be valued, such as a unit order with no price yet. They are in pendingNotCounted but absent from pendingGrossInflow and pendingGrossOutflow.
+   * @return pendingUnvaluedCount
+  **/
+  @jakarta.annotation.Nonnull
+  public Integer getPendingUnvaluedCount() {
+    return pendingUnvaluedCount;
+  }
+
+
+  public void setPendingUnvaluedCount(Integer pendingUnvaluedCount) {
+    this.pendingUnvaluedCount = pendingUnvaluedCount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -165,12 +240,15 @@ public class DealingFlowSummary {
     return Objects.equals(this.count, dealingFlowSummary.count) &&
         (this.grossInflow.compareTo(dealingFlowSummary.getGrossInflow()) == 0) &&
         (this.grossOutflow.compareTo(dealingFlowSummary.getGrossOutflow()) == 0) &&
-        Objects.equals(this.pendingNotCounted, dealingFlowSummary.pendingNotCounted);
+        Objects.equals(this.pendingNotCounted, dealingFlowSummary.pendingNotCounted) &&
+        (this.pendingGrossInflow.compareTo(dealingFlowSummary.getPendingGrossInflow()) == 0) &&
+        (this.pendingGrossOutflow.compareTo(dealingFlowSummary.getPendingGrossOutflow()) == 0) &&
+        Objects.equals(this.pendingUnvaluedCount, dealingFlowSummary.pendingUnvaluedCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, grossInflow, grossOutflow, pendingNotCounted);
+    return Objects.hash(count, grossInflow, grossOutflow, pendingNotCounted, pendingGrossInflow, pendingGrossOutflow, pendingUnvaluedCount);
   }
 
   @Override
@@ -181,6 +259,9 @@ public class DealingFlowSummary {
     sb.append("    grossInflow: ").append(toIndentedString(grossInflow)).append("\n");
     sb.append("    grossOutflow: ").append(toIndentedString(grossOutflow)).append("\n");
     sb.append("    pendingNotCounted: ").append(toIndentedString(pendingNotCounted)).append("\n");
+    sb.append("    pendingGrossInflow: ").append(toIndentedString(pendingGrossInflow)).append("\n");
+    sb.append("    pendingGrossOutflow: ").append(toIndentedString(pendingGrossOutflow)).append("\n");
+    sb.append("    pendingUnvaluedCount: ").append(toIndentedString(pendingUnvaluedCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -207,6 +288,9 @@ public class DealingFlowSummary {
     openapiFields.add("grossInflow");
     openapiFields.add("grossOutflow");
     openapiFields.add("pendingNotCounted");
+    openapiFields.add("pendingGrossInflow");
+    openapiFields.add("pendingGrossOutflow");
+    openapiFields.add("pendingUnvaluedCount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -214,6 +298,9 @@ public class DealingFlowSummary {
     openapiRequiredFields.add("grossInflow");
     openapiRequiredFields.add("grossOutflow");
     openapiRequiredFields.add("pendingNotCounted");
+    openapiRequiredFields.add("pendingGrossInflow");
+    openapiRequiredFields.add("pendingGrossOutflow");
+    openapiRequiredFields.add("pendingUnvaluedCount");
   }
 
  /**
