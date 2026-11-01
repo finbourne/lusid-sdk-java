@@ -16881,7 +16881,7 @@ public class FundsApi {
 
         /**
          * Set effectiveAt
-         * @param effectiveAt The effective datetime or cut label from which the patch applies. If not specified, the patch applies for all time.   Only DisplayName and Description can be patched with an effectiveAt, and the Fund is returned as at that datetime.   A value patched with an effectiveAt stays in force from that datetime. A later patch of the same field without an effectiveAt   changes it only before that datetime; to change it from that datetime, patch it again with the same effectiveAt. (optional)
+         * @param effectiveAt The effective datetime or cut label from which the patch applies. If not specified, the patch applies for all time.   Only displayName, description, pricingMethodology, reportingPrices and dealingEstimates, or a field inside the first   and last, can be patched with an effectiveAt, and the Fund is returned as at that datetime.   A value patched with an effectiveAt stays in force from that datetime. A later patch of the same field without an effectiveAt   changes it only before that datetime; to change it from that datetime, patch it again with the same effectiveAt.   A field patched with an effectiveAt merges over the block in force at that datetime and does not carry into a version of   the block that starts later: a whole pricingMethodology or dealingEstimates set from a later datetime keeps its own values. (optional)
          * @return APIpatchFundRequest
          */
         public APIpatchFundRequest effectiveAt(String effectiveAt) {
