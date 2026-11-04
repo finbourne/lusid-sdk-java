@@ -8,6 +8,8 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**batchAcceptMarginCalls**](CollateralApi.md#batchAcceptMarginCalls) | **POST** /api/collateral/margincalls/$batchAccept | [EXPERIMENTAL] BatchAcceptMarginCalls: Accept several margin calls. |
 | [**disputeMarginCall**](CollateralApi.md#disputeMarginCall) | **POST** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$dispute | [EXPERIMENTAL] DisputeMarginCall: Dispute a margin call. |
 | [**getMarginCall**](CollateralApi.md#getMarginCall) | **GET** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction} | [EXPERIMENTAL] GetMarginCall: Get a margin call. |
+| [**getMarginCallExplanation**](CollateralApi.md#getMarginCallExplanation) | **GET** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$explain | [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call. |
+| [**getMarginLineExplanation**](CollateralApi.md#getMarginLineExplanation) | **GET** /api/collateral/runs/{runId}/lines/{lineKey}/$explain | [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line. |
 | [**getMarginRun**](CollateralApi.md#getMarginRun) | **GET** /api/collateral/runs/{runId} | [EXPERIMENTAL] GetMarginRun: Get a margin run. |
 | [**listMarginCallLines**](CollateralApi.md#listMarginCallLines) | **GET** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/lines | [EXPERIMENTAL] ListMarginCallLines: List the margin lines of a call. |
 | [**listMarginCalls**](CollateralApi.md#listMarginCalls) | **GET** /api/collateral/margincalls | [EXPERIMENTAL] ListMarginCalls: List margin calls. |
@@ -411,6 +413,202 @@ public class CollateralApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested margin call. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getMarginCallExplanation
+
+> MarginExplanation getMarginCallExplanation(runId, agreementScope, agreementCode, item, marginType, direction)
+
+[EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call.
+
+Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CollateralApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CollateralApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CollateralApi apiInstance = apiFactory.build(CollateralApi.class);
+
+        CollateralApi apiInstance = ApiFactoryBuilder.build(fileName).build(CollateralApi.class);
+        String runId = "runId_example"; // String | The identifier of the margin run.
+        String agreementScope = "agreementScope_example"; // String | The scope of the call's collateral agreement.
+        String agreementCode = "agreementCode_example"; // String | The code of the call's collateral agreement.
+        String item = "item_example"; // String | The margin item of the call.
+        String marginType = "marginType_example"; // String | The margin type of the call. Only InitialMargin calls can be explained.
+        String direction = "direction_example"; // String | Who posts under the call. One of WePost, TheyPost or None.
+        try {
+            // uncomment the below to set overrides at the request level
+            // MarginExplanation result = apiInstance.getMarginCallExplanation(runId, agreementScope, agreementCode, item, marginType, direction).execute(opts);
+
+            MarginExplanation result = apiInstance.getMarginCallExplanation(runId, agreementScope, agreementCode, item, marginType, direction).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CollateralApi#getMarginCallExplanation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **runId** | **String**| The identifier of the margin run. | |
+| **agreementScope** | **String**| The scope of the call&#39;s collateral agreement. | |
+| **agreementCode** | **String**| The code of the call&#39;s collateral agreement. | |
+| **item** | **String**| The margin item of the call. | |
+| **marginType** | **String**| The margin type of the call. Only InitialMargin calls can be explained. | |
+| **direction** | **String**| Who posts under the call. One of WePost, TheyPost or None. | |
+
+### Return type
+
+[**MarginExplanation**](MarginExplanation.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | How the call&#39;s required amount was arrived at. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getMarginLineExplanation
+
+> MarginExplanation getMarginLineExplanation(runId, lineKey, figure)
+
+[EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line.
+
+Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CollateralApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CollateralApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CollateralApi apiInstance = apiFactory.build(CollateralApi.class);
+
+        CollateralApi apiInstance = ApiFactoryBuilder.build(fileName).build(CollateralApi.class);
+        String runId = "runId_example"; // String | The identifier of the margin run.
+        String lineKey = "lineKey_example"; // String | The key of the margin line, as listed in the line's LineKey.
+        String figure = "figure_example"; // String | The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin.
+        try {
+            // uncomment the below to set overrides at the request level
+            // MarginExplanation result = apiInstance.getMarginLineExplanation(runId, lineKey, figure).execute(opts);
+
+            MarginExplanation result = apiInstance.getMarginLineExplanation(runId, lineKey, figure).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CollateralApi#getMarginLineExplanation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **runId** | **String**| The identifier of the margin run. | |
+| **lineKey** | **String**| The key of the margin line, as listed in the line&#39;s LineKey. | |
+| **figure** | **String**| The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. | [optional] |
+
+### Return type
+
+[**MarginExplanation**](MarginExplanation.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | How the line&#39;s figures were arrived at. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

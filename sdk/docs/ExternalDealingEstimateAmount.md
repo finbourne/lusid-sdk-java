@@ -1,4 +1,4 @@
-# com.finbourne.lusid.model.ExternalTransferAgencyOrderAmount
+# com.finbourne.lusid.model.ExternalDealingEstimateAmount
 A cash amount in a stated currency.
 
 ## Properties
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **currency** | **String** |  | [default to String]
 
 ```java
-import com.finbourne.lusid.model.ExternalTransferAgencyOrderAmount;
+import com.finbourne.lusid.model.ExternalDealingEstimateAmount;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
@@ -18,7 +18,7 @@ java.math.BigDecimal Value = new java.math.BigDecimal("100.00");
 String Currency = "example Currency";
 
 
-ExternalTransferAgencyOrderAmount externalTransferAgencyOrderAmountInstance = new ExternalTransferAgencyOrderAmount()
+ExternalDealingEstimateAmount externalDealingEstimateAmountInstance = new ExternalDealingEstimateAmount()
     .Value(Value)
     .Currency(Currency);
 ```

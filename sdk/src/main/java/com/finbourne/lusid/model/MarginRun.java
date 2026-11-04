@@ -113,6 +113,10 @@ public class MarginRun {
   @SerializedName(SERIALIZED_NAME_SCENARIOS)
   private List<ResourceId> scenarios = new ArrayList<>();
 
+  public static final String SERIALIZED_NAME_CAPTURE_DIAGNOSTICS = "captureDiagnostics";
+  @SerializedName(SERIALIZED_NAME_CAPTURE_DIAGNOSTICS)
+  private Boolean captureDiagnostics;
+
   public MarginRun() {
   }
 
@@ -442,6 +446,27 @@ public class MarginRun {
   }
 
 
+  public MarginRun captureDiagnostics(Boolean captureDiagnostics) {
+    
+    this.captureDiagnostics = captureDiagnostics;
+    return this;
+  }
+
+   /**
+   * Whether the run stored the working behind its figures, so that they can be explained. Null for a run made before runs could store it, which did not.
+   * @return captureDiagnostics
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getCaptureDiagnostics() {
+    return captureDiagnostics;
+  }
+
+
+  public void setCaptureDiagnostics(Boolean captureDiagnostics) {
+    this.captureDiagnostics = captureDiagnostics;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -465,7 +490,8 @@ public class MarginRun {
         Objects.equals(this.failedShards, marginRun.failedShards) &&
         Objects.equals(this.issues, marginRun.issues) &&
         Objects.equals(this.shards, marginRun.shards) &&
-        Objects.equals(this.scenarios, marginRun.scenarios);
+        Objects.equals(this.scenarios, marginRun.scenarios) &&
+        Objects.equals(this.captureDiagnostics, marginRun.captureDiagnostics);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -474,7 +500,7 @@ public class MarginRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, effectiveAt, asAt, status, agreements, callCount, lineCount, shardCount, completedShards, failedShards, issues, shards, scenarios);
+    return Objects.hash(href, id, effectiveAt, asAt, status, agreements, callCount, lineCount, shardCount, completedShards, failedShards, issues, shards, scenarios, captureDiagnostics);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -502,6 +528,7 @@ public class MarginRun {
     sb.append("    issues: ").append(toIndentedString(issues)).append("\n");
     sb.append("    shards: ").append(toIndentedString(shards)).append("\n");
     sb.append("    scenarios: ").append(toIndentedString(scenarios)).append("\n");
+    sb.append("    captureDiagnostics: ").append(toIndentedString(captureDiagnostics)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -538,6 +565,7 @@ public class MarginRun {
     openapiFields.add("issues");
     openapiFields.add("shards");
     openapiFields.add("scenarios");
+    openapiFields.add("captureDiagnostics");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

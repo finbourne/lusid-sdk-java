@@ -12,6 +12,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getOrderHistory**](OrderManagementApi.md#getOrderHistory) | **GET** /api/ordermanagement/order/{scope}/{code}/$history | GetOrderHistory: Get the history of an order and related entity changes |
 | [**moveOrders**](OrderManagementApi.md#moveOrders) | **POST** /api/ordermanagement/moveorders | [EARLY ACCESS] MoveOrders: Move orders to new or existing block |
 | [**placeBlocks**](OrderManagementApi.md#placeBlocks) | **POST** /api/ordermanagement/placeblocks | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests. |
+| [**previewBlocks**](OrderManagementApi.md#previewBlocks) | **POST** /api/ordermanagement/$previewblocks | PreviewBlocks: Preview the blocks a set of orders would form |
 | [**runAllocationService**](OrderManagementApi.md#runAllocationService) | **POST** /api/ordermanagement/allocate | RunAllocationService: Runs the Allocation Service |
 | [**runAllocationServiceWithWeights**](OrderManagementApi.md#runAllocationServiceWithWeights) | **POST** /api/ordermanagement/allocate/weighted | [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights |
 | [**sweepBlocks**](OrderManagementApi.md#sweepBlocks) | **POST** /api/ordermanagement/SweepBlocks | [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful. |
@@ -751,6 +752,97 @@ public class OrderManagementApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The block placements. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## previewBlocks
+
+> ResourceListOfProposedBlockAndOrders previewBlocks(previewBlocksRequest)
+
+PreviewBlocks: Preview the blocks a set of orders would form
+
+Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.OrderManagementApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class OrderManagementApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // OrderManagementApi apiInstance = apiFactory.build(OrderManagementApi.class);
+
+        OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
+        PreviewBlocksRequest previewBlocksRequest = new PreviewBlocksRequest(); // PreviewBlocksRequest | The orders to group and how to group them.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfProposedBlockAndOrders result = apiInstance.previewBlocks(previewBlocksRequest).execute(opts);
+
+            ResourceListOfProposedBlockAndOrders result = apiInstance.previewBlocks(previewBlocksRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OrderManagementApi#previewBlocks");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **previewBlocksRequest** | [**PreviewBlocksRequest**](PreviewBlocksRequest.md)| The orders to group and how to group them. | |
+
+### Return type
+
+[**ResourceListOfProposedBlockAndOrders**](ResourceListOfProposedBlockAndOrders.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The proposed blocks and their orders. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

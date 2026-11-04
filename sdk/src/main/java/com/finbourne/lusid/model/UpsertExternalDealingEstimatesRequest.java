@@ -11,9 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ExternalTransferAgencyOrderLine;
-import com.finbourne.lusid.model.ExternalTransferAgencyOrderSource;
-import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.ExternalDealingEstimateLine;
+import com.finbourne.lusid.model.ExternalDealingEstimateSource;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,21 +51,17 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * One dealing point&#39;s orders for one fund, as a third-party transfer agent sends them.
+ * One dealing point&#39;s dealing estimates for the fund named in the route, as a third-party transfer agent sends them.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class UpsertExternalTransferAgencyOrdersRequest {
-  public static final String SERIALIZED_NAME_FUND_ID = "fundId";
-  @SerializedName(SERIALIZED_NAME_FUND_ID)
-  private ResourceId fundId;
-
+public class UpsertExternalDealingEstimatesRequest {
   public static final String SERIALIZED_NAME_DEALING_POINT = "dealingPoint";
   @SerializedName(SERIALIZED_NAME_DEALING_POINT)
   private OffsetDateTime dealingPoint;
 
   public static final String SERIALIZED_NAME_SOURCE = "source";
   @SerializedName(SERIALIZED_NAME_SOURCE)
-  private ExternalTransferAgencyOrderSource source;
+  private ExternalDealingEstimateSource source;
 
   public static final String SERIALIZED_NAME_COMPLETE = "complete";
   @SerializedName(SERIALIZED_NAME_COMPLETE)
@@ -78,33 +73,12 @@ public class UpsertExternalTransferAgencyOrdersRequest {
 
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
-  private Map<String, ExternalTransferAgencyOrderLine> lines = new HashMap<>();
+  private Map<String, ExternalDealingEstimateLine> lines = new HashMap<>();
 
-  public UpsertExternalTransferAgencyOrdersRequest() {
+  public UpsertExternalDealingEstimatesRequest() {
   }
 
-  public UpsertExternalTransferAgencyOrdersRequest fundId(ResourceId fundId) {
-    
-    this.fundId = fundId;
-    return this;
-  }
-
-   /**
-   * Get fundId
-   * @return fundId
-  **/
-  @jakarta.annotation.Nonnull
-  public ResourceId getFundId() {
-    return fundId;
-  }
-
-
-  public void setFundId(ResourceId fundId) {
-    this.fundId = fundId;
-  }
-
-
-  public UpsertExternalTransferAgencyOrdersRequest dealingPoint(OffsetDateTime dealingPoint) {
+  public UpsertExternalDealingEstimatesRequest dealingPoint(OffsetDateTime dealingPoint) {
     
     this.dealingPoint = dealingPoint;
     return this;
@@ -125,7 +99,7 @@ public class UpsertExternalTransferAgencyOrdersRequest {
   }
 
 
-  public UpsertExternalTransferAgencyOrdersRequest source(ExternalTransferAgencyOrderSource source) {
+  public UpsertExternalDealingEstimatesRequest source(ExternalDealingEstimateSource source) {
     
     this.source = source;
     return this;
@@ -136,17 +110,17 @@ public class UpsertExternalTransferAgencyOrdersRequest {
    * @return source
   **/
   @jakarta.annotation.Nonnull
-  public ExternalTransferAgencyOrderSource getSource() {
+  public ExternalDealingEstimateSource getSource() {
     return source;
   }
 
 
-  public void setSource(ExternalTransferAgencyOrderSource source) {
+  public void setSource(ExternalDealingEstimateSource source) {
     this.source = source;
   }
 
 
-  public UpsertExternalTransferAgencyOrdersRequest complete(Boolean complete) {
+  public UpsertExternalDealingEstimatesRequest complete(Boolean complete) {
     
     this.complete = complete;
     return this;
@@ -167,7 +141,7 @@ public class UpsertExternalTransferAgencyOrdersRequest {
   }
 
 
-  public UpsertExternalTransferAgencyOrdersRequest sentAt(OffsetDateTime sentAt) {
+  public UpsertExternalDealingEstimatesRequest sentAt(OffsetDateTime sentAt) {
     
     this.sentAt = sentAt;
     return this;
@@ -188,13 +162,13 @@ public class UpsertExternalTransferAgencyOrdersRequest {
   }
 
 
-  public UpsertExternalTransferAgencyOrdersRequest lines(Map<String, ExternalTransferAgencyOrderLine> lines) {
+  public UpsertExternalDealingEstimatesRequest lines(Map<String, ExternalDealingEstimateLine> lines) {
     
     this.lines = lines;
     return this;
   }
 
-  public UpsertExternalTransferAgencyOrdersRequest putLinesItem(String key, ExternalTransferAgencyOrderLine linesItem) {
+  public UpsertExternalDealingEstimatesRequest putLinesItem(String key, ExternalDealingEstimateLine linesItem) {
     if (this.lines == null) {
       this.lines = new HashMap<>();
     }
@@ -207,12 +181,12 @@ public class UpsertExternalTransferAgencyOrdersRequest {
    * @return lines
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, ExternalTransferAgencyOrderLine> getLines() {
+  public Map<String, ExternalDealingEstimateLine> getLines() {
     return lines;
   }
 
 
-  public void setLines(Map<String, ExternalTransferAgencyOrderLine> lines) {
+  public void setLines(Map<String, ExternalDealingEstimateLine> lines) {
     this.lines = lines;
   }
 
@@ -226,13 +200,12 @@ public class UpsertExternalTransferAgencyOrdersRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpsertExternalTransferAgencyOrdersRequest upsertExternalTransferAgencyOrdersRequest = (UpsertExternalTransferAgencyOrdersRequest) o;
-    return Objects.equals(this.fundId, upsertExternalTransferAgencyOrdersRequest.fundId) &&
-        Objects.equals(this.dealingPoint, upsertExternalTransferAgencyOrdersRequest.dealingPoint) &&
-        Objects.equals(this.source, upsertExternalTransferAgencyOrdersRequest.source) &&
-        Objects.equals(this.complete, upsertExternalTransferAgencyOrdersRequest.complete) &&
-        Objects.equals(this.sentAt, upsertExternalTransferAgencyOrdersRequest.sentAt) &&
-        Objects.equals(this.lines, upsertExternalTransferAgencyOrdersRequest.lines);
+    UpsertExternalDealingEstimatesRequest upsertExternalDealingEstimatesRequest = (UpsertExternalDealingEstimatesRequest) o;
+    return Objects.equals(this.dealingPoint, upsertExternalDealingEstimatesRequest.dealingPoint) &&
+        Objects.equals(this.source, upsertExternalDealingEstimatesRequest.source) &&
+        Objects.equals(this.complete, upsertExternalDealingEstimatesRequest.complete) &&
+        Objects.equals(this.sentAt, upsertExternalDealingEstimatesRequest.sentAt) &&
+        Objects.equals(this.lines, upsertExternalDealingEstimatesRequest.lines);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -241,7 +214,7 @@ public class UpsertExternalTransferAgencyOrdersRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fundId, dealingPoint, source, complete, sentAt, lines);
+    return Objects.hash(dealingPoint, source, complete, sentAt, lines);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -254,8 +227,7 @@ public class UpsertExternalTransferAgencyOrdersRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpsertExternalTransferAgencyOrdersRequest {\n");
-    sb.append("    fundId: ").append(toIndentedString(fundId)).append("\n");
+    sb.append("class UpsertExternalDealingEstimatesRequest {\n");
     sb.append("    dealingPoint: ").append(toIndentedString(dealingPoint)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    complete: ").append(toIndentedString(complete)).append("\n");
@@ -283,7 +255,6 @@ public class UpsertExternalTransferAgencyOrdersRequest {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("fundId");
     openapiFields.add("dealingPoint");
     openapiFields.add("source");
     openapiFields.add("complete");
@@ -292,7 +263,6 @@ public class UpsertExternalTransferAgencyOrdersRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("fundId");
     openapiRequiredFields.add("dealingPoint");
     openapiRequiredFields.add("source");
     openapiRequiredFields.add("lines");
@@ -302,48 +272,46 @@ public class UpsertExternalTransferAgencyOrdersRequest {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpsertExternalTransferAgencyOrdersRequest
+  * @throws IOException if the JSON Element is invalid with respect to UpsertExternalDealingEstimatesRequest
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UpsertExternalTransferAgencyOrdersRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertExternalTransferAgencyOrdersRequest is not found in the empty JSON string", UpsertExternalTransferAgencyOrdersRequest.openapiRequiredFields.toString()));
+        if (!UpsertExternalDealingEstimatesRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertExternalDealingEstimatesRequest is not found in the empty JSON string", UpsertExternalDealingEstimatesRequest.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : UpsertExternalTransferAgencyOrdersRequest.openapiRequiredFields) {
+      for (String requiredField : UpsertExternalDealingEstimatesRequest.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `fundId`
-      ResourceId.validateJsonElement(jsonObj.get("fundId"));
       // validate the required field `source`
-      ExternalTransferAgencyOrderSource.validateJsonElement(jsonObj.get("source"));
+      ExternalDealingEstimateSource.validateJsonElement(jsonObj.get("source"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpsertExternalTransferAgencyOrdersRequest.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpsertExternalTransferAgencyOrdersRequest' and its subtypes
+       if (!UpsertExternalDealingEstimatesRequest.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpsertExternalDealingEstimatesRequest' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpsertExternalTransferAgencyOrdersRequest> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpsertExternalTransferAgencyOrdersRequest.class));
+       final TypeAdapter<UpsertExternalDealingEstimatesRequest> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpsertExternalDealingEstimatesRequest.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UpsertExternalTransferAgencyOrdersRequest>() {
+       return (TypeAdapter<T>) new TypeAdapter<UpsertExternalDealingEstimatesRequest>() {
            @Override
-           public void write(JsonWriter out, UpsertExternalTransferAgencyOrdersRequest value) throws IOException {
+           public void write(JsonWriter out, UpsertExternalDealingEstimatesRequest value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UpsertExternalTransferAgencyOrdersRequest read(JsonReader in) throws IOException {
+           public UpsertExternalDealingEstimatesRequest read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -354,18 +322,18 @@ public class UpsertExternalTransferAgencyOrdersRequest {
   }
 
  /**
-  * Create an instance of UpsertExternalTransferAgencyOrdersRequest given an JSON string
+  * Create an instance of UpsertExternalDealingEstimatesRequest given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UpsertExternalTransferAgencyOrdersRequest
-  * @throws IOException if the JSON string is invalid with respect to UpsertExternalTransferAgencyOrdersRequest
+  * @return An instance of UpsertExternalDealingEstimatesRequest
+  * @throws IOException if the JSON string is invalid with respect to UpsertExternalDealingEstimatesRequest
   */
-  public static UpsertExternalTransferAgencyOrdersRequest fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpsertExternalTransferAgencyOrdersRequest.class);
+  public static UpsertExternalDealingEstimatesRequest fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpsertExternalDealingEstimatesRequest.class);
   }
 
  /**
-  * Convert an instance of UpsertExternalTransferAgencyOrdersRequest to an JSON string
+  * Convert an instance of UpsertExternalDealingEstimatesRequest to an JSON string
   *
   * @return JSON string
   */

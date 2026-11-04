@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **overrideApplicationStatus** | **String** | Whether all, some, or none of this record&#39;s override and suppression entries are currently applied. Available values: Full, Partial, Orphaned. | [optional] [default to String]
 **cancelActive** | **Boolean** | True when an active event-level Cancel instruction also exists for this instrument event, taking precedence over the entries in this record. | [optional] [default to Boolean]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
+**adjustments** | [**Map&lt;String, AdjustmentEntryResponse&gt;**](AdjustmentEntryResponse.md) | The adjustments in this record, keyed by the virtual transaction id they were stored against. | [optional] [default to Map<String, AdjustmentEntryResponse>]
 
 ```java
 import com.finbourne.lusid.model.VirtualTransactionOverrideRecord;
@@ -28,6 +29,7 @@ ResourceId SourcePortfolioId = new ResourceId();
 @jakarta.annotation.Nullable String OverrideApplicationStatus = "example OverrideApplicationStatus";
 @jakarta.annotation.Nullable Boolean CancelActive = true;
 Version Version = new Version();
+@jakarta.annotation.Nullable Map<String, AdjustmentEntryResponse> Adjustments = new Map<String, AdjustmentEntryResponse>();
 
 
 VirtualTransactionOverrideRecord virtualTransactionOverrideRecordInstance = new VirtualTransactionOverrideRecord()
@@ -38,7 +40,8 @@ VirtualTransactionOverrideRecord virtualTransactionOverrideRecordInstance = new 
     .OverrideMatchStatus(OverrideMatchStatus)
     .OverrideApplicationStatus(OverrideApplicationStatus)
     .CancelActive(CancelActive)
-    .Version(Version);
+    .Version(Version)
+    .Adjustments(Adjustments);
 ```
 
 

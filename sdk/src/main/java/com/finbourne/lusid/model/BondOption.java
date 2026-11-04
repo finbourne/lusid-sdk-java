@@ -183,7 +183,7 @@ public class BondOption extends LusidInstrument {
   }
 
    /**
-   * The face amount per contract (e.g. 1,000,000). Together with the per-100 clean-price strike this  turns the strike and payoff into money: strikePerUnit &#x3D; strike / 100 generate justfile test_sdk contractSize.
+   * The face amount per contract (e.g. 1,000,000). Together with the per-100 clean-price strike this  turns the strike and payoff into money: strikePerUnit &#x3D; strike / 100 docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk contractSize.
    * @return contractSize
   **/
   @jakarta.annotation.Nonnull

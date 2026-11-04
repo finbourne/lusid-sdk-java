@@ -74,6 +74,10 @@ public class MarginRunRequest {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_FROM)
   private String effectiveFrom;
 
+  public static final String SERIALIZED_NAME_CAPTURE_DIAGNOSTICS = "captureDiagnostics";
+  @SerializedName(SERIALIZED_NAME_CAPTURE_DIAGNOSTICS)
+  private Boolean captureDiagnostics;
+
   public MarginRunRequest() {
   }
 
@@ -190,6 +194,27 @@ public class MarginRunRequest {
   }
 
 
+  public MarginRunRequest captureDiagnostics(Boolean captureDiagnostics) {
+    
+    this.captureDiagnostics = captureDiagnostics;
+    return this;
+  }
+
+   /**
+   * Whether to store the working behind the run&#39;s figures so that it can be explained. Specified, it is honoured. Not specified, the working is stored only for a run of a single date with no scenarios, since storing it costs time and space that a span or what-if run is not expected to repay.
+   * @return captureDiagnostics
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getCaptureDiagnostics() {
+    return captureDiagnostics;
+  }
+
+
+  public void setCaptureDiagnostics(Boolean captureDiagnostics) {
+    this.captureDiagnostics = captureDiagnostics;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -204,7 +229,8 @@ public class MarginRunRequest {
         Objects.equals(this.asAt, marginRunRequest.asAt) &&
         Objects.equals(this.agreementFilter, marginRunRequest.agreementFilter) &&
         Objects.equals(this.scenarios, marginRunRequest.scenarios) &&
-        Objects.equals(this.effectiveFrom, marginRunRequest.effectiveFrom);
+        Objects.equals(this.effectiveFrom, marginRunRequest.effectiveFrom) &&
+        Objects.equals(this.captureDiagnostics, marginRunRequest.captureDiagnostics);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -213,7 +239,7 @@ public class MarginRunRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, asAt, agreementFilter, scenarios, effectiveFrom);
+    return Objects.hash(effectiveAt, asAt, agreementFilter, scenarios, effectiveFrom, captureDiagnostics);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -232,6 +258,7 @@ public class MarginRunRequest {
     sb.append("    agreementFilter: ").append(toIndentedString(agreementFilter)).append("\n");
     sb.append("    scenarios: ").append(toIndentedString(scenarios)).append("\n");
     sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
+    sb.append("    captureDiagnostics: ").append(toIndentedString(captureDiagnostics)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -259,6 +286,7 @@ public class MarginRunRequest {
     openapiFields.add("agreementFilter");
     openapiFields.add("scenarios");
     openapiFields.add("effectiveFrom");
+    openapiFields.add("captureDiagnostics");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

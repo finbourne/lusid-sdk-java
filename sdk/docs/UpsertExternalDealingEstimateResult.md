@@ -1,4 +1,4 @@
-# com.finbourne.lusid.model.UpsertExternalTransferAgencyOrderResult
+# com.finbourne.lusid.model.UpsertExternalDealingEstimateResult
 
 ## Properties
 
@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **fundId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **dealingPoint** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
 **late** | **Boolean** |  | [optional] [default to Boolean]
-**upsertedOrders** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  | [optional] [default to List<ResourceId>]
-**deletedOrders** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  | [optional] [default to List<ResourceId>]
+**upsertedEstimates** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  | [optional] [default to List<ResourceId>]
+**deletedEstimates** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  | [optional] [default to List<ResourceId>]
 
 ```java
-import com.finbourne.lusid.model.UpsertExternalTransferAgencyOrderResult;
+import com.finbourne.lusid.model.UpsertExternalDealingEstimateResult;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
@@ -19,16 +19,16 @@ import java.net.URI;
 ResourceId FundId = new ResourceId();
 OffsetDateTime DealingPoint = OffsetDateTime.now();
 Boolean Late = true;
-@jakarta.annotation.Nullable List<ResourceId> UpsertedOrders = new List<ResourceId>();
-@jakarta.annotation.Nullable List<ResourceId> DeletedOrders = new List<ResourceId>();
+@jakarta.annotation.Nullable List<ResourceId> UpsertedEstimates = new List<ResourceId>();
+@jakarta.annotation.Nullable List<ResourceId> DeletedEstimates = new List<ResourceId>();
 
 
-UpsertExternalTransferAgencyOrderResult upsertExternalTransferAgencyOrderResultInstance = new UpsertExternalTransferAgencyOrderResult()
+UpsertExternalDealingEstimateResult upsertExternalDealingEstimateResultInstance = new UpsertExternalDealingEstimateResult()
     .FundId(FundId)
     .DealingPoint(DealingPoint)
     .Late(Late)
-    .UpsertedOrders(UpsertedOrders)
-    .DeletedOrders(DeletedOrders);
+    .UpsertedEstimates(UpsertedEstimates)
+    .DeletedEstimates(DeletedEstimates);
 ```
 
 

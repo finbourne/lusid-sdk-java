@@ -183,7 +183,7 @@ public class RiskBumpOptions {
   }
 
    /**
-   * The relative tolerance for RiskEngine \&quot;Parity\&quot; checks, applied as  |bump - adjoint| &lt;&#x3D; max(absolute floor, |bump| generate justfile test_sdk tolerance). Defaults to 0.001.
+   * The relative tolerance for RiskEngine \&quot;Parity\&quot; checks, applied as  |bump - adjoint| &lt;&#x3D; max(absolute floor, |bump| docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk tolerance). Defaults to 0.001.
    * @return parityRelativeTolerance
   **/
   @jakarta.annotation.Nullable

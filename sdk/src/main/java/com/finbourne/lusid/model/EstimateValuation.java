@@ -67,10 +67,6 @@ public class EstimateValuation {
   @SerializedName(SERIALIZED_NAME_DIFFERENCE)
   private EstimateValuationDifference difference;
 
-  public static final String SERIALIZED_NAME_UNIT_BASED_SHARE = "unitBasedShare";
-  @SerializedName(SERIALIZED_NAME_UNIT_BASED_SHARE)
-  private java.math.BigDecimal unitBasedShare;
-
   public EstimateValuation() {
   }
 
@@ -158,27 +154,6 @@ public class EstimateValuation {
   }
 
 
-  public EstimateValuation unitBasedShare(java.math.BigDecimal unitBasedShare) {
-    
-    this.unitBasedShare = unitBasedShare;
-    return this;
-  }
-
-   /**
-   * DEPRECATED: always 0 and no longer computed. Kept on the response for one release so clients on a public SDK that requires the field can still read it; it will be removed once an SDK without it has shipped.
-   * @return unitBasedShare
-  **/
-  @jakarta.annotation.Nullable
-  public java.math.BigDecimal getUnitBasedShare() {
-    return unitBasedShare;
-  }
-
-
-  public void setUnitBasedShare(java.math.BigDecimal unitBasedShare) {
-    this.unitBasedShare = unitBasedShare;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -192,13 +167,12 @@ public class EstimateValuation {
     return Objects.equals(this.decisionPrice, estimateValuation.decisionPrice) &&
         Objects.equals(this.atEstimatePrice, estimateValuation.atEstimatePrice) &&
         Objects.equals(this.atLastOfficialPrice, estimateValuation.atLastOfficialPrice) &&
-        Objects.equals(this.difference, estimateValuation.difference) &&
-        (this.unitBasedShare.compareTo(estimateValuation.getUnitBasedShare()) == 0);
+        Objects.equals(this.difference, estimateValuation.difference);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(decisionPrice, atEstimatePrice, atLastOfficialPrice, difference, unitBasedShare);
+    return Objects.hash(decisionPrice, atEstimatePrice, atLastOfficialPrice, difference);
   }
 
   @Override
@@ -209,7 +183,6 @@ public class EstimateValuation {
     sb.append("    atEstimatePrice: ").append(toIndentedString(atEstimatePrice)).append("\n");
     sb.append("    atLastOfficialPrice: ").append(toIndentedString(atLastOfficialPrice)).append("\n");
     sb.append("    difference: ").append(toIndentedString(difference)).append("\n");
-    sb.append("    unitBasedShare: ").append(toIndentedString(unitBasedShare)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -236,7 +209,6 @@ public class EstimateValuation {
     openapiFields.add("atEstimatePrice");
     openapiFields.add("atLastOfficialPrice");
     openapiFields.add("difference");
-    openapiFields.add("unitBasedShare");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

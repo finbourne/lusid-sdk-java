@@ -148,6 +148,10 @@ public class RecResultItem extends AbstractOpenApiSchema {
                                 deserialized = adapterRecResultExternalIdentifiersItem.fromJsonTree(jsonObject);
                                 newRecResultItem.setActualInstance(deserialized);
                                 return newRecResultItem;
+                            case "LegalEntity":
+                                deserialized = adapterRecResultExternalIdentifiersItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
                             case "RecResultExternalIdentifiersItem":
                                 deserialized = adapterRecResultExternalIdentifiersItem.fromJsonTree(jsonObject);
                                 newRecResultItem.setActualInstance(deserialized);
@@ -185,7 +189,7 @@ public class RecResultItem extends AbstractOpenApiSchema {
                                 newRecResultItem.setActualInstance(deserialized);
                                 return newRecResultItem;
                             default:
-                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for RecResultItem. Possible values: Holding Instrument RecResultExternalIdentifiersItem RecResultHoldingItem RecResultRelationalDataItem RecResultSettlementActivityItem RecResultTransactionItem RelationalDataPoint SettlementActivity Transaction ValuedHolding", jsonObject.get("itemType").getAsString()));
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for RecResultItem. Possible values: Holding Instrument LegalEntity RecResultExternalIdentifiersItem RecResultHoldingItem RecResultRelationalDataItem RecResultSettlementActivityItem RecResultTransactionItem RelationalDataPoint SettlementActivity Transaction ValuedHolding", jsonObject.get("itemType").getAsString()));
                         }
                     }
 

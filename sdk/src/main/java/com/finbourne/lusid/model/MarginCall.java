@@ -179,6 +179,10 @@ public class MarginCall {
   @SerializedName(SERIALIZED_NAME_SCENARIO)
   private ResourceId scenario;
 
+  public static final String SERIALIZED_NAME_EXPLAIN_AVAILABLE = "explainAvailable";
+  @SerializedName(SERIALIZED_NAME_EXPLAIN_AVAILABLE)
+  private Boolean explainAvailable;
+
   public MarginCall() {
   }
 
@@ -833,6 +837,27 @@ public class MarginCall {
   }
 
 
+  public MarginCall explainAvailable(Boolean explainAvailable) {
+    
+    this.explainAvailable = explainAvailable;
+    return this;
+  }
+
+   /**
+   * Whether the working behind the call&#39;s required amount was stored, so that the call can be explained. Only an initial-margin call can be explained, and only when the run stored its working.
+   * @return explainAvailable
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getExplainAvailable() {
+    return explainAvailable;
+  }
+
+
+  public void setExplainAvailable(Boolean explainAvailable) {
+    this.explainAvailable = explainAvailable;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -873,7 +898,8 @@ public class MarginCall {
         Objects.equals(this.supersedes, marginCall.supersedes) &&
         Objects.equals(this.carriedFrom, marginCall.carriedFrom) &&
         (this.carriedDisputedAmount.compareTo(marginCall.getCarriedDisputedAmount()) == 0) &&
-        Objects.equals(this.scenario, marginCall.scenario);
+        Objects.equals(this.scenario, marginCall.scenario) &&
+        Objects.equals(this.explainAvailable, marginCall.explainAvailable);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -882,7 +908,7 @@ public class MarginCall {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, runId, agreementId, counterparty, item, marginType, method, settlement, direction, currency, required, held, call, matchTolerance, counterpartyDemand, difference, matchStatus, demandReceivedAt, statementReference, demandNote, agreedAmount, disputedAmount, disputeReason, disputeOwner, state, deadline, supersedes, carriedFrom, carriedDisputedAmount, scenario);
+    return Objects.hash(href, id, runId, agreementId, counterparty, item, marginType, method, settlement, direction, currency, required, held, call, matchTolerance, counterpartyDemand, difference, matchStatus, demandReceivedAt, statementReference, demandNote, agreedAmount, disputedAmount, disputeReason, disputeOwner, state, deadline, supersedes, carriedFrom, carriedDisputedAmount, scenario, explainAvailable);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -927,6 +953,7 @@ public class MarginCall {
     sb.append("    carriedFrom: ").append(toIndentedString(carriedFrom)).append("\n");
     sb.append("    carriedDisputedAmount: ").append(toIndentedString(carriedDisputedAmount)).append("\n");
     sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
+    sb.append("    explainAvailable: ").append(toIndentedString(explainAvailable)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -980,6 +1007,7 @@ public class MarginCall {
     openapiFields.add("carriedFrom");
     openapiFields.add("carriedDisputedAmount");
     openapiFields.add("scenario");
+    openapiFields.add("explainAvailable");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

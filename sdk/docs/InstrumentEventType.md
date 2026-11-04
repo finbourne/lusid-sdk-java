@@ -140,6 +140,7 @@ InstrumentEventType method = InstrumentEventType.DEPOSITINTERESTCAPITALISATIONEV
 InstrumentEventType method = InstrumentEventType.PARTIALREDEMPTIONWITHOUTREDUCTIONOFNOMINALVALUEEVENT;
 InstrumentEventType method = InstrumentEventType.STRIPBONDCASHFLOWEVENT;
 InstrumentEventType method = InstrumentEventType.CAPITALISATIONEVENT;
+InstrumentEventType method = InstrumentEventType.SHARESPREMIUMDIVIDENDEVENT;
 ```
 
 

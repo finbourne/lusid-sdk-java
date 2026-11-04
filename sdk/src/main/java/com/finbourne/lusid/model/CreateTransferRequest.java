@@ -311,7 +311,7 @@ public class CreateTransferRequest {
   }
 
    /**
-   * What happens to the tax lots of the outgoing position. Only &#39;Consolidate&#39; is currently supported; &#39;Preserve&#39; is rejected. Defaults to &#39;Consolidate&#39;. Available values: Consolidate, Preserve.
+   * What happens to the tax lots of the outgoing position. Defaults to &#39;Consolidate&#39;. &#39;Preserve&#39; carries each outgoing lot onto the incoming position; it is not supported when the incoming portfolio uses the AverageCost or Default accounting method, or across share classes in different currencies. Available values: Consolidate, Preserve.
    * @return taxLotStructure
   **/
   @jakarta.annotation.Nullable
@@ -563,7 +563,7 @@ public class CreateTransferRequest {
   }
 
    /**
-   * The unit price of the incoming leg. Ignored for a transfer, which carries the outgoing price across; defaults to the outgoing price for a switch.
+   * The unit price of the incoming leg. Not accepted for a transfer of one instrument between portfolios, which carries the outgoing price across. For a switch, required when PricingMethod is &#39;AtPrice&#39; and defaults to the outgoing price otherwise.
    * @return transactionPriceIn
   **/
   @jakarta.annotation.Nullable

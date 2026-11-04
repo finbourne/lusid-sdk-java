@@ -32,6 +32,7 @@ import com.finbourne.lusid.model.DisputeMarginCallRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.MarginCall;
+import com.finbourne.lusid.model.MarginExplanation;
 import com.finbourne.lusid.model.MarginRun;
 import com.finbourne.lusid.model.MarginRunRequest;
 import com.finbourne.lusid.model.PagedResourceListOfMarginCall;
@@ -1174,6 +1175,539 @@ public class CollateralApi {
      */
     public APIgetMarginCallRequest getMarginCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) {
         return new APIgetMarginCallRequest(runId, agreementScope, agreementCode, item, marginType, direction);
+    }
+    private okhttp3.Call getMarginCallExplanationCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback _callback) throws ApiException {
+        return getMarginCallExplanationCall(runId, agreementScope, agreementCode, item, marginType, direction,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getMarginCallExplanationCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$explain"
+            .replace("{" + "runId" + "}", localVarApiClient.escapeString(runId.toString()))
+            .replace("{" + "agreementScope" + "}", localVarApiClient.escapeString(agreementScope.toString()))
+            .replace("{" + "agreementCode" + "}", localVarApiClient.escapeString(agreementCode.toString()))
+            .replace("{" + "item" + "}", localVarApiClient.escapeString(item.toString()))
+            .replace("{" + "marginType" + "}", localVarApiClient.escapeString(marginType.toString()))
+            .replace("{" + "direction" + "}", localVarApiClient.escapeString(direction.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarginCallExplanationValidateBeforeCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling getMarginCallExplanation(Async)");
+        }
+
+        // verify the required parameter 'agreementScope' is set
+        if (agreementScope == null) {
+            throw new ApiException("Missing the required parameter 'agreementScope' when calling getMarginCallExplanation(Async)");
+        }
+
+        // verify the required parameter 'agreementCode' is set
+        if (agreementCode == null) {
+            throw new ApiException("Missing the required parameter 'agreementCode' when calling getMarginCallExplanation(Async)");
+        }
+
+        // verify the required parameter 'item' is set
+        if (item == null) {
+            throw new ApiException("Missing the required parameter 'item' when calling getMarginCallExplanation(Async)");
+        }
+
+        // verify the required parameter 'marginType' is set
+        if (marginType == null) {
+            throw new ApiException("Missing the required parameter 'marginType' when calling getMarginCallExplanation(Async)");
+        }
+
+        // verify the required parameter 'direction' is set
+        if (direction == null) {
+            throw new ApiException("Missing the required parameter 'direction' when calling getMarginCallExplanation(Async)");
+        }
+
+        return getMarginCallExplanationCall(runId, agreementScope, agreementCode, item, marginType, direction, _callback, opts);
+
+    }
+
+
+    private ApiResponse<MarginExplanation> getMarginCallExplanationWithHttpInfo(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) throws ApiException {
+        okhttp3.Call localVarCall = getMarginCallExplanationValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<MarginExplanation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<MarginExplanation> getMarginCallExplanationWithHttpInfo(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getMarginCallExplanationValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, null, opts);
+        Type localVarReturnType = new TypeToken<MarginExplanation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getMarginCallExplanationAsync(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback<MarginExplanation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarginCallExplanationValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<MarginExplanation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getMarginCallExplanationAsync(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback<MarginExplanation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarginCallExplanationValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, _callback, opts);
+        Type localVarReturnType = new TypeToken<MarginExplanation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetMarginCallExplanationRequest {
+        private final String runId;
+        private final String agreementScope;
+        private final String agreementCode;
+        private final String item;
+        private final String marginType;
+        private final String direction;
+
+        private APIgetMarginCallExplanationRequest(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) {
+            this.runId = runId;
+            this.agreementScope = agreementScope;
+            this.agreementCode = agreementCode;
+            this.item = item;
+            this.marginType = marginType;
+            this.direction = direction;
+        }
+
+        /**
+         * Build call for getMarginCallExplanation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the call&#39;s required amount was arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getMarginCallExplanationCall(runId, agreementScope, agreementCode, item, marginType, direction, _callback);
+        }
+
+        /**
+         * Execute getMarginCallExplanation request
+         * @return MarginExplanation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the call&#39;s required amount was arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public MarginExplanation execute() throws ApiException {
+            ApiResponse<MarginExplanation> localVarResp = getMarginCallExplanationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getMarginCallExplanation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return MarginExplanation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the call&#39;s required amount was arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public MarginExplanation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<MarginExplanation> localVarResp = getMarginCallExplanationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getMarginCallExplanation request with HTTP info returned
+         * @return ApiResponse&lt;MarginExplanation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the call&#39;s required amount was arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<MarginExplanation> executeWithHttpInfo() throws ApiException {
+            return getMarginCallExplanationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction);
+        }
+
+        /**
+         * Execute getMarginCallExplanation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;MarginExplanation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the call&#39;s required amount was arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<MarginExplanation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getMarginCallExplanationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, opts);
+        }
+
+        /**
+         * Execute getMarginCallExplanation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the call&#39;s required amount was arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<MarginExplanation> _callback) throws ApiException {
+            return getMarginCallExplanationAsync(runId, agreementScope, agreementCode, item, marginType, direction, _callback);
+        }
+
+        /**
+         * Execute getMarginCallExplanation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the call&#39;s required amount was arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<MarginExplanation> _callback, ConfigurationOptions opts) throws ApiException {
+            return getMarginCallExplanationAsync(runId, agreementScope, agreementCode, item, marginType, direction, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call.
+     * Show how the required amount of one initial-margin call of a run was arrived at, as a tree of components. Only an  initial-margin call whose run stored its working can be explained, as the call&#39;s ExplainAvailable says. The working  of portfolios the caller may not read is replaced by a single redacted component that keeps its parent adding up.
+     * @param runId The identifier of the margin run. (required)
+     * @param agreementScope The scope of the call&#39;s collateral agreement. (required)
+     * @param agreementCode The code of the call&#39;s collateral agreement. (required)
+     * @param item The margin item of the call. (required)
+     * @param marginType The margin type of the call. Only InitialMargin calls can be explained. (required)
+     * @param direction Who posts under the call. One of WePost, TheyPost or None. (required)
+     * @return APIgetMarginCallExplanationRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> How the call&#39;s required amount was arrived at. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetMarginCallExplanationRequest getMarginCallExplanation(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) {
+        return new APIgetMarginCallExplanationRequest(runId, agreementScope, agreementCode, item, marginType, direction);
+    }
+    private okhttp3.Call getMarginLineExplanationCall(String runId, String lineKey, String figure, final ApiCallback _callback) throws ApiException {
+        return getMarginLineExplanationCall(runId, lineKey, figure,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getMarginLineExplanationCall(String runId, String lineKey, String figure, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/collateral/runs/{runId}/lines/{lineKey}/$explain"
+            .replace("{" + "runId" + "}", localVarApiClient.escapeString(runId.toString()))
+            .replace("{" + "lineKey" + "}", localVarApiClient.escapeString(lineKey.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (figure != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("figure", figure));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarginLineExplanationValidateBeforeCall(String runId, String lineKey, String figure, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling getMarginLineExplanation(Async)");
+        }
+
+        // verify the required parameter 'lineKey' is set
+        if (lineKey == null) {
+            throw new ApiException("Missing the required parameter 'lineKey' when calling getMarginLineExplanation(Async)");
+        }
+
+        return getMarginLineExplanationCall(runId, lineKey, figure, _callback, opts);
+
+    }
+
+
+    private ApiResponse<MarginExplanation> getMarginLineExplanationWithHttpInfo(String runId, String lineKey, String figure) throws ApiException {
+        okhttp3.Call localVarCall = getMarginLineExplanationValidateBeforeCall(runId, lineKey, figure, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<MarginExplanation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<MarginExplanation> getMarginLineExplanationWithHttpInfo(String runId, String lineKey, String figure, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getMarginLineExplanationValidateBeforeCall(runId, lineKey, figure, null, opts);
+        Type localVarReturnType = new TypeToken<MarginExplanation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getMarginLineExplanationAsync(String runId, String lineKey, String figure, final ApiCallback<MarginExplanation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarginLineExplanationValidateBeforeCall(runId, lineKey, figure, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<MarginExplanation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getMarginLineExplanationAsync(String runId, String lineKey, String figure, final ApiCallback<MarginExplanation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarginLineExplanationValidateBeforeCall(runId, lineKey, figure, _callback, opts);
+        Type localVarReturnType = new TypeToken<MarginExplanation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetMarginLineExplanationRequest {
+        private final String runId;
+        private final String lineKey;
+        private String figure;
+
+        private APIgetMarginLineExplanationRequest(String runId, String lineKey) {
+            this.runId = runId;
+            this.lineKey = lineKey;
+        }
+
+        /**
+         * Set figure
+         * @param figure The figure of the line to explain: VariationMargin or InitialMargin. Explains every figure of the line that the run explained if not specified. Available values: VariationMargin, InitialMargin. (optional)
+         * @return APIgetMarginLineExplanationRequest
+         */
+        public APIgetMarginLineExplanationRequest figure(String figure) {
+            this.figure = figure;
+            return this;
+        }
+
+        /**
+         * Build call for getMarginLineExplanation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the line&#39;s figures were arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getMarginLineExplanationCall(runId, lineKey, figure, _callback);
+        }
+
+        /**
+         * Execute getMarginLineExplanation request
+         * @return MarginExplanation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the line&#39;s figures were arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public MarginExplanation execute() throws ApiException {
+            ApiResponse<MarginExplanation> localVarResp = getMarginLineExplanationWithHttpInfo(runId, lineKey, figure);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getMarginLineExplanation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return MarginExplanation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the line&#39;s figures were arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public MarginExplanation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<MarginExplanation> localVarResp = getMarginLineExplanationWithHttpInfo(runId, lineKey, figure, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getMarginLineExplanation request with HTTP info returned
+         * @return ApiResponse&lt;MarginExplanation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the line&#39;s figures were arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<MarginExplanation> executeWithHttpInfo() throws ApiException {
+            return getMarginLineExplanationWithHttpInfo(runId, lineKey, figure);
+        }
+
+        /**
+         * Execute getMarginLineExplanation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;MarginExplanation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the line&#39;s figures were arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<MarginExplanation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getMarginLineExplanationWithHttpInfo(runId, lineKey, figure, opts);
+        }
+
+        /**
+         * Execute getMarginLineExplanation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the line&#39;s figures were arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<MarginExplanation> _callback) throws ApiException {
+            return getMarginLineExplanationAsync(runId, lineKey, figure, _callback);
+        }
+
+        /**
+         * Execute getMarginLineExplanation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> How the line&#39;s figures were arrived at. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<MarginExplanation> _callback, ConfigurationOptions opts) throws ApiException {
+            return getMarginLineExplanationAsync(runId, lineKey, figure, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line.
+     * Show how the figures of one margin line of a run were arrived at, as a tree of components for each figure. The run  must have stored its working, as its lines&#39; ExplainAvailable says. The working of portfolios the caller may not  read is replaced by a single redacted component that keeps its parent adding up. A line the caller may not read is  reported as not found.
+     * @param runId The identifier of the margin run. (required)
+     * @param lineKey The key of the margin line, as listed in the line&#39;s LineKey. (required)
+     * @return APIgetMarginLineExplanationRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> How the line&#39;s figures were arrived at. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetMarginLineExplanationRequest getMarginLineExplanation(String runId, String lineKey) {
+        return new APIgetMarginLineExplanationRequest(runId, lineKey);
     }
     private okhttp3.Call getMarginRunCall(String runId, final ApiCallback _callback) throws ApiException {
         return getMarginRunCall(runId,  _callback, new ConfigurationOptions());

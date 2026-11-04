@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **overrides** | [**Map&lt;String, List&lt;StoredOverrideDefinition&gt;&gt;**](List.md) | The replacement transactions persisted for the instrument event, keyed by the virtual transaction id being overridden. | [optional] [default to Map<String, List<StoredOverrideDefinition>>]
 **suppressions** | **List&lt;String&gt;** | The virtual transaction ids suppressed for the instrument event. | [optional] [default to List<String>]
 **cancelActive** | **Boolean** | True when an active event-level Cancel instruction also exists for this instrument event, taking precedence over the entries in this record. | [optional] [default to Boolean]
+**adjustments** | [**Map&lt;String, AdjustmentDefinitionResponse&gt;**](AdjustmentDefinitionResponse.md) | The adjustments stored for the instrument event, keyed by virtual transaction id. | [optional] [default to Map<String, AdjustmentDefinitionResponse>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -27,6 +28,7 @@ String InstrumentEventId = "example InstrumentEventId";
 @jakarta.annotation.Nullable Map<String, List<StoredOverrideDefinition>> Overrides = new Map<String, List<StoredOverrideDefinition>>();
 @jakarta.annotation.Nullable List<String> Suppressions = new List<String>();
 @jakarta.annotation.Nullable Boolean CancelActive = true;
+@jakarta.annotation.Nullable Map<String, AdjustmentDefinitionResponse> Adjustments = new Map<String, AdjustmentDefinitionResponse>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -38,6 +40,7 @@ UpsertVirtualTransactionOverrideResponse upsertVirtualTransactionOverrideRespons
     .Overrides(Overrides)
     .Suppressions(Suppressions)
     .CancelActive(CancelActive)
+    .Adjustments(Adjustments)
     .Links(Links);
 ```
 

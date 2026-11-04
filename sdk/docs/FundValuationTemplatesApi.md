@@ -205,7 +205,7 @@ public class FundValuationTemplatesApiExample {
 
 [EXPERIMENTAL] ListValuationAddressKeyTemplates: List Valuation Templates.
 
-List the stored Valuation Templates matching the given criteria. To find the domain default, filter on  \&quot;isDefault eq true\&quot;. The system default is not stored, so it is not listed. If no stored template is the  default, the system default applies. Get it with scope \&quot;default\&quot; and code \&quot;DefaultTemplate\&quot;.
+List the Valuation Templates matching the given criteria. The list includes the system default, with scope  \&quot;default\&quot; and code \&quot;DefaultTemplate\&quot;. If no stored template is the default, the system default applies.  To find the domain default, filter on \&quot;isDefault eq true\&quot;.
 
 ### Example
 

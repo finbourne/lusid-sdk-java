@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ExternalTransferAgencyOrderAmount;
+import com.finbourne.lusid.model.ExternalDealingEstimateAmount;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
  * One order within an external order set: a share class, a direction and either a number of units or an amount.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalTransferAgencyOrderLine {
+public class ExternalDealingEstimateLine {
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIER_TYPE = "instrumentIdentifierType";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIER_TYPE)
   private String instrumentIdentifierType;
@@ -73,12 +73,12 @@ public class ExternalTransferAgencyOrderLine {
 
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private ExternalTransferAgencyOrderAmount amount;
+  private ExternalDealingEstimateAmount amount;
 
-  public ExternalTransferAgencyOrderLine() {
+  public ExternalDealingEstimateLine() {
   }
 
-  public ExternalTransferAgencyOrderLine instrumentIdentifierType(String instrumentIdentifierType) {
+  public ExternalDealingEstimateLine instrumentIdentifierType(String instrumentIdentifierType) {
     
     this.instrumentIdentifierType = instrumentIdentifierType;
     return this;
@@ -99,7 +99,7 @@ public class ExternalTransferAgencyOrderLine {
   }
 
 
-  public ExternalTransferAgencyOrderLine instrumentIdentifier(String instrumentIdentifier) {
+  public ExternalDealingEstimateLine instrumentIdentifier(String instrumentIdentifier) {
     
     this.instrumentIdentifier = instrumentIdentifier;
     return this;
@@ -120,7 +120,7 @@ public class ExternalTransferAgencyOrderLine {
   }
 
 
-  public ExternalTransferAgencyOrderLine instrumentScope(String instrumentScope) {
+  public ExternalDealingEstimateLine instrumentScope(String instrumentScope) {
     
     this.instrumentScope = instrumentScope;
     return this;
@@ -141,7 +141,7 @@ public class ExternalTransferAgencyOrderLine {
   }
 
 
-  public ExternalTransferAgencyOrderLine tradeType(String tradeType) {
+  public ExternalDealingEstimateLine tradeType(String tradeType) {
     
     this.tradeType = tradeType;
     return this;
@@ -162,7 +162,7 @@ public class ExternalTransferAgencyOrderLine {
   }
 
 
-  public ExternalTransferAgencyOrderLine units(java.math.BigDecimal units) {
+  public ExternalDealingEstimateLine units(java.math.BigDecimal units) {
     
     this.units = units;
     return this;
@@ -183,7 +183,7 @@ public class ExternalTransferAgencyOrderLine {
   }
 
 
-  public ExternalTransferAgencyOrderLine amount(ExternalTransferAgencyOrderAmount amount) {
+  public ExternalDealingEstimateLine amount(ExternalDealingEstimateAmount amount) {
     
     this.amount = amount;
     return this;
@@ -194,12 +194,12 @@ public class ExternalTransferAgencyOrderLine {
    * @return amount
   **/
   @jakarta.annotation.Nullable
-  public ExternalTransferAgencyOrderAmount getAmount() {
+  public ExternalDealingEstimateAmount getAmount() {
     return amount;
   }
 
 
-  public void setAmount(ExternalTransferAgencyOrderAmount amount) {
+  public void setAmount(ExternalDealingEstimateAmount amount) {
     this.amount = amount;
   }
 
@@ -213,13 +213,13 @@ public class ExternalTransferAgencyOrderLine {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalTransferAgencyOrderLine externalTransferAgencyOrderLine = (ExternalTransferAgencyOrderLine) o;
-    return Objects.equals(this.instrumentIdentifierType, externalTransferAgencyOrderLine.instrumentIdentifierType) &&
-        Objects.equals(this.instrumentIdentifier, externalTransferAgencyOrderLine.instrumentIdentifier) &&
-        Objects.equals(this.instrumentScope, externalTransferAgencyOrderLine.instrumentScope) &&
-        Objects.equals(this.tradeType, externalTransferAgencyOrderLine.tradeType) &&
-        (this.units.compareTo(externalTransferAgencyOrderLine.getUnits()) == 0) &&
-        Objects.equals(this.amount, externalTransferAgencyOrderLine.amount);
+    ExternalDealingEstimateLine externalDealingEstimateLine = (ExternalDealingEstimateLine) o;
+    return Objects.equals(this.instrumentIdentifierType, externalDealingEstimateLine.instrumentIdentifierType) &&
+        Objects.equals(this.instrumentIdentifier, externalDealingEstimateLine.instrumentIdentifier) &&
+        Objects.equals(this.instrumentScope, externalDealingEstimateLine.instrumentScope) &&
+        Objects.equals(this.tradeType, externalDealingEstimateLine.tradeType) &&
+        (this.units.compareTo(externalDealingEstimateLine.getUnits()) == 0) &&
+        Objects.equals(this.amount, externalDealingEstimateLine.amount);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -241,7 +241,7 @@ public class ExternalTransferAgencyOrderLine {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalTransferAgencyOrderLine {\n");
+    sb.append("class ExternalDealingEstimateLine {\n");
     sb.append("    instrumentIdentifierType: ").append(toIndentedString(instrumentIdentifierType)).append("\n");
     sb.append("    instrumentIdentifier: ").append(toIndentedString(instrumentIdentifier)).append("\n");
     sb.append("    instrumentScope: ").append(toIndentedString(instrumentScope)).append("\n");
@@ -288,17 +288,17 @@ public class ExternalTransferAgencyOrderLine {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ExternalTransferAgencyOrderLine
+  * @throws IOException if the JSON Element is invalid with respect to ExternalDealingEstimateLine
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ExternalTransferAgencyOrderLine.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalTransferAgencyOrderLine is not found in the empty JSON string", ExternalTransferAgencyOrderLine.openapiRequiredFields.toString()));
+        if (!ExternalDealingEstimateLine.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalDealingEstimateLine is not found in the empty JSON string", ExternalDealingEstimateLine.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExternalTransferAgencyOrderLine.openapiRequiredFields) {
+      for (String requiredField : ExternalDealingEstimateLine.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -318,7 +318,7 @@ public class ExternalTransferAgencyOrderLine {
       }
       // validate the optional field `amount`
       if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
-        ExternalTransferAgencyOrderAmount.validateJsonElement(jsonObj.get("amount"));
+        ExternalDealingEstimateAmount.validateJsonElement(jsonObj.get("amount"));
       }
   }
 
@@ -326,22 +326,22 @@ public class ExternalTransferAgencyOrderLine {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalTransferAgencyOrderLine.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalTransferAgencyOrderLine' and its subtypes
+       if (!ExternalDealingEstimateLine.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ExternalDealingEstimateLine' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalTransferAgencyOrderLine> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalTransferAgencyOrderLine.class));
+       final TypeAdapter<ExternalDealingEstimateLine> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalDealingEstimateLine.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalTransferAgencyOrderLine>() {
+       return (TypeAdapter<T>) new TypeAdapter<ExternalDealingEstimateLine>() {
            @Override
-           public void write(JsonWriter out, ExternalTransferAgencyOrderLine value) throws IOException {
+           public void write(JsonWriter out, ExternalDealingEstimateLine value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ExternalTransferAgencyOrderLine read(JsonReader in) throws IOException {
+           public ExternalDealingEstimateLine read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -352,18 +352,18 @@ public class ExternalTransferAgencyOrderLine {
   }
 
  /**
-  * Create an instance of ExternalTransferAgencyOrderLine given an JSON string
+  * Create an instance of ExternalDealingEstimateLine given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalTransferAgencyOrderLine
-  * @throws IOException if the JSON string is invalid with respect to ExternalTransferAgencyOrderLine
+  * @return An instance of ExternalDealingEstimateLine
+  * @throws IOException if the JSON string is invalid with respect to ExternalDealingEstimateLine
   */
-  public static ExternalTransferAgencyOrderLine fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalTransferAgencyOrderLine.class);
+  public static ExternalDealingEstimateLine fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ExternalDealingEstimateLine.class);
   }
 
  /**
-  * Convert an instance of ExternalTransferAgencyOrderLine to an JSON string
+  * Convert an instance of ExternalDealingEstimateLine to an JSON string
   *
   * @return JSON string
   */

@@ -40,11 +40,13 @@ import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.OrderUpdateRequest;
 import com.finbourne.lusid.model.PlaceBlocksRequest;
 import com.finbourne.lusid.model.PlacementUpdateRequest;
+import com.finbourne.lusid.model.PreviewBlocksRequest;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ResourceListOfBlockAndOrders;
 import com.finbourne.lusid.model.ResourceListOfChangeIntervalWithOrderManagementDetail;
 import com.finbourne.lusid.model.ResourceListOfMovedOrderToDifferentBlockResponse;
 import com.finbourne.lusid.model.ResourceListOfPlacement;
+import com.finbourne.lusid.model.ResourceListOfProposedBlockAndOrders;
 import com.finbourne.lusid.model.SweepBlocksRequest;
 import com.finbourne.lusid.model.SweepBlocksResponse;
 import com.finbourne.lusid.model.UpdateOrdersResponse;
@@ -2035,6 +2037,241 @@ public class OrderManagementApi {
      */
     public APIplaceBlocksRequest placeBlocks() {
         return new APIplaceBlocksRequest();
+    }
+    private okhttp3.Call previewBlocksCall(PreviewBlocksRequest previewBlocksRequest, final ApiCallback _callback) throws ApiException {
+        return previewBlocksCall(previewBlocksRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call previewBlocksCall(PreviewBlocksRequest previewBlocksRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = previewBlocksRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/ordermanagement/$previewblocks";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call previewBlocksValidateBeforeCall(PreviewBlocksRequest previewBlocksRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'previewBlocksRequest' is set
+        if (previewBlocksRequest == null) {
+            throw new ApiException("Missing the required parameter 'previewBlocksRequest' when calling previewBlocks(Async)");
+        }
+
+        return previewBlocksCall(previewBlocksRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfProposedBlockAndOrders> previewBlocksWithHttpInfo(PreviewBlocksRequest previewBlocksRequest) throws ApiException {
+        okhttp3.Call localVarCall = previewBlocksValidateBeforeCall(previewBlocksRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfProposedBlockAndOrders>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfProposedBlockAndOrders> previewBlocksWithHttpInfo(PreviewBlocksRequest previewBlocksRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = previewBlocksValidateBeforeCall(previewBlocksRequest, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfProposedBlockAndOrders>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call previewBlocksAsync(PreviewBlocksRequest previewBlocksRequest, final ApiCallback<ResourceListOfProposedBlockAndOrders> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = previewBlocksValidateBeforeCall(previewBlocksRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfProposedBlockAndOrders>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call previewBlocksAsync(PreviewBlocksRequest previewBlocksRequest, final ApiCallback<ResourceListOfProposedBlockAndOrders> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = previewBlocksValidateBeforeCall(previewBlocksRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfProposedBlockAndOrders>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpreviewBlocksRequest {
+        private final PreviewBlocksRequest previewBlocksRequest;
+
+        private APIpreviewBlocksRequest(PreviewBlocksRequest previewBlocksRequest) {
+            this.previewBlocksRequest = previewBlocksRequest;
+        }
+
+        /**
+         * Build call for previewBlocks
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The proposed blocks and their orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return previewBlocksCall(previewBlocksRequest, _callback);
+        }
+
+        /**
+         * Execute previewBlocks request
+         * @return ResourceListOfProposedBlockAndOrders
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The proposed blocks and their orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfProposedBlockAndOrders execute() throws ApiException {
+            ApiResponse<ResourceListOfProposedBlockAndOrders> localVarResp = previewBlocksWithHttpInfo(previewBlocksRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute previewBlocks request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfProposedBlockAndOrders
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The proposed blocks and their orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfProposedBlockAndOrders execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfProposedBlockAndOrders> localVarResp = previewBlocksWithHttpInfo(previewBlocksRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute previewBlocks request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfProposedBlockAndOrders&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The proposed blocks and their orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfProposedBlockAndOrders> executeWithHttpInfo() throws ApiException {
+            return previewBlocksWithHttpInfo(previewBlocksRequest);
+        }
+
+        /**
+         * Execute previewBlocks request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfProposedBlockAndOrders&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The proposed blocks and their orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfProposedBlockAndOrders> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return previewBlocksWithHttpInfo(previewBlocksRequest, opts);
+        }
+
+        /**
+         * Execute previewBlocks request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The proposed blocks and their orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProposedBlockAndOrders> _callback) throws ApiException {
+            return previewBlocksAsync(previewBlocksRequest, _callback);
+        }
+
+        /**
+         * Execute previewBlocks request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The proposed blocks and their orders. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfProposedBlockAndOrders> _callback, ConfigurationOptions opts) throws ApiException {
+            return previewBlocksAsync(previewBlocksRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * PreviewBlocks: Preview the blocks a set of orders would form
+     * Groups a set of orders into blocks according to the requested grouping mode, with each block&#39;s side and  net size derived from its orders. Nothing is created: the result is a set of block and order requests, in  the shape accepted by CreateOrders, which may be posted there as they are.
+     * @param previewBlocksRequest The orders to group and how to group them. (required)
+     * @return APIpreviewBlocksRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The proposed blocks and their orders. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpreviewBlocksRequest previewBlocks(PreviewBlocksRequest previewBlocksRequest) {
+        return new APIpreviewBlocksRequest(previewBlocksRequest);
     }
     private okhttp3.Call runAllocationServiceCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback) throws ApiException {
         return runAllocationServiceCall(resourceId, allocationAlgorithm,  _callback, new ConfigurationOptions());

@@ -91,7 +91,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
   }
 
    /**
-   * If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance generate justfile test_sdk priceQuote / quoteScaleFactor
+   * If set to true the CleanPV calculation will be looking for a price quote (no default price is assumed). CleanPV will be calculated as Holding/Balance docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk priceQuote / quoteScaleFactor
    * @return usePriceQuoteForCleanPV
   **/
   @jakarta.annotation.Nullable

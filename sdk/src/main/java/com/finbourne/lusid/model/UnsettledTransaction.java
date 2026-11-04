@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.OutputTransaction;
 import com.finbourne.lusid.model.PortfolioId;
+import com.finbourne.lusid.model.UnsettledTransactionRevaluation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -91,6 +92,10 @@ public class UnsettledTransaction {
   public static final String SERIALIZED_NAME_DEFERRED_CASH_IS_OVERDUE = "deferredCashIsOverdue";
   @SerializedName(SERIALIZED_NAME_DEFERRED_CASH_IS_OVERDUE)
   private Boolean deferredCashIsOverdue;
+
+  public static final String SERIALIZED_NAME_REVALUATION = "revaluation";
+  @SerializedName(SERIALIZED_NAME_REVALUATION)
+  private UnsettledTransactionRevaluation revaluation;
 
   public UnsettledTransaction() {
   }
@@ -305,6 +310,27 @@ public class UnsettledTransaction {
   }
 
 
+  public UnsettledTransaction revaluation(UnsettledTransactionRevaluation revaluation) {
+    
+    this.revaluation = revaluation;
+    return this;
+  }
+
+   /**
+   * Get revaluation
+   * @return revaluation
+  **/
+  @jakarta.annotation.Nullable
+  public UnsettledTransactionRevaluation getRevaluation() {
+    return revaluation;
+  }
+
+
+  public void setRevaluation(UnsettledTransactionRevaluation revaluation) {
+    this.revaluation = revaluation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -324,7 +350,8 @@ public class UnsettledTransaction {
         Objects.equals(this.stockSettlementStatus, unsettledTransaction.stockSettlementStatus) &&
         Objects.equals(this.stockIsOverdue, unsettledTransaction.stockIsOverdue) &&
         Objects.equals(this.deferredCashSettlementStatus, unsettledTransaction.deferredCashSettlementStatus) &&
-        Objects.equals(this.deferredCashIsOverdue, unsettledTransaction.deferredCashIsOverdue);
+        Objects.equals(this.deferredCashIsOverdue, unsettledTransaction.deferredCashIsOverdue) &&
+        Objects.equals(this.revaluation, unsettledTransaction.revaluation);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -333,7 +360,7 @@ public class UnsettledTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transaction, portfolioId, overallSettlementStatus, overallIsOverdue, cashSettlementStatus, cashIsOverdue, stockSettlementStatus, stockIsOverdue, deferredCashSettlementStatus, deferredCashIsOverdue);
+    return Objects.hash(transaction, portfolioId, overallSettlementStatus, overallIsOverdue, cashSettlementStatus, cashIsOverdue, stockSettlementStatus, stockIsOverdue, deferredCashSettlementStatus, deferredCashIsOverdue, revaluation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -357,6 +384,7 @@ public class UnsettledTransaction {
     sb.append("    stockIsOverdue: ").append(toIndentedString(stockIsOverdue)).append("\n");
     sb.append("    deferredCashSettlementStatus: ").append(toIndentedString(deferredCashSettlementStatus)).append("\n");
     sb.append("    deferredCashIsOverdue: ").append(toIndentedString(deferredCashIsOverdue)).append("\n");
+    sb.append("    revaluation: ").append(toIndentedString(revaluation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -389,6 +417,7 @@ public class UnsettledTransaction {
     openapiFields.add("stockIsOverdue");
     openapiFields.add("deferredCashSettlementStatus");
     openapiFields.add("deferredCashIsOverdue");
+    openapiFields.add("revaluation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -426,6 +455,10 @@ public class UnsettledTransaction {
       }
       if ((jsonObj.get("deferredCashSettlementStatus") != null && !jsonObj.get("deferredCashSettlementStatus").isJsonNull()) && !jsonObj.get("deferredCashSettlementStatus").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `deferredCashSettlementStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("deferredCashSettlementStatus").toString()));
+      }
+      // validate the optional field `revaluation`
+      if (jsonObj.get("revaluation") != null && !jsonObj.get("revaluation").isJsonNull()) {
+        UnsettledTransactionRevaluation.validateJsonElement(jsonObj.get("revaluation"));
       }
   }
 

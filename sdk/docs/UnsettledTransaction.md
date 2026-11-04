@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **stockIsOverdue** | **Boolean** | Whether the stock component is overdue for settlement. | [optional] [default to Boolean]
 **deferredCashSettlementStatus** | **String** | The settlement status of the deferred cash component. | [optional] [default to String]
 **deferredCashIsOverdue** | **Boolean** | Whether the deferred cash component is overdue for settlement. | [optional] [default to Boolean]
+**revaluation** | [**UnsettledTransactionRevaluation**](UnsettledTransactionRevaluation.md) |  | [optional] [default to UnsettledTransactionRevaluation]
 
 ```java
 import com.finbourne.lusid.model.UnsettledTransaction;
@@ -32,6 +33,7 @@ Boolean CashIsOverdue = true;
 Boolean StockIsOverdue = true;
 @jakarta.annotation.Nullable String DeferredCashSettlementStatus = "example DeferredCashSettlementStatus";
 Boolean DeferredCashIsOverdue = true;
+UnsettledTransactionRevaluation Revaluation = new UnsettledTransactionRevaluation();
 
 
 UnsettledTransaction unsettledTransactionInstance = new UnsettledTransaction()
@@ -44,7 +46,8 @@ UnsettledTransaction unsettledTransactionInstance = new UnsettledTransaction()
     .StockSettlementStatus(StockSettlementStatus)
     .StockIsOverdue(StockIsOverdue)
     .DeferredCashSettlementStatus(DeferredCashSettlementStatus)
-    .DeferredCashIsOverdue(DeferredCashIsOverdue);
+    .DeferredCashIsOverdue(DeferredCashIsOverdue)
+    .Revaluation(Revaluation);
 ```
 
 

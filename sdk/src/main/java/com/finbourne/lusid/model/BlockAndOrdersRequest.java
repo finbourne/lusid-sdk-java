@@ -217,7 +217,7 @@ public class BlockAndOrdersRequest {
   }
 
    /**
-   * The client&#39;s representation of the block&#39;s side (buy, sell, short, etc). BlockedOrders in the request which do not specify a side will have their side populated with this value.
+   * The client&#39;s representation of the block&#39;s side (buy, sell, short, etc). Optional: the stored side is derived from the block&#39;s orders, netted by direction, and a supplied value is replaced by the derived one. BlockedOrders in the request which do not specify a side will have their side populated with this value.
    * @return side
   **/
   @jakarta.annotation.Nullable

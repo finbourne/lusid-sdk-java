@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **orders** | [**List&lt;BlockedOrderRequest&gt;**](BlockedOrderRequest.md) | An order which belongs to a block. Fields common to both entities (such as instrument) should be derived from the block. | [default to List<BlockedOrderRequest>]
 **blockProperties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this block. | [optional] [default to Map<String, PerpetualProperty>]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. | [default to Map<String, String>]
-**side** | **String** | The client&#39;s representation of the block&#39;s side (buy, sell, short, etc). BlockedOrders in the request which do not specify a side will have their side populated with this value. | [optional] [default to String]
+**side** | **String** | The client&#39;s representation of the block&#39;s side (buy, sell, short, etc). Optional: the stored side is derived from the block&#39;s orders, netted by direction, and a supplied value is replaced by the derived one. BlockedOrders in the request which do not specify a side will have their side populated with this value. | [optional] [default to String]
 **type** | **String** | The block order&#39;s type (examples: Limit, Market, ...) | [optional] [default to String]
 **timeInForce** | **String** | The block orders&#39; time in force (examples: Day, GoodTilCancel, ...) | [optional] [default to String]
 **date** | [**OffsetDateTime**](OffsetDateTime.md) | The date on which the block was made | [optional] [default to OffsetDateTime]

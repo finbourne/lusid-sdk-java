@@ -13,7 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.ErrorDetail;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.UpsertExternalTransferAgencyOrderResult;
+import com.finbourne.lusid.model.UpsertExternalDealingEstimateResult;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -53,13 +53,13 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * UpsertExternalTransferAgencyOrdersResponse
+ * UpsertExternalDealingEstimatesResponse
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class UpsertExternalTransferAgencyOrdersResponse {
+public class UpsertExternalDealingEstimatesResponse {
   public static final String SERIALIZED_NAME_SUCCESSES = "successes";
   @SerializedName(SERIALIZED_NAME_SUCCESSES)
-  private Map<String, UpsertExternalTransferAgencyOrderResult> successes;
+  private Map<String, UpsertExternalDealingEstimateResult> successes;
 
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
@@ -69,16 +69,16 @@ public class UpsertExternalTransferAgencyOrdersResponse {
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
-  public UpsertExternalTransferAgencyOrdersResponse() {
+  public UpsertExternalDealingEstimatesResponse() {
   }
 
-  public UpsertExternalTransferAgencyOrdersResponse successes(Map<String, UpsertExternalTransferAgencyOrderResult> successes) {
+  public UpsertExternalDealingEstimatesResponse successes(Map<String, UpsertExternalDealingEstimateResult> successes) {
     
     this.successes = successes;
     return this;
   }
 
-  public UpsertExternalTransferAgencyOrdersResponse putSuccessesItem(String key, UpsertExternalTransferAgencyOrderResult successesItem) {
+  public UpsertExternalDealingEstimatesResponse putSuccessesItem(String key, UpsertExternalDealingEstimateResult successesItem) {
     if (this.successes == null) {
       this.successes = new HashMap<>();
     }
@@ -91,23 +91,23 @@ public class UpsertExternalTransferAgencyOrdersResponse {
    * @return successes
   **/
   @jakarta.annotation.Nullable
-  public Map<String, UpsertExternalTransferAgencyOrderResult> getSuccesses() {
+  public Map<String, UpsertExternalDealingEstimateResult> getSuccesses() {
     return successes;
   }
 
 
-  public void setSuccesses(Map<String, UpsertExternalTransferAgencyOrderResult> successes) {
+  public void setSuccesses(Map<String, UpsertExternalDealingEstimateResult> successes) {
     this.successes = successes;
   }
 
 
-  public UpsertExternalTransferAgencyOrdersResponse failed(Map<String, ErrorDetail> failed) {
+  public UpsertExternalDealingEstimatesResponse failed(Map<String, ErrorDetail> failed) {
     
     this.failed = failed;
     return this;
   }
 
-  public UpsertExternalTransferAgencyOrdersResponse putFailedItem(String key, ErrorDetail failedItem) {
+  public UpsertExternalDealingEstimatesResponse putFailedItem(String key, ErrorDetail failedItem) {
     if (this.failed == null) {
       this.failed = new HashMap<>();
     }
@@ -130,13 +130,13 @@ public class UpsertExternalTransferAgencyOrdersResponse {
   }
 
 
-  public UpsertExternalTransferAgencyOrdersResponse links(List<Link> links) {
+  public UpsertExternalDealingEstimatesResponse links(List<Link> links) {
     
     this.links = links;
     return this;
   }
 
-  public UpsertExternalTransferAgencyOrdersResponse addLinksItem(Link linksItem) {
+  public UpsertExternalDealingEstimatesResponse addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -168,10 +168,10 @@ public class UpsertExternalTransferAgencyOrdersResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpsertExternalTransferAgencyOrdersResponse upsertExternalTransferAgencyOrdersResponse = (UpsertExternalTransferAgencyOrdersResponse) o;
-    return Objects.equals(this.successes, upsertExternalTransferAgencyOrdersResponse.successes) &&
-        Objects.equals(this.failed, upsertExternalTransferAgencyOrdersResponse.failed) &&
-        Objects.equals(this.links, upsertExternalTransferAgencyOrdersResponse.links);
+    UpsertExternalDealingEstimatesResponse upsertExternalDealingEstimatesResponse = (UpsertExternalDealingEstimatesResponse) o;
+    return Objects.equals(this.successes, upsertExternalDealingEstimatesResponse.successes) &&
+        Objects.equals(this.failed, upsertExternalDealingEstimatesResponse.failed) &&
+        Objects.equals(this.links, upsertExternalDealingEstimatesResponse.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -193,7 +193,7 @@ public class UpsertExternalTransferAgencyOrdersResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpsertExternalTransferAgencyOrdersResponse {\n");
+    sb.append("class UpsertExternalDealingEstimatesResponse {\n");
     sb.append("    successes: ").append(toIndentedString(successes)).append("\n");
     sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -231,12 +231,12 @@ public class UpsertExternalTransferAgencyOrdersResponse {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpsertExternalTransferAgencyOrdersResponse
+  * @throws IOException if the JSON Element is invalid with respect to UpsertExternalDealingEstimatesResponse
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UpsertExternalTransferAgencyOrdersResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertExternalTransferAgencyOrdersResponse is not found in the empty JSON string", UpsertExternalTransferAgencyOrdersResponse.openapiRequiredFields.toString()));
+        if (!UpsertExternalDealingEstimatesResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertExternalDealingEstimatesResponse is not found in the empty JSON string", UpsertExternalDealingEstimatesResponse.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -260,22 +260,22 @@ public class UpsertExternalTransferAgencyOrdersResponse {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpsertExternalTransferAgencyOrdersResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpsertExternalTransferAgencyOrdersResponse' and its subtypes
+       if (!UpsertExternalDealingEstimatesResponse.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpsertExternalDealingEstimatesResponse' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpsertExternalTransferAgencyOrdersResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpsertExternalTransferAgencyOrdersResponse.class));
+       final TypeAdapter<UpsertExternalDealingEstimatesResponse> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpsertExternalDealingEstimatesResponse.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UpsertExternalTransferAgencyOrdersResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<UpsertExternalDealingEstimatesResponse>() {
            @Override
-           public void write(JsonWriter out, UpsertExternalTransferAgencyOrdersResponse value) throws IOException {
+           public void write(JsonWriter out, UpsertExternalDealingEstimatesResponse value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UpsertExternalTransferAgencyOrdersResponse read(JsonReader in) throws IOException {
+           public UpsertExternalDealingEstimatesResponse read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -286,18 +286,18 @@ public class UpsertExternalTransferAgencyOrdersResponse {
   }
 
  /**
-  * Create an instance of UpsertExternalTransferAgencyOrdersResponse given an JSON string
+  * Create an instance of UpsertExternalDealingEstimatesResponse given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UpsertExternalTransferAgencyOrdersResponse
-  * @throws IOException if the JSON string is invalid with respect to UpsertExternalTransferAgencyOrdersResponse
+  * @return An instance of UpsertExternalDealingEstimatesResponse
+  * @throws IOException if the JSON string is invalid with respect to UpsertExternalDealingEstimatesResponse
   */
-  public static UpsertExternalTransferAgencyOrdersResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpsertExternalTransferAgencyOrdersResponse.class);
+  public static UpsertExternalDealingEstimatesResponse fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpsertExternalDealingEstimatesResponse.class);
   }
 
  /**
-  * Convert an instance of UpsertExternalTransferAgencyOrdersResponse to an JSON string
+  * Convert an instance of UpsertExternalDealingEstimatesResponse to an JSON string
   *
   * @return JSON string
   */

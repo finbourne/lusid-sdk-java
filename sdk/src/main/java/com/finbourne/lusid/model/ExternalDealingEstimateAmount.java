@@ -48,7 +48,7 @@ import com.finbourne.lusid.JSON;
  * A cash amount in a stated currency.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalTransferAgencyOrderAmount {
+public class ExternalDealingEstimateAmount {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private java.math.BigDecimal value;
@@ -57,10 +57,10 @@ public class ExternalTransferAgencyOrderAmount {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
-  public ExternalTransferAgencyOrderAmount() {
+  public ExternalDealingEstimateAmount() {
   }
 
-  public ExternalTransferAgencyOrderAmount value(java.math.BigDecimal value) {
+  public ExternalDealingEstimateAmount value(java.math.BigDecimal value) {
     
     this.value = value;
     return this;
@@ -81,7 +81,7 @@ public class ExternalTransferAgencyOrderAmount {
   }
 
 
-  public ExternalTransferAgencyOrderAmount currency(String currency) {
+  public ExternalDealingEstimateAmount currency(String currency) {
     
     this.currency = currency;
     return this;
@@ -111,9 +111,9 @@ public class ExternalTransferAgencyOrderAmount {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalTransferAgencyOrderAmount externalTransferAgencyOrderAmount = (ExternalTransferAgencyOrderAmount) o;
-    return (this.value.compareTo(externalTransferAgencyOrderAmount.getValue()) == 0) &&
-        Objects.equals(this.currency, externalTransferAgencyOrderAmount.currency);
+    ExternalDealingEstimateAmount externalDealingEstimateAmount = (ExternalDealingEstimateAmount) o;
+    return (this.value.compareTo(externalDealingEstimateAmount.getValue()) == 0) &&
+        Objects.equals(this.currency, externalDealingEstimateAmount.currency);
   }
 
   @Override
@@ -124,7 +124,7 @@ public class ExternalTransferAgencyOrderAmount {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalTransferAgencyOrderAmount {\n");
+    sb.append("class ExternalDealingEstimateAmount {\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("}");
@@ -162,17 +162,17 @@ public class ExternalTransferAgencyOrderAmount {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ExternalTransferAgencyOrderAmount
+  * @throws IOException if the JSON Element is invalid with respect to ExternalDealingEstimateAmount
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ExternalTransferAgencyOrderAmount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalTransferAgencyOrderAmount is not found in the empty JSON string", ExternalTransferAgencyOrderAmount.openapiRequiredFields.toString()));
+        if (!ExternalDealingEstimateAmount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalDealingEstimateAmount is not found in the empty JSON string", ExternalDealingEstimateAmount.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExternalTransferAgencyOrderAmount.openapiRequiredFields) {
+      for (String requiredField : ExternalDealingEstimateAmount.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -187,22 +187,22 @@ public class ExternalTransferAgencyOrderAmount {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalTransferAgencyOrderAmount.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalTransferAgencyOrderAmount' and its subtypes
+       if (!ExternalDealingEstimateAmount.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ExternalDealingEstimateAmount' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalTransferAgencyOrderAmount> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalTransferAgencyOrderAmount.class));
+       final TypeAdapter<ExternalDealingEstimateAmount> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalDealingEstimateAmount.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalTransferAgencyOrderAmount>() {
+       return (TypeAdapter<T>) new TypeAdapter<ExternalDealingEstimateAmount>() {
            @Override
-           public void write(JsonWriter out, ExternalTransferAgencyOrderAmount value) throws IOException {
+           public void write(JsonWriter out, ExternalDealingEstimateAmount value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ExternalTransferAgencyOrderAmount read(JsonReader in) throws IOException {
+           public ExternalDealingEstimateAmount read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -213,18 +213,18 @@ public class ExternalTransferAgencyOrderAmount {
   }
 
  /**
-  * Create an instance of ExternalTransferAgencyOrderAmount given an JSON string
+  * Create an instance of ExternalDealingEstimateAmount given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalTransferAgencyOrderAmount
-  * @throws IOException if the JSON string is invalid with respect to ExternalTransferAgencyOrderAmount
+  * @return An instance of ExternalDealingEstimateAmount
+  * @throws IOException if the JSON string is invalid with respect to ExternalDealingEstimateAmount
   */
-  public static ExternalTransferAgencyOrderAmount fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalTransferAgencyOrderAmount.class);
+  public static ExternalDealingEstimateAmount fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ExternalDealingEstimateAmount.class);
   }
 
  /**
-  * Convert an instance of ExternalTransferAgencyOrderAmount to an JSON string
+  * Convert an instance of ExternalDealingEstimateAmount to an JSON string
   *
   * @return JSON string
   */

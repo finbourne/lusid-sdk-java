@@ -81,6 +81,8 @@ import com.finbourne.lusid.model.SeriesDefinitionRequest;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
 import com.finbourne.lusid.model.UpdateValuationPointRequest;
+import com.finbourne.lusid.model.UpsertExternalDealingEstimatesRequest;
+import com.finbourne.lusid.model.UpsertExternalDealingEstimatesResponse;
 import com.finbourne.lusid.model.UpsertFundBookmarkRequest;
 import com.finbourne.lusid.model.UpsertValuationPointRequest;
 import com.finbourne.lusid.model.ValuationPoint;
@@ -19588,6 +19590,259 @@ public class FundsApi {
      */
     public APIupsertDiaryEntryTypeValuationPointRequest upsertDiaryEntryTypeValuationPoint(String scope, String code, UpsertValuationPointRequest upsertValuationPointRequest) {
         return new APIupsertDiaryEntryTypeValuationPointRequest(scope, code, upsertValuationPointRequest);
+    }
+    private okhttp3.Call upsertExternalDealingEstimatesCall(String scope, String code, Map<String, UpsertExternalDealingEstimatesRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertExternalDealingEstimatesCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertExternalDealingEstimatesCall(String scope, String code, Map<String, UpsertExternalDealingEstimatesRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/dealingestimates/$external"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertExternalDealingEstimatesValidateBeforeCall(String scope, String code, Map<String, UpsertExternalDealingEstimatesRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertExternalDealingEstimates(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertExternalDealingEstimates(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling upsertExternalDealingEstimates(Async)");
+        }
+
+        return upsertExternalDealingEstimatesCall(scope, code, requestBody, _callback, opts);
+
+    }
+
+
+    private ApiResponse<UpsertExternalDealingEstimatesResponse> upsertExternalDealingEstimatesWithHttpInfo(String scope, String code, Map<String, UpsertExternalDealingEstimatesRequest> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = upsertExternalDealingEstimatesValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertExternalDealingEstimatesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertExternalDealingEstimatesResponse> upsertExternalDealingEstimatesWithHttpInfo(String scope, String code, Map<String, UpsertExternalDealingEstimatesRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertExternalDealingEstimatesValidateBeforeCall(scope, code, requestBody, null, opts);
+        Type localVarReturnType = new TypeToken<UpsertExternalDealingEstimatesResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertExternalDealingEstimatesAsync(String scope, String code, Map<String, UpsertExternalDealingEstimatesRequest> requestBody, final ApiCallback<UpsertExternalDealingEstimatesResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertExternalDealingEstimatesValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertExternalDealingEstimatesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertExternalDealingEstimatesAsync(String scope, String code, Map<String, UpsertExternalDealingEstimatesRequest> requestBody, final ApiCallback<UpsertExternalDealingEstimatesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertExternalDealingEstimatesValidateBeforeCall(scope, code, requestBody, _callback, opts);
+        Type localVarReturnType = new TypeToken<UpsertExternalDealingEstimatesResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertExternalDealingEstimatesRequest {
+        private final String scope;
+        private final String code;
+        private final Map<String, UpsertExternalDealingEstimatesRequest> requestBody;
+
+        private APIupsertExternalDealingEstimatesRequest(String scope, String code, Map<String, UpsertExternalDealingEstimatesRequest> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertExternalDealingEstimates
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertExternalDealingEstimatesCall(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertExternalDealingEstimates request
+         * @return UpsertExternalDealingEstimatesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertExternalDealingEstimatesResponse execute() throws ApiException {
+            ApiResponse<UpsertExternalDealingEstimatesResponse> localVarResp = upsertExternalDealingEstimatesWithHttpInfo(scope, code, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertExternalDealingEstimates request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertExternalDealingEstimatesResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertExternalDealingEstimatesResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertExternalDealingEstimatesResponse> localVarResp = upsertExternalDealingEstimatesWithHttpInfo(scope, code, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertExternalDealingEstimates request with HTTP info returned
+         * @return ApiResponse&lt;UpsertExternalDealingEstimatesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertExternalDealingEstimatesResponse> executeWithHttpInfo() throws ApiException {
+            return upsertExternalDealingEstimatesWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertExternalDealingEstimates request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertExternalDealingEstimatesResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertExternalDealingEstimatesResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertExternalDealingEstimatesWithHttpInfo(scope, code, requestBody, opts);
+        }
+
+        /**
+         * Execute upsertExternalDealingEstimates request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertExternalDealingEstimatesResponse> _callback) throws ApiException {
+            return upsertExternalDealingEstimatesAsync(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertExternalDealingEstimates request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertExternalDealingEstimatesResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertExternalDealingEstimatesAsync(scope, code, requestBody, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpsertExternalDealingEstimates: Load dealing estimates sent by an external transfer agent
+     * Loads the dealing estimates a third-party transfer agent dealt for the fund at a dealing point. Each request  key names one set: a dealing point, the sending source and the orders it dealt, each keyed by the source&#39;s own  line id. The orders are written in the fund&#39;s scope with the code  &#x60;{fundCode}-{source}-{yyyyMMddHHmmss}-{lineId}&#x60;, the dealing point written in UTC to the second, in the  External order state, priced at the dealing point, so the fund&#39;s External dealing source reads them at that  valuation point. A line whose code would exceed 64 characters is refused.     A set replaces what the same source sent before: every External order of that source for the fund&#39;s share  classes at the dealing point that the set does not restate is deleted, and the response names them. Two  sets in one request naming the same source and dealing point are refused after the first.     The fund must list External among its dealing estimate sources. Each line must name a share class of the  fund and exactly one of a positive number of units or a positive amount in a valid currency. A set sent  after its dealing point is loaded and flagged late; one sent exactly at the dealing point is on time.  Whether the set is complete is recorded on each order and is not yet enforced at pricing.     Each order carries the properties &#x60;Order/TA/PriceDate&#x60; (date), &#x60;Order/TA/DealingSource&#x60; (string),  &#x60;Order/TA/DealingSourceReference&#x60; (string), &#x60;Order/TA/Complete&#x60; (string, &#x60;True&#x60; or &#x60;False&#x60;),  &#x60;Order/TA/Late&#x60; (string, &#x60;True&#x60; or &#x60;False&#x60;) and &#x60;Order/TA/SentAt&#x60; (date). LUSID defines these as transfer  agency system properties.     Sets are validated independently: a set that fails validation is reported under failures and the others  still load. The sets that pass are then written together in one command, so a reader never sees half a  dealing point, and a refusal at write time fails the whole request and leaves the book as it was. A request  carries at most 200 sets and at most 2000 lines across all of them.
+     * @param scope The scope of the fund. (required)
+     * @param code The code of the fund. Together with the scope this uniquely identifies the fund. (required)
+     * @param requestBody The sets to load, keyed by a correlation key of the caller&#39;s choosing. (required)
+     * @return APIupsertExternalDealingEstimatesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The sets loaded and any that failed, keyed by the request key. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertExternalDealingEstimatesRequest upsertExternalDealingEstimates(String scope, String code, Map<String, UpsertExternalDealingEstimatesRequest> requestBody) {
+        return new APIupsertExternalDealingEstimatesRequest(scope, code, requestBody);
     }
     private okhttp3.Call upsertFeePropertiesCall(String scope, String code, String feeCode, Map<String, Property> requestBody, final ApiCallback _callback) throws ApiException {
         return upsertFeePropertiesCall(scope, code, feeCode, requestBody,  _callback, new ConfigurationOptions());

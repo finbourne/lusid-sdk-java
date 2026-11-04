@@ -117,6 +117,14 @@ public class MarginLine {
   @SerializedName(SERIALIZED_NAME_SCENARIO)
   private ResourceId scenario;
 
+  public static final String SERIALIZED_NAME_LINE_KEY = "lineKey";
+  @SerializedName(SERIALIZED_NAME_LINE_KEY)
+  private String lineKey;
+
+  public static final String SERIALIZED_NAME_EXPLAIN_AVAILABLE = "explainAvailable";
+  @SerializedName(SERIALIZED_NAME_EXPLAIN_AVAILABLE)
+  private Boolean explainAvailable;
+
   public MarginLine() {
   }
 
@@ -464,6 +472,48 @@ public class MarginLine {
   }
 
 
+  public MarginLine lineKey(String lineKey) {
+    
+    this.lineKey = lineKey;
+    return this;
+  }
+
+   /**
+   * A key that identifies the line within its run, with which its explanation is asked for. A line valued under a scenario has a different key from the same holding in the base market. Null for a line stored before lines carried a key.
+   * @return lineKey
+  **/
+  @jakarta.annotation.Nullable
+  public String getLineKey() {
+    return lineKey;
+  }
+
+
+  public void setLineKey(String lineKey) {
+    this.lineKey = lineKey;
+  }
+
+
+  public MarginLine explainAvailable(Boolean explainAvailable) {
+    
+    this.explainAvailable = explainAvailable;
+    return this;
+  }
+
+   /**
+   * Whether the working behind the line&#39;s figures was stored, so that the line can be explained. One flag covers every figure of the line.
+   * @return explainAvailable
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getExplainAvailable() {
+    return explainAvailable;
+  }
+
+
+  public void setExplainAvailable(Boolean explainAvailable) {
+    this.explainAvailable = explainAvailable;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -489,7 +539,9 @@ public class MarginLine {
         (this.collateralValue.compareTo(marginLine.getCollateralValue()) == 0) &&
         Objects.equals(this.initialMarginItem, marginLine.initialMarginItem) &&
         (this.initialMargin.compareTo(marginLine.getInitialMargin()) == 0) &&
-        Objects.equals(this.scenario, marginLine.scenario);
+        Objects.equals(this.scenario, marginLine.scenario) &&
+        Objects.equals(this.lineKey, marginLine.lineKey) &&
+        Objects.equals(this.explainAvailable, marginLine.explainAvailable);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -498,7 +550,7 @@ public class MarginLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(runId, agreementId, item, portfolioId, holdingId, custodianAccountScope, custodianAccountCode, custodianAccountName, instrumentIdentifiers, units, pv, variationMargin, collateralValue, initialMarginItem, initialMargin, scenario);
+    return Objects.hash(runId, agreementId, item, portfolioId, holdingId, custodianAccountScope, custodianAccountCode, custodianAccountName, instrumentIdentifiers, units, pv, variationMargin, collateralValue, initialMarginItem, initialMargin, scenario, lineKey, explainAvailable);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -528,6 +580,8 @@ public class MarginLine {
     sb.append("    initialMarginItem: ").append(toIndentedString(initialMarginItem)).append("\n");
     sb.append("    initialMargin: ").append(toIndentedString(initialMargin)).append("\n");
     sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
+    sb.append("    lineKey: ").append(toIndentedString(lineKey)).append("\n");
+    sb.append("    explainAvailable: ").append(toIndentedString(explainAvailable)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -566,6 +620,8 @@ public class MarginLine {
     openapiFields.add("initialMarginItem");
     openapiFields.add("initialMargin");
     openapiFields.add("scenario");
+    openapiFields.add("lineKey");
+    openapiFields.add("explainAvailable");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -626,6 +682,9 @@ public class MarginLine {
       // validate the optional field `scenario`
       if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("scenario"));
+      }
+      if ((jsonObj.get("lineKey") != null && !jsonObj.get("lineKey").isJsonNull()) && !jsonObj.get("lineKey").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lineKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineKey").toString()));
       }
   }
 

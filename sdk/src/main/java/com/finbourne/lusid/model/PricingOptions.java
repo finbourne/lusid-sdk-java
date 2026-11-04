@@ -332,7 +332,7 @@ public class PricingOptions {
   }
 
    /**
-   * When true, Holding/Units on both legs of an instrument-booked FxForward valued with  ProduceSeparateResultForLinearOtcLegs reports the number of forward contracts held (the  non-split holding units), so that Holding/Units generate justfile test_sdk Valuation/InstrumentPV &#x3D;&#x3D; Valuation/PV  holds on each leg. When false (default), the foreign leg reports  &lt;non-split units&gt; generate justfile test_sdk (fgnAmount / domAmount).
+   * When true, Holding/Units on both legs of an instrument-booked FxForward valued with  ProduceSeparateResultForLinearOtcLegs reports the number of forward contracts held (the  non-split holding units), so that Holding/Units docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk Valuation/InstrumentPV &#x3D;&#x3D; Valuation/PV  holds on each leg. When false (default), the foreign leg reports  &lt;non-split units&gt; docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk (fgnAmount / domAmount).
    * @return fxForwardContractsAsUnitsInBothLegs
   **/
   @jakarta.annotation.Nullable

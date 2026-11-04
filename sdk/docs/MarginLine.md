@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **initialMarginItem** | **String** | The initial-margin item the line falls under, when the holding matched one. Filterable. | [optional] [default to String]
 **initialMargin** | **java.math.BigDecimal** | The holding&#39;s share of its netting set&#39;s initial margin, before the threshold, when it contributes to it. | [optional] [default to java.math.BigDecimal]
 **scenario** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**lineKey** | **String** | A key that identifies the line within its run, with which its explanation is asked for. A line valued under a scenario has a different key from the same holding in the base market. Null for a line stored before lines carried a key. | [optional] [default to String]
+**explainAvailable** | **Boolean** | Whether the working behind the line&#39;s figures was stored, so that the line can be explained. One flag covers every figure of the line. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.MarginLine;
@@ -44,6 +46,8 @@ java.math.BigDecimal Units = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String InitialMarginItem = "example InitialMarginItem";
 @jakarta.annotation.Nullable java.math.BigDecimal InitialMargin = new java.math.BigDecimal("100.00");
 ResourceId Scenario = new ResourceId();
+@jakarta.annotation.Nullable String LineKey = "example LineKey";
+Boolean ExplainAvailable = true;
 
 
 MarginLine marginLineInstance = new MarginLine()
@@ -62,7 +66,9 @@ MarginLine marginLineInstance = new MarginLine()
     .CollateralValue(CollateralValue)
     .InitialMarginItem(InitialMarginItem)
     .InitialMargin(InitialMargin)
-    .Scenario(Scenario);
+    .Scenario(Scenario)
+    .LineKey(LineKey)
+    .ExplainAvailable(ExplainAvailable);
 ```
 
 

@@ -188,7 +188,7 @@ public class BondForward extends LusidInstrument {
   }
 
    /**
-   * Face amount of the underlying per unit. Together with the per-100 price this converts price into  money: pricePerUnit &#x3D; agreedCleanPrice / 100 generate justfile test_sdk contractSize. Set 1 to make one unit equal one  currency unit of face.
+   * Face amount of the underlying per unit. Together with the per-100 price this converts price into  money: pricePerUnit &#x3D; agreedCleanPrice / 100 docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk contractSize. Set 1 to make one unit equal one  currency unit of face.
    * @return contractSize
   **/
   @jakarta.annotation.Nonnull

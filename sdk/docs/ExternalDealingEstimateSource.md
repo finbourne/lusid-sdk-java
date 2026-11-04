@@ -1,4 +1,4 @@
-# com.finbourne.lusid.model.ExternalTransferAgencyOrderSource
+# com.finbourne.lusid.model.ExternalDealingEstimateSource
 The system that sent an external order set, and its own reference for the batch.
 
 ## Properties
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **reference** | **String** |  | [optional] [default to String]
 
 ```java
-import com.finbourne.lusid.model.ExternalTransferAgencyOrderSource;
+import com.finbourne.lusid.model.ExternalDealingEstimateSource;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
@@ -18,7 +18,7 @@ String System = "example System";
 @jakarta.annotation.Nullable String Reference = "example Reference";
 
 
-ExternalTransferAgencyOrderSource externalTransferAgencyOrderSourceInstance = new ExternalTransferAgencyOrderSource()
+ExternalDealingEstimateSource externalDealingEstimateSourceInstance = new ExternalDealingEstimateSource()
     .System(System)
     .Reference(Reference);
 ```

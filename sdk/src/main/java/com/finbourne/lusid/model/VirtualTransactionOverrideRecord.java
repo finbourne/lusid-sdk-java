@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AdjustmentEntryResponse;
 import com.finbourne.lusid.model.OverrideEntryResponse;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.SuppressionEntryResponse;
@@ -87,6 +88,10 @@ public class VirtualTransactionOverrideRecord {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
+
+  public static final String SERIALIZED_NAME_ADJUSTMENTS = "adjustments";
+  @SerializedName(SERIALIZED_NAME_ADJUSTMENTS)
+  private Map<String, AdjustmentEntryResponse> adjustments;
 
   public VirtualTransactionOverrideRecord() {
   }
@@ -275,6 +280,35 @@ public class VirtualTransactionOverrideRecord {
   }
 
 
+  public VirtualTransactionOverrideRecord adjustments(Map<String, AdjustmentEntryResponse> adjustments) {
+    
+    this.adjustments = adjustments;
+    return this;
+  }
+
+  public VirtualTransactionOverrideRecord putAdjustmentsItem(String key, AdjustmentEntryResponse adjustmentsItem) {
+    if (this.adjustments == null) {
+      this.adjustments = new HashMap<>();
+    }
+    this.adjustments.put(key, adjustmentsItem);
+    return this;
+  }
+
+   /**
+   * The adjustments in this record, keyed by the virtual transaction id they were stored against.
+   * @return adjustments
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, AdjustmentEntryResponse> getAdjustments() {
+    return adjustments;
+  }
+
+
+  public void setAdjustments(Map<String, AdjustmentEntryResponse> adjustments) {
+    this.adjustments = adjustments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -292,7 +326,8 @@ public class VirtualTransactionOverrideRecord {
         Objects.equals(this.overrideMatchStatus, virtualTransactionOverrideRecord.overrideMatchStatus) &&
         Objects.equals(this.overrideApplicationStatus, virtualTransactionOverrideRecord.overrideApplicationStatus) &&
         Objects.equals(this.cancelActive, virtualTransactionOverrideRecord.cancelActive) &&
-        Objects.equals(this.version, virtualTransactionOverrideRecord.version);
+        Objects.equals(this.version, virtualTransactionOverrideRecord.version) &&
+        Objects.equals(this.adjustments, virtualTransactionOverrideRecord.adjustments);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -301,7 +336,7 @@ public class VirtualTransactionOverrideRecord {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentEventId, sourcePortfolioId, overrides, suppressions, overrideMatchStatus, overrideApplicationStatus, cancelActive, version);
+    return Objects.hash(instrumentEventId, sourcePortfolioId, overrides, suppressions, overrideMatchStatus, overrideApplicationStatus, cancelActive, version, adjustments);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -323,6 +358,7 @@ public class VirtualTransactionOverrideRecord {
     sb.append("    overrideApplicationStatus: ").append(toIndentedString(overrideApplicationStatus)).append("\n");
     sb.append("    cancelActive: ").append(toIndentedString(cancelActive)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    adjustments: ").append(toIndentedString(adjustments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -353,6 +389,7 @@ public class VirtualTransactionOverrideRecord {
     openapiFields.add("overrideApplicationStatus");
     openapiFields.add("cancelActive");
     openapiFields.add("version");
+    openapiFields.add("adjustments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

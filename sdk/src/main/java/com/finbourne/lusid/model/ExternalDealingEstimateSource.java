@@ -49,7 +49,7 @@ import com.finbourne.lusid.JSON;
  * The system that sent an external order set, and its own reference for the batch.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ExternalTransferAgencyOrderSource {
+public class ExternalDealingEstimateSource {
   public static final String SERIALIZED_NAME_SYSTEM = "system";
   @SerializedName(SERIALIZED_NAME_SYSTEM)
   private String system;
@@ -58,10 +58,10 @@ public class ExternalTransferAgencyOrderSource {
   @SerializedName(SERIALIZED_NAME_REFERENCE)
   private String reference;
 
-  public ExternalTransferAgencyOrderSource() {
+  public ExternalDealingEstimateSource() {
   }
 
-  public ExternalTransferAgencyOrderSource system(String system) {
+  public ExternalDealingEstimateSource system(String system) {
     
     this.system = system;
     return this;
@@ -82,7 +82,7 @@ public class ExternalTransferAgencyOrderSource {
   }
 
 
-  public ExternalTransferAgencyOrderSource reference(String reference) {
+  public ExternalDealingEstimateSource reference(String reference) {
     
     this.reference = reference;
     return this;
@@ -112,9 +112,9 @@ public class ExternalTransferAgencyOrderSource {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ExternalTransferAgencyOrderSource externalTransferAgencyOrderSource = (ExternalTransferAgencyOrderSource) o;
-    return Objects.equals(this.system, externalTransferAgencyOrderSource.system) &&
-        Objects.equals(this.reference, externalTransferAgencyOrderSource.reference);
+    ExternalDealingEstimateSource externalDealingEstimateSource = (ExternalDealingEstimateSource) o;
+    return Objects.equals(this.system, externalDealingEstimateSource.system) &&
+        Objects.equals(this.reference, externalDealingEstimateSource.reference);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -136,7 +136,7 @@ public class ExternalTransferAgencyOrderSource {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ExternalTransferAgencyOrderSource {\n");
+    sb.append("class ExternalDealingEstimateSource {\n");
     sb.append("    system: ").append(toIndentedString(system)).append("\n");
     sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
     sb.append("}");
@@ -173,17 +173,17 @@ public class ExternalTransferAgencyOrderSource {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ExternalTransferAgencyOrderSource
+  * @throws IOException if the JSON Element is invalid with respect to ExternalDealingEstimateSource
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ExternalTransferAgencyOrderSource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalTransferAgencyOrderSource is not found in the empty JSON string", ExternalTransferAgencyOrderSource.openapiRequiredFields.toString()));
+        if (!ExternalDealingEstimateSource.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ExternalDealingEstimateSource is not found in the empty JSON string", ExternalDealingEstimateSource.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExternalTransferAgencyOrderSource.openapiRequiredFields) {
+      for (String requiredField : ExternalDealingEstimateSource.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -201,22 +201,22 @@ public class ExternalTransferAgencyOrderSource {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ExternalTransferAgencyOrderSource.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ExternalTransferAgencyOrderSource' and its subtypes
+       if (!ExternalDealingEstimateSource.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ExternalDealingEstimateSource' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ExternalTransferAgencyOrderSource> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalTransferAgencyOrderSource.class));
+       final TypeAdapter<ExternalDealingEstimateSource> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ExternalDealingEstimateSource.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ExternalTransferAgencyOrderSource>() {
+       return (TypeAdapter<T>) new TypeAdapter<ExternalDealingEstimateSource>() {
            @Override
-           public void write(JsonWriter out, ExternalTransferAgencyOrderSource value) throws IOException {
+           public void write(JsonWriter out, ExternalDealingEstimateSource value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ExternalTransferAgencyOrderSource read(JsonReader in) throws IOException {
+           public ExternalDealingEstimateSource read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -227,18 +227,18 @@ public class ExternalTransferAgencyOrderSource {
   }
 
  /**
-  * Create an instance of ExternalTransferAgencyOrderSource given an JSON string
+  * Create an instance of ExternalDealingEstimateSource given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ExternalTransferAgencyOrderSource
-  * @throws IOException if the JSON string is invalid with respect to ExternalTransferAgencyOrderSource
+  * @return An instance of ExternalDealingEstimateSource
+  * @throws IOException if the JSON string is invalid with respect to ExternalDealingEstimateSource
   */
-  public static ExternalTransferAgencyOrderSource fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ExternalTransferAgencyOrderSource.class);
+  public static ExternalDealingEstimateSource fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ExternalDealingEstimateSource.class);
   }
 
  /**
-  * Convert an instance of ExternalTransferAgencyOrderSource to an JSON string
+  * Convert an instance of ExternalDealingEstimateSource to an JSON string
   *
   * @return JSON string
   */

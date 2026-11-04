@@ -28,7 +28,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 [EARLY ACCESS] AddBusinessDaysToDate: Adds the requested number of Business Days to the provided date.
 
-A Business day is defined as a point in time that:   generate justfile test_sdk Does not represent a day in the calendar&#39;s weekend   generate justfile test_sdk Does not represent a day in the calendar&#39;s list of holidays (e.g. Christmas Day in the UK)     All dates specified must be UTC and the upper bound of a calendar is not inclusive     e.g. From: 2020-12-24-00-00-00:   Adding 3 business days returns 2020-12-30, assuming Saturday and Sunday are weekends, and the 25th and 28th are holidays.   Adding -2 business days returns 2020-12-22 under the same assumptions.     If the provided number of days to add is zero, returns a failure.
+A Business day is defined as a point in time that:   docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk Does not represent a day in the calendar&#39;s weekend   docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk Does not represent a day in the calendar&#39;s list of holidays (e.g. Christmas Day in the UK)     All dates specified must be UTC and the upper bound of a calendar is not inclusive     e.g. From: 2020-12-24-00-00-00:   Adding 3 business days returns 2020-12-30, assuming Saturday and Sunday are weekends, and the 25th and 28th are holidays.   Adding -2 business days returns 2020-12-22 under the same assumptions.     If the provided number of days to add is zero, returns a failure.
 
 ### Example
 
@@ -980,7 +980,7 @@ public class CalendarsApiExample {
 
 [EARLY ACCESS] IsBusinessDateTime: Check whether a DateTime is a \&quot;Business DateTime\&quot;
 
-A Business DateTime is defined as a point in time that:   generate justfile test_sdk Does not represent a day that overlaps with the calendars WeekendMask   generate justfile test_sdk If the calendar is a \&quot;Holiday Calendar\&quot; Does not overlap with any dates in the calendar   generate justfile test_sdk If the calendar is a \&quot;TradingHours Calendar\&quot; Does overlap with a date in the calendar     All dates specified must be UTC and the upper bound of a calendar is not inclusive   e.g. From: 2020-12-25-00-00-00    To: 2020-12-26-00-00-00  IsBusinessDay(2020-12-26-00-00-00) &#x3D;&#x3D; false
+A Business DateTime is defined as a point in time that:   docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk Does not represent a day that overlaps with the calendars WeekendMask   docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk If the calendar is a \&quot;Holiday Calendar\&quot; Does not overlap with any dates in the calendar   docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk If the calendar is a \&quot;TradingHours Calendar\&quot; Does overlap with a date in the calendar     All dates specified must be UTC and the upper bound of a calendar is not inclusive   e.g. From: 2020-12-25-00-00-00    To: 2020-12-26-00-00-00  IsBusinessDay(2020-12-26-00-00-00) &#x3D;&#x3D; false
 
 ### Example
 

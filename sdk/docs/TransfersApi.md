@@ -6,6 +6,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 |------------- | ------------- | -------------|
 | [**createTransfer**](TransfersApi.md#createTransfer) | **POST** /api/transfers | [EXPERIMENTAL] CreateTransfer: Create a transfer. |
 | [**deleteTransfer**](TransfersApi.md#deleteTransfer) | **DELETE** /api/transfers/{scope}/{code} | [EXPERIMENTAL] DeleteTransfer: Delete a transfer. |
+| [**editTransfer**](TransfersApi.md#editTransfer) | **POST** /api/transfers/$edit | [EXPERIMENTAL] EditTransfer: Edit a transfer. |
 | [**getTransfer**](TransfersApi.md#getTransfer) | **POST** /api/transfers/$get | [EXPERIMENTAL] GetTransfer: Get a transfer |
 | [**listTransfers**](TransfersApi.md#listTransfers) | **GET** /api/transfers | [EXPERIMENTAL] ListTransfers: List transfers |
 
@@ -199,6 +200,98 @@ public class TransfersApiExample {
 | **200** | The asAt the deletion landed at. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **404** | No transfer with the given scope, code and portfolios. |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## editTransfer
+
+> EditTransferResponse editTransfer(editTransferRequest)
+
+[EXPERIMENTAL] EditTransfer: Edit a transfer.
+
+Replace an existing transfer with the request, which carries the same fields as a create request and is  validated in the same way. Both transaction legs are rebooked under their existing ids and the Transfer  entity is updated, as a single atomic operation: if any part of the request is rejected, nothing is  changed. A value not supplied is cleared, and the outgoing position is checked with the transfer&#39;s own  outgoing leg counted back in.     A transfer is identified by its scope, its code and both of its portfolios, none of which can be changed.  Where no transfer has that scope and code between those portfolios, the request is reported as not found.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.TransfersApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class TransfersApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // TransfersApi apiInstance = apiFactory.build(TransfersApi.class);
+
+        TransfersApi apiInstance = ApiFactoryBuilder.build(fileName).build(TransfersApi.class);
+        EditTransferRequest editTransferRequest = new EditTransferRequest(); // EditTransferRequest | The transfer as it should now stand.
+        try {
+            // uncomment the below to set overrides at the request level
+            // EditTransferResponse result = apiInstance.editTransfer(editTransferRequest).execute(opts);
+
+            EditTransferResponse result = apiInstance.editTransfer(editTransferRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransfersApi#editTransfer");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **editTransferRequest** | [**EditTransferRequest**](EditTransferRequest.md)| The transfer as it should now stand. | |
+
+### Return type
+
+[**EditTransferResponse**](EditTransferResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The transfer that was edited. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **404** | No transfer exists with the requested scope, code and portfolios. |  -  |
 | **0** | Error response |  -  |
 
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)

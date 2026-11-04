@@ -51,7 +51,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * An item within a rec result for one LUSID entity that external identifiers identify: one entity on a side of a  LusidEntity rec (itemType Instrument). The entity unique id identifies it. The item also holds the display name of  the entity.
+ * An item within a rec result for one LUSID entity that external identifiers identify: one entity on a side of a  LusidEntity rec. The itemType is the entity type. The entity unique id identifies it. The item also holds the  display name of the entity.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecResultExternalIdentifiersItem {
@@ -193,7 +193,7 @@ public class RecResultExternalIdentifiersItem {
   }
 
    /**
-   * The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity, RelationalDataPoint or Instrument. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. An instrument side of a LusidEntity rec produces Instrument items. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument.
+   * The polymorphic item-type discriminator: Holding, ValuedHolding, Transaction, SettlementActivity, RelationalDataPoint or the entity type of a LusidEntity rec. Names the item rather than the rec type: Holding and CashHolding recs produce Holding items, a Valuation rec produces ValuedHolding items, both transaction rec types produce Transaction items, and a relational dataset side produces RelationalDataPoint items whatever the rec type. A LusidEntity rec produces items of its entity type, for example Instrument items. Available values: SettlementActivity, Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument, LegalEntity.
    * @return itemType
   **/
   @jakarta.annotation.Nonnull

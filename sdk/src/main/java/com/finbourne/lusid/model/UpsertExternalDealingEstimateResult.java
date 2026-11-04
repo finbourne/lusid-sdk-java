@@ -50,10 +50,10 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * UpsertExternalTransferAgencyOrderResult
+ * UpsertExternalDealingEstimateResult
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class UpsertExternalTransferAgencyOrderResult {
+public class UpsertExternalDealingEstimateResult {
   public static final String SERIALIZED_NAME_FUND_ID = "fundId";
   @SerializedName(SERIALIZED_NAME_FUND_ID)
   private ResourceId fundId;
@@ -66,18 +66,18 @@ public class UpsertExternalTransferAgencyOrderResult {
   @SerializedName(SERIALIZED_NAME_LATE)
   private Boolean late;
 
-  public static final String SERIALIZED_NAME_UPSERTED_ORDERS = "upsertedOrders";
-  @SerializedName(SERIALIZED_NAME_UPSERTED_ORDERS)
-  private List<ResourceId> upsertedOrders;
+  public static final String SERIALIZED_NAME_UPSERTED_ESTIMATES = "upsertedEstimates";
+  @SerializedName(SERIALIZED_NAME_UPSERTED_ESTIMATES)
+  private List<ResourceId> upsertedEstimates;
 
-  public static final String SERIALIZED_NAME_DELETED_ORDERS = "deletedOrders";
-  @SerializedName(SERIALIZED_NAME_DELETED_ORDERS)
-  private List<ResourceId> deletedOrders;
+  public static final String SERIALIZED_NAME_DELETED_ESTIMATES = "deletedEstimates";
+  @SerializedName(SERIALIZED_NAME_DELETED_ESTIMATES)
+  private List<ResourceId> deletedEstimates;
 
-  public UpsertExternalTransferAgencyOrderResult() {
+  public UpsertExternalDealingEstimateResult() {
   }
 
-  public UpsertExternalTransferAgencyOrderResult fundId(ResourceId fundId) {
+  public UpsertExternalDealingEstimateResult fundId(ResourceId fundId) {
     
     this.fundId = fundId;
     return this;
@@ -98,7 +98,7 @@ public class UpsertExternalTransferAgencyOrderResult {
   }
 
 
-  public UpsertExternalTransferAgencyOrderResult dealingPoint(OffsetDateTime dealingPoint) {
+  public UpsertExternalDealingEstimateResult dealingPoint(OffsetDateTime dealingPoint) {
     
     this.dealingPoint = dealingPoint;
     return this;
@@ -119,7 +119,7 @@ public class UpsertExternalTransferAgencyOrderResult {
   }
 
 
-  public UpsertExternalTransferAgencyOrderResult late(Boolean late) {
+  public UpsertExternalDealingEstimateResult late(Boolean late) {
     
     this.late = late;
     return this;
@@ -140,61 +140,61 @@ public class UpsertExternalTransferAgencyOrderResult {
   }
 
 
-  public UpsertExternalTransferAgencyOrderResult upsertedOrders(List<ResourceId> upsertedOrders) {
+  public UpsertExternalDealingEstimateResult upsertedEstimates(List<ResourceId> upsertedEstimates) {
     
-    this.upsertedOrders = upsertedOrders;
+    this.upsertedEstimates = upsertedEstimates;
     return this;
   }
 
-  public UpsertExternalTransferAgencyOrderResult addUpsertedOrdersItem(ResourceId upsertedOrdersItem) {
-    if (this.upsertedOrders == null) {
-      this.upsertedOrders = new ArrayList<>();
+  public UpsertExternalDealingEstimateResult addUpsertedEstimatesItem(ResourceId upsertedEstimatesItem) {
+    if (this.upsertedEstimates == null) {
+      this.upsertedEstimates = new ArrayList<>();
     }
-    this.upsertedOrders.add(upsertedOrdersItem);
+    this.upsertedEstimates.add(upsertedEstimatesItem);
     return this;
   }
 
    /**
-   * Get upsertedOrders
-   * @return upsertedOrders
+   * Get upsertedEstimates
+   * @return upsertedEstimates
   **/
   @jakarta.annotation.Nullable
-  public List<ResourceId> getUpsertedOrders() {
-    return upsertedOrders;
+  public List<ResourceId> getUpsertedEstimates() {
+    return upsertedEstimates;
   }
 
 
-  public void setUpsertedOrders(List<ResourceId> upsertedOrders) {
-    this.upsertedOrders = upsertedOrders;
+  public void setUpsertedEstimates(List<ResourceId> upsertedEstimates) {
+    this.upsertedEstimates = upsertedEstimates;
   }
 
 
-  public UpsertExternalTransferAgencyOrderResult deletedOrders(List<ResourceId> deletedOrders) {
+  public UpsertExternalDealingEstimateResult deletedEstimates(List<ResourceId> deletedEstimates) {
     
-    this.deletedOrders = deletedOrders;
+    this.deletedEstimates = deletedEstimates;
     return this;
   }
 
-  public UpsertExternalTransferAgencyOrderResult addDeletedOrdersItem(ResourceId deletedOrdersItem) {
-    if (this.deletedOrders == null) {
-      this.deletedOrders = new ArrayList<>();
+  public UpsertExternalDealingEstimateResult addDeletedEstimatesItem(ResourceId deletedEstimatesItem) {
+    if (this.deletedEstimates == null) {
+      this.deletedEstimates = new ArrayList<>();
     }
-    this.deletedOrders.add(deletedOrdersItem);
+    this.deletedEstimates.add(deletedEstimatesItem);
     return this;
   }
 
    /**
-   * Get deletedOrders
-   * @return deletedOrders
+   * Get deletedEstimates
+   * @return deletedEstimates
   **/
   @jakarta.annotation.Nullable
-  public List<ResourceId> getDeletedOrders() {
-    return deletedOrders;
+  public List<ResourceId> getDeletedEstimates() {
+    return deletedEstimates;
   }
 
 
-  public void setDeletedOrders(List<ResourceId> deletedOrders) {
-    this.deletedOrders = deletedOrders;
+  public void setDeletedEstimates(List<ResourceId> deletedEstimates) {
+    this.deletedEstimates = deletedEstimates;
   }
 
 
@@ -207,12 +207,12 @@ public class UpsertExternalTransferAgencyOrderResult {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UpsertExternalTransferAgencyOrderResult upsertExternalTransferAgencyOrderResult = (UpsertExternalTransferAgencyOrderResult) o;
-    return Objects.equals(this.fundId, upsertExternalTransferAgencyOrderResult.fundId) &&
-        Objects.equals(this.dealingPoint, upsertExternalTransferAgencyOrderResult.dealingPoint) &&
-        Objects.equals(this.late, upsertExternalTransferAgencyOrderResult.late) &&
-        Objects.equals(this.upsertedOrders, upsertExternalTransferAgencyOrderResult.upsertedOrders) &&
-        Objects.equals(this.deletedOrders, upsertExternalTransferAgencyOrderResult.deletedOrders);
+    UpsertExternalDealingEstimateResult upsertExternalDealingEstimateResult = (UpsertExternalDealingEstimateResult) o;
+    return Objects.equals(this.fundId, upsertExternalDealingEstimateResult.fundId) &&
+        Objects.equals(this.dealingPoint, upsertExternalDealingEstimateResult.dealingPoint) &&
+        Objects.equals(this.late, upsertExternalDealingEstimateResult.late) &&
+        Objects.equals(this.upsertedEstimates, upsertExternalDealingEstimateResult.upsertedEstimates) &&
+        Objects.equals(this.deletedEstimates, upsertExternalDealingEstimateResult.deletedEstimates);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -221,7 +221,7 @@ public class UpsertExternalTransferAgencyOrderResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fundId, dealingPoint, late, upsertedOrders, deletedOrders);
+    return Objects.hash(fundId, dealingPoint, late, upsertedEstimates, deletedEstimates);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -234,12 +234,12 @@ public class UpsertExternalTransferAgencyOrderResult {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpsertExternalTransferAgencyOrderResult {\n");
+    sb.append("class UpsertExternalDealingEstimateResult {\n");
     sb.append("    fundId: ").append(toIndentedString(fundId)).append("\n");
     sb.append("    dealingPoint: ").append(toIndentedString(dealingPoint)).append("\n");
     sb.append("    late: ").append(toIndentedString(late)).append("\n");
-    sb.append("    upsertedOrders: ").append(toIndentedString(upsertedOrders)).append("\n");
-    sb.append("    deletedOrders: ").append(toIndentedString(deletedOrders)).append("\n");
+    sb.append("    upsertedEstimates: ").append(toIndentedString(upsertedEstimates)).append("\n");
+    sb.append("    deletedEstimates: ").append(toIndentedString(deletedEstimates)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -265,8 +265,8 @@ public class UpsertExternalTransferAgencyOrderResult {
     openapiFields.add("fundId");
     openapiFields.add("dealingPoint");
     openapiFields.add("late");
-    openapiFields.add("upsertedOrders");
-    openapiFields.add("deletedOrders");
+    openapiFields.add("upsertedEstimates");
+    openapiFields.add("deletedEstimates");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -276,12 +276,12 @@ public class UpsertExternalTransferAgencyOrderResult {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to UpsertExternalTransferAgencyOrderResult
+  * @throws IOException if the JSON Element is invalid with respect to UpsertExternalDealingEstimateResult
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UpsertExternalTransferAgencyOrderResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertExternalTransferAgencyOrderResult is not found in the empty JSON string", UpsertExternalTransferAgencyOrderResult.openapiRequiredFields.toString()));
+        if (!UpsertExternalDealingEstimateResult.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in UpsertExternalDealingEstimateResult is not found in the empty JSON string", UpsertExternalDealingEstimateResult.openapiRequiredFields.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -289,31 +289,31 @@ public class UpsertExternalTransferAgencyOrderResult {
       if (jsonObj.get("fundId") != null && !jsonObj.get("fundId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("fundId"));
       }
-      if (jsonObj.get("upsertedOrders") != null && !jsonObj.get("upsertedOrders").isJsonNull()) {
-        JsonArray jsonArrayupsertedOrders = jsonObj.getAsJsonArray("upsertedOrders");
-        if (jsonArrayupsertedOrders != null) {
+      if (jsonObj.get("upsertedEstimates") != null && !jsonObj.get("upsertedEstimates").isJsonNull()) {
+        JsonArray jsonArrayupsertedEstimates = jsonObj.getAsJsonArray("upsertedEstimates");
+        if (jsonArrayupsertedEstimates != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("upsertedOrders").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `upsertedOrders` to be an array in the JSON string but got `%s`", jsonObj.get("upsertedOrders").toString()));
+          if (!jsonObj.get("upsertedEstimates").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `upsertedEstimates` to be an array in the JSON string but got `%s`", jsonObj.get("upsertedEstimates").toString()));
           }
 
-          // validate the optional field `upsertedOrders` (array)
-          for (int i = 0; i < jsonArrayupsertedOrders.size(); i++) {
-            ResourceId.validateJsonElement(jsonArrayupsertedOrders.get(i));
+          // validate the optional field `upsertedEstimates` (array)
+          for (int i = 0; i < jsonArrayupsertedEstimates.size(); i++) {
+            ResourceId.validateJsonElement(jsonArrayupsertedEstimates.get(i));
           };
         }
       }
-      if (jsonObj.get("deletedOrders") != null && !jsonObj.get("deletedOrders").isJsonNull()) {
-        JsonArray jsonArraydeletedOrders = jsonObj.getAsJsonArray("deletedOrders");
-        if (jsonArraydeletedOrders != null) {
+      if (jsonObj.get("deletedEstimates") != null && !jsonObj.get("deletedEstimates").isJsonNull()) {
+        JsonArray jsonArraydeletedEstimates = jsonObj.getAsJsonArray("deletedEstimates");
+        if (jsonArraydeletedEstimates != null) {
           // ensure the json data is an array
-          if (!jsonObj.get("deletedOrders").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `deletedOrders` to be an array in the JSON string but got `%s`", jsonObj.get("deletedOrders").toString()));
+          if (!jsonObj.get("deletedEstimates").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `deletedEstimates` to be an array in the JSON string but got `%s`", jsonObj.get("deletedEstimates").toString()));
           }
 
-          // validate the optional field `deletedOrders` (array)
-          for (int i = 0; i < jsonArraydeletedOrders.size(); i++) {
-            ResourceId.validateJsonElement(jsonArraydeletedOrders.get(i));
+          // validate the optional field `deletedEstimates` (array)
+          for (int i = 0; i < jsonArraydeletedEstimates.size(); i++) {
+            ResourceId.validateJsonElement(jsonArraydeletedEstimates.get(i));
           };
         }
       }
@@ -323,22 +323,22 @@ public class UpsertExternalTransferAgencyOrderResult {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UpsertExternalTransferAgencyOrderResult.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UpsertExternalTransferAgencyOrderResult' and its subtypes
+       if (!UpsertExternalDealingEstimateResult.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UpsertExternalDealingEstimateResult' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UpsertExternalTransferAgencyOrderResult> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UpsertExternalTransferAgencyOrderResult.class));
+       final TypeAdapter<UpsertExternalDealingEstimateResult> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UpsertExternalDealingEstimateResult.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UpsertExternalTransferAgencyOrderResult>() {
+       return (TypeAdapter<T>) new TypeAdapter<UpsertExternalDealingEstimateResult>() {
            @Override
-           public void write(JsonWriter out, UpsertExternalTransferAgencyOrderResult value) throws IOException {
+           public void write(JsonWriter out, UpsertExternalDealingEstimateResult value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UpsertExternalTransferAgencyOrderResult read(JsonReader in) throws IOException {
+           public UpsertExternalDealingEstimateResult read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -349,18 +349,18 @@ public class UpsertExternalTransferAgencyOrderResult {
   }
 
  /**
-  * Create an instance of UpsertExternalTransferAgencyOrderResult given an JSON string
+  * Create an instance of UpsertExternalDealingEstimateResult given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of UpsertExternalTransferAgencyOrderResult
-  * @throws IOException if the JSON string is invalid with respect to UpsertExternalTransferAgencyOrderResult
+  * @return An instance of UpsertExternalDealingEstimateResult
+  * @throws IOException if the JSON string is invalid with respect to UpsertExternalDealingEstimateResult
   */
-  public static UpsertExternalTransferAgencyOrderResult fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UpsertExternalTransferAgencyOrderResult.class);
+  public static UpsertExternalDealingEstimateResult fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UpsertExternalDealingEstimateResult.class);
   }
 
  /**
-  * Convert an instance of UpsertExternalTransferAgencyOrderResult to an JSON string
+  * Convert an instance of UpsertExternalDealingEstimateResult to an JSON string
   *
   * @return JSON string
   */
