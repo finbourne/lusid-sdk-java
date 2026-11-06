@@ -183,6 +183,10 @@ public class PricingOptions {
   @SerializedName(SERIALIZED_NAME_MATURED_INSTRUMENT_VALUATION)
   private String maturedInstrumentValuation;
 
+  public static final String SERIALIZED_NAME_INFLATION_LINKED_BOND_INDEXATION_EVENTS = "inflationLinkedBondIndexationEvents";
+  @SerializedName(SERIALIZED_NAME_INFLATION_LINKED_BOND_INDEXATION_EVENTS)
+  private Boolean inflationLinkedBondIndexationEvents;
+
   public PricingOptions() {
   }
 
@@ -853,6 +857,27 @@ public class PricingOptions {
   }
 
 
+  public PricingOptions inflationLinkedBondIndexationEvents(Boolean inflationLinkedBondIndexationEvents) {
+    
+    this.inflationLinkedBondIndexationEvents = inflationLinkedBondIndexationEvents;
+    return this;
+  }
+
+   /**
+   * Generate a daily InflationIndexationEvent for each inflation-linked bond on every day its index ratio changes.  The event books a memo transaction whose units carry the day&#39;s indexed-face change (the principal uplift) and  whose total consideration is zero; its movement is record-only, so nothing moves. Defaults to false.  The memo uses the InflationIndexation transaction type, which ships only in LUSID&#39;s default transaction type  source: a customised default source must add it, with its record-only movement, or every holding gets a  \&quot;not configured\&quot; transaction diagnostic for each day.
+   * @return inflationLinkedBondIndexationEvents
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getInflationLinkedBondIndexationEvents() {
+    return inflationLinkedBondIndexationEvents;
+  }
+
+
+  public void setInflationLinkedBondIndexationEvents(Boolean inflationLinkedBondIndexationEvents) {
+    this.inflationLinkedBondIndexationEvents = inflationLinkedBondIndexationEvents;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -893,7 +918,8 @@ public class PricingOptions {
         Objects.equals(this.namedPrices, pricingOptions.namedPrices) &&
         Objects.equals(this.suppressAutomaticLoanPrincipalRepayment, pricingOptions.suppressAutomaticLoanPrincipalRepayment) &&
         Objects.equals(this.useLoanFacilityRolloverTemplate, pricingOptions.useLoanFacilityRolloverTemplate) &&
-        Objects.equals(this.maturedInstrumentValuation, pricingOptions.maturedInstrumentValuation);
+        Objects.equals(this.maturedInstrumentValuation, pricingOptions.maturedInstrumentValuation) &&
+        Objects.equals(this.inflationLinkedBondIndexationEvents, pricingOptions.inflationLinkedBondIndexationEvents);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -902,7 +928,7 @@ public class PricingOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, fixedIncomeValuationsUsingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity, findOrCalculateWriteThrough, inflationConvexity, allowFallbackOnModelDecline, namedPrices, suppressAutomaticLoanPrincipalRepayment, useLoanFacilityRolloverTemplate, maturedInstrumentValuation);
+    return Objects.hash(modelSelection, useInstrumentTypeToDeterminePricer, allowAnyInstrumentsWithSecUidToPriceOffLookup, allowPartiallySuccessfulEvaluation, riskEngine, findOrCalculate, produceSeparateResultForLinearOtcLegs, fxForwardContractsAsUnitsInBothLegs, enableUseOfCachedUnitResults, windowValuationOnInstrumentStartEnd, removeContingentCashflowsInPaymentDiary, useChildSubHoldingKeysForPortfolioExpansion, validateDomesticAndQuoteCurrenciesAreConsistent, mbsValuationUsingHoldingCurrentFace, fixedIncomeValuationsUsingCurrentFace, convertSrsCashFlowsToPortfolioCurrency, conservedQuantityForLookthroughExpansion, returnZeroPv, enableLegLevelInferenceForCustomSrsColumns, useInstrumentScaleFactorAsDefault, scaleInstrumentAccruedOverrideByContractSize, riskBumpOptions, fundingCurveByCurrency, defaultPoolFactorsToUnity, findOrCalculateWriteThrough, inflationConvexity, allowFallbackOnModelDecline, namedPrices, suppressAutomaticLoanPrincipalRepayment, useLoanFacilityRolloverTemplate, maturedInstrumentValuation, inflationLinkedBondIndexationEvents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -947,6 +973,7 @@ public class PricingOptions {
     sb.append("    suppressAutomaticLoanPrincipalRepayment: ").append(toIndentedString(suppressAutomaticLoanPrincipalRepayment)).append("\n");
     sb.append("    useLoanFacilityRolloverTemplate: ").append(toIndentedString(useLoanFacilityRolloverTemplate)).append("\n");
     sb.append("    maturedInstrumentValuation: ").append(toIndentedString(maturedInstrumentValuation)).append("\n");
+    sb.append("    inflationLinkedBondIndexationEvents: ").append(toIndentedString(inflationLinkedBondIndexationEvents)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1000,6 +1027,7 @@ public class PricingOptions {
     openapiFields.add("suppressAutomaticLoanPrincipalRepayment");
     openapiFields.add("useLoanFacilityRolloverTemplate");
     openapiFields.add("maturedInstrumentValuation");
+    openapiFields.add("inflationLinkedBondIndexationEvents");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

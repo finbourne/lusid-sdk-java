@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10546
+  version: 0.11.10549
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -74545,7 +74545,7 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -74667,7 +74667,7 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -74797,7 +74797,7 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -75033,7 +75033,7 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -75270,7 +75270,7 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -124205,6 +124205,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -124277,6 +124278,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -124369,6 +124371,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -124441,6 +124444,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -124533,6 +124537,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -124605,6 +124610,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -124723,6 +124729,7 @@ paths:
                     allowFallbackOnModelDecline: false
                     suppressAutomaticLoanPrincipalRepayment: false
                     useLoanFacilityRolloverTemplate: false
+                    inflationLinkedBondIndexationEvents: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -124799,6 +124806,7 @@ paths:
                     allowFallbackOnModelDecline: false
                     suppressAutomaticLoanPrincipalRepayment: false
                     useLoanFacilityRolloverTemplate: false
+                    inflationLinkedBondIndexationEvents: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -124875,6 +124883,7 @@ paths:
                     allowFallbackOnModelDecline: false
                     suppressAutomaticLoanPrincipalRepayment: false
                     useLoanFacilityRolloverTemplate: false
+                    inflationLinkedBondIndexationEvents: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -124951,6 +124960,7 @@ paths:
                     allowFallbackOnModelDecline: false
                     suppressAutomaticLoanPrincipalRepayment: false
                     useLoanFacilityRolloverTemplate: false
+                    inflationLinkedBondIndexationEvents: false
                   resultDataRules: []
                   holdingPricingInfo:
                     fallbackField: None
@@ -125503,6 +125513,7 @@ paths:
                       allowFallbackOnModelDecline: false
                       suppressAutomaticLoanPrincipalRepayment: false
                       useLoanFacilityRolloverTemplate: false
+                      inflationLinkedBondIndexationEvents: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -125587,6 +125598,7 @@ paths:
                       allowFallbackOnModelDecline: false
                       suppressAutomaticLoanPrincipalRepayment: false
                       useLoanFacilityRolloverTemplate: false
+                      inflationLinkedBondIndexationEvents: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -125671,6 +125683,7 @@ paths:
                       allowFallbackOnModelDecline: false
                       suppressAutomaticLoanPrincipalRepayment: false
                       useLoanFacilityRolloverTemplate: false
+                      inflationLinkedBondIndexationEvents: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -126020,6 +126033,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -126092,6 +126106,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -126184,6 +126199,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -126256,6 +126272,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -126348,6 +126365,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -126420,6 +126438,7 @@ paths:
                         allowFallbackOnModelDecline: false
                         suppressAutomaticLoanPrincipalRepayment: false
                         useLoanFacilityRolloverTemplate: false
+                        inflationLinkedBondIndexationEvents: false
                       resultDataRules: []
                       holdingPricingInfo:
                         fallbackField: None
@@ -126581,6 +126600,7 @@ paths:
                       allowFallbackOnModelDecline: false
                       suppressAutomaticLoanPrincipalRepayment: false
                       useLoanFacilityRolloverTemplate: false
+                      inflationLinkedBondIndexationEvents: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -126665,6 +126685,7 @@ paths:
                       allowFallbackOnModelDecline: false
                       suppressAutomaticLoanPrincipalRepayment: false
                       useLoanFacilityRolloverTemplate: false
+                      inflationLinkedBondIndexationEvents: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -126749,6 +126770,7 @@ paths:
                       allowFallbackOnModelDecline: false
                       suppressAutomaticLoanPrincipalRepayment: false
                       useLoanFacilityRolloverTemplate: false
+                      inflationLinkedBondIndexationEvents: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -126972,6 +126994,7 @@ paths:
                       allowFallbackOnModelDecline: false
                       suppressAutomaticLoanPrincipalRepayment: false
                       useLoanFacilityRolloverTemplate: false
+                      inflationLinkedBondIndexationEvents: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -127056,6 +127079,7 @@ paths:
                       allowFallbackOnModelDecline: false
                       suppressAutomaticLoanPrincipalRepayment: false
                       useLoanFacilityRolloverTemplate: false
+                      inflationLinkedBondIndexationEvents: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -127140,6 +127164,7 @@ paths:
                       allowFallbackOnModelDecline: false
                       suppressAutomaticLoanPrincipalRepayment: false
                       useLoanFacilityRolloverTemplate: false
+                      inflationLinkedBondIndexationEvents: false
                     resultDataRules: []
                     holdingPricingInfo:
                       fallbackField: None
@@ -190351,7 +190376,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -190481,6 +190507,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - dividendCurrency
@@ -191011,7 +191038,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -191141,6 +191169,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -196924,7 +196953,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -197054,6 +197084,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -197121,7 +197152,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -197251,6 +197283,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amountReduced
@@ -199257,7 +199290,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -199387,6 +199421,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -205079,7 +205114,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205209,6 +205245,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -205283,7 +205320,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205413,6 +205451,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -205687,7 +205726,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205817,6 +205857,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - agreedCleanPrice
@@ -205981,7 +206022,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -206111,6 +206153,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - agreedCleanPrice
@@ -206449,7 +206492,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -206579,6 +206623,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - callPrice
@@ -206651,7 +206696,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -206781,6 +206827,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -206900,7 +206947,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207030,6 +207078,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -211539,7 +211588,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -211669,6 +211719,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - exerciseCurrency
@@ -212918,7 +212969,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -213048,6 +213100,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -213387,7 +213440,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -213517,6 +213571,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -213652,7 +213707,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -213782,6 +213838,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -213867,7 +213924,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -213997,6 +214055,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashElections
@@ -214074,7 +214133,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214204,6 +214264,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -214594,7 +214655,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214724,6 +214786,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - direction
@@ -214830,7 +214893,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214960,6 +215024,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -215031,7 +215096,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215161,6 +215227,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -215667,7 +215734,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215797,6 +215865,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashElections
@@ -215878,7 +215947,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216008,6 +216078,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashElections
@@ -216290,7 +216361,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -216420,6 +216492,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashFlowValue
@@ -216931,7 +217004,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -217061,6 +217135,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -217658,7 +217733,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -217788,6 +217864,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - constituentWeight
@@ -217949,7 +218026,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -218079,6 +218157,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - changeType
@@ -219073,7 +219152,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -219203,6 +219283,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -219659,7 +219740,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -219789,6 +219871,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -220910,7 +220993,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -221040,6 +221124,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -221251,7 +221336,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -221381,6 +221467,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - domCcy
@@ -221455,7 +221542,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -221585,6 +221673,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -227121,6 +227210,7 @@ components:
               base: base
             allowAnyInstrumentsWithSecUidToPriceOffLookup: true
             mbsValuationUsingHoldingCurrentFace: true
+            inflationLinkedBondIndexationEvents: true
             fxForwardContractsAsUnitsInBothLegs: true
             fundingCurveByCurrency:
               key: fundingCurveByCurrency
@@ -227477,7 +227567,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -227607,6 +227698,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -227995,7 +228087,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228125,6 +228218,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - contractDetails
@@ -228334,7 +228428,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228464,6 +228559,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -231814,6 +231910,7 @@ components:
                 base: base
               allowAnyInstrumentsWithSecUidToPriceOffLookup: true
               mbsValuationUsingHoldingCurrentFace: true
+              inflationLinkedBondIndexationEvents: true
               fxForwardContractsAsUnitsInBothLegs: true
               fundingCurveByCurrency:
                 key: fundingCurveByCurrency
@@ -234300,7 +234397,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -234430,6 +234528,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -240064,7 +240163,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -240194,6 +240294,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -240328,7 +240429,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -240458,6 +240560,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -240531,7 +240634,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -240661,6 +240765,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -240735,7 +240840,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -240865,6 +240971,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -240930,7 +241037,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -241060,6 +241168,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -241120,7 +241229,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -241250,6 +241360,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -241980,7 +242091,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242110,6 +242222,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashElections
@@ -242196,7 +242309,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242326,6 +242440,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashElections
@@ -242389,7 +242504,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242519,6 +242635,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -242587,7 +242704,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242717,6 +242835,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -242799,7 +242918,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -242929,6 +243049,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -243204,7 +243325,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -243334,6 +243456,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -243437,7 +243560,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -243567,6 +243691,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - closeOutAmount
@@ -243672,7 +243797,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -243802,6 +243928,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -246219,7 +246346,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -246349,6 +246477,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - eventSource
@@ -247029,7 +247158,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -247159,6 +247289,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - anchorDate
@@ -247530,7 +247661,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -247660,6 +247792,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -248024,7 +248157,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -248154,6 +248288,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -248233,7 +248368,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -248363,6 +248499,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -248449,7 +248586,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -248579,6 +248717,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -248653,7 +248792,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -248783,6 +248923,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -251758,7 +251899,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251888,6 +252030,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -251957,7 +252100,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252087,6 +252231,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -252150,7 +252295,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252280,6 +252426,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -252349,7 +252496,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252479,6 +252627,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -252565,7 +252714,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252695,6 +252845,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -256624,7 +256775,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -256754,6 +256906,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -260860,7 +261013,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -260990,6 +261144,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -261052,7 +261207,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261182,6 +261338,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -262030,7 +262187,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -262160,6 +262318,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - domAmountPerUnit
@@ -264408,6 +264567,7 @@ components:
                 base: base
               allowAnyInstrumentsWithSecUidToPriceOffLookup: true
               mbsValuationUsingHoldingCurrentFace: true
+              inflationLinkedBondIndexationEvents: true
               fxForwardContractsAsUnitsInBothLegs: true
               fundingCurveByCurrency:
                 key: fundingCurveByCurrency
@@ -265033,7 +265193,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -265163,6 +265324,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - contractStates
@@ -269298,6 +269460,222 @@ components:
         - type
         type: object
       description: For indicating a dependency upon an inflation fixing
+    InflationIndexationEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          currency:
+            description: The bond's domestic currency.
+            minLength: 1
+            type: string
+          eventDate:
+            description: "The calendar day on which the new index ratio applies. On\
+              \ an event LUSID generates it carries the bond's\r\nlocal offset, so\
+              \ its date part is the bond's local calendar day; it is returned as\
+              \ generated and not\r\nnormalised to UTC. An upserted event may give\
+              \ it with any offset; it is normalised to UTC when stored."
+            format: date-time
+            type: string
+          indexRatioAfter:
+            description: The bond's un-floored inflation index ratio on the event
+              date.
+            format: double
+            type: number
+          indexRatioBefore:
+            description: The bond's un-floored inflation index ratio on the day before
+              the event date.
+            format: double
+            type: number
+          indexedFaceChangePerUnit:
+            description: "The day's change in indexed face per unit: the un-indexed\
+              \ face per unit multiplied by\r\n(index ratio after minus index ratio\
+              \ before)."
+            format: double
+            type: number
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
+              \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent, TotalReturnSwapCashFlowEvent,\
+              \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
+              \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
+              \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            - PikBondInterestEvent
+            - CommodityForwardCashSettlementEvent
+            - PaymentInKindEvent
+            - CommodityForwardPhysicalSettlementEvent
+            - CancelSwapEvent
+            - BondOptionTerminationEvent
+            - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
+            - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
+            - AmendCommitmentEvent
+            - CapitalCallEvent
+            - FundDistributionEvent
+            - NavReportEvent
+            - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
+            - TotalReturnSwapCashFlowEvent
+            - GlobalLoanFacilityReinitialisationEvent
+            - InvestorLoanFacilityReinitialisationEvent
+            - CapitalCallReceiptEvent
+            - RecallableCapitalExpiryEvent
+            - CapitalInterestTransferEvent
+            - FacilityDrawEvent
+            - FacilityRepaymentEvent
+            - FacilityInterestEvent
+            - FacilityCommitmentFeeEvent
+            - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
+            - PartialRedemptionWithoutReductionOfNominalValueEvent
+            - StripBondCashflowEvent
+            - CapitalisationEvent
+            - SharesPremiumDividendEvent
+            - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
+            type: string
+        required:
+        - currency
+        - indexRatioAfter
+        - indexRatioBefore
+        - indexedFaceChangePerUnit
+        - instrumentEventType
+        type: object
+      description: "The day-on-day change in the indexed face of an inflation-linked\
+        \ bond, as its inflation index ratio moves\r\nfrom one day to the next. A\
+        \ memo event: downstream it books a transaction whose units carry the day's\
+        \ indexed-face\r\nchange (the principal uplift) and whose cash is zero; nothing\
+        \ moves.\r\nMandatory participation."
     InflationIndexConventions:
       additionalProperties: false
       description: A set of conventions that describe the conventions for an inflation
@@ -269965,7 +270343,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270095,6 +270474,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - effectiveAt
@@ -270167,7 +270547,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270297,6 +270678,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - anchorDate
@@ -270951,7 +271333,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271081,6 +271464,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - callCurrency
@@ -272570,7 +272954,7 @@ components:
             \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
             \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
             \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-            \ CashDistributionFromNonEligibleSecuritiesSalesEvent."
+            \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -272700,6 +273084,7 @@ components:
           - CapitalisationEvent
           - SharesPremiumDividendEvent
           - CashDistributionFromNonEligibleSecuritiesSalesEvent
+          - InflationIndexationEvent
           type: string
       required:
       - instrumentEventType
@@ -273750,6 +274135,7 @@ components:
       - CapitalisationEvent
       - SharesPremiumDividendEvent
       - CashDistributionFromNonEligibleSecuritiesSalesEvent
+      - InflationIndexationEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -274753,7 +275139,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -274883,6 +275270,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashElections
@@ -275364,7 +275752,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -275494,6 +275883,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -278124,7 +278514,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -278254,6 +278645,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -280078,7 +280470,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -280208,6 +280601,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashOfferElections
@@ -280785,7 +281179,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -280915,6 +281310,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -280991,7 +281387,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -281121,6 +281518,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -281313,7 +281711,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -281443,6 +281842,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -281517,7 +281917,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -281647,6 +282048,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -281749,7 +282151,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -281879,6 +282282,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -285484,7 +285888,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -285614,6 +286019,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -285680,7 +286086,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -285810,6 +286217,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -285878,7 +286286,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -286008,6 +286417,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -286078,7 +286488,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -286208,6 +286619,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -286302,7 +286714,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -286432,6 +286845,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -286501,7 +286915,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -286631,6 +287046,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -287002,7 +287418,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -287132,6 +287549,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -287990,7 +288408,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -288120,6 +288539,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -288975,7 +289395,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -289105,6 +289526,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -289336,7 +289758,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -289466,6 +289889,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - exerciseType
@@ -289595,7 +290019,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -289725,6 +290150,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - exerciseType
@@ -316562,7 +316988,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -316692,6 +317119,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -316835,7 +317263,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -316965,6 +317394,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -317065,7 +317495,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -317195,6 +317626,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -318657,7 +319089,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -318787,6 +319220,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -319815,7 +320249,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -319945,6 +320380,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -320010,7 +320446,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -320140,6 +320577,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -320225,7 +320663,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -320355,6 +320794,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -320485,7 +320925,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -320615,6 +321056,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -320688,7 +321130,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -320818,6 +321261,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -328035,6 +328479,7 @@ components:
             base: base
           allowAnyInstrumentsWithSecUidToPriceOffLookup: true
           mbsValuationUsingHoldingCurrentFace: true
+          inflationLinkedBondIndexationEvents: true
           fxForwardContractsAsUnitsInBothLegs: true
           fundingCurveByCurrency:
             key: fundingCurveByCurrency
@@ -328698,6 +329143,7 @@ components:
           base: base
         allowAnyInstrumentsWithSecUidToPriceOffLookup: true
         mbsValuationUsingHoldingCurrentFace: true
+        inflationLinkedBondIndexationEvents: true
         fxForwardContractsAsUnitsInBothLegs: true
         fundingCurveByCurrency:
           key: fundingCurveByCurrency
@@ -328961,6 +329407,17 @@ components:
             \ values: Fail, ZeroPv, ValueAsHeld."
           nullable: true
           type: string
+        inflationLinkedBondIndexationEvents:
+          description: "Generate a daily InflationIndexationEvent for each inflation-linked\
+            \ bond on every day its index ratio changes.\r\nThe event books a memo\
+            \ transaction whose units carry the day's indexed-face change (the principal\
+            \ uplift) and\r\nwhose total consideration is zero; its movement is record-only,\
+            \ so nothing moves. Defaults to false.\r\nThe memo uses the InflationIndexation\
+            \ transaction type, which ships only in LUSID's default transaction type\r\
+            \nsource: a customised default source must add it, with its record-only\
+            \ movement, or every holding gets a\r\n\"not configured\" transaction\
+            \ diagnostic for each day."
+          type: boolean
       type: object
     PrimarySchedule:
       additionalProperties: false
@@ -329116,7 +329573,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -329246,6 +329704,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -331351,7 +331810,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -331481,6 +331941,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -331623,7 +332084,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -331753,6 +332215,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashOfferElections
@@ -333622,7 +334085,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -333752,6 +334216,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - effectiveAt
@@ -333993,7 +334458,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -334123,6 +334589,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -340772,7 +341239,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -340902,6 +341370,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -340982,7 +341451,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -341112,6 +341582,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -341380,7 +341851,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -341510,6 +341982,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashOfferElections
@@ -341601,7 +342074,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -341731,6 +342205,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - fixingDate
@@ -348641,6 +349116,7 @@ components:
                   base: base
                 allowAnyInstrumentsWithSecUidToPriceOffLookup: true
                 mbsValuationUsingHoldingCurrentFace: true
+                inflationLinkedBondIndexationEvents: true
                 fxForwardContractsAsUnitsInBothLegs: true
                 fundingCurveByCurrency:
                   key: fundingCurveByCurrency
@@ -349015,6 +349491,7 @@ components:
                   base: base
                 allowAnyInstrumentsWithSecUidToPriceOffLookup: true
                 mbsValuationUsingHoldingCurrentFace: true
+                inflationLinkedBondIndexationEvents: true
                 fxForwardContractsAsUnitsInBothLegs: true
                 fundingCurveByCurrency:
                   key: fundingCurveByCurrency
@@ -369678,7 +370155,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -369808,6 +370286,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -371352,7 +371831,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -371482,6 +371962,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -371670,7 +372151,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -371800,6 +372282,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -376563,7 +377046,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -376693,6 +377177,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashElections
@@ -377505,7 +377990,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -377635,6 +378121,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -378379,7 +378866,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -378509,6 +378997,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -378605,7 +379094,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -378735,6 +379225,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -379226,7 +379717,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -379356,6 +379848,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -380018,7 +380511,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -380148,6 +380642,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -380215,7 +380710,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -380345,6 +380841,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -381331,7 +381828,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -381461,6 +381959,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -381667,7 +382166,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -381797,6 +382297,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -381859,7 +382360,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -381989,6 +382491,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - currency
@@ -382054,7 +382557,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             minLength: 1
             type: string
           triggeringEventId:
@@ -382143,7 +382647,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -382273,6 +382778,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -382945,7 +383451,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -383075,6 +383582,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - component
@@ -390594,7 +391102,7 @@ components:
             \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
             \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
             \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-            \ CashDistributionFromNonEligibleSecuritiesSalesEvent."
+            \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -392727,7 +393235,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -392857,6 +393366,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -393663,7 +394173,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -393793,6 +394304,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -395837,7 +396349,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -395967,6 +396480,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - amount
@@ -404979,6 +405493,7 @@ components:
                 base: base
               allowAnyInstrumentsWithSecUidToPriceOffLookup: true
               mbsValuationUsingHoldingCurrentFace: true
+              inflationLinkedBondIndexationEvents: true
               fxForwardContractsAsUnitsInBothLegs: true
               fundingCurveByCurrency:
                 key: fundingCurveByCurrency
@@ -427132,7 +427647,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -427262,6 +427778,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType
@@ -428549,7 +429066,8 @@ components:
               \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
-              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent."
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -428679,6 +429197,7 @@ components:
             - CapitalisationEvent
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
             type: string
         required:
         - instrumentEventType

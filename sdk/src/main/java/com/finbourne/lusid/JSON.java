@@ -1821,6 +1821,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "dependencyType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.InflationIndexationEvent.class, new TypeSelector<com.finbourne.lusid.model.InflationIndexationEvent>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.InflationIndexationEvent> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("InflationIndexationEvent", com.finbourne.lusid.model.InflationIndexationEvent.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentEventType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.InflationLeg.class, new TypeSelector<com.finbourne.lusid.model.InflationLeg>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.InflationLeg> getClassForElement(JsonElement readElement) {
@@ -1964,6 +1973,7 @@ public class JSON {
                         classByDiscriminatorValue.put("FutureMarkToMarketEvent", com.finbourne.lusid.model.FutureMarkToMarketEvent.class);
                         classByDiscriminatorValue.put("FxForwardSettlementEvent", com.finbourne.lusid.model.FxForwardSettlementEvent.class);
                         classByDiscriminatorValue.put("GlobalLoanFacilityReinitialisationEvent", com.finbourne.lusid.model.GlobalLoanFacilityReinitialisationEvent.class);
+                        classByDiscriminatorValue.put("InflationIndexationEvent", com.finbourne.lusid.model.InflationIndexationEvent.class);
                         classByDiscriminatorValue.put("InformationalErrorEvent", com.finbourne.lusid.model.InformationalErrorEvent.class);
                         classByDiscriminatorValue.put("InformationalEvent", com.finbourne.lusid.model.InformationalEvent.class);
                         classByDiscriminatorValue.put("InstalmentCallEvent", com.finbourne.lusid.model.InstalmentCallEvent.class);
@@ -4458,6 +4468,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationCurveShiftDefinition.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationFixingDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationIndexConventions.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationIndexationEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationLeg.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationLinkedBond.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationSwap.CustomTypeAdapterFactory());
