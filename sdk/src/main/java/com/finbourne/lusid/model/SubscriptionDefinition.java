@@ -110,6 +110,10 @@ public class SubscriptionDefinition {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_FORWARD_DAYS)
   private Integer effectiveForwardDays;
 
+  public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
+  private List<String> instrumentIdentifiers;
+
   public SubscriptionDefinition() {
   }
 
@@ -417,6 +421,35 @@ public class SubscriptionDefinition {
   }
 
 
+  public SubscriptionDefinition instrumentIdentifiers(List<String> instrumentIdentifiers) {
+    
+    this.instrumentIdentifiers = instrumentIdentifiers;
+    return this;
+  }
+
+  public SubscriptionDefinition addInstrumentIdentifiersItem(String instrumentIdentifiersItem) {
+    if (this.instrumentIdentifiers == null) {
+      this.instrumentIdentifiers = new ArrayList<>();
+    }
+    this.instrumentIdentifiers.add(instrumentIdentifiersItem);
+    return this;
+  }
+
+   /**
+   * The instrument identifiers each published holding carries, as Instrument/default/{type} property keys,  for example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.  Not valid for a transactions subscription.
+   * @return instrumentIdentifiers
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getInstrumentIdentifiers() {
+    return instrumentIdentifiers;
+  }
+
+
+  public void setInstrumentIdentifiers(List<String> instrumentIdentifiers) {
+    this.instrumentIdentifiers = instrumentIdentifiers;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -440,7 +473,8 @@ public class SubscriptionDefinition {
         Objects.equals(this.subscriptionType, subscriptionDefinition.subscriptionType) &&
         Objects.equals(this.startEffectiveAt, subscriptionDefinition.startEffectiveAt) &&
         Objects.equals(this.endEffectiveAt, subscriptionDefinition.endEffectiveAt) &&
-        Objects.equals(this.effectiveForwardDays, subscriptionDefinition.effectiveForwardDays);
+        Objects.equals(this.effectiveForwardDays, subscriptionDefinition.effectiveForwardDays) &&
+        Objects.equals(this.instrumentIdentifiers, subscriptionDefinition.instrumentIdentifiers);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -449,7 +483,7 @@ public class SubscriptionDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, timelineProperty, portfolioFilter, addressKeys, byTaxLots, subscriptionType, startEffectiveAt, endEffectiveAt, effectiveForwardDays);
+    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, timelineProperty, portfolioFilter, addressKeys, byTaxLots, subscriptionType, startEffectiveAt, endEffectiveAt, effectiveForwardDays, instrumentIdentifiers);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -477,6 +511,7 @@ public class SubscriptionDefinition {
     sb.append("    startEffectiveAt: ").append(toIndentedString(startEffectiveAt)).append("\n");
     sb.append("    endEffectiveAt: ").append(toIndentedString(endEffectiveAt)).append("\n");
     sb.append("    effectiveForwardDays: ").append(toIndentedString(effectiveForwardDays)).append("\n");
+    sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -513,6 +548,7 @@ public class SubscriptionDefinition {
     openapiFields.add("startEffectiveAt");
     openapiFields.add("endEffectiveAt");
     openapiFields.add("effectiveForwardDays");
+    openapiFields.add("instrumentIdentifiers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -572,6 +608,10 @@ public class SubscriptionDefinition {
       }
       if (!jsonObj.get("subscriptionType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subscriptionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subscriptionType").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("instrumentIdentifiers") != null && !jsonObj.get("instrumentIdentifiers").isJsonNull() && !jsonObj.get("instrumentIdentifiers").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrumentIdentifiers` to be an array in the JSON string but got `%s`", jsonObj.get("instrumentIdentifiers").toString()));
       }
   }
 

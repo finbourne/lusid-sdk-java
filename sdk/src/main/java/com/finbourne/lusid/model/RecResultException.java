@@ -140,7 +140,7 @@ public class RecResultException {
   }
 
    /**
-   * First-failure bookmark: the asAt at which a judgement closure&#39;s validity condition first failed against the latest run&#39;s data.
+   * First-failure bookmark: the asAt at which a judgement closure&#39;s validity condition first failed against the latest run&#39;s data. The closure stays until a reviewer clears the decision, which dissolves the group. The run sets the review status to Required. You cannot affirm the decision while the condition fails.
    * @return asAtClosureInvalidated
   **/
   @jakarta.annotation.Nullable

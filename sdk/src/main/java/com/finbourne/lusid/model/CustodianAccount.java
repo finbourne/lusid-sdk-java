@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -94,6 +95,10 @@ public class CustodianAccount {
   public static final String SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS = "taxLotSelectionCostBasis";
   @SerializedName(SERIALIZED_NAME_TAX_LOT_SELECTION_COST_BASIS)
   private String taxLotSelectionCostBasis;
+
+  public static final String SERIALIZED_NAME_INACTIVE_FROM = "inactiveFrom";
+  @SerializedName(SERIALIZED_NAME_INACTIVE_FROM)
+  private OffsetDateTime inactiveFrom;
 
   public CustodianAccount() {
   }
@@ -316,6 +321,27 @@ public class CustodianAccount {
   }
 
 
+  public CustodianAccount inactiveFrom(OffsetDateTime inactiveFrom) {
+    
+    this.inactiveFrom = inactiveFrom;
+    return this;
+  }
+
+   /**
+   * The date from which the account is inactive. Transactions with a trade date before this date still resolve to the account; those on or after it leave the account unresolved. Absent when the account is active.
+   * @return inactiveFrom
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getInactiveFrom() {
+    return inactiveFrom;
+  }
+
+
+  public void setInactiveFrom(OffsetDateTime inactiveFrom) {
+    this.inactiveFrom = inactiveFrom;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -335,7 +361,8 @@ public class CustodianAccount {
         Objects.equals(this.properties, custodianAccount.properties) &&
         Objects.equals(this.custodian, custodianAccount.custodian) &&
         Objects.equals(this.accountType, custodianAccount.accountType) &&
-        Objects.equals(this.taxLotSelectionCostBasis, custodianAccount.taxLotSelectionCostBasis);
+        Objects.equals(this.taxLotSelectionCostBasis, custodianAccount.taxLotSelectionCostBasis) &&
+        Objects.equals(this.inactiveFrom, custodianAccount.inactiveFrom);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -344,7 +371,7 @@ public class CustodianAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(custodianAccountId, status, accountNumber, accountName, accountingMethod, currency, properties, custodian, accountType, taxLotSelectionCostBasis);
+    return Objects.hash(custodianAccountId, status, accountNumber, accountName, accountingMethod, currency, properties, custodian, accountType, taxLotSelectionCostBasis, inactiveFrom);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -368,6 +395,7 @@ public class CustodianAccount {
     sb.append("    custodian: ").append(toIndentedString(custodian)).append("\n");
     sb.append("    accountType: ").append(toIndentedString(accountType)).append("\n");
     sb.append("    taxLotSelectionCostBasis: ").append(toIndentedString(taxLotSelectionCostBasis)).append("\n");
+    sb.append("    inactiveFrom: ").append(toIndentedString(inactiveFrom)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -400,6 +428,7 @@ public class CustodianAccount {
     openapiFields.add("custodian");
     openapiFields.add("accountType");
     openapiFields.add("taxLotSelectionCostBasis");
+    openapiFields.add("inactiveFrom");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

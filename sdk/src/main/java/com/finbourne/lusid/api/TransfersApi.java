@@ -612,11 +612,11 @@ public class TransfersApi {
     public APIdeleteTransferRequest deleteTransfer(String scope, String code, String portfolioScopeOut, String portfolioCodeOut, String portfolioScopeIn, String portfolioCodeIn) {
         return new APIdeleteTransferRequest(scope, code, portfolioScopeOut, portfolioCodeOut, portfolioScopeIn, portfolioCodeIn);
     }
-    private okhttp3.Call editTransferCall(EditTransferRequest editTransferRequest, final ApiCallback _callback) throws ApiException {
-        return editTransferCall(editTransferRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call editTransferCall(EditTransferRequest editTransferRequest, Boolean preserveProperties, final ApiCallback _callback) throws ApiException {
+        return editTransferCall(editTransferRequest, preserveProperties,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call editTransferCall(EditTransferRequest editTransferRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call editTransferCall(EditTransferRequest editTransferRequest, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -640,6 +640,10 @@ public class TransfersApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (preserveProperties != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("preserveProperties", preserveProperties));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -667,40 +671,40 @@ public class TransfersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call editTransferValidateBeforeCall(EditTransferRequest editTransferRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call editTransferValidateBeforeCall(EditTransferRequest editTransferRequest, Boolean preserveProperties, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'editTransferRequest' is set
         if (editTransferRequest == null) {
             throw new ApiException("Missing the required parameter 'editTransferRequest' when calling editTransfer(Async)");
         }
 
-        return editTransferCall(editTransferRequest, _callback, opts);
+        return editTransferCall(editTransferRequest, preserveProperties, _callback, opts);
 
     }
 
 
-    private ApiResponse<EditTransferResponse> editTransferWithHttpInfo(EditTransferRequest editTransferRequest) throws ApiException {
-        okhttp3.Call localVarCall = editTransferValidateBeforeCall(editTransferRequest, null, new ConfigurationOptions());
+    private ApiResponse<EditTransferResponse> editTransferWithHttpInfo(EditTransferRequest editTransferRequest, Boolean preserveProperties) throws ApiException {
+        okhttp3.Call localVarCall = editTransferValidateBeforeCall(editTransferRequest, preserveProperties, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<EditTransferResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<EditTransferResponse> editTransferWithHttpInfo(EditTransferRequest editTransferRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = editTransferValidateBeforeCall(editTransferRequest, null, opts);
+    private ApiResponse<EditTransferResponse> editTransferWithHttpInfo(EditTransferRequest editTransferRequest, Boolean preserveProperties, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = editTransferValidateBeforeCall(editTransferRequest, preserveProperties, null, opts);
         Type localVarReturnType = new TypeToken<EditTransferResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call editTransferAsync(EditTransferRequest editTransferRequest, final ApiCallback<EditTransferResponse> _callback) throws ApiException {
+    private okhttp3.Call editTransferAsync(EditTransferRequest editTransferRequest, Boolean preserveProperties, final ApiCallback<EditTransferResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = editTransferValidateBeforeCall(editTransferRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = editTransferValidateBeforeCall(editTransferRequest, preserveProperties, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<EditTransferResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call editTransferAsync(EditTransferRequest editTransferRequest, final ApiCallback<EditTransferResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call editTransferAsync(EditTransferRequest editTransferRequest, Boolean preserveProperties, final ApiCallback<EditTransferResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = editTransferValidateBeforeCall(editTransferRequest, _callback, opts);
+        okhttp3.Call localVarCall = editTransferValidateBeforeCall(editTransferRequest, preserveProperties, _callback, opts);
         Type localVarReturnType = new TypeToken<EditTransferResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -708,9 +712,20 @@ public class TransfersApi {
 
     public class APIeditTransferRequest {
         private final EditTransferRequest editTransferRequest;
+        private Boolean preserveProperties;
 
         private APIeditTransferRequest(EditTransferRequest editTransferRequest) {
             this.editTransferRequest = editTransferRequest;
+        }
+
+        /**
+         * Set preserveProperties
+         * @param preserveProperties If set to false, the entire property set of the transfer and both legs   will be overwritten by the provided properties. If not specified or set to true, only the properties   provided will be updated. (optional, default to true)
+         * @return APIeditTransferRequest
+         */
+        public APIeditTransferRequest preserveProperties(Boolean preserveProperties) {
+            this.preserveProperties = preserveProperties;
+            return this;
         }
 
         /**
@@ -728,7 +743,7 @@ public class TransfersApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return editTransferCall(editTransferRequest, _callback);
+            return editTransferCall(editTransferRequest, preserveProperties, _callback);
         }
 
         /**
@@ -745,7 +760,7 @@ public class TransfersApi {
          </table>
          */
         public EditTransferResponse execute() throws ApiException {
-            ApiResponse<EditTransferResponse> localVarResp = editTransferWithHttpInfo(editTransferRequest);
+            ApiResponse<EditTransferResponse> localVarResp = editTransferWithHttpInfo(editTransferRequest, preserveProperties);
             return localVarResp.getData();
         }
 
@@ -763,7 +778,7 @@ public class TransfersApi {
          </table>
          */
         public EditTransferResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<EditTransferResponse> localVarResp = editTransferWithHttpInfo(editTransferRequest, opts);
+            ApiResponse<EditTransferResponse> localVarResp = editTransferWithHttpInfo(editTransferRequest, preserveProperties, opts);
             return localVarResp.getData();
         }
 
@@ -781,7 +796,7 @@ public class TransfersApi {
          </table>
          */
         public ApiResponse<EditTransferResponse> executeWithHttpInfo() throws ApiException {
-            return editTransferWithHttpInfo(editTransferRequest);
+            return editTransferWithHttpInfo(editTransferRequest, preserveProperties);
         }
 
         /**
@@ -798,7 +813,7 @@ public class TransfersApi {
          </table>
          */
         public ApiResponse<EditTransferResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return editTransferWithHttpInfo(editTransferRequest, opts);
+            return editTransferWithHttpInfo(editTransferRequest, preserveProperties, opts);
         }
 
         /**
@@ -816,7 +831,7 @@ public class TransfersApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<EditTransferResponse> _callback) throws ApiException {
-            return editTransferAsync(editTransferRequest, _callback);
+            return editTransferAsync(editTransferRequest, preserveProperties, _callback);
         }
 
         /**
@@ -834,13 +849,13 @@ public class TransfersApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<EditTransferResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return editTransferAsync(editTransferRequest, _callback, opts);
+            return editTransferAsync(editTransferRequest, preserveProperties, _callback, opts);
         }
     }
 
     /**
      * [EXPERIMENTAL] EditTransfer: Edit a transfer.
-     * Replace an existing transfer with the request, which carries the same fields as a create request and is  validated in the same way. Both transaction legs are rebooked under their existing ids and the Transfer  entity is updated, as a single atomic operation: if any part of the request is rejected, nothing is  changed. A value not supplied is cleared, and the outgoing position is checked with the transfer&#39;s own  outgoing leg counted back in.     A transfer is identified by its scope, its code and both of its portfolios, none of which can be changed.  Where no transfer has that scope and code between those portfolios, the request is reported as not found.
+     * Replace an existing transfer with the request, which carries the same fields as a create request and is  validated in the same way. Both transaction legs are rebooked under their existing ids and the Transfer  entity is updated, as a single atomic operation: if any part of the request is rejected, nothing is  changed. A field not supplied is cleared, and the outgoing position is checked with the transfer&#39;s own  outgoing leg counted back in.     Properties are treated separately from fields: by default, a property not supplied is kept on the  transfer or leg that holds it, and only the properties supplied are updated. Set preserveProperties to  false to replace the whole property set of the transfer and both legs with the ones supplied.     A transfer is identified by its scope, its code and both of its portfolios, none of which can be changed.  Where no transfer has that scope and code between those portfolios, the request is reported as not found.
      * @param editTransferRequest The transfer as it should now stand. (required)
      * @return APIeditTransferRequest
      * @http.response.details

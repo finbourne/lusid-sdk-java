@@ -277,7 +277,9 @@ public enum InstrumentEventType {
   
   CAPITALISATIONEVENT("CapitalisationEvent"),
   
-  SHARESPREMIUMDIVIDENDEVENT("SharesPremiumDividendEvent");
+  SHARESPREMIUMDIVIDENDEVENT("SharesPremiumDividendEvent"),
+  
+  CASHDISTRIBUTIONFROMNONELIGIBLESECURITIESSALESEVENT("CashDistributionFromNonEligibleSecuritiesSalesEvent");
 
   private String value;
 

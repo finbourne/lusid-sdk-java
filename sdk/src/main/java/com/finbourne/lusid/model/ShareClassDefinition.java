@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.ShareClassRoundingConvention;
 import com.finbourne.lusid.model.SimpleRoundingConvention;
 import com.finbourne.lusid.model.TimeZoneConventions;
 import com.finbourne.lusid.model.TradingConventions;
@@ -106,7 +107,7 @@ public class ShareClassDefinition {
 
   public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS_PRICE = "roundingConventionsPrice";
   @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS_PRICE)
-  private List<SimpleRoundingConvention> roundingConventionsPrice;
+  private List<ShareClassRoundingConvention> roundingConventionsPrice;
 
   public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS_UNITS = "roundingConventionsUnits";
   @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS_UNITS)
@@ -378,13 +379,13 @@ public class ShareClassDefinition {
   }
 
 
-  public ShareClassDefinition roundingConventionsPrice(List<SimpleRoundingConvention> roundingConventionsPrice) {
+  public ShareClassDefinition roundingConventionsPrice(List<ShareClassRoundingConvention> roundingConventionsPrice) {
     
     this.roundingConventionsPrice = roundingConventionsPrice;
     return this;
   }
 
-  public ShareClassDefinition addRoundingConventionsPriceItem(SimpleRoundingConvention roundingConventionsPriceItem) {
+  public ShareClassDefinition addRoundingConventionsPriceItem(ShareClassRoundingConvention roundingConventionsPriceItem) {
     if (this.roundingConventionsPrice == null) {
       this.roundingConventionsPrice = new ArrayList<>();
     }
@@ -397,12 +398,12 @@ public class ShareClassDefinition {
    * @return roundingConventionsPrice
   **/
   @jakarta.annotation.Nullable
-  public List<SimpleRoundingConvention> getRoundingConventionsPrice() {
+  public List<ShareClassRoundingConvention> getRoundingConventionsPrice() {
     return roundingConventionsPrice;
   }
 
 
-  public void setRoundingConventionsPrice(List<SimpleRoundingConvention> roundingConventionsPrice) {
+  public void setRoundingConventionsPrice(List<ShareClassRoundingConvention> roundingConventionsPrice) {
     this.roundingConventionsPrice = roundingConventionsPrice;
   }
 
@@ -687,7 +688,7 @@ public class ShareClassDefinition {
 
           // validate the optional field `roundingConventionsPrice` (array)
           for (int i = 0; i < jsonArrayroundingConventionsPrice.size(); i++) {
-            SimpleRoundingConvention.validateJsonElement(jsonArrayroundingConventionsPrice.get(i));
+            ShareClassRoundingConvention.validateJsonElement(jsonArrayroundingConventionsPrice.get(i));
           };
         }
       }

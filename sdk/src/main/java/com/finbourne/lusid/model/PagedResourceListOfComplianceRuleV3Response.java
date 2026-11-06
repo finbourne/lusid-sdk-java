@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.CashFlowDetail;
+import com.finbourne.lusid.model.ComplianceRuleV3Response;
 import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -51,13 +51,21 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * ResourceListOfCashFlowDetail
+ * PagedResourceListOfComplianceRuleV3Response
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ResourceListOfCashFlowDetail {
+public class PagedResourceListOfComplianceRuleV3Response {
+  public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
+  @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
+  private String nextPage;
+
+  public static final String SERIALIZED_NAME_PREVIOUS_PAGE = "previousPage";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
+  private String previousPage;
+
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<CashFlowDetail> values = new ArrayList<>();
+  private List<ComplianceRuleV3Response> values = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -67,24 +75,58 @@ public class ResourceListOfCashFlowDetail {
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
-  public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
-  @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
-  private String nextPage;
-
-  public static final String SERIALIZED_NAME_PREVIOUS_PAGE = "previousPage";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
-  private String previousPage;
-
-  public ResourceListOfCashFlowDetail() {
+  public PagedResourceListOfComplianceRuleV3Response() {
   }
 
-  public ResourceListOfCashFlowDetail values(List<CashFlowDetail> values) {
+  public PagedResourceListOfComplianceRuleV3Response nextPage(String nextPage) {
+    
+    this.nextPage = nextPage;
+    return this;
+  }
+
+   /**
+   * Get nextPage
+   * @return nextPage
+  **/
+  @jakarta.annotation.Nullable
+  public String getNextPage() {
+    return nextPage;
+  }
+
+
+  public void setNextPage(String nextPage) {
+    this.nextPage = nextPage;
+  }
+
+
+  public PagedResourceListOfComplianceRuleV3Response previousPage(String previousPage) {
+    
+    this.previousPage = previousPage;
+    return this;
+  }
+
+   /**
+   * Get previousPage
+   * @return previousPage
+  **/
+  @jakarta.annotation.Nullable
+  public String getPreviousPage() {
+    return previousPage;
+  }
+
+
+  public void setPreviousPage(String previousPage) {
+    this.previousPage = previousPage;
+  }
+
+
+  public PagedResourceListOfComplianceRuleV3Response values(List<ComplianceRuleV3Response> values) {
     
     this.values = values;
     return this;
   }
 
-  public ResourceListOfCashFlowDetail addValuesItem(CashFlowDetail valuesItem) {
+  public PagedResourceListOfComplianceRuleV3Response addValuesItem(ComplianceRuleV3Response valuesItem) {
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -97,17 +139,17 @@ public class ResourceListOfCashFlowDetail {
    * @return values
   **/
   @jakarta.annotation.Nonnull
-  public List<CashFlowDetail> getValues() {
+  public List<ComplianceRuleV3Response> getValues() {
     return values;
   }
 
 
-  public void setValues(List<CashFlowDetail> values) {
+  public void setValues(List<ComplianceRuleV3Response> values) {
     this.values = values;
   }
 
 
-  public ResourceListOfCashFlowDetail href(URI href) {
+  public PagedResourceListOfComplianceRuleV3Response href(URI href) {
     
     this.href = href;
     return this;
@@ -128,13 +170,13 @@ public class ResourceListOfCashFlowDetail {
   }
 
 
-  public ResourceListOfCashFlowDetail links(List<Link> links) {
+  public PagedResourceListOfComplianceRuleV3Response links(List<Link> links) {
     
     this.links = links;
     return this;
   }
 
-  public ResourceListOfCashFlowDetail addLinksItem(Link linksItem) {
+  public PagedResourceListOfComplianceRuleV3Response addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -157,48 +199,6 @@ public class ResourceListOfCashFlowDetail {
   }
 
 
-  public ResourceListOfCashFlowDetail nextPage(String nextPage) {
-    
-    this.nextPage = nextPage;
-    return this;
-  }
-
-   /**
-   * Get nextPage
-   * @return nextPage
-  **/
-  @jakarta.annotation.Nullable
-  public String getNextPage() {
-    return nextPage;
-  }
-
-
-  public void setNextPage(String nextPage) {
-    this.nextPage = nextPage;
-  }
-
-
-  public ResourceListOfCashFlowDetail previousPage(String previousPage) {
-    
-    this.previousPage = previousPage;
-    return this;
-  }
-
-   /**
-   * Get previousPage
-   * @return previousPage
-  **/
-  @jakarta.annotation.Nullable
-  public String getPreviousPage() {
-    return previousPage;
-  }
-
-
-  public void setPreviousPage(String previousPage) {
-    this.previousPage = previousPage;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -208,12 +208,12 @@ public class ResourceListOfCashFlowDetail {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResourceListOfCashFlowDetail resourceListOfCashFlowDetail = (ResourceListOfCashFlowDetail) o;
-    return Objects.equals(this.values, resourceListOfCashFlowDetail.values) &&
-        Objects.equals(this.href, resourceListOfCashFlowDetail.href) &&
-        Objects.equals(this.links, resourceListOfCashFlowDetail.links) &&
-        Objects.equals(this.nextPage, resourceListOfCashFlowDetail.nextPage) &&
-        Objects.equals(this.previousPage, resourceListOfCashFlowDetail.previousPage);
+    PagedResourceListOfComplianceRuleV3Response pagedResourceListOfComplianceRuleV3Response = (PagedResourceListOfComplianceRuleV3Response) o;
+    return Objects.equals(this.nextPage, pagedResourceListOfComplianceRuleV3Response.nextPage) &&
+        Objects.equals(this.previousPage, pagedResourceListOfComplianceRuleV3Response.previousPage) &&
+        Objects.equals(this.values, pagedResourceListOfComplianceRuleV3Response.values) &&
+        Objects.equals(this.href, pagedResourceListOfComplianceRuleV3Response.href) &&
+        Objects.equals(this.links, pagedResourceListOfComplianceRuleV3Response.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -222,7 +222,7 @@ public class ResourceListOfCashFlowDetail {
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, href, links, nextPage, previousPage);
+    return Objects.hash(nextPage, previousPage, values, href, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -235,12 +235,12 @@ public class ResourceListOfCashFlowDetail {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceListOfCashFlowDetail {\n");
+    sb.append("class PagedResourceListOfComplianceRuleV3Response {\n");
+    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
+    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
-    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -263,11 +263,11 @@ public class ResourceListOfCashFlowDetail {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("nextPage");
+    openapiFields.add("previousPage");
     openapiFields.add("values");
     openapiFields.add("href");
     openapiFields.add("links");
-    openapiFields.add("nextPage");
-    openapiFields.add("previousPage");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -278,22 +278,28 @@ public class ResourceListOfCashFlowDetail {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ResourceListOfCashFlowDetail
+  * @throws IOException if the JSON Element is invalid with respect to PagedResourceListOfComplianceRuleV3Response
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ResourceListOfCashFlowDetail.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ResourceListOfCashFlowDetail is not found in the empty JSON string", ResourceListOfCashFlowDetail.openapiRequiredFields.toString()));
+        if (!PagedResourceListOfComplianceRuleV3Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PagedResourceListOfComplianceRuleV3Response is not found in the empty JSON string", PagedResourceListOfComplianceRuleV3Response.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ResourceListOfCashFlowDetail.openapiRequiredFields) {
+      for (String requiredField : PagedResourceListOfComplianceRuleV3Response.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("nextPage") != null && !jsonObj.get("nextPage").isJsonNull()) && !jsonObj.get("nextPage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `nextPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPage").toString()));
+      }
+      if ((jsonObj.get("previousPage") != null && !jsonObj.get("previousPage").isJsonNull()) && !jsonObj.get("previousPage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `previousPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousPage").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("values").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
@@ -302,7 +308,7 @@ public class ResourceListOfCashFlowDetail {
       JsonArray jsonArrayvalues = jsonObj.getAsJsonArray("values");
       // validate the required field `values` (array)
       for (int i = 0; i < jsonArrayvalues.size(); i++) {
-        CashFlowDetail.validateJsonElement(jsonArrayvalues.get(i));
+        ComplianceRuleV3Response.validateJsonElement(jsonArrayvalues.get(i));
       };
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
@@ -321,34 +327,28 @@ public class ResourceListOfCashFlowDetail {
           };
         }
       }
-      if ((jsonObj.get("nextPage") != null && !jsonObj.get("nextPage").isJsonNull()) && !jsonObj.get("nextPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nextPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPage").toString()));
-      }
-      if ((jsonObj.get("previousPage") != null && !jsonObj.get("previousPage").isJsonNull()) && !jsonObj.get("previousPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `previousPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousPage").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ResourceListOfCashFlowDetail.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ResourceListOfCashFlowDetail' and its subtypes
+       if (!PagedResourceListOfComplianceRuleV3Response.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PagedResourceListOfComplianceRuleV3Response' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ResourceListOfCashFlowDetail> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ResourceListOfCashFlowDetail.class));
+       final TypeAdapter<PagedResourceListOfComplianceRuleV3Response> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PagedResourceListOfComplianceRuleV3Response.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ResourceListOfCashFlowDetail>() {
+       return (TypeAdapter<T>) new TypeAdapter<PagedResourceListOfComplianceRuleV3Response>() {
            @Override
-           public void write(JsonWriter out, ResourceListOfCashFlowDetail value) throws IOException {
+           public void write(JsonWriter out, PagedResourceListOfComplianceRuleV3Response value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ResourceListOfCashFlowDetail read(JsonReader in) throws IOException {
+           public PagedResourceListOfComplianceRuleV3Response read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -359,18 +359,18 @@ public class ResourceListOfCashFlowDetail {
   }
 
  /**
-  * Create an instance of ResourceListOfCashFlowDetail given an JSON string
+  * Create an instance of PagedResourceListOfComplianceRuleV3Response given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ResourceListOfCashFlowDetail
-  * @throws IOException if the JSON string is invalid with respect to ResourceListOfCashFlowDetail
+  * @return An instance of PagedResourceListOfComplianceRuleV3Response
+  * @throws IOException if the JSON string is invalid with respect to PagedResourceListOfComplianceRuleV3Response
   */
-  public static ResourceListOfCashFlowDetail fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ResourceListOfCashFlowDetail.class);
+  public static PagedResourceListOfComplianceRuleV3Response fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PagedResourceListOfComplianceRuleV3Response.class);
   }
 
  /**
-  * Convert an instance of ResourceListOfCashFlowDetail to an JSON string
+  * Convert an instance of PagedResourceListOfComplianceRuleV3Response to an JSON string
   *
   * @return JSON string
   */

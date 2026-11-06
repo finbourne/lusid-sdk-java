@@ -11,6 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.CollateralFundingTerms;
+import com.finbourne.lusid.model.CollateralOptimisationTerms;
 import com.finbourne.lusid.model.CounterpartyIdentifier;
 import com.finbourne.lusid.model.MarginItem;
 import com.finbourne.lusid.model.MarginRounding;
@@ -96,6 +98,14 @@ public class UpsertCollateralAgreementRequest {
   public static final String SERIALIZED_NAME_MATCH_TOLERANCE = "matchTolerance";
   @SerializedName(SERIALIZED_NAME_MATCH_TOLERANCE)
   private java.math.BigDecimal matchTolerance;
+
+  public static final String SERIALIZED_NAME_FUNDING = "funding";
+  @SerializedName(SERIALIZED_NAME_FUNDING)
+  private CollateralFundingTerms funding;
+
+  public static final String SERIALIZED_NAME_OPTIMISATION = "optimisation";
+  @SerializedName(SERIALIZED_NAME_OPTIMISATION)
+  private CollateralOptimisationTerms optimisation;
 
   public static final String SERIALIZED_NAME_VARIATION_MARGIN = "variationMargin";
   @SerializedName(SERIALIZED_NAME_VARIATION_MARGIN)
@@ -305,6 +315,48 @@ public class UpsertCollateralAgreementRequest {
   }
 
 
+  public UpsertCollateralAgreementRequest funding(CollateralFundingTerms funding) {
+    
+    this.funding = funding;
+    return this;
+  }
+
+   /**
+   * Get funding
+   * @return funding
+  **/
+  @jakarta.annotation.Nullable
+  public CollateralFundingTerms getFunding() {
+    return funding;
+  }
+
+
+  public void setFunding(CollateralFundingTerms funding) {
+    this.funding = funding;
+  }
+
+
+  public UpsertCollateralAgreementRequest optimisation(CollateralOptimisationTerms optimisation) {
+    
+    this.optimisation = optimisation;
+    return this;
+  }
+
+   /**
+   * Get optimisation
+   * @return optimisation
+  **/
+  @jakarta.annotation.Nullable
+  public CollateralOptimisationTerms getOptimisation() {
+    return optimisation;
+  }
+
+
+  public void setOptimisation(CollateralOptimisationTerms optimisation) {
+    this.optimisation = optimisation;
+  }
+
+
   public UpsertCollateralAgreementRequest variationMargin(List<MarginItem> variationMargin) {
     
     this.variationMargin = variationMargin;
@@ -432,6 +484,8 @@ public class UpsertCollateralAgreementRequest {
         Objects.equals(this.rounding, upsertCollateralAgreementRequest.rounding) &&
         Objects.equals(this.settlementLag, upsertCollateralAgreementRequest.settlementLag) &&
         (this.matchTolerance.compareTo(upsertCollateralAgreementRequest.getMatchTolerance()) == 0) &&
+        Objects.equals(this.funding, upsertCollateralAgreementRequest.funding) &&
+        Objects.equals(this.optimisation, upsertCollateralAgreementRequest.optimisation) &&
         Objects.equals(this.variationMargin, upsertCollateralAgreementRequest.variationMargin) &&
         Objects.equals(this.initialMargin, upsertCollateralAgreementRequest.initialMargin) &&
         Objects.equals(this.properties, upsertCollateralAgreementRequest.properties) &&
@@ -444,7 +498,7 @@ public class UpsertCollateralAgreementRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(counterpartyId, applicabilityFilter, baseCurrency, cutLabel, recipeId, minimumTransferAmount, rounding, settlementLag, matchTolerance, variationMargin, initialMargin, properties, effectiveAt);
+    return Objects.hash(counterpartyId, applicabilityFilter, baseCurrency, cutLabel, recipeId, minimumTransferAmount, rounding, settlementLag, matchTolerance, funding, optimisation, variationMargin, initialMargin, properties, effectiveAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -467,6 +521,8 @@ public class UpsertCollateralAgreementRequest {
     sb.append("    rounding: ").append(toIndentedString(rounding)).append("\n");
     sb.append("    settlementLag: ").append(toIndentedString(settlementLag)).append("\n");
     sb.append("    matchTolerance: ").append(toIndentedString(matchTolerance)).append("\n");
+    sb.append("    funding: ").append(toIndentedString(funding)).append("\n");
+    sb.append("    optimisation: ").append(toIndentedString(optimisation)).append("\n");
     sb.append("    variationMargin: ").append(toIndentedString(variationMargin)).append("\n");
     sb.append("    initialMargin: ").append(toIndentedString(initialMargin)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
@@ -502,6 +558,8 @@ public class UpsertCollateralAgreementRequest {
     openapiFields.add("rounding");
     openapiFields.add("settlementLag");
     openapiFields.add("matchTolerance");
+    openapiFields.add("funding");
+    openapiFields.add("optimisation");
     openapiFields.add("variationMargin");
     openapiFields.add("initialMargin");
     openapiFields.add("properties");
@@ -555,6 +613,14 @@ public class UpsertCollateralAgreementRequest {
       MarginRounding.validateJsonElement(jsonObj.get("rounding"));
       // validate the required field `settlementLag`
       MarginSettlementLag.validateJsonElement(jsonObj.get("settlementLag"));
+      // validate the optional field `funding`
+      if (jsonObj.get("funding") != null && !jsonObj.get("funding").isJsonNull()) {
+        CollateralFundingTerms.validateJsonElement(jsonObj.get("funding"));
+      }
+      // validate the optional field `optimisation`
+      if (jsonObj.get("optimisation") != null && !jsonObj.get("optimisation").isJsonNull()) {
+        CollateralOptimisationTerms.validateJsonElement(jsonObj.get("optimisation"));
+      }
       if (jsonObj.get("variationMargin") != null && !jsonObj.get("variationMargin").isJsonNull()) {
         JsonArray jsonArrayvariationMargin = jsonObj.getAsJsonArray("variationMargin");
         if (jsonArrayvariationMargin != null) {

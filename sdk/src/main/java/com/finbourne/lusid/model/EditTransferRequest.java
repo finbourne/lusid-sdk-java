@@ -147,9 +147,9 @@ public class EditTransferRequest {
   @SerializedName(SERIALIZED_NAME_CUSTODIAN_ACCOUNT_ID_IN)
   private ResourceId custodianAccountIdIn;
 
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private String source;
+  public static final String SERIALIZED_NAME_SOURCE_OUT = "sourceOut";
+  @SerializedName(SERIALIZED_NAME_SOURCE_OUT)
+  private String sourceOut;
 
   public static final String SERIALIZED_NAME_ACCOUNTING_METHOD = "accountingMethod";
   @SerializedName(SERIALIZED_NAME_ACCOUNTING_METHOD)
@@ -174,6 +174,18 @@ public class EditTransferRequest {
   public static final String SERIALIZED_NAME_TRANSACTION_TO_PORTFOLIO_RATE_IN = "transactionToPortfolioRateIn";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_TO_PORTFOLIO_RATE_IN)
   private java.math.BigDecimal transactionToPortfolioRateIn;
+
+  public static final String SERIALIZED_NAME_SOURCE_IN = "sourceIn";
+  @SerializedName(SERIALIZED_NAME_SOURCE_IN)
+  private String sourceIn;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_TYPE_OUT = "transactionTypeOut";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE_OUT)
+  private String transactionTypeOut;
+
+  public static final String SERIALIZED_NAME_TRANSACTION_TYPE_IN = "transactionTypeIn";
+  @SerializedName(SERIALIZED_NAME_TRANSACTION_TYPE_IN)
+  private String transactionTypeIn;
 
   public EditTransferRequest() {
   }
@@ -661,24 +673,24 @@ public class EditTransferRequest {
   }
 
 
-  public EditTransferRequest source(String source) {
+  public EditTransferRequest sourceOut(String sourceOut) {
     
-    this.source = source;
+    this.sourceOut = sourceOut;
     return this;
   }
 
    /**
-   * The transaction source the generated legs are booked against.
-   * @return source
+   * The transaction source the outgoing leg is booked against, and the incoming leg too when SourceIn is not supplied. Defaults to &#39;default&#39;.
+   * @return sourceOut
   **/
-  @jakarta.annotation.Nonnull
-  public String getSource() {
-    return source;
+  @jakarta.annotation.Nullable
+  public String getSourceOut() {
+    return sourceOut;
   }
 
 
-  public void setSource(String source) {
-    this.source = source;
+  public void setSourceOut(String sourceOut) {
+    this.sourceOut = sourceOut;
   }
 
 
@@ -832,6 +844,69 @@ public class EditTransferRequest {
   }
 
 
+  public EditTransferRequest sourceIn(String sourceIn) {
+    
+    this.sourceIn = sourceIn;
+    return this;
+  }
+
+   /**
+   * The transaction source the incoming leg is booked against. Defaults to SourceOut.
+   * @return sourceIn
+  **/
+  @jakarta.annotation.Nullable
+  public String getSourceIn() {
+    return sourceIn;
+  }
+
+
+  public void setSourceIn(String sourceIn) {
+    this.sourceIn = sourceIn;
+  }
+
+
+  public EditTransferRequest transactionTypeOut(String transactionTypeOut) {
+    
+    this.transactionTypeOut = transactionTypeOut;
+    return this;
+  }
+
+   /**
+   * The transaction type to book the outgoing leg as. Supply it together with TransactionTypeIn, or supply neither. If not supplied, it will be derived from the transfer type. It must be a different type from TransactionTypeIn, must be configured under SourceOut in the transaction type scope of PortfolioIdOut, and must reduce a position.
+   * @return transactionTypeOut
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionTypeOut() {
+    return transactionTypeOut;
+  }
+
+
+  public void setTransactionTypeOut(String transactionTypeOut) {
+    this.transactionTypeOut = transactionTypeOut;
+  }
+
+
+  public EditTransferRequest transactionTypeIn(String transactionTypeIn) {
+    
+    this.transactionTypeIn = transactionTypeIn;
+    return this;
+  }
+
+   /**
+   * The transaction type to book the incoming leg as. Supply it together with TransactionTypeOut, or supply neither. If not supplied, it will be derived from the transfer type. It must be configured under SourceIn in the transaction type scope of PortfolioIdIn, and must increase a position.
+   * @return transactionTypeIn
+  **/
+  @jakarta.annotation.Nullable
+  public String getTransactionTypeIn() {
+    return transactionTypeIn;
+  }
+
+
+  public void setTransactionTypeIn(String transactionTypeIn) {
+    this.transactionTypeIn = transactionTypeIn;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -865,13 +940,16 @@ public class EditTransferRequest {
         Objects.equals(this.counterpartyIdIn, editTransferRequest.counterpartyIdIn) &&
         Objects.equals(this.custodianAccountIdOut, editTransferRequest.custodianAccountIdOut) &&
         Objects.equals(this.custodianAccountIdIn, editTransferRequest.custodianAccountIdIn) &&
-        Objects.equals(this.source, editTransferRequest.source) &&
+        Objects.equals(this.sourceOut, editTransferRequest.sourceOut) &&
         Objects.equals(this.accountingMethod, editTransferRequest.accountingMethod) &&
         Objects.equals(this.propertiesOut, editTransferRequest.propertiesOut) &&
         Objects.equals(this.propertiesIn, editTransferRequest.propertiesIn) &&
         Objects.equals(this.properties, editTransferRequest.properties) &&
         (this.transactionToPortfolioRateOut.compareTo(editTransferRequest.getTransactionToPortfolioRateOut()) == 0) &&
-        (this.transactionToPortfolioRateIn.compareTo(editTransferRequest.getTransactionToPortfolioRateIn()) == 0);
+        (this.transactionToPortfolioRateIn.compareTo(editTransferRequest.getTransactionToPortfolioRateIn()) == 0) &&
+        Objects.equals(this.sourceIn, editTransferRequest.sourceIn) &&
+        Objects.equals(this.transactionTypeOut, editTransferRequest.transactionTypeOut) &&
+        Objects.equals(this.transactionTypeIn, editTransferRequest.transactionTypeIn);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -880,7 +958,7 @@ public class EditTransferRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transferId, portfolioIdOut, portfolioIdIn, instrumentIdentifierOut, instrumentIdentifierIn, pricingMethod, taxLotStructure, unitsOut, unitsIn, amountOut, weightOut, tradeDateOut, tradeDateIn, settlementDateOut, settlementDateIn, exchangeRateOut, exchangeRateIn, transactionPriceOut, transactionPriceIn, counterpartyIdOut, counterpartyIdIn, custodianAccountIdOut, custodianAccountIdIn, source, accountingMethod, propertiesOut, propertiesIn, properties, transactionToPortfolioRateOut, transactionToPortfolioRateIn);
+    return Objects.hash(transferId, portfolioIdOut, portfolioIdIn, instrumentIdentifierOut, instrumentIdentifierIn, pricingMethod, taxLotStructure, unitsOut, unitsIn, amountOut, weightOut, tradeDateOut, tradeDateIn, settlementDateOut, settlementDateIn, exchangeRateOut, exchangeRateIn, transactionPriceOut, transactionPriceIn, counterpartyIdOut, counterpartyIdIn, custodianAccountIdOut, custodianAccountIdIn, sourceOut, accountingMethod, propertiesOut, propertiesIn, properties, transactionToPortfolioRateOut, transactionToPortfolioRateIn, sourceIn, transactionTypeOut, transactionTypeIn);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -917,13 +995,16 @@ public class EditTransferRequest {
     sb.append("    counterpartyIdIn: ").append(toIndentedString(counterpartyIdIn)).append("\n");
     sb.append("    custodianAccountIdOut: ").append(toIndentedString(custodianAccountIdOut)).append("\n");
     sb.append("    custodianAccountIdIn: ").append(toIndentedString(custodianAccountIdIn)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    sourceOut: ").append(toIndentedString(sourceOut)).append("\n");
     sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
     sb.append("    propertiesOut: ").append(toIndentedString(propertiesOut)).append("\n");
     sb.append("    propertiesIn: ").append(toIndentedString(propertiesIn)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    transactionToPortfolioRateOut: ").append(toIndentedString(transactionToPortfolioRateOut)).append("\n");
     sb.append("    transactionToPortfolioRateIn: ").append(toIndentedString(transactionToPortfolioRateIn)).append("\n");
+    sb.append("    sourceIn: ").append(toIndentedString(sourceIn)).append("\n");
+    sb.append("    transactionTypeOut: ").append(toIndentedString(transactionTypeOut)).append("\n");
+    sb.append("    transactionTypeIn: ").append(toIndentedString(transactionTypeIn)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -969,13 +1050,16 @@ public class EditTransferRequest {
     openapiFields.add("counterpartyIdIn");
     openapiFields.add("custodianAccountIdOut");
     openapiFields.add("custodianAccountIdIn");
-    openapiFields.add("source");
+    openapiFields.add("sourceOut");
     openapiFields.add("accountingMethod");
     openapiFields.add("propertiesOut");
     openapiFields.add("propertiesIn");
     openapiFields.add("properties");
     openapiFields.add("transactionToPortfolioRateOut");
     openapiFields.add("transactionToPortfolioRateIn");
+    openapiFields.add("sourceIn");
+    openapiFields.add("transactionTypeOut");
+    openapiFields.add("transactionTypeIn");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -990,7 +1074,6 @@ public class EditTransferRequest {
     openapiRequiredFields.add("tradeDateOut");
     openapiRequiredFields.add("tradeDateIn");
     openapiRequiredFields.add("settlementDateOut");
-    openapiRequiredFields.add("source");
   }
 
  /**
@@ -1045,11 +1128,20 @@ public class EditTransferRequest {
       if (jsonObj.get("custodianAccountIdIn") != null && !jsonObj.get("custodianAccountIdIn").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("custodianAccountIdIn"));
       }
-      if (!jsonObj.get("source").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `source` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source").toString()));
+      if ((jsonObj.get("sourceOut") != null && !jsonObj.get("sourceOut").isJsonNull()) && !jsonObj.get("sourceOut").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sourceOut` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceOut").toString()));
       }
       if ((jsonObj.get("accountingMethod") != null && !jsonObj.get("accountingMethod").isJsonNull()) && !jsonObj.get("accountingMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `accountingMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountingMethod").toString()));
+      }
+      if ((jsonObj.get("sourceIn") != null && !jsonObj.get("sourceIn").isJsonNull()) && !jsonObj.get("sourceIn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sourceIn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceIn").toString()));
+      }
+      if ((jsonObj.get("transactionTypeOut") != null && !jsonObj.get("transactionTypeOut").isJsonNull()) && !jsonObj.get("transactionTypeOut").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionTypeOut` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionTypeOut").toString()));
+      }
+      if ((jsonObj.get("transactionTypeIn") != null && !jsonObj.get("transactionTypeIn").isJsonNull()) && !jsonObj.get("transactionTypeIn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `transactionTypeIn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionTypeIn").toString()));
       }
   }
 

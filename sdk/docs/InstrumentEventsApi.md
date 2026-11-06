@@ -112,7 +112,7 @@ public class InstrumentEventsApiExample {
 
 ## queryBucketCashFlowDrillDown
 
-> ResourceListOfCashFlowDetail queryBucketCashFlowDrillDown(queryBucketCashFlowDrillDownRequest)
+> BucketCashFlowDrillDownResponse queryBucketCashFlowDrillDown(queryBucketCashFlowDrillDownRequest)
 
 QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage.
 
@@ -160,9 +160,9 @@ public class InstrumentEventsApiExample {
         QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequest = new QueryBucketCashFlowDrillDownRequest(); // QueryBucketCashFlowDrillDownRequest | The Query Information.
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfCashFlowDetail result = apiInstance.queryBucketCashFlowDrillDown(queryBucketCashFlowDrillDownRequest).execute(opts);
+            // BucketCashFlowDrillDownResponse result = apiInstance.queryBucketCashFlowDrillDown(queryBucketCashFlowDrillDownRequest).execute(opts);
 
-            ResourceListOfCashFlowDetail result = apiInstance.queryBucketCashFlowDrillDown(queryBucketCashFlowDrillDownRequest).execute();
+            BucketCashFlowDrillDownResponse result = apiInstance.queryBucketCashFlowDrillDown(queryBucketCashFlowDrillDownRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling InstrumentEventsApi#queryBucketCashFlowDrillDown");
@@ -183,7 +183,7 @@ public class InstrumentEventsApiExample {
 
 ### Return type
 
-[**ResourceListOfCashFlowDetail**](ResourceListOfCashFlowDetail.md)
+[**BucketCashFlowDrillDownResponse**](BucketCashFlowDrillDownResponse.md)
 
 ### HTTP request headers
 
@@ -194,7 +194,7 @@ public class InstrumentEventsApiExample {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The individual cashflows inside the requested bucket. |  -  |
+| **200** | The individual cashflows inside the requested bucket, with the bucket&#39;s balances. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

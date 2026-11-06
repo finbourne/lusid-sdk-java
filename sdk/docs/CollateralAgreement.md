@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **rounding** | [**MarginRounding**](MarginRounding.md) |  | [optional] [default to MarginRounding]
 **settlementLag** | [**MarginSettlementLag**](MarginSettlementLag.md) |  | [optional] [default to MarginSettlementLag]
 **matchTolerance** | **java.math.BigDecimal** | The tolerance within which our margin figure and the counterparty&#39;s are considered to match. Optional. | [optional] [default to java.math.BigDecimal]
+**funding** | [**CollateralFundingTerms**](CollateralFundingTerms.md) |  | [optional] [default to CollateralFundingTerms]
+**optimisation** | [**CollateralOptimisationTerms**](CollateralOptimisationTerms.md) |  | [optional] [default to CollateralOptimisationTerms]
 **variationMargin** | [**List&lt;MarginItem&gt;**](MarginItem.md) | The variation margin arrangements under the agreement. | [optional] [default to List<MarginItem>]
 **initialMargin** | [**List&lt;MarginItem&gt;**](MarginItem.md) | The initial margin arrangements under the agreement. | [optional] [default to List<MarginItem>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
@@ -39,6 +41,8 @@ ResourceId RecipeId = new ResourceId();
 MarginRounding Rounding = new MarginRounding();
 MarginSettlementLag SettlementLag = new MarginSettlementLag();
 @jakarta.annotation.Nullable java.math.BigDecimal MatchTolerance = new java.math.BigDecimal("100.00");
+CollateralFundingTerms Funding = new CollateralFundingTerms();
+CollateralOptimisationTerms Optimisation = new CollateralOptimisationTerms();
 @jakarta.annotation.Nullable List<MarginItem> VariationMargin = new List<MarginItem>();
 @jakarta.annotation.Nullable List<MarginItem> InitialMargin = new List<MarginItem>();
 Version Version = new Version();
@@ -58,6 +62,8 @@ CollateralAgreement collateralAgreementInstance = new CollateralAgreement()
     .Rounding(Rounding)
     .SettlementLag(SettlementLag)
     .MatchTolerance(MatchTolerance)
+    .Funding(Funding)
+    .Optimisation(Optimisation)
     .VariationMargin(VariationMargin)
     .InitialMargin(InitialMargin)
     .Version(Version)

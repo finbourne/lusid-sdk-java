@@ -373,7 +373,7 @@ public class UpdateMatchingRulesetRequest {
   }
 
    /**
-   * Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself.
+   * Supplemental attributes that decorate reconciliation results with additional values without participating in the reconciliation itself. Each attribute&#39;s formulas are compiled and evaluated as a rule&#39;s are, so both must return the same value type.
    * @return supplementalAttributes
   **/
   @jakarta.annotation.Nullable

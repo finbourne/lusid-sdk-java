@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReferenceList {
   /**
-   * The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.
+   * The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList, FilteredPortfolioIdList.
    */
   @JsonAdapter(ReferenceListTypeEnum.Adapter.class)
   public enum ReferenceListTypeEnum {
@@ -70,7 +70,9 @@ public class ReferenceList {
     
     FUNDIDLIST("FundIdList"),
     
-    FILTEREDFUNDIDLIST("FilteredFundIdList");
+    FILTEREDFUNDIDLIST("FilteredFundIdList"),
+    
+    FILTEREDPORTFOLIOIDLIST("FilteredPortfolioIdList");
 
     private String value;
 
@@ -124,7 +126,7 @@ public class ReferenceList {
   }
 
    /**
-   * The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList.
+   * The reference list values. Available values: PortfolioGroupIdList, PortfolioIdList, AddressKeyList, StringList, InstrumentList, DecimalList, PropertyList, FundIdList, FilteredFundIdList, FilteredPortfolioIdList.
    * @return referenceListType
   **/
   @jakarta.annotation.Nonnull
@@ -213,6 +215,9 @@ public class ReferenceList {
           break;
         case "FilteredFundIdList":
           FilteredFundIdList.validateJsonElement(jsonElement);
+          break;
+        case "FilteredPortfolioIdList":
+          FilteredPortfolioIdList.validateJsonElement(jsonElement);
           break;
         case "FundIdList":
           FundIdList.validateJsonElement(jsonElement);

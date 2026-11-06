@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **distributionType** | **String** | The type of distribution the ShareClass will calculate. Available values: Income, Accumulation. | [optional] [default to String]
 **domCcy** | **String** | The domestic currency of the ShareClass instrument. | [default to String]
 **tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
-**roundingConventionsPrice** | [**List&lt;SimpleRoundingConvention&gt;**](SimpleRoundingConvention.md) | Rounding conventions used for the ShareClass quotes. | [optional] [default to List<SimpleRoundingConvention>]
+**roundingConventionsPrice** | [**List&lt;ShareClassRoundingConvention&gt;**](ShareClassRoundingConvention.md) | Rounding conventions used for the ShareClass quotes. | [optional] [default to List<ShareClassRoundingConvention>]
 **roundingConventionsUnits** | [**List&lt;SimpleRoundingConvention&gt;**](SimpleRoundingConvention.md) | Rounding conventions used for the ShareClass units. | [optional] [default to List<SimpleRoundingConvention>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
 **distributionPaymentType** | **String** | The tax treatment applied to distributions. Available values: Invalid, Gross, Net. | [optional] [default to String]
@@ -41,7 +41,7 @@ String InvestorType = "example InvestorType";
 @jakarta.annotation.Nullable String DistributionType = "example DistributionType";
 String DomCcy = "example DomCcy";
 TradingConventions TradingConventions = new TradingConventions();
-@jakarta.annotation.Nullable List<SimpleRoundingConvention> RoundingConventionsPrice = new List<SimpleRoundingConvention>();
+@jakarta.annotation.Nullable List<ShareClassRoundingConvention> RoundingConventionsPrice = new List<ShareClassRoundingConvention>();
 @jakarta.annotation.Nullable List<SimpleRoundingConvention> RoundingConventionsUnits = new List<SimpleRoundingConvention>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
 @jakarta.annotation.Nullable String DistributionPaymentType = "example DistributionPaymentType";

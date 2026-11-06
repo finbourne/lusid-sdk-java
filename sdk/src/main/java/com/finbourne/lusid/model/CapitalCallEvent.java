@@ -50,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A call of committed capital on a CapitalInterest: the fund draws down the amount from the investor&#39;s  unfunded commitment, moving it to funded capital.     The total amount may optionally be broken down into slots (investment, managementFee, otherFee,  partnershipExpense, organisationalCost, recall, equalisationInterest, latePaymentInterest). When any  slot amount is supplied the slot amounts must sum to the total and one transaction is booked per  populated slot; otherwise a single legacy drawdown transaction is booked for the total.
+ * A call of committed capital on a CapitalInterest: a notice that reduces the investor&#39;s uncalled  commitment. It moves no cost or cash. The matching CapitalCallReceiptEvent books those when paid.     The total amount may optionally be broken down into slots (investment, managementFee, otherFee,  partnershipExpense, organisationalCost, recall, equalisationInterest, latePaymentInterest). When any  slot amount is supplied the slot amounts must sum to the total and one transaction is booked per  populated slot; otherwise a single call-notice transaction is booked for the total.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CapitalCallEvent extends InstrumentEvent {

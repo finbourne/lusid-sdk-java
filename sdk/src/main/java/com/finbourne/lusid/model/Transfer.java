@@ -76,6 +76,22 @@ public class Transfer {
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID_IN)
   private ResourceId portfolioIdIn;
 
+  public static final String SERIALIZED_NAME_PRICING_METHOD = "pricingMethod";
+  @SerializedName(SERIALIZED_NAME_PRICING_METHOD)
+  private String pricingMethod;
+
+  public static final String SERIALIZED_NAME_TAX_LOT_STRUCTURE = "taxLotStructure";
+  @SerializedName(SERIALIZED_NAME_TAX_LOT_STRUCTURE)
+  private String taxLotStructure;
+
+  public static final String SERIALIZED_NAME_WEIGHT_OUT = "weightOut";
+  @SerializedName(SERIALIZED_NAME_WEIGHT_OUT)
+  private java.math.BigDecimal weightOut;
+
+  public static final String SERIALIZED_NAME_ACCOUNTING_METHOD = "accountingMethod";
+  @SerializedName(SERIALIZED_NAME_ACCOUNTING_METHOD)
+  private String accountingMethod;
+
   public static final String SERIALIZED_NAME_TRANSACTION_OUT = "transactionOut";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_OUT)
   private Transaction transactionOut;
@@ -184,6 +200,90 @@ public class Transfer {
 
   public void setPortfolioIdIn(ResourceId portfolioIdIn) {
     this.portfolioIdIn = portfolioIdIn;
+  }
+
+
+  public Transfer pricingMethod(String pricingMethod) {
+    
+    this.pricingMethod = pricingMethod;
+    return this;
+  }
+
+   /**
+   * How the legs were priced: &#39;AtCost&#39; or &#39;AtPrice&#39;.
+   * @return pricingMethod
+  **/
+  @jakarta.annotation.Nullable
+  public String getPricingMethod() {
+    return pricingMethod;
+  }
+
+
+  public void setPricingMethod(String pricingMethod) {
+    this.pricingMethod = pricingMethod;
+  }
+
+
+  public Transfer taxLotStructure(String taxLotStructure) {
+    
+    this.taxLotStructure = taxLotStructure;
+    return this;
+  }
+
+   /**
+   * What happened to the tax lots of the outgoing position: &#39;Consolidate&#39; or &#39;Preserve&#39;.
+   * @return taxLotStructure
+  **/
+  @jakarta.annotation.Nullable
+  public String getTaxLotStructure() {
+    return taxLotStructure;
+  }
+
+
+  public void setTaxLotStructure(String taxLotStructure) {
+    this.taxLotStructure = taxLotStructure;
+  }
+
+
+  public Transfer weightOut(java.math.BigDecimal weightOut) {
+    
+    this.weightOut = weightOut;
+    return this;
+  }
+
+   /**
+   * The weighting factor recorded against the outgoing leg.
+   * @return weightOut
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getWeightOut() {
+    return weightOut;
+  }
+
+
+  public void setWeightOut(java.math.BigDecimal weightOut) {
+    this.weightOut = weightOut;
+  }
+
+
+  public Transfer accountingMethod(String accountingMethod) {
+    
+    this.accountingMethod = accountingMethod;
+    return this;
+  }
+
+   /**
+   * The accounting method recorded against the transfer.
+   * @return accountingMethod
+  **/
+  @jakarta.annotation.Nullable
+  public String getAccountingMethod() {
+    return accountingMethod;
+  }
+
+
+  public void setAccountingMethod(String accountingMethod) {
+    this.accountingMethod = accountingMethod;
   }
 
 
@@ -343,6 +443,10 @@ public class Transfer {
         Objects.equals(this.transferType, transfer.transferType) &&
         Objects.equals(this.portfolioIdOut, transfer.portfolioIdOut) &&
         Objects.equals(this.portfolioIdIn, transfer.portfolioIdIn) &&
+        Objects.equals(this.pricingMethod, transfer.pricingMethod) &&
+        Objects.equals(this.taxLotStructure, transfer.taxLotStructure) &&
+        (this.weightOut.compareTo(transfer.getWeightOut()) == 0) &&
+        Objects.equals(this.accountingMethod, transfer.accountingMethod) &&
         Objects.equals(this.transactionOut, transfer.transactionOut) &&
         Objects.equals(this.transactionIn, transfer.transactionIn) &&
         Objects.equals(this.properties, transfer.properties) &&
@@ -357,7 +461,7 @@ public class Transfer {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transferId, transferType, portfolioIdOut, portfolioIdIn, transactionOut, transactionIn, properties, href, version, links);
+    return Objects.hash(transferId, transferType, portfolioIdOut, portfolioIdIn, pricingMethod, taxLotStructure, weightOut, accountingMethod, transactionOut, transactionIn, properties, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -375,6 +479,10 @@ public class Transfer {
     sb.append("    transferType: ").append(toIndentedString(transferType)).append("\n");
     sb.append("    portfolioIdOut: ").append(toIndentedString(portfolioIdOut)).append("\n");
     sb.append("    portfolioIdIn: ").append(toIndentedString(portfolioIdIn)).append("\n");
+    sb.append("    pricingMethod: ").append(toIndentedString(pricingMethod)).append("\n");
+    sb.append("    taxLotStructure: ").append(toIndentedString(taxLotStructure)).append("\n");
+    sb.append("    weightOut: ").append(toIndentedString(weightOut)).append("\n");
+    sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
     sb.append("    transactionOut: ").append(toIndentedString(transactionOut)).append("\n");
     sb.append("    transactionIn: ").append(toIndentedString(transactionIn)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
@@ -407,6 +515,10 @@ public class Transfer {
     openapiFields.add("transferType");
     openapiFields.add("portfolioIdOut");
     openapiFields.add("portfolioIdIn");
+    openapiFields.add("pricingMethod");
+    openapiFields.add("taxLotStructure");
+    openapiFields.add("weightOut");
+    openapiFields.add("accountingMethod");
     openapiFields.add("transactionOut");
     openapiFields.add("transactionIn");
     openapiFields.add("properties");
@@ -445,6 +557,15 @@ public class Transfer {
       // validate the optional field `portfolioIdIn`
       if (jsonObj.get("portfolioIdIn") != null && !jsonObj.get("portfolioIdIn").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("portfolioIdIn"));
+      }
+      if ((jsonObj.get("pricingMethod") != null && !jsonObj.get("pricingMethod").isJsonNull()) && !jsonObj.get("pricingMethod").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `pricingMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("pricingMethod").toString()));
+      }
+      if ((jsonObj.get("taxLotStructure") != null && !jsonObj.get("taxLotStructure").isJsonNull()) && !jsonObj.get("taxLotStructure").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLotStructure` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxLotStructure").toString()));
+      }
+      if ((jsonObj.get("accountingMethod") != null && !jsonObj.get("accountingMethod").isJsonNull()) && !jsonObj.get("accountingMethod").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `accountingMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("accountingMethod").toString()));
       }
       // validate the optional field `transactionOut`
       if (jsonObj.get("transactionOut") != null && !jsonObj.get("transactionOut").isJsonNull()) {

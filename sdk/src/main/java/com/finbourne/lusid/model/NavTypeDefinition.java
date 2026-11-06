@@ -143,6 +143,10 @@ public class NavTypeDefinition {
   @SerializedName(SERIALIZED_NAME_VALUATION_TEMPLATE_ID)
   private ResourceId valuationTemplateId;
 
+  public static final String SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME = "chargeableGainsRegime";
+  @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME)
+  private String chargeableGainsRegime;
+
   public NavTypeDefinition() {
   }
 
@@ -632,6 +636,27 @@ public class NavTypeDefinition {
   }
 
 
+  public NavTypeDefinition chargeableGainsRegime(String chargeableGainsRegime) {
+    
+    this.chargeableGainsRegime = chargeableGainsRegime;
+    return this;
+  }
+
+   /**
+   * The chargeable gains regime the Nav Type&#39;s derived portfolio is elected into. This can be: Default or UkChargeableGains. Omit it, or supply Default, to leave the derived portfolio inheriting its parent portfolio&#39;s regime. Under UkChargeableGains, in-scope holdings in the derived portfolio are depleted under the UK chargeable gains rules regardless of the Nav Type&#39;s accounting method; it requires the Fund&#39;s base currency to be GBP. Available values: Default, UkChargeableGains.
+   * @return chargeableGainsRegime
+  **/
+  @jakarta.annotation.Nullable
+  public String getChargeableGainsRegime() {
+    return chargeableGainsRegime;
+  }
+
+
+  public void setChargeableGainsRegime(String chargeableGainsRegime) {
+    this.chargeableGainsRegime = chargeableGainsRegime;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -663,7 +688,8 @@ public class NavTypeDefinition {
         Objects.equals(this.pricingBasis, navTypeDefinition.pricingBasis) &&
         Objects.equals(this.swingPricing, navTypeDefinition.swingPricing) &&
         Objects.equals(this.notionalDealingCostTableId, navTypeDefinition.notionalDealingCostTableId) &&
-        Objects.equals(this.valuationTemplateId, navTypeDefinition.valuationTemplateId);
+        Objects.equals(this.valuationTemplateId, navTypeDefinition.valuationTemplateId) &&
+        Objects.equals(this.chargeableGainsRegime, navTypeDefinition.chargeableGainsRegime);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -672,7 +698,7 @@ public class NavTypeDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing, notionalDealingCostTableId, valuationTemplateId);
+    return Objects.hash(code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing, notionalDealingCostTableId, valuationTemplateId, chargeableGainsRegime);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -708,6 +734,7 @@ public class NavTypeDefinition {
     sb.append("    swingPricing: ").append(toIndentedString(swingPricing)).append("\n");
     sb.append("    notionalDealingCostTableId: ").append(toIndentedString(notionalDealingCostTableId)).append("\n");
     sb.append("    valuationTemplateId: ").append(toIndentedString(valuationTemplateId)).append("\n");
+    sb.append("    chargeableGainsRegime: ").append(toIndentedString(chargeableGainsRegime)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -752,6 +779,7 @@ public class NavTypeDefinition {
     openapiFields.add("swingPricing");
     openapiFields.add("notionalDealingCostTableId");
     openapiFields.add("valuationTemplateId");
+    openapiFields.add("chargeableGainsRegime");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -854,6 +882,9 @@ public class NavTypeDefinition {
       // validate the optional field `valuationTemplateId`
       if (jsonObj.get("valuationTemplateId") != null && !jsonObj.get("valuationTemplateId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("valuationTemplateId"));
+      }
+      if ((jsonObj.get("chargeableGainsRegime") != null && !jsonObj.get("chargeableGainsRegime").isJsonNull()) && !jsonObj.get("chargeableGainsRegime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `chargeableGainsRegime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chargeableGainsRegime").toString()));
       }
   }
 

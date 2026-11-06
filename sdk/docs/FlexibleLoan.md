@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **schedules** | [**List&lt;Schedule&gt;**](Schedule.md) | Repayment schedules for the loan. | [default to List<Schedule>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
 **tradingConventions** | [**TradingConventions**](TradingConventions.md) |  | [optional] [default to TradingConventions]
+**originalIssuePrice** | **java.math.BigDecimal** | The price the loan was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.FlexibleLoan;
@@ -28,6 +29,7 @@ String DomCcy = "example DomCcy";
 List<Schedule> Schedules = new List<Schedule>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
 TradingConventions TradingConventions = new TradingConventions();
+@jakarta.annotation.Nullable java.math.BigDecimal OriginalIssuePrice = new java.math.BigDecimal("100.00");
 
 
 FlexibleLoan flexibleLoanInstance = new FlexibleLoan()
@@ -38,7 +40,8 @@ FlexibleLoan flexibleLoanInstance = new FlexibleLoan()
     .ParentFacilityDetails(ParentFacilityDetails)
     .Schedules(Schedules)
     .TimeZoneConventions(TimeZoneConventions)
-    .TradingConventions(TradingConventions);
+    .TradingConventions(TradingConventions)
+    .OriginalIssuePrice(OriginalIssuePrice);
 ```
 
 

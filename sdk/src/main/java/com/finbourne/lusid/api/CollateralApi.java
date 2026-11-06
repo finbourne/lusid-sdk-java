@@ -38,6 +38,7 @@ import com.finbourne.lusid.model.MarginRunRequest;
 import com.finbourne.lusid.model.PagedResourceListOfMarginCall;
 import com.finbourne.lusid.model.PagedResourceListOfMarginLine;
 import com.finbourne.lusid.model.PagedResourceListOfMarginRun;
+import com.finbourne.lusid.model.PagedResourceListOfNettingRecommendation;
 import com.finbourne.lusid.model.RecordCounterpartyDemandRequest;
 
 import java.lang.reflect.Type;
@@ -2883,6 +2884,283 @@ public class CollateralApi {
     public APIlistMarginLinesRequest listMarginLines(String runId) {
         return new APIlistMarginLinesRequest(runId);
     }
+    private okhttp3.Call listMarginRunRecommendationsCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listMarginRunRecommendationsCall(runId, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listMarginRunRecommendationsCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/collateral/runs/{runId}/recommendations"
+            .replace("{" + "runId" + "}", localVarApiClient.escapeString(runId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listMarginRunRecommendationsValidateBeforeCall(String runId, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling listMarginRunRecommendations(Async)");
+        }
+
+        return listMarginRunRecommendationsCall(runId, page, limit, filter, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfNettingRecommendation> listMarginRunRecommendationsWithHttpInfo(String runId, String page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listMarginRunRecommendationsValidateBeforeCall(runId, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfNettingRecommendation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfNettingRecommendation> listMarginRunRecommendationsWithHttpInfo(String runId, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listMarginRunRecommendationsValidateBeforeCall(runId, page, limit, filter, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfNettingRecommendation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listMarginRunRecommendationsAsync(String runId, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfNettingRecommendation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listMarginRunRecommendationsValidateBeforeCall(runId, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfNettingRecommendation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listMarginRunRecommendationsAsync(String runId, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfNettingRecommendation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listMarginRunRecommendationsValidateBeforeCall(runId, page, limit, filter, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfNettingRecommendation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistMarginRunRecommendationsRequest {
+        private final String runId;
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIlistMarginRunRecommendationsRequest(String runId) {
+            this.runId = runId;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)
+         * @return APIlistMarginRunRecommendationsRequest
+         */
+        public APIlistMarginRunRecommendationsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistMarginRunRecommendationsRequest
+         */
+        public APIlistMarginRunRecommendationsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
+         * @return APIlistMarginRunRecommendationsRequest
+         */
+        public APIlistMarginRunRecommendationsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listMarginRunRecommendations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listMarginRunRecommendationsCall(runId, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listMarginRunRecommendations request
+         * @return PagedResourceListOfNettingRecommendation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfNettingRecommendation execute() throws ApiException {
+            ApiResponse<PagedResourceListOfNettingRecommendation> localVarResp = listMarginRunRecommendationsWithHttpInfo(runId, page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listMarginRunRecommendations request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfNettingRecommendation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfNettingRecommendation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfNettingRecommendation> localVarResp = listMarginRunRecommendationsWithHttpInfo(runId, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listMarginRunRecommendations request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfNettingRecommendation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfNettingRecommendation> executeWithHttpInfo() throws ApiException {
+            return listMarginRunRecommendationsWithHttpInfo(runId, page, limit, filter);
+        }
+
+        /**
+         * Execute listMarginRunRecommendations request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfNettingRecommendation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfNettingRecommendation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listMarginRunRecommendationsWithHttpInfo(runId, page, limit, filter, opts);
+        }
+
+        /**
+         * Execute listMarginRunRecommendations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfNettingRecommendation> _callback) throws ApiException {
+            return listMarginRunRecommendationsAsync(runId, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listMarginRunRecommendations request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfNettingRecommendation> _callback, ConfigurationOptions opts) throws ApiException {
+            return listMarginRunRecommendationsAsync(runId, page, limit, filter, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations.
+     * List the trades a run&#39;s optimisation pass found would attract less initial margin in another netting set of the  run, with both sets&#39; initial margin before and after the move. Empty until the run&#39;s optimisation pass has  completed. Restricted to recommendations whose source and target agreements the caller may read.
+     * @param runId The identifier of the margin run. (required)
+     * @return APIlistMarginRunRecommendationsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistMarginRunRecommendationsRequest listMarginRunRecommendations(String runId) {
+        return new APIlistMarginRunRecommendationsRequest(runId);
+    }
     private okhttp3.Call listMarginRunsCall(String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
         return listMarginRunsCall(page, limit, filter,  _callback, new ConfigurationOptions());
     }
@@ -3150,6 +3428,289 @@ public class CollateralApi {
      */
     public APIlistMarginRunsRequest listMarginRuns() {
         return new APIlistMarginRunsRequest();
+    }
+    private okhttp3.Call listNettingRecommendationsCall(String effectiveAt, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        return listNettingRecommendationsCall(effectiveAt, page, limit, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listNettingRecommendationsCall(String effectiveAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/collateral/recommendations";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listNettingRecommendationsValidateBeforeCall(String effectiveAt, String page, Integer limit, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listNettingRecommendationsCall(effectiveAt, page, limit, filter, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfNettingRecommendation> listNettingRecommendationsWithHttpInfo(String effectiveAt, String page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listNettingRecommendationsValidateBeforeCall(effectiveAt, page, limit, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfNettingRecommendation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfNettingRecommendation> listNettingRecommendationsWithHttpInfo(String effectiveAt, String page, Integer limit, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listNettingRecommendationsValidateBeforeCall(effectiveAt, page, limit, filter, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfNettingRecommendation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listNettingRecommendationsAsync(String effectiveAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfNettingRecommendation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listNettingRecommendationsValidateBeforeCall(effectiveAt, page, limit, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfNettingRecommendation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listNettingRecommendationsAsync(String effectiveAt, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfNettingRecommendation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listNettingRecommendationsValidateBeforeCall(effectiveAt, page, limit, filter, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfNettingRecommendation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistNettingRecommendationsRequest {
+        private String effectiveAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+
+        private APIlistNettingRecommendationsRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The business date, datetime or cut label to list the current recommendations for. Defaults to today if not specified. (optional)
+         * @return APIlistNettingRecommendationsRequest
+         */
+        public APIlistNettingRecommendationsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing recommendations; this value is returned from the previous call. (optional)
+         * @return APIlistNettingRecommendationsRequest
+         */
+        public APIlistNettingRecommendationsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistNettingRecommendationsRequest
+         */
+        public APIlistNettingRecommendationsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. The filterable fields are RunId, SourceAgreementId.Scope, SourceAgreementId.Code, SourceItem, TargetAgreementId.Scope, TargetAgreementId.Code, TargetItem, Transfer, InstrumentType, Currency, MaturityBucket, SavingPerDay, OneOffCost, PaybackDays and InitialMarginChange. For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
+         * @return APIlistNettingRecommendationsRequest
+         */
+        public APIlistNettingRecommendationsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for listNettingRecommendations
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listNettingRecommendationsCall(effectiveAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listNettingRecommendations request
+         * @return PagedResourceListOfNettingRecommendation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfNettingRecommendation execute() throws ApiException {
+            ApiResponse<PagedResourceListOfNettingRecommendation> localVarResp = listNettingRecommendationsWithHttpInfo(effectiveAt, page, limit, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listNettingRecommendations request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfNettingRecommendation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfNettingRecommendation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfNettingRecommendation> localVarResp = listNettingRecommendationsWithHttpInfo(effectiveAt, page, limit, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listNettingRecommendations request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfNettingRecommendation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfNettingRecommendation> executeWithHttpInfo() throws ApiException {
+            return listNettingRecommendationsWithHttpInfo(effectiveAt, page, limit, filter);
+        }
+
+        /**
+         * Execute listNettingRecommendations request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfNettingRecommendation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfNettingRecommendation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listNettingRecommendationsWithHttpInfo(effectiveAt, page, limit, filter, opts);
+        }
+
+        /**
+         * Execute listNettingRecommendations request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfNettingRecommendation> _callback) throws ApiException {
+            return listNettingRecommendationsAsync(effectiveAt, page, limit, filter, _callback);
+        }
+
+        /**
+         * Execute listNettingRecommendations request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfNettingRecommendation> _callback, ConfigurationOptions opts) throws ApiException {
+            return listNettingRecommendationsAsync(effectiveAt, page, limit, filter, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations.
+     * List the netting recommendations in force for a business date: those of the latest run for the date whose  optimisation pass completed, with an agreement that run could not value served from the most recent run that  did. Restricted to recommendations whose source and target agreements the caller may read.
+     * @return APIlistNettingRecommendationsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested recommendations. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistNettingRecommendationsRequest listNettingRecommendations() {
+        return new APIlistNettingRecommendationsRequest();
     }
     private okhttp3.Call recordCounterpartyDemandCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, RecordCounterpartyDemandRequest recordCounterpartyDemandRequest, final ApiCallback _callback) throws ApiException {
         return recordCounterpartyDemandCall(runId, agreementScope, agreementCode, item, marginType, direction, recordCounterpartyDemandRequest,  _callback, new ConfigurationOptions());

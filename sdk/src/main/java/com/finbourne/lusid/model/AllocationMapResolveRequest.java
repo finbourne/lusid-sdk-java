@@ -150,7 +150,7 @@ public class AllocationMapResolveRequest {
   }
 
    /**
-   * For a ValueWeighted or PropertyWeighted basis, the basis value of each participating investor record, supplied by the caller until investor records are read from LUSID. Under the AllCommittedToMembers rule these also name the committed investor records. Not needed for a FixedPercentage basis.
+   * The basis value of each participating investor record. Optional for a register-backed basis such as Committed or PaidIn, where the members&#39; registers are read when none are supplied. Required for a ValueWeighted or PropertyWeighted basis. Under the AllCommittedToMembers rule the supplied values replace the register value of the investor records they name; every other open line still takes part. Not needed for a FixedPercentage basis.
    * @return basisValues
   **/
   @jakarta.annotation.Nullable

@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 **closedPeriodId** | **String** | The unique Id of the Closed Period. The ClosedPeriodId, together with the Timeline Scope and Code, uniquely identifies a Closed Period | [default to String]
 **effectiveEnd** | [**OffsetDateTime**](OffsetDateTime.md) | The effective end of the Closed Period | [optional] [default to OffsetDateTime]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The Closed Periods properties. These will be from the &#39;ClosedPeriod&#39; domain. | [optional] [default to Map<String, Property>]
-**asAtClosed** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt closed datetime for the Closed Period | [optional] [default to OffsetDateTime]
+**asAtClosed** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt closed datetime for the Closed Period. It must not exceed the latest asAt in LUSID. If not specified, the latest asAt in LUSID will be used. | [optional] [default to OffsetDateTime]
 **displayName** | **String** | The name of the Closed Period. | [optional] [default to String]
 **description** | **String** | A description for the Closed Period. | [optional] [default to String]
-**holdingsAsAtClosedOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAtClosed Override to use for building holdings in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used. | [optional] [default to OffsetDateTime]
-**valuationAsAtClosedOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAtClosed Override to use for performing valuations in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used. | [optional] [default to OffsetDateTime]
+**holdingsAsAtClosedOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAtClosed Override to use for building holdings in the Closed Period. If not specified, the AsAtClosed on the Closed Period will be used. It must not exceed the latest asAt in LUSID. | [optional] [default to OffsetDateTime]
+**valuationAsAtClosedOverride** | [**OffsetDateTime**](OffsetDateTime.md) | The optional AsAtClosed Override to use for performing valuations in the Closed Period. If not specified, the AsAtClosed on the Closed Period will be used. It must not exceed the latest asAt in LUSID. | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.CreateClosedPeriodRequest;

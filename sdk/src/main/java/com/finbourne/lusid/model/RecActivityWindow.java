@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.ContiguousActivityWindow;
+import com.finbourne.lusid.model.FixedPeriodLookbackActivityWindow;
 import com.finbourne.lusid.model.RecActivitySinceEffectiveAt;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -69,6 +70,7 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<ContiguousActivityWindow> adapterContiguousActivityWindow = gson.getDelegateAdapter(this, TypeToken.get(ContiguousActivityWindow.class));
+            final TypeAdapter<FixedPeriodLookbackActivityWindow> adapterFixedPeriodLookbackActivityWindow = gson.getDelegateAdapter(this, TypeToken.get(FixedPeriodLookbackActivityWindow.class));
 
             return (TypeAdapter<T>) new TypeAdapter<RecActivityWindow>() {
                 @Override
@@ -84,7 +86,13 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
                       elementAdapter.write(out, element);
                       return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ContiguousActivityWindow");
+                    // check if the actual instance is of the type `FixedPeriodLookbackActivityWindow`
+                    if (value.getActualInstance() instanceof FixedPeriodLookbackActivityWindow) {
+                      JsonElement element = adapterFixedPeriodLookbackActivityWindow.toJsonTree((FixedPeriodLookbackActivityWindow)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ContiguousActivityWindow, FixedPeriodLookbackActivityWindow");
                 }
 
                 @Override
@@ -109,8 +117,16 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
                                 deserialized = adapterContiguousActivityWindow.fromJsonTree(jsonObject);
                                 newRecActivityWindow.setActualInstance(deserialized);
                                 return newRecActivityWindow;
+                            case "FixedPeriodLookback":
+                                deserialized = adapterFixedPeriodLookbackActivityWindow.fromJsonTree(jsonObject);
+                                newRecActivityWindow.setActualInstance(deserialized);
+                                return newRecActivityWindow;
+                            case "FixedPeriodLookbackActivityWindow":
+                                deserialized = adapterFixedPeriodLookbackActivityWindow.fromJsonTree(jsonObject);
+                                newRecActivityWindow.setActualInstance(deserialized);
+                                return newRecActivityWindow;
                             default:
-                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for RecActivityWindow. Possible values: Contiguous ContiguousActivityWindow", jsonObject.get("windowType").getAsString()));
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for RecActivityWindow. Possible values: Contiguous ContiguousActivityWindow FixedPeriodLookback FixedPeriodLookbackActivityWindow", jsonObject.get("windowType").getAsString()));
                         }
                     }
 
@@ -129,6 +145,18 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
                       // deserialization failed, continue
                       errorMessages.add(String.format("Deserialization for ContiguousActivityWindow failed with `%s`.", e.getMessage()));
                       log.log(Level.FINER, "Input data does not match schema 'ContiguousActivityWindow'", e);
+                    }
+                    // deserialize FixedPeriodLookbackActivityWindow
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      FixedPeriodLookbackActivityWindow.validateJsonElement(jsonElement);
+                      actualAdapter = adapterFixedPeriodLookbackActivityWindow;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'FixedPeriodLookbackActivityWindow'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for FixedPeriodLookbackActivityWindow failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'FixedPeriodLookbackActivityWindow'", e);
                     }
 
                     if (match == 1) {
@@ -155,8 +183,14 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public RecActivityWindow(FixedPeriodLookbackActivityWindow o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     static {
         schemas.put("ContiguousActivityWindow", ContiguousActivityWindow.class);
+        schemas.put("FixedPeriodLookbackActivityWindow", FixedPeriodLookbackActivityWindow.class);
     }
 
     @Override
@@ -167,7 +201,7 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * ContiguousActivityWindow
+     * ContiguousActivityWindow, FixedPeriodLookbackActivityWindow
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -178,14 +212,19 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be ContiguousActivityWindow");
+        if (instance instanceof FixedPeriodLookbackActivityWindow) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be ContiguousActivityWindow, FixedPeriodLookbackActivityWindow");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * ContiguousActivityWindow
+     * ContiguousActivityWindow, FixedPeriodLookbackActivityWindow
      *
-     * @return The actual instance (ContiguousActivityWindow)
+     * @return The actual instance (ContiguousActivityWindow, FixedPeriodLookbackActivityWindow)
      */
     @Override
     public Object getActualInstance() {
@@ -201,6 +240,16 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
      */
     public ContiguousActivityWindow getContiguousActivityWindow() throws ClassCastException {
         return (ContiguousActivityWindow)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `FixedPeriodLookbackActivityWindow`. If the actual instance is not `FixedPeriodLookbackActivityWindow`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `FixedPeriodLookbackActivityWindow`
+     * @throws ClassCastException if the instance is not `FixedPeriodLookbackActivityWindow`
+     */
+    public FixedPeriodLookbackActivityWindow getFixedPeriodLookbackActivityWindow() throws ClassCastException {
+        return (FixedPeriodLookbackActivityWindow)super.getActualInstance();
     }
 
  /**
@@ -221,8 +270,16 @@ public class RecActivityWindow extends AbstractOpenApiSchema {
       errorMessages.add(String.format("Deserialization for ContiguousActivityWindow failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
+    // validate the json string with FixedPeriodLookbackActivityWindow
+    try {
+      FixedPeriodLookbackActivityWindow.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for FixedPeriodLookbackActivityWindow failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for RecActivityWindow with oneOf schemas: ContiguousActivityWindow. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      throw new IOException(String.format("The JSON string is invalid for RecActivityWindow with oneOf schemas: ContiguousActivityWindow, FixedPeriodLookbackActivityWindow. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 

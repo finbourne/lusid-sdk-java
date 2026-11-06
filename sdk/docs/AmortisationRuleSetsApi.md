@@ -5,6 +5,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createAmortisationRuleSet**](AmortisationRuleSetsApi.md#createAmortisationRuleSet) | **POST** /api/amortisation/rulesets/{scope} | [EXPERIMENTAL] CreateAmortisationRuleSet: Create an amortisation rule set. |
+| [**deleteAmortisationRulesInterval**](AmortisationRuleSetsApi.md#deleteAmortisationRulesInterval) | **DELETE** /api/amortisation/rulesets/{scope}/{code}/rulesIntervals | DeleteAmortisationRulesInterval: Delete a rules interval of an amortisation rule set. |
 | [**deleteAmortisationRuleset**](AmortisationRuleSetsApi.md#deleteAmortisationRuleset) | **DELETE** /api/amortisation/rulesets/{scope}/{code} | [EXPERIMENTAL] DeleteAmortisationRuleset: Delete an amortisation rule set. |
 | [**getAmortisationRuleSet**](AmortisationRuleSetsApi.md#getAmortisationRuleSet) | **GET** /api/amortisation/rulesets/{scope}/{code} | [EXPERIMENTAL] GetAmortisationRuleSet: Retrieve the definition of a single amortisation rule set |
 | [**listAmortisationRuleSets**](AmortisationRuleSetsApi.md#listAmortisationRuleSets) | **GET** /api/amortisation/rulesets | [EXPERIMENTAL] ListAmortisationRuleSets: List amortisation rule sets. |
@@ -101,6 +102,101 @@ public class AmortisationRuleSetsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Create a rule set for amortisation. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteAmortisationRulesInterval
+
+> DeletedEntityResponse deleteAmortisationRulesInterval(scope, code, fromDate)
+
+DeleteAmortisationRulesInterval: Delete a rules interval of an amortisation rule set.
+
+Deletes the rules interval that starts at the given from date. The interval before it, if any, then applies  until the next interval starts. If there is no interval before it, the rule set has no rules until the next  interval starts.     The from date must be the start of an interval. A date inside an interval does not identify one.     The interval remains viewable at previous as at times.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AmortisationRuleSetsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AmortisationRuleSetsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AmortisationRuleSetsApi apiInstance = apiFactory.build(AmortisationRuleSetsApi.class);
+
+        AmortisationRuleSetsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AmortisationRuleSetsApi.class);
+        String scope = "scope_example"; // String | The rule set scope.
+        String code = "code_example"; // String | The rule set code.
+        String fromDate = "fromDate_example"; // String | The from date of the interval to delete, as a date, datetime or cut label.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteAmortisationRulesInterval(scope, code, fromDate).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteAmortisationRulesInterval(scope, code, fromDate).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AmortisationRuleSetsApi#deleteAmortisationRulesInterval");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The rule set scope. | |
+| **code** | **String**| The rule set code. | |
+| **fromDate** | **String**| The from date of the interval to delete, as a date, datetime or cut label. | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | OK |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

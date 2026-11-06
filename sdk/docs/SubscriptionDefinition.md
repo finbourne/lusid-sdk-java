@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **startEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] [default to OffsetDateTime]
 **endEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | Deprecated and no longer honoured: a fixed forward date stops being a forward view once  the live edge passes it. Use effectiveForwardDays instead. Still accepted and echoed back  so existing subscriptions keep round-tripping. | [optional] [default to OffsetDateTime]
 **effectiveForwardDays** | **Integer** | How far forward the subscription reports, as a number of calendar days past the live  edge — a rolling forward view that advances as time passes. | [optional] [default to Integer]
+**instrumentIdentifiers** | **List&lt;String&gt;** | The instrument identifiers each published holding carries, as Instrument/default/{type} property keys,  for example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.  Not valid for a transactions subscription. | [optional] [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.SubscriptionDefinition;
@@ -39,6 +40,7 @@ String SubscriptionType = "example SubscriptionType";
 @jakarta.annotation.Nullable OffsetDateTime StartEffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime EndEffectiveAt = OffsetDateTime.now();
 @jakarta.annotation.Nullable Integer EffectiveForwardDays = new Integer("100.00");
+@jakarta.annotation.Nullable List<String> InstrumentIdentifiers = new List<String>();
 
 
 SubscriptionDefinition subscriptionDefinitionInstance = new SubscriptionDefinition()
@@ -55,7 +57,8 @@ SubscriptionDefinition subscriptionDefinitionInstance = new SubscriptionDefiniti
     .SubscriptionType(SubscriptionType)
     .StartEffectiveAt(StartEffectiveAt)
     .EndEffectiveAt(EndEffectiveAt)
-    .EffectiveForwardDays(EffectiveForwardDays);
+    .EffectiveForwardDays(EffectiveForwardDays)
+    .InstrumentIdentifiers(InstrumentIdentifiers);
 ```
 
 

@@ -23,6 +23,13 @@ Name | Type | Description | Notes
 **scenario** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **lineKey** | **String** | A key that identifies the line within its run, with which its explanation is asked for. A line valued under a scenario has a different key from the same holding in the base market. Null for a line stored before lines carried a key. | [optional] [default to String]
 **explainAvailable** | **Boolean** | Whether the working behind the line&#39;s figures was stored, so that the line can be explained. One flag covers every figure of the line. | [optional] [default to Boolean]
+**instrumentType** | **String** | LUSID&#39;s type for the instrument held, when the run read it. | [optional] [default to String]
+**assetClass** | **String** | The instrument&#39;s asset class, when the run read it. | [optional] [default to String]
+**currency** | **String** | The currency the holding is denominated in, when the run read it. | [optional] [default to String]
+**maturityDate** | [**OffsetDateTime**](OffsetDateTime.md) | The instrument&#39;s maturity, when it has one. | [optional] [default to OffsetDateTime]
+**notional** | **java.math.BigDecimal** | The holding&#39;s notional in its own currency, when the instrument has one. | [optional] [default to java.math.BigDecimal]
+**grossInitialMargin** | **java.math.BigDecimal** | The regulatory-grid charge on the holding before its netting set&#39;s net-to-gross scaling. Null under other methods. | [optional] [default to java.math.BigDecimal]
+**movableTo** | **List&lt;String&gt;** | The initial-margin netting sets of other agreements in the run the holding could be re-booked into, as scope/code/item. Recorded for base-case trading lines under an initial-margin item; empty otherwise. | [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.MarginLine;
@@ -48,6 +55,13 @@ java.math.BigDecimal Units = new java.math.BigDecimal("100.00");
 ResourceId Scenario = new ResourceId();
 @jakarta.annotation.Nullable String LineKey = "example LineKey";
 Boolean ExplainAvailable = true;
+@jakarta.annotation.Nullable String InstrumentType = "example InstrumentType";
+@jakarta.annotation.Nullable String AssetClass = "example AssetClass";
+@jakarta.annotation.Nullable String Currency = "example Currency";
+@jakarta.annotation.Nullable OffsetDateTime MaturityDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable java.math.BigDecimal Notional = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal GrossInitialMargin = new java.math.BigDecimal("100.00");
+List<String> MovableTo = new List<String>();
 
 
 MarginLine marginLineInstance = new MarginLine()
@@ -68,7 +82,14 @@ MarginLine marginLineInstance = new MarginLine()
     .InitialMargin(InitialMargin)
     .Scenario(Scenario)
     .LineKey(LineKey)
-    .ExplainAvailable(ExplainAvailable);
+    .ExplainAvailable(ExplainAvailable)
+    .InstrumentType(InstrumentType)
+    .AssetClass(AssetClass)
+    .Currency(Currency)
+    .MaturityDate(MaturityDate)
+    .Notional(Notional)
+    .GrossInitialMargin(GrossInitialMargin)
+    .MovableTo(MovableTo);
 ```
 
 

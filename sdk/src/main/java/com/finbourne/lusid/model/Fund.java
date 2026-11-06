@@ -638,7 +638,7 @@ public class Fund {
   }
 
    /**
-   * Whether to create instruments for the Fund&#39;s share classes, series, or partner classes upon creation. Defaults to false.
+   * Whether to master an instrument upon fund creation. For unitised funds (Classes, Series, or Partners), an instrument is mastered per share class. For non-unitised funds, a single instrument is mastered for the fund itself, with a ClientInternal identifier of {FundScope}:{Code}. Defaults to false.
    * @return createInstrument
   **/
   @jakarta.annotation.Nullable
@@ -659,7 +659,7 @@ public class Fund {
   }
 
    /**
-   * The scope in which the instruments are created when CreateInstrument is true. Defaults to the default instrument scope. Legacy share class instruments are resolved in ShareClassInstrumentScopes instead.
+   * The scope in which instruments are mastered when CreateInstrument is true. For non-unitised funds the fund scope also forms part of the fund instrument&#39;s ClientInternal identifier: {FundScope}:{Code}. Defaults to the default instrument scope. Legacy share class instruments are resolved via ShareClassInstrumentScopes instead.
    * @return instrumentScope
   **/
   @jakarta.annotation.Nullable

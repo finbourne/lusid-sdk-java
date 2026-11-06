@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **loanType** | **String** | LoanType for this facility. The facility can either be a revolving or a  term loan. Available values: Revolver, TermLoan. | [default to String]
 **schedules** | [**List&lt;Schedule&gt;**](Schedule.md) | Repayment schedules for the loan. | [default to List<Schedule>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
+**originalIssuePrice** | **java.math.BigDecimal** | The price the loan facility was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.LoanFacility;
@@ -26,6 +27,7 @@ java.math.BigDecimal InitialCommitment = new java.math.BigDecimal("100.00");
 String LoanType = "example LoanType";
 List<Schedule> Schedules = new List<Schedule>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
+@jakarta.annotation.Nullable java.math.BigDecimal OriginalIssuePrice = new java.math.BigDecimal("100.00");
 
 
 LoanFacility loanFacilityInstance = new LoanFacility()
@@ -35,7 +37,8 @@ LoanFacility loanFacilityInstance = new LoanFacility()
     .InitialCommitment(InitialCommitment)
     .LoanType(LoanType)
     .Schedules(Schedules)
-    .TimeZoneConventions(TimeZoneConventions);
+    .TimeZoneConventions(TimeZoneConventions)
+    .OriginalIssuePrice(OriginalIssuePrice);
 ```
 
 

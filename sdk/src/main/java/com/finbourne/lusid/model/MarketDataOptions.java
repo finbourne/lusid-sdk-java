@@ -50,11 +50,13 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class MarketDataOptions {
   /**
-   * Available values: CurveOptions. Available values: CurveOptions.
+   * Available values: CurveOptions, VolCubeOptions. Available values: CurveOptions, VolCubeOptions.
    */
   @JsonAdapter(MarketDataOptionsTypeEnum.Adapter.class)
   public enum MarketDataOptionsTypeEnum {
-    CURVEOPTIONS("CurveOptions");
+    CURVEOPTIONS("CurveOptions"),
+    
+    VOLCUBEOPTIONS("VolCubeOptions");
 
     private String value;
 
@@ -108,7 +110,7 @@ public class MarketDataOptions {
   }
 
    /**
-   * Available values: CurveOptions. Available values: CurveOptions.
+   * Available values: CurveOptions, VolCubeOptions. Available values: CurveOptions, VolCubeOptions.
    * @return marketDataOptionsType
   **/
   @jakarta.annotation.Nonnull
@@ -191,6 +193,9 @@ public class MarketDataOptions {
       switch (discriminatorValue) {
         case "CurveOptions":
           CurveOptions.validateJsonElement(jsonElement);
+          break;
+        case "VolCubeOptions":
+          VolCubeOptions.validateJsonElement(jsonElement);
           break;
         default:
           throw new IllegalArgumentException(String.format("The value of the `marketDataOptionsType` field `%s` does not match any key defined in the discriminator's mapping.", discriminatorValue));

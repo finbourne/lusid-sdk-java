@@ -73,7 +73,7 @@ public class RecResultReview {
   }
 
    /**
-   * The review workflow state: NotRequired, Required or Reviewed. Available values: NotRequired, Required, Reviewed.
+   * The review workflow state: NotRequired, Required or Reviewed. The review configuration sets it. A run sets it to Required when a Force Match no longer holds. Available values: NotRequired, Required, Reviewed.
    * @return status
   **/
   @jakarta.annotation.Nonnull

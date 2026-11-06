@@ -25,7 +25,9 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(MarketDataOptionsType.Adapter.class)
 public enum MarketDataOptionsType {
   
-  CURVEOPTIONS("CurveOptions");
+  CURVEOPTIONS("CurveOptions"),
+  
+  VOLCUBEOPTIONS("VolCubeOptions");
 
   private String value;
 

@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.finbourne.lusid.model.BucketCashFlowDrillDownResponse;
 import com.finbourne.lusid.model.BucketedCashFlowResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -36,7 +37,6 @@ import com.finbourne.lusid.model.QueryCashFlowsRequest;
 import com.finbourne.lusid.model.QueryInstrumentEventsRequest;
 import com.finbourne.lusid.model.QueryTradeTicketsRequest;
 import com.finbourne.lusid.model.ResourceListOfApplicableInstrumentEvent;
-import com.finbourne.lusid.model.ResourceListOfCashFlowDetail;
 import com.finbourne.lusid.model.ResourceListOfInstrumentCashFlow;
 import com.finbourne.lusid.model.ResourceListOfInstrumentEventHolder;
 import com.finbourne.lusid.model.ResourceListOfPortfolioTradeTicket;
@@ -428,30 +428,30 @@ public class InstrumentEventsApi {
     }
 
 
-    private ApiResponse<ResourceListOfCashFlowDetail> queryBucketCashFlowDrillDownWithHttpInfo(QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequest) throws ApiException {
+    private ApiResponse<BucketCashFlowDrillDownResponse> queryBucketCashFlowDrillDownWithHttpInfo(QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequest) throws ApiException {
         okhttp3.Call localVarCall = queryBucketCashFlowDrillDownValidateBeforeCall(queryBucketCashFlowDrillDownRequest, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ResourceListOfCashFlowDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<BucketCashFlowDrillDownResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ResourceListOfCashFlowDetail> queryBucketCashFlowDrillDownWithHttpInfo(QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequest, ConfigurationOptions opts) throws ApiException {
+    private ApiResponse<BucketCashFlowDrillDownResponse> queryBucketCashFlowDrillDownWithHttpInfo(QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequest, ConfigurationOptions opts) throws ApiException {
         okhttp3.Call localVarCall = queryBucketCashFlowDrillDownValidateBeforeCall(queryBucketCashFlowDrillDownRequest, null, opts);
-        Type localVarReturnType = new TypeToken<ResourceListOfCashFlowDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<BucketCashFlowDrillDownResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call queryBucketCashFlowDrillDownAsync(QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequest, final ApiCallback<ResourceListOfCashFlowDetail> _callback) throws ApiException {
+    private okhttp3.Call queryBucketCashFlowDrillDownAsync(QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequest, final ApiCallback<BucketCashFlowDrillDownResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = queryBucketCashFlowDrillDownValidateBeforeCall(queryBucketCashFlowDrillDownRequest, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<ResourceListOfCashFlowDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<BucketCashFlowDrillDownResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call queryBucketCashFlowDrillDownAsync(QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequest, final ApiCallback<ResourceListOfCashFlowDetail> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call queryBucketCashFlowDrillDownAsync(QueryBucketCashFlowDrillDownRequest queryBucketCashFlowDrillDownRequest, final ApiCallback<BucketCashFlowDrillDownResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
         okhttp3.Call localVarCall = queryBucketCashFlowDrillDownValidateBeforeCall(queryBucketCashFlowDrillDownRequest, _callback, opts);
-        Type localVarReturnType = new TypeToken<ResourceListOfCashFlowDetail>(){}.getType();
+        Type localVarReturnType = new TypeToken<BucketCashFlowDrillDownResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -480,7 +480,7 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -491,67 +491,67 @@ public class InstrumentEventsApi {
 
         /**
          * Execute queryBucketCashFlowDrillDown request
-         * @return ResourceListOfCashFlowDetail
+         * @return BucketCashFlowDrillDownResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ResourceListOfCashFlowDetail execute() throws ApiException {
-            ApiResponse<ResourceListOfCashFlowDetail> localVarResp = queryBucketCashFlowDrillDownWithHttpInfo(queryBucketCashFlowDrillDownRequest);
+        public BucketCashFlowDrillDownResponse execute() throws ApiException {
+            ApiResponse<BucketCashFlowDrillDownResponse> localVarResp = queryBucketCashFlowDrillDownWithHttpInfo(queryBucketCashFlowDrillDownRequest);
             return localVarResp.getData();
         }
 
         /**
          * Execute queryBucketCashFlowDrillDown request. Use any specified configuration options to override any other configuration for this request only.
-         * @return ResourceListOfCashFlowDetail
+         * @return BucketCashFlowDrillDownResponse
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ResourceListOfCashFlowDetail execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ResourceListOfCashFlowDetail> localVarResp = queryBucketCashFlowDrillDownWithHttpInfo(queryBucketCashFlowDrillDownRequest, opts);
+        public BucketCashFlowDrillDownResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<BucketCashFlowDrillDownResponse> localVarResp = queryBucketCashFlowDrillDownWithHttpInfo(queryBucketCashFlowDrillDownRequest, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute queryBucketCashFlowDrillDown request with HTTP info returned
-         * @return ApiResponse&lt;ResourceListOfCashFlowDetail&gt;
+         * @return ApiResponse&lt;BucketCashFlowDrillDownResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ResourceListOfCashFlowDetail> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<BucketCashFlowDrillDownResponse> executeWithHttpInfo() throws ApiException {
             return queryBucketCashFlowDrillDownWithHttpInfo(queryBucketCashFlowDrillDownRequest);
         }
 
         /**
          * Execute queryBucketCashFlowDrillDown request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;ResourceListOfCashFlowDetail&gt;
+         * @return ApiResponse&lt;BucketCashFlowDrillDownResponse&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<ResourceListOfCashFlowDetail> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        public ApiResponse<BucketCashFlowDrillDownResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
             return queryBucketCashFlowDrillDownWithHttpInfo(queryBucketCashFlowDrillDownRequest, opts);
         }
 
@@ -563,12 +563,12 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfCashFlowDetail> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<BucketCashFlowDrillDownResponse> _callback) throws ApiException {
             return queryBucketCashFlowDrillDownAsync(queryBucketCashFlowDrillDownRequest, _callback);
         }
 
@@ -580,12 +580,12 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfCashFlowDetail> _callback, ConfigurationOptions opts) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<BucketCashFlowDrillDownResponse> _callback, ConfigurationOptions opts) throws ApiException {
             return queryBucketCashFlowDrillDownAsync(queryBucketCashFlowDrillDownRequest, _callback, opts);
         }
     }
@@ -597,7 +597,7 @@ public class InstrumentEventsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The individual cashflows inside the requested bucket. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

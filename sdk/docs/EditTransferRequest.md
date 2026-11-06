@@ -28,13 +28,16 @@ Name | Type | Description | Notes
 **counterpartyIdIn** | **String** | The counterparty identifier of the incoming leg. Defaults to CounterpartyIdOut. | [optional] [default to String]
 **custodianAccountIdOut** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **custodianAccountIdIn** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
-**source** | **String** | The transaction source the generated legs are booked against. | [default to String]
+**sourceOut** | **String** | The transaction source the outgoing leg is booked against, and the incoming leg too when SourceIn is not supplied. Defaults to &#39;default&#39;. | [optional] [default to String]
 **accountingMethod** | **String** | An accounting method to record against the transfer. Available values: AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency, IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency, HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency, MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency. | [optional] [default to String]
 **propertiesOut** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Transaction Properties to set on the outgoing transaction leg, and on the incoming transaction leg when PropertiesIn is absent. Supplying an empty collection for PropertiesIn leaves the incoming leg with no properties. | [optional] [default to Map<String, PerpetualProperty>]
 **propertiesIn** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Transaction Properties to set on the incoming transaction leg, replacing rather than adding to PropertiesOut. | [optional] [default to Map<String, PerpetualProperty>]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Properties to set on the transfer itself, in the Transfer domain. These are separate from PropertiesOut and PropertiesIn, which are Transaction domain and land on the legs. | [optional] [default to Map<String, PerpetualProperty>]
 **transactionToPortfolioRateOut** | **java.math.BigDecimal** | The rate from the outgoing leg&#39;s trade currency to the outgoing portfolio&#39;s base currency, applied whenever supplied. | [optional] [default to java.math.BigDecimal]
 **transactionToPortfolioRateIn** | **java.math.BigDecimal** | The rate from the incoming leg&#39;s trade currency to the incoming portfolio&#39;s base currency. Required when the two portfolios have different base currencies, and applied whenever supplied. | [optional] [default to java.math.BigDecimal]
+**sourceIn** | **String** | The transaction source the incoming leg is booked against. Defaults to SourceOut. | [optional] [default to String]
+**transactionTypeOut** | **String** | The transaction type to book the outgoing leg as. Supply it together with TransactionTypeIn, or supply neither. If not supplied, it will be derived from the transfer type. It must be a different type from TransactionTypeIn, must be configured under SourceOut in the transaction type scope of PortfolioIdOut, and must reduce a position. | [optional] [default to String]
+**transactionTypeIn** | **String** | The transaction type to book the incoming leg as. Supply it together with TransactionTypeOut, or supply neither. If not supplied, it will be derived from the transfer type. It must be configured under SourceIn in the transaction type scope of PortfolioIdIn, and must increase a position. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.EditTransferRequest;
@@ -65,13 +68,16 @@ OffsetDateTime SettlementDateOut = OffsetDateTime.now();
 @jakarta.annotation.Nullable String CounterpartyIdIn = "example CounterpartyIdIn";
 ResourceId CustodianAccountIdOut = new ResourceId();
 ResourceId CustodianAccountIdIn = new ResourceId();
-String Source = "example Source";
+@jakarta.annotation.Nullable String SourceOut = "example SourceOut";
 @jakarta.annotation.Nullable String AccountingMethod = "example AccountingMethod";
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> PropertiesOut = new Map<String, PerpetualProperty>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> PropertiesIn = new Map<String, PerpetualProperty>();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
 @jakarta.annotation.Nullable java.math.BigDecimal TransactionToPortfolioRateOut = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal TransactionToPortfolioRateIn = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String SourceIn = "example SourceIn";
+@jakarta.annotation.Nullable String TransactionTypeOut = "example TransactionTypeOut";
+@jakarta.annotation.Nullable String TransactionTypeIn = "example TransactionTypeIn";
 
 
 EditTransferRequest editTransferRequestInstance = new EditTransferRequest()
@@ -98,13 +104,16 @@ EditTransferRequest editTransferRequestInstance = new EditTransferRequest()
     .CounterpartyIdIn(CounterpartyIdIn)
     .CustodianAccountIdOut(CustodianAccountIdOut)
     .CustodianAccountIdIn(CustodianAccountIdIn)
-    .Source(Source)
+    .SourceOut(SourceOut)
     .AccountingMethod(AccountingMethod)
     .PropertiesOut(PropertiesOut)
     .PropertiesIn(PropertiesIn)
     .Properties(Properties)
     .TransactionToPortfolioRateOut(TransactionToPortfolioRateOut)
-    .TransactionToPortfolioRateIn(TransactionToPortfolioRateIn);
+    .TransactionToPortfolioRateIn(TransactionToPortfolioRateIn)
+    .SourceIn(SourceIn)
+    .TransactionTypeOut(TransactionTypeOut)
+    .TransactionTypeIn(TransactionTypeIn);
 ```
 
 

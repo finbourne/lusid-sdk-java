@@ -91,6 +91,10 @@ public class FlexibleLoan extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_TRADING_CONVENTIONS)
   private TradingConventions tradingConventions;
 
+  public static final String SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE = "originalIssuePrice";
+  @SerializedName(SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE)
+  private java.math.BigDecimal originalIssuePrice;
+
   public FlexibleLoan() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -263,6 +267,27 @@ public class FlexibleLoan extends LusidInstrument {
   }
 
 
+  public FlexibleLoan originalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    
+    this.originalIssuePrice = originalIssuePrice;
+    return this;
+  }
+
+   /**
+   * The price the loan was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%.
+   * @return originalIssuePrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getOriginalIssuePrice() {
+    return originalIssuePrice;
+  }
+
+
+  public void setOriginalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    this.originalIssuePrice = originalIssuePrice;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -281,6 +306,7 @@ public class FlexibleLoan extends LusidInstrument {
         Objects.equals(this.schedules, flexibleLoan.schedules) &&
         Objects.equals(this.timeZoneConventions, flexibleLoan.timeZoneConventions) &&
         Objects.equals(this.tradingConventions, flexibleLoan.tradingConventions) &&
+        (this.originalIssuePrice.compareTo(flexibleLoan.getOriginalIssuePrice()) == 0) &&
         super.equals(o);
   }
 
@@ -290,7 +316,7 @@ public class FlexibleLoan extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, parentFacility, parentFacilityDetails, schedules, timeZoneConventions, tradingConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, parentFacility, parentFacilityDetails, schedules, timeZoneConventions, tradingConventions, originalIssuePrice, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -313,6 +339,7 @@ public class FlexibleLoan extends LusidInstrument {
     sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("    tradingConventions: ").append(toIndentedString(tradingConventions)).append("\n");
+    sb.append("    originalIssuePrice: ").append(toIndentedString(originalIssuePrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -344,6 +371,7 @@ public class FlexibleLoan extends LusidInstrument {
     openapiFields.add("schedules");
     openapiFields.add("timeZoneConventions");
     openapiFields.add("tradingConventions");
+    openapiFields.add("originalIssuePrice");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

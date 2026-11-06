@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.MarginRunIssue;
+import com.finbourne.lusid.model.MarginRunOptimisation;
 import com.finbourne.lusid.model.MarginRunShard;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
@@ -116,6 +117,10 @@ public class MarginRun {
   public static final String SERIALIZED_NAME_CAPTURE_DIAGNOSTICS = "captureDiagnostics";
   @SerializedName(SERIALIZED_NAME_CAPTURE_DIAGNOSTICS)
   private Boolean captureDiagnostics;
+
+  public static final String SERIALIZED_NAME_OPTIMISATION = "optimisation";
+  @SerializedName(SERIALIZED_NAME_OPTIMISATION)
+  private MarginRunOptimisation optimisation;
 
   public MarginRun() {
   }
@@ -467,6 +472,27 @@ public class MarginRun {
   }
 
 
+  public MarginRun optimisation(MarginRunOptimisation optimisation) {
+    
+    this.optimisation = optimisation;
+    return this;
+  }
+
+   /**
+   * Get optimisation
+   * @return optimisation
+  **/
+  @jakarta.annotation.Nullable
+  public MarginRunOptimisation getOptimisation() {
+    return optimisation;
+  }
+
+
+  public void setOptimisation(MarginRunOptimisation optimisation) {
+    this.optimisation = optimisation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -491,7 +517,8 @@ public class MarginRun {
         Objects.equals(this.issues, marginRun.issues) &&
         Objects.equals(this.shards, marginRun.shards) &&
         Objects.equals(this.scenarios, marginRun.scenarios) &&
-        Objects.equals(this.captureDiagnostics, marginRun.captureDiagnostics);
+        Objects.equals(this.captureDiagnostics, marginRun.captureDiagnostics) &&
+        Objects.equals(this.optimisation, marginRun.optimisation);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -500,7 +527,7 @@ public class MarginRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, effectiveAt, asAt, status, agreements, callCount, lineCount, shardCount, completedShards, failedShards, issues, shards, scenarios, captureDiagnostics);
+    return Objects.hash(href, id, effectiveAt, asAt, status, agreements, callCount, lineCount, shardCount, completedShards, failedShards, issues, shards, scenarios, captureDiagnostics, optimisation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -529,6 +556,7 @@ public class MarginRun {
     sb.append("    shards: ").append(toIndentedString(shards)).append("\n");
     sb.append("    scenarios: ").append(toIndentedString(scenarios)).append("\n");
     sb.append("    captureDiagnostics: ").append(toIndentedString(captureDiagnostics)).append("\n");
+    sb.append("    optimisation: ").append(toIndentedString(optimisation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -566,6 +594,7 @@ public class MarginRun {
     openapiFields.add("shards");
     openapiFields.add("scenarios");
     openapiFields.add("captureDiagnostics");
+    openapiFields.add("optimisation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -653,6 +682,10 @@ public class MarginRun {
       for (int i = 0; i < jsonArrayscenarios.size(); i++) {
         ResourceId.validateJsonElement(jsonArrayscenarios.get(i));
       };
+      // validate the optional field `optimisation`
+      if (jsonObj.get("optimisation") != null && !jsonObj.get("optimisation").isJsonNull()) {
+        MarginRunOptimisation.validateJsonElement(jsonObj.get("optimisation"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

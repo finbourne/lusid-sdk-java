@@ -72,6 +72,7 @@ Class | Method | HTTP request | Description
 *AllocationsApi* | [**listAllocations**](docs/AllocationsApi.md#listallocations) | **GET** /api/allocations | ListAllocations: List Allocations
 *AllocationsApi* | [**upsertAllocations**](docs/AllocationsApi.md#upsertallocations) | **POST** /api/allocations | UpsertAllocations: Upsert Allocations
 *AmortisationRuleSetsApi* | [**createAmortisationRuleSet**](docs/AmortisationRuleSetsApi.md#createamortisationruleset) | **POST** /api/amortisation/rulesets/{scope} | [EXPERIMENTAL] CreateAmortisationRuleSet: Create an amortisation rule set.
+*AmortisationRuleSetsApi* | [**deleteAmortisationRulesInterval**](docs/AmortisationRuleSetsApi.md#deleteamortisationrulesinterval) | **DELETE** /api/amortisation/rulesets/{scope}/{code}/rulesIntervals | DeleteAmortisationRulesInterval: Delete a rules interval of an amortisation rule set.
 *AmortisationRuleSetsApi* | [**deleteAmortisationRuleset**](docs/AmortisationRuleSetsApi.md#deleteamortisationruleset) | **DELETE** /api/amortisation/rulesets/{scope}/{code} | [EXPERIMENTAL] DeleteAmortisationRuleset: Delete an amortisation rule set.
 *AmortisationRuleSetsApi* | [**getAmortisationRuleSet**](docs/AmortisationRuleSetsApi.md#getamortisationruleset) | **GET** /api/amortisation/rulesets/{scope}/{code} | [EXPERIMENTAL] GetAmortisationRuleSet: Retrieve the definition of a single amortisation rule set
 *AmortisationRuleSetsApi* | [**listAmortisationRuleSets**](docs/AmortisationRuleSetsApi.md#listamortisationrulesets) | **GET** /api/amortisation/rulesets | [EXPERIMENTAL] ListAmortisationRuleSets: List amortisation rule sets.
@@ -155,7 +156,9 @@ Class | Method | HTTP request | Description
 *CollateralApi* | [**listMarginCallLines**](docs/CollateralApi.md#listmargincalllines) | **GET** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/lines | [EXPERIMENTAL] ListMarginCallLines: List the margin lines of a call.
 *CollateralApi* | [**listMarginCalls**](docs/CollateralApi.md#listmargincalls) | **GET** /api/collateral/margincalls | [EXPERIMENTAL] ListMarginCalls: List margin calls.
 *CollateralApi* | [**listMarginLines**](docs/CollateralApi.md#listmarginlines) | **GET** /api/collateral/runs/{runId}/lines | [EXPERIMENTAL] ListMarginLines: List the margin lines of a run.
+*CollateralApi* | [**listMarginRunRecommendations**](docs/CollateralApi.md#listmarginrunrecommendations) | **GET** /api/collateral/runs/{runId}/recommendations | [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run's netting recommendations.
 *CollateralApi* | [**listMarginRuns**](docs/CollateralApi.md#listmarginruns) | **GET** /api/collateral/runs | [EXPERIMENTAL] ListMarginRuns: List margin runs.
+*CollateralApi* | [**listNettingRecommendations**](docs/CollateralApi.md#listnettingrecommendations) | **GET** /api/collateral/recommendations | [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations.
 *CollateralApi* | [**recordCounterpartyDemand**](docs/CollateralApi.md#recordcounterpartydemand) | **POST** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$recordCounterpartyDemand | [EXPERIMENTAL] RecordCounterpartyDemand: Record the counterparty's demand against a margin call.
 *CollateralApi* | [**retryMarginRun**](docs/CollateralApi.md#retrymarginrun) | **POST** /api/collateral/runs/{runId}/$retry | [EXPERIMENTAL] RetryMarginRun: Retry a margin run.
 *CollateralApi* | [**runMarginCalculation**](docs/CollateralApi.md#runmargincalculation) | **POST** /api/collateral/$run | [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation.
@@ -172,22 +175,29 @@ Class | Method | HTTP request | Description
 *ComplexMarketDataApi* | [**upsertComplexMarketData**](docs/ComplexMarketDataApi.md#upsertcomplexmarketdata) | **POST** /api/complexmarketdata/{scope} | UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid.
 *ComplianceApi* | [**createComplianceTemplate**](docs/ComplianceApi.md#createcompliancetemplate) | **POST** /api/compliance/templates/{scope} | [EARLY ACCESS] CreateComplianceTemplate: Create a Compliance Rule Template
 *ComplianceApi* | [**deleteComplianceRule**](docs/ComplianceApi.md#deletecompliancerule) | **DELETE** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule.
+*ComplianceApi* | [**deleteComplianceRuleV3**](docs/ComplianceApi.md#deletecompliancerulev3) | **DELETE** /api/compliance/v3/rules/{scope}/{code} | [EXPERIMENTAL] DeleteComplianceRuleV3: [EXPERIMENTAL] Delete a V3 compliance rule.
 *ComplianceApi* | [**deleteComplianceTemplate**](docs/ComplianceApi.md#deletecompliancetemplate) | **DELETE** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] DeleteComplianceTemplate: Delete a ComplianceRuleTemplate
+*ComplianceApi* | [**describeComplianceRuleV3**](docs/ComplianceApi.md#describecompliancerulev3) | **GET** /api/compliance/v3/rules/{scope}/{code}/$describe | [EXPERIMENTAL] DescribeComplianceRuleV3: [EXPERIMENTAL] Describe a V3 compliance rule in plain English.
 *ComplianceApi* | [**getComplianceRule**](docs/ComplianceApi.md#getcompliancerule) | **GET** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] GetComplianceRule: Get compliance rule.
 *ComplianceApi* | [**getComplianceRuleBreakdown**](docs/ComplianceApi.md#getcompliancerulebreakdown) | **GET** /api/compliance/runs/breakdown/{runScope}/{runCode}/{ruleScope}/{ruleCode} | [EARLY ACCESS] GetComplianceRuleBreakdown: Get the position-level breakdown for a single rule of a compliance run.
 *ComplianceApi* | [**getComplianceRuleResult**](docs/ComplianceApi.md#getcomplianceruleresult) | **GET** /api/compliance/runs/summary/{runScope}/{runCode}/{ruleScope}/{ruleCode} | [EARLY ACCESS] GetComplianceRuleResult: Get detailed results for a specific rule within a compliance run.
+*ComplianceApi* | [**getComplianceRuleV3**](docs/ComplianceApi.md#getcompliancerulev3) | **GET** /api/compliance/v3/rules/{scope}/{code} | [EXPERIMENTAL] GetComplianceRuleV3: [EXPERIMENTAL] Get a V3 compliance rule.
 *ComplianceApi* | [**getComplianceTemplate**](docs/ComplianceApi.md#getcompliancetemplate) | **GET** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template.
 *ComplianceApi* | [**getDecoratedComplianceRunSummary**](docs/ComplianceApi.md#getdecoratedcompliancerunsummary) | **GET** /api/compliance/runs/summary/{scope}/{code}/$decorate | [EARLY ACCESS] GetDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run.
 *ComplianceApi* | [**getFilteredDecoratedComplianceRunSummary**](docs/ComplianceApi.md#getfiltereddecoratedcompliancerunsummary) | **POST** /api/compliance/runs/summary/$decorate | [EARLY ACCESS] GetFilteredDecoratedComplianceRunSummary: Get decorated summary results for a specific compliance run, optionally restricted to a set of portfolios or portfolio groups.
 *ComplianceApi* | [**listComplianceRules**](docs/ComplianceApi.md#listcompliancerules) | **GET** /api/compliance/rules | [EARLY ACCESS] ListComplianceRules: List compliance rules.
+*ComplianceApi* | [**listComplianceRulesV3**](docs/ComplianceApi.md#listcompliancerulesv3) | **GET** /api/compliance/v3/rules | [EXPERIMENTAL] ListComplianceRulesV3: [EXPERIMENTAL] List V3 compliance rules.
 *ComplianceApi* | [**listComplianceRuns**](docs/ComplianceApi.md#listcomplianceruns) | **GET** /api/compliance/runs | [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers.
 *ComplianceApi* | [**listComplianceTemplates**](docs/ComplianceApi.md#listcompliancetemplates) | **GET** /api/compliance/templates | [EARLY ACCESS] ListComplianceTemplates: List compliance templates.
 *ComplianceApi* | [**listOrderBreachHistory**](docs/ComplianceApi.md#listorderbreachhistory) | **GET** /api/compliance/runs/breaches | [EXPERIMENTAL] ListOrderBreachHistory: List Historical Order Breaches.
 *ComplianceApi* | [**runCompliance**](docs/ComplianceApi.md#runcompliance) | **POST** /api/compliance/runs | [EARLY ACCESS] RunCompliance: Run a compliance check.
 *ComplianceApi* | [**runCompliancePreview**](docs/ComplianceApi.md#runcompliancepreview) | **POST** /api/compliance/preview/runs | [EARLY ACCESS] RunCompliancePreview: Run a compliance check.
+*ComplianceApi* | [**runComplianceV3**](docs/ComplianceApi.md#runcompliancev3) | **POST** /api/compliance/v3/runs | [EXPERIMENTAL] RunComplianceV3: [EXPERIMENTAL] Run V3 compliance rules against a portfolio group.
 *ComplianceApi* | [**updateComplianceTemplate**](docs/ComplianceApi.md#updatecompliancetemplate) | **PUT** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] UpdateComplianceTemplate: Update a ComplianceRuleTemplate
 *ComplianceApi* | [**upsertComplianceRule**](docs/ComplianceApi.md#upsertcompliancerule) | **POST** /api/compliance/rules | [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
+*ComplianceApi* | [**upsertComplianceRuleV3**](docs/ComplianceApi.md#upsertcompliancerulev3) | **POST** /api/compliance/v3/rules | [EXPERIMENTAL] UpsertComplianceRuleV3: [EXPERIMENTAL] Upsert a V3 compliance rule.
 *ComplianceApi* | [**upsertComplianceRunSummary**](docs/ComplianceApi.md#upsertcompliancerunsummary) | **POST** /api/compliance/runs/summary | [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary.
+*ComplianceApi* | [**validateComplianceRuleV3**](docs/ComplianceApi.md#validatecompliancerulev3) | **POST** /api/compliance/v3/rules/$validate | [EXPERIMENTAL] ValidateComplianceRuleV3: [EXPERIMENTAL] Validate a V3 compliance rule definition.
 *ConfigurationRecipeApi* | [**deleteConfigurationRecipe**](docs/ConfigurationRecipeApi.md#deleteconfigurationrecipe) | **DELETE** /api/recipes/{scope}/{code} | DeleteConfigurationRecipe: Delete a Configuration Recipe, assuming that it is present.
 *ConfigurationRecipeApi* | [**deleteRecipeComposer**](docs/ConfigurationRecipeApi.md#deleterecipecomposer) | **DELETE** /api/recipes/composer/{scope}/{code} | DeleteRecipeComposer: Delete a Recipe Composer, assuming that it is present.
 *ConfigurationRecipeApi* | [**getConfigurationRecipe**](docs/ConfigurationRecipeApi.md#getconfigurationrecipe) | **GET** /api/recipes/{scope}/{code} | GetConfigurationRecipe: Get Configuration Recipe
@@ -1131,9 +1141,17 @@ Class | Method | HTTP request | Description
  - [BranchStepRequest](docs/BranchStepRequest.md)
  - [BreakCodeSource](docs/BreakCodeSource.md)
  - [Bucket](docs/Bucket.md)
+ - [BucketAmounts](docs/BucketAmounts.md)
+ - [BucketBalanceFigures](docs/BucketBalanceFigures.md)
  - [BucketBorderConfiguration](docs/BucketBorderConfiguration.md)
+ - [BucketCashFlowBalance](docs/BucketCashFlowBalance.md)
+ - [BucketCashFlowBucket](docs/BucketCashFlowBucket.md)
+ - [BucketCashFlowDrillDownResponse](docs/BucketCashFlowDrillDownResponse.md)
+ - [BucketCashFlowSubtotal](docs/BucketCashFlowSubtotal.md)
+ - [BucketCurrencySubtotal](docs/BucketCurrencySubtotal.md)
  - [BucketDefinition](docs/BucketDefinition.md)
  - [BucketMembership](docs/BucketMembership.md)
+ - [BucketNetOfHaircutBalance](docs/BucketNetOfHaircutBalance.md)
  - [BucketSeedValue](docs/BucketSeedValue.md)
  - [BucketSeedValueRequest](docs/BucketSeedValueRequest.md)
  - [BucketSetClassSeed](docs/BucketSetClassSeed.md)
@@ -1186,6 +1204,7 @@ Class | Method | HTTP request | Description
  - [Cash](docs/Cash.md)
  - [CashAndSecurityOfferElection](docs/CashAndSecurityOfferElection.md)
  - [CashDependency](docs/CashDependency.md)
+ - [CashDistributionFromNonEligibleSecuritiesSalesEvent](docs/CashDistributionFromNonEligibleSecuritiesSalesEvent.md)
  - [CashDividendEvent](docs/CashDividendEvent.md)
  - [CashElection](docs/CashElection.md)
  - [CashFlowDetail](docs/CashFlowDetail.md)
@@ -1240,7 +1259,9 @@ Class | Method | HTTP request | Description
  - [CollateralAgreement](docs/CollateralAgreement.md)
  - [CollateralAgreementApplicability](docs/CollateralAgreementApplicability.md)
  - [CollateralAgreementRequest](docs/CollateralAgreementRequest.md)
+ - [CollateralFundingTerms](docs/CollateralFundingTerms.md)
  - [CollateralInstrument](docs/CollateralInstrument.md)
+ - [CollateralOptimisationTerms](docs/CollateralOptimisationTerms.md)
  - [CommodityCalendarSchedule](docs/CommodityCalendarSchedule.md)
  - [CommodityCalendarSwap](docs/CommodityCalendarSwap.md)
  - [CommodityCalendarSwapCashFlowEvent](docs/CommodityCalendarSwapCashFlowEvent.md)
@@ -1275,9 +1296,20 @@ Class | Method | HTTP request | Description
  - [ComplianceRuleTemplateEntity](docs/ComplianceRuleTemplateEntity.md)
  - [ComplianceRuleUpsertRequest](docs/ComplianceRuleUpsertRequest.md)
  - [ComplianceRuleUpsertResponse](docs/ComplianceRuleUpsertResponse.md)
+ - [ComplianceRuleV3Check](docs/ComplianceRuleV3Check.md)
+ - [ComplianceRuleV3CheckBound](docs/ComplianceRuleV3CheckBound.md)
+ - [ComplianceRuleV3ComputedFilter](docs/ComplianceRuleV3ComputedFilter.md)
+ - [ComplianceRuleV3DecimalBound](docs/ComplianceRuleV3DecimalBound.md)
+ - [ComplianceRuleV3DescribeResponse](docs/ComplianceRuleV3DescribeResponse.md)
+ - [ComplianceRuleV3FilterNode](docs/ComplianceRuleV3FilterNode.md)
+ - [ComplianceRuleV3GroupResult](docs/ComplianceRuleV3GroupResult.md)
+ - [ComplianceRuleV3Measure](docs/ComplianceRuleV3Measure.md)
+ - [ComplianceRuleV3Response](docs/ComplianceRuleV3Response.md)
+ - [ComplianceRuleV3RuleResult](docs/ComplianceRuleV3RuleResult.md)
  - [ComplianceRunConfiguration](docs/ComplianceRunConfiguration.md)
  - [ComplianceRunInfo](docs/ComplianceRunInfo.md)
  - [ComplianceRunInfoV2](docs/ComplianceRunInfoV2.md)
+ - [ComplianceRunV3Response](docs/ComplianceRunV3Response.md)
  - [ComplianceStep](docs/ComplianceStep.md)
  - [ComplianceStepRequest](docs/ComplianceStepRequest.md)
  - [ComplianceStepType](docs/ComplianceStepType.md)
@@ -1574,9 +1606,11 @@ Class | Method | HTTP request | Description
  - [FilterStep](docs/FilterStep.md)
  - [FilterStepRequest](docs/FilterStepRequest.md)
  - [FilteredFundIdList](docs/FilteredFundIdList.md)
+ - [FilteredPortfolioIdList](docs/FilteredPortfolioIdList.md)
  - [FinalisedValuationPoint](docs/FinalisedValuationPoint.md)
  - [FixedLeg](docs/FixedLeg.md)
  - [FixedLegAllOfOverrides](docs/FixedLegAllOfOverrides.md)
+ - [FixedPeriodLookbackActivityWindow](docs/FixedPeriodLookbackActivityWindow.md)
  - [FixedSchedule](docs/FixedSchedule.md)
  - [FlexibleDeposit](docs/FlexibleDeposit.md)
  - [FlexibleLoan](docs/FlexibleLoan.md)
@@ -1764,6 +1798,7 @@ Class | Method | HTTP request | Description
  - [InflationSwap](docs/InflationSwap.md)
  - [InformationalErrorEvent](docs/InformationalErrorEvent.md)
  - [InformationalEvent](docs/InformationalEvent.md)
+ - [InitialMarginChange](docs/InitialMarginChange.md)
  - [InlineValuationRequest](docs/InlineValuationRequest.md)
  - [InlineValuationsReconciliationRequest](docs/InlineValuationsReconciliationRequest.md)
  - [InputTransition](docs/InputTransition.md)
@@ -1874,6 +1909,7 @@ Class | Method | HTTP request | Description
  - [MarginRounding](docs/MarginRounding.md)
  - [MarginRun](docs/MarginRun.md)
  - [MarginRunIssue](docs/MarginRunIssue.md)
+ - [MarginRunOptimisation](docs/MarginRunOptimisation.md)
  - [MarginRunRequest](docs/MarginRunRequest.md)
  - [MarginRunShard](docs/MarginRunShard.md)
  - [MarginSettlementLag](docs/MarginSettlementLag.md)
@@ -1934,6 +1970,7 @@ Class | Method | HTTP request | Description
  - [NavType](docs/NavType.md)
  - [NavTypeDefinition](docs/NavTypeDefinition.md)
  - [NavTypeSelection](docs/NavTypeSelection.md)
+ - [NettingRecommendation](docs/NettingRecommendation.md)
  - [NewInstrument](docs/NewInstrument.md)
  - [NextValueInSequenceResponse](docs/NextValueInSequenceResponse.md)
  - [NoticeConvention](docs/NoticeConvention.md)
@@ -2012,6 +2049,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfClosedPeriod](docs/PagedResourceListOfClosedPeriod.md)
  - [PagedResourceListOfCollateralAgreement](docs/PagedResourceListOfCollateralAgreement.md)
  - [PagedResourceListOfComplianceRuleResponse](docs/PagedResourceListOfComplianceRuleResponse.md)
+ - [PagedResourceListOfComplianceRuleV3Response](docs/PagedResourceListOfComplianceRuleV3Response.md)
  - [PagedResourceListOfComplianceRunInfoV2](docs/PagedResourceListOfComplianceRunInfoV2.md)
  - [PagedResourceListOfComplianceTemplate](docs/PagedResourceListOfComplianceTemplate.md)
  - [PagedResourceListOfCorporateActionSource](docs/PagedResourceListOfCorporateActionSource.md)
@@ -2052,6 +2090,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfMarginLine](docs/PagedResourceListOfMarginLine.md)
  - [PagedResourceListOfMarginRun](docs/PagedResourceListOfMarginRun.md)
  - [PagedResourceListOfMatchingRuleset](docs/PagedResourceListOfMatchingRuleset.md)
+ - [PagedResourceListOfNettingRecommendation](docs/PagedResourceListOfNettingRecommendation.md)
  - [PagedResourceListOfOrder](docs/PagedResourceListOfOrder.md)
  - [PagedResourceListOfOrderBreachHistory](docs/PagedResourceListOfOrderBreachHistory.md)
  - [PagedResourceListOfOrderGraphBlock](docs/PagedResourceListOfOrderGraphBlock.md)
@@ -2420,7 +2459,6 @@ Class | Method | HTTP request | Description
  - [ResourceListOfBlock](docs/ResourceListOfBlock.md)
  - [ResourceListOfBlockAndOrders](docs/ResourceListOfBlockAndOrders.md)
  - [ResourceListOfCalendarDate](docs/ResourceListOfCalendarDate.md)
- - [ResourceListOfCashFlowDetail](docs/ResourceListOfCashFlowDetail.md)
  - [ResourceListOfChange](docs/ResourceListOfChange.md)
  - [ResourceListOfChangeHistory](docs/ResourceListOfChangeHistory.md)
  - [ResourceListOfChangeInterval](docs/ResourceListOfChangeInterval.md)
@@ -2535,6 +2573,7 @@ Class | Method | HTTP request | Description
  - [RulesInterval](docs/RulesInterval.md)
  - [RunCheckRequest](docs/RunCheckRequest.md)
  - [RunCheckResponse](docs/RunCheckResponse.md)
+ - [RunComplianceV3Request](docs/RunComplianceV3Request.md)
  - [ScalingMethodology](docs/ScalingMethodology.md)
  - [ScenarioDefinition](docs/ScenarioDefinition.md)
  - [ScenarioDiagnostics](docs/ScenarioDiagnostics.md)
@@ -2596,6 +2635,7 @@ Class | Method | HTTP request | Description
  - [ShareClassDefinition](docs/ShareClassDefinition.md)
  - [ShareClassDetails](docs/ShareClassDetails.md)
  - [ShareClassPnlBreakdown](docs/ShareClassPnlBreakdown.md)
+ - [ShareClassRoundingConvention](docs/ShareClassRoundingConvention.md)
  - [SharesPremiumDividendEvent](docs/SharesPremiumDividendEvent.md)
  - [ShiftValueCondition](docs/ShiftValueCondition.md)
  - [SideConfigurationData](docs/SideConfigurationData.md)
@@ -2683,6 +2723,7 @@ Class | Method | HTTP request | Description
  - [TotalReturnSwap](docs/TotalReturnSwap.md)
  - [TotalReturnSwapCashFlowEvent](docs/TotalReturnSwapCashFlowEvent.md)
  - [Touch](docs/Touch.md)
+ - [TradeReference](docs/TradeReference.md)
  - [TradeTicket](docs/TradeTicket.md)
  - [TradeTicketType](docs/TradeTicketType.md)
  - [TradingConventions](docs/TradingConventions.md)
@@ -2814,6 +2855,7 @@ Class | Method | HTTP request | Description
  - [UpsertCollateralAgreementRequest](docs/UpsertCollateralAgreementRequest.md)
  - [UpsertComplexMarketDataRequest](docs/UpsertComplexMarketDataRequest.md)
  - [UpsertComplianceRuleRequest](docs/UpsertComplianceRuleRequest.md)
+ - [UpsertComplianceRuleV3Request](docs/UpsertComplianceRuleV3Request.md)
  - [UpsertComplianceRunSummaryRequest](docs/UpsertComplianceRunSummaryRequest.md)
  - [UpsertComplianceRunSummaryResult](docs/UpsertComplianceRunSummaryResult.md)
  - [UpsertCorporateActionRequest](docs/UpsertCorporateActionRequest.md)
@@ -2926,6 +2968,7 @@ Class | Method | HTTP request | Description
  - [VirtualRow](docs/VirtualRow.md)
  - [VirtualTransactionOverrideRecord](docs/VirtualTransactionOverrideRecord.md)
  - [VirtualTransactionOverridesResponse](docs/VirtualTransactionOverridesResponse.md)
+ - [VolCubeOptions](docs/VolCubeOptions.md)
  - [VolSurfaceShiftDefinition](docs/VolSurfaceShiftDefinition.md)
  - [VolSurfaceShiftMode](docs/VolSurfaceShiftMode.md)
  - [VolatilitySwap](docs/VolatilitySwap.md)

@@ -167,7 +167,7 @@ public class CreateClosedPeriodRequest {
   }
 
    /**
-   * The asAt closed datetime for the Closed Period
+   * The asAt closed datetime for the Closed Period. It must not exceed the latest asAt in LUSID. If not specified, the latest asAt in LUSID will be used.
    * @return asAtClosed
   **/
   @jakarta.annotation.Nullable
@@ -230,7 +230,7 @@ public class CreateClosedPeriodRequest {
   }
 
    /**
-   * The optional AsAtClosed Override to use for building holdings in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used.
+   * The optional AsAtClosed Override to use for building holdings in the Closed Period. If not specified, the AsAtClosed on the Closed Period will be used. It must not exceed the latest asAt in LUSID.
    * @return holdingsAsAtClosedOverride
   **/
   @jakarta.annotation.Nullable
@@ -251,7 +251,7 @@ public class CreateClosedPeriodRequest {
   }
 
    /**
-   * The optional AsAtClosed Override to use for performing valuations in the Closed Period.If not specified, the AsAtClosed on the Closed Period will be used.
+   * The optional AsAtClosed Override to use for performing valuations in the Closed Period. If not specified, the AsAtClosed on the Closed Period will be used. It must not exceed the latest asAt in LUSID.
    * @return valuationAsAtClosedOverride
   **/
   @jakarta.annotation.Nullable

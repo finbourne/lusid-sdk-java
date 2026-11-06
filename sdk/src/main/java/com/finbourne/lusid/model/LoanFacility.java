@@ -24,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -82,6 +83,10 @@ public class LoanFacility extends LusidInstrument {
   public static final String SERIALIZED_NAME_TIME_ZONE_CONVENTIONS = "timeZoneConventions";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
+
+  public static final String SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE = "originalIssuePrice";
+  @SerializedName(SERIALIZED_NAME_ORIGINAL_ISSUE_PRICE)
+  private java.math.BigDecimal originalIssuePrice;
 
   public LoanFacility() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -242,6 +247,27 @@ public class LoanFacility extends LusidInstrument {
   }
 
 
+  public LoanFacility originalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    
+    this.originalIssuePrice = originalIssuePrice;
+    return this;
+  }
+
+   /**
+   * The price the loan facility was issued at. This is to be entered as a percentage of par, for example a value of 98.5 would represent 98.5%.
+   * @return originalIssuePrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getOriginalIssuePrice() {
+    return originalIssuePrice;
+  }
+
+
+  public void setOriginalIssuePrice(java.math.BigDecimal originalIssuePrice) {
+    this.originalIssuePrice = originalIssuePrice;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -259,12 +285,24 @@ public class LoanFacility extends LusidInstrument {
         Objects.equals(this.loanType, loanFacility.loanType) &&
         Objects.equals(this.schedules, loanFacility.schedules) &&
         Objects.equals(this.timeZoneConventions, loanFacility.timeZoneConventions) &&
+        (this.originalIssuePrice.compareTo(loanFacility.getOriginalIssuePrice()) == 0) &&
         super.equals(o);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, domCcy, initialCommitment, loanType, schedules, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, domCcy, initialCommitment, loanType, schedules, timeZoneConventions, originalIssuePrice, super.hashCode());
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -279,6 +317,7 @@ public class LoanFacility extends LusidInstrument {
     sb.append("    loanType: ").append(toIndentedString(loanType)).append("\n");
     sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    originalIssuePrice: ").append(toIndentedString(originalIssuePrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -309,6 +348,7 @@ public class LoanFacility extends LusidInstrument {
     openapiFields.add("loanType");
     openapiFields.add("schedules");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("originalIssuePrice");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

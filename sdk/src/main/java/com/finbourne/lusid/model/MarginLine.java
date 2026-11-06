@@ -18,8 +18,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -124,6 +127,34 @@ public class MarginLine {
   public static final String SERIALIZED_NAME_EXPLAIN_AVAILABLE = "explainAvailable";
   @SerializedName(SERIALIZED_NAME_EXPLAIN_AVAILABLE)
   private Boolean explainAvailable;
+
+  public static final String SERIALIZED_NAME_INSTRUMENT_TYPE = "instrumentType";
+  @SerializedName(SERIALIZED_NAME_INSTRUMENT_TYPE)
+  private String instrumentType;
+
+  public static final String SERIALIZED_NAME_ASSET_CLASS = "assetClass";
+  @SerializedName(SERIALIZED_NAME_ASSET_CLASS)
+  private String assetClass;
+
+  public static final String SERIALIZED_NAME_CURRENCY = "currency";
+  @SerializedName(SERIALIZED_NAME_CURRENCY)
+  private String currency;
+
+  public static final String SERIALIZED_NAME_MATURITY_DATE = "maturityDate";
+  @SerializedName(SERIALIZED_NAME_MATURITY_DATE)
+  private OffsetDateTime maturityDate;
+
+  public static final String SERIALIZED_NAME_NOTIONAL = "notional";
+  @SerializedName(SERIALIZED_NAME_NOTIONAL)
+  private java.math.BigDecimal notional;
+
+  public static final String SERIALIZED_NAME_GROSS_INITIAL_MARGIN = "grossInitialMargin";
+  @SerializedName(SERIALIZED_NAME_GROSS_INITIAL_MARGIN)
+  private java.math.BigDecimal grossInitialMargin;
+
+  public static final String SERIALIZED_NAME_MOVABLE_TO = "movableTo";
+  @SerializedName(SERIALIZED_NAME_MOVABLE_TO)
+  private List<String> movableTo = new ArrayList<>();
 
   public MarginLine() {
   }
@@ -514,6 +545,161 @@ public class MarginLine {
   }
 
 
+  public MarginLine instrumentType(String instrumentType) {
+    
+    this.instrumentType = instrumentType;
+    return this;
+  }
+
+   /**
+   * LUSID&#39;s type for the instrument held, when the run read it.
+   * @return instrumentType
+  **/
+  @jakarta.annotation.Nullable
+  public String getInstrumentType() {
+    return instrumentType;
+  }
+
+
+  public void setInstrumentType(String instrumentType) {
+    this.instrumentType = instrumentType;
+  }
+
+
+  public MarginLine assetClass(String assetClass) {
+    
+    this.assetClass = assetClass;
+    return this;
+  }
+
+   /**
+   * The instrument&#39;s asset class, when the run read it.
+   * @return assetClass
+  **/
+  @jakarta.annotation.Nullable
+  public String getAssetClass() {
+    return assetClass;
+  }
+
+
+  public void setAssetClass(String assetClass) {
+    this.assetClass = assetClass;
+  }
+
+
+  public MarginLine currency(String currency) {
+    
+    this.currency = currency;
+    return this;
+  }
+
+   /**
+   * The currency the holding is denominated in, when the run read it.
+   * @return currency
+  **/
+  @jakarta.annotation.Nullable
+  public String getCurrency() {
+    return currency;
+  }
+
+
+  public void setCurrency(String currency) {
+    this.currency = currency;
+  }
+
+
+  public MarginLine maturityDate(OffsetDateTime maturityDate) {
+    
+    this.maturityDate = maturityDate;
+    return this;
+  }
+
+   /**
+   * The instrument&#39;s maturity, when it has one.
+   * @return maturityDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getMaturityDate() {
+    return maturityDate;
+  }
+
+
+  public void setMaturityDate(OffsetDateTime maturityDate) {
+    this.maturityDate = maturityDate;
+  }
+
+
+  public MarginLine notional(java.math.BigDecimal notional) {
+    
+    this.notional = notional;
+    return this;
+  }
+
+   /**
+   * The holding&#39;s notional in its own currency, when the instrument has one.
+   * @return notional
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getNotional() {
+    return notional;
+  }
+
+
+  public void setNotional(java.math.BigDecimal notional) {
+    this.notional = notional;
+  }
+
+
+  public MarginLine grossInitialMargin(java.math.BigDecimal grossInitialMargin) {
+    
+    this.grossInitialMargin = grossInitialMargin;
+    return this;
+  }
+
+   /**
+   * The regulatory-grid charge on the holding before its netting set&#39;s net-to-gross scaling. Null under other methods.
+   * @return grossInitialMargin
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getGrossInitialMargin() {
+    return grossInitialMargin;
+  }
+
+
+  public void setGrossInitialMargin(java.math.BigDecimal grossInitialMargin) {
+    this.grossInitialMargin = grossInitialMargin;
+  }
+
+
+  public MarginLine movableTo(List<String> movableTo) {
+    
+    this.movableTo = movableTo;
+    return this;
+  }
+
+  public MarginLine addMovableToItem(String movableToItem) {
+    if (this.movableTo == null) {
+      this.movableTo = new ArrayList<>();
+    }
+    this.movableTo.add(movableToItem);
+    return this;
+  }
+
+   /**
+   * The initial-margin netting sets of other agreements in the run the holding could be re-booked into, as scope/code/item. Recorded for base-case trading lines under an initial-margin item; empty otherwise.
+   * @return movableTo
+  **/
+  @jakarta.annotation.Nonnull
+  public List<String> getMovableTo() {
+    return movableTo;
+  }
+
+
+  public void setMovableTo(List<String> movableTo) {
+    this.movableTo = movableTo;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -541,7 +727,14 @@ public class MarginLine {
         (this.initialMargin.compareTo(marginLine.getInitialMargin()) == 0) &&
         Objects.equals(this.scenario, marginLine.scenario) &&
         Objects.equals(this.lineKey, marginLine.lineKey) &&
-        Objects.equals(this.explainAvailable, marginLine.explainAvailable);
+        Objects.equals(this.explainAvailable, marginLine.explainAvailable) &&
+        Objects.equals(this.instrumentType, marginLine.instrumentType) &&
+        Objects.equals(this.assetClass, marginLine.assetClass) &&
+        Objects.equals(this.currency, marginLine.currency) &&
+        Objects.equals(this.maturityDate, marginLine.maturityDate) &&
+        (this.notional.compareTo(marginLine.getNotional()) == 0) &&
+        (this.grossInitialMargin.compareTo(marginLine.getGrossInitialMargin()) == 0) &&
+        Objects.equals(this.movableTo, marginLine.movableTo);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -550,7 +743,7 @@ public class MarginLine {
 
   @Override
   public int hashCode() {
-    return Objects.hash(runId, agreementId, item, portfolioId, holdingId, custodianAccountScope, custodianAccountCode, custodianAccountName, instrumentIdentifiers, units, pv, variationMargin, collateralValue, initialMarginItem, initialMargin, scenario, lineKey, explainAvailable);
+    return Objects.hash(runId, agreementId, item, portfolioId, holdingId, custodianAccountScope, custodianAccountCode, custodianAccountName, instrumentIdentifiers, units, pv, variationMargin, collateralValue, initialMarginItem, initialMargin, scenario, lineKey, explainAvailable, instrumentType, assetClass, currency, maturityDate, notional, grossInitialMargin, movableTo);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -582,6 +775,13 @@ public class MarginLine {
     sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
     sb.append("    lineKey: ").append(toIndentedString(lineKey)).append("\n");
     sb.append("    explainAvailable: ").append(toIndentedString(explainAvailable)).append("\n");
+    sb.append("    instrumentType: ").append(toIndentedString(instrumentType)).append("\n");
+    sb.append("    assetClass: ").append(toIndentedString(assetClass)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
+    sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
+    sb.append("    grossInitialMargin: ").append(toIndentedString(grossInitialMargin)).append("\n");
+    sb.append("    movableTo: ").append(toIndentedString(movableTo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -622,6 +822,13 @@ public class MarginLine {
     openapiFields.add("scenario");
     openapiFields.add("lineKey");
     openapiFields.add("explainAvailable");
+    openapiFields.add("instrumentType");
+    openapiFields.add("assetClass");
+    openapiFields.add("currency");
+    openapiFields.add("maturityDate");
+    openapiFields.add("notional");
+    openapiFields.add("grossInitialMargin");
+    openapiFields.add("movableTo");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -630,6 +837,7 @@ public class MarginLine {
     openapiRequiredFields.add("item");
     openapiRequiredFields.add("instrumentIdentifiers");
     openapiRequiredFields.add("units");
+    openapiRequiredFields.add("movableTo");
   }
 
  /**
@@ -685,6 +893,21 @@ public class MarginLine {
       }
       if ((jsonObj.get("lineKey") != null && !jsonObj.get("lineKey").isJsonNull()) && !jsonObj.get("lineKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `lineKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lineKey").toString()));
+      }
+      if ((jsonObj.get("instrumentType") != null && !jsonObj.get("instrumentType").isJsonNull()) && !jsonObj.get("instrumentType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instrumentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentType").toString()));
+      }
+      if ((jsonObj.get("assetClass") != null && !jsonObj.get("assetClass").isJsonNull()) && !jsonObj.get("assetClass").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `assetClass` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assetClass").toString()));
+      }
+      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      // ensure the required json array is present
+      if (jsonObj.get("movableTo") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("movableTo").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `movableTo` to be an array in the JSON string but got `%s`", jsonObj.get("movableTo").toString()));
       }
   }
 
