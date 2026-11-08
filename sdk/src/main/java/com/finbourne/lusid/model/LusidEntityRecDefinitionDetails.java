@@ -81,7 +81,7 @@ public class LusidEntityRecDefinitionDetails {
   }
 
    /**
-   * The type of LUSID entity to reconcile, which is also the rec type of the results. Supported types: Instrument, LegalEntity. Must equal the reconciliationType of the matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity.
+   * The type of LUSID entity to reconcile, which is also the rec type of the results. Supported types: Instrument, LegalEntity, Portfolio. Must equal the reconciliationType of the matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
    * @return entityType
   **/
   @jakarta.annotation.Nonnull

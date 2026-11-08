@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lusidInstrumentId** | **String** | LUSID&#39;s internal unique instrument identifier, resolved from the share class&#39; instrument identifiers | [optional] [default to String]
-**instrumentScope** | **String** | The scope in which the share class instrument lies. | [optional] [default to String]
+**lusidInstrumentId** | **String** | LUSID&#39;s internal unique instrument identifier, resolved from the share class&#39; instrument identifiers. Absent where no instrument was resolved for the share class: a fund defined with inline share classes resolves none, whether or not it created their instruments. | [optional] [default to String]
+**instrumentScope** | **String** | The scope in which the share class instrument lies, or the fund&#39;s instrument scope where no instrument was resolved for the share class. | [optional] [default to String]
 **shortCode** | **String** | The unique code within the fund for the share class instrument. | [optional] [default to String]
 **domCurrency** | **String** | The domestic currency of the share class instrument | [optional] [default to String]
 **instrumentActive** | **Boolean** | If the instrument of the share class is active. | [optional] [default to Boolean]

@@ -133,6 +133,14 @@ public class CollateralAgreement {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
+  public static final String SERIALIZED_NAME_NOTIFICATION_CUT_LABEL = "notificationCutLabel";
+  @SerializedName(SERIALIZED_NAME_NOTIFICATION_CUT_LABEL)
+  private String notificationCutLabel;
+
+  public static final String SERIALIZED_NAME_RETURN_NOTIFICATION_CUT_LABEL = "returnNotificationCutLabel";
+  @SerializedName(SERIALIZED_NAME_RETURN_NOTIFICATION_CUT_LABEL)
+  private String returnNotificationCutLabel;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -521,6 +529,48 @@ public class CollateralAgreement {
   }
 
 
+  public CollateralAgreement notificationCutLabel(String notificationCutLabel) {
+    
+    this.notificationCutLabel = notificationCutLabel;
+    return this;
+  }
+
+   /**
+   * The cut label giving the time of day by which collateral we deliver under a margin call must settle. Each run resolves it on the business date and records it as the call&#39;s deadline; the allocation excludes assets that cannot settle by it. Optional.
+   * @return notificationCutLabel
+  **/
+  @jakarta.annotation.Nullable
+  public String getNotificationCutLabel() {
+    return notificationCutLabel;
+  }
+
+
+  public void setNotificationCutLabel(String notificationCutLabel) {
+    this.notificationCutLabel = notificationCutLabel;
+  }
+
+
+  public CollateralAgreement returnNotificationCutLabel(String returnNotificationCutLabel) {
+    
+    this.returnNotificationCutLabel = returnNotificationCutLabel;
+    return this;
+  }
+
+   /**
+   * The cut label giving the time of day by which collateral the counterparty delivers, or returns to us, must settle. Recorded as the deadline of the calls they post under. Optional.
+   * @return returnNotificationCutLabel
+  **/
+  @jakarta.annotation.Nullable
+  public String getReturnNotificationCutLabel() {
+    return returnNotificationCutLabel;
+  }
+
+
+  public void setReturnNotificationCutLabel(String returnNotificationCutLabel) {
+    this.returnNotificationCutLabel = returnNotificationCutLabel;
+  }
+
+
   public CollateralAgreement links(List<Link> links) {
     
     this.links = links;
@@ -577,6 +627,8 @@ public class CollateralAgreement {
         Objects.equals(this.initialMargin, collateralAgreement.initialMargin) &&
         Objects.equals(this.version, collateralAgreement.version) &&
         Objects.equals(this.properties, collateralAgreement.properties) &&
+        Objects.equals(this.notificationCutLabel, collateralAgreement.notificationCutLabel) &&
+        Objects.equals(this.returnNotificationCutLabel, collateralAgreement.returnNotificationCutLabel) &&
         Objects.equals(this.links, collateralAgreement.links);
   }
 
@@ -586,7 +638,7 @@ public class CollateralAgreement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, counterpartyId, applicabilityFilter, baseCurrency, cutLabel, recipeId, minimumTransferAmount, rounding, settlementLag, matchTolerance, funding, optimisation, variationMargin, initialMargin, version, properties, links);
+    return Objects.hash(href, id, counterpartyId, applicabilityFilter, baseCurrency, cutLabel, recipeId, minimumTransferAmount, rounding, settlementLag, matchTolerance, funding, optimisation, variationMargin, initialMargin, version, properties, notificationCutLabel, returnNotificationCutLabel, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -617,6 +669,8 @@ public class CollateralAgreement {
     sb.append("    initialMargin: ").append(toIndentedString(initialMargin)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    notificationCutLabel: ").append(toIndentedString(notificationCutLabel)).append("\n");
+    sb.append("    returnNotificationCutLabel: ").append(toIndentedString(returnNotificationCutLabel)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -657,6 +711,8 @@ public class CollateralAgreement {
     openapiFields.add("initialMargin");
     openapiFields.add("version");
     openapiFields.add("properties");
+    openapiFields.add("notificationCutLabel");
+    openapiFields.add("returnNotificationCutLabel");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -753,6 +809,12 @@ public class CollateralAgreement {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      if ((jsonObj.get("notificationCutLabel") != null && !jsonObj.get("notificationCutLabel").isJsonNull()) && !jsonObj.get("notificationCutLabel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `notificationCutLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("notificationCutLabel").toString()));
+      }
+      if ((jsonObj.get("returnNotificationCutLabel") != null && !jsonObj.get("returnNotificationCutLabel").isJsonNull()) && !jsonObj.get("returnNotificationCutLabel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `returnNotificationCutLabel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("returnNotificationCutLabel").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

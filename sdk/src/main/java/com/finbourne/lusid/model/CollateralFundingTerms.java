@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * What margin posted under the agreement costs us: the annual rate it is funded at and the basis it accrues on.
+ * What margin posted under the agreement costs us: the annual rate it is funded at, the basis it accrues on and the  lending fee assumed forgone on a security with no fee quote of its own when collateral is ranked.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CollateralFundingTerms {
@@ -56,6 +57,10 @@ public class CollateralFundingTerms {
   public static final String SERIALIZED_NAME_DAY_COUNT_BASIS = "dayCountBasis";
   @SerializedName(SERIALIZED_NAME_DAY_COUNT_BASIS)
   private Integer dayCountBasis;
+
+  public static final String SERIALIZED_NAME_DEFAULT_LENDING_FEE = "defaultLendingFee";
+  @SerializedName(SERIALIZED_NAME_DEFAULT_LENDING_FEE)
+  private java.math.BigDecimal defaultLendingFee;
 
   public CollateralFundingTerms() {
   }
@@ -106,6 +111,29 @@ public class CollateralFundingTerms {
   }
 
 
+  public CollateralFundingTerms defaultLendingFee(java.math.BigDecimal defaultLendingFee) {
+    
+    this.defaultLendingFee = defaultLendingFee;
+    return this;
+  }
+
+   /**
+   * The annual lending fee, as a fraction, assumed forgone on a security with no fee quote of its own when collateral is ranked. Between 0 and 1. A security with no fee at all cannot be ranked. Optional.
+   * minimum: 0
+   * maximum: 1
+   * @return defaultLendingFee
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getDefaultLendingFee() {
+    return defaultLendingFee;
+  }
+
+
+  public void setDefaultLendingFee(java.math.BigDecimal defaultLendingFee) {
+    this.defaultLendingFee = defaultLendingFee;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -117,12 +145,24 @@ public class CollateralFundingTerms {
     }
     CollateralFundingTerms collateralFundingTerms = (CollateralFundingTerms) o;
     return (this.rate.compareTo(collateralFundingTerms.getRate()) == 0) &&
-        Objects.equals(this.dayCountBasis, collateralFundingTerms.dayCountBasis);
+        Objects.equals(this.dayCountBasis, collateralFundingTerms.dayCountBasis) &&
+        (this.defaultLendingFee.compareTo(collateralFundingTerms.getDefaultLendingFee()) == 0);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rate, dayCountBasis);
+    return Objects.hash(rate, dayCountBasis, defaultLendingFee);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -131,6 +171,7 @@ public class CollateralFundingTerms {
     sb.append("class CollateralFundingTerms {\n");
     sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
     sb.append("    dayCountBasis: ").append(toIndentedString(dayCountBasis)).append("\n");
+    sb.append("    defaultLendingFee: ").append(toIndentedString(defaultLendingFee)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -155,6 +196,7 @@ public class CollateralFundingTerms {
     openapiFields = new HashSet<String>();
     openapiFields.add("rate");
     openapiFields.add("dayCountBasis");
+    openapiFields.add("defaultLendingFee");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

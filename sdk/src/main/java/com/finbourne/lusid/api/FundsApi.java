@@ -43,6 +43,7 @@ import com.finbourne.lusid.model.FundDefinitionRequest;
 import com.finbourne.lusid.model.FundPartnerUnfundedReconciliation;
 import com.finbourne.lusid.model.FundProperties;
 import com.finbourne.lusid.model.FundRequest;
+import com.finbourne.lusid.model.FundTaxScope;
 import com.finbourne.lusid.model.FundValuationRequest;
 import com.finbourne.lusid.model.ListAggregationResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
@@ -7688,6 +7689,277 @@ public class FundsApi {
      */
     public APIgetFundPropertiesRequest getFundProperties(String scope, String code) {
         return new APIgetFundPropertiesRequest(scope, code);
+    }
+    private okhttp3.Call getFundTaxScopeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getFundTaxScopeCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getFundTaxScopeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/tax/scope"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getFundTaxScopeValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getFundTaxScope(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getFundTaxScope(Async)");
+        }
+
+        return getFundTaxScopeCall(scope, code, effectiveAt, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<FundTaxScope> getFundTaxScopeWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getFundTaxScopeValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundTaxScope>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FundTaxScope> getFundTaxScopeWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getFundTaxScopeValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<FundTaxScope>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getFundTaxScopeAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<FundTaxScope> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getFundTaxScopeValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FundTaxScope>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getFundTaxScopeAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<FundTaxScope> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getFundTaxScopeValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<FundTaxScope>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetFundTaxScopeRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIgetFundTaxScopeRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to read the tax scope. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetFundTaxScopeRequest
+         */
+        public APIgetFundTaxScopeRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the tax scope. Defaults to returning the latest version if not specified. (optional)
+         * @return APIgetFundTaxScopeRequest
+         */
+        public APIgetFundTaxScopeRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getFundTaxScope
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax scope of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getFundTaxScopeCall(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getFundTaxScope request
+         * @return FundTaxScope
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax scope of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundTaxScope execute() throws ApiException {
+            ApiResponse<FundTaxScope> localVarResp = getFundTaxScopeWithHttpInfo(scope, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getFundTaxScope request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FundTaxScope
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax scope of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FundTaxScope execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FundTaxScope> localVarResp = getFundTaxScopeWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getFundTaxScope request with HTTP info returned
+         * @return ApiResponse&lt;FundTaxScope&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax scope of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundTaxScope> executeWithHttpInfo() throws ApiException {
+            return getFundTaxScopeWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute getFundTaxScope request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FundTaxScope&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax scope of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FundTaxScope> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getFundTaxScopeWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+        }
+
+        /**
+         * Execute getFundTaxScope request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax scope of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundTaxScope> _callback) throws ApiException {
+            return getFundTaxScopeAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute getFundTaxScope request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax scope of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FundTaxScope> _callback, ConfigurationOptions opts) throws ApiException {
+            return getFundTaxScopeAsync(scope, code, effectiveAt, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetFundTaxScope: [EARLY ACCESS] GetFundTaxScope: Get the UK chargeable-gains tax scope of a fund.
+     * Returns the fund&#39;s portfolios within the UK chargeable-gains regime and the exclusions the regime&#39;s figures  apply. A fund portfolio is in scope when its own details elect the regime. A NAV type that elects the regime  puts its derived portfolio for each fund portfolio in scope, since that is where the fund accounts for the  holdings under the election.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @return APIgetFundTaxScopeRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The tax scope of the requested Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetFundTaxScopeRequest getFundTaxScope(String scope, String code) {
+        return new APIgetFundTaxScopeRequest(scope, code);
     }
     private okhttp3.Call getHoldingContributorsForFundCall(String scope, String code, Long holdingId, ValuationPointDataQueryParameters valuationPointDataQueryParameters, String navTypeCode, Boolean includeHistoric, String taxLotId, Boolean includeUnsettledMovements, Integer limit, OffsetDateTime asAt, String page, final ApiCallback _callback) throws ApiException {
         return getHoldingContributorsForFundCall(scope, code, holdingId, valuationPointDataQueryParameters, navTypeCode, includeHistoric, taxLotId, includeUnsettledMovements, limit, asAt, page,  _callback, new ConfigurationOptions());
@@ -17974,7 +18246,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
-     * Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType&#x3D;&#39;B&#39;, SourceType&#x3D;LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses system-generated zero-net reversal/TrueUp pairs into SystemCorrection rows). Base  currency columns are out of scope for this variant and are not returned.
+     * Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType&#x3D;&#39;B&#39;, SourceType&#x3D;LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses each transaction&#39;s system-generated reversal/TrueUp rows into a single SystemCorrection  row carrying their net cashflow, while user-entered rows are always shown individually). Base  currency columns are out of scope for this variant and are not returned.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param queryFundCashStatementParameters The query parameters specifying the diary entry period and display mode. (required)

@@ -32,6 +32,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getFund**](FundsApi.md#getFund) | **GET** /api/funds/{scope}/{code} | [EARLY ACCESS] GetFund: Get a Fund. |
 | [**getFundPerformance**](FundsApi.md#getFundPerformance) | **GET** /api/funds/{scope}/{code}/performance | [EARLY ACCESS] GetFundPerformance: [EARLY ACCESS] GetFundPerformance: Get a fund&#39;s performance measures over all its partners. |
 | [**getFundProperties**](FundsApi.md#getFundProperties) | **GET** /api/funds/{scope}/{code}/properties | [EARLY ACCESS] GetFundProperties: Get Fund properties. |
+| [**getFundTaxScope**](FundsApi.md#getFundTaxScope) | **GET** /api/funds/{scope}/{code}/tax/scope | [EARLY ACCESS] GetFundTaxScope: [EARLY ACCESS] GetFundTaxScope: Get the UK chargeable-gains tax scope of a fund. |
 | [**getHoldingContributorsForFund**](FundsApi.md#getHoldingContributorsForFund) | **POST** /api/funds/{scope}/{code}/holdings/{holdingId}/contributors | [EARLY ACCESS] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund. |
 | [**getHoldingsForFund**](FundsApi.md#getHoldingsForFund) | **POST** /api/funds/{scope}/{code}/$holdings | [EARLY ACCESS] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund. |
 | [**getPartnerCapitalAccount**](FundsApi.md#getPartnerCapitalAccount) | **GET** /api/funds/{scope}/{code}/partners/{irScope}/{irCode}/capitalaccount | [EARLY ACCESS] GetPartnerCapitalAccount: [EARLY ACCESS] GetPartnerCapitalAccount: Get a partner&#39;s capital account statement. |
@@ -2795,6 +2796,103 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The properties of the specified fund |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getFundTaxScope
+
+> FundTaxScope getFundTaxScope(scope, code, effectiveAt, asAt)
+
+[EARLY ACCESS] GetFundTaxScope: [EARLY ACCESS] GetFundTaxScope: Get the UK chargeable-gains tax scope of a fund.
+
+Returns the fund&#39;s portfolios within the UK chargeable-gains regime and the exclusions the regime&#39;s figures  apply. A fund portfolio is in scope when its own details elect the regime. A NAV type that elects the regime  puts its derived portfolio for each fund portfolio in scope, since that is where the fund accounts for the  holdings under the election.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to read the tax scope. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the tax scope. Defaults to returning the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // FundTaxScope result = apiInstance.getFundTaxScope(scope, code, effectiveAt, asAt).execute(opts);
+
+            FundTaxScope result = apiInstance.getFundTaxScope(scope, code, effectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#getFundTaxScope");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to read the tax scope. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the tax scope. Defaults to returning the latest version if not specified. | [optional] |
+
+### Return type
+
+[**FundTaxScope**](FundTaxScope.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The tax scope of the requested Fund. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -6034,7 +6132,7 @@ public class FundsApiExample {
 
 [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
 
-Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType&#x3D;&#39;B&#39;, SourceType&#x3D;LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses system-generated zero-net reversal/TrueUp pairs into SystemCorrection rows). Base  currency columns are out of scope for this variant and are not returned.
+Returns settled cash movements with a running balance in local currency for the specified Fund  valuation point period. The cash statement is derived from Journal Entry Lines filtered to  settled cash (HoldType&#x3D;&#39;B&#39;, SourceType&#x3D;LusidTransaction). Use the DisplayMode parameter on the  request body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated  (collapses each transaction&#39;s system-generated reversal/TrueUp rows into a single SystemCorrection  row carrying their net cashflow, while user-entered rows are always shown individually). Base  currency columns are out of scope for this variant and are not returned.
 
 ### Example
 

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **tradeDateToSettlementDateRealisedCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **transactionType** | **String** | The transaction type resolved for the allocation slice that realised this record, which can differ from the output transaction&#39;s type when a slice resolves against the opposite side of the book (for example a Buy whose slice covers a short). | [optional] [default to String]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The sub-holding key properties of the holding this record was realised against, identifying the allocation slice it belongs to. | [optional] [default to Map<String, PerpetualProperty>]
+**chargeableGains** | [**RealisedGainLossChargeableGains**](RealisedGainLossChargeableGains.md) |  | [optional] [default to RealisedGainLossChargeableGains]
 
 ```java
 import com.finbourne.lusid.model.RealisedGainLoss;
@@ -45,6 +46,7 @@ CurrencyAndAmount RealisedAmortisation = new CurrencyAndAmount();
 CurrencyAndAmount TradeDateToSettlementDateRealisedCurrency = new CurrencyAndAmount();
 @jakarta.annotation.Nullable String TransactionType = "example TransactionType";
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
+RealisedGainLossChargeableGains ChargeableGains = new RealisedGainLossChargeableGains();
 
 
 RealisedGainLoss realisedGainLossInstance = new RealisedGainLoss()
@@ -64,7 +66,8 @@ RealisedGainLoss realisedGainLossInstance = new RealisedGainLoss()
     .RealisedAmortisation(RealisedAmortisation)
     .TradeDateToSettlementDateRealisedCurrency(TradeDateToSettlementDateRealisedCurrency)
     .TransactionType(TransactionType)
-    .Properties(Properties);
+    .Properties(Properties)
+    .ChargeableGains(ChargeableGains);
 ```
 
 

@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **carriedDisputedAmount** | **java.math.BigDecimal** | The amount left in dispute on the carried call. Informational; not added to this call. | [optional] [default to java.math.BigDecimal]
 **scenario** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **explainAvailable** | **Boolean** | Whether the working behind the call&#39;s required amount was stored, so that the call can be explained. Only an initial-margin call can be explained, and only when the run stored its working. | [optional] [default to Boolean]
+**proposedAllocation** | [**List&lt;CollateralAllocationLine&gt;**](CollateralAllocationLine.md) | The assets the allocation pass proposes to deliver for the call, or to take back for a return, cheapest first. Null until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours. | [optional] [default to List<CollateralAllocationLine>]
 
 ```java
 import com.finbourne.lusid.model.MarginCall;
@@ -76,6 +77,7 @@ MarginCallReference CarriedFrom = new MarginCallReference();
 @jakarta.annotation.Nullable java.math.BigDecimal CarriedDisputedAmount = new java.math.BigDecimal("100.00");
 ResourceId Scenario = new ResourceId();
 Boolean ExplainAvailable = true;
+@jakarta.annotation.Nullable List<CollateralAllocationLine> ProposedAllocation = new List<CollateralAllocationLine>();
 
 
 MarginCall marginCallInstance = new MarginCall()
@@ -110,7 +112,8 @@ MarginCall marginCallInstance = new MarginCall()
     .CarriedFrom(CarriedFrom)
     .CarriedDisputedAmount(CarriedDisputedAmount)
     .Scenario(Scenario)
-    .ExplainAvailable(ExplainAvailable);
+    .ExplainAvailable(ExplainAvailable)
+    .ProposedAllocation(ProposedAllocation);
 ```
 
 

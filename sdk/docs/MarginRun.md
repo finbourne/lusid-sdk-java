@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **scenarios** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The stored scenarios the run values the agreements under, each beside the base market the run always values. Empty if only the base market was valued. | [default to List<ResourceId>]
 **captureDiagnostics** | **Boolean** | Whether the run stored the working behind its figures, so that they can be explained. Null for a run made before runs could store it, which did not. | [optional] [default to Boolean]
 **optimisation** | [**MarginRunOptimisation**](MarginRunOptimisation.md) |  | [optional] [default to MarginRunOptimisation]
+**allocation** | [**MarginRunAllocation**](MarginRunAllocation.md) |  | [optional] [default to MarginRunAllocation]
 
 ```java
 import com.finbourne.lusid.model.MarginRun;
@@ -44,6 +45,7 @@ List<MarginRunShard> Shards = new List<MarginRunShard>();
 List<ResourceId> Scenarios = new List<ResourceId>();
 @jakarta.annotation.Nullable Boolean CaptureDiagnostics = true;
 MarginRunOptimisation Optimisation = new MarginRunOptimisation();
+MarginRunAllocation Allocation = new MarginRunAllocation();
 
 
 MarginRun marginRunInstance = new MarginRun()
@@ -62,7 +64,8 @@ MarginRun marginRunInstance = new MarginRun()
     .Shards(Shards)
     .Scenarios(Scenarios)
     .CaptureDiagnostics(CaptureDiagnostics)
-    .Optimisation(Optimisation);
+    .Optimisation(Optimisation)
+    .Allocation(Allocation);
 ```
 
 

@@ -6,7 +6,7 @@ Identifying detail for the share class a bucket set node is for.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lusidInstrumentId** | **String** | LUSID&#39;s internal unique instrument identifier for the share class&#39; instrument. Absent where the instrument has not been resolved. | [optional] [default to String]
-**instrumentScope** | **String** | The scope in which the share class instrument lies. Absent where the instrument has not been resolved. | [optional] [default to String]
+**instrumentScope** | **String** | The scope in which the share class instrument lies, or the fund&#39;s instrument scope where the instrument has not been resolved. | [optional] [default to String]
 **shortCode** | **String** | The unique code within the fund for the share class. | [default to String]
 **domCurrency** | **String** | The domestic currency declared for the share class. | [optional] [default to String]
 **instrumentActive** | **Boolean** | Whether the share class&#39; instrument is active. | [default to Boolean]

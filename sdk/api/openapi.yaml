@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10549
+  version: 0.11.10558
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -20903,6 +20903,122 @@ paths:
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$allocation:
+    get:
+      description: "Retrieve the assets the run's allocation pass proposes to deliver\
+        \ for the call, or to take back for a return, with\r\nevery holding it considered\
+        \ and either its rank or the constraint that excluded it. Each line carries\
+        \ what a\r\ntransaction moving it needs: the instrument, the portfolio and\
+        \ custodian account, the units, the price and the\r\nconsideration. Not found\
+        \ until the run's allocation pass has completed, or when the call moves no\
+        \ collateral of ours."
+      operationId: GetMarginCallAllocation
+      parameters:
+      - description: The identifier of the margin run.
+        explode: false
+        in: path
+        name: runId
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The scope of the call's collateral agreement.
+        explode: false
+        in: path
+        name: agreementScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the call's collateral agreement.
+        explode: false
+        in: path
+        name: agreementCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The margin item of the call.
+        explode: false
+        in: path
+        name: item
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The margin type of the call. One of VariationMargin or InitialMargin.
+        explode: false
+        in: path
+        name: marginType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "Who posts under the call. One of WePost, TheyPost or None."
+        explode: false
+        in: path
+        name: direction
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CollateralAllocation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollateralAllocation'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CollateralAllocation'
+          description: The collateral proposed for the margin call.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation:\
+        \ Get the collateral proposed for a margin call."
+      tags:
+      - Collateral
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
   /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$dispute:
     post:
       description: "Dispute a margin call: move the agreed amount now and leave the\
@@ -21160,6 +21276,170 @@ paths:
       tags:
       - Collateral
       x-fbn-apistatus: Experimental
+      x-accepts: application/json
+  /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$rank:
+    post:
+      description: "Value the call's agreement as of now for the run's business date\
+        \ and rank its free, eligible holdings for the\r\ncall again, keeping the\
+        \ assets and units the caller chose. Each choice is validated against the\
+        \ agreement's\r\nconstraints and kept with its reason when it fails one; the\
+        \ rest of the call is filled from the ranking, cheapest\r\nfirst, unless fillRemainder\
+        \ is false. Nothing is stored: the result is what to book, for the caller\
+        \ to decide on."
+      operationId: RankMarginCall
+      parameters:
+      - description: The identifier of the margin run.
+        explode: false
+        in: path
+        name: runId
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The scope of the call's collateral agreement.
+        explode: false
+        in: path
+        name: agreementScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the call's collateral agreement.
+        explode: false
+        in: path
+        name: agreementCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The margin item of the call.
+        explode: false
+        in: path
+        name: item
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The margin type of the call. One of VariationMargin or InitialMargin.
+        explode: false
+        in: path
+        name: marginType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "Who posts under the call. One of WePost, TheyPost or None."
+        explode: false
+        in: path
+        name: direction
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              overrides:
+              - instrumentId: CCY_USD
+                portfolioId:
+                  scope: Funds
+                  code: GlobalMacro
+                units: 200000
+              fillRemainder: true
+            schema:
+              $ref: '#/components/schemas/RankMarginCallRequest'
+          application/json:
+            example:
+              overrides:
+              - instrumentId: CCY_USD
+                portfolioId:
+                  scope: Funds
+                  code: GlobalMacro
+                units: 200000
+              fillRemainder: true
+            schema:
+              $ref: '#/components/schemas/RankMarginCallRequest'
+          text/json:
+            example:
+              overrides:
+              - instrumentId: CCY_USD
+                portfolioId:
+                  scope: Funds
+                  code: GlobalMacro
+                units: 200000
+              fillRemainder: true
+            schema:
+              $ref: '#/components/schemas/RankMarginCallRequest'
+          application/*+json:
+            example:
+              overrides:
+              - instrumentId: CCY_USD
+                portfolioId:
+                  scope: Funds
+                  code: GlobalMacro
+                units: 200000
+              fillRemainder: true
+            schema:
+              $ref: '#/components/schemas/RankMarginCallRequest'
+        description: "The assets the caller chose, and whether to fill the rest."
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CollateralAllocation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollateralAllocation'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CollateralAllocation'
+          description: The collateral ranked for the margin call.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank\
+        \ the collateral for a margin call again, with the caller's choices."
+      tags:
+      - Collateral
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$recordCounterpartyDemand:
     post:
@@ -59677,6 +59957,137 @@ paths:
       - Funds
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
+  /api/funds/{scope}/{code}/tax/scope:
+    get:
+      description: "Returns the fund's portfolios within the UK chargeable-gains regime\
+        \ and the exclusions the regime's figures\r\napply. A fund portfolio is in\
+        \ scope when its own details elect the regime. A NAV type that elects the\
+        \ regime\r\nputs its derived portfolio for each fund portfolio in scope, since\
+        \ that is where the fund accounts for the\r\nholdings under the election."
+      operationId: GetFundTaxScope
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to read the tax
+          scope. Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The asAt datetime at which to read the tax scope. Defaults to
+          returning the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: http://example.com
+                portfolios:
+                - scope: PortfolioScope
+                  code: LifeFundPortfolio
+                exclusions:
+                  instrumentTypes:
+                  - Currency
+                  - Bond
+                  leafOutcomes: []
+                  appliedInFigures: true
+                effectiveAt: 2024-06-30T00:00:00.0000000+00:00
+                asAt: 2025-01-15T00:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/FundTaxScope'
+            application/json:
+              example:
+                href: http://example.com
+                portfolios:
+                - scope: PortfolioScope
+                  code: LifeFundPortfolio
+                exclusions:
+                  instrumentTypes:
+                  - Currency
+                  - Bond
+                  leafOutcomes: []
+                  appliedInFigures: true
+                effectiveAt: 2024-06-30T00:00:00.0000000+00:00
+                asAt: 2025-01-15T00:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/FundTaxScope'
+            text/json:
+              example:
+                href: http://example.com
+                portfolios:
+                - scope: PortfolioScope
+                  code: LifeFundPortfolio
+                exclusions:
+                  instrumentTypes:
+                  - Currency
+                  - Bond
+                  leafOutcomes: []
+                  appliedInFigures: true
+                effectiveAt: 2024-06-30T00:00:00.0000000+00:00
+                asAt: 2025-01-15T00:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/FundTaxScope'
+          description: The tax scope of the requested Fund.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetFundTaxScope: [EARLY ACCESS] GetFundTaxScope: Get\
+        \ the UK chargeable-gains tax scope of a fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/funds/{scope}/{code}/valuationPointOverview:
     get:
       description: List the overview of all the Valuation Points that match the given
@@ -64396,9 +64807,10 @@ paths:
         \ is derived from Journal Entry Lines filtered to\r\nsettled cash (HoldType='B',\
         \ SourceType=LusidTransaction). Use the DisplayMode parameter on the\r\nrequest\
         \ body to choose between ShowReversal (full reversal/TrueUp detail) and Consolidated\r\
-        \n(collapses system-generated zero-net reversal/TrueUp pairs into SystemCorrection\
-        \ rows). Base\r\ncurrency columns are out of scope for this variant and are\
-        \ not returned."
+        \n(collapses each transaction's system-generated reversal/TrueUp rows into\
+        \ a single SystemCorrection\r\nrow carrying their net cashflow, while user-entered\
+        \ rows are always shown individually). Base\r\ncurrency columns are out of\
+        \ scope for this variant and are not returned."
       operationId: QueryCashStatementLocalCurrency
       parameters:
       - description: The scope of the Fund.
@@ -142969,6 +143381,438 @@ paths:
       - Aggregated returns
       x-fbn-apistatus: Experimental
       x-accepts: application/json
+  /api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}:
+    get:
+      description: Get the Returns stored under the returns series against the specified
+        entity.
+      operationId: GetReturns
+      parameters:
+      - description: The scope of the Returns.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Returns.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The type of the entity the Returns are stored against: 'Portfolio'\
+          \ or 'PortfolioGroup'. Available values: Portfolio, PortfolioGroup."
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The scope of the entity.
+        explode: false
+        in: path
+        name: entityScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the entity.
+        explode: false
+        in: path
+        name: entityCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The start date from which to get the Returns.
+        explode: true
+        in: query
+        name: fromEffectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The end date from which to get the Returns.
+        explode: true
+        in: query
+        name: toEffectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: "The period for which to show the Returns. Default value: Daily.\
+          \ Available values: Daily, Monthly."
+        explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the Returns. Defaults
+          to the latest.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPerformanceReturn'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPerformanceReturn'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPerformanceReturn'
+          description: The Returns on the given time period.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetReturns: Get Returns"
+      tags:
+      - Aggregated returns
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    post:
+      description: "Update or insert returns stored under the returns series against\
+        \ the specified entity. Stored\r\n returns take precedence over a calculation\
+        \ in the aggregated returns of that entity."
+      operationId: UpsertReturns
+      parameters:
+      - description: The scope of the Returns.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Returns.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The type of the entity the Returns are stored against: 'Portfolio'\
+          \ or 'PortfolioGroup'. Available values: Portfolio, PortfolioGroup."
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The scope of the entity.
+        explode: false
+        in: path
+        name: entityScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the entity.
+        explode: false
+        in: path
+        name: entityCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - effectiveAt: 2019-11-28T00:00:00.0000000+00:00
+              rateOfReturn: 0.1
+              openingMarketValue: 500
+              closingMarketValue: 550
+              period: Daily
+            - effectiveAt: 2019-11-29T00:00:00.0000000+00:00
+              rateOfReturn: -0.2
+              openingMarketValue: 550
+              closingMarketValue: 440
+              period: Daily
+            schema:
+              items:
+                $ref: '#/components/schemas/PerformanceReturn'
+              type: array
+          application/json:
+            example:
+            - effectiveAt: 2019-11-28T00:00:00.0000000+00:00
+              rateOfReturn: 0.1
+              openingMarketValue: 500
+              closingMarketValue: 550
+              period: Daily
+            - effectiveAt: 2019-11-29T00:00:00.0000000+00:00
+              rateOfReturn: -0.2
+              openingMarketValue: 550
+              closingMarketValue: 440
+              period: Daily
+            schema:
+              items:
+                $ref: '#/components/schemas/PerformanceReturn'
+              type: array
+          text/json:
+            example:
+            - effectiveAt: 2019-11-28T00:00:00.0000000+00:00
+              rateOfReturn: 0.1
+              openingMarketValue: 500
+              closingMarketValue: 550
+              period: Daily
+            - effectiveAt: 2019-11-29T00:00:00.0000000+00:00
+              rateOfReturn: -0.2
+              openingMarketValue: 550
+              closingMarketValue: 440
+              period: Daily
+            schema:
+              items:
+                $ref: '#/components/schemas/PerformanceReturn'
+              type: array
+          application/*+json:
+            example:
+            - effectiveAt: 2019-11-28T00:00:00.0000000+00:00
+              rateOfReturn: 0.1
+              openingMarketValue: 500
+              closingMarketValue: 550
+              period: Daily
+            - effectiveAt: 2019-11-29T00:00:00.0000000+00:00
+              rateOfReturn: -0.2
+              openingMarketValue: 550
+              closingMarketValue: 440
+              period: Daily
+            schema:
+              items:
+                $ref: '#/components/schemas/PerformanceReturn'
+              type: array
+        description: This contains the Returns which need to be upsert.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UpsertReturnsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertReturnsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UpsertReturnsResponse'
+          description: The version of the entity that contains the newly updated or
+            inserted Returns.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] UpsertReturns: Upsert Returns"
+      tags:
+      - Aggregated returns
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}/$delete:
+    delete:
+      description: Cancel the Returns stored under the returns series against the
+        specified entity inside the window.
+      operationId: DeleteReturns
+      parameters:
+      - description: The scope of the Returns.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Returns.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The type of the entity the Returns are stored against: 'Portfolio'\
+          \ or 'PortfolioGroup'. Available values: Portfolio, PortfolioGroup."
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The scope of the entity.
+        explode: false
+        in: path
+        name: entityScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the entity.
+        explode: false
+        in: path
+        name: entityCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The start date from which to delete the Returns.
+        explode: true
+        in: query
+        name: fromEffectiveAt
+        required: true
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The end date from which to delete the Returns.
+        explode: true
+        in: query
+        name: toEffectiveAt
+        required: true
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: "The period of the Returns to be deleted. Default value: Daily.\
+          \ Available values: Daily, Monthly."
+        explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The successfully deleted Returns data along with any failures
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] DeleteReturns: Delete Returns"
+      tags:
+      - Aggregated returns
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
   /api/scenarios:
     get:
       description: "List scenario definitions across all scopes at the specified date/time.\
@@ -189357,6 +190201,38 @@ components:
             status: status
           realisedGainLoss:
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -189405,6 +190281,38 @@ components:
               amount: 0.8008281904610115
               currency: currency
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -199637,6 +200545,45 @@ components:
             callId: callId
             runId: runId
           carriedDisputedAmount: 3.616076749251911
+          proposedAllocation:
+          - boundBy: boundBy
+            instrumentId: instrumentId
+            exclusionReason: exclusionReason
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            units: 2.027123023002322
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            effectiveValuePerUnit: 1.2315135367772556
+            price: 4.145608029883936
+            custodianAccount:
+              code: code
+              scope: scope
+            collateralValue: 1.0246457001441578
+            currency: currency
+            consideration: 7.386281948385884
+            costPerUnitOfValue: 1.4894159098541704
+          - boundBy: boundBy
+            instrumentId: instrumentId
+            exclusionReason: exclusionReason
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            units: 2.027123023002322
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            effectiveValuePerUnit: 1.2315135367772556
+            price: 4.145608029883936
+            custodianAccount:
+              code: code
+              scope: scope
+            collateralValue: 1.0246457001441578
+            currency: currency
+            consideration: 7.386281948385884
+            costPerUnitOfValue: 1.4894159098541704
           href: https://openapi-generator.tech
           id: id
           state: state
@@ -199680,6 +200627,45 @@ components:
             callId: callId
             runId: runId
           carriedDisputedAmount: 3.616076749251911
+          proposedAllocation:
+          - boundBy: boundBy
+            instrumentId: instrumentId
+            exclusionReason: exclusionReason
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            units: 2.027123023002322
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            effectiveValuePerUnit: 1.2315135367772556
+            price: 4.145608029883936
+            custodianAccount:
+              code: code
+              scope: scope
+            collateralValue: 1.0246457001441578
+            currency: currency
+            consideration: 7.386281948385884
+            costPerUnitOfValue: 1.4894159098541704
+          - boundBy: boundBy
+            instrumentId: instrumentId
+            exclusionReason: exclusionReason
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            units: 2.027123023002322
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            effectiveValuePerUnit: 1.2315135367772556
+            price: 4.145608029883936
+            custodianAccount:
+              code: code
+              scope: scope
+            collateralValue: 1.0246457001441578
+            currency: currency
+            consideration: 7.386281948385884
+            costPerUnitOfValue: 1.4894159098541704
           href: https://openapi-generator.tech
           id: id
           state: state
@@ -200264,7 +201250,8 @@ components:
         recType:
           description: "The rec type whose results this item targets (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
-            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity."
+            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
+            \ Portfolio."
           maxLength: 64
           minLength: 1
           type: string
@@ -201017,7 +202004,8 @@ components:
         recType:
           description: "The rec type whose results this item targets (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
-            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity."
+            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
+            \ Portfolio."
           maxLength: 64
           minLength: 1
           type: string
@@ -211120,8 +212108,8 @@ components:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         instrumentScope:
-          description: The scope in which the share class instrument lies. Absent
-            where the instrument has not been resolved.
+          description: "The scope in which the share class instrument lies, or the\
+            \ fund's instrument scope where the instrument has not been resolved."
           maxLength: 64
           minLength: 1
           nullable: true
@@ -220004,27 +220992,28 @@ components:
       example:
         funding:
           rate: -0.539572822613047
+          defaultLendingFee: 0.9301444243932576
           dayCountBasis: 363
         variationMargin:
         - tradeFilter: tradeFilter
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -220038,31 +221027,31 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         - tradeFilter: tradeFilter
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -220076,12 +221065,13 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
+        notificationCutLabel: notificationCutLabel
         rounding:
           amount: 6.027456183070403
           returns: returns
@@ -220110,21 +221100,21 @@ components:
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -220138,31 +221128,31 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         - tradeFilter: tradeFilter
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -220176,22 +221166,23 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         counterpartyId:
           code: code
           idTypeScope: idTypeScope
           idTypeCode: idTypeCode
         optimisation:
-          maxPaybackDays: 435321354
-          novationCost: 0.9301444243932576
-          minSavingPerDay: 0.3616076749251911
-          maxPerAgreement: 890262545
+          maxPaybackDays: 890262545
+          novationCost: 0.3616076749251911
+          minSavingPerDay: 0.20271230230023218
+          maxPerAgreement: 1586191969
         applicabilityFilter: applicabilityFilter
+        returnNotificationCutLabel: returnNotificationCutLabel
         matchTolerance: 5.637376656633329
         minimumTransferAmount: 0.8008281904610115
         links:
@@ -220305,6 +221296,25 @@ components:
             Filterable.
           nullable: true
           type: object
+        notificationCutLabel:
+          description: The cut label giving the time of day by which collateral we
+            deliver under a margin call must settle. Each run resolves it on the business
+            date and records it as the call's deadline; the allocation excludes assets
+            that cannot settle by it. Optional.
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_\\+:\\.]+$"
+          type: string
+        returnNotificationCutLabel:
+          description: "The cut label giving the time of day by which collateral the\
+            \ counterparty delivers, or returns to us, must settle. Recorded as the\
+            \ deadline of the calls they post under. Optional."
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_\\+:\\.]+$"
+          type: string
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -220357,27 +221367,28 @@ components:
       example:
         funding:
           rate: -0.539572822613047
+          defaultLendingFee: 0.9301444243932576
           dayCountBasis: 363
         variationMargin:
         - tradeFilter: tradeFilter
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -220391,31 +221402,31 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         - tradeFilter: tradeFilter
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -220429,13 +221440,14 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         code: code
+        notificationCutLabel: notificationCutLabel
         effectiveAt: 2000-01-23T04:56:07.000+00:00
         rounding:
           amount: 6.027456183070403
@@ -220451,21 +221463,21 @@ components:
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -220479,31 +221491,31 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         - tradeFilter: tradeFilter
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -220517,22 +221529,23 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         counterpartyId:
           code: code
           idTypeScope: idTypeScope
           idTypeCode: idTypeCode
         optimisation:
-          maxPaybackDays: 435321354
-          novationCost: 0.9301444243932576
-          minSavingPerDay: 0.3616076749251911
-          maxPerAgreement: 890262545
+          maxPaybackDays: 890262545
+          novationCost: 0.3616076749251911
+          minSavingPerDay: 0.20271230230023218
+          maxPerAgreement: 1586191969
         applicabilityFilter: applicabilityFilter
+        returnNotificationCutLabel: returnNotificationCutLabel
         matchTolerance: 6.027456183070403
         minimumTransferAmount: 0.8008281904610115
         settlementLag:
@@ -220633,6 +221646,25 @@ components:
           format: date-time
           nullable: true
           type: string
+        notificationCutLabel:
+          description: The cut label giving the time of day by which collateral we
+            deliver under a margin call must settle. Each run resolves it on the business
+            date and records it as the call's deadline; the allocation excludes assets
+            that cannot settle by it. Optional.
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_\\+:\\.]+$"
+          type: string
+        returnNotificationCutLabel:
+          description: "The cut label giving the time of day by which collateral the\
+            \ counterparty delivers, or returns to us, must settle. Recorded as the\
+            \ deadline of the calls they post under. Optional."
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_\\+:\\.]+$"
+          type: string
       required:
       - applicabilityFilter
       - baseCurrency
@@ -220643,12 +221675,545 @@ components:
       - rounding
       - settlementLag
       type: object
+    CollateralAllocation:
+      additionalProperties: false
+      description: "Which of our assets to move for a margin call and why: every holding\
+        \ considered, with its rank or the constraint\r\nthat excluded it, and the\
+        \ lines chosen cheapest first, each carrying what a transaction moving it\
+        \ needs. Amounts\r\nare in the agreement's base currency."
+      example:
+        callId: callId
+        item: item
+        allocation:
+        - boundBy: boundBy
+          instrumentId: instrumentId
+          exclusionReason: exclusionReason
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          units: 2.027123023002322
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+          effectiveValuePerUnit: 1.2315135367772556
+          price: 4.145608029883936
+          custodianAccount:
+            code: code
+            scope: scope
+          collateralValue: 1.0246457001441578
+          currency: currency
+          consideration: 7.386281948385884
+          costPerUnitOfValue: 1.4894159098541704
+        - boundBy: boundBy
+          instrumentId: instrumentId
+          exclusionReason: exclusionReason
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          units: 2.027123023002322
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+          effectiveValuePerUnit: 1.2315135367772556
+          price: 4.145608029883936
+          custodianAccount:
+            code: code
+            scope: scope
+          collateralValue: 1.0246457001441578
+          currency: currency
+          consideration: 7.386281948385884
+          costPerUnitOfValue: 1.4894159098541704
+        marginAccount: marginAccount
+        carryPerDay: 1.4658129805029452
+        asAt: 2000-01-23T04:56:07.000+00:00
+        baseCurrency: baseCurrency
+        businessDate: 2000-01-23T04:56:07.000+00:00
+        candidates:
+        - assetKind: assetKind
+          unitsFree: 5.637376656633329
+          concentrationCap: 1.0246457001441578
+          instrumentId: instrumentId
+          lotSize: 2.3021358869347655
+          exclusionReason: exclusionReason
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          eligibilitySeq: 9
+          opportunityRate: 7.386281948385884
+          portfolioId:
+            code: code
+            scope: scope
+          valuationPercentage: 3.616076749251911
+          effectiveValuePerUnit: 4.145608029883936
+          price: 7.061401241503109
+          custodianAccount:
+            code: code
+            scope: scope
+          rank: 1
+          currency: currency
+          fxHaircut: 2.027123023002322
+          costPerUnitOfValue: 1.2315135367772556
+        - assetKind: assetKind
+          unitsFree: 5.637376656633329
+          concentrationCap: 1.0246457001441578
+          instrumentId: instrumentId
+          lotSize: 2.3021358869347655
+          exclusionReason: exclusionReason
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          eligibilitySeq: 9
+          opportunityRate: 7.386281948385884
+          portfolioId:
+            code: code
+            scope: scope
+          valuationPercentage: 3.616076749251911
+          effectiveValuePerUnit: 4.145608029883936
+          price: 7.061401241503109
+          custodianAccount:
+            code: code
+            scope: scope
+          rank: 1
+          currency: currency
+          fxHaircut: 2.027123023002322
+          costPerUnitOfValue: 1.2315135367772556
+        requiredAmount: 0.8008281904610115
+        agreementId:
+          code: code
+          scope: scope
+        counterparty:
+          code: code
+          idTypeScope: idTypeScope
+          idTypeCode: idTypeCode
+        allCashCarryPerDay: 5.962133916683182
+        coveredAmount: 6.027456183070403
+        runId: runId
+        inventorySource: inventorySource
+        deadline: 2000-01-23T04:56:07.000+00:00
+        direction: direction
+      properties:
+        runId:
+          description: The run the call belongs to.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        callId:
+          description: "The business key of the call within the run: agreement scope\
+            \ and code, item, margin type and direction joined with '/'."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        direction:
+          description: Whether the collateral is delivered to the counterparty or
+            recalled from it. One of Deliver or Recall.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        inventorySource:
+          description: "Where the holdings were read from: RunStore for the proposal\
+            \ the run made, Live for a ranking against the holdings as they stand\
+            \ now."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        asAt:
+          description: The asAt the holdings and terms were read at.
+          format: date-time
+          type: string
+        agreementId:
+          $ref: '#/components/schemas/ResourceId'
+        item:
+          description: The margin item of the call.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        counterparty:
+          $ref: '#/components/schemas/CounterpartyIdentifier'
+        businessDate:
+          description: "The business date of the call, which a transaction for a line\
+            \ trades on."
+          format: date-time
+          nullable: true
+          type: string
+        deadline:
+          description: When the movement must have settled under the agreement's cut
+            label. Null when the agreement sets none.
+          format: date-time
+          nullable: true
+          type: string
+        marginAccount:
+          description: "The code of the custodian account the item names for collateral\
+            \ we post, which a delivery moves assets into and a recall moves them\
+            \ out of. Null when the item names none."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        baseCurrency:
+          description: "The agreement's base currency, which every amount is in."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        requiredAmount:
+          description: "The collateral value to deliver, or for a recall the excess\
+            \ to take back."
+          format: double
+          type: number
+        coveredAmount:
+          description: "The collateral value of the lines chosen: below the requirement\
+            \ when the inventory ran out, above it when a lot could not be split."
+          format: double
+          type: number
+        carryPerDay:
+          description: "What the chosen lines cost the fund a day to leave locked\
+            \ up, in the base currency."
+          format: double
+          type: number
+        allCashCarryPerDay:
+          description: What covering the whole call in base-currency cash would cost
+            a day. Null when the cash rate is unavailable or for a recall.
+          format: double
+          nullable: true
+          type: number
+        candidates:
+          description: "Every holding considered, ranked ones first by rank, then\
+            \ the excluded with the constraint that excluded them."
+          items:
+            $ref: '#/components/schemas/CollateralAllocationCandidate'
+          type: array
+        allocation:
+          description: "The assets chosen, cheapest first, each with what a transaction\
+            \ moving it needs."
+          items:
+            $ref: '#/components/schemas/CollateralAllocationLine'
+          type: array
+      required:
+      - allocation
+      - asAt
+      - baseCurrency
+      - callId
+      - candidates
+      - carryPerDay
+      - coveredAmount
+      - direction
+      - inventorySource
+      - requiredAmount
+      - runId
+      type: object
+    CollateralAllocationCandidate:
+      additionalProperties: false
+      description: "One holding the allocation considered for a margin call, with\
+        \ its figures as far as they could be computed and\r\neither its rank or the\
+        \ constraint that excluded it."
+      example:
+        assetKind: assetKind
+        unitsFree: 5.637376656633329
+        concentrationCap: 1.0246457001441578
+        instrumentId: instrumentId
+        lotSize: 2.3021358869347655
+        exclusionReason: exclusionReason
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        settlementDate: 2000-01-23T04:56:07.000+00:00
+        eligibilitySeq: 9
+        opportunityRate: 7.386281948385884
+        portfolioId:
+          code: code
+          scope: scope
+        valuationPercentage: 3.616076749251911
+        effectiveValuePerUnit: 4.145608029883936
+        price: 7.061401241503109
+        custodianAccount:
+          code: code
+          scope: scope
+        rank: 1
+        currency: currency
+        fxHaircut: 2.027123023002322
+        costPerUnitOfValue: 1.2315135367772556
+      properties:
+        instrumentId:
+          description: "The LUSID instrument identifier of the asset, or CCY_ and\
+            \ the currency code for cash."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        instrumentIdentifiers:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: The instrument identifiers a transaction for the line is booked
+            against.
+          type: object
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        custodianAccount:
+          $ref: '#/components/schemas/ResourceId'
+        assetKind:
+          description: Cash or Security.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        currency:
+          description: "The currency the asset is denominated in, when known."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        unitsFree:
+          description: Units not in a margin account and not promised to an earlier
+            call of the run.
+          format: double
+          type: number
+        lotSize:
+          description: The smallest number of units the asset is delivered in.
+          format: double
+          type: number
+        price:
+          description: "The market value per unit in the base currency, before any\
+            \ haircut. Null when the asset could not be priced."
+          format: double
+          nullable: true
+          type: number
+        eligibilitySeq:
+          description: The one-based position of the schedule row that admits the
+            asset. Null when no row does.
+          format: int32
+          nullable: true
+          type: integer
+        valuationPercentage:
+          description: The fraction of market value the schedule row counts as collateral.
+          format: double
+          nullable: true
+          type: number
+        fxHaircut:
+          description: The further fraction deducted because the asset is not in the
+            base currency. Zero when it is.
+          format: double
+          nullable: true
+          type: number
+        effectiveValuePerUnit:
+          description: "Price times the valuation percentage, less the FX haircut:\
+            \ what one unit counts for as collateral."
+          format: double
+          nullable: true
+          type: number
+        opportunityRate:
+          description: "The annual rate the fund gives up by locking the asset up:\
+            \ funding less the agreement's cash interest for cash, the lending fee\
+            \ it would otherwise earn for a security."
+          format: double
+          nullable: true
+          type: number
+        costPerUnitOfValue:
+          description: "The ranking key: the annual cost of one unit of collateral\
+            \ value from this asset."
+          format: double
+          nullable: true
+          type: number
+        concentrationCap:
+          description: The collateral value the schedule's concentration limit still
+            allows from the asset's group. Null when the row sets no limit.
+          format: double
+          nullable: true
+          type: number
+        settlementDate:
+          description: "When the movement would settle under the agreement's settlement\
+            \ lag, counting weekdays."
+          format: date-time
+          nullable: true
+          type: string
+        rank:
+          description: "The asset's position in the ranking, cheapest first. Null\
+            \ when excluded."
+          format: int32
+          nullable: true
+          type: integer
+        exclusionReason:
+          description: "The constraint the asset failed, when it did. One of NotEligible,\
+            \ NoFreeUnits, MissingPrice, MissingRate, MissesDeadline, BelowMinimumLot\
+            \ or ConcentrationExhausted. Null when it passed."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+      required:
+      - assetKind
+      - instrumentId
+      - instrumentIdentifiers
+      - lotSize
+      - portfolioId
+      - unitsFree
+      type: object
+    CollateralAllocationLine:
+      additionalProperties: false
+      description: "One asset chosen for a margin call, with what a transaction moving\
+        \ it needs: the instrument, the portfolio and\r\naccount it leaves, the units,\
+        \ the price and the consideration. An override that fails a constraint is\
+        \ kept with\r\nits exclusion reason and covers nothing."
+      example:
+        boundBy: boundBy
+        instrumentId: instrumentId
+        exclusionReason: exclusionReason
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        units: 2.027123023002322
+        settlementDate: 2000-01-23T04:56:07.000+00:00
+        portfolioId:
+          code: code
+          scope: scope
+        effectiveValuePerUnit: 1.2315135367772556
+        price: 4.145608029883936
+        custodianAccount:
+          code: code
+          scope: scope
+        collateralValue: 1.0246457001441578
+        currency: currency
+        consideration: 7.386281948385884
+        costPerUnitOfValue: 1.4894159098541704
+      properties:
+        instrumentId:
+          description: "The LUSID instrument identifier of the asset, or CCY_ and\
+            \ the currency code for cash."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        instrumentIdentifiers:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: The instrument identifiers a transaction for the line is booked
+            against.
+          type: object
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        custodianAccount:
+          $ref: '#/components/schemas/ResourceId'
+        currency:
+          description: "The currency the asset is denominated in, when known."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        units:
+          description: The units to move.
+          format: double
+          type: number
+        price:
+          description: "The market value per unit in the base currency, before any\
+            \ haircut. Null when the asset could not be priced."
+          format: double
+          nullable: true
+          type: number
+        consideration:
+          description: "Units times price in the base currency: what a transaction\
+            \ for the line settles. Null when the asset could not be priced."
+          format: double
+          nullable: true
+          type: number
+        effectiveValuePerUnit:
+          description: "Price times the valuation percentage, less the FX haircut:\
+            \ what one unit counts for as collateral."
+          format: double
+          nullable: true
+          type: number
+        collateralValue:
+          description: "The collateral value the line covers: units times the effective\
+            \ value per unit."
+          format: double
+          type: number
+        costPerUnitOfValue:
+          description: "The ranking key: the annual cost of one unit of collateral\
+            \ value from this asset."
+          format: double
+          nullable: true
+          type: number
+        settlementDate:
+          description: "When the movement would settle under the agreement's settlement\
+            \ lag, counting weekdays."
+          format: date-time
+          nullable: true
+          type: string
+        boundBy:
+          description: "Which limit decided the units. One of RemainingRequirement,\
+            \ FreeUnits, ConcentrationCap, LotRounding or Override."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        exclusionReason:
+          description: "The constraint the asset failed, when it did. One of NotEligible,\
+            \ NoFreeUnits, MissingPrice, MissingRate, MissesDeadline, BelowMinimumLot\
+            \ or ConcentrationExhausted. Null when it passed."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+      required:
+      - boundBy
+      - collateralValue
+      - instrumentId
+      - instrumentIdentifiers
+      - portfolioId
+      - units
+      type: object
+    CollateralAllocationOverride:
+      additionalProperties: false
+      description: "An asset and the units of it a user chooses to move for a margin\
+        \ call, validated against the agreement's\r\nconstraints as the allocation\
+        \ is."
+      example:
+        portfolioId:
+          code: code
+          scope: scope
+        instrumentId: instrumentId
+        custodianAccount:
+          code: code
+          scope: scope
+        units: 0.8008281904610115
+      properties:
+        instrumentId:
+          description: "The LUSID instrument identifier of the asset to move, or CCY_\
+            \ and the currency code for cash."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        units:
+          description: The units to move.
+          format: double
+          type: number
+        custodianAccount:
+          $ref: '#/components/schemas/ResourceId'
+      required:
+      - instrumentId
+      - portfolioId
+      - units
+      type: object
     CollateralFundingTerms:
       additionalProperties: false
       description: "What margin posted under the agreement costs us: the annual rate\
-        \ it is funded at and the basis it accrues on."
+        \ it is funded at, the basis it accrues on and the\r\nlending fee assumed\
+        \ forgone on a security with no fee quote of its own when collateral is ranked."
       example:
         rate: -0.539572822613047
+        defaultLendingFee: 0.9301444243932576
         dayCountBasis: 363
       properties:
         rate:
@@ -220665,6 +222230,15 @@ components:
           maximum: 365
           minimum: 360
           type: integer
+        defaultLendingFee:
+          description: "The annual lending fee, as a fraction, assumed forgone on\
+            \ a security with no fee quote of its own when collateral is ranked. Between\
+            \ 0 and 1. A security with no fee at all cannot be ranked. Optional."
+          format: double
+          maximum: 1
+          minimum: 0
+          nullable: true
+          type: number
       required:
       - dayCountBasis
       - rate
@@ -220690,10 +222264,10 @@ components:
       description: When a cheaper arrangement for the agreement's trades is worth
         recommending.
       example:
-        maxPaybackDays: 435321354
-        novationCost: 0.9301444243932576
-        minSavingPerDay: 0.3616076749251911
-        maxPerAgreement: 890262545
+        maxPaybackDays: 890262545
+        novationCost: 0.3616076749251911
+        minSavingPerDay: 0.20271230230023218
+        maxPerAgreement: 1586191969
       properties:
         novationCost:
           description: "The one-off cost of novating trades away from the counterparty,\
@@ -231108,7 +232682,7 @@ components:
             \ non-native data on both sides, described by the datasetSchemas and the\
             \ externalRecType. Available values: Holding, CashHolding, Valuation,\
             \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         externalRecType:
@@ -244624,7 +246198,9 @@ components:
         code: code
         valuationPercentage: 0.8008281904610115
         minResidualMaturityYears: 1.4658129805029452
+        concentrationGroup: concentrationGroup
         description: description
+        concentrationLimit: 5.637376656633329
         selector:
           kind: kind
           currency: currency
@@ -244656,10 +246232,8 @@ components:
         fxHaircut:
           description: "The further fraction deducted when the asset's currency is\
             \ not the agreement's base currency, so that the effective valuation percentage\
-            \ is ValuationPercentage docker-compose.yml Dockerfile Dockerfile.cicd\
-            \ docs generate justfile LICENSE.md publish README.md resources test_sdk\
-            \ (1 - FxHaircut). At least 0 and less than 1. Not allowed for a BaseCurrencyCash\
-            \ selector. Optional."
+            \ is ValuationPercentage - FxHaircut. At least 0 and less than the valuationPercentage.\
+            \ Not allowed for a BaseCurrencyCash selector. Optional."
           format: double
           nullable: true
           type: number
@@ -244672,6 +246246,23 @@ components:
         maxResidualMaturityYears:
           description: The exclusive upper bound of the residual maturity in years
             that the row applies to. Only allowed for an Instrument selector. Optional.
+          format: double
+          nullable: true
+          type: number
+        concentrationGroup:
+          description: "The group the row's assets count towards for a concentration\
+            \ limit, for example 'sovereign' or 'issuer'. Rows naming the same group\
+            \ share one limit. Required when a concentrationLimit is set. Optional."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        concentrationLimit:
+          description: "The largest fraction of the collateral held plus the call\
+            \ that assets of the row's concentration group may make up, for example\
+            \ 0.3 for 30%. Greater than 0 and at most 1. Required when a concentrationGroup\
+            \ is set. Optional."
           format: double
           nullable: true
           type: number
@@ -244688,7 +246279,9 @@ components:
         code: code
         valuationPercentage: 0.8008281904610115
         minResidualMaturityYears: 1.4658129805029452
+        concentrationGroup: concentrationGroup
         description: description
+        concentrationLimit: 5.637376656633329
         selector:
           kind: kind
           currency: currency
@@ -244720,10 +246313,8 @@ components:
         fxHaircut:
           description: "The further fraction deducted when the asset's currency is\
             \ not the agreement's base currency, so that the effective valuation percentage\
-            \ is ValuationPercentage docker-compose.yml Dockerfile Dockerfile.cicd\
-            \ docs generate justfile LICENSE.md publish README.md resources test_sdk\
-            \ (1 - FxHaircut). At least 0 and less than 1. Not allowed for a BaseCurrencyCash\
-            \ selector. Optional."
+            \ is ValuationPercentage - FxHaircut. At least 0 and less than the valuationPercentage.\
+            \ Not allowed for a BaseCurrencyCash selector. Optional."
           format: double
           nullable: true
           type: number
@@ -244736,6 +246327,23 @@ components:
         maxResidualMaturityYears:
           description: The exclusive upper bound of the residual maturity in years
             that the row applies to. Only allowed for an Instrument selector. Optional.
+          format: double
+          nullable: true
+          type: number
+        concentrationGroup:
+          description: "The group the row's assets count towards for a concentration\
+            \ limit, for example 'sovereign' or 'issuer'. Rows naming the same group\
+            \ share one limit. Required when a concentrationLimit is set. Optional."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        concentrationLimit:
+          description: "The largest fraction of the collateral held plus the call\
+            \ that assets of the row's concentration group may make up, for example\
+            \ 0.3 for 30%. Greater than 0 and at most 1. Required when a concentrationGroup\
+            \ is set. Optional."
           format: double
           nullable: true
           type: number
@@ -244768,7 +246376,9 @@ components:
         - code: code
           valuationPercentage: 0.8008281904610115
           minResidualMaturityYears: 1.4658129805029452
+          concentrationGroup: concentrationGroup
           description: description
+          concentrationLimit: 5.637376656633329
           selector:
             kind: kind
             currency: currency
@@ -244778,7 +246388,9 @@ components:
         - code: code
           valuationPercentage: 0.8008281904610115
           minResidualMaturityYears: 1.4658129805029452
+          concentrationGroup: concentrationGroup
           description: description
+          concentrationLimit: 5.637376656633329
           selector:
             kind: kind
             currency: currency
@@ -244869,7 +246481,9 @@ components:
         - code: code
           valuationPercentage: 0.8008281904610115
           minResidualMaturityYears: 1.4658129805029452
+          concentrationGroup: concentrationGroup
           description: description
+          concentrationLimit: 5.637376656633329
           selector:
             kind: kind
             currency: currency
@@ -244879,7 +246493,9 @@ components:
         - code: code
           valuationPercentage: 0.8008281904610115
           minResidualMaturityYears: 1.4658129805029452
+          concentrationGroup: concentrationGroup
           description: description
+          concentrationLimit: 5.637376656633329
           selector:
             kind: kind
             currency: currency
@@ -260239,6 +261855,106 @@ components:
       - code
       - name
       - navTypeCodes
+      type: object
+    FundTaxScope:
+      additionalProperties: false
+      description: "The UK chargeable-gains tax scope of a fund at a point in time:\
+        \ the portfolios inside the regime and what the\r\nregime's figures leave\
+        \ out."
+      example:
+        portfolios:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        asAt: 2000-01-23T04:56:07.000+00:00
+        exclusions:
+          instrumentTypes:
+          - instrumentTypes
+          - instrumentTypes
+          leafOutcomes:
+          - leafOutcomes
+          - leafOutcomes
+          appliedInFigures: true
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        portfolios:
+          description: The portfolios within the UK chargeable-gains regime. A fund
+            portfolio is in scope when its own details elect the regime. A NAV type
+            that elects the regime puts its derived portfolio for each fund portfolio
+            in scope.
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          type: array
+        exclusions:
+          $ref: '#/components/schemas/FundTaxScopeExclusions'
+        effectiveAt:
+          description: The effective datetime at which the tax scope was read.
+          format: date-time
+          type: string
+        asAt:
+          description: The asAt datetime at which the tax scope was read.
+          format: date-time
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - asAt
+      - effectiveAt
+      - exclusions
+      - portfolios
+      type: object
+    FundTaxScopeExclusions:
+      additionalProperties: false
+      description: What the UK chargeable-gains figures leave out of the pooled computation.
+      example:
+        instrumentTypes:
+        - instrumentTypes
+        - instrumentTypes
+        leafOutcomes:
+        - leafOutcomes
+        - leafOutcomes
+        appliedInFigures: true
+      properties:
+        instrumentTypes:
+          description: "Instrument types that stay on the portfolio's ordinary accounting\
+            \ method rather than being pooled, by name."
+          items:
+            type: string
+          type: array
+        leafOutcomes:
+          description: Disposal-leg outcomes the configured regime options disapply.
+            Empty under the standard options.
+          items:
+            type: string
+          type: array
+        appliedInFigures:
+          description: Whether the engine enforces these exclusions when building
+            the pooled lots and gains.
+          type: boolean
+      required:
+      - appliedInFigures
+      - instrumentTypes
+      - leafOutcomes
       type: object
     FundTerms:
       additionalProperties: false
@@ -282381,10 +284097,10 @@ components:
       properties:
         entityType:
           description: "The type of LUSID entity to reconcile, which is also the rec\
-            \ type of the results. Supported types: Instrument, LegalEntity. Must\
-            \ equal the reconciliationType of the matching ruleset. Available values:\
-            \ Holding, CashHolding, Valuation, InputTransaction, OutputTransaction,\
-            \ SettlementActivity, External, Instrument, LegalEntity."
+            \ type of the results. Supported types: Instrument, LegalEntity, Portfolio.\
+            \ Must equal the reconciliationType of the matching ruleset. Available\
+            \ values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction,\
+            \ SettlementActivity, External, Instrument, LegalEntity, Portfolio."
           minLength: 1
           type: string
         matchingRulesetId:
@@ -283272,15 +284988,15 @@ components:
       example:
         exposureMethod: exposureMethod
         ccp: ccp
-        marginPercentage: 1.4894159098541704
-        fcmAddOn: 5.025004791520295
+        marginPercentage: 6.84685269835264
+        fcmAddOn: 9.965781217890562
         method: method
         repricingPermitted: true
-        creditLine: 7.457744773683766
+        creditLine: 1.1730742509559433
         thresholdAllocation:
-          we: 1.1730742509559433
-          they: 4.965218492984954
-        lendingFeeBps: 6
+          we: 4.965218492984954
+          they: 5.025004791520295
+        lendingFeeBps: 7
       properties:
         method:
           description: "The calculation method. One of NetMtm, Ccp, GmraExposure,\
@@ -283361,6 +285077,45 @@ components:
           callId: callId
           runId: runId
         carriedDisputedAmount: 3.616076749251911
+        proposedAllocation:
+        - boundBy: boundBy
+          instrumentId: instrumentId
+          exclusionReason: exclusionReason
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          units: 2.027123023002322
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+          effectiveValuePerUnit: 1.2315135367772556
+          price: 4.145608029883936
+          custodianAccount:
+            code: code
+            scope: scope
+          collateralValue: 1.0246457001441578
+          currency: currency
+          consideration: 7.386281948385884
+          costPerUnitOfValue: 1.4894159098541704
+        - boundBy: boundBy
+          instrumentId: instrumentId
+          exclusionReason: exclusionReason
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          units: 2.027123023002322
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+          effectiveValuePerUnit: 1.2315135367772556
+          price: 4.145608029883936
+          custodianAccount:
+            code: code
+            scope: scope
+          collateralValue: 1.0246457001441578
+          currency: currency
+          consideration: 7.386281948385884
+          costPerUnitOfValue: 1.4894159098541704
         href: https://openapi-generator.tech
         id: id
         state: state
@@ -283550,6 +285305,15 @@ components:
             \ stored, so that the call can be explained. Only an initial-margin call\
             \ can be explained, and only when the run stored its working."
           type: boolean
+        proposedAllocation:
+          description: "The assets the allocation pass proposes to deliver for the\
+            \ call, or to take back for a return, cheapest first. Null until the run's\
+            \ allocation pass has completed, or when the call moves no collateral\
+            \ of ours."
+          items:
+            $ref: '#/components/schemas/CollateralAllocationLine'
+          nullable: true
+          type: array
       required:
       - agreementId
       - call
@@ -283859,21 +285623,21 @@ components:
         calculation:
           exposureMethod: exposureMethod
           ccp: ccp
-          marginPercentage: 1.4894159098541704
-          fcmAddOn: 5.025004791520295
+          marginPercentage: 6.84685269835264
+          fcmAddOn: 9.965781217890562
           method: method
           repricingPermitted: true
-          creditLine: 7.457744773683766
+          creditLine: 1.1730742509559433
           thresholdAllocation:
-            we: 1.1730742509559433
-            they: 4.965218492984954
-          lendingFeeBps: 6
+            we: 4.965218492984954
+            they: 5.025004791520295
+          lendingFeeBps: 7
         theyPost:
-          independentAmount: 1.2315135367772556
+          independentAmount: 1.0246457001441578
           cashInterest:
             spreadBps: 1
             index: index
-          threshold: 7.386281948385884
+          threshold: 1.2315135367772556
         code: code
         eligibleCollateral:
           theyPost:
@@ -283887,11 +285651,11 @@ components:
           theyPost: theyPost
           wePost: wePost
         wePost:
-          independentAmount: 1.2315135367772556
+          independentAmount: 1.0246457001441578
           cashInterest:
             spreadBps: 1
             index: index
-          threshold: 7.386281948385884
+          threshold: 1.2315135367772556
         settlement: settlement
       properties:
         code:
@@ -284166,6 +285930,10 @@ components:
         \ business date, planned as shards that report\r\ntheir progress, and the\
         \ margin calls and lines it has published so far."
       example:
+        allocation:
+          allocatedCallCount: 3
+          detail: detail
+          status: status
         effectiveAt: 2000-01-23T04:56:07.000+00:00
         asAt: 2000-01-23T04:56:07.000+00:00
         callCount: 0
@@ -284317,6 +286085,8 @@ components:
           type: boolean
         optimisation:
           $ref: '#/components/schemas/MarginRunOptimisation'
+        allocation:
+          $ref: '#/components/schemas/MarginRunAllocation'
       required:
       - agreements
       - asAt
@@ -284330,6 +286100,38 @@ components:
       - scenarios
       - shardCount
       - shards
+      - status
+      type: object
+    MarginRunAllocation:
+      additionalProperties: false
+      description: "How far the allocation pass over a run's base calls got: whether\
+        \ it ran, how many calls it proposed collateral\r\nfor, and what it left out."
+      example:
+        allocatedCallCount: 3
+        detail: detail
+        status: status
+      properties:
+        status:
+          description: "How far the allocation pass got. One of Pending, Completed,\
+            \ Skipped or Failed."
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        allocatedCallCount:
+          description: How many calls the pass proposed collateral for.
+          format: int32
+          type: integer
+        detail:
+          description: "Which calls the pass could not allocate and why, or why it\
+            \ failed. Null when every call that moves our collateral was allocated."
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          pattern: "^[\\s\\S]*$"
+          type: string
+      required:
+      - allocatedCallCount
       - status
       type: object
     MarginRunIssue:
@@ -285755,7 +287557,7 @@ components:
             \ non-native data on both sides, described by the datasetSchemas and the\
             \ externalRecType. Available values: Holding, CashHolding, Valuation,\
             \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         externalRecType:
@@ -293006,6 +294808,38 @@ components:
           status: status
         realisedGainLoss:
         - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+          chargeableGains:
+            indexationAllowance:
+              amount: 0.8008281904610115
+              currency: currency
+            marketValue1965:
+              amount: 0.8008281904610115
+              currency: currency
+            taxTreatment: taxTreatment
+            proceeds:
+              amount: 0.8008281904610115
+              currency: currency
+            indexationAllowanceTaken:
+              amount: 0.8008281904610115
+              currency: currency
+            gainOnOriginalCost:
+              amount: 0.8008281904610115
+              currency: currency
+            matchedLot:
+              purchaseDate: 2000-01-23T04:56:07.000+00:00
+              role: role
+              originalCost:
+                amount: 0.8008281904610115
+                currency: currency
+            chargeableGain:
+              amount: 0.8008281904610115
+              currency: currency
+            matchRule: matchRule
+            basis: basis
+            gainOnMarketValue1982:
+              amount: 0.8008281904610115
+              currency: currency
+            reversed: true
           tradeDateToSettlementDateRealisedCurrency:
             amount: 0.8008281904610115
             currency: currency
@@ -293054,6 +294888,38 @@ components:
             amount: 0.8008281904610115
             currency: currency
         - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+          chargeableGains:
+            indexationAllowance:
+              amount: 0.8008281904610115
+              currency: currency
+            marketValue1965:
+              amount: 0.8008281904610115
+              currency: currency
+            taxTreatment: taxTreatment
+            proceeds:
+              amount: 0.8008281904610115
+              currency: currency
+            indexationAllowanceTaken:
+              amount: 0.8008281904610115
+              currency: currency
+            gainOnOriginalCost:
+              amount: 0.8008281904610115
+              currency: currency
+            matchedLot:
+              purchaseDate: 2000-01-23T04:56:07.000+00:00
+              role: role
+              originalCost:
+                amount: 0.8008281904610115
+                currency: currency
+            chargeableGain:
+              amount: 0.8008281904610115
+              currency: currency
+            matchRule: matchRule
+            basis: basis
+            gainOnMarketValue1982:
+              amount: 0.8008281904610115
+              currency: currency
+            reversed: true
           tradeDateToSettlementDateRealisedCurrency:
             amount: 0.8008281904610115
             currency: currency
@@ -296839,27 +298705,28 @@ components:
         values:
         - funding:
             rate: -0.539572822613047
+            defaultLendingFee: 0.9301444243932576
             dayCountBasis: 363
           variationMargin:
           - tradeFilter: tradeFilter
             calculation:
               exposureMethod: exposureMethod
               ccp: ccp
-              marginPercentage: 1.4894159098541704
-              fcmAddOn: 5.025004791520295
+              marginPercentage: 6.84685269835264
+              fcmAddOn: 9.965781217890562
               method: method
               repricingPermitted: true
-              creditLine: 7.457744773683766
+              creditLine: 1.1730742509559433
               thresholdAllocation:
-                we: 1.1730742509559433
-                they: 4.965218492984954
-              lendingFeeBps: 6
+                we: 4.965218492984954
+                they: 5.025004791520295
+              lendingFeeBps: 7
             theyPost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             code: code
             eligibleCollateral:
               theyPost:
@@ -296873,31 +298740,31 @@ components:
               theyPost: theyPost
               wePost: wePost
             wePost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             settlement: settlement
           - tradeFilter: tradeFilter
             calculation:
               exposureMethod: exposureMethod
               ccp: ccp
-              marginPercentage: 1.4894159098541704
-              fcmAddOn: 5.025004791520295
+              marginPercentage: 6.84685269835264
+              fcmAddOn: 9.965781217890562
               method: method
               repricingPermitted: true
-              creditLine: 7.457744773683766
+              creditLine: 1.1730742509559433
               thresholdAllocation:
-                we: 1.1730742509559433
-                they: 4.965218492984954
-              lendingFeeBps: 6
+                we: 4.965218492984954
+                they: 5.025004791520295
+              lendingFeeBps: 7
             theyPost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             code: code
             eligibleCollateral:
               theyPost:
@@ -296911,12 +298778,13 @@ components:
               theyPost: theyPost
               wePost: wePost
             wePost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             settlement: settlement
+          notificationCutLabel: notificationCutLabel
           rounding:
             amount: 6.027456183070403
             returns: returns
@@ -296945,21 +298813,21 @@ components:
             calculation:
               exposureMethod: exposureMethod
               ccp: ccp
-              marginPercentage: 1.4894159098541704
-              fcmAddOn: 5.025004791520295
+              marginPercentage: 6.84685269835264
+              fcmAddOn: 9.965781217890562
               method: method
               repricingPermitted: true
-              creditLine: 7.457744773683766
+              creditLine: 1.1730742509559433
               thresholdAllocation:
-                we: 1.1730742509559433
-                they: 4.965218492984954
-              lendingFeeBps: 6
+                we: 4.965218492984954
+                they: 5.025004791520295
+              lendingFeeBps: 7
             theyPost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             code: code
             eligibleCollateral:
               theyPost:
@@ -296973,31 +298841,31 @@ components:
               theyPost: theyPost
               wePost: wePost
             wePost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             settlement: settlement
           - tradeFilter: tradeFilter
             calculation:
               exposureMethod: exposureMethod
               ccp: ccp
-              marginPercentage: 1.4894159098541704
-              fcmAddOn: 5.025004791520295
+              marginPercentage: 6.84685269835264
+              fcmAddOn: 9.965781217890562
               method: method
               repricingPermitted: true
-              creditLine: 7.457744773683766
+              creditLine: 1.1730742509559433
               thresholdAllocation:
-                we: 1.1730742509559433
-                they: 4.965218492984954
-              lendingFeeBps: 6
+                we: 4.965218492984954
+                they: 5.025004791520295
+              lendingFeeBps: 7
             theyPost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             code: code
             eligibleCollateral:
               theyPost:
@@ -297011,22 +298879,23 @@ components:
               theyPost: theyPost
               wePost: wePost
             wePost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             settlement: settlement
           counterpartyId:
             code: code
             idTypeScope: idTypeScope
             idTypeCode: idTypeCode
           optimisation:
-            maxPaybackDays: 435321354
-            novationCost: 0.9301444243932576
-            minSavingPerDay: 0.3616076749251911
-            maxPerAgreement: 890262545
+            maxPaybackDays: 890262545
+            novationCost: 0.3616076749251911
+            minSavingPerDay: 0.20271230230023218
+            maxPerAgreement: 1586191969
           applicabilityFilter: applicabilityFilter
+          returnNotificationCutLabel: returnNotificationCutLabel
           matchTolerance: 5.637376656633329
           minimumTransferAmount: 0.8008281904610115
           links:
@@ -297065,27 +298934,28 @@ components:
               key: key
         - funding:
             rate: -0.539572822613047
+            defaultLendingFee: 0.9301444243932576
             dayCountBasis: 363
           variationMargin:
           - tradeFilter: tradeFilter
             calculation:
               exposureMethod: exposureMethod
               ccp: ccp
-              marginPercentage: 1.4894159098541704
-              fcmAddOn: 5.025004791520295
+              marginPercentage: 6.84685269835264
+              fcmAddOn: 9.965781217890562
               method: method
               repricingPermitted: true
-              creditLine: 7.457744773683766
+              creditLine: 1.1730742509559433
               thresholdAllocation:
-                we: 1.1730742509559433
-                they: 4.965218492984954
-              lendingFeeBps: 6
+                we: 4.965218492984954
+                they: 5.025004791520295
+              lendingFeeBps: 7
             theyPost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             code: code
             eligibleCollateral:
               theyPost:
@@ -297099,31 +298969,31 @@ components:
               theyPost: theyPost
               wePost: wePost
             wePost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             settlement: settlement
           - tradeFilter: tradeFilter
             calculation:
               exposureMethod: exposureMethod
               ccp: ccp
-              marginPercentage: 1.4894159098541704
-              fcmAddOn: 5.025004791520295
+              marginPercentage: 6.84685269835264
+              fcmAddOn: 9.965781217890562
               method: method
               repricingPermitted: true
-              creditLine: 7.457744773683766
+              creditLine: 1.1730742509559433
               thresholdAllocation:
-                we: 1.1730742509559433
-                they: 4.965218492984954
-              lendingFeeBps: 6
+                we: 4.965218492984954
+                they: 5.025004791520295
+              lendingFeeBps: 7
             theyPost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             code: code
             eligibleCollateral:
               theyPost:
@@ -297137,12 +299007,13 @@ components:
               theyPost: theyPost
               wePost: wePost
             wePost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             settlement: settlement
+          notificationCutLabel: notificationCutLabel
           rounding:
             amount: 6.027456183070403
             returns: returns
@@ -297171,21 +299042,21 @@ components:
             calculation:
               exposureMethod: exposureMethod
               ccp: ccp
-              marginPercentage: 1.4894159098541704
-              fcmAddOn: 5.025004791520295
+              marginPercentage: 6.84685269835264
+              fcmAddOn: 9.965781217890562
               method: method
               repricingPermitted: true
-              creditLine: 7.457744773683766
+              creditLine: 1.1730742509559433
               thresholdAllocation:
-                we: 1.1730742509559433
-                they: 4.965218492984954
-              lendingFeeBps: 6
+                we: 4.965218492984954
+                they: 5.025004791520295
+              lendingFeeBps: 7
             theyPost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             code: code
             eligibleCollateral:
               theyPost:
@@ -297199,31 +299070,31 @@ components:
               theyPost: theyPost
               wePost: wePost
             wePost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             settlement: settlement
           - tradeFilter: tradeFilter
             calculation:
               exposureMethod: exposureMethod
               ccp: ccp
-              marginPercentage: 1.4894159098541704
-              fcmAddOn: 5.025004791520295
+              marginPercentage: 6.84685269835264
+              fcmAddOn: 9.965781217890562
               method: method
               repricingPermitted: true
-              creditLine: 7.457744773683766
+              creditLine: 1.1730742509559433
               thresholdAllocation:
-                we: 1.1730742509559433
-                they: 4.965218492984954
-              lendingFeeBps: 6
+                we: 4.965218492984954
+                they: 5.025004791520295
+              lendingFeeBps: 7
             theyPost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             code: code
             eligibleCollateral:
               theyPost:
@@ -297237,22 +299108,23 @@ components:
               theyPost: theyPost
               wePost: wePost
             wePost:
-              independentAmount: 1.2315135367772556
+              independentAmount: 1.0246457001441578
               cashInterest:
                 spreadBps: 1
                 index: index
-              threshold: 7.386281948385884
+              threshold: 1.2315135367772556
             settlement: settlement
           counterpartyId:
             code: code
             idTypeScope: idTypeScope
             idTypeCode: idTypeCode
           optimisation:
-            maxPaybackDays: 435321354
-            novationCost: 0.9301444243932576
-            minSavingPerDay: 0.3616076749251911
-            maxPerAgreement: 890262545
+            maxPaybackDays: 890262545
+            novationCost: 0.3616076749251911
+            minSavingPerDay: 0.20271230230023218
+            maxPerAgreement: 1586191969
           applicabilityFilter: applicabilityFilter
+          returnNotificationCutLabel: returnNotificationCutLabel
           matchTolerance: 5.637376656633329
           minimumTransferAmount: 0.8008281904610115
           links:
@@ -299764,7 +301636,9 @@ components:
           - code: code
             valuationPercentage: 0.8008281904610115
             minResidualMaturityYears: 1.4658129805029452
+            concentrationGroup: concentrationGroup
             description: description
+            concentrationLimit: 5.637376656633329
             selector:
               kind: kind
               currency: currency
@@ -299774,7 +301648,9 @@ components:
           - code: code
             valuationPercentage: 0.8008281904610115
             minResidualMaturityYears: 1.4658129805029452
+            concentrationGroup: concentrationGroup
             description: description
+            concentrationLimit: 5.637376656633329
             selector:
               kind: kind
               currency: currency
@@ -299831,7 +301707,9 @@ components:
           - code: code
             valuationPercentage: 0.8008281904610115
             minResidualMaturityYears: 1.4658129805029452
+            concentrationGroup: concentrationGroup
             description: description
+            concentrationLimit: 5.637376656633329
             selector:
               kind: kind
               currency: currency
@@ -299841,7 +301719,9 @@ components:
           - code: code
             valuationPercentage: 0.8008281904610115
             minResidualMaturityYears: 1.4658129805029452
+            concentrationGroup: concentrationGroup
             description: description
+            concentrationLimit: 5.637376656633329
             selector:
               kind: kind
               currency: currency
@@ -307688,6 +309568,45 @@ components:
             callId: callId
             runId: runId
           carriedDisputedAmount: 3.616076749251911
+          proposedAllocation:
+          - boundBy: boundBy
+            instrumentId: instrumentId
+            exclusionReason: exclusionReason
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            units: 2.027123023002322
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            effectiveValuePerUnit: 1.2315135367772556
+            price: 4.145608029883936
+            custodianAccount:
+              code: code
+              scope: scope
+            collateralValue: 1.0246457001441578
+            currency: currency
+            consideration: 7.386281948385884
+            costPerUnitOfValue: 1.4894159098541704
+          - boundBy: boundBy
+            instrumentId: instrumentId
+            exclusionReason: exclusionReason
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            units: 2.027123023002322
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            effectiveValuePerUnit: 1.2315135367772556
+            price: 4.145608029883936
+            custodianAccount:
+              code: code
+              scope: scope
+            collateralValue: 1.0246457001441578
+            currency: currency
+            consideration: 7.386281948385884
+            costPerUnitOfValue: 1.4894159098541704
           href: https://openapi-generator.tech
           id: id
           state: state
@@ -307731,6 +309650,45 @@ components:
             callId: callId
             runId: runId
           carriedDisputedAmount: 3.616076749251911
+          proposedAllocation:
+          - boundBy: boundBy
+            instrumentId: instrumentId
+            exclusionReason: exclusionReason
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            units: 2.027123023002322
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            effectiveValuePerUnit: 1.2315135367772556
+            price: 4.145608029883936
+            custodianAccount:
+              code: code
+              scope: scope
+            collateralValue: 1.0246457001441578
+            currency: currency
+            consideration: 7.386281948385884
+            costPerUnitOfValue: 1.4894159098541704
+          - boundBy: boundBy
+            instrumentId: instrumentId
+            exclusionReason: exclusionReason
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            units: 2.027123023002322
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            portfolioId:
+              code: code
+              scope: scope
+            effectiveValuePerUnit: 1.2315135367772556
+            price: 4.145608029883936
+            custodianAccount:
+              code: code
+              scope: scope
+            collateralValue: 1.0246457001441578
+            currency: currency
+            consideration: 7.386281948385884
+            costPerUnitOfValue: 1.4894159098541704
           href: https://openapi-generator.tech
           id: id
           state: state
@@ -307896,7 +309854,11 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - effectiveAt: 2000-01-23T04:56:07.000+00:00
+        - allocation:
+            allocatedCallCount: 3
+            detail: detail
+            status: status
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
           asAt: 2000-01-23T04:56:07.000+00:00
           callCount: 0
           agreements:
@@ -307965,7 +309927,11 @@ components:
           lineCount: 6
           status: status
           captureDiagnostics: true
-        - effectiveAt: 2000-01-23T04:56:07.000+00:00
+        - allocation:
+            allocatedCallCount: 3
+            detail: detail
+            status: status
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
           asAt: 2000-01-23T04:56:07.000+00:00
           callCount: 0
           agreements:
@@ -318810,11 +320776,11 @@ components:
       additionalProperties: false
       description: What one party posts under a margin item.
       example:
-        independentAmount: 1.2315135367772556
+        independentAmount: 1.0246457001441578
         cashInterest:
           spreadBps: 1
           index: index
-        threshold: 7.386281948385884
+        threshold: 1.2315135367772556
       properties:
         threshold:
           description: The exposure that is tolerated before margin is called. Empty
@@ -333838,6 +335804,44 @@ components:
       - PrincipalDistributed
       - EffectiveYield
       type: string
+    RankMarginCallRequest:
+      additionalProperties: false
+      description: "Ranks a margin call's collateral again against the holdings as\
+        \ they stand now, keeping the assets the user chose."
+      example:
+        fillRemainder: true
+        overrides:
+        - portfolioId:
+            code: code
+            scope: scope
+          instrumentId: instrumentId
+          custodianAccount:
+            code: code
+            scope: scope
+          units: 0.8008281904610115
+        - portfolioId:
+            code: code
+            scope: scope
+          instrumentId: instrumentId
+          custodianAccount:
+            code: code
+            scope: scope
+          units: 0.8008281904610115
+      properties:
+        overrides:
+          description: "The assets and units the user chose, each validated against\
+            \ the agreement's constraints and kept with its reason when it fails one.\
+            \ Optional."
+          items:
+            $ref: '#/components/schemas/CollateralAllocationOverride'
+          nullable: true
+          type: array
+        fillRemainder:
+          description: "Whether to fill what the overrides leave uncovered from the\
+            \ ranking, cheapest first. Defaults to true."
+          nullable: true
+          type: boolean
+      type: object
     RateBreakdownComponent:
       additionalProperties: false
       description: "A tax-characterised payout line within a CashElection on a CashDividendEvent.\r\
@@ -334231,6 +336235,38 @@ components:
       additionalProperties: false
       example:
         purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+        chargeableGains:
+          indexationAllowance:
+            amount: 0.8008281904610115
+            currency: currency
+          marketValue1965:
+            amount: 0.8008281904610115
+            currency: currency
+          taxTreatment: taxTreatment
+          proceeds:
+            amount: 0.8008281904610115
+            currency: currency
+          indexationAllowanceTaken:
+            amount: 0.8008281904610115
+            currency: currency
+          gainOnOriginalCost:
+            amount: 0.8008281904610115
+            currency: currency
+          matchedLot:
+            purchaseDate: 2000-01-23T04:56:07.000+00:00
+            role: role
+            originalCost:
+              amount: 0.8008281904610115
+              currency: currency
+          chargeableGain:
+            amount: 0.8008281904610115
+            currency: currency
+          matchRule: matchRule
+          basis: basis
+          gainOnMarketValue1982:
+            amount: 0.8008281904610115
+            currency: currency
+          reversed: true
         tradeDateToSettlementDateRealisedCurrency:
           amount: 0.8008281904610115
           currency: currency
@@ -334348,6 +336384,8 @@ components:
             \ was realised against, identifying the allocation slice it belongs to."
           nullable: true
           type: object
+        chargeableGains:
+          $ref: '#/components/schemas/RealisedGainLossChargeableGains'
       required:
       - costPortfolioCcy
       - costTradeCcy
@@ -334355,6 +336393,104 @@ components:
       - realisedTotal
       - realisedTradeCcy
       - units
+      type: object
+    RealisedGainLossChargeableGains:
+      additionalProperties: false
+      description: "The UK chargeable-gains figures the engine worked for a realised-gain/loss\
+        \ leg: the chargeable gain, the\r\nindexation allowance and the part of it\
+        \ taken, the proceeds the leg was worked on, both sides of the s.35\r\nkink\
+        \ test on a 1982 holding, the basis and identification rule the leg was matched\
+        \ under, the lot it was\r\nmatched against, whether its transaction stands\
+        \ reversed, and the treatment applied. All amounts are in\r\nthe portfolio\
+        \ currency."
+      example:
+        indexationAllowance:
+          amount: 0.8008281904610115
+          currency: currency
+        marketValue1965:
+          amount: 0.8008281904610115
+          currency: currency
+        taxTreatment: taxTreatment
+        proceeds:
+          amount: 0.8008281904610115
+          currency: currency
+        indexationAllowanceTaken:
+          amount: 0.8008281904610115
+          currency: currency
+        gainOnOriginalCost:
+          amount: 0.8008281904610115
+          currency: currency
+        matchedLot:
+          purchaseDate: 2000-01-23T04:56:07.000+00:00
+          role: role
+          originalCost:
+            amount: 0.8008281904610115
+            currency: currency
+        chargeableGain:
+          amount: 0.8008281904610115
+          currency: currency
+        matchRule: matchRule
+        basis: basis
+        gainOnMarketValue1982:
+          amount: 0.8008281904610115
+          currency: currency
+        reversed: true
+      properties:
+        chargeableGain:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        indexationAllowance:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        indexationAllowanceTaken:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        proceeds:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        gainOnOriginalCost:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        gainOnMarketValue1982:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        basis:
+          description: "Available values: IndexedCost, MarketValue1982, OriginalCost,\
+            \ NilGain."
+          nullable: true
+          type: string
+        matchRule:
+          description: "Available values: SameDay, TenDay, Section210B, Section104Pool,\
+            \ Holding1982, Holding1965."
+          nullable: true
+          type: string
+        matchedLot:
+          $ref: '#/components/schemas/RealisedGainLossMatchedLot'
+        marketValue1965:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        reversed:
+          type: boolean
+        taxTreatment:
+          nullable: true
+          type: string
+      type: object
+    RealisedGainLossMatchedLot:
+      additionalProperties: false
+      description: "The lot a realised chargeable-gains leg was matched against: its\
+        \ cost in the portfolio currency, the date of the\r\nacquisition that opened\
+        \ it and its chargeable-gains role."
+      example:
+        purchaseDate: 2000-01-23T04:56:07.000+00:00
+        role: role
+        originalCost:
+          amount: 0.8008281904610115
+          currency: currency
+      properties:
+        originalCost:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        purchaseDate:
+          format: date-time
+          nullable: true
+          type: string
+        role:
+          description: "Available values: DayLot, Section104Pool, Holding1982, Holding1965,\
+            \ FutureAcquisition."
+          nullable: true
+          type: string
       type: object
     RecActivitySinceEffectiveAt:
       additionalProperties: false
@@ -334762,9 +336898,9 @@ components:
           description: "The entity within the dataset. Required when type is PortfolioContents,\
             \ in which case it is one of: Holding, Valuation, Transaction, OutputTransaction,\
             \ SettlementActivity. Required when type is LusidEntity, in which case\
-            \ it is Instrument or LegalEntity. Must be omitted when type is RelationalData.\
-            \ Available values: Holding, Valuation, Transaction, OutputTransaction,\
-            \ SettlementActivity, Instrument, LegalEntity."
+            \ it is Instrument, LegalEntity or Portfolio. Must be omitted when type\
+            \ is RelationalData. Available values: Holding, Valuation, Transaction,\
+            \ OutputTransaction, SettlementActivity, Instrument, LegalEntity, Portfolio."
           nullable: true
           type: string
         relationalDatasetDefinitionId:
@@ -335088,7 +337224,7 @@ components:
             \ valid for the definitionType, and must match the reconciliationType\
             \ of the referenced matching ruleset. Available values: Holding, CashHolding,\
             \ Valuation, InputTransaction, OutputTransaction, SettlementActivity,\
-            \ External, Instrument, LegalEntity."
+            \ External, Instrument, LegalEntity, Portfolio."
           minLength: 1
           type: string
         matchingRulesetId:
@@ -335673,7 +337809,7 @@ components:
           description: "The rec type of the linked result. Always differs from this\
             \ result's rec type. Available values: Holding, CashHolding, Valuation,\
             \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         linkedBy:
@@ -337815,7 +339951,8 @@ components:
         recType:
           description: "The type of rec that the result belongs to (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
-            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity."
+            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
+            \ Portfolio."
           minLength: 1
           type: string
         externalRecTypeName:
@@ -338182,7 +340319,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -338296,7 +340433,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -338334,6 +340471,7 @@ components:
           RelationalDataPoint: '#/components/schemas/RecResultRelationalDataItem'
           Instrument: '#/components/schemas/RecResultExternalIdentifiersItem'
           LegalEntity: '#/components/schemas/RecResultExternalIdentifiersItem'
+          Portfolio: '#/components/schemas/RecResultResourceIdItem'
         propertyName: itemType
       example:
         itemType: itemType
@@ -338346,6 +340484,7 @@ components:
       - $ref: '#/components/schemas/RecResultExternalIdentifiersItem'
       - $ref: '#/components/schemas/RecResultHoldingItem'
       - $ref: '#/components/schemas/RecResultRelationalDataItem'
+      - $ref: '#/components/schemas/RecResultResourceIdItem'
       - $ref: '#/components/schemas/RecResultSettlementActivityItem'
       - $ref: '#/components/schemas/RecResultTransactionItem'
       properties:
@@ -338359,7 +340498,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -338500,7 +340639,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -338524,6 +340663,61 @@ components:
       - itemType
       - relationalDataPointUniqueId
       - relationalDatasetDefinitionId
+      - writebackSuggestions
+      type: object
+    RecResultResourceIdItem:
+      additionalProperties: false
+      description: "An item within a rec result for one LUSID entity that a scope\
+        \ and a code identify: one entity on a side of a\r\nLusidEntity rec. The itemType\
+        \ is the entity type. The entity unique id identifies it. The item also holds\
+        \ the\r\ndisplay name of the entity."
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        entityUniqueId:
+          description: The unique id of the entity the run read. It identifies the
+            entity across scopes.
+          minLength: 1
+          type: string
+        entityDisplayName:
+          description: "The display name of the entity, as it stood at the dates the\
+            \ run read its side."
+          nullable: true
+          type: string
+        itemType:
+          description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
+            \ Transaction, SettlementActivity, RelationalDataPoint or the entity type\
+            \ of a LusidEntity rec. Names the item rather than the rec type: Holding\
+            \ and CashHolding recs produce Holding items, a Valuation rec produces\
+            \ ValuedHolding items, both transaction rec types produce Transaction\
+            \ items, and a relational dataset side produces RelationalDataPoint items\
+            \ whatever the rec type. A LusidEntity rec produces items of its entity\
+            \ type, for example Instrument items. Available values: SettlementActivity,\
+            \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
+            \ LegalEntity, Portfolio."
+          minLength: 1
+          type: string
+        ruleAndAttributeValues:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The core rule, aggregate rule and supplemental attribute values\
+            \ for the item, keyed by name."
+          nullable: true
+          type: object
+        writebackSuggestions:
+          description: "The writebacks suggested against this item, as configured\
+            \ by the matching ruleset's writebackConfigurations. Only ever populated\
+            \ on target-side items. Suggestions only: a user is expected to review\
+            \ them before acting. Required, but may be empty."
+          items:
+            $ref: '#/components/schemas/WritebackSuggestion'
+          readOnly: true
+          type: array
+      required:
+      - entityUniqueId
+      - id
+      - itemType
       - writebackSuggestions
       type: object
     RecResultReview:
@@ -338841,7 +341035,8 @@ components:
           description: "The type of rec that this result set belongs to (e.g. Holding).\
             \ Together with the rec instance, this uniquely identifies the result\
             \ set. Available values: Holding, CashHolding, Valuation, InputTransaction,\
-            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity."
+            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
+            \ Portfolio."
           minLength: 1
           type: string
         externalRecTypeName:
@@ -339045,7 +341240,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -339122,7 +341317,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -357107,6 +359302,38 @@ components:
             status: status
           realisedGainLoss:
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -357155,6 +359382,38 @@ components:
               amount: 0.8008281904610115
               currency: currency
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -358142,6 +360401,38 @@ components:
             status: status
           realisedGainLoss:
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -358190,6 +360481,38 @@ components:
               amount: 0.8008281904610115
               currency: currency
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -367954,6 +370277,38 @@ components:
               status: status
             realisedGainLoss:
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -368002,6 +370357,38 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -369081,6 +371468,38 @@ components:
               status: status
             realisedGainLoss:
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -369129,6 +371548,38 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -374069,6 +376520,38 @@ components:
             status: status
           realisedGainLoss:
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -374117,6 +376600,38 @@ components:
               amount: 0.8008281904610115
               currency: currency
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -375724,6 +378239,38 @@ components:
             status: status
           realisedGainLoss:
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -375772,6 +378319,38 @@ components:
               amount: 0.8008281904610115
               currency: currency
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -376868,14 +379447,18 @@ components:
       properties:
         lusidInstrumentId:
           description: "LUSID's internal unique instrument identifier, resolved from\
-            \ the share class' instrument identifiers"
+            \ the share class' instrument identifiers. Absent where no instrument\
+            \ was resolved for the share class: a fund defined with inline share classes\
+            \ resolves none, whether or not it created their instruments."
           maxLength: 64
           minLength: 1
           nullable: true
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         instrumentScope:
-          description: The scope in which the share class instrument lies.
+          description: "The scope in which the share class instrument lies, or the\
+            \ fund's instrument scope where no instrument was resolved for the share\
+            \ class."
           maxLength: 64
           minLength: 1
           nullable: true
@@ -382797,8 +385380,8 @@ components:
       additionalProperties: false
       description: How a threshold is split between the two parties.
       example:
-        we: 1.1730742509559433
-        they: 4.965218492984954
+        we: 4.965218492984954
+        they: 5.025004791520295
       properties:
         we:
           description: Our share of the threshold.
@@ -395495,6 +398078,38 @@ components:
             status: status
           realisedGainLoss:
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -395543,6 +398158,38 @@ components:
               amount: 0.8008281904610115
               currency: currency
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -397111,7 +399758,7 @@ components:
             \ non-native data on both sides, described by the datasetSchemas and the\
             \ externalRecType. Available values: Holding, CashHolding, Valuation,\
             \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument,\
-            \ LegalEntity."
+            \ LegalEntity, Portfolio."
           minLength: 1
           type: string
         externalRecType:
@@ -398548,27 +401195,28 @@ components:
       example:
         funding:
           rate: -0.539572822613047
+          defaultLendingFee: 0.9301444243932576
           dayCountBasis: 363
         variationMargin:
         - tradeFilter: tradeFilter
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -398582,31 +401230,31 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         - tradeFilter: tradeFilter
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -398620,12 +401268,13 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
+        notificationCutLabel: notificationCutLabel
         effectiveAt: 2000-01-23T04:56:07.000+00:00
         rounding:
           amount: 6.027456183070403
@@ -398641,21 +401290,21 @@ components:
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -398669,31 +401318,31 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         - tradeFilter: tradeFilter
           calculation:
             exposureMethod: exposureMethod
             ccp: ccp
-            marginPercentage: 1.4894159098541704
-            fcmAddOn: 5.025004791520295
+            marginPercentage: 6.84685269835264
+            fcmAddOn: 9.965781217890562
             method: method
             repricingPermitted: true
-            creditLine: 7.457744773683766
+            creditLine: 1.1730742509559433
             thresholdAllocation:
-              we: 1.1730742509559433
-              they: 4.965218492984954
-            lendingFeeBps: 6
+              we: 4.965218492984954
+              they: 5.025004791520295
+            lendingFeeBps: 7
           theyPost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           code: code
           eligibleCollateral:
             theyPost:
@@ -398707,22 +401356,23 @@ components:
             theyPost: theyPost
             wePost: wePost
           wePost:
-            independentAmount: 1.2315135367772556
+            independentAmount: 1.0246457001441578
             cashInterest:
               spreadBps: 1
               index: index
-            threshold: 7.386281948385884
+            threshold: 1.2315135367772556
           settlement: settlement
         counterpartyId:
           code: code
           idTypeScope: idTypeScope
           idTypeCode: idTypeCode
         optimisation:
-          maxPaybackDays: 435321354
-          novationCost: 0.9301444243932576
-          minSavingPerDay: 0.3616076749251911
-          maxPerAgreement: 890262545
+          maxPaybackDays: 890262545
+          novationCost: 0.3616076749251911
+          minSavingPerDay: 0.20271230230023218
+          maxPerAgreement: 1586191969
         applicabilityFilter: applicabilityFilter
+        returnNotificationCutLabel: returnNotificationCutLabel
         matchTolerance: 6.027456183070403
         minimumTransferAmount: 0.8008281904610115
         settlementLag:
@@ -398815,6 +401465,25 @@ components:
             Defaults to the current LUSID system datetime if not specified.
           format: date-time
           nullable: true
+          type: string
+        notificationCutLabel:
+          description: The cut label giving the time of day by which collateral we
+            deliver under a margin call must settle. Each run resolves it on the business
+            date and records it as the call's deadline; the allocation excludes assets
+            that cannot settle by it. Optional.
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_\\+:\\.]+$"
+          type: string
+        returnNotificationCutLabel:
+          description: "The cut label giving the time of day by which collateral the\
+            \ counterparty delivers, or returns to us, must settle. Recorded as the\
+            \ deadline of the calls they post under. Optional."
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_\\+:\\.]+$"
           type: string
       required:
       - applicabilityFilter
@@ -400398,7 +403067,9 @@ components:
         - code: code
           valuationPercentage: 0.8008281904610115
           minResidualMaturityYears: 1.4658129805029452
+          concentrationGroup: concentrationGroup
           description: description
+          concentrationLimit: 5.637376656633329
           selector:
             kind: kind
             currency: currency
@@ -400408,7 +403079,9 @@ components:
         - code: code
           valuationPercentage: 0.8008281904610115
           minResidualMaturityYears: 1.4658129805029452
+          concentrationGroup: concentrationGroup
           description: description
+          concentrationLimit: 5.637376656633329
           selector:
             kind: kind
             currency: currency
@@ -410145,6 +412818,38 @@ components:
               status: status
             realisedGainLoss:
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -410193,6 +412898,38 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -411192,6 +413929,38 @@ components:
               status: status
             realisedGainLoss:
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -411240,6 +414009,38 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -413747,6 +416548,38 @@ components:
               status: status
             realisedGainLoss:
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -413795,6 +416628,38 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -414826,6 +417691,38 @@ components:
               status: status
             realisedGainLoss:
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -414874,6 +417771,38 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -418981,6 +421910,38 @@ components:
             status: status
           realisedGainLoss:
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -419029,6 +421990,38 @@ components:
               amount: 0.8008281904610115
               currency: currency
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -420016,6 +423009,38 @@ components:
             status: status
           realisedGainLoss:
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -420064,6 +423089,38 @@ components:
               amount: 0.8008281904610115
               currency: currency
           - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+            chargeableGains:
+              indexationAllowance:
+                amount: 0.8008281904610115
+                currency: currency
+              marketValue1965:
+                amount: 0.8008281904610115
+                currency: currency
+              taxTreatment: taxTreatment
+              proceeds:
+                amount: 0.8008281904610115
+                currency: currency
+              indexationAllowanceTaken:
+                amount: 0.8008281904610115
+                currency: currency
+              gainOnOriginalCost:
+                amount: 0.8008281904610115
+                currency: currency
+              matchedLot:
+                purchaseDate: 2000-01-23T04:56:07.000+00:00
+                role: role
+                originalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+              chargeableGain:
+                amount: 0.8008281904610115
+                currency: currency
+              matchRule: matchRule
+              basis: basis
+              gainOnMarketValue1982:
+                amount: 0.8008281904610115
+                currency: currency
+              reversed: true
             tradeDateToSettlementDateRealisedCurrency:
               amount: 0.8008281904610115
               currency: currency
@@ -423865,6 +426922,38 @@ components:
               status: status
             realisedGainLoss:
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -423913,6 +427002,38 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -424968,6 +428089,38 @@ components:
               status: status
             realisedGainLoss:
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency
@@ -425016,6 +428169,38 @@ components:
                 amount: 0.8008281904610115
                 currency: currency
             - purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
+              chargeableGains:
+                indexationAllowance:
+                  amount: 0.8008281904610115
+                  currency: currency
+                marketValue1965:
+                  amount: 0.8008281904610115
+                  currency: currency
+                taxTreatment: taxTreatment
+                proceeds:
+                  amount: 0.8008281904610115
+                  currency: currency
+                indexationAllowanceTaken:
+                  amount: 0.8008281904610115
+                  currency: currency
+                gainOnOriginalCost:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchedLot:
+                  purchaseDate: 2000-01-23T04:56:07.000+00:00
+                  role: role
+                  originalCost:
+                    amount: 0.8008281904610115
+                    currency: currency
+                chargeableGain:
+                  amount: 0.8008281904610115
+                  currency: currency
+                matchRule: matchRule
+                basis: basis
+                gainOnMarketValue1982:
+                  amount: 0.8008281904610115
+                  currency: currency
+                reversed: true
               tradeDateToSettlementDateRealisedCurrency:
                 amount: 0.8008281904610115
                 currency: currency

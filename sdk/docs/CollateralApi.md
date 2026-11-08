@@ -8,6 +8,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**batchAcceptMarginCalls**](CollateralApi.md#batchAcceptMarginCalls) | **POST** /api/collateral/margincalls/$batchAccept | [EXPERIMENTAL] BatchAcceptMarginCalls: Accept several margin calls. |
 | [**disputeMarginCall**](CollateralApi.md#disputeMarginCall) | **POST** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$dispute | [EXPERIMENTAL] DisputeMarginCall: Dispute a margin call. |
 | [**getMarginCall**](CollateralApi.md#getMarginCall) | **GET** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction} | [EXPERIMENTAL] GetMarginCall: Get a margin call. |
+| [**getMarginCallAllocation**](CollateralApi.md#getMarginCallAllocation) | **GET** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$allocation | [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call. |
 | [**getMarginCallExplanation**](CollateralApi.md#getMarginCallExplanation) | **GET** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$explain | [EXPERIMENTAL] GetMarginCallExplanation: Explain a margin call. |
 | [**getMarginLineExplanation**](CollateralApi.md#getMarginLineExplanation) | **GET** /api/collateral/runs/{runId}/lines/{lineKey}/$explain | [EXPERIMENTAL] GetMarginLineExplanation: Explain a margin line. |
 | [**getMarginRun**](CollateralApi.md#getMarginRun) | **GET** /api/collateral/runs/{runId} | [EXPERIMENTAL] GetMarginRun: Get a margin run. |
@@ -17,6 +18,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**listMarginRunRecommendations**](CollateralApi.md#listMarginRunRecommendations) | **GET** /api/collateral/runs/{runId}/recommendations | [EXPERIMENTAL] ListMarginRunRecommendations: List a margin run&#39;s netting recommendations. |
 | [**listMarginRuns**](CollateralApi.md#listMarginRuns) | **GET** /api/collateral/runs | [EXPERIMENTAL] ListMarginRuns: List margin runs. |
 | [**listNettingRecommendations**](CollateralApi.md#listNettingRecommendations) | **GET** /api/collateral/recommendations | [EXPERIMENTAL] ListNettingRecommendations: List the current netting recommendations. |
+| [**rankMarginCall**](CollateralApi.md#rankMarginCall) | **POST** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$rank | [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices. |
 | [**recordCounterpartyDemand**](CollateralApi.md#recordCounterpartyDemand) | **POST** /api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$recordCounterpartyDemand | [EXPERIMENTAL] RecordCounterpartyDemand: Record the counterparty&#39;s demand against a margin call. |
 | [**retryMarginRun**](CollateralApi.md#retryMarginRun) | **POST** /api/collateral/runs/{runId}/$retry | [EXPERIMENTAL] RetryMarginRun: Retry a margin run. |
 | [**runMarginCalculation**](CollateralApi.md#runMarginCalculation) | **POST** /api/collateral/$run | [EXPERIMENTAL] RunMarginCalculation: Run the margin calculation. |
@@ -415,6 +417,107 @@ public class CollateralApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested margin call. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getMarginCallAllocation
+
+> CollateralAllocation getMarginCallAllocation(runId, agreementScope, agreementCode, item, marginType, direction)
+
+[EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call.
+
+Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CollateralApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CollateralApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CollateralApi apiInstance = apiFactory.build(CollateralApi.class);
+
+        CollateralApi apiInstance = ApiFactoryBuilder.build(fileName).build(CollateralApi.class);
+        String runId = "runId_example"; // String | The identifier of the margin run.
+        String agreementScope = "agreementScope_example"; // String | The scope of the call's collateral agreement.
+        String agreementCode = "agreementCode_example"; // String | The code of the call's collateral agreement.
+        String item = "item_example"; // String | The margin item of the call.
+        String marginType = "marginType_example"; // String | The margin type of the call. One of VariationMargin or InitialMargin.
+        String direction = "direction_example"; // String | Who posts under the call. One of WePost, TheyPost or None.
+        try {
+            // uncomment the below to set overrides at the request level
+            // CollateralAllocation result = apiInstance.getMarginCallAllocation(runId, agreementScope, agreementCode, item, marginType, direction).execute(opts);
+
+            CollateralAllocation result = apiInstance.getMarginCallAllocation(runId, agreementScope, agreementCode, item, marginType, direction).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CollateralApi#getMarginCallAllocation");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **runId** | **String**| The identifier of the margin run. | |
+| **agreementScope** | **String**| The scope of the call&#39;s collateral agreement. | |
+| **agreementCode** | **String**| The code of the call&#39;s collateral agreement. | |
+| **item** | **String**| The margin item of the call. | |
+| **marginType** | **String**| The margin type of the call. One of VariationMargin or InitialMargin. | |
+| **direction** | **String**| Who posts under the call. One of WePost, TheyPost or None. | |
+
+### Return type
+
+[**CollateralAllocation**](CollateralAllocation.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The collateral proposed for the margin call. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -1300,6 +1403,109 @@ public class CollateralApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested recommendations. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## rankMarginCall
+
+> CollateralAllocation rankMarginCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest)
+
+[EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices.
+
+Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.CollateralApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class CollateralApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // CollateralApi apiInstance = apiFactory.build(CollateralApi.class);
+
+        CollateralApi apiInstance = ApiFactoryBuilder.build(fileName).build(CollateralApi.class);
+        String runId = "runId_example"; // String | The identifier of the margin run.
+        String agreementScope = "agreementScope_example"; // String | The scope of the call's collateral agreement.
+        String agreementCode = "agreementCode_example"; // String | The code of the call's collateral agreement.
+        String item = "item_example"; // String | The margin item of the call.
+        String marginType = "marginType_example"; // String | The margin type of the call. One of VariationMargin or InitialMargin.
+        String direction = "direction_example"; // String | Who posts under the call. One of WePost, TheyPost or None.
+        RankMarginCallRequest rankMarginCallRequest = new RankMarginCallRequest(); // RankMarginCallRequest | The assets the caller chose, and whether to fill the rest.
+        try {
+            // uncomment the below to set overrides at the request level
+            // CollateralAllocation result = apiInstance.rankMarginCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest).execute(opts);
+
+            CollateralAllocation result = apiInstance.rankMarginCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling CollateralApi#rankMarginCall");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **runId** | **String**| The identifier of the margin run. | |
+| **agreementScope** | **String**| The scope of the call&#39;s collateral agreement. | |
+| **agreementCode** | **String**| The code of the call&#39;s collateral agreement. | |
+| **item** | **String**| The margin item of the call. | |
+| **marginType** | **String**| The margin type of the call. One of VariationMargin or InitialMargin. | |
+| **direction** | **String**| Who posts under the call. One of WePost, TheyPost or None. | |
+| **rankMarginCallRequest** | [**RankMarginCallRequest**](RankMarginCallRequest.md)| The assets the caller chose, and whether to fill the rest. | [optional] |
+
+### Return type
+
+[**CollateralAllocation**](CollateralAllocation.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The collateral ranked for the margin call. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

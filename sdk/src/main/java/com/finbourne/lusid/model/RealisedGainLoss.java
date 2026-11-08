@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.RealisedGainLossChargeableGains;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -122,6 +123,10 @@ public class RealisedGainLoss {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, PerpetualProperty> properties;
+
+  public static final String SERIALIZED_NAME_CHARGEABLE_GAINS = "chargeableGains";
+  @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS)
+  private RealisedGainLossChargeableGains chargeableGains;
 
   public RealisedGainLoss() {
   }
@@ -483,6 +488,27 @@ public class RealisedGainLoss {
   }
 
 
+  public RealisedGainLoss chargeableGains(RealisedGainLossChargeableGains chargeableGains) {
+    
+    this.chargeableGains = chargeableGains;
+    return this;
+  }
+
+   /**
+   * Get chargeableGains
+   * @return chargeableGains
+  **/
+  @jakarta.annotation.Nullable
+  public RealisedGainLossChargeableGains getChargeableGains() {
+    return chargeableGains;
+  }
+
+
+  public void setChargeableGains(RealisedGainLossChargeableGains chargeableGains) {
+    this.chargeableGains = chargeableGains;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -509,7 +535,8 @@ public class RealisedGainLoss {
         Objects.equals(this.realisedAmortisation, realisedGainLoss.realisedAmortisation) &&
         Objects.equals(this.tradeDateToSettlementDateRealisedCurrency, realisedGainLoss.tradeDateToSettlementDateRealisedCurrency) &&
         Objects.equals(this.transactionType, realisedGainLoss.transactionType) &&
-        Objects.equals(this.properties, realisedGainLoss.properties);
+        Objects.equals(this.properties, realisedGainLoss.properties) &&
+        Objects.equals(this.chargeableGains, realisedGainLoss.chargeableGains);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -518,7 +545,7 @@ public class RealisedGainLoss {
 
   @Override
   public int hashCode() {
-    return Objects.hash(instrumentScope, instrumentUid, units, purchaseTradeDate, purchaseSettlementDate, purchasePrice, costTradeCcy, costPortfolioCcy, realisedTradeCcy, realisedTotal, realisedMarket, realisedCurrency, taxLotId, realisedAmortisation, tradeDateToSettlementDateRealisedCurrency, transactionType, properties);
+    return Objects.hash(instrumentScope, instrumentUid, units, purchaseTradeDate, purchaseSettlementDate, purchasePrice, costTradeCcy, costPortfolioCcy, realisedTradeCcy, realisedTotal, realisedMarket, realisedCurrency, taxLotId, realisedAmortisation, tradeDateToSettlementDateRealisedCurrency, transactionType, properties, chargeableGains);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -549,6 +576,7 @@ public class RealisedGainLoss {
     sb.append("    tradeDateToSettlementDateRealisedCurrency: ").append(toIndentedString(tradeDateToSettlementDateRealisedCurrency)).append("\n");
     sb.append("    transactionType: ").append(toIndentedString(transactionType)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    chargeableGains: ").append(toIndentedString(chargeableGains)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -588,6 +616,7 @@ public class RealisedGainLoss {
     openapiFields.add("tradeDateToSettlementDateRealisedCurrency");
     openapiFields.add("transactionType");
     openapiFields.add("properties");
+    openapiFields.add("chargeableGains");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -654,6 +683,10 @@ public class RealisedGainLoss {
       }
       if ((jsonObj.get("transactionType") != null && !jsonObj.get("transactionType").isJsonNull()) && !jsonObj.get("transactionType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `transactionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("transactionType").toString()));
+      }
+      // validate the optional field `chargeableGains`
+      if (jsonObj.get("chargeableGains") != null && !jsonObj.get("chargeableGains").isJsonNull()) {
+        RealisedGainLossChargeableGains.validateJsonElement(jsonObj.get("chargeableGains"));
       }
   }
 

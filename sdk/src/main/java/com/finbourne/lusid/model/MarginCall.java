@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.CollateralAllocationLine;
 import com.finbourne.lusid.model.CounterpartyIdentifier;
 import com.finbourne.lusid.model.MarginCallReference;
 import com.finbourne.lusid.model.ResourceId;
@@ -22,7 +23,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -182,6 +185,10 @@ public class MarginCall {
   public static final String SERIALIZED_NAME_EXPLAIN_AVAILABLE = "explainAvailable";
   @SerializedName(SERIALIZED_NAME_EXPLAIN_AVAILABLE)
   private Boolean explainAvailable;
+
+  public static final String SERIALIZED_NAME_PROPOSED_ALLOCATION = "proposedAllocation";
+  @SerializedName(SERIALIZED_NAME_PROPOSED_ALLOCATION)
+  private List<CollateralAllocationLine> proposedAllocation;
 
   public MarginCall() {
   }
@@ -858,6 +865,35 @@ public class MarginCall {
   }
 
 
+  public MarginCall proposedAllocation(List<CollateralAllocationLine> proposedAllocation) {
+    
+    this.proposedAllocation = proposedAllocation;
+    return this;
+  }
+
+  public MarginCall addProposedAllocationItem(CollateralAllocationLine proposedAllocationItem) {
+    if (this.proposedAllocation == null) {
+      this.proposedAllocation = new ArrayList<>();
+    }
+    this.proposedAllocation.add(proposedAllocationItem);
+    return this;
+  }
+
+   /**
+   * The assets the allocation pass proposes to deliver for the call, or to take back for a return, cheapest first. Null until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+   * @return proposedAllocation
+  **/
+  @jakarta.annotation.Nullable
+  public List<CollateralAllocationLine> getProposedAllocation() {
+    return proposedAllocation;
+  }
+
+
+  public void setProposedAllocation(List<CollateralAllocationLine> proposedAllocation) {
+    this.proposedAllocation = proposedAllocation;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -899,7 +935,8 @@ public class MarginCall {
         Objects.equals(this.carriedFrom, marginCall.carriedFrom) &&
         (this.carriedDisputedAmount.compareTo(marginCall.getCarriedDisputedAmount()) == 0) &&
         Objects.equals(this.scenario, marginCall.scenario) &&
-        Objects.equals(this.explainAvailable, marginCall.explainAvailable);
+        Objects.equals(this.explainAvailable, marginCall.explainAvailable) &&
+        Objects.equals(this.proposedAllocation, marginCall.proposedAllocation);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -908,7 +945,7 @@ public class MarginCall {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, runId, agreementId, counterparty, item, marginType, method, settlement, direction, currency, required, held, call, matchTolerance, counterpartyDemand, difference, matchStatus, demandReceivedAt, statementReference, demandNote, agreedAmount, disputedAmount, disputeReason, disputeOwner, state, deadline, supersedes, carriedFrom, carriedDisputedAmount, scenario, explainAvailable);
+    return Objects.hash(href, id, runId, agreementId, counterparty, item, marginType, method, settlement, direction, currency, required, held, call, matchTolerance, counterpartyDemand, difference, matchStatus, demandReceivedAt, statementReference, demandNote, agreedAmount, disputedAmount, disputeReason, disputeOwner, state, deadline, supersedes, carriedFrom, carriedDisputedAmount, scenario, explainAvailable, proposedAllocation);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -954,6 +991,7 @@ public class MarginCall {
     sb.append("    carriedDisputedAmount: ").append(toIndentedString(carriedDisputedAmount)).append("\n");
     sb.append("    scenario: ").append(toIndentedString(scenario)).append("\n");
     sb.append("    explainAvailable: ").append(toIndentedString(explainAvailable)).append("\n");
+    sb.append("    proposedAllocation: ").append(toIndentedString(proposedAllocation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1008,6 +1046,7 @@ public class MarginCall {
     openapiFields.add("carriedDisputedAmount");
     openapiFields.add("scenario");
     openapiFields.add("explainAvailable");
+    openapiFields.add("proposedAllocation");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1107,6 +1146,20 @@ public class MarginCall {
       // validate the optional field `scenario`
       if (jsonObj.get("scenario") != null && !jsonObj.get("scenario").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("scenario"));
+      }
+      if (jsonObj.get("proposedAllocation") != null && !jsonObj.get("proposedAllocation").isJsonNull()) {
+        JsonArray jsonArrayproposedAllocation = jsonObj.getAsJsonArray("proposedAllocation");
+        if (jsonArrayproposedAllocation != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("proposedAllocation").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `proposedAllocation` to be an array in the JSON string but got `%s`", jsonObj.get("proposedAllocation").toString()));
+          }
+
+          // validate the optional field `proposedAllocation` (array)
+          for (int i = 0; i < jsonArrayproposedAllocation.size(); i++) {
+            CollateralAllocationLine.validateJsonElement(jsonArrayproposedAllocation.get(i));
+          };
+        }
       }
   }
 

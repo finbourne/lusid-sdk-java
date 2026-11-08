@@ -5,7 +5,7 @@ A definition that reconciles one type of LUSID entity. A filter selects the popu
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**entityType** | **String** | The type of LUSID entity to reconcile, which is also the rec type of the results. Supported types: Instrument, LegalEntity. Must equal the reconciliationType of the matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity. | [default to String]
+**entityType** | **String** | The type of LUSID entity to reconcile, which is also the rec type of the results. Supported types: Instrument, LegalEntity, Portfolio. Must equal the reconciliationType of the matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. | [default to String]
 **matchingRulesetId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **leftFilter** | **String** | Optional filter that selects the population of the left side. It uses the filter syntax of the list endpoint of the entity type. Null reads the whole population of the side. | [optional] [default to String]
 **rightFilter** | **String** | Optional filter that selects the population of the right side. It uses the filter syntax of the list endpoint of the entity type. Null reads the whole population of the side. | [optional] [default to String]

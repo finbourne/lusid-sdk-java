@@ -79,6 +79,14 @@ public class EligibleCollateralRow {
   @SerializedName(SERIALIZED_NAME_MAX_RESIDUAL_MATURITY_YEARS)
   private java.math.BigDecimal maxResidualMaturityYears;
 
+  public static final String SERIALIZED_NAME_CONCENTRATION_GROUP = "concentrationGroup";
+  @SerializedName(SERIALIZED_NAME_CONCENTRATION_GROUP)
+  private String concentrationGroup;
+
+  public static final String SERIALIZED_NAME_CONCENTRATION_LIMIT = "concentrationLimit";
+  @SerializedName(SERIALIZED_NAME_CONCENTRATION_LIMIT)
+  private java.math.BigDecimal concentrationLimit;
+
   public EligibleCollateralRow() {
   }
 
@@ -173,7 +181,7 @@ public class EligibleCollateralRow {
   }
 
    /**
-   * The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk (1 - FxHaircut). At least 0 and less than 1. Not allowed for a BaseCurrencyCash selector. Optional.
+   * The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage - FxHaircut. At least 0 and less than the valuationPercentage. Not allowed for a BaseCurrencyCash selector. Optional.
    * @return fxHaircut
   **/
   @jakarta.annotation.Nullable
@@ -229,6 +237,48 @@ public class EligibleCollateralRow {
   }
 
 
+  public EligibleCollateralRow concentrationGroup(String concentrationGroup) {
+    
+    this.concentrationGroup = concentrationGroup;
+    return this;
+  }
+
+   /**
+   * The group the row&#39;s assets count towards for a concentration limit, for example &#39;sovereign&#39; or &#39;issuer&#39;. Rows naming the same group share one limit. Required when a concentrationLimit is set. Optional.
+   * @return concentrationGroup
+  **/
+  @jakarta.annotation.Nullable
+  public String getConcentrationGroup() {
+    return concentrationGroup;
+  }
+
+
+  public void setConcentrationGroup(String concentrationGroup) {
+    this.concentrationGroup = concentrationGroup;
+  }
+
+
+  public EligibleCollateralRow concentrationLimit(java.math.BigDecimal concentrationLimit) {
+    
+    this.concentrationLimit = concentrationLimit;
+    return this;
+  }
+
+   /**
+   * The largest fraction of the collateral held plus the call that assets of the row&#39;s concentration group may make up, for example 0.3 for 30%. Greater than 0 and at most 1. Required when a concentrationGroup is set. Optional.
+   * @return concentrationLimit
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getConcentrationLimit() {
+    return concentrationLimit;
+  }
+
+
+  public void setConcentrationLimit(java.math.BigDecimal concentrationLimit) {
+    this.concentrationLimit = concentrationLimit;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -245,7 +295,9 @@ public class EligibleCollateralRow {
         (this.valuationPercentage.compareTo(eligibleCollateralRow.getValuationPercentage()) == 0) &&
         (this.fxHaircut.compareTo(eligibleCollateralRow.getFxHaircut()) == 0) &&
         (this.minResidualMaturityYears.compareTo(eligibleCollateralRow.getMinResidualMaturityYears()) == 0) &&
-        (this.maxResidualMaturityYears.compareTo(eligibleCollateralRow.getMaxResidualMaturityYears()) == 0);
+        (this.maxResidualMaturityYears.compareTo(eligibleCollateralRow.getMaxResidualMaturityYears()) == 0) &&
+        Objects.equals(this.concentrationGroup, eligibleCollateralRow.concentrationGroup) &&
+        (this.concentrationLimit.compareTo(eligibleCollateralRow.getConcentrationLimit()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -254,7 +306,7 @@ public class EligibleCollateralRow {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, description, selector, valuationPercentage, fxHaircut, minResidualMaturityYears, maxResidualMaturityYears);
+    return Objects.hash(code, description, selector, valuationPercentage, fxHaircut, minResidualMaturityYears, maxResidualMaturityYears, concentrationGroup, concentrationLimit);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -275,6 +327,8 @@ public class EligibleCollateralRow {
     sb.append("    fxHaircut: ").append(toIndentedString(fxHaircut)).append("\n");
     sb.append("    minResidualMaturityYears: ").append(toIndentedString(minResidualMaturityYears)).append("\n");
     sb.append("    maxResidualMaturityYears: ").append(toIndentedString(maxResidualMaturityYears)).append("\n");
+    sb.append("    concentrationGroup: ").append(toIndentedString(concentrationGroup)).append("\n");
+    sb.append("    concentrationLimit: ").append(toIndentedString(concentrationLimit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -304,6 +358,8 @@ public class EligibleCollateralRow {
     openapiFields.add("fxHaircut");
     openapiFields.add("minResidualMaturityYears");
     openapiFields.add("maxResidualMaturityYears");
+    openapiFields.add("concentrationGroup");
+    openapiFields.add("concentrationLimit");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -340,6 +396,9 @@ public class EligibleCollateralRow {
       }
       // validate the required field `selector`
       EligibleCollateralAssetSelector.validateJsonElement(jsonObj.get("selector"));
+      if ((jsonObj.get("concentrationGroup") != null && !jsonObj.get("concentrationGroup").isJsonNull()) && !jsonObj.get("concentrationGroup").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `concentrationGroup` to be a primitive type in the JSON string but got `%s`", jsonObj.get("concentrationGroup").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

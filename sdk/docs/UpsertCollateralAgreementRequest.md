@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 **initialMargin** | [**List&lt;MarginItem&gt;**](MarginItem.md) | The initial margin arrangements under the agreement. | [optional] [default to List<MarginItem>]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties to decorate onto the Collateral Agreement. Filterable. | [optional] [default to Map<String, Property>]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime or cut label from which the change applies. Defaults to the current LUSID system datetime if not specified. | [optional] [default to OffsetDateTime]
+**notificationCutLabel** | **String** | The cut label giving the time of day by which collateral we deliver under a margin call must settle. Each run resolves it on the business date and records it as the call&#39;s deadline; the allocation excludes assets that cannot settle by it. Optional. | [optional] [default to String]
+**returnNotificationCutLabel** | **String** | The cut label giving the time of day by which collateral the counterparty delivers, or returns to us, must settle. Recorded as the deadline of the calls they post under. Optional. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.UpsertCollateralAgreementRequest;
@@ -42,6 +44,8 @@ CollateralOptimisationTerms Optimisation = new CollateralOptimisationTerms();
 @jakarta.annotation.Nullable List<MarginItem> InitialMargin = new List<MarginItem>();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 @jakarta.annotation.Nullable OffsetDateTime EffectiveAt = OffsetDateTime.now();
+@jakarta.annotation.Nullable String NotificationCutLabel = "example NotificationCutLabel";
+@jakarta.annotation.Nullable String ReturnNotificationCutLabel = "example ReturnNotificationCutLabel";
 
 
 UpsertCollateralAgreementRequest upsertCollateralAgreementRequestInstance = new UpsertCollateralAgreementRequest()
@@ -59,7 +63,9 @@ UpsertCollateralAgreementRequest upsertCollateralAgreementRequestInstance = new 
     .VariationMargin(VariationMargin)
     .InitialMargin(InitialMargin)
     .Properties(Properties)
-    .EffectiveAt(EffectiveAt);
+    .EffectiveAt(EffectiveAt)
+    .NotificationCutLabel(NotificationCutLabel)
+    .ReturnNotificationCutLabel(ReturnNotificationCutLabel);
 ```
 
 

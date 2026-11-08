@@ -28,6 +28,7 @@ import java.io.IOException;
 import com.finbourne.lusid.model.AcceptMarginCallRequest;
 import com.finbourne.lusid.model.BatchAcceptMarginCallsRequest;
 import com.finbourne.lusid.model.BatchAcceptMarginCallsResponse;
+import com.finbourne.lusid.model.CollateralAllocation;
 import com.finbourne.lusid.model.DisputeMarginCallRequest;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
@@ -39,6 +40,7 @@ import com.finbourne.lusid.model.PagedResourceListOfMarginCall;
 import com.finbourne.lusid.model.PagedResourceListOfMarginLine;
 import com.finbourne.lusid.model.PagedResourceListOfMarginRun;
 import com.finbourne.lusid.model.PagedResourceListOfNettingRecommendation;
+import com.finbourne.lusid.model.RankMarginCallRequest;
 import com.finbourne.lusid.model.RecordCounterpartyDemandRequest;
 
 import java.lang.reflect.Type;
@@ -1176,6 +1178,283 @@ public class CollateralApi {
      */
     public APIgetMarginCallRequest getMarginCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) {
         return new APIgetMarginCallRequest(runId, agreementScope, agreementCode, item, marginType, direction);
+    }
+    private okhttp3.Call getMarginCallAllocationCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback _callback) throws ApiException {
+        return getMarginCallAllocationCall(runId, agreementScope, agreementCode, item, marginType, direction,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getMarginCallAllocationCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$allocation"
+            .replace("{" + "runId" + "}", localVarApiClient.escapeString(runId.toString()))
+            .replace("{" + "agreementScope" + "}", localVarApiClient.escapeString(agreementScope.toString()))
+            .replace("{" + "agreementCode" + "}", localVarApiClient.escapeString(agreementCode.toString()))
+            .replace("{" + "item" + "}", localVarApiClient.escapeString(item.toString()))
+            .replace("{" + "marginType" + "}", localVarApiClient.escapeString(marginType.toString()))
+            .replace("{" + "direction" + "}", localVarApiClient.escapeString(direction.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getMarginCallAllocationValidateBeforeCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling getMarginCallAllocation(Async)");
+        }
+
+        // verify the required parameter 'agreementScope' is set
+        if (agreementScope == null) {
+            throw new ApiException("Missing the required parameter 'agreementScope' when calling getMarginCallAllocation(Async)");
+        }
+
+        // verify the required parameter 'agreementCode' is set
+        if (agreementCode == null) {
+            throw new ApiException("Missing the required parameter 'agreementCode' when calling getMarginCallAllocation(Async)");
+        }
+
+        // verify the required parameter 'item' is set
+        if (item == null) {
+            throw new ApiException("Missing the required parameter 'item' when calling getMarginCallAllocation(Async)");
+        }
+
+        // verify the required parameter 'marginType' is set
+        if (marginType == null) {
+            throw new ApiException("Missing the required parameter 'marginType' when calling getMarginCallAllocation(Async)");
+        }
+
+        // verify the required parameter 'direction' is set
+        if (direction == null) {
+            throw new ApiException("Missing the required parameter 'direction' when calling getMarginCallAllocation(Async)");
+        }
+
+        return getMarginCallAllocationCall(runId, agreementScope, agreementCode, item, marginType, direction, _callback, opts);
+
+    }
+
+
+    private ApiResponse<CollateralAllocation> getMarginCallAllocationWithHttpInfo(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) throws ApiException {
+        okhttp3.Call localVarCall = getMarginCallAllocationValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CollateralAllocation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CollateralAllocation> getMarginCallAllocationWithHttpInfo(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getMarginCallAllocationValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, null, opts);
+        Type localVarReturnType = new TypeToken<CollateralAllocation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getMarginCallAllocationAsync(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback<CollateralAllocation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarginCallAllocationValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CollateralAllocation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getMarginCallAllocationAsync(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback<CollateralAllocation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getMarginCallAllocationValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, _callback, opts);
+        Type localVarReturnType = new TypeToken<CollateralAllocation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetMarginCallAllocationRequest {
+        private final String runId;
+        private final String agreementScope;
+        private final String agreementCode;
+        private final String item;
+        private final String marginType;
+        private final String direction;
+
+        private APIgetMarginCallAllocationRequest(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) {
+            this.runId = runId;
+            this.agreementScope = agreementScope;
+            this.agreementCode = agreementCode;
+            this.item = item;
+            this.marginType = marginType;
+            this.direction = direction;
+        }
+
+        /**
+         * Build call for getMarginCallAllocation
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral proposed for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getMarginCallAllocationCall(runId, agreementScope, agreementCode, item, marginType, direction, _callback);
+        }
+
+        /**
+         * Execute getMarginCallAllocation request
+         * @return CollateralAllocation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral proposed for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CollateralAllocation execute() throws ApiException {
+            ApiResponse<CollateralAllocation> localVarResp = getMarginCallAllocationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getMarginCallAllocation request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CollateralAllocation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral proposed for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CollateralAllocation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CollateralAllocation> localVarResp = getMarginCallAllocationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getMarginCallAllocation request with HTTP info returned
+         * @return ApiResponse&lt;CollateralAllocation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral proposed for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CollateralAllocation> executeWithHttpInfo() throws ApiException {
+            return getMarginCallAllocationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction);
+        }
+
+        /**
+         * Execute getMarginCallAllocation request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CollateralAllocation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral proposed for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CollateralAllocation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getMarginCallAllocationWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, opts);
+        }
+
+        /**
+         * Execute getMarginCallAllocation request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral proposed for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CollateralAllocation> _callback) throws ApiException {
+            return getMarginCallAllocationAsync(runId, agreementScope, agreementCode, item, marginType, direction, _callback);
+        }
+
+        /**
+         * Execute getMarginCallAllocation request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral proposed for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CollateralAllocation> _callback, ConfigurationOptions opts) throws ApiException {
+            return getMarginCallAllocationAsync(runId, agreementScope, agreementCode, item, marginType, direction, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetMarginCallAllocation: [EXPERIMENTAL] GetMarginCallAllocation: Get the collateral proposed for a margin call.
+     * Retrieve the assets the run&#39;s allocation pass proposes to deliver for the call, or to take back for a return, with  every holding it considered and either its rank or the constraint that excluded it. Each line carries what a  transaction moving it needs: the instrument, the portfolio and custodian account, the units, the price and the  consideration. Not found until the run&#39;s allocation pass has completed, or when the call moves no collateral of ours.
+     * @param runId The identifier of the margin run. (required)
+     * @param agreementScope The scope of the call&#39;s collateral agreement. (required)
+     * @param agreementCode The code of the call&#39;s collateral agreement. (required)
+     * @param item The margin item of the call. (required)
+     * @param marginType The margin type of the call. One of VariationMargin or InitialMargin. (required)
+     * @param direction Who posts under the call. One of WePost, TheyPost or None. (required)
+     * @return APIgetMarginCallAllocationRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The collateral proposed for the margin call. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetMarginCallAllocationRequest getMarginCallAllocation(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) {
+        return new APIgetMarginCallAllocationRequest(runId, agreementScope, agreementCode, item, marginType, direction);
     }
     private okhttp3.Call getMarginCallExplanationCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, final ApiCallback _callback) throws ApiException {
         return getMarginCallExplanationCall(runId, agreementScope, agreementCode, item, marginType, direction,  _callback, new ConfigurationOptions());
@@ -3711,6 +3990,298 @@ public class CollateralApi {
      */
     public APIlistNettingRecommendationsRequest listNettingRecommendations() {
         return new APIlistNettingRecommendationsRequest();
+    }
+    private okhttp3.Call rankMarginCallCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, RankMarginCallRequest rankMarginCallRequest, final ApiCallback _callback) throws ApiException {
+        return rankMarginCallCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call rankMarginCallCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, RankMarginCallRequest rankMarginCallRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = rankMarginCallRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/collateral/margincalls/{runId}/{agreementScope}/{agreementCode}/{item}/{marginType}/{direction}/$rank"
+            .replace("{" + "runId" + "}", localVarApiClient.escapeString(runId.toString()))
+            .replace("{" + "agreementScope" + "}", localVarApiClient.escapeString(agreementScope.toString()))
+            .replace("{" + "agreementCode" + "}", localVarApiClient.escapeString(agreementCode.toString()))
+            .replace("{" + "item" + "}", localVarApiClient.escapeString(item.toString()))
+            .replace("{" + "marginType" + "}", localVarApiClient.escapeString(marginType.toString()))
+            .replace("{" + "direction" + "}", localVarApiClient.escapeString(direction.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call rankMarginCallValidateBeforeCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, RankMarginCallRequest rankMarginCallRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'runId' is set
+        if (runId == null) {
+            throw new ApiException("Missing the required parameter 'runId' when calling rankMarginCall(Async)");
+        }
+
+        // verify the required parameter 'agreementScope' is set
+        if (agreementScope == null) {
+            throw new ApiException("Missing the required parameter 'agreementScope' when calling rankMarginCall(Async)");
+        }
+
+        // verify the required parameter 'agreementCode' is set
+        if (agreementCode == null) {
+            throw new ApiException("Missing the required parameter 'agreementCode' when calling rankMarginCall(Async)");
+        }
+
+        // verify the required parameter 'item' is set
+        if (item == null) {
+            throw new ApiException("Missing the required parameter 'item' when calling rankMarginCall(Async)");
+        }
+
+        // verify the required parameter 'marginType' is set
+        if (marginType == null) {
+            throw new ApiException("Missing the required parameter 'marginType' when calling rankMarginCall(Async)");
+        }
+
+        // verify the required parameter 'direction' is set
+        if (direction == null) {
+            throw new ApiException("Missing the required parameter 'direction' when calling rankMarginCall(Async)");
+        }
+
+        return rankMarginCallCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<CollateralAllocation> rankMarginCallWithHttpInfo(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, RankMarginCallRequest rankMarginCallRequest) throws ApiException {
+        okhttp3.Call localVarCall = rankMarginCallValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CollateralAllocation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<CollateralAllocation> rankMarginCallWithHttpInfo(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, RankMarginCallRequest rankMarginCallRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = rankMarginCallValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, null, opts);
+        Type localVarReturnType = new TypeToken<CollateralAllocation>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call rankMarginCallAsync(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, RankMarginCallRequest rankMarginCallRequest, final ApiCallback<CollateralAllocation> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = rankMarginCallValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<CollateralAllocation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call rankMarginCallAsync(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, RankMarginCallRequest rankMarginCallRequest, final ApiCallback<CollateralAllocation> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = rankMarginCallValidateBeforeCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<CollateralAllocation>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIrankMarginCallRequest {
+        private final String runId;
+        private final String agreementScope;
+        private final String agreementCode;
+        private final String item;
+        private final String marginType;
+        private final String direction;
+        private RankMarginCallRequest rankMarginCallRequest;
+
+        private APIrankMarginCallRequest(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) {
+            this.runId = runId;
+            this.agreementScope = agreementScope;
+            this.agreementCode = agreementCode;
+            this.item = item;
+            this.marginType = marginType;
+            this.direction = direction;
+        }
+
+        /**
+         * Set rankMarginCallRequest
+         * @param rankMarginCallRequest The assets the caller chose, and whether to fill the rest. (optional)
+         * @return APIrankMarginCallRequest
+         */
+        public APIrankMarginCallRequest rankMarginCallRequest(RankMarginCallRequest rankMarginCallRequest) {
+            this.rankMarginCallRequest = rankMarginCallRequest;
+            return this;
+        }
+
+        /**
+         * Build call for rankMarginCall
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral ranked for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return rankMarginCallCall(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, _callback);
+        }
+
+        /**
+         * Execute rankMarginCall request
+         * @return CollateralAllocation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral ranked for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CollateralAllocation execute() throws ApiException {
+            ApiResponse<CollateralAllocation> localVarResp = rankMarginCallWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute rankMarginCall request. Use any specified configuration options to override any other configuration for this request only.
+         * @return CollateralAllocation
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral ranked for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public CollateralAllocation execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<CollateralAllocation> localVarResp = rankMarginCallWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute rankMarginCall request with HTTP info returned
+         * @return ApiResponse&lt;CollateralAllocation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral ranked for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CollateralAllocation> executeWithHttpInfo() throws ApiException {
+            return rankMarginCallWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest);
+        }
+
+        /**
+         * Execute rankMarginCall request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;CollateralAllocation&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral ranked for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<CollateralAllocation> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return rankMarginCallWithHttpInfo(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, opts);
+        }
+
+        /**
+         * Execute rankMarginCall request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral ranked for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CollateralAllocation> _callback) throws ApiException {
+            return rankMarginCallAsync(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, _callback);
+        }
+
+        /**
+         * Execute rankMarginCall request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The collateral ranked for the margin call. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<CollateralAllocation> _callback, ConfigurationOptions opts) throws ApiException {
+            return rankMarginCallAsync(runId, agreementScope, agreementCode, item, marginType, direction, rankMarginCallRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] RankMarginCall: [EXPERIMENTAL] RankMarginCall: Rank the collateral for a margin call again, with the caller&#39;s choices.
+     * Value the call&#39;s agreement as of now for the run&#39;s business date and rank its free, eligible holdings for the  call again, keeping the assets and units the caller chose. Each choice is validated against the agreement&#39;s  constraints and kept with its reason when it fails one; the rest of the call is filled from the ranking, cheapest  first, unless fillRemainder is false. Nothing is stored: the result is what to book, for the caller to decide on.
+     * @param runId The identifier of the margin run. (required)
+     * @param agreementScope The scope of the call&#39;s collateral agreement. (required)
+     * @param agreementCode The code of the call&#39;s collateral agreement. (required)
+     * @param item The margin item of the call. (required)
+     * @param marginType The margin type of the call. One of VariationMargin or InitialMargin. (required)
+     * @param direction Who posts under the call. One of WePost, TheyPost or None. (required)
+     * @return APIrankMarginCallRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The collateral ranked for the margin call. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIrankMarginCallRequest rankMarginCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction) {
+        return new APIrankMarginCallRequest(runId, agreementScope, agreementCode, item, marginType, direction);
     }
     private okhttp3.Call recordCounterpartyDemandCall(String runId, String agreementScope, String agreementCode, String item, String marginType, String direction, RecordCounterpartyDemandRequest recordCounterpartyDemandRequest, final ApiCallback _callback) throws ApiException {
         return recordCounterpartyDemandCall(runId, agreementScope, agreementCode, item, marginType, direction, recordCounterpartyDemandRequest,  _callback, new ConfigurationOptions());

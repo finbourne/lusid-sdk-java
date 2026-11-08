@@ -9,9 +9,11 @@ Name | Type | Description | Notes
 **description** | **String** | A description of the row. Optional. | [optional] [default to String]
 **selector** | [**EligibleCollateralAssetSelector**](EligibleCollateralAssetSelector.md) |  | [default to EligibleCollateralAssetSelector]
 **valuationPercentage** | **java.math.BigDecimal** | The fraction of an asset&#39;s value that is accepted as collateral, for example 0.95 for 95%. Greater than 0 and at most 1. | [default to java.math.BigDecimal]
-**fxHaircut** | **java.math.BigDecimal** | The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk (1 - FxHaircut). At least 0 and less than 1. Not allowed for a BaseCurrencyCash selector. Optional. | [optional] [default to java.math.BigDecimal]
+**fxHaircut** | **java.math.BigDecimal** | The further fraction deducted when the asset&#39;s currency is not the agreement&#39;s base currency, so that the effective valuation percentage is ValuationPercentage - FxHaircut. At least 0 and less than the valuationPercentage. Not allowed for a BaseCurrencyCash selector. Optional. | [optional] [default to java.math.BigDecimal]
 **minResidualMaturityYears** | **java.math.BigDecimal** | The inclusive lower bound of the residual maturity in years that the row applies to. Only allowed for an Instrument selector. Optional. | [optional] [default to java.math.BigDecimal]
 **maxResidualMaturityYears** | **java.math.BigDecimal** | The exclusive upper bound of the residual maturity in years that the row applies to. Only allowed for an Instrument selector. Optional. | [optional] [default to java.math.BigDecimal]
+**concentrationGroup** | **String** | The group the row&#39;s assets count towards for a concentration limit, for example &#39;sovereign&#39; or &#39;issuer&#39;. Rows naming the same group share one limit. Required when a concentrationLimit is set. Optional. | [optional] [default to String]
+**concentrationLimit** | **java.math.BigDecimal** | The largest fraction of the collateral held plus the call that assets of the row&#39;s concentration group may make up, for example 0.3 for 30%. Greater than 0 and at most 1. Required when a concentrationGroup is set. Optional. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.EligibleCollateralRow;
@@ -26,6 +28,8 @@ java.math.BigDecimal ValuationPercentage = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal FxHaircut = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal MinResidualMaturityYears = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal MaxResidualMaturityYears = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String ConcentrationGroup = "example ConcentrationGroup";
+@jakarta.annotation.Nullable java.math.BigDecimal ConcentrationLimit = new java.math.BigDecimal("100.00");
 
 
 EligibleCollateralRow eligibleCollateralRowInstance = new EligibleCollateralRow()
@@ -35,7 +39,9 @@ EligibleCollateralRow eligibleCollateralRowInstance = new EligibleCollateralRow(
     .ValuationPercentage(ValuationPercentage)
     .FxHaircut(FxHaircut)
     .MinResidualMaturityYears(MinResidualMaturityYears)
-    .MaxResidualMaturityYears(MaxResidualMaturityYears);
+    .MaxResidualMaturityYears(MaxResidualMaturityYears)
+    .ConcentrationGroup(ConcentrationGroup)
+    .ConcentrationLimit(ConcentrationLimit);
 ```
 
 

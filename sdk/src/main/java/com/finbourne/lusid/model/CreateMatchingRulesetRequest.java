@@ -170,7 +170,7 @@ public class CreateMatchingRulesetRequest {
   }
 
    /**
-   * The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity.
+   * The type of reconciliation to perform. External reconciles non-native data on both sides, described by the datasetSchemas and the externalRecType. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
    * @return recType
   **/
   @jakarta.annotation.Nonnull

@@ -31,8 +31,11 @@ import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.PerformanceReturn;
+import com.finbourne.lusid.model.ResourceListOfPerformanceReturn;
 import com.finbourne.lusid.model.ResourceListOfReturnsEntity;
 import com.finbourne.lusid.model.ReturnsEntity;
+import com.finbourne.lusid.model.UpsertReturnsResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,6 +80,313 @@ public class AggregatedReturnsApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
+    private okhttp3.Call deleteReturnsCall(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback _callback) throws ApiException {
+        return deleteReturnsCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteReturnsCall(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}/$delete"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()))
+            .replace("{" + "entityScope" + "}", localVarApiClient.escapeString(entityScope.toString()))
+            .replace("{" + "entityCode" + "}", localVarApiClient.escapeString(entityCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (fromEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromEffectiveAt", fromEffectiveAt));
+        }
+
+        if (toEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toEffectiveAt", toEffectiveAt));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteReturnsValidateBeforeCall(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteReturns(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteReturns(Async)");
+        }
+
+        // verify the required parameter 'entityType' is set
+        if (entityType == null) {
+            throw new ApiException("Missing the required parameter 'entityType' when calling deleteReturns(Async)");
+        }
+
+        // verify the required parameter 'entityScope' is set
+        if (entityScope == null) {
+            throw new ApiException("Missing the required parameter 'entityScope' when calling deleteReturns(Async)");
+        }
+
+        // verify the required parameter 'entityCode' is set
+        if (entityCode == null) {
+            throw new ApiException("Missing the required parameter 'entityCode' when calling deleteReturns(Async)");
+        }
+
+        // verify the required parameter 'fromEffectiveAt' is set
+        if (fromEffectiveAt == null) {
+            throw new ApiException("Missing the required parameter 'fromEffectiveAt' when calling deleteReturns(Async)");
+        }
+
+        // verify the required parameter 'toEffectiveAt' is set
+        if (toEffectiveAt == null) {
+            throw new ApiException("Missing the required parameter 'toEffectiveAt' when calling deleteReturns(Async)");
+        }
+
+        return deleteReturnsCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteReturnsWithHttpInfo(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period) throws ApiException {
+        okhttp3.Call localVarCall = deleteReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteReturnsWithHttpInfo(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteReturnsAsync(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteReturnsAsync(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteReturnsRequest {
+        private final String scope;
+        private final String code;
+        private final String entityType;
+        private final String entityScope;
+        private final String entityCode;
+        private final String fromEffectiveAt;
+        private final String toEffectiveAt;
+        private String period;
+
+        private APIdeleteReturnsRequest(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt) {
+            this.scope = scope;
+            this.code = code;
+            this.entityType = entityType;
+            this.entityScope = entityScope;
+            this.entityCode = entityCode;
+            this.fromEffectiveAt = fromEffectiveAt;
+            this.toEffectiveAt = toEffectiveAt;
+        }
+
+        /**
+         * Set period
+         * @param period The period of the Returns to be deleted. Default value: Daily. Available values: Daily, Monthly. (optional)
+         * @return APIdeleteReturnsRequest
+         */
+        public APIdeleteReturnsRequest period(String period) {
+            this.period = period;
+            return this;
+        }
+
+        /**
+         * Build call for deleteReturns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteReturnsCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, _callback);
+        }
+
+        /**
+         * Execute deleteReturns request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteReturns request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteReturns request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period);
+        }
+
+        /**
+         * Execute deleteReturns request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, opts);
+        }
+
+        /**
+         * Execute deleteReturns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteReturnsAsync(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, _callback);
+        }
+
+        /**
+         * Execute deleteReturns request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteReturnsAsync(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteReturns: Delete Returns
+     * Cancel the Returns stored under the returns series against the specified entity inside the window.
+     * @param scope The scope of the Returns. (required)
+     * @param code The code of the Returns. (required)
+     * @param entityType The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup. (required)
+     * @param entityScope The scope of the entity. (required)
+     * @param entityCode The code of the entity. (required)
+     * @param fromEffectiveAt The start date from which to delete the Returns. (required)
+     * @param toEffectiveAt The end date from which to delete the Returns. (required)
+     * @return APIdeleteReturnsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The successfully deleted Returns data along with any failures </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteReturnsRequest deleteReturns(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt) {
+        return new APIdeleteReturnsRequest(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt);
+    }
     private okhttp3.Call deleteReturnsEntityCall(String scope, String code, final ApiCallback _callback) throws ApiException {
         return deleteReturnsEntityCall(scope, code,  _callback, new ConfigurationOptions());
     }
@@ -552,6 +862,334 @@ public class AggregatedReturnsApi {
      */
     public APIgetAggregatedReturnsRequest getAggregatedReturns(AggregatedReturnsEntityRequest aggregatedReturnsEntityRequest) {
         return new APIgetAggregatedReturnsRequest(aggregatedReturnsEntityRequest);
+    }
+    private okhttp3.Call getReturnsCall(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getReturnsCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getReturnsCall(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()))
+            .replace("{" + "entityScope" + "}", localVarApiClient.escapeString(entityScope.toString()))
+            .replace("{" + "entityCode" + "}", localVarApiClient.escapeString(entityCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (fromEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromEffectiveAt", fromEffectiveAt));
+        }
+
+        if (toEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toEffectiveAt", toEffectiveAt));
+        }
+
+        if (period != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("period", period));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getReturnsValidateBeforeCall(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getReturns(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getReturns(Async)");
+        }
+
+        // verify the required parameter 'entityType' is set
+        if (entityType == null) {
+            throw new ApiException("Missing the required parameter 'entityType' when calling getReturns(Async)");
+        }
+
+        // verify the required parameter 'entityScope' is set
+        if (entityScope == null) {
+            throw new ApiException("Missing the required parameter 'entityScope' when calling getReturns(Async)");
+        }
+
+        // verify the required parameter 'entityCode' is set
+        if (entityCode == null) {
+            throw new ApiException("Missing the required parameter 'entityCode' when calling getReturns(Async)");
+        }
+
+        return getReturnsCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfPerformanceReturn> getReturnsWithHttpInfo(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfPerformanceReturn> getReturnsWithHttpInfo(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getReturnsAsync(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback<ResourceListOfPerformanceReturn> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getReturnsAsync(String scope, String code, String entityType, String entityScope, String entityCode, String fromEffectiveAt, String toEffectiveAt, String period, OffsetDateTime asAt, final ApiCallback<ResourceListOfPerformanceReturn> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfPerformanceReturn>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetReturnsRequest {
+        private final String scope;
+        private final String code;
+        private final String entityType;
+        private final String entityScope;
+        private final String entityCode;
+        private String fromEffectiveAt;
+        private String toEffectiveAt;
+        private String period;
+        private OffsetDateTime asAt;
+
+        private APIgetReturnsRequest(String scope, String code, String entityType, String entityScope, String entityCode) {
+            this.scope = scope;
+            this.code = code;
+            this.entityType = entityType;
+            this.entityScope = entityScope;
+            this.entityCode = entityCode;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt The start date from which to get the Returns. (optional)
+         * @return APIgetReturnsRequest
+         */
+        public APIgetReturnsRequest fromEffectiveAt(String fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set toEffectiveAt
+         * @param toEffectiveAt The end date from which to get the Returns. (optional)
+         * @return APIgetReturnsRequest
+         */
+        public APIgetReturnsRequest toEffectiveAt(String toEffectiveAt) {
+            this.toEffectiveAt = toEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set period
+         * @param period The period for which to show the Returns. Default value: Daily. Available values: Daily, Monthly. (optional)
+         * @return APIgetReturnsRequest
+         */
+        public APIgetReturnsRequest period(String period) {
+            this.period = period;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the Returns. Defaults to the latest. (optional)
+         * @return APIgetReturnsRequest
+         */
+        public APIgetReturnsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getReturns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getReturnsCall(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback);
+        }
+
+        /**
+         * Execute getReturns request
+         * @return ResourceListOfPerformanceReturn
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPerformanceReturn execute() throws ApiException {
+            ApiResponse<ResourceListOfPerformanceReturn> localVarResp = getReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getReturns request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfPerformanceReturn
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfPerformanceReturn execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfPerformanceReturn> localVarResp = getReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getReturns request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfPerformanceReturn&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPerformanceReturn> executeWithHttpInfo() throws ApiException {
+            return getReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt);
+        }
+
+        /**
+         * Execute getReturns request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfPerformanceReturn&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfPerformanceReturn> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, opts);
+        }
+
+        /**
+         * Execute getReturns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPerformanceReturn> _callback) throws ApiException {
+            return getReturnsAsync(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback);
+        }
+
+        /**
+         * Execute getReturns request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfPerformanceReturn> _callback, ConfigurationOptions opts) throws ApiException {
+            return getReturnsAsync(scope, code, entityType, entityScope, entityCode, fromEffectiveAt, toEffectiveAt, period, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetReturns: Get Returns
+     * Get the Returns stored under the returns series against the specified entity.
+     * @param scope The scope of the Returns. (required)
+     * @param code The code of the Returns. (required)
+     * @param entityType The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup. (required)
+     * @param entityScope The scope of the entity. (required)
+     * @param entityCode The code of the entity. (required)
+     * @return APIgetReturnsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Returns on the given time period. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetReturnsRequest getReturns(String scope, String code, String entityType, String entityScope, String entityCode) {
+        return new APIgetReturnsRequest(scope, code, entityType, entityScope, entityCode);
     }
     private okhttp3.Call getReturnsEntityCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getReturnsEntityCall(scope, code, asAt,  _callback, new ConfigurationOptions());
@@ -1046,6 +1684,286 @@ public class AggregatedReturnsApi {
      */
     public APIlistReturnsEntitiesRequest listReturnsEntities() {
         return new APIlistReturnsEntitiesRequest();
+    }
+    private okhttp3.Call upsertReturnsCall(String scope, String code, String entityType, String entityScope, String entityCode, List<PerformanceReturn> performanceReturn, final ApiCallback _callback) throws ApiException {
+        return upsertReturnsCall(scope, code, entityType, entityScope, entityCode, performanceReturn,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertReturnsCall(String scope, String code, String entityType, String entityScope, String entityCode, List<PerformanceReturn> performanceReturn, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = performanceReturn;
+
+        // create path and map variables
+        String localVarPath = "/api/returns/{scope}/{code}/{entityType}/{entityScope}/{entityCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "entityType" + "}", localVarApiClient.escapeString(entityType.toString()))
+            .replace("{" + "entityScope" + "}", localVarApiClient.escapeString(entityScope.toString()))
+            .replace("{" + "entityCode" + "}", localVarApiClient.escapeString(entityCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertReturnsValidateBeforeCall(String scope, String code, String entityType, String entityScope, String entityCode, List<PerformanceReturn> performanceReturn, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertReturns(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertReturns(Async)");
+        }
+
+        // verify the required parameter 'entityType' is set
+        if (entityType == null) {
+            throw new ApiException("Missing the required parameter 'entityType' when calling upsertReturns(Async)");
+        }
+
+        // verify the required parameter 'entityScope' is set
+        if (entityScope == null) {
+            throw new ApiException("Missing the required parameter 'entityScope' when calling upsertReturns(Async)");
+        }
+
+        // verify the required parameter 'entityCode' is set
+        if (entityCode == null) {
+            throw new ApiException("Missing the required parameter 'entityCode' when calling upsertReturns(Async)");
+        }
+
+        // verify the required parameter 'performanceReturn' is set
+        if (performanceReturn == null) {
+            throw new ApiException("Missing the required parameter 'performanceReturn' when calling upsertReturns(Async)");
+        }
+
+        return upsertReturnsCall(scope, code, entityType, entityScope, entityCode, performanceReturn, _callback, opts);
+
+    }
+
+
+    private ApiResponse<UpsertReturnsResponse> upsertReturnsWithHttpInfo(String scope, String code, String entityType, String entityScope, String entityCode, List<PerformanceReturn> performanceReturn) throws ApiException {
+        okhttp3.Call localVarCall = upsertReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, performanceReturn, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertReturnsResponse> upsertReturnsWithHttpInfo(String scope, String code, String entityType, String entityScope, String entityCode, List<PerformanceReturn> performanceReturn, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, performanceReturn, null, opts);
+        Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertReturnsAsync(String scope, String code, String entityType, String entityScope, String entityCode, List<PerformanceReturn> performanceReturn, final ApiCallback<UpsertReturnsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, performanceReturn, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertReturnsAsync(String scope, String code, String entityType, String entityScope, String entityCode, List<PerformanceReturn> performanceReturn, final ApiCallback<UpsertReturnsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertReturnsValidateBeforeCall(scope, code, entityType, entityScope, entityCode, performanceReturn, _callback, opts);
+        Type localVarReturnType = new TypeToken<UpsertReturnsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertReturnsRequest {
+        private final String scope;
+        private final String code;
+        private final String entityType;
+        private final String entityScope;
+        private final String entityCode;
+        private final List<PerformanceReturn> performanceReturn;
+
+        private APIupsertReturnsRequest(String scope, String code, String entityType, String entityScope, String entityCode, List<PerformanceReturn> performanceReturn) {
+            this.scope = scope;
+            this.code = code;
+            this.entityType = entityType;
+            this.entityScope = entityScope;
+            this.entityCode = entityCode;
+            this.performanceReturn = performanceReturn;
+        }
+
+        /**
+         * Build call for upsertReturns
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the entity that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertReturnsCall(scope, code, entityType, entityScope, entityCode, performanceReturn, _callback);
+        }
+
+        /**
+         * Execute upsertReturns request
+         * @return UpsertReturnsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the entity that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertReturnsResponse execute() throws ApiException {
+            ApiResponse<UpsertReturnsResponse> localVarResp = upsertReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, performanceReturn);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertReturns request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertReturnsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the entity that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertReturnsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertReturnsResponse> localVarResp = upsertReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, performanceReturn, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertReturns request with HTTP info returned
+         * @return ApiResponse&lt;UpsertReturnsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the entity that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertReturnsResponse> executeWithHttpInfo() throws ApiException {
+            return upsertReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, performanceReturn);
+        }
+
+        /**
+         * Execute upsertReturns request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertReturnsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the entity that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertReturnsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertReturnsWithHttpInfo(scope, code, entityType, entityScope, entityCode, performanceReturn, opts);
+        }
+
+        /**
+         * Execute upsertReturns request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the entity that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertReturnsResponse> _callback) throws ApiException {
+            return upsertReturnsAsync(scope, code, entityType, entityScope, entityCode, performanceReturn, _callback);
+        }
+
+        /**
+         * Execute upsertReturns request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the entity that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertReturnsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertReturnsAsync(scope, code, entityType, entityScope, entityCode, performanceReturn, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpsertReturns: Upsert Returns
+     * Update or insert returns stored under the returns series against the specified entity. Stored   returns take precedence over a calculation in the aggregated returns of that entity.
+     * @param scope The scope of the Returns. (required)
+     * @param code The code of the Returns. (required)
+     * @param entityType The type of the entity the Returns are stored against: &#39;Portfolio&#39; or &#39;PortfolioGroup&#39;. Available values: Portfolio, PortfolioGroup. (required)
+     * @param entityScope The scope of the entity. (required)
+     * @param entityCode The code of the entity. (required)
+     * @param performanceReturn This contains the Returns which need to be upsert. (required)
+     * @return APIupsertReturnsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The version of the entity that contains the newly updated or inserted Returns. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertReturnsRequest upsertReturns(String scope, String code, String entityType, String entityScope, String entityCode, List<PerformanceReturn> performanceReturn) {
+        return new APIupsertReturnsRequest(scope, code, entityType, entityScope, entityCode, performanceReturn);
     }
     private okhttp3.Call upsertReturnsEntityCall(ReturnsEntity returnsEntity, final ApiCallback _callback) throws ApiException {
         return upsertReturnsEntityCall(returnsEntity,  _callback, new ConfigurationOptions());

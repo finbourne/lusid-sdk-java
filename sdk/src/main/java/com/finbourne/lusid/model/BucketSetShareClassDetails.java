@@ -101,7 +101,7 @@ public class BucketSetShareClassDetails {
   }
 
    /**
-   * The scope in which the share class instrument lies. Absent where the instrument has not been resolved.
+   * The scope in which the share class instrument lies, or the fund&#39;s instrument scope where the instrument has not been resolved.
    * @return instrumentScope
   **/
   @jakarta.annotation.Nullable
