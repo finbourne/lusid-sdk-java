@@ -73,14 +73,17 @@ import com.finbourne.lusid.model.PartnerStatementRequest;
 import com.finbourne.lusid.model.PartnershipConfigPack;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.QueryFundCashStatementParameters;
+import com.finbourne.lusid.model.ResourceListOfFundTaxExceptionItem;
 import com.finbourne.lusid.model.ResourceListOfNavActivityAdjustmentResponse;
 import com.finbourne.lusid.model.ResourceListOfPartnerStatement;
 import com.finbourne.lusid.model.ResourceListOfSeries;
+import com.finbourne.lusid.model.ResourceListOfTaxExceptionItem;
 import com.finbourne.lusid.model.RevertValuationPointDataRequest;
 import com.finbourne.lusid.model.RevertValuationPointResponse;
 import com.finbourne.lusid.model.SeriesDefinitionRequest;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
+import com.finbourne.lusid.model.TaxSyncStatus;
 import com.finbourne.lusid.model.UpdateValuationPointRequest;
 import com.finbourne.lusid.model.UpsertExternalDealingEstimatesRequest;
 import com.finbourne.lusid.model.UpsertExternalDealingEstimatesResponse;
@@ -10429,6 +10432,262 @@ public class FundsApi {
     public APIgetSeriesRequest getSeries(String scope, String code) {
         return new APIgetSeriesRequest(scope, code);
     }
+    private okhttp3.Call getTaxSyncStatusCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getTaxSyncStatusCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTaxSyncStatusCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/tax/sync"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTaxSyncStatusValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getTaxSyncStatus(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getTaxSyncStatus(Async)");
+        }
+
+        return getTaxSyncStatusCall(scope, code, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<TaxSyncStatus> getTaxSyncStatusWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getTaxSyncStatusValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxSyncStatus>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TaxSyncStatus> getTaxSyncStatusWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTaxSyncStatusValidateBeforeCall(scope, code, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<TaxSyncStatus>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getTaxSyncStatusAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<TaxSyncStatus> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTaxSyncStatusValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxSyncStatus>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTaxSyncStatusAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<TaxSyncStatus> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTaxSyncStatusValidateBeforeCall(scope, code, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<TaxSyncStatus>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetTaxSyncStatusRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIgetTaxSyncStatusRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the Fund. Defaults to returning the latest version if not specified. (optional)
+         * @return APIgetTaxSyncStatusRequest
+         */
+        public APIgetTaxSyncStatusRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getTaxSyncStatus
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax sync position of each portfolio in the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTaxSyncStatusCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getTaxSyncStatus request
+         * @return TaxSyncStatus
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax sync position of each portfolio in the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxSyncStatus execute() throws ApiException {
+            ApiResponse<TaxSyncStatus> localVarResp = getTaxSyncStatusWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTaxSyncStatus request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TaxSyncStatus
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax sync position of each portfolio in the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxSyncStatus execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TaxSyncStatus> localVarResp = getTaxSyncStatusWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTaxSyncStatus request with HTTP info returned
+         * @return ApiResponse&lt;TaxSyncStatus&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax sync position of each portfolio in the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxSyncStatus> executeWithHttpInfo() throws ApiException {
+            return getTaxSyncStatusWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute getTaxSyncStatus request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TaxSyncStatus&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax sync position of each portfolio in the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxSyncStatus> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTaxSyncStatusWithHttpInfo(scope, code, asAt, opts);
+        }
+
+        /**
+         * Execute getTaxSyncStatus request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax sync position of each portfolio in the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxSyncStatus> _callback) throws ApiException {
+            return getTaxSyncStatusAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute getTaxSyncStatus request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The tax sync position of each portfolio in the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxSyncStatus> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTaxSyncStatusAsync(scope, code, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund.
+     * For each portfolio in the Fund, compares the asAt the tax engine last processed the Fund (its latest valuation  point) with the asAt of the latest transaction booked to the portfolio, and says whether the tax position has  caught up.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @return APIgetTaxSyncStatusRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The tax sync position of each portfolio in the requested Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetTaxSyncStatusRequest getTaxSyncStatus(String scope, String code) {
+        return new APIgetTaxSyncStatusRequest(scope, code);
+    }
     private okhttp3.Call getValuationForFundCall(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback _callback) throws ApiException {
         return getValuationForFundCall(scope, code, navTypeCode, fundValuationRequest,  _callback, new ConfigurationOptions());
     }
@@ -15736,6 +15995,545 @@ public class FundsApi {
      */
     public APIlistPartnerStatementsRequest listPartnerStatements(String scope, String code, String investorRecordId) {
         return new APIlistPartnerStatementsRequest(scope, code, investorRecordId);
+    }
+    private okhttp3.Call listTaxExceptionsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return listTaxExceptionsCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTaxExceptionsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/tax/exceptions"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listTaxExceptionsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listTaxExceptions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listTaxExceptions(Async)");
+        }
+
+        return listTaxExceptionsCall(scope, code, effectiveAt, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfTaxExceptionItem> listTaxExceptionsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = listTaxExceptionsValidateBeforeCall(scope, code, effectiveAt, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxExceptionItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfTaxExceptionItem> listTaxExceptionsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTaxExceptionsValidateBeforeCall(scope, code, effectiveAt, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxExceptionItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listTaxExceptionsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfTaxExceptionItem> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxExceptionsValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxExceptionItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTaxExceptionsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<ResourceListOfTaxExceptionItem> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxExceptionsValidateBeforeCall(scope, code, effectiveAt, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxExceptionItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistTaxExceptionsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+
+        private APIlistTaxExceptionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to read the Fund. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlistTaxExceptionsRequest
+         */
+        public APIlistTaxExceptionsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the Fund. Defaults to returning the latest version if not specified. (optional)
+         * @return APIlistTaxExceptionsRequest
+         */
+        public APIlistTaxExceptionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for listTaxExceptions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listTaxExceptionsCall(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute listTaxExceptions request
+         * @return ResourceListOfTaxExceptionItem
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTaxExceptionItem execute() throws ApiException {
+            ApiResponse<ResourceListOfTaxExceptionItem> localVarResp = listTaxExceptionsWithHttpInfo(scope, code, effectiveAt, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTaxExceptions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfTaxExceptionItem
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTaxExceptionItem execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfTaxExceptionItem> localVarResp = listTaxExceptionsWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTaxExceptions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfTaxExceptionItem&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTaxExceptionItem> executeWithHttpInfo() throws ApiException {
+            return listTaxExceptionsWithHttpInfo(scope, code, effectiveAt, asAt);
+        }
+
+        /**
+         * Execute listTaxExceptions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfTaxExceptionItem&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTaxExceptionItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTaxExceptionsWithHttpInfo(scope, code, effectiveAt, asAt, opts);
+        }
+
+        /**
+         * Execute listTaxExceptions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTaxExceptionItem> _callback) throws ApiException {
+            return listTaxExceptionsAsync(scope, code, effectiveAt, asAt, _callback);
+        }
+
+        /**
+         * Execute listTaxExceptions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions of the requested Fund. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTaxExceptionItem> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTaxExceptionsAsync(scope, code, effectiveAt, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ListTaxExceptions: [EARLY ACCESS] ListTaxExceptions: List the open tax exceptions of a Fund.
+     * Lists the conditions blocking, or casting doubt on, the Fund&#39;s tax computation at the given effective and asAt  datetimes, ordered by tax at stake descending with unknown amounts last. A Fund outside the UK chargeable gains  regime has no exceptions.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @return APIlistTaxExceptionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The open tax exceptions of the requested Fund. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistTaxExceptionsRequest listTaxExceptions(String scope, String code) {
+        return new APIlistTaxExceptionsRequest(scope, code);
+    }
+    private okhttp3.Call listTaxExceptionsAcrossFundsCall(String effectiveAt, OffsetDateTime asAt, String rootCause, final ApiCallback _callback) throws ApiException {
+        return listTaxExceptionsAcrossFundsCall(effectiveAt, asAt, rootCause,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTaxExceptionsAcrossFundsCall(String effectiveAt, OffsetDateTime asAt, String rootCause, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/tax/exceptions";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (rootCause != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("rootCause", rootCause));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listTaxExceptionsAcrossFundsValidateBeforeCall(String effectiveAt, OffsetDateTime asAt, String rootCause, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return listTaxExceptionsAcrossFundsCall(effectiveAt, asAt, rootCause, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfFundTaxExceptionItem> listTaxExceptionsAcrossFundsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String rootCause) throws ApiException {
+        okhttp3.Call localVarCall = listTaxExceptionsAcrossFundsValidateBeforeCall(effectiveAt, asAt, rootCause, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfFundTaxExceptionItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfFundTaxExceptionItem> listTaxExceptionsAcrossFundsWithHttpInfo(String effectiveAt, OffsetDateTime asAt, String rootCause, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTaxExceptionsAcrossFundsValidateBeforeCall(effectiveAt, asAt, rootCause, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfFundTaxExceptionItem>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listTaxExceptionsAcrossFundsAsync(String effectiveAt, OffsetDateTime asAt, String rootCause, final ApiCallback<ResourceListOfFundTaxExceptionItem> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxExceptionsAcrossFundsValidateBeforeCall(effectiveAt, asAt, rootCause, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfFundTaxExceptionItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTaxExceptionsAcrossFundsAsync(String effectiveAt, OffsetDateTime asAt, String rootCause, final ApiCallback<ResourceListOfFundTaxExceptionItem> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxExceptionsAcrossFundsValidateBeforeCall(effectiveAt, asAt, rootCause, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfFundTaxExceptionItem>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistTaxExceptionsAcrossFundsRequest {
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String rootCause;
+
+        private APIlistTaxExceptionsAcrossFundsRequest() {
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to read the Funds. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIlistTaxExceptionsAcrossFundsRequest
+         */
+        public APIlistTaxExceptionsAcrossFundsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the Funds. Defaults to returning the latest version if not specified. (optional)
+         * @return APIlistTaxExceptionsAcrossFundsRequest
+         */
+        public APIlistTaxExceptionsAcrossFundsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set rootCause
+         * @param rootCause Optionally, the root cause code to restrict the exceptions to, for example \&quot;PoolOutOfSync\&quot;. Defaults to all root causes. (optional)
+         * @return APIlistTaxExceptionsAcrossFundsRequest
+         */
+        public APIlistTaxExceptionsAcrossFundsRequest rootCause(String rootCause) {
+            this.rootCause = rootCause;
+            return this;
+        }
+
+        /**
+         * Build call for listTaxExceptionsAcrossFunds
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions across the Funds the caller can see. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listTaxExceptionsAcrossFundsCall(effectiveAt, asAt, rootCause, _callback);
+        }
+
+        /**
+         * Execute listTaxExceptionsAcrossFunds request
+         * @return ResourceListOfFundTaxExceptionItem
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions across the Funds the caller can see. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfFundTaxExceptionItem execute() throws ApiException {
+            ApiResponse<ResourceListOfFundTaxExceptionItem> localVarResp = listTaxExceptionsAcrossFundsWithHttpInfo(effectiveAt, asAt, rootCause);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTaxExceptionsAcrossFunds request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfFundTaxExceptionItem
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions across the Funds the caller can see. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfFundTaxExceptionItem execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfFundTaxExceptionItem> localVarResp = listTaxExceptionsAcrossFundsWithHttpInfo(effectiveAt, asAt, rootCause, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTaxExceptionsAcrossFunds request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfFundTaxExceptionItem&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions across the Funds the caller can see. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfFundTaxExceptionItem> executeWithHttpInfo() throws ApiException {
+            return listTaxExceptionsAcrossFundsWithHttpInfo(effectiveAt, asAt, rootCause);
+        }
+
+        /**
+         * Execute listTaxExceptionsAcrossFunds request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfFundTaxExceptionItem&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions across the Funds the caller can see. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfFundTaxExceptionItem> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTaxExceptionsAcrossFundsWithHttpInfo(effectiveAt, asAt, rootCause, opts);
+        }
+
+        /**
+         * Execute listTaxExceptionsAcrossFunds request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions across the Funds the caller can see. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfFundTaxExceptionItem> _callback) throws ApiException {
+            return listTaxExceptionsAcrossFundsAsync(effectiveAt, asAt, rootCause, _callback);
+        }
+
+        /**
+         * Execute listTaxExceptionsAcrossFunds request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open tax exceptions across the Funds the caller can see. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfFundTaxExceptionItem> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTaxExceptionsAcrossFundsAsync(effectiveAt, asAt, rootCause, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ListTaxExceptionsAcrossFunds: [EARLY ACCESS] ListTaxExceptionsAcrossFunds: List the open tax exceptions across every Fund.
+     * Lists the conditions blocking, or casting doubt on, the tax computation of every Fund the caller can see, each  row carrying the Fund and, where known, the owning entity. Rows are ordered by tax at stake descending with  unknown amounts last. Funds outside the UK chargeable gains regime contribute no rows.
+     * @return APIlistTaxExceptionsAcrossFundsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The open tax exceptions across the Funds the caller can see. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistTaxExceptionsAcrossFundsRequest listTaxExceptionsAcrossFunds() {
+        return new APIlistTaxExceptionsAcrossFundsRequest();
     }
     private okhttp3.Call listValuationPointComplexMarketDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return listValuationPointComplexMarketDataCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode,  _callback, new ConfigurationOptions());

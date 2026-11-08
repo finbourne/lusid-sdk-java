@@ -41,6 +41,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getPartners**](FundsApi.md#getPartners) | **GET** /api/funds/{scope}/{code}/partners | [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund. |
 | [**getPartnershipConfigPack**](FundsApi.md#getPartnershipConfigPack) | **GET** /api/funds/{scope}/{code}/partnershipaccounting/configpack | [EARLY ACCESS] GetPartnershipConfigPack: [EXPERIMENTAL] GetPartnershipConfigPack: Get the partnership configuration pack of a Fund. |
 | [**getSeries**](FundsApi.md#getSeries) | **GET** /api/funds/{scope}/{code}/series | [EARLY ACCESS] GetSeries: [EARLY ACCESS] GetSeries: List the Series of a Fund. |
+| [**getTaxSyncStatus**](FundsApi.md#getTaxSyncStatus) | **GET** /api/funds/{scope}/{code}/tax/sync | [EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund. |
 | [**getValuationForFund**](FundsApi.md#getValuationForFund) | **POST** /api/funds/{scope}/{code}/$valuation | [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund. |
 | [**getValuationPointData**](FundsApi.md#getValuationPointData) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund. |
 | [**getValuationPointJournalEntryLines**](FundsApi.md#getValuationPointJournalEntryLines) | **POST** /api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query | [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund. |
@@ -57,6 +58,8 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**listNavActivityAdjustments**](FundsApi.md#listNavActivityAdjustments) | **GET** /api/funds/{scope}/{code}/navAdjustment | [EARLY ACCESS] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point |
 | [**listPartnerCapitalAccounts**](FundsApi.md#listPartnerCapitalAccounts) | **GET** /api/funds/{scope}/{code}/capitalaccounts | [EARLY ACCESS] ListPartnerCapitalAccounts: [EARLY ACCESS] ListPartnerCapitalAccounts: List the capital account statements of a fund&#39;s partners. |
 | [**listPartnerStatements**](FundsApi.md#listPartnerStatements) | **GET** /api/funds/{scope}/{code}/partners/{investorRecordId}/statements | [EARLY ACCESS] ListPartnerStatements: [EXPERIMENTAL] ListPartnerStatements: List the statements produced for a partner. |
+| [**listTaxExceptions**](FundsApi.md#listTaxExceptions) | **GET** /api/funds/{scope}/{code}/tax/exceptions | [EARLY ACCESS] ListTaxExceptions: [EARLY ACCESS] ListTaxExceptions: List the open tax exceptions of a Fund. |
+| [**listTaxExceptionsAcrossFunds**](FundsApi.md#listTaxExceptionsAcrossFunds) | **GET** /api/tax/exceptions | [EARLY ACCESS] ListTaxExceptionsAcrossFunds: [EARLY ACCESS] ListTaxExceptionsAcrossFunds: List the open tax exceptions across every Fund. |
 | [**listValuationPointComplexMarketData**](FundsApi.md#listValuationPointComplexMarketData) | **POST** /api/funds/{scope}/{code}/valuationpoints/complexmarketdata/$query | [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point. |
 | [**listValuationPointInstruments**](FundsApi.md#listValuationPointInstruments) | **GET** /api/funds/{scope}/{code}/valuationpoints/instruments/$query | [EARLY ACCESS] ListValuationPointInstruments: List Instruments inside a valuation point |
 | [**listValuationPointOverview**](FundsApi.md#listValuationPointOverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EARLY ACCESS] ListValuationPointOverview: List Valuation Points Overview for a given Fund. |
@@ -3721,6 +3724,101 @@ public class FundsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## getTaxSyncStatus
+
+> TaxSyncStatus getTaxSyncStatus(scope, code, asAt)
+
+[EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund.
+
+For each portfolio in the Fund, compares the asAt the tax engine last processed the Fund (its latest valuation  point) with the asAt of the latest transaction booked to the portfolio, and says whether the tax position has  caught up.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the Fund. Defaults to returning the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // TaxSyncStatus result = apiInstance.getTaxSyncStatus(scope, code, asAt).execute(opts);
+
+            TaxSyncStatus result = apiInstance.getTaxSyncStatus(scope, code, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#getTaxSyncStatus");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the Fund. Defaults to returning the latest version if not specified. | [optional] |
+
+### Return type
+
+[**TaxSyncStatus**](TaxSyncStatus.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The tax sync position of each portfolio in the requested Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## getValuationForFund
 
 > ListAggregationResponse getValuationForFund(scope, code, navTypeCode, fundValuationRequest)
@@ -5399,6 +5497,198 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The statements produced for the partner. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listTaxExceptions
+
+> ResourceListOfTaxExceptionItem listTaxExceptions(scope, code, effectiveAt, asAt)
+
+[EARLY ACCESS] ListTaxExceptions: [EARLY ACCESS] ListTaxExceptions: List the open tax exceptions of a Fund.
+
+Lists the conditions blocking, or casting doubt on, the Fund&#39;s tax computation at the given effective and asAt  datetimes, ordered by tax at stake descending with unknown amounts last. A Fund outside the UK chargeable gains  regime has no exceptions.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to read the Fund. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the Fund. Defaults to returning the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfTaxExceptionItem result = apiInstance.listTaxExceptions(scope, code, effectiveAt, asAt).execute(opts);
+
+            ResourceListOfTaxExceptionItem result = apiInstance.listTaxExceptions(scope, code, effectiveAt, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#listTaxExceptions");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to read the Fund. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the Fund. Defaults to returning the latest version if not specified. | [optional] |
+
+### Return type
+
+[**ResourceListOfTaxExceptionItem**](ResourceListOfTaxExceptionItem.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The open tax exceptions of the requested Fund. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## listTaxExceptionsAcrossFunds
+
+> ResourceListOfFundTaxExceptionItem listTaxExceptionsAcrossFunds(effectiveAt, asAt, rootCause)
+
+[EARLY ACCESS] ListTaxExceptionsAcrossFunds: [EARLY ACCESS] ListTaxExceptionsAcrossFunds: List the open tax exceptions across every Fund.
+
+Lists the conditions blocking, or casting doubt on, the tax computation of every Fund the caller can see, each  row carrying the Fund and, where known, the owning entity. Rows are ordered by tax at stake descending with  unknown amounts last. Funds outside the UK chargeable gains regime contribute no rows.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to read the Funds. Defaults to the current LUSID system datetime if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the Funds. Defaults to returning the latest version if not specified.
+        String rootCause = "rootCause_example"; // String | Optionally, the root cause code to restrict the exceptions to, for example \"PoolOutOfSync\". Defaults to all root causes.
+        try {
+            // uncomment the below to set overrides at the request level
+            // ResourceListOfFundTaxExceptionItem result = apiInstance.listTaxExceptionsAcrossFunds(effectiveAt, asAt, rootCause).execute(opts);
+
+            ResourceListOfFundTaxExceptionItem result = apiInstance.listTaxExceptionsAcrossFunds(effectiveAt, asAt, rootCause).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#listTaxExceptionsAcrossFunds");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **effectiveAt** | **String**| The effective datetime or cut label at which to read the Funds. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the Funds. Defaults to returning the latest version if not specified. | [optional] |
+| **rootCause** | **String**| Optionally, the root cause code to restrict the exceptions to, for example \&quot;PoolOutOfSync\&quot;. Defaults to all root causes. | [optional] |
+
+### Return type
+
+[**ResourceListOfFundTaxExceptionItem**](ResourceListOfFundTaxExceptionItem.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The open tax exceptions across the Funds the caller can see. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

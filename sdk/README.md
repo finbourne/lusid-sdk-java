@@ -381,6 +381,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**getPartners**](docs/FundsApi.md#getpartners) | **GET** /api/funds/{scope}/{code}/partners | [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund.
 *FundsApi* | [**getPartnershipConfigPack**](docs/FundsApi.md#getpartnershipconfigpack) | **GET** /api/funds/{scope}/{code}/partnershipaccounting/configpack | [EARLY ACCESS] GetPartnershipConfigPack: [EXPERIMENTAL] GetPartnershipConfigPack: Get the partnership configuration pack of a Fund.
 *FundsApi* | [**getSeries**](docs/FundsApi.md#getseries) | **GET** /api/funds/{scope}/{code}/series | [EARLY ACCESS] GetSeries: [EARLY ACCESS] GetSeries: List the Series of a Fund.
+*FundsApi* | [**getTaxSyncStatus**](docs/FundsApi.md#gettaxsyncstatus) | **GET** /api/funds/{scope}/{code}/tax/sync | [EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund.
 *FundsApi* | [**getValuationForFund**](docs/FundsApi.md#getvaluationforfund) | **POST** /api/funds/{scope}/{code}/$valuation | [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund.
 *FundsApi* | [**getValuationPointData**](docs/FundsApi.md#getvaluationpointdata) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund.
 *FundsApi* | [**getValuationPointJournalEntryLines**](docs/FundsApi.md#getvaluationpointjournalentrylines) | **POST** /api/funds/{scope}/{code}/valuationpoints/journalentrylines/$query | [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
@@ -397,6 +398,8 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**listNavActivityAdjustments**](docs/FundsApi.md#listnavactivityadjustments) | **GET** /api/funds/{scope}/{code}/navAdjustment | [EARLY ACCESS] ListNavActivityAdjustments: List NAV adjustment activities applied to a valuation point
 *FundsApi* | [**listPartnerCapitalAccounts**](docs/FundsApi.md#listpartnercapitalaccounts) | **GET** /api/funds/{scope}/{code}/capitalaccounts | [EARLY ACCESS] ListPartnerCapitalAccounts: [EARLY ACCESS] ListPartnerCapitalAccounts: List the capital account statements of a fund's partners.
 *FundsApi* | [**listPartnerStatements**](docs/FundsApi.md#listpartnerstatements) | **GET** /api/funds/{scope}/{code}/partners/{investorRecordId}/statements | [EARLY ACCESS] ListPartnerStatements: [EXPERIMENTAL] ListPartnerStatements: List the statements produced for a partner.
+*FundsApi* | [**listTaxExceptions**](docs/FundsApi.md#listtaxexceptions) | **GET** /api/funds/{scope}/{code}/tax/exceptions | [EARLY ACCESS] ListTaxExceptions: [EARLY ACCESS] ListTaxExceptions: List the open tax exceptions of a Fund.
+*FundsApi* | [**listTaxExceptionsAcrossFunds**](docs/FundsApi.md#listtaxexceptionsacrossfunds) | **GET** /api/tax/exceptions | [EARLY ACCESS] ListTaxExceptionsAcrossFunds: [EARLY ACCESS] ListTaxExceptionsAcrossFunds: List the open tax exceptions across every Fund.
 *FundsApi* | [**listValuationPointComplexMarketData**](docs/FundsApi.md#listvaluationpointcomplexmarketdata) | **POST** /api/funds/{scope}/{code}/valuationpoints/complexmarketdata/$query | [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
 *FundsApi* | [**listValuationPointInstruments**](docs/FundsApi.md#listvaluationpointinstruments) | **GET** /api/funds/{scope}/{code}/valuationpoints/instruments/$query | [EARLY ACCESS] ListValuationPointInstruments: List Instruments inside a valuation point
 *FundsApi* | [**listValuationPointOverview**](docs/FundsApi.md#listvaluationpointoverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EARLY ACCESS] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
@@ -1055,6 +1058,7 @@ Class | Method | HTTP request | Description
  - [AllocationPostingRollUp](docs/AllocationPostingRollUp.md)
  - [AllocationReceivable](docs/AllocationReceivable.md)
  - [AllocationReceivablesAgeing](docs/AllocationReceivablesAgeing.md)
+ - [AllocationRegisterReceivable](docs/AllocationRegisterReceivable.md)
  - [AllocationRequest](docs/AllocationRequest.md)
  - [AllocationServiceRunAllocation](docs/AllocationServiceRunAllocation.md)
  - [AllocationServiceRunResponse](docs/AllocationServiceRunResponse.md)
@@ -1682,6 +1686,7 @@ Class | Method | HTTP request | Description
  - [FundStructureMemberRequest](docs/FundStructureMemberRequest.md)
  - [FundStructureNode](docs/FundStructureNode.md)
  - [FundStructureRequest](docs/FundStructureRequest.md)
+ - [FundTaxExceptionItem](docs/FundTaxExceptionItem.md)
  - [FundTaxScope](docs/FundTaxScope.md)
  - [FundTaxScopeExclusions](docs/FundTaxScopeExclusions.md)
  - [FundTerms](docs/FundTerms.md)
@@ -2492,6 +2497,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfDataType](docs/ResourceListOfDataType.md)
  - [ResourceListOfExecution](docs/ResourceListOfExecution.md)
  - [ResourceListOfFeeRule](docs/ResourceListOfFeeRule.md)
+ - [ResourceListOfFundTaxExceptionItem](docs/ResourceListOfFundTaxExceptionItem.md)
  - [ResourceListOfGetCdsFlowConventionsResponse](docs/ResourceListOfGetCdsFlowConventionsResponse.md)
  - [ResourceListOfGetCounterpartyAgreementResponse](docs/ResourceListOfGetCounterpartyAgreementResponse.md)
  - [ResourceListOfGetCreditSupportAnnexResponse](docs/ResourceListOfGetCreditSupportAnnexResponse.md)
@@ -2543,6 +2549,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfSeries](docs/ResourceListOfSeries.md)
  - [ResourceListOfSideDefinition](docs/ResourceListOfSideDefinition.md)
  - [ResourceListOfString](docs/ResourceListOfString.md)
+ - [ResourceListOfTaxExceptionItem](docs/ResourceListOfTaxExceptionItem.md)
  - [ResourceListOfTaxRuleSet](docs/ResourceListOfTaxRuleSet.md)
  - [ResourceListOfTransaction](docs/ResourceListOfTransaction.md)
  - [ResourceListOfTransactionFeeType](docs/ResourceListOfTransactionFeeType.md)
@@ -2723,8 +2730,12 @@ Class | Method | HTTP request | Description
  - [SwingTriggerEvaluation](docs/SwingTriggerEvaluation.md)
  - [TargetTaxLot](docs/TargetTaxLot.md)
  - [TargetTaxLotRequest](docs/TargetTaxLotRequest.md)
+ - [TaxExceptionItem](docs/TaxExceptionItem.md)
+ - [TaxExceptionRootCause](docs/TaxExceptionRootCause.md)
+ - [TaxPortfolioSyncStatus](docs/TaxPortfolioSyncStatus.md)
  - [TaxRule](docs/TaxRule.md)
  - [TaxRuleSet](docs/TaxRuleSet.md)
+ - [TaxSyncStatus](docs/TaxSyncStatus.md)
  - [TemplateField](docs/TemplateField.md)
  - [TenderEvent](docs/TenderEvent.md)
  - [TenderOfferElection](docs/TenderOfferElection.md)

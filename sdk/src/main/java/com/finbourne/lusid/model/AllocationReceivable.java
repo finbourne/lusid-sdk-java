@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * One investor&#39;s position on a booked capital call.
+ * One investor&#39;s position on a booked capital call, on one register.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AllocationReceivable {
@@ -73,6 +74,14 @@ public class AllocationReceivable {
   public static final String SERIALIZED_NAME_BUCKET = "bucket";
   @SerializedName(SERIALIZED_NAME_BUCKET)
   private String bucket;
+
+  public static final String SERIALIZED_NAME_PORTFOLIO = "portfolio";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO)
+  private ResourceId portfolio;
+
+  public static final String SERIALIZED_NAME_SIDE = "side";
+  @SerializedName(SERIALIZED_NAME_SIDE)
+  private String side;
 
   public AllocationReceivable() {
   }
@@ -203,6 +212,48 @@ public class AllocationReceivable {
   }
 
 
+  public AllocationReceivable portfolio(ResourceId portfolio) {
+    
+    this.portfolio = portfolio;
+    return this;
+  }
+
+   /**
+   * Get portfolio
+   * @return portfolio
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getPortfolio() {
+    return portfolio;
+  }
+
+
+  public void setPortfolio(ResourceId portfolio) {
+    this.portfolio = portfolio;
+  }
+
+
+  public AllocationReceivable side(String side) {
+    
+    this.side = side;
+    return this;
+  }
+
+   /**
+   * Whether the record owes on its own line (LP) or as a feeder&#39;s roll-up on the master (ROLLUP).
+   * @return side
+  **/
+  @jakarta.annotation.Nullable
+  public String getSide() {
+    return side;
+  }
+
+
+  public void setSide(String side) {
+    this.side = side;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -218,7 +269,9 @@ public class AllocationReceivable {
         (this.received.compareTo(allocationReceivable.getReceived()) == 0) &&
         (this.outstanding.compareTo(allocationReceivable.getOutstanding()) == 0) &&
         Objects.equals(this.daysPastDue, allocationReceivable.daysPastDue) &&
-        Objects.equals(this.bucket, allocationReceivable.bucket);
+        Objects.equals(this.bucket, allocationReceivable.bucket) &&
+        Objects.equals(this.portfolio, allocationReceivable.portfolio) &&
+        Objects.equals(this.side, allocationReceivable.side);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -227,7 +280,7 @@ public class AllocationReceivable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, called, received, outstanding, daysPastDue, bucket);
+    return Objects.hash(investorRecordId, called, received, outstanding, daysPastDue, bucket, portfolio, side);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -247,6 +300,8 @@ public class AllocationReceivable {
     sb.append("    outstanding: ").append(toIndentedString(outstanding)).append("\n");
     sb.append("    daysPastDue: ").append(toIndentedString(daysPastDue)).append("\n");
     sb.append("    bucket: ").append(toIndentedString(bucket)).append("\n");
+    sb.append("    portfolio: ").append(toIndentedString(portfolio)).append("\n");
+    sb.append("    side: ").append(toIndentedString(side)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -275,6 +330,8 @@ public class AllocationReceivable {
     openapiFields.add("outstanding");
     openapiFields.add("daysPastDue");
     openapiFields.add("bucket");
+    openapiFields.add("portfolio");
+    openapiFields.add("side");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -298,6 +355,13 @@ public class AllocationReceivable {
       }
       if ((jsonObj.get("bucket") != null && !jsonObj.get("bucket").isJsonNull()) && !jsonObj.get("bucket").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bucket` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bucket").toString()));
+      }
+      // validate the optional field `portfolio`
+      if (jsonObj.get("portfolio") != null && !jsonObj.get("portfolio").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("portfolio"));
+      }
+      if ((jsonObj.get("side") != null && !jsonObj.get("side").isJsonNull()) && !jsonObj.get("side").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `side` to be a primitive type in the JSON string but got `%s`", jsonObj.get("side").toString()));
       }
   }
 

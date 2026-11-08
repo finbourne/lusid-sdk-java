@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10558
+  version: 0.11.10560
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -59957,6 +59957,184 @@ paths:
       - Funds
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
+  /api/funds/{scope}/{code}/tax/exceptions:
+    get:
+      description: "Lists the conditions blocking, or casting doubt on, the Fund's\
+        \ tax computation at the given effective and asAt\r\ndatetimes, ordered by\
+        \ tax at stake descending with unknown amounts last. A Fund outside the UK\
+        \ chargeable gains\r\nregime has no exceptions."
+      operationId: ListTaxExceptions
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to read the Fund.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The asAt datetime at which to read the Fund. Defaults to returning
+          the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - id: NegativePool/FundScope/EquityPortfolio/LUID_00003D4X
+                  category: NegativePool
+                  severity: Error
+                  portfolio:
+                    scope: FundScope
+                    code: EquityPortfolio
+                  instrument: LUID_00003D4X
+                  message: Pool holds -250 units after the disposal on 2024-03-28.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  taxAtStake: 1250
+                  rootCause:
+                    code: PoolOutOfSync
+                    label: Pool units have gone negative
+                - id: UnclassifiedInstrument/FundScope/BondPortfolio/LUID_00003D5Q
+                  category: UnclassifiedInstrument
+                  severity: Warning
+                  portfolio:
+                    scope: FundScope
+                    code: BondPortfolio
+                  instrument: LUID_00003D5Q
+                  message: No tax treatment is configured for the instrument.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  rootCause:
+                    code: MissingTreatmentLeaf
+                    label: Instrument has no tax treatment
+                href: http://example.com/api/funds/FundScope/FundCode/tax/exceptions
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxExceptionItem'
+            application/json:
+              example:
+                values:
+                - id: NegativePool/FundScope/EquityPortfolio/LUID_00003D4X
+                  category: NegativePool
+                  severity: Error
+                  portfolio:
+                    scope: FundScope
+                    code: EquityPortfolio
+                  instrument: LUID_00003D4X
+                  message: Pool holds -250 units after the disposal on 2024-03-28.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  taxAtStake: 1250
+                  rootCause:
+                    code: PoolOutOfSync
+                    label: Pool units have gone negative
+                - id: UnclassifiedInstrument/FundScope/BondPortfolio/LUID_00003D5Q
+                  category: UnclassifiedInstrument
+                  severity: Warning
+                  portfolio:
+                    scope: FundScope
+                    code: BondPortfolio
+                  instrument: LUID_00003D5Q
+                  message: No tax treatment is configured for the instrument.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  rootCause:
+                    code: MissingTreatmentLeaf
+                    label: Instrument has no tax treatment
+                href: http://example.com/api/funds/FundScope/FundCode/tax/exceptions
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxExceptionItem'
+            text/json:
+              example:
+                values:
+                - id: NegativePool/FundScope/EquityPortfolio/LUID_00003D4X
+                  category: NegativePool
+                  severity: Error
+                  portfolio:
+                    scope: FundScope
+                    code: EquityPortfolio
+                  instrument: LUID_00003D4X
+                  message: Pool holds -250 units after the disposal on 2024-03-28.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  taxAtStake: 1250
+                  rootCause:
+                    code: PoolOutOfSync
+                    label: Pool units have gone negative
+                - id: UnclassifiedInstrument/FundScope/BondPortfolio/LUID_00003D5Q
+                  category: UnclassifiedInstrument
+                  severity: Warning
+                  portfolio:
+                    scope: FundScope
+                    code: BondPortfolio
+                  instrument: LUID_00003D5Q
+                  message: No tax treatment is configured for the instrument.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  rootCause:
+                    code: MissingTreatmentLeaf
+                    label: Instrument has no tax treatment
+                href: http://example.com/api/funds/FundScope/FundCode/tax/exceptions
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxExceptionItem'
+          description: The open tax exceptions of the requested Fund.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ListTaxExceptions: [EARLY ACCESS] ListTaxExceptions:\
+        \ List the open tax exceptions of a Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/funds/{scope}/{code}/tax/scope:
     get:
       description: "Returns the fund's portfolios within the UK chargeable-gains regime\
@@ -60084,6 +60262,135 @@ paths:
       - oauth2: []
       summary: "[EARLY ACCESS] GetFundTaxScope: [EARLY ACCESS] GetFundTaxScope: Get\
         \ the UK chargeable-gains tax scope of a fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/funds/{scope}/{code}/tax/sync:
+    get:
+      description: "For each portfolio in the Fund, compares the asAt the tax engine\
+        \ last processed the Fund (its latest valuation\r\npoint) with the asAt of\
+        \ the latest transaction booked to the portfolio, and says whether the tax\
+        \ position has\r\ncaught up."
+      operationId: GetTaxSyncStatus
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to read the Fund. Defaults to returning
+          the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                portfolios:
+                - portfolioId:
+                    scope: FundScope
+                    code: EquityPortfolio
+                  lastTransactionAsAt: 2024-03-31T17:02:11.0000000+00:00
+                  lastTaxAsAt: 2024-03-31T18:00:00.0000000+00:00
+                  inSync: true
+                  assetClass: Equity
+                  countryOfDomicile: GB
+                - portfolioId:
+                    scope: FundScope
+                    code: BondPortfolio
+                  lastTransactionAsAt: 2024-04-01T09:15:00.0000000+00:00
+                  lastTaxAsAt: 2024-03-31T18:00:00.0000000+00:00
+                  inSync: false
+              schema:
+                $ref: '#/components/schemas/TaxSyncStatus'
+            application/json:
+              example:
+                portfolios:
+                - portfolioId:
+                    scope: FundScope
+                    code: EquityPortfolio
+                  lastTransactionAsAt: 2024-03-31T17:02:11.0000000+00:00
+                  lastTaxAsAt: 2024-03-31T18:00:00.0000000+00:00
+                  inSync: true
+                  assetClass: Equity
+                  countryOfDomicile: GB
+                - portfolioId:
+                    scope: FundScope
+                    code: BondPortfolio
+                  lastTransactionAsAt: 2024-04-01T09:15:00.0000000+00:00
+                  lastTaxAsAt: 2024-03-31T18:00:00.0000000+00:00
+                  inSync: false
+              schema:
+                $ref: '#/components/schemas/TaxSyncStatus'
+            text/json:
+              example:
+                portfolios:
+                - portfolioId:
+                    scope: FundScope
+                    code: EquityPortfolio
+                  lastTransactionAsAt: 2024-03-31T17:02:11.0000000+00:00
+                  lastTaxAsAt: 2024-03-31T18:00:00.0000000+00:00
+                  inSync: true
+                  assetClass: Equity
+                  countryOfDomicile: GB
+                - portfolioId:
+                    scope: FundScope
+                    code: BondPortfolio
+                  lastTransactionAsAt: 2024-04-01T09:15:00.0000000+00:00
+                  lastTaxAsAt: 2024-03-31T18:00:00.0000000+00:00
+                  inSync: false
+              schema:
+                $ref: '#/components/schemas/TaxSyncStatus'
+          description: The tax sync position of each portfolio in the requested Fund.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus:\
+        \ Get the tax sync position of each portfolio in a Fund."
       tags:
       - Funds
       x-fbn-apistatus: EarlyAccess
@@ -151889,6 +152196,210 @@ paths:
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/tax/exceptions:
+    get:
+      description: "Lists the conditions blocking, or casting doubt on, the tax computation\
+        \ of every Fund the caller can see, each\r\nrow carrying the Fund and, where\
+        \ known, the owning entity. Rows are ordered by tax at stake descending with\r\
+        \nunknown amounts last. Funds outside the UK chargeable gains regime contribute\
+        \ no rows."
+      operationId: ListTaxExceptionsAcrossFunds
+      parameters:
+      - description: The effective datetime or cut label at which to read the Funds.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The asAt datetime at which to read the Funds. Defaults to returning
+          the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "Optionally, the root cause code to restrict the exceptions to,\
+          \ for example \"PoolOutOfSync\". Defaults to all root causes."
+        explode: true
+        in: query
+        name: rootCause
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - client:
+                    scope: LifeCompanyScope
+                    code: LifeCompanyCode
+                  fund:
+                    scope: FundScope
+                    code: FundCode
+                  id: NegativePool/FundScope/EquityPortfolio/LUID_00003D4X
+                  category: NegativePool
+                  severity: Error
+                  portfolio:
+                    scope: FundScope
+                    code: EquityPortfolio
+                  instrument: LUID_00003D4X
+                  message: Pool holds -250 units after the disposal on 2024-03-28.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  taxAtStake: 1250
+                  rootCause:
+                    code: PoolOutOfSync
+                    label: Pool units have gone negative
+                - client:
+                    scope: LifeCompanyScope
+                    code: LifeCompanyCode
+                  fund:
+                    scope: FundScope
+                    code: FundCode
+                  id: UnclassifiedInstrument/FundScope/BondPortfolio/LUID_00003D5Q
+                  category: UnclassifiedInstrument
+                  severity: Warning
+                  portfolio:
+                    scope: FundScope
+                    code: BondPortfolio
+                  instrument: LUID_00003D5Q
+                  message: No tax treatment is configured for the instrument.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  rootCause:
+                    code: MissingTreatmentLeaf
+                    label: Instrument has no tax treatment
+                href: http://example.com/api/tax/exceptions
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfFundTaxExceptionItem'
+            application/json:
+              example:
+                values:
+                - client:
+                    scope: LifeCompanyScope
+                    code: LifeCompanyCode
+                  fund:
+                    scope: FundScope
+                    code: FundCode
+                  id: NegativePool/FundScope/EquityPortfolio/LUID_00003D4X
+                  category: NegativePool
+                  severity: Error
+                  portfolio:
+                    scope: FundScope
+                    code: EquityPortfolio
+                  instrument: LUID_00003D4X
+                  message: Pool holds -250 units after the disposal on 2024-03-28.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  taxAtStake: 1250
+                  rootCause:
+                    code: PoolOutOfSync
+                    label: Pool units have gone negative
+                - client:
+                    scope: LifeCompanyScope
+                    code: LifeCompanyCode
+                  fund:
+                    scope: FundScope
+                    code: FundCode
+                  id: UnclassifiedInstrument/FundScope/BondPortfolio/LUID_00003D5Q
+                  category: UnclassifiedInstrument
+                  severity: Warning
+                  portfolio:
+                    scope: FundScope
+                    code: BondPortfolio
+                  instrument: LUID_00003D5Q
+                  message: No tax treatment is configured for the instrument.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  rootCause:
+                    code: MissingTreatmentLeaf
+                    label: Instrument has no tax treatment
+                href: http://example.com/api/tax/exceptions
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfFundTaxExceptionItem'
+            text/json:
+              example:
+                values:
+                - client:
+                    scope: LifeCompanyScope
+                    code: LifeCompanyCode
+                  fund:
+                    scope: FundScope
+                    code: FundCode
+                  id: NegativePool/FundScope/EquityPortfolio/LUID_00003D4X
+                  category: NegativePool
+                  severity: Error
+                  portfolio:
+                    scope: FundScope
+                    code: EquityPortfolio
+                  instrument: LUID_00003D4X
+                  message: Pool holds -250 units after the disposal on 2024-03-28.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  taxAtStake: 1250
+                  rootCause:
+                    code: PoolOutOfSync
+                    label: Pool units have gone negative
+                - client:
+                    scope: LifeCompanyScope
+                    code: LifeCompanyCode
+                  fund:
+                    scope: FundScope
+                    code: FundCode
+                  id: UnclassifiedInstrument/FundScope/BondPortfolio/LUID_00003D5Q
+                  category: UnclassifiedInstrument
+                  severity: Warning
+                  portfolio:
+                    scope: FundScope
+                    code: BondPortfolio
+                  instrument: LUID_00003D5Q
+                  message: No tax treatment is configured for the instrument.
+                  raisedAt: 2024-03-31T18:00:00.0000000+00:00
+                  rootCause:
+                    code: MissingTreatmentLeaf
+                    label: Instrument has no tax treatment
+                href: http://example.com/api/tax/exceptions
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfFundTaxExceptionItem'
+          description: The open tax exceptions across the Funds the caller can see.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ListTaxExceptionsAcrossFunds: [EARLY ACCESS] ListTaxExceptionsAcrossFunds:\
+        \ List the open tax exceptions across every Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/tax/rulesets:
     get:
       description: Retrieves all tax rule set definitions at the given effective and
@@ -197039,11 +197550,15 @@ components:
       type: object
     AllocationReceivable:
       additionalProperties: false
-      description: One investor's position on a booked capital call.
+      description: "One investor's position on a booked capital call, on one register."
       example:
         bucket: bucket
+        side: side
         outstanding: 5.962133916683182
         called: 6.027456183070403
+        portfolio:
+          code: code
+          scope: scope
         daysPastDue: 5
         investorRecordId: investorRecordId
         received: 1.4658129805029452
@@ -197074,6 +197589,13 @@ components:
           description: "The ageing bucket: Current, 1-30, 31-60, 61-90 or 90+."
           nullable: true
           type: string
+        portfolio:
+          $ref: '#/components/schemas/ResourceId'
+        side:
+          description: Whether the record owes on its own line (LP) or as a feeder's
+            roll-up on the master (ROLLUP).
+          nullable: true
+          type: string
       type: object
     AllocationReceivablesAgeing:
       additionalProperties: false
@@ -197085,17 +197607,38 @@ components:
         dueDate: 2000-01-23T04:56:07.000+00:00
         receivables:
         - bucket: bucket
+          side: side
           outstanding: 5.962133916683182
           called: 6.027456183070403
+          portfolio:
+            code: code
+            scope: scope
           daysPastDue: 5
           investorRecordId: investorRecordId
           received: 1.4658129805029452
         - bucket: bucket
+          side: side
           outstanding: 5.962133916683182
           called: 6.027456183070403
+          portfolio:
+            code: code
+            scope: scope
           daysPastDue: 5
           investorRecordId: investorRecordId
           received: 1.4658129805029452
+        registers:
+        - outstanding: 9.301444243932576
+          called: 2.3021358869347655
+          portfolio:
+            code: code
+            scope: scope
+          received: 7.061401241503109
+        - outstanding: 9.301444243932576
+          called: 2.3021358869347655
+          portfolio:
+            code: code
+            scope: scope
+          received: 7.061401241503109
       properties:
         asOf:
           description: The date the receivables are aged as of.
@@ -197107,15 +197650,51 @@ components:
           nullable: true
           type: string
         outstanding:
-          description: The total still owed across all investor records.
+          description: "What the investors still owe, looking through feeders to their\
+            \ LPs so a roll-up is not counted twice."
           format: double
           type: number
         receivables:
-          description: One entry per investor record that was called.
+          description: One entry per investor record and side that was called on a
+            register.
           items:
             $ref: '#/components/schemas/AllocationReceivable'
           nullable: true
           type: array
+        registers:
+          description: "What each register is owed on its own lines, a feeder's roll-up\
+            \ included."
+          items:
+            $ref: '#/components/schemas/AllocationRegisterReceivable'
+          nullable: true
+          type: array
+      type: object
+    AllocationRegisterReceivable:
+      additionalProperties: false
+      description: "What one register is owed on a booked capital call, across every\
+        \ record called on its lines."
+      example:
+        outstanding: 9.301444243932576
+        called: 2.3021358869347655
+        portfolio:
+          code: code
+          scope: scope
+        received: 7.061401241503109
+      properties:
+        portfolio:
+          $ref: '#/components/schemas/ResourceId'
+        called:
+          description: What was called on the register's lines.
+          format: double
+          type: number
+        received:
+          description: What has settled the register's lines so far.
+          format: double
+          type: number
+        outstanding:
+          description: What the register is still owed.
+          format: double
+          type: number
       type: object
     AllocationRequest:
       additionalProperties: false
@@ -261855,6 +262434,83 @@ components:
       - code
       - name
       - navTypeCodes
+      type: object
+    FundTaxExceptionItem:
+      additionalProperties: false
+      description: "A tax exception row seen across funds, so the fund and the owning\
+        \ life-company entity travel with it."
+      example:
+        severity: severity
+        fund:
+          code: code
+          scope: scope
+        portfolio:
+          code: code
+          scope: scope
+        raisedAt: 2000-01-23T04:56:07.000+00:00
+        rootCause:
+          code: code
+          label: label
+        client:
+          code: code
+          scope: scope
+        instrument: instrument
+        id: id
+        category: category
+        message: message
+        taxAtStake: 0.8008281904610115
+      properties:
+        client:
+          $ref: '#/components/schemas/ResourceId'
+        fund:
+          $ref: '#/components/schemas/ResourceId'
+        id:
+          description: "An identifier stable within a response, built from the category,\
+            \ portfolio and instrument."
+          minLength: 1
+          type: string
+        category:
+          description: "The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation\
+            \ or UnclassifiedInstrument."
+          minLength: 1
+          type: string
+        severity:
+          description: "Error when the exception blocks the tax computation, Warning\
+            \ when it casts doubt on it."
+          minLength: 1
+          type: string
+        portfolio:
+          $ref: '#/components/schemas/ResourceId'
+        instrument:
+          description: The LUSID unique identifier of the instrument the exception
+            was raised against.
+          nullable: true
+          type: string
+        message:
+          description: A description of the exception.
+          minLength: 1
+          type: string
+        raisedAt:
+          description: The asAt the exception was observed at.
+          format: date-time
+          type: string
+        taxAtStake:
+          description: "The tax effect, in the Fund's base currency, of the position\
+            \ or gain the exception blocks, at the Fund's configured rate. Absent\
+            \ when the rate or the exposure is not known."
+          format: double
+          nullable: true
+          type: number
+        rootCause:
+          $ref: '#/components/schemas/TaxExceptionRootCause'
+      required:
+      - category
+      - fund
+      - id
+      - message
+      - portfolio
+      - raisedAt
+      - severity
       type: object
     FundTaxScope:
       additionalProperties: false
@@ -350405,6 +351061,83 @@ components:
       required:
       - values
       type: object
+    ResourceListOfFundTaxExceptionItem:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - severity: severity
+          fund:
+            code: code
+            scope: scope
+          portfolio:
+            code: code
+            scope: scope
+          raisedAt: 2000-01-23T04:56:07.000+00:00
+          rootCause:
+            code: code
+            label: label
+          client:
+            code: code
+            scope: scope
+          instrument: instrument
+          id: id
+          category: category
+          message: message
+          taxAtStake: 0.8008281904610115
+        - severity: severity
+          fund:
+            code: code
+            scope: scope
+          portfolio:
+            code: code
+            scope: scope
+          raisedAt: 2000-01-23T04:56:07.000+00:00
+          rootCause:
+            code: code
+            label: label
+          client:
+            code: code
+            scope: scope
+          instrument: instrument
+          id: id
+          category: category
+          message: message
+          taxAtStake: 0.8008281904610115
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/FundTaxExceptionItem'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
     ResourceListOfGetCdsFlowConventionsResponse:
       additionalProperties: false
       example:
@@ -365329,6 +366062,71 @@ components:
         values:
           items:
             type: string
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfTaxExceptionItem:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - severity: severity
+          portfolio:
+            code: code
+            scope: scope
+          raisedAt: 2000-01-23T04:56:07.000+00:00
+          rootCause:
+            code: code
+            label: label
+          instrument: instrument
+          id: id
+          category: category
+          message: message
+          taxAtStake: 0.8008281904610115
+        - severity: severity
+          portfolio:
+            code: code
+            scope: scope
+          raisedAt: 2000-01-23T04:56:07.000+00:00
+          rootCause:
+            code: code
+            label: label
+          instrument: instrument
+          id: id
+          category: category
+          message: message
+          taxAtStake: 0.8008281904610115
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/TaxExceptionItem'
           type: array
         href:
           format: uri
@@ -384006,6 +384804,134 @@ components:
       required:
       - units
       type: object
+    TaxExceptionItem:
+      additionalProperties: false
+      example:
+        severity: severity
+        portfolio:
+          code: code
+          scope: scope
+        raisedAt: 2000-01-23T04:56:07.000+00:00
+        rootCause:
+          code: code
+          label: label
+        instrument: instrument
+        id: id
+        category: category
+        message: message
+        taxAtStake: 0.8008281904610115
+      properties:
+        id:
+          description: "An identifier stable within a response, built from the category,\
+            \ portfolio and instrument."
+          minLength: 1
+          type: string
+        category:
+          description: "The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation\
+            \ or UnclassifiedInstrument."
+          minLength: 1
+          type: string
+        severity:
+          description: "Error when the exception blocks the tax computation, Warning\
+            \ when it casts doubt on it."
+          minLength: 1
+          type: string
+        portfolio:
+          $ref: '#/components/schemas/ResourceId'
+        instrument:
+          description: The LUSID unique identifier of the instrument the exception
+            was raised against.
+          nullable: true
+          type: string
+        message:
+          description: A description of the exception.
+          minLength: 1
+          type: string
+        raisedAt:
+          description: The asAt the exception was observed at.
+          format: date-time
+          type: string
+        taxAtStake:
+          description: "The tax effect, in the Fund's base currency, of the position\
+            \ or gain the exception blocks, at the Fund's configured rate. Absent\
+            \ when the rate or the exposure is not known."
+          format: double
+          nullable: true
+          type: number
+        rootCause:
+          $ref: '#/components/schemas/TaxExceptionRootCause'
+      required:
+      - category
+      - id
+      - message
+      - portfolio
+      - raisedAt
+      - severity
+      type: object
+    TaxExceptionRootCause:
+      additionalProperties: false
+      example:
+        code: code
+        label: label
+      properties:
+        code:
+          description: "A stable code for the cause, for example PoolOutOfSync or\
+            \ MissingTreatmentLeaf."
+          minLength: 1
+          type: string
+        label:
+          description: A display label for the cause.
+          minLength: 1
+          type: string
+      required:
+      - code
+      - label
+      type: object
+    TaxPortfolioSyncStatus:
+      additionalProperties: false
+      example:
+        inSync: true
+        portfolioId:
+          code: code
+          scope: scope
+        lastTaxAsAt: 2000-01-23T04:56:07.000+00:00
+        assetClass: assetClass
+        lastTransactionAsAt: 2000-01-23T04:56:07.000+00:00
+        countryOfDomicile: countryOfDomicile
+      properties:
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        lastTransactionAsAt:
+          description: The asAt the latest transaction was booked to the portfolio.
+            Absent when the portfolio has no transactions.
+          format: date-time
+          nullable: true
+          type: string
+        lastTaxAsAt:
+          description: "The asAt the tax engine last processed the Fund, taken from\
+            \ its latest valuation point. Absent when no valuation point has been\
+            \ run."
+          format: date-time
+          nullable: true
+          type: string
+        inSync:
+          description: "True when the tax position is no older than the latest booked\
+            \ transaction, or the portfolio has no transactions."
+          type: boolean
+        assetClass:
+          description: The asset class of the portfolio's holdings where the holding
+            data carries one. Optional.
+          nullable: true
+          type: string
+        countryOfDomicile:
+          description: The country of domicile of the portfolio's holdings where the
+            holding data carries one. Optional.
+          nullable: true
+          type: string
+      required:
+      - inSync
+      - portfolioId
+      type: object
     TaxRule:
       additionalProperties: false
       example:
@@ -384163,6 +385089,35 @@ components:
       - id
       - outputPropertyKey
       - rules
+      type: object
+    TaxSyncStatus:
+      additionalProperties: false
+      example:
+        portfolios:
+        - inSync: true
+          portfolioId:
+            code: code
+            scope: scope
+          lastTaxAsAt: 2000-01-23T04:56:07.000+00:00
+          assetClass: assetClass
+          lastTransactionAsAt: 2000-01-23T04:56:07.000+00:00
+          countryOfDomicile: countryOfDomicile
+        - inSync: true
+          portfolioId:
+            code: code
+            scope: scope
+          lastTaxAsAt: 2000-01-23T04:56:07.000+00:00
+          assetClass: assetClass
+          lastTransactionAsAt: 2000-01-23T04:56:07.000+00:00
+          countryOfDomicile: countryOfDomicile
+      properties:
+        portfolios:
+          description: The sync position of each portfolio in the Fund.
+          items:
+            $ref: '#/components/schemas/TaxPortfolioSyncStatus'
+          type: array
+      required:
+      - portfolios
       type: object
     TemplateField:
       additionalProperties: false

@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.AllocationReceivable;
+import com.finbourne.lusid.model.AllocationRegisterReceivable;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -70,6 +71,10 @@ public class AllocationReceivablesAgeing {
   @SerializedName(SERIALIZED_NAME_RECEIVABLES)
   private List<AllocationReceivable> receivables;
 
+  public static final String SERIALIZED_NAME_REGISTERS = "registers";
+  @SerializedName(SERIALIZED_NAME_REGISTERS)
+  private List<AllocationRegisterReceivable> registers;
+
   public AllocationReceivablesAgeing() {
   }
 
@@ -122,7 +127,7 @@ public class AllocationReceivablesAgeing {
   }
 
    /**
-   * The total still owed across all investor records.
+   * What the investors still owe, looking through feeders to their LPs so a roll-up is not counted twice.
    * @return outstanding
   **/
   @jakarta.annotation.Nullable
@@ -151,7 +156,7 @@ public class AllocationReceivablesAgeing {
   }
 
    /**
-   * One entry per investor record that was called.
+   * One entry per investor record and side that was called on a register.
    * @return receivables
   **/
   @jakarta.annotation.Nullable
@@ -162,6 +167,35 @@ public class AllocationReceivablesAgeing {
 
   public void setReceivables(List<AllocationReceivable> receivables) {
     this.receivables = receivables;
+  }
+
+
+  public AllocationReceivablesAgeing registers(List<AllocationRegisterReceivable> registers) {
+    
+    this.registers = registers;
+    return this;
+  }
+
+  public AllocationReceivablesAgeing addRegistersItem(AllocationRegisterReceivable registersItem) {
+    if (this.registers == null) {
+      this.registers = new ArrayList<>();
+    }
+    this.registers.add(registersItem);
+    return this;
+  }
+
+   /**
+   * What each register is owed on its own lines, a feeder&#39;s roll-up included.
+   * @return registers
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationRegisterReceivable> getRegisters() {
+    return registers;
+  }
+
+
+  public void setRegisters(List<AllocationRegisterReceivable> registers) {
+    this.registers = registers;
   }
 
 
@@ -178,7 +212,8 @@ public class AllocationReceivablesAgeing {
     return Objects.equals(this.asOf, allocationReceivablesAgeing.asOf) &&
         Objects.equals(this.dueDate, allocationReceivablesAgeing.dueDate) &&
         (this.outstanding.compareTo(allocationReceivablesAgeing.getOutstanding()) == 0) &&
-        Objects.equals(this.receivables, allocationReceivablesAgeing.receivables);
+        Objects.equals(this.receivables, allocationReceivablesAgeing.receivables) &&
+        Objects.equals(this.registers, allocationReceivablesAgeing.registers);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -187,7 +222,7 @@ public class AllocationReceivablesAgeing {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asOf, dueDate, outstanding, receivables);
+    return Objects.hash(asOf, dueDate, outstanding, receivables, registers);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -205,6 +240,7 @@ public class AllocationReceivablesAgeing {
     sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
     sb.append("    outstanding: ").append(toIndentedString(outstanding)).append("\n");
     sb.append("    receivables: ").append(toIndentedString(receivables)).append("\n");
+    sb.append("    registers: ").append(toIndentedString(registers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -231,6 +267,7 @@ public class AllocationReceivablesAgeing {
     openapiFields.add("dueDate");
     openapiFields.add("outstanding");
     openapiFields.add("receivables");
+    openapiFields.add("registers");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -260,6 +297,20 @@ public class AllocationReceivablesAgeing {
           // validate the optional field `receivables` (array)
           for (int i = 0; i < jsonArrayreceivables.size(); i++) {
             AllocationReceivable.validateJsonElement(jsonArrayreceivables.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("registers") != null && !jsonObj.get("registers").isJsonNull()) {
+        JsonArray jsonArrayregisters = jsonObj.getAsJsonArray("registers");
+        if (jsonArrayregisters != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("registers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `registers` to be an array in the JSON string but got `%s`", jsonObj.get("registers").toString()));
+          }
+
+          // validate the optional field `registers` (array)
+          for (int i = 0; i < jsonArrayregisters.size(); i++) {
+            AllocationRegisterReceivable.validateJsonElement(jsonArrayregisters.get(i));
           };
         }
       }

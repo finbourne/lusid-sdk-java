@@ -7,8 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asOf** | [**OffsetDateTime**](OffsetDateTime.md) | The date the receivables are aged as of. | [optional] [default to OffsetDateTime]
 **dueDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date the cash was due. | [optional] [default to OffsetDateTime]
-**outstanding** | **java.math.BigDecimal** | The total still owed across all investor records. | [optional] [default to java.math.BigDecimal]
-**receivables** | [**List&lt;AllocationReceivable&gt;**](AllocationReceivable.md) | One entry per investor record that was called. | [optional] [default to List<AllocationReceivable>]
+**outstanding** | **java.math.BigDecimal** | What the investors still owe, looking through feeders to their LPs so a roll-up is not counted twice. | [optional] [default to java.math.BigDecimal]
+**receivables** | [**List&lt;AllocationReceivable&gt;**](AllocationReceivable.md) | One entry per investor record and side that was called on a register. | [optional] [default to List<AllocationReceivable>]
+**registers** | [**List&lt;AllocationRegisterReceivable&gt;**](AllocationRegisterReceivable.md) | What each register is owed on its own lines, a feeder&#39;s roll-up included. | [optional] [default to List<AllocationRegisterReceivable>]
 
 ```java
 import com.finbourne.lusid.model.AllocationReceivablesAgeing;
@@ -20,13 +21,15 @@ OffsetDateTime AsOf = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime DueDate = OffsetDateTime.now();
 java.math.BigDecimal Outstanding = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable List<AllocationReceivable> Receivables = new List<AllocationReceivable>();
+@jakarta.annotation.Nullable List<AllocationRegisterReceivable> Registers = new List<AllocationRegisterReceivable>();
 
 
 AllocationReceivablesAgeing allocationReceivablesAgeingInstance = new AllocationReceivablesAgeing()
     .AsOf(AsOf)
     .DueDate(DueDate)
     .Outstanding(Outstanding)
-    .Receivables(Receivables);
+    .Receivables(Receivables)
+    .Registers(Registers);
 ```
 
 
