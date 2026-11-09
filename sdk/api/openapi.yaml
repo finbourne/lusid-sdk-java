@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10560
+  version: 0.11.10567
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1461,6 +1461,9 @@ tags:
     \ a fundamental building block of LUSID, and care should be exercised when changing\
     \ them. For more information, see https://support.lusid.com/docs/how-do-i-create-a-transaction-type."
   name: System Configuration
+- description: Methods for reading and overriding the UK life-company tax treatment
+    classification of instruments.
+  name: Tax Classifications
 - description: Methods to manage rule sets defining tax rates for transactions
   name: Tax Rule Sets
 - description: Endpoints for Creating/Reading/Updating/Deleting Timelines
@@ -66707,8 +66710,10 @@ paths:
           type: string
         style: form
       - description: "Option to specify whether or not to include transactions excluded\
-          \ by the\r\n NavType's TransactionExclusionFilter. Defaults to False if\
-          \ not specified."
+          \ by the\r\n NavType's TransactionExclusionFilter, flagged with isExcluded.\
+          \ The reversal of a previously included version of\r\n a transaction that\
+          \ has since been amended to be excluded is returned regardless of this option.\r\
+          \n Defaults to False if not specified."
         explode: true
         in: query
         name: returnExcludedTransactions
@@ -152195,6 +152200,1284 @@ paths:
       - System Configuration
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/tax/classifications:
+    get:
+      description: "Lists the tax classification of every instrument in the scope\
+        \ at the given effective and as-at time. Each\r\nentry carries the treatment\
+        \ leaf the instrument resolved to, the treatment it implies, whether it was\r\
+        \nsystem-derived or overridden, and the rule that fired. Narrow the list with\
+        \ the treatment and status filters."
+      operationId: ListTaxClassifications
+      parameters:
+      - description: The scope of the instruments to classify.
+        explode: true
+        in: query
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      - description: "Optional. Only return instruments with this treatment. Available\
+          \ values: ChargeableGains, LoanRelationship, Excluded, Unclassified."
+        explode: true
+        in: query
+        name: treatment
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "Optional. Only return instruments with this classification status.\
+          \ Available values: Classified, Overridden, Rejected, Unclassified."
+        explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Optional. The effective datetime or cut label at which to classify.
+          Defaults to the current time.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: Optional. The as-at datetime at which to read the classification
+          inputs. Defaults to the latest.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                  luid: LUID_00003D4X
+                  instrumentName: Example Ordinary Shares
+                  instrumentType: Equity
+                  withinBlagab: true
+                  inputs:
+                    loanRelationshipAsset: false
+                    indexLinkedGilt: false
+                    chargeableAsset: true
+                    cisNonTransparent: false
+                    cisTransparent: false
+                    derivative: false
+                    derivativeFinancialFuture: false
+                    derivativePooledSecurity: false
+                    privateEquity: false
+                    realEstate: false
+                  leaf: StandardEquity
+                  treatment: ChargeableGains
+                  status: Classified
+                  source: System
+                  ruleFired: StandardEquity
+                  trace:
+                  - order: 1
+                    rule: WithinBlagab
+                    question: Is the holding within BLAGAB?
+                    answer: "Yes"
+                  - order: 2
+                    rule: LoanRelationship
+                    question: Is the instrument a loan relationship asset?
+                    answer: "No"
+                  - order: 3
+                    rule: PrivateEquity
+                    question: Is the instrument a private equity holding?
+                    answer: "No"
+                  - order: 4
+                    rule: RealEstate
+                    question: Is the instrument real estate?
+                    answer: "No"
+                  - order: 5
+                    rule: Derivative
+                    question: Is the instrument a derivative?
+                    answer: "No"
+                  - order: 6
+                    rule: ChargeableAsset
+                    question: Is the instrument a chargeable asset?
+                    answer: "Yes"
+                  - order: 7
+                    rule: CollectiveInvestmentScheme
+                    question: Is the instrument a collective investment scheme?
+                    answer: "No"
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                - href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D5Q
+                  luid: LUID_00003D5Q
+                  instrumentName: Example Bond Fund
+                  instrumentType: FundShareClass
+                  withinBlagab: true
+                  inputs:
+                    loanRelationshipAsset: false
+                    indexLinkedGilt: false
+                    chargeableAsset: true
+                    cisNonTransparent: true
+                    cisTransparent: true
+                    derivative: false
+                    privateEquity: false
+                    realEstate: false
+                    qualifyingInvestmentsPercent: 72.5
+                  treatment: Unclassified
+                  status: Rejected
+                  source: System
+                  ruleFired: ConflictingSetup
+                  trace:
+                  - order: 1
+                    rule: WithinBlagab
+                    question: Is the holding within BLAGAB?
+                    answer: "Yes"
+                  - order: 2
+                    rule: LoanRelationship
+                    question: Is the instrument a loan relationship asset?
+                    answer: "No"
+                  - order: 3
+                    rule: CollectiveInvestmentScheme
+                    question: Is the scheme transparent or non-transparent?
+                    answer: Both
+                  exception:
+                    kind: ConflictingSetup
+                    code: TaxClassificationConflictingSetup
+                    message: The scheme is flagged as both transparent and non-transparent
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxClassification'
+            application/json:
+              example:
+                values:
+                - href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                  luid: LUID_00003D4X
+                  instrumentName: Example Ordinary Shares
+                  instrumentType: Equity
+                  withinBlagab: true
+                  inputs:
+                    loanRelationshipAsset: false
+                    indexLinkedGilt: false
+                    chargeableAsset: true
+                    cisNonTransparent: false
+                    cisTransparent: false
+                    derivative: false
+                    derivativeFinancialFuture: false
+                    derivativePooledSecurity: false
+                    privateEquity: false
+                    realEstate: false
+                  leaf: StandardEquity
+                  treatment: ChargeableGains
+                  status: Classified
+                  source: System
+                  ruleFired: StandardEquity
+                  trace:
+                  - order: 1
+                    rule: WithinBlagab
+                    question: Is the holding within BLAGAB?
+                    answer: "Yes"
+                  - order: 2
+                    rule: LoanRelationship
+                    question: Is the instrument a loan relationship asset?
+                    answer: "No"
+                  - order: 3
+                    rule: PrivateEquity
+                    question: Is the instrument a private equity holding?
+                    answer: "No"
+                  - order: 4
+                    rule: RealEstate
+                    question: Is the instrument real estate?
+                    answer: "No"
+                  - order: 5
+                    rule: Derivative
+                    question: Is the instrument a derivative?
+                    answer: "No"
+                  - order: 6
+                    rule: ChargeableAsset
+                    question: Is the instrument a chargeable asset?
+                    answer: "Yes"
+                  - order: 7
+                    rule: CollectiveInvestmentScheme
+                    question: Is the instrument a collective investment scheme?
+                    answer: "No"
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                - href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D5Q
+                  luid: LUID_00003D5Q
+                  instrumentName: Example Bond Fund
+                  instrumentType: FundShareClass
+                  withinBlagab: true
+                  inputs:
+                    loanRelationshipAsset: false
+                    indexLinkedGilt: false
+                    chargeableAsset: true
+                    cisNonTransparent: true
+                    cisTransparent: true
+                    derivative: false
+                    privateEquity: false
+                    realEstate: false
+                    qualifyingInvestmentsPercent: 72.5
+                  treatment: Unclassified
+                  status: Rejected
+                  source: System
+                  ruleFired: ConflictingSetup
+                  trace:
+                  - order: 1
+                    rule: WithinBlagab
+                    question: Is the holding within BLAGAB?
+                    answer: "Yes"
+                  - order: 2
+                    rule: LoanRelationship
+                    question: Is the instrument a loan relationship asset?
+                    answer: "No"
+                  - order: 3
+                    rule: CollectiveInvestmentScheme
+                    question: Is the scheme transparent or non-transparent?
+                    answer: Both
+                  exception:
+                    kind: ConflictingSetup
+                    code: TaxClassificationConflictingSetup
+                    message: The scheme is flagged as both transparent and non-transparent
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxClassification'
+            text/json:
+              example:
+                values:
+                - href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                  luid: LUID_00003D4X
+                  instrumentName: Example Ordinary Shares
+                  instrumentType: Equity
+                  withinBlagab: true
+                  inputs:
+                    loanRelationshipAsset: false
+                    indexLinkedGilt: false
+                    chargeableAsset: true
+                    cisNonTransparent: false
+                    cisTransparent: false
+                    derivative: false
+                    derivativeFinancialFuture: false
+                    derivativePooledSecurity: false
+                    privateEquity: false
+                    realEstate: false
+                  leaf: StandardEquity
+                  treatment: ChargeableGains
+                  status: Classified
+                  source: System
+                  ruleFired: StandardEquity
+                  trace:
+                  - order: 1
+                    rule: WithinBlagab
+                    question: Is the holding within BLAGAB?
+                    answer: "Yes"
+                  - order: 2
+                    rule: LoanRelationship
+                    question: Is the instrument a loan relationship asset?
+                    answer: "No"
+                  - order: 3
+                    rule: PrivateEquity
+                    question: Is the instrument a private equity holding?
+                    answer: "No"
+                  - order: 4
+                    rule: RealEstate
+                    question: Is the instrument real estate?
+                    answer: "No"
+                  - order: 5
+                    rule: Derivative
+                    question: Is the instrument a derivative?
+                    answer: "No"
+                  - order: 6
+                    rule: ChargeableAsset
+                    question: Is the instrument a chargeable asset?
+                    answer: "Yes"
+                  - order: 7
+                    rule: CollectiveInvestmentScheme
+                    question: Is the instrument a collective investment scheme?
+                    answer: "No"
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                - href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D5Q
+                  luid: LUID_00003D5Q
+                  instrumentName: Example Bond Fund
+                  instrumentType: FundShareClass
+                  withinBlagab: true
+                  inputs:
+                    loanRelationshipAsset: false
+                    indexLinkedGilt: false
+                    chargeableAsset: true
+                    cisNonTransparent: true
+                    cisTransparent: true
+                    derivative: false
+                    privateEquity: false
+                    realEstate: false
+                    qualifyingInvestmentsPercent: 72.5
+                  treatment: Unclassified
+                  status: Rejected
+                  source: System
+                  ruleFired: ConflictingSetup
+                  trace:
+                  - order: 1
+                    rule: WithinBlagab
+                    question: Is the holding within BLAGAB?
+                    answer: "Yes"
+                  - order: 2
+                    rule: LoanRelationship
+                    question: Is the instrument a loan relationship asset?
+                    answer: "No"
+                  - order: 3
+                    rule: CollectiveInvestmentScheme
+                    question: Is the scheme transparent or non-transparent?
+                    answer: Both
+                  exception:
+                    kind: ConflictingSetup
+                    code: TaxClassificationConflictingSetup
+                    message: The scheme is flagged as both transparent and non-transparent
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxClassification'
+          description: The tax classifications of the instruments in the scope.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ListTaxClassifications: List tax classifications."
+      tags:
+      - Tax Classifications
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/tax/classifications/exceptions:
+    get:
+      description: "Lists every instrument in the scope that could not be classified\
+        \ at the given time, with the kind of\r\nexception (missing inputs, conflicting\
+        \ set-up, conflicting override, qualifying investments crossing) and a\r\n\
+        message naming the fields involved."
+      operationId: ListTaxClassificationExceptions
+      parameters:
+      - description: The scope of the instruments.
+        explode: true
+        in: query
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      - description: Optional. The effective datetime or cut label at which to classify.
+          Defaults to the current time.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: Optional. The as-at datetime at which to read the classification
+          inputs. Defaults to the latest.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - luid: LUID_00003D5Q
+                  instrumentName: Example Bond Fund
+                  exception:
+                    kind: ConflictingSetup
+                    code: TaxClassificationConflictingSetup
+                    message: The scheme is flagged as both transparent and non-transparent
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxClassificationExceptionRecord'
+            application/json:
+              example:
+                values:
+                - luid: LUID_00003D5Q
+                  instrumentName: Example Bond Fund
+                  exception:
+                    kind: ConflictingSetup
+                    code: TaxClassificationConflictingSetup
+                    message: The scheme is flagged as both transparent and non-transparent
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxClassificationExceptionRecord'
+            text/json:
+              example:
+                values:
+                - luid: LUID_00003D5Q
+                  instrumentName: Example Bond Fund
+                  exception:
+                    kind: ConflictingSetup
+                    code: TaxClassificationConflictingSetup
+                    message: The scheme is flagged as both transparent and non-transparent
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxClassificationExceptionRecord'
+          description: The instruments that could not be classified and the reason
+            for each.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ListTaxClassificationExceptions: List tax classification\
+        \ exceptions."
+      tags:
+      - Tax Classifications
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/tax/classifications/{scope}/{luid}:
+    get:
+      description: "Gets one instrument's tax classification together with the ordered\
+        \ decision trace that produced it and the\r\nbitemporal history of every input\
+        \ and override field behind it."
+      operationId: GetTaxClassification
+      parameters:
+      - description: The scope of the instrument.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The LUSID instrument identifier of the instrument.
+        explode: false
+        in: path
+        name: luid
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: Optional. The effective datetime or cut label at which to classify.
+          Defaults to the current time.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: Optional. The as-at datetime at which to read the classification
+          inputs. Defaults to the latest.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                classification:
+                  href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                  luid: LUID_00003D4X
+                  instrumentName: Example Ordinary Shares
+                  instrumentType: Equity
+                  withinBlagab: true
+                  inputs:
+                    loanRelationshipAsset: false
+                    indexLinkedGilt: false
+                    chargeableAsset: true
+                    cisNonTransparent: false
+                    cisTransparent: false
+                    derivative: false
+                    derivativeFinancialFuture: false
+                    derivativePooledSecurity: false
+                    privateEquity: false
+                    realEstate: false
+                  leaf: StandardEquity
+                  treatment: ChargeableGains
+                  status: Classified
+                  source: System
+                  ruleFired: StandardEquity
+                  trace:
+                  - order: 1
+                    rule: WithinBlagab
+                    question: Is the holding within BLAGAB?
+                    answer: "Yes"
+                  - order: 2
+                    rule: LoanRelationship
+                    question: Is the instrument a loan relationship asset?
+                    answer: "No"
+                  - order: 3
+                    rule: PrivateEquity
+                    question: Is the instrument a private equity holding?
+                    answer: "No"
+                  - order: 4
+                    rule: RealEstate
+                    question: Is the instrument real estate?
+                    answer: "No"
+                  - order: 5
+                    rule: Derivative
+                    question: Is the instrument a derivative?
+                    answer: "No"
+                  - order: 6
+                    rule: ChargeableAsset
+                    question: Is the instrument a chargeable asset?
+                    answer: "Yes"
+                  - order: 7
+                    rule: CollectiveInvestmentScheme
+                    question: Is the instrument a collective investment scheme?
+                    answer: "No"
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                history:
+                - field: ChargeableAsset
+                  value: "True"
+                  effectiveFrom: 2024-04-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                  asAtFrom: 2024-04-02T09:30:00.0000000+00:00
+                - field: LoanRelationshipAsset
+                  value: "False"
+                  effectiveFrom: 2024-04-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                  asAtFrom: 2024-04-02T09:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxClassificationDetail'
+            application/json:
+              example:
+                href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                classification:
+                  href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                  luid: LUID_00003D4X
+                  instrumentName: Example Ordinary Shares
+                  instrumentType: Equity
+                  withinBlagab: true
+                  inputs:
+                    loanRelationshipAsset: false
+                    indexLinkedGilt: false
+                    chargeableAsset: true
+                    cisNonTransparent: false
+                    cisTransparent: false
+                    derivative: false
+                    derivativeFinancialFuture: false
+                    derivativePooledSecurity: false
+                    privateEquity: false
+                    realEstate: false
+                  leaf: StandardEquity
+                  treatment: ChargeableGains
+                  status: Classified
+                  source: System
+                  ruleFired: StandardEquity
+                  trace:
+                  - order: 1
+                    rule: WithinBlagab
+                    question: Is the holding within BLAGAB?
+                    answer: "Yes"
+                  - order: 2
+                    rule: LoanRelationship
+                    question: Is the instrument a loan relationship asset?
+                    answer: "No"
+                  - order: 3
+                    rule: PrivateEquity
+                    question: Is the instrument a private equity holding?
+                    answer: "No"
+                  - order: 4
+                    rule: RealEstate
+                    question: Is the instrument real estate?
+                    answer: "No"
+                  - order: 5
+                    rule: Derivative
+                    question: Is the instrument a derivative?
+                    answer: "No"
+                  - order: 6
+                    rule: ChargeableAsset
+                    question: Is the instrument a chargeable asset?
+                    answer: "Yes"
+                  - order: 7
+                    rule: CollectiveInvestmentScheme
+                    question: Is the instrument a collective investment scheme?
+                    answer: "No"
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                history:
+                - field: ChargeableAsset
+                  value: "True"
+                  effectiveFrom: 2024-04-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                  asAtFrom: 2024-04-02T09:30:00.0000000+00:00
+                - field: LoanRelationshipAsset
+                  value: "False"
+                  effectiveFrom: 2024-04-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                  asAtFrom: 2024-04-02T09:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxClassificationDetail'
+            text/json:
+              example:
+                href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                classification:
+                  href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                  luid: LUID_00003D4X
+                  instrumentName: Example Ordinary Shares
+                  instrumentType: Equity
+                  withinBlagab: true
+                  inputs:
+                    loanRelationshipAsset: false
+                    indexLinkedGilt: false
+                    chargeableAsset: true
+                    cisNonTransparent: false
+                    cisTransparent: false
+                    derivative: false
+                    derivativeFinancialFuture: false
+                    derivativePooledSecurity: false
+                    privateEquity: false
+                    realEstate: false
+                  leaf: StandardEquity
+                  treatment: ChargeableGains
+                  status: Classified
+                  source: System
+                  ruleFired: StandardEquity
+                  trace:
+                  - order: 1
+                    rule: WithinBlagab
+                    question: Is the holding within BLAGAB?
+                    answer: "Yes"
+                  - order: 2
+                    rule: LoanRelationship
+                    question: Is the instrument a loan relationship asset?
+                    answer: "No"
+                  - order: 3
+                    rule: PrivateEquity
+                    question: Is the instrument a private equity holding?
+                    answer: "No"
+                  - order: 4
+                    rule: RealEstate
+                    question: Is the instrument real estate?
+                    answer: "No"
+                  - order: 5
+                    rule: Derivative
+                    question: Is the instrument a derivative?
+                    answer: "No"
+                  - order: 6
+                    rule: ChargeableAsset
+                    question: Is the instrument a chargeable asset?
+                    answer: "Yes"
+                  - order: 7
+                    rule: CollectiveInvestmentScheme
+                    question: Is the instrument a collective investment scheme?
+                    answer: "No"
+                  effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                  asAt: 2024-04-02T09:30:00.0000000+00:00
+                history:
+                - field: ChargeableAsset
+                  value: "True"
+                  effectiveFrom: 2024-04-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                  asAtFrom: 2024-04-02T09:30:00.0000000+00:00
+                - field: LoanRelationshipAsset
+                  value: "False"
+                  effectiveFrom: 2024-04-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                  asAtFrom: 2024-04-02T09:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxClassificationDetail'
+          description: The tax classification of the instrument with its decision
+            trace and field history.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetTaxClassification: Get a tax classification."
+      tags:
+      - Tax Classifications
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/tax/classifications/{scope}/{luid}/override:
+    delete:
+      description: "Removes the user override from the given effective date onward,\
+        \ returning the instrument to its\r\nsystem-derived treatment leaf from that\
+        \ date."
+      operationId: RemoveTaxTreatmentOverride
+      parameters:
+      - description: The scope of the instrument.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The LUSID instrument identifier of the instrument.
+        explode: false
+        in: path
+        name: luid
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: Optional. The effective datetime from which the override no longer
+          applies. Defaults to the current time.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The datetime from which the override was removed.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] RemoveTaxTreatmentOverride: Remove a tax treatment\
+        \ override."
+      tags:
+      - Tax Classifications
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: "Replaces the system-derived treatment leaf of the instrument with\
+        \ the given one from the request's effective\r\ndate onward. The response\
+        \ is the classification as it now stands at that effective date."
+      operationId: UpsertTaxTreatmentOverride
+      parameters:
+      - description: The scope of the instrument.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The LUSID instrument identifier of the instrument.
+        explode: false
+        in: path
+        name: luid
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              treatment: BondFund
+              effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/UpsertTaxTreatmentOverrideRequest'
+          application/json:
+            example:
+              treatment: BondFund
+              effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/UpsertTaxTreatmentOverrideRequest'
+          text/json:
+            example:
+              treatment: BondFund
+              effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/UpsertTaxTreatmentOverrideRequest'
+          application/*+json:
+            example:
+              treatment: BondFund
+              effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/UpsertTaxTreatmentOverrideRequest'
+        description: The treatment leaf to apply and the effective date it applies
+          from.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                luid: LUID_00003D4X
+                instrumentName: Example Ordinary Shares
+                instrumentType: Equity
+                withinBlagab: true
+                inputs:
+                  loanRelationshipAsset: false
+                  indexLinkedGilt: false
+                  chargeableAsset: true
+                  cisNonTransparent: false
+                  cisTransparent: false
+                  derivative: false
+                  derivativeFinancialFuture: false
+                  derivativePooledSecurity: false
+                  privateEquity: false
+                  realEstate: false
+                leaf: StandardEquity
+                treatment: ChargeableGains
+                status: Classified
+                source: System
+                ruleFired: StandardEquity
+                trace:
+                - order: 1
+                  rule: WithinBlagab
+                  question: Is the holding within BLAGAB?
+                  answer: "Yes"
+                - order: 2
+                  rule: LoanRelationship
+                  question: Is the instrument a loan relationship asset?
+                  answer: "No"
+                - order: 3
+                  rule: PrivateEquity
+                  question: Is the instrument a private equity holding?
+                  answer: "No"
+                - order: 4
+                  rule: RealEstate
+                  question: Is the instrument real estate?
+                  answer: "No"
+                - order: 5
+                  rule: Derivative
+                  question: Is the instrument a derivative?
+                  answer: "No"
+                - order: 6
+                  rule: ChargeableAsset
+                  question: Is the instrument a chargeable asset?
+                  answer: "Yes"
+                - order: 7
+                  rule: CollectiveInvestmentScheme
+                  question: Is the instrument a collective investment scheme?
+                  answer: "No"
+                effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                asAt: 2024-04-02T09:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxClassification'
+            application/json:
+              example:
+                href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                luid: LUID_00003D4X
+                instrumentName: Example Ordinary Shares
+                instrumentType: Equity
+                withinBlagab: true
+                inputs:
+                  loanRelationshipAsset: false
+                  indexLinkedGilt: false
+                  chargeableAsset: true
+                  cisNonTransparent: false
+                  cisTransparent: false
+                  derivative: false
+                  derivativeFinancialFuture: false
+                  derivativePooledSecurity: false
+                  privateEquity: false
+                  realEstate: false
+                leaf: StandardEquity
+                treatment: ChargeableGains
+                status: Classified
+                source: System
+                ruleFired: StandardEquity
+                trace:
+                - order: 1
+                  rule: WithinBlagab
+                  question: Is the holding within BLAGAB?
+                  answer: "Yes"
+                - order: 2
+                  rule: LoanRelationship
+                  question: Is the instrument a loan relationship asset?
+                  answer: "No"
+                - order: 3
+                  rule: PrivateEquity
+                  question: Is the instrument a private equity holding?
+                  answer: "No"
+                - order: 4
+                  rule: RealEstate
+                  question: Is the instrument real estate?
+                  answer: "No"
+                - order: 5
+                  rule: Derivative
+                  question: Is the instrument a derivative?
+                  answer: "No"
+                - order: 6
+                  rule: ChargeableAsset
+                  question: Is the instrument a chargeable asset?
+                  answer: "Yes"
+                - order: 7
+                  rule: CollectiveInvestmentScheme
+                  question: Is the instrument a collective investment scheme?
+                  answer: "No"
+                effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                asAt: 2024-04-02T09:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxClassification'
+            text/json:
+              example:
+                href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D4X
+                luid: LUID_00003D4X
+                instrumentName: Example Ordinary Shares
+                instrumentType: Equity
+                withinBlagab: true
+                inputs:
+                  loanRelationshipAsset: false
+                  indexLinkedGilt: false
+                  chargeableAsset: true
+                  cisNonTransparent: false
+                  cisTransparent: false
+                  derivative: false
+                  derivativeFinancialFuture: false
+                  derivativePooledSecurity: false
+                  privateEquity: false
+                  realEstate: false
+                leaf: StandardEquity
+                treatment: ChargeableGains
+                status: Classified
+                source: System
+                ruleFired: StandardEquity
+                trace:
+                - order: 1
+                  rule: WithinBlagab
+                  question: Is the holding within BLAGAB?
+                  answer: "Yes"
+                - order: 2
+                  rule: LoanRelationship
+                  question: Is the instrument a loan relationship asset?
+                  answer: "No"
+                - order: 3
+                  rule: PrivateEquity
+                  question: Is the instrument a private equity holding?
+                  answer: "No"
+                - order: 4
+                  rule: RealEstate
+                  question: Is the instrument real estate?
+                  answer: "No"
+                - order: 5
+                  rule: Derivative
+                  question: Is the instrument a derivative?
+                  answer: "No"
+                - order: 6
+                  rule: ChargeableAsset
+                  question: Is the instrument a chargeable asset?
+                  answer: "Yes"
+                - order: 7
+                  rule: CollectiveInvestmentScheme
+                  question: Is the instrument a collective investment scheme?
+                  answer: "No"
+                effectiveAt: 2024-04-01T00:00:00.0000000+00:00
+                asAt: 2024-04-02T09:30:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxClassification'
+          description: The classification of the instrument after the override was
+            applied.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] UpsertTaxTreatmentOverride: Upsert a tax treatment\
+        \ override."
+      tags:
+      - Tax Classifications
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/tax/classifications/{scope}/{luid}/qualifyinginvestments:
+    get:
+      description: "Returns the daily qualifying investments (60 percent non-equity)\
+        \ test observations of a collective investment\r\nscheme over the requested\
+        \ window, together with every crossing: a pair of consecutive observations\
+        \ on which\r\nthe test result flipped."
+      operationId: GetTaxQualifyingInvestmentsHistory
+      parameters:
+      - description: The scope of the instrument.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The LUSID instrument identifier of the scheme.
+        explode: false
+        in: path
+        name: luid
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "Optional. The first date of the window, inclusive. Defaults\
+          \ to one year before the toDate. The window may span at most ten years."
+        explode: true
+        in: query
+        name: fromDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "Optional. The last date of the window, inclusive. Defaults to\
+          \ the asAt date."
+        explode: true
+        in: query
+        name: toDate
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: Optional. The as-at datetime at which to read the observations.
+          Defaults to the latest.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D5Q/qualifyinginvestments
+                luid: LUID_00003D5Q
+                thresholdPercent: 60
+                observations:
+                - date: 2024-04-01T00:00:00.0000000+00:00
+                  nonEquityPercent: 61.2
+                  isBondFund: true
+                - date: 2024-04-02T00:00:00.0000000+00:00
+                  nonEquityPercent: 58.9
+                  isBondFund: false
+                - date: 2024-04-03T00:00:00.0000000+00:00
+                  nonEquityPercent: 59.4
+                  isBondFund: false
+                crossings:
+                - from: 2024-04-01T00:00:00.0000000+00:00
+                  to: 2024-04-02T00:00:00.0000000+00:00
+                  wasBondFundBefore: true
+                  isBondFundAfter: false
+              schema:
+                $ref: '#/components/schemas/QualifyingInvestmentsHistory'
+            application/json:
+              example:
+                href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D5Q/qualifyinginvestments
+                luid: LUID_00003D5Q
+                thresholdPercent: 60
+                observations:
+                - date: 2024-04-01T00:00:00.0000000+00:00
+                  nonEquityPercent: 61.2
+                  isBondFund: true
+                - date: 2024-04-02T00:00:00.0000000+00:00
+                  nonEquityPercent: 58.9
+                  isBondFund: false
+                - date: 2024-04-03T00:00:00.0000000+00:00
+                  nonEquityPercent: 59.4
+                  isBondFund: false
+                crossings:
+                - from: 2024-04-01T00:00:00.0000000+00:00
+                  to: 2024-04-02T00:00:00.0000000+00:00
+                  wasBondFundBefore: true
+                  isBondFundAfter: false
+              schema:
+                $ref: '#/components/schemas/QualifyingInvestmentsHistory'
+            text/json:
+              example:
+                href: https://example.lusid.com/api/tax/classifications/UKLife/LUID_00003D5Q/qualifyinginvestments
+                luid: LUID_00003D5Q
+                thresholdPercent: 60
+                observations:
+                - date: 2024-04-01T00:00:00.0000000+00:00
+                  nonEquityPercent: 61.2
+                  isBondFund: true
+                - date: 2024-04-02T00:00:00.0000000+00:00
+                  nonEquityPercent: 58.9
+                  isBondFund: false
+                - date: 2024-04-03T00:00:00.0000000+00:00
+                  nonEquityPercent: 59.4
+                  isBondFund: false
+                crossings:
+                - from: 2024-04-01T00:00:00.0000000+00:00
+                  to: 2024-04-02T00:00:00.0000000+00:00
+                  wasBondFundBefore: true
+                  isBondFundAfter: false
+              schema:
+                $ref: '#/components/schemas/QualifyingInvestmentsHistory'
+          description: The qualifying investments observations and crossings of the
+            instrument.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetTaxQualifyingInvestmentsHistory: Get the qualifying\
+        \ investments history of an instrument."
+      tags:
+      - Tax Classifications
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/tax/exceptions:
     get:
@@ -251495,12 +252778,14 @@ components:
         variablePercentageSource:
           description: "The source of the rate for a 'VariablePercentage' Fee, in\
             \ the form \"scope/provider/instrumentIdType/instrumentId\" identifying\
-            \ a Rate quote series in the quote store. At each accrual date the most\
-            \ recent rate at or before that date is used; if no rate can be found\
-            \ the valuation point calculation fails. The quote's normalised value\
-            \ (its value divided by any scale factor) is applied like FeeRatePercentage,\
-            \ as a multiplier of the CalculationBase: a rate of 5.2% must normalise\
-            \ to 0.052."
+            \ a Rate quote series in the quote store. The source is split on its first\
+            \ three '/' only, so the instrument id may itself contain '/'. CurrencyPair\
+            \ is not a supported instrument id type: CurrencyPair quotes are FX rates,\
+            \ not fee rates. At each accrual date the most recent rate at or before\
+            \ that date is used; if no rate can be found the valuation point calculation\
+            \ fails. The quote's normalised value (its value divided by any scale\
+            \ factor) is applied like FeeRatePercentage, as a multiplier of the CalculationBase:\
+            \ a rate of 5.2% must normalise to 0.052."
           maxLength: 512
           minLength: 1
           nullable: true
@@ -252044,12 +253329,14 @@ components:
         variablePercentageSource:
           description: "The source of the rate for a 'VariablePercentage' Fee, in\
             \ the form \"scope/provider/instrumentIdType/instrumentId\" identifying\
-            \ a Rate quote series in the quote store. At each accrual date the most\
-            \ recent rate at or before that date is used; if no rate can be found\
-            \ the valuation point calculation fails. The quote's normalised value\
-            \ (its value divided by any scale factor) is applied like FeeRatePercentage,\
-            \ as a multiplier of the CalculationBase: a rate of 5.2% must normalise\
-            \ to 0.052."
+            \ a Rate quote series in the quote store. The source is split on its first\
+            \ three '/' only, so the instrument id may itself contain '/'. CurrencyPair\
+            \ is not a supported instrument id type: CurrencyPair quotes are FX rates,\
+            \ not fee rates. At each accrual date the most recent rate at or before\
+            \ that date is used; if no rate can be found the valuation point calculation\
+            \ fails. The quote's normalised value (its value divided by any scale\
+            \ factor) is applied like FeeRatePercentage, as a multiplier of the CalculationBase:\
+            \ a rate of 5.2% must normalise to 0.052."
           maxLength: 512
           minLength: 1
           nullable: true
@@ -259618,7 +260905,8 @@ components:
             \ 'Sold'. Income/Expense: the line is the income or expense declared on\
             \ the movement that produced it. Fee/Tax: the kind of charge declared\
             \ on the movement, where the charge is a slice of a wider bucket such\
-            \ as 'CA_Capital'. ChargeableGain/IndexationAllowance/Rebasing1982: the\
+            \ as 'CA_Capital', or of the income named by variant 'Coupon' or 'Dividend'\
+            \ on 'PL_Carry'. ChargeableGain/IndexationAllowance/Rebasing1982: the\
             \ split of a realised price gain under the UK chargeable-gains rules into\
             \ the chargeable gain, the indexation allowance taken against it and,\
             \ for a holding held on 31 March 1982, the rebasing difference; for a\
@@ -259637,7 +260925,8 @@ components:
             \ FX gain/loss between trade date and settlement date. InLieuSubstitution:\
             \ FX gain/loss from settling in a different currency when the original\
             \ settlement currency is the portfolio base currency. Coupon/Dividend:\
-            \ the kind of income declared on the movement that produced the line.\
+            \ the kind of income declared on the movement that produced the line,\
+            \ for the gross income line and for a Fee or Tax taken out of that income.\
             \ Fee/Tax: the kind of charge declared on the movement that produced the\
             \ line, where the whole line is the charge ('PL_Fees', or 'PL_Carry' with\
             \ component 'Expense'). Available values: Undefined, ShortTerm, LongTerm,\
@@ -282044,7 +283333,8 @@ components:
             \ 'Sold'. Income/Expense: the line is the income or expense declared on\
             \ the movement that produced it. Fee/Tax: the kind of charge declared\
             \ on the movement, where the charge is a slice of a wider bucket such\
-            \ as 'CA_Capital'. ChargeableGain/IndexationAllowance/Rebasing1982: the\
+            \ as 'CA_Capital', or of the income named by variant 'Coupon' or 'Dividend'\
+            \ on 'PL_Carry'. ChargeableGain/IndexationAllowance/Rebasing1982: the\
             \ split of a realised price gain under the UK chargeable-gains rules into\
             \ the chargeable gain, the indexation allowance taken against it and,\
             \ for a holding held on 31 March 1982, the rebasing difference; for a\
@@ -282063,7 +283353,8 @@ components:
             \ FX gain/loss between trade date and settlement date. InLieuSubstitution:\
             \ FX gain/loss from settling in a different currency when the original\
             \ settlement currency is the portfolio base currency. Coupon/Dividend:\
-            \ the kind of income declared on the movement that produced the line.\
+            \ the kind of income declared on the movement that produced the line,\
+            \ for the gross income line and for a Fee or Tax taken out of that income.\
             \ Fee/Tax: the kind of charge declared on the movement that produced the\
             \ line, where the whole line is the charge ('PL_Fees', or 'PL_Carry' with\
             \ component 'Expense'). Available values: Undefined, ShortTerm, LongTerm,\
@@ -291204,7 +292495,14 @@ components:
         transactionExclusionFilter:
           description: "Optional filter expression to exclude specific transactions\
             \ from this NavType's derived portfolios. The filter can reference Transaction,\
-            \ Portfolio, or Instrument fields and properties."
+            \ Portfolio, or Instrument fields and properties. The filter can be changed\
+            \ by patching the NavType, which propagates it to the NavType's derived\
+            \ portfolios. A NavType never inherits the filter of the Fund's portfolios:\
+            \ omitting the filter, or setting it to an empty string, means no filter.\
+            \ A transaction amended across a Final valuation point so that it newly\
+            \ matches the filter is reversed in the next valuation point, and one\
+            \ amended so that it stops matching is posted in the next valuation point\
+            \ as a true-up."
           maxLength: 16384
           minLength: 0
           nullable: true
@@ -291402,7 +292700,14 @@ components:
         transactionExclusionFilter:
           description: "Optional filter expression to exclude specific transactions\
             \ from this NavType's derived portfolios. The filter can reference Transaction,\
-            \ Portfolio, or Instrument fields and properties."
+            \ Portfolio, or Instrument fields and properties. The filter can be changed\
+            \ by patching the NavType, which propagates it to the NavType's derived\
+            \ portfolios. A NavType never inherits the filter of the Fund's portfolios:\
+            \ omitting the filter, or setting it to an empty string, means no filter.\
+            \ A transaction amended across a Final valuation point so that it newly\
+            \ matches the filter is reversed in the next valuation point, and one\
+            \ amended so that it stops matching is posted in the next valuation point\
+            \ as a true-up."
           maxLength: 16384
           minLength: 0
           nullable: true
@@ -334941,6 +336246,135 @@ components:
       - displayName
       - key
       type: object
+    QualifyingInvestmentsCrossing:
+      additionalProperties: false
+      description: A flip of the qualifying-investments result between two consecutive
+        observed days.
+      example:
+        isBondFundAfter: true
+        from: 2000-01-23T04:56:07.000+00:00
+        to: 2000-01-23T04:56:07.000+00:00
+        wasBondFundBefore: true
+      properties:
+        from:
+          description: The date of the observation before the flip.
+          format: date-time
+          type: string
+        to:
+          description: The date of the observation after the flip.
+          format: date-time
+          type: string
+        wasBondFundBefore:
+          description: Whether the scheme was a bond fund on the From date.
+          type: boolean
+        isBondFundAfter:
+          description: Whether the scheme was a bond fund on the To date.
+          type: boolean
+      required:
+      - from
+      - isBondFundAfter
+      - to
+      - wasBondFundBefore
+      type: object
+    QualifyingInvestmentsHistory:
+      additionalProperties: false
+      description: The daily qualifying-investments history of one collective investment
+        scheme and the flips within it.
+      example:
+        crossings:
+        - isBondFundAfter: true
+          from: 2000-01-23T04:56:07.000+00:00
+          to: 2000-01-23T04:56:07.000+00:00
+          wasBondFundBefore: true
+        - isBondFundAfter: true
+          from: 2000-01-23T04:56:07.000+00:00
+          to: 2000-01-23T04:56:07.000+00:00
+          wasBondFundBefore: true
+        luid: luid
+        observations:
+        - date: 2000-01-23T04:56:07.000+00:00
+          isBondFund: true
+          nonEquityPercent: 6.027456183070403
+        - date: 2000-01-23T04:56:07.000+00:00
+          isBondFund: true
+          nonEquityPercent: 6.027456183070403
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        thresholdPercent: 0.8008281904610115
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        luid:
+          description: The LUSID instrument identifier of the collective investment
+            scheme.
+          minLength: 1
+          type: string
+        thresholdPercent:
+          description: The qualifying investments percentage the scheme must exceed
+            to be a bond fund.
+          format: double
+          type: number
+        observations:
+          description: "The daily qualifying investments observations in the requested\
+            \ window, oldest first."
+          items:
+            $ref: '#/components/schemas/QualifyingInvestmentsObservation'
+          type: array
+        crossings:
+          description: Each pair of consecutive observations where the bond fund result
+            flipped.
+          items:
+            $ref: '#/components/schemas/QualifyingInvestmentsCrossing'
+          type: array
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - crossings
+      - luid
+      - observations
+      - thresholdPercent
+      type: object
+    QualifyingInvestmentsObservation:
+      additionalProperties: false
+      description: The qualifying-investments test result for one scheme on one day.
+      example:
+        date: 2000-01-23T04:56:07.000+00:00
+        isBondFund: true
+        nonEquityPercent: 6.027456183070403
+      properties:
+        date:
+          description: The date the test was evaluated for.
+          format: date-time
+          type: string
+        nonEquityPercent:
+          description: The percentage of the scheme's assets that were qualifying
+            (non-equity) investments on the date.
+          format: double
+          type: number
+        isBondFund:
+          description: "Whether more than the threshold percentage of the scheme's\
+            \ assets were qualifying investments on the date, making it a bond fund."
+          type: boolean
+      required:
+      - date
+      - isBondFund
+      - nonEquityPercent
+      type: object
     QuantityInstructed:
       additionalProperties: false
       description: "The quantity of the event that was instructed, represented either\
@@ -366081,6 +367515,194 @@ components:
       required:
       - values
       type: object
+    ResourceListOfTaxClassification:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - exception:
+            code: code
+            kind: kind
+            message: message
+          withinBlagab: true
+          treatment: treatment
+          instrumentType: instrumentType
+          treatmentOverride: treatmentOverride
+          inputs:
+            cisTransparent: true
+            cisNonTransparent: true
+            derivativePooledSecurity: true
+            privateEquity: true
+            chargeableAsset: true
+            derivative: true
+            derivativeFinancialFuture: true
+            realEstate: true
+            loanRelationshipAsset: true
+            indexLinkedGilt: true
+            qualifyingInvestmentsPercent: 0.8008281904610115
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          source: source
+          leaf: leaf
+          instrumentName: instrumentName
+          trace:
+          - question: question
+            answer: answer
+            rule: rule
+            order: 6
+          - question: question
+            answer: answer
+            rule: rule
+            order: 6
+          luid: luid
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          ruleFired: ruleFired
+          status: status
+        - exception:
+            code: code
+            kind: kind
+            message: message
+          withinBlagab: true
+          treatment: treatment
+          instrumentType: instrumentType
+          treatmentOverride: treatmentOverride
+          inputs:
+            cisTransparent: true
+            cisNonTransparent: true
+            derivativePooledSecurity: true
+            privateEquity: true
+            chargeableAsset: true
+            derivative: true
+            derivativeFinancialFuture: true
+            realEstate: true
+            loanRelationshipAsset: true
+            indexLinkedGilt: true
+            qualifyingInvestmentsPercent: 0.8008281904610115
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          source: source
+          leaf: leaf
+          instrumentName: instrumentName
+          trace:
+          - question: question
+            answer: answer
+            rule: rule
+            order: 6
+          - question: question
+            answer: answer
+            rule: rule
+            order: 6
+          luid: luid
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          ruleFired: ruleFired
+          status: status
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/TaxClassification'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfTaxClassificationExceptionRecord:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - exception:
+            code: code
+            kind: kind
+            message: message
+          instrumentName: instrumentName
+          luid: luid
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+        - exception:
+            code: code
+            kind: kind
+            message: message
+          instrumentName: instrumentName
+          luid: luid
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/TaxClassificationExceptionRecord'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
     ResourceListOfTaxExceptionItem:
       additionalProperties: false
       example:
@@ -384804,6 +386426,466 @@ components:
       required:
       - units
       type: object
+    TaxClassification:
+      additionalProperties: false
+      description: The UK life-company tax classification of one instrument at one
+        effective and asAt point.
+      example:
+        exception:
+          code: code
+          kind: kind
+          message: message
+        withinBlagab: true
+        treatment: treatment
+        instrumentType: instrumentType
+        treatmentOverride: treatmentOverride
+        inputs:
+          cisTransparent: true
+          cisNonTransparent: true
+          derivativePooledSecurity: true
+          privateEquity: true
+          chargeableAsset: true
+          derivative: true
+          derivativeFinancialFuture: true
+          realEstate: true
+          loanRelationshipAsset: true
+          indexLinkedGilt: true
+          qualifyingInvestmentsPercent: 0.8008281904610115
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        asAt: 2000-01-23T04:56:07.000+00:00
+        source: source
+        leaf: leaf
+        instrumentName: instrumentName
+        trace:
+        - question: question
+          answer: answer
+          rule: rule
+          order: 6
+        - question: question
+          answer: answer
+          rule: rule
+          order: 6
+        luid: luid
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        ruleFired: ruleFired
+        status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        luid:
+          description: The LUSID instrument identifier of the classified instrument.
+          minLength: 1
+          type: string
+        instrumentName:
+          description: The name of the classified instrument.
+          nullable: true
+          type: string
+        instrumentType:
+          description: "The LUSID instrument type of the classified instrument, where\
+            \ known."
+          nullable: true
+          type: string
+        withinBlagab:
+          description: Whether the instrument is held within the basic life assurance
+            and general annuity business of the fund. Absent when the input has not
+            been set.
+          nullable: true
+          type: boolean
+        inputs:
+          $ref: '#/components/schemas/TaxClassificationInputs'
+        treatmentOverride:
+          description: "The user-supplied treatment leaf that replaces the system-derived\
+            \ one, if any. Available values: OutsideBlagab, LoanRelationship, IndexLinkedGilt,\
+            \ PrivateEquity, RealEstate, FinancialFuture, PooledDerivative, DerivativeProfitAndLoss,\
+            \ NonTransparentScheme, BondFund, TransparentScheme, StandardEquity, Exempt."
+          nullable: true
+          type: string
+        leaf:
+          description: "The treatment leaf the decision tree arrived at. Absent when\
+            \ the instrument could not be classified. Available values: OutsideBlagab,\
+            \ LoanRelationship, IndexLinkedGilt, PrivateEquity, RealEstate, FinancialFuture,\
+            \ PooledDerivative, DerivativeProfitAndLoss, NonTransparentScheme, BondFund,\
+            \ TransparentScheme, StandardEquity, Exempt."
+          nullable: true
+          type: string
+        treatment:
+          description: "The tax treatment class implied by the leaf: ChargeableGains,\
+            \ LoanRelationship, Excluded or Unclassified. Available values: ChargeableGains,\
+            \ LoanRelationship, Excluded, Unclassified."
+          minLength: 1
+          type: string
+        status:
+          description: "Classified, Overridden, Rejected or Unclassified. Available\
+            \ values: Classified, Overridden, Rejected, Unclassified."
+          minLength: 1
+          type: string
+        source:
+          description: "Whether the leaf came from the System decision tree or a User\
+            \ override. Available values: System, User."
+          minLength: 1
+          type: string
+        ruleFired:
+          description: The name of the decision-tree rule that produced the leaf.
+          minLength: 1
+          type: string
+        trace:
+          description: "The ordered questions the decision tree asked and the answers\
+            \ it took, for audit."
+          items:
+            $ref: '#/components/schemas/TaxClassificationDecisionStep'
+          nullable: true
+          type: array
+        exception:
+          $ref: '#/components/schemas/TaxClassificationException'
+        effectiveAt:
+          description: The effective date the classification was evaluated at.
+          format: date-time
+          type: string
+        asAt:
+          description: The asAt time the classification was evaluated at.
+          format: date-time
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - asAt
+      - effectiveAt
+      - inputs
+      - luid
+      - ruleFired
+      - source
+      - status
+      - treatment
+      type: object
+    TaxClassificationDecisionStep:
+      additionalProperties: false
+      description: One question the decision tree asked on the way to the leaf.
+      example:
+        question: question
+        answer: answer
+        rule: rule
+        order: 6
+      properties:
+        order:
+          description: "The position of the step in the decision trace, starting at\
+            \ 1."
+          format: int32
+          type: integer
+        rule:
+          description: The decision-tree rule the step evaluated.
+          minLength: 1
+          type: string
+        question:
+          description: The question the rule asked of the inputs.
+          minLength: 1
+          type: string
+        answer:
+          description: The answer the rule took.
+          minLength: 1
+          type: string
+      required:
+      - answer
+      - order
+      - question
+      - rule
+      type: object
+    TaxClassificationDetail:
+      additionalProperties: false
+      description: A single instrument's classification with the version history of
+        every input behind it.
+      example:
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        history:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          asAtFrom: 2000-01-23T04:56:07.000+00:00
+          field: field
+          asAtUntil: 2000-01-23T04:56:07.000+00:00
+          value: value
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          asAtFrom: 2000-01-23T04:56:07.000+00:00
+          field: field
+          asAtUntil: 2000-01-23T04:56:07.000+00:00
+          value: value
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        classification:
+          exception:
+            code: code
+            kind: kind
+            message: message
+          withinBlagab: true
+          treatment: treatment
+          instrumentType: instrumentType
+          treatmentOverride: treatmentOverride
+          inputs:
+            cisTransparent: true
+            cisNonTransparent: true
+            derivativePooledSecurity: true
+            privateEquity: true
+            chargeableAsset: true
+            derivative: true
+            derivativeFinancialFuture: true
+            realEstate: true
+            loanRelationshipAsset: true
+            indexLinkedGilt: true
+            qualifyingInvestmentsPercent: 0.8008281904610115
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          source: source
+          leaf: leaf
+          instrumentName: instrumentName
+          trace:
+          - question: question
+            answer: answer
+            rule: rule
+            order: 6
+          - question: question
+            answer: answer
+            rule: rule
+            order: 6
+          luid: luid
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          ruleFired: ruleFired
+          status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        classification:
+          $ref: '#/components/schemas/TaxClassification'
+        history:
+          description: "Every version of every classification input and override for\
+            \ the instrument, oldest first."
+          items:
+            $ref: '#/components/schemas/TaxClassificationFieldVersion'
+          type: array
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - classification
+      - history
+      type: object
+    TaxClassificationException:
+      additionalProperties: false
+      description: "Why an instrument could not be classified, or a flip of the qualifying-investments\
+        \ test a reviewer must see."
+      example:
+        code: code
+        kind: kind
+        message: message
+      properties:
+        kind:
+          description: "MissingInputs, ConflictingSetup, ConflictingOverride or QualifyingInvestmentsCrossing.\
+            \ Available values: MissingInputs, ConflictingSetup, ConflictingOverride,\
+            \ QualifyingInvestmentsCrossing."
+          minLength: 1
+          type: string
+        code:
+          description: "The stable code of the exception, for filtering and routing."
+          minLength: 1
+          type: string
+        message:
+          description: A description of why the instrument could not be classified
+            or why the crossing was raised.
+          minLength: 1
+          type: string
+      required:
+      - code
+      - kind
+      - message
+      type: object
+    TaxClassificationExceptionRecord:
+      additionalProperties: false
+      description: "An instrument the engine could not classify, or a qualifying-investments\
+        \ flip, for the exceptions feed."
+      example:
+        exception:
+          code: code
+          kind: kind
+          message: message
+        instrumentName: instrumentName
+        luid: luid
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        asAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        luid:
+          description: The LUSID instrument identifier of the instrument the exception
+            was raised for.
+          minLength: 1
+          type: string
+        instrumentName:
+          description: The name of the instrument the exception was raised for.
+          nullable: true
+          type: string
+        exception:
+          $ref: '#/components/schemas/TaxClassificationException'
+        effectiveAt:
+          description: The effective date the exception was observed at.
+          format: date-time
+          type: string
+        asAt:
+          description: The asAt time the exception was observed at.
+          format: date-time
+          type: string
+      required:
+      - asAt
+      - effectiveAt
+      - exception
+      - luid
+      type: object
+    TaxClassificationFieldVersion:
+      additionalProperties: false
+      description: One stored value of a classification input or override and the
+        bitemporal window it held for.
+      example:
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+        asAtFrom: 2000-01-23T04:56:07.000+00:00
+        field: field
+        asAtUntil: 2000-01-23T04:56:07.000+00:00
+        value: value
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+      properties:
+        field:
+          description: The name of the classification input or override the version
+            belongs to.
+          minLength: 1
+          type: string
+        value:
+          description: The value of the field over the version's effective and asAt
+            window.
+          nullable: true
+          type: string
+        effectiveFrom:
+          description: The start of the effective window the value applies from.
+          format: date-time
+          type: string
+        effectiveUntil:
+          description: The end of the effective window the value applies until.
+          format: date-time
+          type: string
+        asAtFrom:
+          description: The asAt time the value was recorded.
+          format: date-time
+          type: string
+        asAtUntil:
+          description: "The asAt time the value was superseded, if it has been."
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - asAtFrom
+      - effectiveFrom
+      - effectiveUntil
+      - field
+      type: object
+    TaxClassificationInputs:
+      additionalProperties: false
+      description: "The instrument static the decision tree reads. A missing flag\
+        \ is a missing input, not a false."
+      example:
+        cisTransparent: true
+        cisNonTransparent: true
+        derivativePooledSecurity: true
+        privateEquity: true
+        chargeableAsset: true
+        derivative: true
+        derivativeFinancialFuture: true
+        realEstate: true
+        loanRelationshipAsset: true
+        indexLinkedGilt: true
+        qualifyingInvestmentsPercent: 0.8008281904610115
+      properties:
+        loanRelationshipAsset:
+          description: Whether the instrument is a loan relationship asset.
+          nullable: true
+          type: boolean
+        indexLinkedGilt:
+          description: Whether the instrument is an index-linked gilt.
+          nullable: true
+          type: boolean
+        chargeableAsset:
+          description: Whether disposals of the instrument give rise to chargeable
+            gains.
+          nullable: true
+          type: boolean
+        cisNonTransparent:
+          description: Whether the instrument is a non-transparent collective investment
+            scheme.
+          nullable: true
+          type: boolean
+        cisTransparent:
+          description: Whether the instrument is a transparent collective investment
+            scheme.
+          nullable: true
+          type: boolean
+        derivative:
+          description: Whether the instrument is a derivative contract.
+          nullable: true
+          type: boolean
+        derivativeFinancialFuture:
+          description: Whether the derivative is a financial future or option within
+            the chargeable gains rules.
+          nullable: true
+          type: boolean
+        derivativePooledSecurity:
+          description: Whether the derivative is pooled as a security.
+          nullable: true
+          type: boolean
+        privateEquity:
+          description: Whether the instrument is a private equity holding.
+          nullable: true
+          type: boolean
+        realEstate:
+          description: Whether the instrument is a real estate holding.
+          nullable: true
+          type: boolean
+        qualifyingInvestmentsPercent:
+          description: The percentage of the scheme's assets that are qualifying (non-equity)
+            investments; more than 60 percent makes the scheme a bond fund.
+          format: double
+          nullable: true
+          type: number
+      type: object
     TaxExceptionItem:
       additionalProperties: false
       example:
@@ -388143,18 +390225,21 @@ components:
             \ declare the direction of traded interest and are only valid alongside\
             \ 'IncludesTradedInterest' on a 'Carry' or 'CarryAsPnl' movement; without\
             \ them the direction is inferred from the sign of the amount. 'Coupon'\
-            \ and 'Dividend' declare the kind of income and are only valid alongside\
-            \ 'Income'. 'Fee' and 'Tax' declare the kind of charge and are valid on\
-            \ 'Fee', 'Capital', 'Carry' and 'CarryAsPnl' movements; on a 'Carry' or\
-            \ 'CarryAsPnl' movement they must be declared alongside 'Expense', and\
-            \ they cannot be combined with 'Income' or 'IncludesTradedInterest'. 'Income',\
-            \ 'Expense' and 'IncludesTradedInterest' are mutually exclusive, as are\
-            \ 'Bought' and 'Sold', 'Coupon' and 'Dividend', and 'Fee' and 'Tax'. 'TaxLotAdjustment'\
-            \ is valid only on its own on a 'StockMovement'. It sets the amortised\
-            \ cost of the tax lot named by 'Transaction/default/TargetTaxlotId', or\
-            \ apportions one across the holding's open lots when no lot is named,\
-            \ from 'Transaction/default/TargetAmortisedCostPerUnit' or 'Transaction/default/TargetIncomeToAmortisePerUnit',\
-            \ anchored at the transaction's date or, given in 'Transaction/default/AmortisationAnchorDate'\
+            \ and 'Dividend' declare the kind of income and are valid alongside 'Income'\
+            \ for the gross income line, or alongside 'Fee' or 'Tax' on a 'Carry'\
+            \ or 'CarryAsPnl' movement for a charge taken out of that income, such\
+            \ as withholding tax on a dividend. 'Fee' and 'Tax' declare the kind of\
+            \ charge and are valid on 'Fee', 'Capital', 'Carry' and 'CarryAsPnl' movements;\
+            \ on a 'Carry' or 'CarryAsPnl' movement they must be declared alongside\
+            \ 'Expense', 'Coupon' or 'Dividend', and they cannot be combined with\
+            \ 'Income' or 'IncludesTradedInterest'. 'Income', 'Expense' and 'IncludesTradedInterest'\
+            \ are mutually exclusive, as are 'Bought' and 'Sold', 'Coupon' and 'Dividend',\
+            \ and 'Fee' and 'Tax'. 'TaxLotAdjustment' is valid only on its own on\
+            \ a 'StockMovement'. It sets the amortised cost of the tax lot named by\
+            \ 'Transaction/default/TargetTaxlotId', or apportions one across the holding's\
+            \ open lots when no lot is named, from 'Transaction/default/TargetAmortisedCostPerUnit'\
+            \ or 'Transaction/default/TargetIncomeToAmortisePerUnit', anchored at\
+            \ the transaction's date or, given in 'Transaction/default/AmortisationAnchorDate'\
             \ for a named lot, at the lot's amortisation start date, and books no\
             \ units, cost or cash. The outcome is reported on the output transaction\
             \ as 'Transaction/system/TaxLotAdjustmentResult'."
@@ -388271,18 +390356,21 @@ components:
             \ declare the direction of traded interest and are only valid alongside\
             \ 'IncludesTradedInterest' on a 'Carry' or 'CarryAsPnl' movement; without\
             \ them the direction is inferred from the sign of the amount. 'Coupon'\
-            \ and 'Dividend' declare the kind of income and are only valid alongside\
-            \ 'Income'. 'Fee' and 'Tax' declare the kind of charge and are valid on\
-            \ 'Fee', 'Capital', 'Carry' and 'CarryAsPnl' movements; on a 'Carry' or\
-            \ 'CarryAsPnl' movement they must be declared alongside 'Expense', and\
-            \ they cannot be combined with 'Income' or 'IncludesTradedInterest'. 'Income',\
-            \ 'Expense' and 'IncludesTradedInterest' are mutually exclusive, as are\
-            \ 'Bought' and 'Sold', 'Coupon' and 'Dividend', and 'Fee' and 'Tax'. 'TaxLotAdjustment'\
-            \ is valid only on its own on a 'StockMovement'. It sets the amortised\
-            \ cost of the tax lot named by 'Transaction/default/TargetTaxlotId', or\
-            \ apportions one across the holding's open lots when no lot is named,\
-            \ from 'Transaction/default/TargetAmortisedCostPerUnit' or 'Transaction/default/TargetIncomeToAmortisePerUnit',\
-            \ anchored at the transaction's date or, given in 'Transaction/default/AmortisationAnchorDate'\
+            \ and 'Dividend' declare the kind of income and are valid alongside 'Income'\
+            \ for the gross income line, or alongside 'Fee' or 'Tax' on a 'Carry'\
+            \ or 'CarryAsPnl' movement for a charge taken out of that income, such\
+            \ as withholding tax on a dividend. 'Fee' and 'Tax' declare the kind of\
+            \ charge and are valid on 'Fee', 'Capital', 'Carry' and 'CarryAsPnl' movements;\
+            \ on a 'Carry' or 'CarryAsPnl' movement they must be declared alongside\
+            \ 'Expense', 'Coupon' or 'Dividend', and they cannot be combined with\
+            \ 'Income' or 'IncludesTradedInterest'. 'Income', 'Expense' and 'IncludesTradedInterest'\
+            \ are mutually exclusive, as are 'Bought' and 'Sold', 'Coupon' and 'Dividend',\
+            \ and 'Fee' and 'Tax'. 'TaxLotAdjustment' is valid only on its own on\
+            \ a 'StockMovement'. It sets the amortised cost of the tax lot named by\
+            \ 'Transaction/default/TargetTaxlotId', or apportions one across the holding's\
+            \ open lots when no lot is named, from 'Transaction/default/TargetAmortisedCostPerUnit'\
+            \ or 'Transaction/default/TargetIncomeToAmortisePerUnit', anchored at\
+            \ the transaction's date or, given in 'Transaction/default/AmortisationAnchorDate'\
             \ for a named lot, at the lot's amortisation start date, and books no\
             \ units, cost or cash. The outcome is reported on the output transaction\
             \ as 'Transaction/system/TaxLotAdjustmentResult'."
@@ -395166,18 +397254,21 @@ components:
             \ declare the direction of traded interest and are only valid alongside\
             \ 'IncludesTradedInterest' on a 'Carry' or 'CarryAsPnl' movement; without\
             \ them the direction is inferred from the sign of the amount. 'Coupon'\
-            \ and 'Dividend' declare the kind of income and are only valid alongside\
-            \ 'Income'. 'Fee' and 'Tax' declare the kind of charge and are valid on\
-            \ 'Fee', 'Capital', 'Carry' and 'CarryAsPnl' movements; on a 'Carry' or\
-            \ 'CarryAsPnl' movement they must be declared alongside 'Expense', and\
-            \ they cannot be combined with 'Income' or 'IncludesTradedInterest'. 'Income',\
-            \ 'Expense' and 'IncludesTradedInterest' are mutually exclusive, as are\
-            \ 'Bought' and 'Sold', 'Coupon' and 'Dividend', and 'Fee' and 'Tax'. 'TaxLotAdjustment'\
-            \ is valid only on its own on a 'StockMovement'. It sets the amortised\
-            \ cost of the tax lot named by 'Transaction/default/TargetTaxlotId', or\
-            \ apportions one across the holding's open lots when no lot is named,\
-            \ from 'Transaction/default/TargetAmortisedCostPerUnit' or 'Transaction/default/TargetIncomeToAmortisePerUnit',\
-            \ anchored at the transaction's date or, given in 'Transaction/default/AmortisationAnchorDate'\
+            \ and 'Dividend' declare the kind of income and are valid alongside 'Income'\
+            \ for the gross income line, or alongside 'Fee' or 'Tax' on a 'Carry'\
+            \ or 'CarryAsPnl' movement for a charge taken out of that income, such\
+            \ as withholding tax on a dividend. 'Fee' and 'Tax' declare the kind of\
+            \ charge and are valid on 'Fee', 'Capital', 'Carry' and 'CarryAsPnl' movements;\
+            \ on a 'Carry' or 'CarryAsPnl' movement they must be declared alongside\
+            \ 'Expense', 'Coupon' or 'Dividend', and they cannot be combined with\
+            \ 'Income' or 'IncludesTradedInterest'. 'Income', 'Expense' and 'IncludesTradedInterest'\
+            \ are mutually exclusive, as are 'Bought' and 'Sold', 'Coupon' and 'Dividend',\
+            \ and 'Fee' and 'Tax'. 'TaxLotAdjustment' is valid only on its own on\
+            \ a 'StockMovement'. It sets the amortised cost of the tax lot named by\
+            \ 'Transaction/default/TargetTaxlotId', or apportions one across the holding's\
+            \ open lots when no lot is named, from 'Transaction/default/TargetAmortisedCostPerUnit'\
+            \ or 'Transaction/default/TargetIncomeToAmortisePerUnit', anchored at\
+            \ the transaction's date or, given in 'Transaction/default/AmortisationAnchorDate'\
             \ for a named lot, at the lot's amortisation start date, and books no\
             \ units, cost or cash. The outcome is reported on the output transaction\
             \ as 'Transaction/system/TaxLotAdjustmentResult'."
@@ -409846,6 +411937,31 @@ components:
           $ref: '#/components/schemas/SubscriptionDefinition'
       required:
       - subscription
+      type: object
+    UpsertTaxTreatmentOverrideRequest:
+      additionalProperties: false
+      description: Pins an instrument to a treatment leaf in place of the system-derived
+        one.
+      example:
+        treatment: treatment
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        treatment:
+          description: "The treatment leaf to pin the instrument to, replacing the\
+            \ system-derived one. Available values: OutsideBlagab, LoanRelationship,\
+            \ IndexLinkedGilt, PrivateEquity, RealEstate, FinancialFuture, PooledDerivative,\
+            \ DerivativeProfitAndLoss, NonTransparentScheme, BondFund, TransparentScheme,\
+            \ StandardEquity, Exempt."
+          minLength: 1
+          type: string
+        effectiveAt:
+          description: The effective date the override applies from. Defaults to the
+            start of time if not specified.
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - treatment
       type: object
     UpsertTransactionPropertiesResponse:
       additionalProperties: false
@@ -433772,6 +435888,7 @@ x-tagGroups:
   - Structured Result Data
   - Subscriptions
   - System Configuration
+  - Tax Classifications
   - Tax Rule Sets
   - Timelines
   - Transaction Configuration

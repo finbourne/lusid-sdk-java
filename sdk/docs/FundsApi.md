@@ -4396,7 +4396,7 @@ public class FundsApiExample {
         String dataModelCode = "dataModelCode_example"; // String | The optional code of a Custom Data Model to use
         Boolean showCancelledTransactions = true; // Boolean | Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified.
         String membershipType = "membershipType_example"; // String | The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate.
-        Boolean returnExcludedTransactions = true; // Boolean | Option to specify whether or not to include transactions excluded by the   NavType's TransactionExclusionFilter. Defaults to False if not specified.
+        Boolean returnExcludedTransactions = true; // Boolean | Option to specify whether or not to include transactions excluded by the   NavType's TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of   a transaction that has since been amended to be excluded is returned regardless of this option.   Defaults to False if not specified.
         try {
             // uncomment the below to set overrides at the request level
             // ValuationPointResourceListOfAccountedTransaction result = apiInstance.getValuationPointTransactions(scope, code, valuationPointDataQueryParameters, asAt, filter, limit, page, propertyKeys, navTypeCode, dataModelScope, dataModelCode, showCancelledTransactions, membershipType, returnExcludedTransactions).execute(opts);
@@ -4431,7 +4431,7 @@ public class FundsApiExample {
 | **dataModelCode** | **String**| The optional code of a Custom Data Model to use | [optional] |
 | **showCancelledTransactions** | **Boolean**| Option to specify whether or not to include cancelled transactions,   including previous versions of transactions which have since been amended.   Defaults to False if not specified. | [optional] |
 | **membershipType** | **String**| The membership types of the specified Custom Data Model to return. Default value: Member. Available values: All, Member, Candidate. | [optional] |
-| **returnExcludedTransactions** | **Boolean**| Option to specify whether or not to include transactions excluded by the   NavType&#39;s TransactionExclusionFilter. Defaults to False if not specified. | [optional] |
+| **returnExcludedTransactions** | **Boolean**| Option to specify whether or not to include transactions excluded by the   NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of   a transaction that has since been amended to be excluded is returned regardless of this option.   Defaults to False if not specified. | [optional] |
 
 ### Return type
 

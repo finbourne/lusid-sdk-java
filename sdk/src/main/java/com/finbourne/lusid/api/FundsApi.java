@@ -12545,7 +12545,7 @@ public class FundsApi {
 
         /**
          * Set returnExcludedTransactions
-         * @param returnExcludedTransactions Option to specify whether or not to include transactions excluded by the   NavType&#39;s TransactionExclusionFilter. Defaults to False if not specified. (optional)
+         * @param returnExcludedTransactions Option to specify whether or not to include transactions excluded by the   NavType&#39;s TransactionExclusionFilter, flagged with isExcluded. The reversal of a previously included version of   a transaction that has since been amended to be excluded is returned regardless of this option.   Defaults to False if not specified. (optional)
          * @return APIgetValuationPointTransactionsRequest
          */
         public APIgetValuationPointTransactionsRequest returnExcludedTransactions(Boolean returnExcludedTransactions) {

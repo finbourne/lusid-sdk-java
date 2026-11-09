@@ -804,6 +804,12 @@ Class | Method | HTTP request | Description
 *SystemConfigurationApi* | [**listConfigurationTransactionTypes**](docs/SystemConfigurationApi.md#listconfigurationtransactiontypes) | **GET** /api/systemconfiguration/transactions | [EARLY ACCESS] ListConfigurationTransactionTypes: List transaction types
 *SystemConfigurationApi* | [**setConfigurationTransactionTypes**](docs/SystemConfigurationApi.md#setconfigurationtransactiontypes) | **PUT** /api/systemconfiguration/transactions | [EXPERIMENTAL] SetConfigurationTransactionTypes: Set transaction types
 *SystemConfigurationApi* | [**setTransactionConfigurationSource**](docs/SystemConfigurationApi.md#settransactionconfigurationsource) | **PUT** /api/systemconfiguration/transactions/type/{source} | [EXPERIMENTAL] SetTransactionConfigurationSource: Set transaction types for a source
+*TaxClassificationsApi* | [**getTaxClassification**](docs/TaxClassificationsApi.md#gettaxclassification) | **GET** /api/tax/classifications/{scope}/{luid} | [EARLY ACCESS] GetTaxClassification: Get a tax classification.
+*TaxClassificationsApi* | [**getTaxQualifyingInvestmentsHistory**](docs/TaxClassificationsApi.md#gettaxqualifyinginvestmentshistory) | **GET** /api/tax/classifications/{scope}/{luid}/qualifyinginvestments | [EARLY ACCESS] GetTaxQualifyingInvestmentsHistory: Get the qualifying investments history of an instrument.
+*TaxClassificationsApi* | [**listTaxClassificationExceptions**](docs/TaxClassificationsApi.md#listtaxclassificationexceptions) | **GET** /api/tax/classifications/exceptions | [EARLY ACCESS] ListTaxClassificationExceptions: List tax classification exceptions.
+*TaxClassificationsApi* | [**listTaxClassifications**](docs/TaxClassificationsApi.md#listtaxclassifications) | **GET** /api/tax/classifications | [EARLY ACCESS] ListTaxClassifications: List tax classifications.
+*TaxClassificationsApi* | [**removeTaxTreatmentOverride**](docs/TaxClassificationsApi.md#removetaxtreatmentoverride) | **DELETE** /api/tax/classifications/{scope}/{luid}/override | [EARLY ACCESS] RemoveTaxTreatmentOverride: Remove a tax treatment override.
+*TaxClassificationsApi* | [**upsertTaxTreatmentOverride**](docs/TaxClassificationsApi.md#upserttaxtreatmentoverride) | **POST** /api/tax/classifications/{scope}/{luid}/override | [EARLY ACCESS] UpsertTaxTreatmentOverride: Upsert a tax treatment override.
 *TaxRuleSetsApi* | [**createTaxRuleSet**](docs/TaxRuleSetsApi.md#createtaxruleset) | **POST** /api/tax/rulesets | [EXPERIMENTAL] CreateTaxRuleSet: Create a tax rule set.
 *TaxRuleSetsApi* | [**deleteTaxRuleSet**](docs/TaxRuleSetsApi.md#deletetaxruleset) | **DELETE** /api/tax/rulesets/{scope}/{code} | [EXPERIMENTAL] DeleteTaxRuleSet: Delete a tax rule set.
 *TaxRuleSetsApi* | [**getTaxRuleSet**](docs/TaxRuleSetsApi.md#gettaxruleset) | **GET** /api/tax/rulesets/{scope}/{code} | [EXPERIMENTAL] GetTaxRuleSet: Retrieve the definition of single tax rule set.
@@ -2316,6 +2322,9 @@ Class | Method | HTTP request | Description
  - [PutRedemptionEvent](docs/PutRedemptionEvent.md)
  - [QualifierDefinition](docs/QualifierDefinition.md)
  - [QualifierDefinitionRequest](docs/QualifierDefinitionRequest.md)
+ - [QualifyingInvestmentsCrossing](docs/QualifyingInvestmentsCrossing.md)
+ - [QualifyingInvestmentsHistory](docs/QualifyingInvestmentsHistory.md)
+ - [QualifyingInvestmentsObservation](docs/QualifyingInvestmentsObservation.md)
  - [QuantityInstructed](docs/QuantityInstructed.md)
  - [QueryApplicableInstrumentEventsRequest](docs/QueryApplicableInstrumentEventsRequest.md)
  - [QueryBucketCashFlowDrillDownRequest](docs/QueryBucketCashFlowDrillDownRequest.md)
@@ -2549,6 +2558,8 @@ Class | Method | HTTP request | Description
  - [ResourceListOfSeries](docs/ResourceListOfSeries.md)
  - [ResourceListOfSideDefinition](docs/ResourceListOfSideDefinition.md)
  - [ResourceListOfString](docs/ResourceListOfString.md)
+ - [ResourceListOfTaxClassification](docs/ResourceListOfTaxClassification.md)
+ - [ResourceListOfTaxClassificationExceptionRecord](docs/ResourceListOfTaxClassificationExceptionRecord.md)
  - [ResourceListOfTaxExceptionItem](docs/ResourceListOfTaxExceptionItem.md)
  - [ResourceListOfTaxRuleSet](docs/ResourceListOfTaxRuleSet.md)
  - [ResourceListOfTransaction](docs/ResourceListOfTransaction.md)
@@ -2730,6 +2741,13 @@ Class | Method | HTTP request | Description
  - [SwingTriggerEvaluation](docs/SwingTriggerEvaluation.md)
  - [TargetTaxLot](docs/TargetTaxLot.md)
  - [TargetTaxLotRequest](docs/TargetTaxLotRequest.md)
+ - [TaxClassification](docs/TaxClassification.md)
+ - [TaxClassificationDecisionStep](docs/TaxClassificationDecisionStep.md)
+ - [TaxClassificationDetail](docs/TaxClassificationDetail.md)
+ - [TaxClassificationException](docs/TaxClassificationException.md)
+ - [TaxClassificationExceptionRecord](docs/TaxClassificationExceptionRecord.md)
+ - [TaxClassificationFieldVersion](docs/TaxClassificationFieldVersion.md)
+ - [TaxClassificationInputs](docs/TaxClassificationInputs.md)
  - [TaxExceptionItem](docs/TaxExceptionItem.md)
  - [TaxExceptionRootCause](docs/TaxExceptionRootCause.md)
  - [TaxPortfolioSyncStatus](docs/TaxPortfolioSyncStatus.md)
@@ -2941,6 +2959,7 @@ Class | Method | HTTP request | Description
  - [UpsertStructuredDataResponse](docs/UpsertStructuredDataResponse.md)
  - [UpsertStructuredResultDataRequest](docs/UpsertStructuredResultDataRequest.md)
  - [UpsertSubscriptionRequest](docs/UpsertSubscriptionRequest.md)
+ - [UpsertTaxTreatmentOverrideRequest](docs/UpsertTaxTreatmentOverrideRequest.md)
  - [UpsertTransactionPropertiesResponse](docs/UpsertTransactionPropertiesResponse.md)
  - [UpsertTransferAgencyOrderRequest](docs/UpsertTransferAgencyOrderRequest.md)
  - [UpsertTransferAgencyTransactionFromOrderRequest](docs/UpsertTransferAgencyTransactionFromOrderRequest.md)
