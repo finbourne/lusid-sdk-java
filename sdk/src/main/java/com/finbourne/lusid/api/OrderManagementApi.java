@@ -2273,11 +2273,11 @@ public class OrderManagementApi {
     public APIpreviewBlocksRequest previewBlocks(PreviewBlocksRequest previewBlocksRequest) {
         return new APIpreviewBlocksRequest(previewBlocksRequest);
     }
-    private okhttp3.Call runAllocationServiceCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback) throws ApiException {
-        return runAllocationServiceCall(resourceId, allocationAlgorithm,  _callback, new ConfigurationOptions());
+    private okhttp3.Call runAllocationServiceCall(List<ResourceId> resourceId, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback _callback) throws ApiException {
+        return runAllocationServiceCall(resourceId, allocationAlgorithm, cancelAndCorrect,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call runAllocationServiceCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call runAllocationServiceCall(List<ResourceId> resourceId, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2306,6 +2306,10 @@ public class OrderManagementApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("allocationAlgorithm", allocationAlgorithm));
         }
 
+        if (cancelAndCorrect != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cancelAndCorrect", cancelAndCorrect));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2332,40 +2336,40 @@ public class OrderManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call runAllocationServiceValidateBeforeCall(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call runAllocationServiceValidateBeforeCall(List<ResourceId> resourceId, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'resourceId' is set
         if (resourceId == null) {
             throw new ApiException("Missing the required parameter 'resourceId' when calling runAllocationService(Async)");
         }
 
-        return runAllocationServiceCall(resourceId, allocationAlgorithm, _callback, opts);
+        return runAllocationServiceCall(resourceId, allocationAlgorithm, cancelAndCorrect, _callback, opts);
 
     }
 
 
-    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithHttpInfo(List<ResourceId> resourceId, String allocationAlgorithm) throws ApiException {
-        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, null, new ConfigurationOptions());
+    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithHttpInfo(List<ResourceId> resourceId, String allocationAlgorithm, Boolean cancelAndCorrect) throws ApiException {
+        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, cancelAndCorrect, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithHttpInfo(List<ResourceId> resourceId, String allocationAlgorithm, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, null, opts);
+    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithHttpInfo(List<ResourceId> resourceId, String allocationAlgorithm, Boolean cancelAndCorrect, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, cancelAndCorrect, null, opts);
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call runAllocationServiceAsync(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
+    private okhttp3.Call runAllocationServiceAsync(List<ResourceId> resourceId, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, cancelAndCorrect, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call runAllocationServiceAsync(List<ResourceId> resourceId, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call runAllocationServiceAsync(List<ResourceId> resourceId, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, _callback, opts);
+        okhttp3.Call localVarCall = runAllocationServiceValidateBeforeCall(resourceId, allocationAlgorithm, cancelAndCorrect, _callback, opts);
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2374,6 +2378,7 @@ public class OrderManagementApi {
     public class APIrunAllocationServiceRequest {
         private final List<ResourceId> resourceId;
         private String allocationAlgorithm;
+        private Boolean cancelAndCorrect;
 
         private APIrunAllocationServiceRequest(List<ResourceId> resourceId) {
             this.resourceId = resourceId;
@@ -2386,6 +2391,16 @@ public class OrderManagementApi {
          */
         public APIrunAllocationServiceRequest allocationAlgorithm(String allocationAlgorithm) {
             this.allocationAlgorithm = allocationAlgorithm;
+            return this;
+        }
+
+        /**
+         * Set cancelAndCorrect
+         * @param cancelAndCorrect Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)
+         * @return APIrunAllocationServiceRequest
+         */
+        public APIrunAllocationServiceRequest cancelAndCorrect(Boolean cancelAndCorrect) {
+            this.cancelAndCorrect = cancelAndCorrect;
             return this;
         }
 
@@ -2403,7 +2418,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return runAllocationServiceCall(resourceId, allocationAlgorithm, _callback);
+            return runAllocationServiceCall(resourceId, allocationAlgorithm, cancelAndCorrect, _callback);
         }
 
         /**
@@ -2419,7 +2434,7 @@ public class OrderManagementApi {
          </table>
          */
         public AllocationServiceRunResponse execute() throws ApiException {
-            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm);
+            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, cancelAndCorrect);
             return localVarResp.getData();
         }
 
@@ -2436,7 +2451,7 @@ public class OrderManagementApi {
          </table>
          */
         public AllocationServiceRunResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, opts);
+            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, cancelAndCorrect, opts);
             return localVarResp.getData();
         }
 
@@ -2453,7 +2468,7 @@ public class OrderManagementApi {
          </table>
          */
         public ApiResponse<AllocationServiceRunResponse> executeWithHttpInfo() throws ApiException {
-            return runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm);
+            return runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, cancelAndCorrect);
         }
 
         /**
@@ -2469,7 +2484,7 @@ public class OrderManagementApi {
          </table>
          */
         public ApiResponse<AllocationServiceRunResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, opts);
+            return runAllocationServiceWithHttpInfo(resourceId, allocationAlgorithm, cancelAndCorrect, opts);
         }
 
         /**
@@ -2486,7 +2501,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
-            return runAllocationServiceAsync(resourceId, allocationAlgorithm, _callback);
+            return runAllocationServiceAsync(resourceId, allocationAlgorithm, cancelAndCorrect, _callback);
         }
 
         /**
@@ -2503,7 +2518,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return runAllocationServiceAsync(resourceId, allocationAlgorithm, _callback, opts);
+            return runAllocationServiceAsync(resourceId, allocationAlgorithm, cancelAndCorrect, _callback, opts);
         }
     }
 
@@ -2523,11 +2538,11 @@ public class OrderManagementApi {
     public APIrunAllocationServiceRequest runAllocationService(List<ResourceId> resourceId) {
         return new APIrunAllocationServiceRequest(resourceId);
     }
-    private okhttp3.Call runAllocationServiceWithWeightsCall(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback _callback) throws ApiException {
-        return runAllocationServiceWithWeightsCall(weightedAllocationServiceRunRequest, allocationAlgorithm,  _callback, new ConfigurationOptions());
+    private okhttp3.Call runAllocationServiceWithWeightsCall(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback _callback) throws ApiException {
+        return runAllocationServiceWithWeightsCall(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call runAllocationServiceWithWeightsCall(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call runAllocationServiceWithWeightsCall(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2556,6 +2571,10 @@ public class OrderManagementApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("allocationAlgorithm", allocationAlgorithm));
         }
 
+        if (cancelAndCorrect != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("cancelAndCorrect", cancelAndCorrect));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -2582,40 +2601,40 @@ public class OrderManagementApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call runAllocationServiceWithWeightsValidateBeforeCall(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call runAllocationServiceWithWeightsValidateBeforeCall(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'weightedAllocationServiceRunRequest' is set
         if (weightedAllocationServiceRunRequest == null) {
             throw new ApiException("Missing the required parameter 'weightedAllocationServiceRunRequest' when calling runAllocationServiceWithWeights(Async)");
         }
 
-        return runAllocationServiceWithWeightsCall(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback, opts);
+        return runAllocationServiceWithWeightsCall(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, _callback, opts);
 
     }
 
 
-    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm) throws ApiException {
-        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, null, new ConfigurationOptions());
+    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, Boolean cancelAndCorrect) throws ApiException {
+        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, null, opts);
+    private ApiResponse<AllocationServiceRunResponse> runAllocationServiceWithWeightsWithHttpInfo(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, Boolean cancelAndCorrect, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, null, opts);
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call runAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
+    private okhttp3.Call runAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call runAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call runAllocationServiceWithWeightsAsync(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest, String allocationAlgorithm, Boolean cancelAndCorrect, final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback, opts);
+        okhttp3.Call localVarCall = runAllocationServiceWithWeightsValidateBeforeCall(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, _callback, opts);
         Type localVarReturnType = new TypeToken<AllocationServiceRunResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2624,6 +2643,7 @@ public class OrderManagementApi {
     public class APIrunAllocationServiceWithWeightsRequest {
         private final WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest;
         private String allocationAlgorithm;
+        private Boolean cancelAndCorrect;
 
         private APIrunAllocationServiceWithWeightsRequest(WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest) {
             this.weightedAllocationServiceRunRequest = weightedAllocationServiceRunRequest;
@@ -2636,6 +2656,16 @@ public class OrderManagementApi {
          */
         public APIrunAllocationServiceWithWeightsRequest allocationAlgorithm(String allocationAlgorithm) {
             this.allocationAlgorithm = allocationAlgorithm;
+            return this;
+        }
+
+        /**
+         * Set cancelAndCorrect
+         * @param cancelAndCorrect Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)
+         * @return APIrunAllocationServiceWithWeightsRequest
+         */
+        public APIrunAllocationServiceWithWeightsRequest cancelAndCorrect(Boolean cancelAndCorrect) {
+            this.cancelAndCorrect = cancelAndCorrect;
             return this;
         }
 
@@ -2653,7 +2683,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return runAllocationServiceWithWeightsCall(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback);
+            return runAllocationServiceWithWeightsCall(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, _callback);
         }
 
         /**
@@ -2669,7 +2699,7 @@ public class OrderManagementApi {
          </table>
          */
         public AllocationServiceRunResponse execute() throws ApiException {
-            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm);
+            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect);
             return localVarResp.getData();
         }
 
@@ -2686,7 +2716,7 @@ public class OrderManagementApi {
          </table>
          */
         public AllocationServiceRunResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, opts);
+            ApiResponse<AllocationServiceRunResponse> localVarResp = runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, opts);
             return localVarResp.getData();
         }
 
@@ -2703,7 +2733,7 @@ public class OrderManagementApi {
          </table>
          */
         public ApiResponse<AllocationServiceRunResponse> executeWithHttpInfo() throws ApiException {
-            return runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm);
+            return runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect);
         }
 
         /**
@@ -2719,7 +2749,7 @@ public class OrderManagementApi {
          </table>
          */
         public ApiResponse<AllocationServiceRunResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, opts);
+            return runAllocationServiceWithWeightsWithHttpInfo(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, opts);
         }
 
         /**
@@ -2736,7 +2766,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AllocationServiceRunResponse> _callback) throws ApiException {
-            return runAllocationServiceWithWeightsAsync(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback);
+            return runAllocationServiceWithWeightsAsync(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, _callback);
         }
 
         /**
@@ -2753,7 +2783,7 @@ public class OrderManagementApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AllocationServiceRunResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return runAllocationServiceWithWeightsAsync(weightedAllocationServiceRunRequest, allocationAlgorithm, _callback, opts);
+            return runAllocationServiceWithWeightsAsync(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, _callback, opts);
         }
     }
 

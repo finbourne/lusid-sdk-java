@@ -851,7 +851,7 @@ public class OrderManagementApiExample {
 
 ## runAllocationService
 
-> AllocationServiceRunResponse runAllocationService(resourceId, allocationAlgorithm)
+> AllocationServiceRunResponse runAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect)
 
 RunAllocationService: Runs the Allocation Service
 
@@ -898,11 +898,12 @@ public class OrderManagementApiExample {
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The List of Placement IDs for which you wish to allocate Executions.
         String allocationAlgorithm = "allocationAlgorithm_example"; // String | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \"PR-FIFO\".  This defaults to \"PR-FIFO\".
+        Boolean cancelAndCorrect = false; // Boolean | Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched.
         try {
             // uncomment the below to set overrides at the request level
-            // AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm).execute(opts);
+            // AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect).execute(opts);
 
-            AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm).execute();
+            AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrderManagementApi#runAllocationService");
@@ -921,6 +922,7 @@ public class OrderManagementApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **resourceId** | [**List&lt;ResourceId&gt;**](ResourceId.md)| The List of Placement IDs for which you wish to allocate Executions. | |
 | **allocationAlgorithm** | **String**| A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. | [optional] |
+| **cancelAndCorrect** | **Boolean**| Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. | [optional] [default to false] |
 
 ### Return type
 
@@ -944,7 +946,7 @@ public class OrderManagementApiExample {
 
 ## runAllocationServiceWithWeights
 
-> AllocationServiceRunResponse runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm)
+> AllocationServiceRunResponse runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect)
 
 [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
 
@@ -991,11 +993,12 @@ public class OrderManagementApiExample {
         OrderManagementApi apiInstance = ApiFactoryBuilder.build(fileName).build(OrderManagementApi.class);
         WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest = new WeightedAllocationServiceRunRequest(); // WeightedAllocationServiceRunRequest | The placement IDs to allocate against, and the portfolio weights to use for the allocation split.
         String allocationAlgorithm = "allocationAlgorithm_example"; // String | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \"PR-LF\".  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \"PR-LF\". Valid values are \"PR-LF\", \"PR-SF\", \"LF\", \"SF\".
+        Boolean cancelAndCorrect = false; // Boolean | Whether to cancel the transactions booked against this placement's allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place.
         try {
             // uncomment the below to set overrides at the request level
-            // AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm).execute(opts);
+            // AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect).execute(opts);
 
-            AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm).execute();
+            AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrderManagementApi#runAllocationServiceWithWeights");
@@ -1014,6 +1017,7 @@ public class OrderManagementApiExample {
 |------------- | ------------- | ------------- | -------------|
 | **weightedAllocationServiceRunRequest** | [**WeightedAllocationServiceRunRequest**](WeightedAllocationServiceRunRequest.md)| The placement IDs to allocate against, and the portfolio weights to use for the allocation split. | |
 | **allocationAlgorithm** | **String**| A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. | [optional] |
+| **cancelAndCorrect** | **Boolean**| Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. | [optional] [default to false] |
 
 ### Return type
 

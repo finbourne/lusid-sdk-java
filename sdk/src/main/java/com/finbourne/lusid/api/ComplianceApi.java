@@ -5397,6 +5397,244 @@ public class ComplianceApi {
     public APIrunComplianceV3Request runComplianceV3() {
         return new APIrunComplianceV3Request();
     }
+    private okhttp3.Call runComplianceV3PreTradeCall(RunComplianceV3Request runComplianceV3Request, final ApiCallback _callback) throws ApiException {
+        return runComplianceV3PreTradeCall(runComplianceV3Request,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call runComplianceV3PreTradeCall(RunComplianceV3Request runComplianceV3Request, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = runComplianceV3Request;
+
+        // create path and map variables
+        String localVarPath = "/api/compliance/v3/runs/$pretrade";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call runComplianceV3PreTradeValidateBeforeCall(RunComplianceV3Request runComplianceV3Request, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        return runComplianceV3PreTradeCall(runComplianceV3Request, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ComplianceRunV3Response> runComplianceV3PreTradeWithHttpInfo(RunComplianceV3Request runComplianceV3Request) throws ApiException {
+        okhttp3.Call localVarCall = runComplianceV3PreTradeValidateBeforeCall(runComplianceV3Request, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRunV3Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ComplianceRunV3Response> runComplianceV3PreTradeWithHttpInfo(RunComplianceV3Request runComplianceV3Request, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = runComplianceV3PreTradeValidateBeforeCall(runComplianceV3Request, null, opts);
+        Type localVarReturnType = new TypeToken<ComplianceRunV3Response>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call runComplianceV3PreTradeAsync(RunComplianceV3Request runComplianceV3Request, final ApiCallback<ComplianceRunV3Response> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = runComplianceV3PreTradeValidateBeforeCall(runComplianceV3Request, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ComplianceRunV3Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call runComplianceV3PreTradeAsync(RunComplianceV3Request runComplianceV3Request, final ApiCallback<ComplianceRunV3Response> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = runComplianceV3PreTradeValidateBeforeCall(runComplianceV3Request, _callback, opts);
+        Type localVarReturnType = new TypeToken<ComplianceRunV3Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIrunComplianceV3PreTradeRequest {
+        private RunComplianceV3Request runComplianceV3Request;
+
+        private APIrunComplianceV3PreTradeRequest() {
+        }
+
+        /**
+         * Set runComplianceV3Request
+         * @param runComplianceV3Request  (optional)
+         * @return APIrunComplianceV3PreTradeRequest
+         */
+        public APIrunComplianceV3PreTradeRequest runComplianceV3Request(RunComplianceV3Request runComplianceV3Request) {
+            this.runComplianceV3Request = runComplianceV3Request;
+            return this;
+        }
+
+        /**
+         * Build call for runComplianceV3PreTrade
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of each V3 compliance rule that was run pre-trade. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return runComplianceV3PreTradeCall(runComplianceV3Request, _callback);
+        }
+
+        /**
+         * Execute runComplianceV3PreTrade request
+         * @return ComplianceRunV3Response
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of each V3 compliance rule that was run pre-trade. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRunV3Response execute() throws ApiException {
+            ApiResponse<ComplianceRunV3Response> localVarResp = runComplianceV3PreTradeWithHttpInfo(runComplianceV3Request);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute runComplianceV3PreTrade request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ComplianceRunV3Response
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of each V3 compliance rule that was run pre-trade. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ComplianceRunV3Response execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ComplianceRunV3Response> localVarResp = runComplianceV3PreTradeWithHttpInfo(runComplianceV3Request, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute runComplianceV3PreTrade request with HTTP info returned
+         * @return ApiResponse&lt;ComplianceRunV3Response&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of each V3 compliance rule that was run pre-trade. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRunV3Response> executeWithHttpInfo() throws ApiException {
+            return runComplianceV3PreTradeWithHttpInfo(runComplianceV3Request);
+        }
+
+        /**
+         * Execute runComplianceV3PreTrade request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ComplianceRunV3Response&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of each V3 compliance rule that was run pre-trade. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ComplianceRunV3Response> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return runComplianceV3PreTradeWithHttpInfo(runComplianceV3Request, opts);
+        }
+
+        /**
+         * Execute runComplianceV3PreTrade request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of each V3 compliance rule that was run pre-trade. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunV3Response> _callback) throws ApiException {
+            return runComplianceV3PreTradeAsync(runComplianceV3Request, _callback);
+        }
+
+        /**
+         * Execute runComplianceV3PreTrade request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The result of each V3 compliance rule that was run pre-trade. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ComplianceRunV3Response> _callback, ConfigurationOptions opts) throws ApiException {
+            return runComplianceV3PreTradeAsync(runComplianceV3Request, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] RunComplianceV3PreTrade: [EXPERIMENTAL] Run V3 compliance rules pre-trade against a portfolio group.
+     * Use this endpoint to run one or more V3 compliance rules against a portfolio group including its live  order flow (pre-trade), valuing holdings with the supplied recipe, and return each rule&#39;s result.
+     * @return APIrunComplianceV3PreTradeRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The result of each V3 compliance rule that was run pre-trade. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIrunComplianceV3PreTradeRequest runComplianceV3PreTrade() {
+        return new APIrunComplianceV3PreTradeRequest();
+    }
     private okhttp3.Call updateComplianceTemplateCall(String scope, String code, UpdateComplianceTemplateRequest updateComplianceTemplateRequest, final ApiCallback _callback) throws ApiException {
         return updateComplianceTemplateCall(scope, code, updateComplianceTemplateRequest,  _callback, new ConfigurationOptions());
     }

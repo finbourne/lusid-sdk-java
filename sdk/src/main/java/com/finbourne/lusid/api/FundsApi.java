@@ -61,6 +61,7 @@ import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntries;
 import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntry;
 import com.finbourne.lusid.model.PagedResourceListOfFundPartner;
 import com.finbourne.lusid.model.PagedResourceListOfPartnerCapitalAccount;
+import com.finbourne.lusid.model.PagedResourceListOfTaxCostRecord;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointInstrument;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview;
 import com.finbourne.lusid.model.PartnerAllocationRunRequest;
@@ -83,11 +84,13 @@ import com.finbourne.lusid.model.RevertValuationPointResponse;
 import com.finbourne.lusid.model.SeriesDefinitionRequest;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
+import com.finbourne.lusid.model.TaxCostRecordRequest;
 import com.finbourne.lusid.model.TaxSyncStatus;
 import com.finbourne.lusid.model.UpdateValuationPointRequest;
 import com.finbourne.lusid.model.UpsertExternalDealingEstimatesRequest;
 import com.finbourne.lusid.model.UpsertExternalDealingEstimatesResponse;
 import com.finbourne.lusid.model.UpsertFundBookmarkRequest;
+import com.finbourne.lusid.model.UpsertTaxCostRecordsResponse;
 import com.finbourne.lusid.model.UpsertValuationPointRequest;
 import com.finbourne.lusid.model.ValuationPoint;
 import com.finbourne.lusid.model.ValuationPointDataQueryParameters;
@@ -4564,6 +4567,256 @@ public class FundsApi {
      */
     public APIdeleteSeriesRequest deleteSeries(String scope, String code, String shareClassCode, String seriesIdentifier) {
         return new APIdeleteSeriesRequest(scope, code, shareClassCode, seriesIdentifier);
+    }
+    private okhttp3.Call deleteTaxCostRecordCall(String scope, String code, String taxCostRecordCode, final ApiCallback _callback) throws ApiException {
+        return deleteTaxCostRecordCall(scope, code, taxCostRecordCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteTaxCostRecordCall(String scope, String code, String taxCostRecordCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/taxcostrecords/{taxCostRecordCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "taxCostRecordCode" + "}", localVarApiClient.escapeString(taxCostRecordCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteTaxCostRecordValidateBeforeCall(String scope, String code, String taxCostRecordCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteTaxCostRecord(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteTaxCostRecord(Async)");
+        }
+
+        // verify the required parameter 'taxCostRecordCode' is set
+        if (taxCostRecordCode == null) {
+            throw new ApiException("Missing the required parameter 'taxCostRecordCode' when calling deleteTaxCostRecord(Async)");
+        }
+
+        return deleteTaxCostRecordCall(scope, code, taxCostRecordCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteTaxCostRecordWithHttpInfo(String scope, String code, String taxCostRecordCode) throws ApiException {
+        okhttp3.Call localVarCall = deleteTaxCostRecordValidateBeforeCall(scope, code, taxCostRecordCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteTaxCostRecordWithHttpInfo(String scope, String code, String taxCostRecordCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteTaxCostRecordValidateBeforeCall(scope, code, taxCostRecordCode, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteTaxCostRecordAsync(String scope, String code, String taxCostRecordCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTaxCostRecordValidateBeforeCall(scope, code, taxCostRecordCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteTaxCostRecordAsync(String scope, String code, String taxCostRecordCode, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteTaxCostRecordValidateBeforeCall(scope, code, taxCostRecordCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteTaxCostRecordRequest {
+        private final String scope;
+        private final String code;
+        private final String taxCostRecordCode;
+
+        private APIdeleteTaxCostRecordRequest(String scope, String code, String taxCostRecordCode) {
+            this.scope = scope;
+            this.code = code;
+            this.taxCostRecordCode = taxCostRecordCode;
+        }
+
+        /**
+         * Build call for deleteTaxCostRecord
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Tax Cost Record was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteTaxCostRecordCall(scope, code, taxCostRecordCode, _callback);
+        }
+
+        /**
+         * Execute deleteTaxCostRecord request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Tax Cost Record was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTaxCostRecordWithHttpInfo(scope, code, taxCostRecordCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteTaxCostRecord request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Tax Cost Record was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteTaxCostRecordWithHttpInfo(scope, code, taxCostRecordCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteTaxCostRecord request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Tax Cost Record was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteTaxCostRecordWithHttpInfo(scope, code, taxCostRecordCode);
+        }
+
+        /**
+         * Execute deleteTaxCostRecord request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Tax Cost Record was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteTaxCostRecordWithHttpInfo(scope, code, taxCostRecordCode, opts);
+        }
+
+        /**
+         * Execute deleteTaxCostRecord request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Tax Cost Record was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteTaxCostRecordAsync(scope, code, taxCostRecordCode, _callback);
+        }
+
+        /**
+         * Execute deleteTaxCostRecord request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the Tax Cost Record was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteTaxCostRecordAsync(scope, code, taxCostRecordCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteTaxCostRecord: [EXPERIMENTAL] DeleteTaxCostRecord: Delete a Tax Cost Record.
+     * Delete the given Tax Cost Record.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param taxCostRecordCode The code of the Tax Cost Record to be deleted. (required)
+     * @return APIdeleteTaxCostRecordRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Tax Cost Record was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteTaxCostRecordRequest deleteTaxCostRecord(String scope, String code, String taxCostRecordCode) {
+        return new APIdeleteTaxCostRecordRequest(scope, code, taxCostRecordCode);
     }
     private okhttp3.Call deleteValuationPointCall(String scope, String code, String diaryEntryCode, String diaryEntryCodeVariant, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return deleteValuationPointCall(scope, code, diaryEntryCode, diaryEntryCodeVariant, navTypeCode,  _callback, new ConfigurationOptions());
@@ -15996,6 +16249,337 @@ public class FundsApi {
     public APIlistPartnerStatementsRequest listPartnerStatements(String scope, String code, String investorRecordId) {
         return new APIlistPartnerStatementsRequest(scope, code, investorRecordId);
     }
+    private okhttp3.Call listTaxCostRecordsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback) throws ApiException {
+        return listTaxCostRecordsCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTaxCostRecordsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/taxcostrecords"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listTaxCostRecordsValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listTaxCostRecords(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listTaxCostRecords(Async)");
+        }
+
+        return listTaxCostRecordsCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfTaxCostRecord> listTaxCostRecordsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = listTaxCostRecordsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTaxCostRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfTaxCostRecord> listTaxCostRecordsWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTaxCostRecordsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTaxCostRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listTaxCostRecordsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfTaxCostRecord> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxCostRecordsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTaxCostRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTaxCostRecordsAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, final ApiCallback<PagedResourceListOfTaxCostRecord> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxCostRecordsValidateBeforeCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfTaxCostRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistTaxCostRecordsRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+
+        private APIlistTaxCostRecordsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to list the Tax Cost Records. Defaults to the current LUSID   system datetime if not specified. (optional)
+         * @return APIlistTaxCostRecordsRequest
+         */
+        public APIlistTaxCostRecordsRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to list the Tax Cost Records. Defaults to returning the latest version of each record if not specified. (optional)
+         * @return APIlistTaxCostRecordsRequest
+         */
+        public APIlistTaxCostRecordsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing Tax Cost Records; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistTaxCostRecordsRequest
+         */
+        public APIlistTaxCostRecordsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistTaxCostRecordsRequest
+         */
+        public APIlistTaxCostRecordsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results.   For example, to filter on the portfolio code, specify \&quot;portfolioCode eq &#39;MyPortfolio&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
+         * @return APIlistTaxCostRecordsRequest
+         */
+        public APIlistTaxCostRecordsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @return APIlistTaxCostRecordsRequest
+         */
+        public APIlistTaxCostRecordsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Build call for listTaxCostRecords
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Tax Cost Records. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listTaxCostRecordsCall(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listTaxCostRecords request
+         * @return PagedResourceListOfTaxCostRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Tax Cost Records. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfTaxCostRecord execute() throws ApiException {
+            ApiResponse<PagedResourceListOfTaxCostRecord> localVarResp = listTaxCostRecordsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTaxCostRecords request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfTaxCostRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Tax Cost Records. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfTaxCostRecord execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfTaxCostRecord> localVarResp = listTaxCostRecordsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTaxCostRecords request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfTaxCostRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Tax Cost Records. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfTaxCostRecord> executeWithHttpInfo() throws ApiException {
+            return listTaxCostRecordsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy);
+        }
+
+        /**
+         * Execute listTaxCostRecords request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfTaxCostRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Tax Cost Records. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfTaxCostRecord> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTaxCostRecordsWithHttpInfo(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, opts);
+        }
+
+        /**
+         * Execute listTaxCostRecords request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Tax Cost Records. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfTaxCostRecord> _callback) throws ApiException {
+            return listTaxCostRecordsAsync(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback);
+        }
+
+        /**
+         * Execute listTaxCostRecords request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested Tax Cost Records. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfTaxCostRecord> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTaxCostRecordsAsync(scope, code, effectiveAt, asAt, page, limit, filter, sortBy, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ListTaxCostRecords: [EXPERIMENTAL] ListTaxCostRecords: List Tax Cost Records for a specified Fund.
+     * List all the Tax Cost Records matching a particular criteria.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @return APIlistTaxCostRecordsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Tax Cost Records. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistTaxCostRecordsRequest listTaxCostRecords(String scope, String code) {
+        return new APIlistTaxCostRecordsRequest(scope, code);
+    }
     private okhttp3.Call listTaxExceptionsCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return listTaxExceptionsCall(scope, code, effectiveAt, asAt,  _callback, new ConfigurationOptions());
     }
@@ -21729,5 +22313,258 @@ public class FundsApi {
      */
     public APIupsertNavActivityAdjustmentsRequest upsertNavActivityAdjustments(String scope, String code, String valuationPointCode, List<NavActivityAdjustment> navActivityAdjustment) {
         return new APIupsertNavActivityAdjustmentsRequest(scope, code, valuationPointCode, navActivityAdjustment);
+    }
+    private okhttp3.Call upsertTaxCostRecordsCall(String scope, String code, Map<String, TaxCostRecordRequest> requestBody, final ApiCallback _callback) throws ApiException {
+        return upsertTaxCostRecordsCall(scope, code, requestBody,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertTaxCostRecordsCall(String scope, String code, Map<String, TaxCostRecordRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/taxcostrecords"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertTaxCostRecordsValidateBeforeCall(String scope, String code, Map<String, TaxCostRecordRequest> requestBody, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertTaxCostRecords(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertTaxCostRecords(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling upsertTaxCostRecords(Async)");
+        }
+
+        return upsertTaxCostRecordsCall(scope, code, requestBody, _callback, opts);
+
+    }
+
+
+    private ApiResponse<UpsertTaxCostRecordsResponse> upsertTaxCostRecordsWithHttpInfo(String scope, String code, Map<String, TaxCostRecordRequest> requestBody) throws ApiException {
+        okhttp3.Call localVarCall = upsertTaxCostRecordsValidateBeforeCall(scope, code, requestBody, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertTaxCostRecordsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<UpsertTaxCostRecordsResponse> upsertTaxCostRecordsWithHttpInfo(String scope, String code, Map<String, TaxCostRecordRequest> requestBody, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertTaxCostRecordsValidateBeforeCall(scope, code, requestBody, null, opts);
+        Type localVarReturnType = new TypeToken<UpsertTaxCostRecordsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertTaxCostRecordsAsync(String scope, String code, Map<String, TaxCostRecordRequest> requestBody, final ApiCallback<UpsertTaxCostRecordsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTaxCostRecordsValidateBeforeCall(scope, code, requestBody, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<UpsertTaxCostRecordsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertTaxCostRecordsAsync(String scope, String code, Map<String, TaxCostRecordRequest> requestBody, final ApiCallback<UpsertTaxCostRecordsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertTaxCostRecordsValidateBeforeCall(scope, code, requestBody, _callback, opts);
+        Type localVarReturnType = new TypeToken<UpsertTaxCostRecordsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertTaxCostRecordsRequest {
+        private final String scope;
+        private final String code;
+        private final Map<String, TaxCostRecordRequest> requestBody;
+
+        private APIupsertTaxCostRecordsRequest(String scope, String code, Map<String, TaxCostRecordRequest> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Build call for upsertTaxCostRecords
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Tax Cost Records upserted and any that failed, keyed by the record code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertTaxCostRecordsCall(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertTaxCostRecords request
+         * @return UpsertTaxCostRecordsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Tax Cost Records upserted and any that failed, keyed by the record code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertTaxCostRecordsResponse execute() throws ApiException {
+            ApiResponse<UpsertTaxCostRecordsResponse> localVarResp = upsertTaxCostRecordsWithHttpInfo(scope, code, requestBody);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertTaxCostRecords request. Use any specified configuration options to override any other configuration for this request only.
+         * @return UpsertTaxCostRecordsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Tax Cost Records upserted and any that failed, keyed by the record code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public UpsertTaxCostRecordsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<UpsertTaxCostRecordsResponse> localVarResp = upsertTaxCostRecordsWithHttpInfo(scope, code, requestBody, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertTaxCostRecords request with HTTP info returned
+         * @return ApiResponse&lt;UpsertTaxCostRecordsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Tax Cost Records upserted and any that failed, keyed by the record code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertTaxCostRecordsResponse> executeWithHttpInfo() throws ApiException {
+            return upsertTaxCostRecordsWithHttpInfo(scope, code, requestBody);
+        }
+
+        /**
+         * Execute upsertTaxCostRecords request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;UpsertTaxCostRecordsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Tax Cost Records upserted and any that failed, keyed by the record code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<UpsertTaxCostRecordsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertTaxCostRecordsWithHttpInfo(scope, code, requestBody, opts);
+        }
+
+        /**
+         * Execute upsertTaxCostRecords request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Tax Cost Records upserted and any that failed, keyed by the record code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertTaxCostRecordsResponse> _callback) throws ApiException {
+            return upsertTaxCostRecordsAsync(scope, code, requestBody, _callback);
+        }
+
+        /**
+         * Execute upsertTaxCostRecords request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Tax Cost Records upserted and any that failed, keyed by the record code. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<UpsertTaxCostRecordsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertTaxCostRecordsAsync(scope, code, requestBody, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpsertTaxCostRecords: [EXPERIMENTAL] UpsertTaxCostRecords: Upsert Tax Cost Records for a specified Fund.
+     * Create or update Tax Cost Records for the given Fund. Each record is keyed by its code; a record with an  existing code is replaced in full.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param requestBody The Tax Cost Records to upsert, keyed by the code of each record. (required)
+     * @return APIupsertTaxCostRecordsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Tax Cost Records upserted and any that failed, keyed by the record code. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertTaxCostRecordsRequest upsertTaxCostRecords(String scope, String code, Map<String, TaxCostRecordRequest> requestBody) {
+        return new APIupsertTaxCostRecordsRequest(scope, code, requestBody);
     }
 }

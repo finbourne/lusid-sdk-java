@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **fundValuationSchedule** | [**FundValuationSchedule**](FundValuationSchedule.md) |  | [default to FundValuationSchedule]
 **marketDataOverrides** | [**MarketDataOverrides**](MarketDataOverrides.md) |  | [optional] [default to MarketDataOverrides]
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**recipeId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.FundValuationRequest;
@@ -34,6 +35,7 @@ OrderFlowConfiguration IncludeOrderFlow = new OrderFlowConfiguration();
 FundValuationSchedule FundValuationSchedule = new FundValuationSchedule();
 MarketDataOverrides MarketDataOverrides = new MarketDataOverrides();
 ResourceId CorporateActionSourceId = new ResourceId();
+ResourceId RecipeId = new ResourceId();
 
 
 FundValuationRequest fundValuationRequestInstance = new FundValuationRequest()
@@ -47,7 +49,8 @@ FundValuationRequest fundValuationRequestInstance = new FundValuationRequest()
     .IncludeOrderFlow(IncludeOrderFlow)
     .FundValuationSchedule(FundValuationSchedule)
     .MarketDataOverrides(MarketDataOverrides)
-    .CorporateActionSourceId(CorporateActionSourceId);
+    .CorporateActionSourceId(CorporateActionSourceId)
+    .RecipeId(RecipeId);
 ```
 
 

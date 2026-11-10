@@ -24,6 +24,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**runCompliance**](ComplianceApi.md#runCompliance) | **POST** /api/compliance/runs | [EARLY ACCESS] RunCompliance: Run a compliance check. |
 | [**runCompliancePreview**](ComplianceApi.md#runCompliancePreview) | **POST** /api/compliance/preview/runs | [EARLY ACCESS] RunCompliancePreview: Run a compliance check. |
 | [**runComplianceV3**](ComplianceApi.md#runComplianceV3) | **POST** /api/compliance/v3/runs | [EXPERIMENTAL] RunComplianceV3: [EXPERIMENTAL] Run V3 compliance rules against a portfolio group. |
+| [**runComplianceV3PreTrade**](ComplianceApi.md#runComplianceV3PreTrade) | **POST** /api/compliance/v3/runs/$pretrade | [EXPERIMENTAL] RunComplianceV3PreTrade: [EXPERIMENTAL] Run V3 compliance rules pre-trade against a portfolio group. |
 | [**updateComplianceTemplate**](ComplianceApi.md#updateComplianceTemplate) | **PUT** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] UpdateComplianceTemplate: Update a ComplianceRuleTemplate |
 | [**upsertComplianceRule**](ComplianceApi.md#upsertComplianceRule) | **POST** /api/compliance/rules | [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule. |
 | [**upsertComplianceRuleV3**](ComplianceApi.md#upsertComplianceRuleV3) | **POST** /api/compliance/v3/rules | [EXPERIMENTAL] UpsertComplianceRuleV3: [EXPERIMENTAL] Upsert a V3 compliance rule. |
@@ -1942,6 +1943,97 @@ public class ComplianceApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The result of each V3 compliance rule that was run. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## runComplianceV3PreTrade
+
+> ComplianceRunV3Response runComplianceV3PreTrade(runComplianceV3Request)
+
+[EXPERIMENTAL] RunComplianceV3PreTrade: [EXPERIMENTAL] Run V3 compliance rules pre-trade against a portfolio group.
+
+Use this endpoint to run one or more V3 compliance rules against a portfolio group including its live  order flow (pre-trade), valuing holdings with the supplied recipe, and return each rule&#39;s result.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ComplianceApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ComplianceApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ComplianceApi apiInstance = apiFactory.build(ComplianceApi.class);
+
+        ComplianceApi apiInstance = ApiFactoryBuilder.build(fileName).build(ComplianceApi.class);
+        RunComplianceV3Request runComplianceV3Request = new RunComplianceV3Request(); // RunComplianceV3Request | 
+        try {
+            // uncomment the below to set overrides at the request level
+            // ComplianceRunV3Response result = apiInstance.runComplianceV3PreTrade(runComplianceV3Request).execute(opts);
+
+            ComplianceRunV3Response result = apiInstance.runComplianceV3PreTrade(runComplianceV3Request).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ComplianceApi#runComplianceV3PreTrade");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **runComplianceV3Request** | [**RunComplianceV3Request**](RunComplianceV3Request.md)|  | [optional] |
+
+### Return type
+
+[**ComplianceRunV3Response**](ComplianceRunV3Response.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The result of each V3 compliance rule that was run pre-trade. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

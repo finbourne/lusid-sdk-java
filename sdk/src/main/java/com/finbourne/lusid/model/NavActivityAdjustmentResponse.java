@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class NavActivityAdjustmentResponse {
   /**
-   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment, InstrumentEventActivityAdjustment.
    */
   @JsonAdapter(NavActivityAdjustmentTypeEnum.Adapter.class)
   public enum NavActivityAdjustmentTypeEnum {
@@ -62,7 +62,9 @@ public class NavActivityAdjustmentResponse {
     
     QUOTEACTIVITYADJUSTMENT("QuoteActivityAdjustment"),
     
-    COMPLEXMARKETDATAACTIVITYADJUSTMENT("ComplexMarketDataActivityAdjustment");
+    COMPLEXMARKETDATAACTIVITYADJUSTMENT("ComplexMarketDataActivityAdjustment"),
+    
+    INSTRUMENTEVENTACTIVITYADJUSTMENT("InstrumentEventActivityAdjustment");
 
     private String value;
 
@@ -116,7 +118,7 @@ public class NavActivityAdjustmentResponse {
   }
 
    /**
-   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment.
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment, InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment, InstrumentEventActivityAdjustment.
    * @return navActivityAdjustmentType
   **/
   @jakarta.annotation.Nonnull
@@ -202,6 +204,9 @@ public class NavActivityAdjustmentResponse {
           break;
         case "InstrumentActivityAdjustment":
           InstrumentActivityAdjustment.validateJsonElement(jsonElement);
+          break;
+        case "InstrumentEventActivityAdjustment":
+          InstrumentEventActivityAdjustment.validateJsonElement(jsonElement);
           break;
         case "PortfolioSettlementInstructionAdjustment":
           PortfolioSettlementInstructionAdjustment.validateJsonElement(jsonElement);

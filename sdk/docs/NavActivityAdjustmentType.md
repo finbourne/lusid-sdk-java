@@ -19,6 +19,7 @@ NavActivityAdjustmentType method = NavActivityAdjustmentType.PORTFOLIOSETTLEMENT
 NavActivityAdjustmentType method = NavActivityAdjustmentType.INSTRUMENTACTIVITY;
 NavActivityAdjustmentType method = NavActivityAdjustmentType.QUOTEACTIVITY;
 NavActivityAdjustmentType method = NavActivityAdjustmentType.COMPLEXMARKETDATAACTIVITY;
+NavActivityAdjustmentType method = NavActivityAdjustmentType.INSTRUMENTEVENTACTIVITY;
 ```
 
 

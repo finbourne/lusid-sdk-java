@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10567
+  version: 0.11.10578
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -31929,6 +31929,131 @@ paths:
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/compliance/v3/runs/$pretrade:
+    post:
+      description: "Use this endpoint to run one or more V3 compliance rules against\
+        \ a portfolio group including its live\r\norder flow (pre-trade), valuing\
+        \ holdings with the supplied recipe, and return each rule's result."
+      operationId: RunComplianceV3PreTrade
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              ruleIds:
+              - scope: ComplianceV3
+                code: EquityConcentration
+              portfolioGroupId:
+                scope: ComplianceV3
+                code: GlobalEquity
+              recipeId:
+                scope: ComplianceV3
+                code: Default
+              evaluationMode: PerPortfolio
+            schema:
+              $ref: '#/components/schemas/RunComplianceV3Request'
+          application/json:
+            example:
+              ruleIds:
+              - scope: ComplianceV3
+                code: EquityConcentration
+              portfolioGroupId:
+                scope: ComplianceV3
+                code: GlobalEquity
+              recipeId:
+                scope: ComplianceV3
+                code: Default
+              evaluationMode: PerPortfolio
+            schema:
+              $ref: '#/components/schemas/RunComplianceV3Request'
+          text/json:
+            example:
+              ruleIds:
+              - scope: ComplianceV3
+                code: EquityConcentration
+              portfolioGroupId:
+                scope: ComplianceV3
+                code: GlobalEquity
+              recipeId:
+                scope: ComplianceV3
+                code: Default
+              evaluationMode: PerPortfolio
+            schema:
+              $ref: '#/components/schemas/RunComplianceV3Request'
+          application/*+json:
+            example:
+              ruleIds:
+              - scope: ComplianceV3
+                code: EquityConcentration
+              portfolioGroupId:
+                scope: ComplianceV3
+                code: GlobalEquity
+              recipeId:
+                scope: ComplianceV3
+                code: Default
+              evaluationMode: PerPortfolio
+            schema:
+              $ref: '#/components/schemas/RunComplianceV3Request'
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                ruleResults:
+                - ruleId:
+                    scope: ComplianceV3
+                    code: EquityConcentration
+                  status: Passed
+                  results: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRunV3Response'
+            application/json:
+              example:
+                ruleResults:
+                - ruleId:
+                    scope: ComplianceV3
+                    code: EquityConcentration
+                  status: Passed
+                  results: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRunV3Response'
+            text/json:
+              example:
+                ruleResults:
+                - ruleId:
+                    scope: ComplianceV3
+                    code: EquityConcentration
+                  status: Passed
+                  results: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRunV3Response'
+          description: The result of each V3 compliance rule that was run pre-trade.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] RunComplianceV3PreTrade: [EXPERIMENTAL] Run V3 compliance\
+        \ rules pre-trade against a portfolio group."
+      tags:
+      - Compliance
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/conventions/credit/conventions:
     get:
       description: List the set of CDS Flow Conventions at the specified date/time
@@ -52642,6 +52767,9 @@ paths:
                 diaryEntry: DiaryEntryMarch2018
                 holidayCalendars: []
                 valuationDateTimes: []
+              recipeId:
+                scope: Finbourne-Examples
+                code: SupplementaryReportingRecipe
             schema:
               $ref: '#/components/schemas/FundValuationRequest'
           application/json:
@@ -52669,6 +52797,9 @@ paths:
                 diaryEntry: DiaryEntryMarch2018
                 holidayCalendars: []
                 valuationDateTimes: []
+              recipeId:
+                scope: Finbourne-Examples
+                code: SupplementaryReportingRecipe
             schema:
               $ref: '#/components/schemas/FundValuationRequest'
           text/json:
@@ -52696,6 +52827,9 @@ paths:
                 diaryEntry: DiaryEntryMarch2018
                 holidayCalendars: []
                 valuationDateTimes: []
+              recipeId:
+                scope: Finbourne-Examples
+                code: SupplementaryReportingRecipe
             schema:
               $ref: '#/components/schemas/FundValuationRequest'
           application/*+json:
@@ -52723,6 +52857,9 @@ paths:
                 diaryEntry: DiaryEntryMarch2018
                 holidayCalendars: []
                 valuationDateTimes: []
+              recipeId:
+                scope: Finbourne-Examples
+                code: SupplementaryReportingRecipe
             schema:
               $ref: '#/components/schemas/FundValuationRequest'
         description: The request specifying the dates (or DiaryEntry) on which to
@@ -57238,6 +57375,11 @@ paths:
               portfolioCode: portfolioCode1
               transactionId: transactionId1
               navActivityAdjustmentType: PortfolioTransaction
+            - asAt: 2024-01-01T00:00:00.0000000+00:00
+              corporateActionSourceScope: corporateActionSourceScope1
+              corporateActionSourceCode: corporateActionSourceCode1
+              instrumentEventId: instrumentEventId1
+              navActivityAdjustmentType: InstrumentEventActivity
             schema:
               items:
                 $ref: '#/components/schemas/NavActivityAdjustment'
@@ -57249,6 +57391,11 @@ paths:
               portfolioCode: portfolioCode1
               transactionId: transactionId1
               navActivityAdjustmentType: PortfolioTransaction
+            - asAt: 2024-01-01T00:00:00.0000000+00:00
+              corporateActionSourceScope: corporateActionSourceScope1
+              corporateActionSourceCode: corporateActionSourceCode1
+              instrumentEventId: instrumentEventId1
+              navActivityAdjustmentType: InstrumentEventActivity
             schema:
               items:
                 $ref: '#/components/schemas/NavActivityAdjustment'
@@ -57260,6 +57407,11 @@ paths:
               portfolioCode: portfolioCode1
               transactionId: transactionId1
               navActivityAdjustmentType: PortfolioTransaction
+            - asAt: 2024-01-01T00:00:00.0000000+00:00
+              corporateActionSourceScope: corporateActionSourceScope1
+              corporateActionSourceCode: corporateActionSourceCode1
+              instrumentEventId: instrumentEventId1
+              navActivityAdjustmentType: InstrumentEventActivity
             schema:
               items:
                 $ref: '#/components/schemas/NavActivityAdjustment'
@@ -57271,6 +57423,11 @@ paths:
               portfolioCode: portfolioCode1
               transactionId: transactionId1
               navActivityAdjustmentType: PortfolioTransaction
+            - asAt: 2024-01-01T00:00:00.0000000+00:00
+              corporateActionSourceScope: corporateActionSourceScope1
+              corporateActionSourceCode: corporateActionSourceCode1
+              instrumentEventId: instrumentEventId1
+              navActivityAdjustmentType: InstrumentEventActivity
             schema:
               items:
                 $ref: '#/components/schemas/NavActivityAdjustment'
@@ -57395,6 +57552,12 @@ paths:
               portfolioCode: portfolioCode1
               transactionId: transactionId1
               navActivityAdjustmentType: PortfolioTransactionAdjustment
+            - navActivityAdjustmentSource: Undefined
+              asAt: 2024-01-01T00:00:00.0000000+00:00
+              corporateActionSourceScope: corporateActionSourceScope1
+              corporateActionSourceCode: corporateActionSourceCode1
+              instrumentEventId: instrumentEventId1
+              navActivityAdjustmentType: InstrumentEventActivityAdjustment
             schema:
               items:
                 $ref: '#/components/schemas/NavActivityAdjustmentResponse'
@@ -57407,6 +57570,12 @@ paths:
               portfolioCode: portfolioCode1
               transactionId: transactionId1
               navActivityAdjustmentType: PortfolioTransactionAdjustment
+            - navActivityAdjustmentSource: Undefined
+              asAt: 2024-01-01T00:00:00.0000000+00:00
+              corporateActionSourceScope: corporateActionSourceScope1
+              corporateActionSourceCode: corporateActionSourceCode1
+              instrumentEventId: instrumentEventId1
+              navActivityAdjustmentType: InstrumentEventActivityAdjustment
             schema:
               items:
                 $ref: '#/components/schemas/NavActivityAdjustmentResponse'
@@ -57419,6 +57588,12 @@ paths:
               portfolioCode: portfolioCode1
               transactionId: transactionId1
               navActivityAdjustmentType: PortfolioTransactionAdjustment
+            - navActivityAdjustmentSource: Undefined
+              asAt: 2024-01-01T00:00:00.0000000+00:00
+              corporateActionSourceScope: corporateActionSourceScope1
+              corporateActionSourceCode: corporateActionSourceCode1
+              instrumentEventId: instrumentEventId1
+              navActivityAdjustmentType: InstrumentEventActivityAdjustment
             schema:
               items:
                 $ref: '#/components/schemas/NavActivityAdjustmentResponse'
@@ -57431,6 +57606,12 @@ paths:
               portfolioCode: portfolioCode1
               transactionId: transactionId1
               navActivityAdjustmentType: PortfolioTransactionAdjustment
+            - navActivityAdjustmentSource: Undefined
+              asAt: 2024-01-01T00:00:00.0000000+00:00
+              corporateActionSourceScope: corporateActionSourceScope1
+              corporateActionSourceCode: corporateActionSourceCode1
+              instrumentEventId: instrumentEventId1
+              navActivityAdjustmentType: InstrumentEventActivityAdjustment
             schema:
               items:
                 $ref: '#/components/schemas/NavActivityAdjustmentResponse'
@@ -60397,6 +60578,451 @@ paths:
       tags:
       - Funds
       x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/funds/{scope}/{code}/taxcostrecords:
+    get:
+      description: List all the Tax Cost Records matching a particular criteria.
+      operationId: ListTaxCostRecords
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The effective datetime or cut label at which to list the Tax\
+          \ Cost Records. Defaults to the current LUSID\r\n system datetime if not\
+          \ specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The asAt datetime at which to list the Tax Cost Records. Defaults
+          to returning the latest version of each record if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing Tax Cost Records;\
+          \ this\r\n value is returned from the previous call. If a pagination token\
+          \ is provided, the filter, effectiveAt\r\n and asAt fields must not have\
+          \ changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
+      - description: "When paginating, limit the results to this number. Defaults\
+          \ to 100 if not specified."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the results.\r\n For example, to filter\
+          \ on the portfolio code, specify \"portfolioCode eq 'MyPortfolio'\". For\
+          \ more information about filtering\r\n results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: "A list of field names to sort by, each suffixed by \" ASC\"\
+          \ or \" DESC\""
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - taxCostRecordCode: TaxCostRecordCode
+                  portfolioScope: PortfolioScope
+                  portfolioCode: PortfolioCode
+                  instrumentIdentifier: LUID_00003D4X
+                  navTypeCode: DefaultNavType
+                  taxCost: 1250.5
+                  carriedForwardAmount: 75.25
+                  effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                  sourceValuationPointId: VP-2024-12-31
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfTaxCostRecord'
+            application/json:
+              example:
+                values:
+                - taxCostRecordCode: TaxCostRecordCode
+                  portfolioScope: PortfolioScope
+                  portfolioCode: PortfolioCode
+                  instrumentIdentifier: LUID_00003D4X
+                  navTypeCode: DefaultNavType
+                  taxCost: 1250.5
+                  carriedForwardAmount: 75.25
+                  effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                  sourceValuationPointId: VP-2024-12-31
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfTaxCostRecord'
+            text/json:
+              example:
+                values:
+                - taxCostRecordCode: TaxCostRecordCode
+                  portfolioScope: PortfolioScope
+                  portfolioCode: PortfolioCode
+                  instrumentIdentifier: LUID_00003D4X
+                  navTypeCode: DefaultNavType
+                  taxCost: 1250.5
+                  carriedForwardAmount: 75.25
+                  effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                  sourceValuationPointId: VP-2024-12-31
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfTaxCostRecord'
+          description: The requested Tax Cost Records.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] ListTaxCostRecords: [EXPERIMENTAL] ListTaxCostRecords:\
+        \ List Tax Cost Records for a specified Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    post:
+      description: "Create or update Tax Cost Records for the given Fund. Each record\
+        \ is keyed by its code; a record with an\r\nexisting code is replaced in full."
+      operationId: UpsertTaxCostRecords
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              TaxCostRecordCode:
+                portfolioScope: PortfolioScope
+                portfolioCode: PortfolioCode
+                instrumentIdentifier: LUID_00003D4X
+                navTypeCode: DefaultNavType
+                taxCost: 1250.5
+                carriedForwardAmount: 75.25
+                effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                sourceValuationPointId: VP-2024-12-31
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/TaxCostRecordRequest'
+              type: object
+          application/json:
+            example:
+              TaxCostRecordCode:
+                portfolioScope: PortfolioScope
+                portfolioCode: PortfolioCode
+                instrumentIdentifier: LUID_00003D4X
+                navTypeCode: DefaultNavType
+                taxCost: 1250.5
+                carriedForwardAmount: 75.25
+                effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                sourceValuationPointId: VP-2024-12-31
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/TaxCostRecordRequest'
+              type: object
+          text/json:
+            example:
+              TaxCostRecordCode:
+                portfolioScope: PortfolioScope
+                portfolioCode: PortfolioCode
+                instrumentIdentifier: LUID_00003D4X
+                navTypeCode: DefaultNavType
+                taxCost: 1250.5
+                carriedForwardAmount: 75.25
+                effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                sourceValuationPointId: VP-2024-12-31
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/TaxCostRecordRequest'
+              type: object
+          application/*+json:
+            example:
+              TaxCostRecordCode:
+                portfolioScope: PortfolioScope
+                portfolioCode: PortfolioCode
+                instrumentIdentifier: LUID_00003D4X
+                navTypeCode: DefaultNavType
+                taxCost: 1250.5
+                carriedForwardAmount: 75.25
+                effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                sourceValuationPointId: VP-2024-12-31
+            schema:
+              additionalProperties:
+                $ref: '#/components/schemas/TaxCostRecordRequest'
+              type: object
+        description: "The Tax Cost Records to upsert, keyed by the code of each record."
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                successes:
+                  TaxCostRecordCode:
+                    taxCostRecordCode: TaxCostRecordCode
+                    portfolioScope: PortfolioScope
+                    portfolioCode: PortfolioCode
+                    instrumentIdentifier: LUID_00003D4X
+                    navTypeCode: DefaultNavType
+                    taxCost: 1250.5
+                    carriedForwardAmount: 75.25
+                    effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                    sourceValuationPointId: VP-2024-12-31
+                failed:
+                  FailedTaxCostRecordCode:
+                    id: FailedTaxCostRecordCode
+                    type: ExampleFailure
+                    detail: One or more problems occurred.
+              schema:
+                $ref: '#/components/schemas/UpsertTaxCostRecordsResponse'
+            application/json:
+              example:
+                successes:
+                  TaxCostRecordCode:
+                    taxCostRecordCode: TaxCostRecordCode
+                    portfolioScope: PortfolioScope
+                    portfolioCode: PortfolioCode
+                    instrumentIdentifier: LUID_00003D4X
+                    navTypeCode: DefaultNavType
+                    taxCost: 1250.5
+                    carriedForwardAmount: 75.25
+                    effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                    sourceValuationPointId: VP-2024-12-31
+                failed:
+                  FailedTaxCostRecordCode:
+                    id: FailedTaxCostRecordCode
+                    type: ExampleFailure
+                    detail: One or more problems occurred.
+              schema:
+                $ref: '#/components/schemas/UpsertTaxCostRecordsResponse'
+            text/json:
+              example:
+                successes:
+                  TaxCostRecordCode:
+                    taxCostRecordCode: TaxCostRecordCode
+                    portfolioScope: PortfolioScope
+                    portfolioCode: PortfolioCode
+                    instrumentIdentifier: LUID_00003D4X
+                    navTypeCode: DefaultNavType
+                    taxCost: 1250.5
+                    carriedForwardAmount: 75.25
+                    effectivePeriodEnd: 2024-12-31T00:00:00.0000000+00:00
+                    sourceValuationPointId: VP-2024-12-31
+                failed:
+                  FailedTaxCostRecordCode:
+                    id: FailedTaxCostRecordCode
+                    type: ExampleFailure
+                    detail: One or more problems occurred.
+              schema:
+                $ref: '#/components/schemas/UpsertTaxCostRecordsResponse'
+          description: "The Tax Cost Records upserted and any that failed, keyed by\
+            \ the record code."
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] UpsertTaxCostRecords: [EXPERIMENTAL] UpsertTaxCostRecords:\
+        \ Upsert Tax Cost Records for a specified Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/funds/{scope}/{code}/taxcostrecords/{taxCostRecordCode}:
+    delete:
+      description: Delete the given Tax Cost Record.
+      operationId: DeleteTaxCostRecord
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Tax Cost Record to be deleted.
+        explode: false
+        in: path
+        name: taxCostRecordCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The datetime that the Tax Cost Record was deleted
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] DeleteTaxCostRecord: [EXPERIMENTAL] DeleteTaxCostRecord:\
+        \ Delete a Tax Cost Record."
+      tags:
+      - Funds
+      x-fbn-apistatus: Experimental
       x-accepts: application/json
   /api/funds/{scope}/{code}/valuationPointOverview:
     get:
@@ -94696,6 +95322,20 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: form
+      - description: "Whether to re-allocate allocations that already have booked\
+          \ transactions or to skip them.\r\nThe transactions booked against the re-allocated\
+          \ allocations are cancelled, and a subsequent call to\r\nBookTransactions\
+          \ books corrected ones.\r\nDefaults to false, which leaves allocations with\
+          \ booked transactions untouched."
+        explode: true
+        in: query
+        name: cancelAndCorrect
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -95037,6 +95677,20 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: form
+      - description: "Whether to cancel the transactions booked against this placement's\
+          \ allocations once the run has re-split the\r\nfull executed quantity by\
+          \ the weights. A subsequent call to BookTransactions then books corrected\
+          \ ones.\r\nDefaults to true. Set to false to leave the booked transactions\
+          \ in place."
+        explode: true
+        in: query
+        name: cancelAndCorrect
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -220167,8 +220821,14 @@ components:
               \ payment\r\nfrequency can be any whole number of days, weeks, months,\
               \ quarters, half-years or years, for example\r\n1W, 1M or 4M. Term (T)\
               \ and business-day (BD) frequencies are not accepted. The payment dates\
-              \ roll back\r\nfrom the maturity, so a term that is not a whole number\
-              \ of payment periods has a short first period."
+              \ are\r\ngenerated as for a fixed leg with a short front stub: backwards\
+              \ from the maturity, so a term that is not\r\na whole number of payment\
+              \ periods has a short first period. When the roll convention is a day\
+              \ of the\r\nmonth (1 to 30) or EndOfMonth, each payment date falls on\
+              \ that day and the final period runs from the\r\nlast roll date to the\
+              \ maturity, for example a CDS on ABS paying on the 25th. Payments are\
+              \ adjusted to the\r\nfollowing business day. IMM and nth-weekday roll\
+              \ conventions are not accepted."
             type: boolean
           protectionDetailSpecification:
             $ref: '#/components/schemas/CdsProtectionDetailSpecification'
@@ -225717,13 +226377,14 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransaction, PortfolioSettlementInstruction,\
-              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity."
+              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity."
             enum:
             - PortfolioTransaction
             - PortfolioSettlementInstruction
             - InstrumentActivity
             - QuoteActivity
             - ComplexMarketDataActivity
+            - InstrumentEventActivity
             type: string
         required:
         - asAt
@@ -225760,13 +226421,15 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment,\
-              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment."
+              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment,\
+              \ InstrumentEventActivityAdjustment."
             enum:
             - PortfolioTransactionAdjustment
             - PortfolioSettlementInstructionAdjustment
             - InstrumentActivityAdjustment
             - QuoteActivityAdjustment
             - ComplexMarketDataActivityAdjustment
+            - InstrumentEventActivityAdjustment
             type: string
         required:
         - asAt
@@ -237673,8 +238336,14 @@ components:
               \ payment\r\nfrequency can be any whole number of days, weeks, months,\
               \ quarters, half-years or years, for example\r\n1W, 1M or 4M. Term (T)\
               \ and business-day (BD) frequencies are not accepted. The payment dates\
-              \ roll back\r\nfrom the maturity, so a term that is not a whole number\
-              \ of payment periods has a short first period."
+              \ are\r\ngenerated as for a fixed leg with a short front stub: backwards\
+              \ from the maturity, so a term that is not\r\na whole number of payment\
+              \ periods has a short first period. When the roll convention is a day\
+              \ of the\r\nmonth (1 to 30) or EndOfMonth, each payment date falls on\
+              \ that day and the final period runs from the\r\nlast roll date to the\
+              \ maturity, for example a CDS on ABS paying on the 25th. Payments are\
+              \ adjusted to the\r\nfollowing business day. IMM and nth-weekday roll\
+              \ conventions are not accepted."
             type: boolean
           protectionDetailSpecification:
             $ref: '#/components/schemas/CdsProtectionDetailSpecification'
@@ -243025,6 +243694,54 @@ components:
           type: array
       required:
       - runId
+      type: object
+    DeemedDisposal:
+      additionalProperties: false
+      description: "Settings for the deemed disposal a NAV type books at period close.\
+        \ When enabled, the in-scope holdings are\r\ntreated as sold and immediately\
+        \ re-acquired at market value, realising their unrealised gain against the\r\
+        \nchosen cost base."
+      example:
+        holdingsFilter: holdingsFilter
+        costBase: costBase
+        transactionTypeCode: transactionTypeCode
+        enabled: true
+      properties:
+        enabled:
+          description: "Whether the Nav Type books a deemed disposal at period close.\
+            \ When true, in-scope holdings are treated as sold and immediately re-acquired\
+            \ at market value, realising their unrealised gain."
+          type: boolean
+        costBase:
+          description: "The cost the deemed disposal realises against: Book or Tax.\
+            \ Defaults to Book. Book: rebases book cost to base value and posts the\
+            \ movement as realised FX; it moves the portfolio's cost, so it is only\
+            \ valid on the primary Nav Type. Tax: writes a tax cost equal to market\
+            \ value and spreads the deemed gain since the prior tax cost. Available\
+            \ values: Book, Tax."
+          nullable: true
+          type: string
+        holdingsFilter:
+          description: "An optional filter selecting which holdings are deemed disposed\
+            \ of at period close. Omit it for the cost base's default: under Book,\
+            \ every non-base-currency monetary item (cash, receivables, payables,\
+            \ accruals). Tax has no default yet, so set a filter."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: "^[\\s\\S]*$"
+          type: string
+        transactionTypeCode:
+          description: "An optional transaction type, in the Nav Type's transaction\
+            \ type scope, that the deemed disposal transactions are booked with. Omit\
+            \ it to use the domain default deemed disposal transaction type."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+      required:
+      - enabled
       type: object
     DeleteAccountsResponse:
       additionalProperties: false
@@ -257368,14 +258085,16 @@ components:
               key: key
           investorType: investorType
         primaryNavType:
+          deemedDisposal:
+            holdingsFilter: holdingsFilter
+            costBase: costBase
+            transactionTypeCode: transactionTypeCode
+            enabled: true
           subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
           transactionExclusionFilter: transactionExclusionFilter
           code: code
-          amortisationRuleSetId:
-            code: code
-            scope: scope
           swingPricing:
             thresholdPercentageOfNav: 0.5637376656633328
             inflowBasis: inflowBasis
@@ -257384,25 +258103,16 @@ components:
             code: code
             scope: scope
           displayName: displayName
-          postingModuleCodes:
-          - postingModuleCodes
-          - postingModuleCodes
           description: description
           chartOfAccountsId:
             code: code
             scope: scope
-          transactionTypeScope: transactionTypeScope
           valuationTemplateId:
             code: code
             scope: scope
-          transactionTemplateScope: transactionTemplateScope
-          cleardownModuleCodes:
-          - cleardownModuleCodes
-          - cleardownModuleCodes
           holdingRecipeId:
             code: code
             scope: scope
-          amortisationMethod: amortisationMethod
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -257412,12 +258122,24 @@ components:
               calculateTradeDateToSettlementFxPnL: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
           chargeableGainsRegime: chargeableGainsRegime
-          valuationRecipeId:
-            code: code
-            scope: scope
           leaderNavTypeCode: leaderNavTypeCode
           accountingMethod: accountingMethod
           pricingBasis: pricingBasis
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          postingModuleCodes:
+          - postingModuleCodes
+          - postingModuleCodes
+          transactionTypeScope: transactionTypeScope
+          transactionTemplateScope: transactionTemplateScope
+          cleardownModuleCodes:
+          - cleardownModuleCodes
+          - cleardownModuleCodes
+          amortisationMethod: amortisationMethod
+          valuationRecipeId:
+            code: code
+            scope: scope
           status: status
         taxTransparency: taxTransparency
         portfolioIds:
@@ -257451,14 +258173,16 @@ components:
             key: key
         investorStructure: investorStructure
         additionalNavTypes:
-        - subHoldingKeys:
+        - deemedDisposal:
+            holdingsFilter: holdingsFilter
+            costBase: costBase
+            transactionTypeCode: transactionTypeCode
+            enabled: true
+          subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
           transactionExclusionFilter: transactionExclusionFilter
           code: code
-          amortisationRuleSetId:
-            code: code
-            scope: scope
           swingPricing:
             thresholdPercentageOfNav: 0.5637376656633328
             inflowBasis: inflowBasis
@@ -257467,25 +258191,16 @@ components:
             code: code
             scope: scope
           displayName: displayName
-          postingModuleCodes:
-          - postingModuleCodes
-          - postingModuleCodes
           description: description
           chartOfAccountsId:
             code: code
             scope: scope
-          transactionTypeScope: transactionTypeScope
           valuationTemplateId:
             code: code
             scope: scope
-          transactionTemplateScope: transactionTemplateScope
-          cleardownModuleCodes:
-          - cleardownModuleCodes
-          - cleardownModuleCodes
           holdingRecipeId:
             code: code
             scope: scope
-          amortisationMethod: amortisationMethod
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -257495,21 +258210,35 @@ components:
               calculateTradeDateToSettlementFxPnL: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
           chargeableGainsRegime: chargeableGainsRegime
-          valuationRecipeId:
-            code: code
-            scope: scope
           leaderNavTypeCode: leaderNavTypeCode
           accountingMethod: accountingMethod
           pricingBasis: pricingBasis
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          postingModuleCodes:
+          - postingModuleCodes
+          - postingModuleCodes
+          transactionTypeScope: transactionTypeScope
+          transactionTemplateScope: transactionTemplateScope
+          cleardownModuleCodes:
+          - cleardownModuleCodes
+          - cleardownModuleCodes
+          amortisationMethod: amortisationMethod
+          valuationRecipeId:
+            code: code
+            scope: scope
           status: status
-        - subHoldingKeys:
+        - deemedDisposal:
+            holdingsFilter: holdingsFilter
+            costBase: costBase
+            transactionTypeCode: transactionTypeCode
+            enabled: true
+          subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
           transactionExclusionFilter: transactionExclusionFilter
           code: code
-          amortisationRuleSetId:
-            code: code
-            scope: scope
           swingPricing:
             thresholdPercentageOfNav: 0.5637376656633328
             inflowBasis: inflowBasis
@@ -257518,25 +258247,16 @@ components:
             code: code
             scope: scope
           displayName: displayName
-          postingModuleCodes:
-          - postingModuleCodes
-          - postingModuleCodes
           description: description
           chartOfAccountsId:
             code: code
             scope: scope
-          transactionTypeScope: transactionTypeScope
           valuationTemplateId:
             code: code
             scope: scope
-          transactionTemplateScope: transactionTemplateScope
-          cleardownModuleCodes:
-          - cleardownModuleCodes
-          - cleardownModuleCodes
           holdingRecipeId:
             code: code
             scope: scope
-          amortisationMethod: amortisationMethod
           settlementConfiguration:
             cashSettlement:
               calculateInstructionToPortfolioRate: true
@@ -257546,12 +258266,24 @@ components:
               calculateTradeDateToSettlementFxPnL: true
           cashGainLossCalculationDate: cashGainLossCalculationDate
           chargeableGainsRegime: chargeableGainsRegime
-          valuationRecipeId:
-            code: code
-            scope: scope
           leaderNavTypeCode: leaderNavTypeCode
           accountingMethod: accountingMethod
           pricingBasis: pricingBasis
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          postingModuleCodes:
+          - postingModuleCodes
+          - postingModuleCodes
+          transactionTypeScope: transactionTypeScope
+          transactionTemplateScope: transactionTemplateScope
+          cleardownModuleCodes:
+          - cleardownModuleCodes
+          - cleardownModuleCodes
+          amortisationMethod: amortisationMethod
+          valuationRecipeId:
+            code: code
+            scope: scope
           status: status
         createInstrument: true
       properties:
@@ -259736,6 +260468,11 @@ components:
               key: key
           investorType: investorType
         primaryNavType:
+          deemedDisposal:
+            holdingsFilter: holdingsFilter
+            costBase: costBase
+            transactionTypeCode: transactionTypeCode
+            enabled: true
           subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
@@ -259814,7 +260551,12 @@ components:
             key: key
         investorStructure: investorStructure
         additionalNavTypes:
-        - subHoldingKeys:
+        - deemedDisposal:
+            holdingsFilter: holdingsFilter
+            costBase: costBase
+            transactionTypeCode: transactionTypeCode
+            enabled: true
+          subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
           transactionExclusionFilter: transactionExclusionFilter
@@ -259864,7 +260606,12 @@ components:
           leaderNavTypeCode: leaderNavTypeCode
           accountingMethod: accountingMethod
           pricingBasis: pricingBasis
-        - subHoldingKeys:
+        - deemedDisposal:
+            holdingsFilter: holdingsFilter
+            costBase: costBase
+            transactionTypeCode: transactionTypeCode
+            enabled: true
+          subHoldingKeys:
           - subHoldingKeys
           - subHoldingKeys
           transactionExclusionFilter: transactionExclusionFilter
@@ -262289,14 +263036,16 @@ components:
                 key: key
             investorType: investorType
           primaryNavType:
+            deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -262305,25 +263054,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -262333,12 +263073,24 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
           taxTransparency: taxTransparency
           portfolioIds:
@@ -262372,14 +263124,16 @@ components:
               key: key
           investorStructure: investorStructure
           additionalNavTypes:
-          - subHoldingKeys:
+          - deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
+            subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -262388,25 +263142,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -262416,21 +263161,35 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
-          - subHoldingKeys:
+          - deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
+            subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -262439,25 +263198,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -262467,12 +263217,24 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
           createInstrument: true
         - instrumentScope: instrumentScope
@@ -262848,14 +263610,16 @@ components:
                 key: key
             investorType: investorType
           primaryNavType:
+            deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -262864,25 +263628,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -262892,12 +263647,24 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
           taxTransparency: taxTransparency
           portfolioIds:
@@ -262931,14 +263698,16 @@ components:
               key: key
           investorStructure: investorStructure
           additionalNavTypes:
-          - subHoldingKeys:
+          - deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
+            subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -262947,25 +263716,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -262975,21 +263735,35 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
-          - subHoldingKeys:
+          - deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
+            subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -262998,25 +263772,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -263026,12 +263791,24 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
           createInstrument: true
         links:
@@ -264294,6 +265071,9 @@ components:
             metricValue:
               unit: unit
               value: 0.8008281904610115
+        recipeId:
+          code: code
+          scope: scope
         equipWithSubtotals: true
       properties:
         asAt:
@@ -264356,6 +265136,8 @@ components:
         marketDataOverrides:
           $ref: '#/components/schemas/MarketDataOverrides'
         corporateActionSourceId:
+          $ref: '#/components/schemas/ResourceId'
+        recipeId:
           $ref: '#/components/schemas/ResourceId'
       required:
       - fundValuationSchedule
@@ -275522,13 +276304,14 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransaction, PortfolioSettlementInstruction,\
-              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity."
+              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity."
             enum:
             - PortfolioTransaction
             - PortfolioSettlementInstruction
             - InstrumentActivity
             - QuoteActivity
             - ComplexMarketDataActivity
+            - InstrumentEventActivity
             type: string
         required:
         - asAt
@@ -275564,13 +276347,15 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment,\
-              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment."
+              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment,\
+              \ InstrumentEventActivityAdjustment."
             enum:
             - PortfolioTransactionAdjustment
             - PortfolioSettlementInstructionAdjustment
             - InstrumentActivityAdjustment
             - QuoteActivityAdjustment
             - ComplexMarketDataActivityAdjustment
+            - InstrumentEventActivityAdjustment
             type: string
         required:
         - asAt
@@ -276750,6 +277535,107 @@ components:
       required:
       - instrumentEventType
       type: object
+    InstrumentEventActivity:
+      allOf:
+      - $ref: '#/components/schemas/NavActivityAdjustment'
+      - properties:
+          asAt:
+            description: The asAt time for which the adjustment is being applied.
+            format: date-time
+            type: string
+          corporateActionSourceScope:
+            description: The scope of the corporate action source that the instrument
+              event belongs to.
+            maxLength: 64
+            minLength: 1
+            pattern: "^[a-zA-Z0-9\\-_]+$"
+            type: string
+          corporateActionSourceCode:
+            description: The code of the corporate action source that the instrument
+              event belongs to.
+            maxLength: 64
+            minLength: 1
+            pattern: "^[a-zA-Z0-9\\-_]+$"
+            type: string
+          instrumentEventId:
+            description: The Id of the instrument event being adjusted.
+            maxLength: 64
+            minLength: 1
+            pattern: "^[a-zA-Z0-9\\-_]+$"
+            type: string
+          navActivityAdjustmentType:
+            description: "The type of the entity being applied, for example a PortfolioTransaction.\
+              \ Available values: PortfolioTransaction, PortfolioSettlementInstruction,\
+              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity."
+            enum:
+            - PortfolioTransaction
+            - PortfolioSettlementInstruction
+            - InstrumentActivity
+            - QuoteActivity
+            - ComplexMarketDataActivity
+            - InstrumentEventActivity
+            type: string
+        required:
+        - asAt
+        - corporateActionSourceCode
+        - corporateActionSourceScope
+        - instrumentEventId
+        - navActivityAdjustmentType
+        type: object
+    InstrumentEventActivityAdjustment:
+      allOf:
+      - $ref: '#/components/schemas/NavActivityAdjustmentResponse'
+      - properties:
+          navActivityAdjustmentSource:
+            description: "The post closed activity source of the given entity, for\
+              \ example Manual. Available values: Undefined, Manual, Auto."
+            minLength: 1
+            type: string
+          asAt:
+            description: The asAt time for which the adjustment is being applied.
+            format: date-time
+            type: string
+          corporateActionSourceScope:
+            description: The scope of the corporate action source that the instrument
+              event belongs to.
+            maxLength: 64
+            minLength: 1
+            pattern: "^[a-zA-Z0-9\\-_]+$"
+            type: string
+          corporateActionSourceCode:
+            description: The code of the corporate action source that the instrument
+              event belongs to.
+            maxLength: 64
+            minLength: 1
+            pattern: "^[a-zA-Z0-9\\-_]+$"
+            type: string
+          instrumentEventId:
+            description: The Id of the instrument event being adjusted.
+            maxLength: 64
+            minLength: 1
+            pattern: "^[a-zA-Z0-9\\-_]+$"
+            type: string
+          navActivityAdjustmentType:
+            description: "The type of the entity being applied, for example a PortfolioTransaction.\
+              \ Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment,\
+              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment,\
+              \ InstrumentEventActivityAdjustment."
+            enum:
+            - PortfolioTransactionAdjustment
+            - PortfolioSettlementInstructionAdjustment
+            - InstrumentActivityAdjustment
+            - QuoteActivityAdjustment
+            - ComplexMarketDataActivityAdjustment
+            - InstrumentEventActivityAdjustment
+            type: string
+        required:
+        - asAt
+        - corporateActionSourceCode
+        - corporateActionSourceScope
+        - instrumentEventId
+        - navActivityAdjustmentSource
+        - navActivityAdjustmentType
+        type: object
     InstrumentEventConfiguration:
       additionalProperties: false
       example:
@@ -284312,6 +285198,11 @@ components:
                 scope: scope
               type: String
         left:
+          recipeProvenance:
+            source: source
+            recipeId:
+              code: code
+              scope: scope
           aggregationCurrency: aggregationCurrency
           aggregationAsAt: 2000-01-23T04:56:07.000+00:00
           dataSchema:
@@ -284400,6 +285291,11 @@ components:
         - key: ""
         - key: ""
         right:
+          recipeProvenance:
+            source: source
+            recipeId:
+              code: code
+              scope: scope
           aggregationCurrency: aggregationCurrency
           aggregationAsAt: 2000-01-23T04:56:07.000+00:00
           dataSchema:
@@ -284501,6 +285397,11 @@ components:
     ListAggregationResponse:
       additionalProperties: false
       example:
+        recipeProvenance:
+          source: source
+          recipeId:
+            code: code
+            scope: scope
         aggregationCurrency: aggregationCurrency
         aggregationAsAt: 2000-01-23T04:56:07.000+00:00
         dataSchema:
@@ -284616,6 +285517,8 @@ components:
           $ref: '#/components/schemas/ResourceId'
         scenarioDiagnostics:
           $ref: '#/components/schemas/ScenarioDiagnostics'
+        recipeProvenance:
+          $ref: '#/components/schemas/RecipeProvenance'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -292056,13 +292959,14 @@ components:
         navActivityAdjustmentType:
           description: "The type of the entity being applied, for example a PortfolioTransaction.\
             \ Available values: PortfolioTransaction, PortfolioSettlementInstruction,\
-            \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity."
+            \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity."
           enum:
           - PortfolioTransaction
           - PortfolioSettlementInstruction
           - InstrumentActivity
           - QuoteActivity
           - ComplexMarketDataActivity
+          - InstrumentEventActivity
           type: string
       required:
       - navActivityAdjustmentType
@@ -292077,13 +292981,15 @@ components:
         navActivityAdjustmentType:
           description: "The type of the entity being applied, for example a PortfolioTransaction.\
             \ Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment,\
-            \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment."
+            \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment,\
+            \ InstrumentEventActivityAdjustment."
           enum:
           - PortfolioTransactionAdjustment
           - PortfolioSettlementInstructionAdjustment
           - InstrumentActivityAdjustment
           - QuoteActivityAdjustment
           - ComplexMarketDataActivityAdjustment
+          - InstrumentEventActivityAdjustment
           type: string
       required:
       - navActivityAdjustmentType
@@ -292096,6 +293002,7 @@ components:
       - InstrumentActivityAdjustment
       - QuoteActivityAdjustment
       - ComplexMarketDataActivityAdjustment
+      - InstrumentEventActivityAdjustment
       type: string
     NavActivityAdjustmentType:
       description: Discriminator for NavActivityAdjustment
@@ -292105,6 +293012,7 @@ components:
       - InstrumentActivity
       - QuoteActivity
       - ComplexMarketDataActivity
+      - InstrumentEventActivity
       type: string
     NavReportEvent:
       allOf:
@@ -292337,14 +293245,16 @@ components:
     NavType:
       additionalProperties: false
       example:
+        deemedDisposal:
+          holdingsFilter: holdingsFilter
+          costBase: costBase
+          transactionTypeCode: transactionTypeCode
+          enabled: true
         subHoldingKeys:
         - subHoldingKeys
         - subHoldingKeys
         transactionExclusionFilter: transactionExclusionFilter
         code: code
-        amortisationRuleSetId:
-          code: code
-          scope: scope
         swingPricing:
           thresholdPercentageOfNav: 0.5637376656633328
           inflowBasis: inflowBasis
@@ -292353,25 +293263,16 @@ components:
           code: code
           scope: scope
         displayName: displayName
-        postingModuleCodes:
-        - postingModuleCodes
-        - postingModuleCodes
         description: description
         chartOfAccountsId:
           code: code
           scope: scope
-        transactionTypeScope: transactionTypeScope
         valuationTemplateId:
           code: code
           scope: scope
-        transactionTemplateScope: transactionTemplateScope
-        cleardownModuleCodes:
-        - cleardownModuleCodes
-        - cleardownModuleCodes
         holdingRecipeId:
           code: code
           scope: scope
-        amortisationMethod: amortisationMethod
         settlementConfiguration:
           cashSettlement:
             calculateInstructionToPortfolioRate: true
@@ -292381,12 +293282,24 @@ components:
             calculateTradeDateToSettlementFxPnL: true
         cashGainLossCalculationDate: cashGainLossCalculationDate
         chargeableGainsRegime: chargeableGainsRegime
-        valuationRecipeId:
-          code: code
-          scope: scope
         leaderNavTypeCode: leaderNavTypeCode
         accountingMethod: accountingMethod
         pricingBasis: pricingBasis
+        amortisationRuleSetId:
+          code: code
+          scope: scope
+        postingModuleCodes:
+        - postingModuleCodes
+        - postingModuleCodes
+        transactionTypeScope: transactionTypeScope
+        transactionTemplateScope: transactionTemplateScope
+        cleardownModuleCodes:
+        - cleardownModuleCodes
+        - cleardownModuleCodes
+        amortisationMethod: amortisationMethod
+        valuationRecipeId:
+          code: code
+          scope: scope
         status: status
       properties:
         status:
@@ -292532,6 +293445,8 @@ components:
             \ to be GBP. Available values: Default, UkChargeableGains."
           nullable: true
           type: string
+        deemedDisposal:
+          $ref: '#/components/schemas/DeemedDisposal'
       required:
       - accountingMethod
       - amortisationMethod
@@ -292547,6 +293462,11 @@ components:
     NavTypeDefinition:
       additionalProperties: false
       example:
+        deemedDisposal:
+          holdingsFilter: holdingsFilter
+          costBase: costBase
+          transactionTypeCode: transactionTypeCode
+          enabled: true
         subHoldingKeys:
         - subHoldingKeys
         - subHoldingKeys
@@ -292737,6 +293657,8 @@ components:
             \ to be GBP. Available values: Default, UkChargeableGains."
           nullable: true
           type: string
+        deemedDisposal:
+          $ref: '#/components/schemas/DeemedDisposal'
       required:
       - accountingMethod
       - amortisationMethod
@@ -304837,14 +305759,16 @@ components:
                 key: key
             investorType: investorType
           primaryNavType:
+            deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -304853,25 +305777,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -304881,12 +305796,24 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
           taxTransparency: taxTransparency
           portfolioIds:
@@ -304920,14 +305847,16 @@ components:
               key: key
           investorStructure: investorStructure
           additionalNavTypes:
-          - subHoldingKeys:
+          - deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
+            subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -304936,25 +305865,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -304964,21 +305884,35 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
-          - subHoldingKeys:
+          - deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
+            subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -304987,25 +305921,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -305015,12 +305940,24 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
           createInstrument: true
         - instrumentScope: instrumentScope
@@ -305396,14 +306333,16 @@ components:
                 key: key
             investorType: investorType
           primaryNavType:
+            deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
             subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -305412,25 +306351,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -305440,12 +306370,24 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
           taxTransparency: taxTransparency
           portfolioIds:
@@ -305479,14 +306421,16 @@ components:
               key: key
           investorStructure: investorStructure
           additionalNavTypes:
-          - subHoldingKeys:
+          - deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
+            subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -305495,25 +306439,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -305523,21 +306458,35 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
-          - subHoldingKeys:
+          - deemedDisposal:
+              holdingsFilter: holdingsFilter
+              costBase: costBase
+              transactionTypeCode: transactionTypeCode
+              enabled: true
+            subHoldingKeys:
             - subHoldingKeys
             - subHoldingKeys
             transactionExclusionFilter: transactionExclusionFilter
             code: code
-            amortisationRuleSetId:
-              code: code
-              scope: scope
             swingPricing:
               thresholdPercentageOfNav: 0.5637376656633328
               inflowBasis: inflowBasis
@@ -305546,25 +306495,16 @@ components:
               code: code
               scope: scope
             displayName: displayName
-            postingModuleCodes:
-            - postingModuleCodes
-            - postingModuleCodes
             description: description
             chartOfAccountsId:
               code: code
               scope: scope
-            transactionTypeScope: transactionTypeScope
             valuationTemplateId:
               code: code
               scope: scope
-            transactionTemplateScope: transactionTemplateScope
-            cleardownModuleCodes:
-            - cleardownModuleCodes
-            - cleardownModuleCodes
             holdingRecipeId:
               code: code
               scope: scope
-            amortisationMethod: amortisationMethod
             settlementConfiguration:
               cashSettlement:
                 calculateInstructionToPortfolioRate: true
@@ -305574,12 +306514,24 @@ components:
                 calculateTradeDateToSettlementFxPnL: true
             cashGainLossCalculationDate: cashGainLossCalculationDate
             chargeableGainsRegime: chargeableGainsRegime
-            valuationRecipeId:
-              code: code
-              scope: scope
             leaderNavTypeCode: leaderNavTypeCode
             accountingMethod: accountingMethod
             pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
             status: status
           createInstrument: true
         links:
@@ -306971,14 +307923,16 @@ components:
                   key: key
               investorType: investorType
             primaryNavType:
+              deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
               subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -306987,25 +307941,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -307015,12 +307960,24 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
             taxTransparency: taxTransparency
             portfolioIds:
@@ -307054,14 +308011,16 @@ components:
                 key: key
             investorStructure: investorStructure
             additionalNavTypes:
-            - subHoldingKeys:
+            - deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
+              subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -307070,25 +308029,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -307098,21 +308048,35 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
-            - subHoldingKeys:
+            - deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
+              subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -307121,25 +308085,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -307149,12 +308104,24 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
             createInstrument: true
           - instrumentScope: instrumentScope
@@ -307530,14 +308497,16 @@ components:
                   key: key
               investorType: investorType
             primaryNavType:
+              deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
               subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -307546,25 +308515,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -307574,12 +308534,24 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
             taxTransparency: taxTransparency
             portfolioIds:
@@ -307613,14 +308585,16 @@ components:
                 key: key
             investorStructure: investorStructure
             additionalNavTypes:
-            - subHoldingKeys:
+            - deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
+              subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -307629,25 +308603,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -307657,21 +308622,35 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
-            - subHoldingKeys:
+            - deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
+              subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -307680,25 +308659,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -307708,12 +308678,24 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
             createInstrument: true
           links:
@@ -308226,14 +309208,16 @@ components:
                   key: key
               investorType: investorType
             primaryNavType:
+              deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
               subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -308242,25 +309226,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -308270,12 +309245,24 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
             taxTransparency: taxTransparency
             portfolioIds:
@@ -308309,14 +309296,16 @@ components:
                 key: key
             investorStructure: investorStructure
             additionalNavTypes:
-            - subHoldingKeys:
+            - deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
+              subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -308325,25 +309314,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -308353,21 +309333,35 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
-            - subHoldingKeys:
+            - deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
+              subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -308376,25 +309370,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -308404,12 +309389,24 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
             createInstrument: true
           - instrumentScope: instrumentScope
@@ -308785,14 +309782,16 @@ components:
                   key: key
               investorType: investorType
             primaryNavType:
+              deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
               subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -308801,25 +309800,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -308829,12 +309819,24 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
             taxTransparency: taxTransparency
             portfolioIds:
@@ -308868,14 +309870,16 @@ components:
                 key: key
             investorStructure: investorStructure
             additionalNavTypes:
-            - subHoldingKeys:
+            - deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
+              subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -308884,25 +309888,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -308912,21 +309907,35 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
-            - subHoldingKeys:
+            - deemedDisposal:
+                holdingsFilter: holdingsFilter
+                costBase: costBase
+                transactionTypeCode: transactionTypeCode
+                enabled: true
+              subHoldingKeys:
               - subHoldingKeys
               - subHoldingKeys
               transactionExclusionFilter: transactionExclusionFilter
               code: code
-              amortisationRuleSetId:
-                code: code
-                scope: scope
               swingPricing:
                 thresholdPercentageOfNav: 0.5637376656633328
                 inflowBasis: inflowBasis
@@ -308935,25 +309944,16 @@ components:
                 code: code
                 scope: scope
               displayName: displayName
-              postingModuleCodes:
-              - postingModuleCodes
-              - postingModuleCodes
               description: description
               chartOfAccountsId:
                 code: code
                 scope: scope
-              transactionTypeScope: transactionTypeScope
               valuationTemplateId:
                 code: code
                 scope: scope
-              transactionTemplateScope: transactionTemplateScope
-              cleardownModuleCodes:
-              - cleardownModuleCodes
-              - cleardownModuleCodes
               holdingRecipeId:
                 code: code
                 scope: scope
-              amortisationMethod: amortisationMethod
               settlementConfiguration:
                 cashSettlement:
                   calculateInstructionToPortfolioRate: true
@@ -308963,12 +309963,24 @@ components:
                   calculateTradeDateToSettlementFxPnL: true
               cashGainLossCalculationDate: cashGainLossCalculationDate
               chargeableGainsRegime: chargeableGainsRegime
-              valuationRecipeId:
-                code: code
-                scope: scope
               leaderNavTypeCode: leaderNavTypeCode
               accountingMethod: accountingMethod
               pricingBasis: pricingBasis
+              amortisationRuleSetId:
+                code: code
+                scope: scope
+              postingModuleCodes:
+              - postingModuleCodes
+              - postingModuleCodes
+              transactionTypeScope: transactionTypeScope
+              transactionTemplateScope: transactionTemplateScope
+              cleardownModuleCodes:
+              - cleardownModuleCodes
+              - cleardownModuleCodes
+              amortisationMethod: amortisationMethod
+              valuationRecipeId:
+                code: code
+                scope: scope
               status: status
             createInstrument: true
           links:
@@ -318978,6 +319990,111 @@ components:
         values:
           items:
             $ref: '#/components/schemas/StagingRuleSet'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    PagedResourceListOfTaxCostRecord:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - carriedForwardAmount: 6.027456183070403
+          sourceValuationPointId: sourceValuationPointId
+          instrumentIdentifier: instrumentIdentifier
+          portfolioScope: portfolioScope
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          effectivePeriodEnd: 2000-01-23T04:56:07.000+00:00
+          portfolioCode: portfolioCode
+          navTypeCode: navTypeCode
+          taxCost: 0.8008281904610115
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          taxCostRecordCode: taxCostRecordCode
+        - carriedForwardAmount: 6.027456183070403
+          sourceValuationPointId: sourceValuationPointId
+          instrumentIdentifier: instrumentIdentifier
+          portfolioScope: portfolioScope
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          effectivePeriodEnd: 2000-01-23T04:56:07.000+00:00
+          portfolioCode: portfolioCode
+          navTypeCode: navTypeCode
+          taxCost: 0.8008281904610115
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          taxCostRecordCode: taxCostRecordCode
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/TaxCostRecord'
           type: array
         href:
           format: uri
@@ -330465,13 +331582,14 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransaction, PortfolioSettlementInstruction,\
-              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity."
+              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity."
             enum:
             - PortfolioTransaction
             - PortfolioSettlementInstruction
             - InstrumentActivity
             - QuoteActivity
             - ComplexMarketDataActivity
+            - InstrumentEventActivity
             type: string
         required:
         - asAt
@@ -330515,13 +331633,15 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment,\
-              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment."
+              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment,\
+              \ InstrumentEventActivityAdjustment."
             enum:
             - PortfolioTransactionAdjustment
             - PortfolioSettlementInstructionAdjustment
             - InstrumentActivityAdjustment
             - QuoteActivityAdjustment
             - ComplexMarketDataActivityAdjustment
+            - InstrumentEventActivityAdjustment
             type: string
         required:
         - asAt
@@ -330696,13 +331816,14 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransaction, PortfolioSettlementInstruction,\
-              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity."
+              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity."
             enum:
             - PortfolioTransaction
             - PortfolioSettlementInstruction
             - InstrumentActivity
             - QuoteActivity
             - ComplexMarketDataActivity
+            - InstrumentEventActivity
             type: string
         required:
         - asAt
@@ -330745,13 +331866,15 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment,\
-              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment."
+              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment,\
+              \ InstrumentEventActivityAdjustment."
             enum:
             - PortfolioTransactionAdjustment
             - PortfolioSettlementInstructionAdjustment
             - InstrumentActivityAdjustment
             - QuoteActivityAdjustment
             - ComplexMarketDataActivityAdjustment
+            - InstrumentEventActivityAdjustment
             type: string
         required:
         - asAt
@@ -337593,13 +338716,14 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransaction, PortfolioSettlementInstruction,\
-              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity."
+              \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity."
             enum:
             - PortfolioTransaction
             - PortfolioSettlementInstruction
             - InstrumentActivity
             - QuoteActivity
             - ComplexMarketDataActivity
+            - InstrumentEventActivity
             type: string
         required:
         - asAt
@@ -337642,13 +338766,15 @@ components:
           navActivityAdjustmentType:
             description: "The type of the entity being applied, for example a PortfolioTransaction.\
               \ Available values: PortfolioTransactionAdjustment, PortfolioSettlementInstructionAdjustment,\
-              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment."
+              \ InstrumentActivityAdjustment, QuoteActivityAdjustment, ComplexMarketDataActivityAdjustment,\
+              \ InstrumentEventActivityAdjustment."
             enum:
             - PortfolioTransactionAdjustment
             - PortfolioSettlementInstructionAdjustment
             - InstrumentActivityAdjustment
             - QuoteActivityAdjustment
             - ComplexMarketDataActivityAdjustment
+            - InstrumentEventActivityAdjustment
             type: string
         required:
         - asAt
@@ -339802,6 +340928,26 @@ components:
       required:
       - code
       - scope
+      type: object
+    RecipeProvenance:
+      additionalProperties: false
+      description: "The recipe a fund valuation was priced with, and where it came\
+        \ from. Absent when the fund has no portfolios\r\nat the effective date, as\
+        \ nothing is priced and no recipe is resolved."
+      example:
+        source: source
+        recipeId:
+          code: code
+          scope: scope
+      properties:
+        recipeId:
+          $ref: '#/components/schemas/ResourceId'
+        source:
+          description: "Where the recipe came from. 'NavType' when it is the recipe\
+            \ on the nominated NAV type's definition;\r\n'Request' when the request\
+            \ named a recipeId that replaced it for pricing in that request only."
+          nullable: true
+          type: string
       type: object
     RecipeValue:
       additionalProperties: false
@@ -386886,6 +388032,185 @@ components:
           nullable: true
           type: number
       type: object
+    TaxCostRecord:
+      additionalProperties: false
+      example:
+        carriedForwardAmount: 6.027456183070403
+        sourceValuationPointId: sourceValuationPointId
+        instrumentIdentifier: instrumentIdentifier
+        portfolioScope: portfolioScope
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        effectivePeriodEnd: 2000-01-23T04:56:07.000+00:00
+        portfolioCode: portfolioCode
+        navTypeCode: navTypeCode
+        taxCost: 0.8008281904610115
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        taxCostRecordCode: taxCostRecordCode
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        taxCostRecordCode:
+          description: "The code of the Tax Cost Record, unique within the Fund."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        portfolioScope:
+          description: The scope of the portfolio the holding belongs to.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        portfolioCode:
+          description: The code of the portfolio the holding belongs to.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        instrumentIdentifier:
+          description: The LUSID instrument identifier (LUID) of the holding the tax
+            cost applies to.
+          maxLength: 50
+          minLength: 0
+          type: string
+        navTypeCode:
+          description: The code of the NAV type the tax cost applies to. Optional;
+            omit for the fund's primary NAV type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        taxCost:
+          description: "The tax cost of the holding at the effective period end, in\
+            \ the fund's base currency."
+          format: double
+          type: number
+        carriedForwardAmount:
+          description: "The amount carried forward into the next tax period, in the\
+            \ fund's base currency."
+          format: double
+          type: number
+        effectivePeriodEnd:
+          description: The end date of the tax period the record applies to.
+          format: date-time
+          type: string
+        sourceValuationPointId:
+          description: The identifier of the valuation point the record was derived
+            from. Optional; omit for externally supplied records.
+          maxLength: 50
+          minLength: 0
+          nullable: true
+          type: string
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - carriedForwardAmount
+      - effectivePeriodEnd
+      - instrumentIdentifier
+      - portfolioCode
+      - portfolioScope
+      - taxCost
+      type: object
+    TaxCostRecordRequest:
+      additionalProperties: false
+      example:
+        carriedForwardAmount: 6.027456183070403
+        sourceValuationPointId: sourceValuationPointId
+        instrumentIdentifier: instrumentIdentifier
+        portfolioScope: portfolioScope
+        effectivePeriodEnd: 2000-01-23T04:56:07.000+00:00
+        portfolioCode: portfolioCode
+        navTypeCode: navTypeCode
+        taxCost: 0.8008281904610115
+      properties:
+        portfolioScope:
+          description: The scope of the portfolio the holding belongs to.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        portfolioCode:
+          description: The code of the portfolio the holding belongs to.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        instrumentIdentifier:
+          description: The LUSID instrument identifier (LUID) of the holding the tax
+            cost applies to.
+          maxLength: 256
+          minLength: 1
+          type: string
+        navTypeCode:
+          description: The code of the NAV type the tax cost applies to. Optional;
+            omit for the fund's primary NAV type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        taxCost:
+          description: "The tax cost of the holding at the effective period end, in\
+            \ the fund's base currency."
+          format: double
+          type: number
+        carriedForwardAmount:
+          description: "The amount carried forward into the next tax period, in the\
+            \ fund's base currency."
+          format: double
+          type: number
+        effectivePeriodEnd:
+          description: The end date of the tax period the record applies to.
+          format: date-time
+          type: string
+        sourceValuationPointId:
+          description: The identifier of the valuation point the record was derived
+            from. Optional; omit for externally supplied records.
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          type: string
+      required:
+      - carriedForwardAmount
+      - effectivePeriodEnd
+      - instrumentIdentifier
+      - portfolioCode
+      - portfolioScope
+      - taxCost
+      type: object
     TaxExceptionItem:
       additionalProperties: false
       example:
@@ -411938,6 +413263,82 @@ components:
       required:
       - subscription
       type: object
+    UpsertTaxCostRecordsResponse:
+      additionalProperties: false
+      example:
+        successes:
+          key:
+            carriedForwardAmount: 6.027456183070403
+            sourceValuationPointId: sourceValuationPointId
+            instrumentIdentifier: instrumentIdentifier
+            portfolioScope: portfolioScope
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            href: https://openapi-generator.tech
+            effectivePeriodEnd: 2000-01-23T04:56:07.000+00:00
+            portfolioCode: portfolioCode
+            navTypeCode: navTypeCode
+            taxCost: 0.8008281904610115
+            version:
+              stagedModificationIdModified: stagedModificationIdModified
+              reasonModified: reasonModified
+              entityUniqueId: entityUniqueId
+              requestIdModified: requestIdModified
+              reasonCreated: reasonCreated
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 1
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              requestIdCreated: requestIdCreated
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            taxCostRecordCode: taxCostRecordCode
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        failed:
+          key:
+            id: id
+            detail: detail
+            type: type
+            errorDetails:
+            - key: errorDetails
+            - key: errorDetails
+      properties:
+        successes:
+          additionalProperties:
+            $ref: '#/components/schemas/TaxCostRecord'
+          description: "The Tax Cost Records that were successfully upserted, keyed\
+            \ by the code supplied in the request."
+          nullable: true
+          type: object
+        failed:
+          additionalProperties:
+            $ref: '#/components/schemas/ErrorDetail'
+          description: "The Tax Cost Records that failed to upsert, keyed by the code\
+            \ supplied in the request, with the reason for each failure."
+          nullable: true
+          type: object
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      type: object
     UpsertTaxTreatmentOverrideRequest:
       additionalProperties: false
       description: Pins an instrument to a treatment leaf in place of the system-derived
@@ -414421,7 +415822,7 @@ components:
         valuationPointOriginType:
           description: "Collection of types of Post Close Activities which added this\
             \ instrument. Available values: PortfolioTransaction, PortfolioSettlementInstruction,\
-            \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity."
+            \ InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity."
           items:
             type: string
           nullable: true

@@ -104,6 +104,10 @@ public class FundValuationRequest {
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
   private ResourceId corporateActionSourceId;
 
+  public static final String SERIALIZED_NAME_RECIPE_ID = "recipeId";
+  @SerializedName(SERIALIZED_NAME_RECIPE_ID)
+  private ResourceId recipeId;
+
   public FundValuationRequest() {
   }
 
@@ -370,6 +374,27 @@ public class FundValuationRequest {
   }
 
 
+  public FundValuationRequest recipeId(ResourceId recipeId) {
+    
+    this.recipeId = recipeId;
+    return this;
+  }
+
+   /**
+   * Get recipeId
+   * @return recipeId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getRecipeId() {
+    return recipeId;
+  }
+
+
+  public void setRecipeId(ResourceId recipeId) {
+    this.recipeId = recipeId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -390,7 +415,8 @@ public class FundValuationRequest {
         Objects.equals(this.includeOrderFlow, fundValuationRequest.includeOrderFlow) &&
         Objects.equals(this.fundValuationSchedule, fundValuationRequest.fundValuationSchedule) &&
         Objects.equals(this.marketDataOverrides, fundValuationRequest.marketDataOverrides) &&
-        Objects.equals(this.corporateActionSourceId, fundValuationRequest.corporateActionSourceId);
+        Objects.equals(this.corporateActionSourceId, fundValuationRequest.corporateActionSourceId) &&
+        Objects.equals(this.recipeId, fundValuationRequest.recipeId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -399,7 +425,7 @@ public class FundValuationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAt, metrics, groupBy, filters, sort, equipWithSubtotals, returnResultAsExpandedTypes, includeOrderFlow, fundValuationSchedule, marketDataOverrides, corporateActionSourceId);
+    return Objects.hash(asAt, metrics, groupBy, filters, sort, equipWithSubtotals, returnResultAsExpandedTypes, includeOrderFlow, fundValuationSchedule, marketDataOverrides, corporateActionSourceId, recipeId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -424,6 +450,7 @@ public class FundValuationRequest {
     sb.append("    fundValuationSchedule: ").append(toIndentedString(fundValuationSchedule)).append("\n");
     sb.append("    marketDataOverrides: ").append(toIndentedString(marketDataOverrides)).append("\n");
     sb.append("    corporateActionSourceId: ").append(toIndentedString(corporateActionSourceId)).append("\n");
+    sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -457,6 +484,7 @@ public class FundValuationRequest {
     openapiFields.add("fundValuationSchedule");
     openapiFields.add("marketDataOverrides");
     openapiFields.add("corporateActionSourceId");
+    openapiFields.add("recipeId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -539,6 +567,10 @@ public class FundValuationRequest {
       // validate the optional field `corporateActionSourceId`
       if (jsonObj.get("corporateActionSourceId") != null && !jsonObj.get("corporateActionSourceId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("corporateActionSourceId"));
+      }
+      // validate the optional field `recipeId`
+      if (jsonObj.get("recipeId") != null && !jsonObj.get("recipeId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("recipeId"));
       }
   }
 

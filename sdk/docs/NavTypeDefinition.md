@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **notionalDealingCostTableId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **valuationTemplateId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **chargeableGainsRegime** | **String** | The chargeable gains regime the Nav Type&#39;s derived portfolio is elected into. This can be: Default or UkChargeableGains. Omit it, or supply Default, to leave the derived portfolio inheriting its parent portfolio&#39;s regime. Under UkChargeableGains, in-scope holdings in the derived portfolio are depleted under the UK chargeable gains rules regardless of the Nav Type&#39;s accounting method; it requires the Fund&#39;s base currency to be GBP. Available values: Default, UkChargeableGains. | [optional] [default to String]
+**deemedDisposal** | [**DeemedDisposal**](DeemedDisposal.md) |  | [optional] [default to DeemedDisposal]
 
 ```java
 import com.finbourne.lusid.model.NavTypeDefinition;
@@ -57,6 +58,7 @@ SwingPricingRule SwingPricing = new SwingPricingRule();
 ResourceId NotionalDealingCostTableId = new ResourceId();
 ResourceId ValuationTemplateId = new ResourceId();
 @jakarta.annotation.Nullable String ChargeableGainsRegime = "example ChargeableGainsRegime";
+DeemedDisposal DeemedDisposal = new DeemedDisposal();
 
 
 NavTypeDefinition navTypeDefinitionInstance = new NavTypeDefinition()
@@ -82,7 +84,8 @@ NavTypeDefinition navTypeDefinitionInstance = new NavTypeDefinition()
     .SwingPricing(SwingPricing)
     .NotionalDealingCostTableId(NotionalDealingCostTableId)
     .ValuationTemplateId(ValuationTemplateId)
-    .ChargeableGainsRegime(ChargeableGainsRegime);
+    .ChargeableGainsRegime(ChargeableGainsRegime)
+    .DeemedDisposal(DeemedDisposal);
 ```
 
 

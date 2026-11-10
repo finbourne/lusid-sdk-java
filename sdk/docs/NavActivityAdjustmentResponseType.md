@@ -19,6 +19,7 @@ NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.POR
 NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.INSTRUMENTACTIVITYADJUSTMENT;
 NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.QUOTEACTIVITYADJUSTMENT;
 NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.COMPLEXMARKETDATAACTIVITYADJUSTMENT;
+NavActivityAdjustmentResponseType method = NavActivityAdjustmentResponseType.INSTRUMENTEVENTACTIVITYADJUSTMENT;
 ```
 
 

@@ -215,7 +215,7 @@ public class ValuationPointInstrument {
   }
 
    /**
-   * Collection of types of Post Close Activities which added this instrument. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity.
+   * Collection of types of Post Close Activities which added this instrument. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity.
    * @return valuationPointOriginType
   **/
   @jakarta.annotation.Nullable

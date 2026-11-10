@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class NavActivityAdjustment {
   /**
-   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity.
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity.
    */
   @JsonAdapter(NavActivityAdjustmentTypeEnum.Adapter.class)
   public enum NavActivityAdjustmentTypeEnum {
@@ -62,7 +62,9 @@ public class NavActivityAdjustment {
     
     QUOTEACTIVITY("QuoteActivity"),
     
-    COMPLEXMARKETDATAACTIVITY("ComplexMarketDataActivity");
+    COMPLEXMARKETDATAACTIVITY("ComplexMarketDataActivity"),
+    
+    INSTRUMENTEVENTACTIVITY("InstrumentEventActivity");
 
     private String value;
 
@@ -116,7 +118,7 @@ public class NavActivityAdjustment {
   }
 
    /**
-   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity.
+   * The type of the entity being applied, for example a PortfolioTransaction. Available values: PortfolioTransaction, PortfolioSettlementInstruction, InstrumentActivity, QuoteActivity, ComplexMarketDataActivity, InstrumentEventActivity.
    * @return navActivityAdjustmentType
   **/
   @jakarta.annotation.Nonnull
@@ -202,6 +204,9 @@ public class NavActivityAdjustment {
           break;
         case "InstrumentActivity":
           InstrumentActivity.validateJsonElement(jsonElement);
+          break;
+        case "InstrumentEventActivity":
+          InstrumentEventActivity.validateJsonElement(jsonElement);
           break;
         case "PortfolioSettlementInstruction":
           PortfolioSettlementInstruction.validateJsonElement(jsonElement);

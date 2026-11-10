@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **aggregationFailures** | [**List&lt;AggregationMeasureFailureDetail&gt;**](AggregationMeasureFailureDetail.md) |  | [optional] [default to List<AggregationMeasureFailureDetail>]
 **recipeId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **scenarioDiagnostics** | [**ScenarioDiagnostics**](ScenarioDiagnostics.md) |  | [optional] [default to ScenarioDiagnostics]
+**recipeProvenance** | [**RecipeProvenance**](RecipeProvenance.md) |  | [optional] [default to RecipeProvenance]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -30,6 +31,7 @@ ResultDataSchema DataSchema = new ResultDataSchema();
 @jakarta.annotation.Nullable List<AggregationMeasureFailureDetail> AggregationFailures = new List<AggregationMeasureFailureDetail>();
 ResourceId RecipeId = new ResourceId();
 ScenarioDiagnostics ScenarioDiagnostics = new ScenarioDiagnostics();
+RecipeProvenance RecipeProvenance = new RecipeProvenance();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -43,6 +45,7 @@ ListAggregationResponse listAggregationResponseInstance = new ListAggregationRes
     .AggregationFailures(AggregationFailures)
     .RecipeId(RecipeId)
     .ScenarioDiagnostics(ScenarioDiagnostics)
+    .RecipeProvenance(RecipeProvenance)
     .Links(Links);
 ```
 
