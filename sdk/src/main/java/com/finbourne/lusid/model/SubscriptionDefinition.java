@@ -114,6 +114,10 @@ public class SubscriptionDefinition {
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
   private List<String> instrumentIdentifiers;
 
+  public static final String SERIALIZED_NAME_REPORT_CURRENCY = "reportCurrency";
+  @SerializedName(SERIALIZED_NAME_REPORT_CURRENCY)
+  private String reportCurrency;
+
   public SubscriptionDefinition() {
   }
 
@@ -450,6 +454,27 @@ public class SubscriptionDefinition {
   }
 
 
+  public SubscriptionDefinition reportCurrency(String reportCurrency) {
+    
+    this.reportCurrency = reportCurrency;
+    return this;
+  }
+
+   /**
+   * The currency the report-currency values are given in, as a three-letter ISO code stored upper-case. Required  when addressKeys names any key other than the quantity, cost, current face, notional cost, variation margin  and currency keys: Holding/Units, Holding/SettledUnits, Holding/Cost/Dom, Holding/Cost/Pfolio,  Holding/CurrentFace, Holding/NotionalCost, Holding/VariationMargin, Holding/VariationMarginInPortfolioCcy,  Holding/HoldingType, Holding/DomCcy and Holding/PortfolioCcy. Not valid for a transactions subscription.
+   * @return reportCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getReportCurrency() {
+    return reportCurrency;
+  }
+
+
+  public void setReportCurrency(String reportCurrency) {
+    this.reportCurrency = reportCurrency;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -474,7 +499,8 @@ public class SubscriptionDefinition {
         Objects.equals(this.startEffectiveAt, subscriptionDefinition.startEffectiveAt) &&
         Objects.equals(this.endEffectiveAt, subscriptionDefinition.endEffectiveAt) &&
         Objects.equals(this.effectiveForwardDays, subscriptionDefinition.effectiveForwardDays) &&
-        Objects.equals(this.instrumentIdentifiers, subscriptionDefinition.instrumentIdentifiers);
+        Objects.equals(this.instrumentIdentifiers, subscriptionDefinition.instrumentIdentifiers) &&
+        Objects.equals(this.reportCurrency, subscriptionDefinition.reportCurrency);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -483,7 +509,7 @@ public class SubscriptionDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, timelineProperty, portfolioFilter, addressKeys, byTaxLots, subscriptionType, startEffectiveAt, endEffectiveAt, effectiveForwardDays, instrumentIdentifiers);
+    return Objects.hash(scope, code, displayName, description, portfolioId, timelineId, timelineProperty, portfolioFilter, addressKeys, byTaxLots, subscriptionType, startEffectiveAt, endEffectiveAt, effectiveForwardDays, instrumentIdentifiers, reportCurrency);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -512,6 +538,7 @@ public class SubscriptionDefinition {
     sb.append("    endEffectiveAt: ").append(toIndentedString(endEffectiveAt)).append("\n");
     sb.append("    effectiveForwardDays: ").append(toIndentedString(effectiveForwardDays)).append("\n");
     sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
+    sb.append("    reportCurrency: ").append(toIndentedString(reportCurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -549,6 +576,7 @@ public class SubscriptionDefinition {
     openapiFields.add("endEffectiveAt");
     openapiFields.add("effectiveForwardDays");
     openapiFields.add("instrumentIdentifiers");
+    openapiFields.add("reportCurrency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -612,6 +640,9 @@ public class SubscriptionDefinition {
       // ensure the optional json data is an array if present
       if (jsonObj.get("instrumentIdentifiers") != null && !jsonObj.get("instrumentIdentifiers").isJsonNull() && !jsonObj.get("instrumentIdentifiers").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentIdentifiers` to be an array in the JSON string but got `%s`", jsonObj.get("instrumentIdentifiers").toString()));
+      }
+      if ((jsonObj.get("reportCurrency") != null && !jsonObj.get("reportCurrency").isJsonNull()) && !jsonObj.get("reportCurrency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reportCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportCurrency").toString()));
       }
   }
 

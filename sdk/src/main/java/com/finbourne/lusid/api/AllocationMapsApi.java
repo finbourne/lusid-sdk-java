@@ -1979,11 +1979,11 @@ public class AllocationMapsApi {
     public APIresolveAllocationMapRequest resolveAllocationMap(String scope, String code, AllocationMapResolveRequest allocationMapResolveRequest) {
         return new APIresolveAllocationMapRequest(scope, code, allocationMapResolveRequest);
     }
-    private okhttp3.Call upsertAllocationMapCall(String scope, String code, AllocationMapRequest allocationMapRequest, final ApiCallback _callback) throws ApiException {
-        return upsertAllocationMapCall(scope, code, allocationMapRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call upsertAllocationMapCall(String scope, String code, AllocationMapRequest allocationMapRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return upsertAllocationMapCall(scope, code, allocationMapRequest, effectiveAt,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call upsertAllocationMapCall(String scope, String code, AllocationMapRequest allocationMapRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertAllocationMapCall(String scope, String code, AllocationMapRequest allocationMapRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -2009,6 +2009,10 @@ public class AllocationMapsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
 
         final String[] localVarAccepts = {
             "text/plain",
@@ -2036,7 +2040,7 @@ public class AllocationMapsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call upsertAllocationMapValidateBeforeCall(String scope, String code, AllocationMapRequest allocationMapRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertAllocationMapValidateBeforeCall(String scope, String code, AllocationMapRequest allocationMapRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling upsertAllocationMap(Async)");
@@ -2052,34 +2056,34 @@ public class AllocationMapsApi {
             throw new ApiException("Missing the required parameter 'allocationMapRequest' when calling upsertAllocationMap(Async)");
         }
 
-        return upsertAllocationMapCall(scope, code, allocationMapRequest, _callback, opts);
+        return upsertAllocationMapCall(scope, code, allocationMapRequest, effectiveAt, _callback, opts);
 
     }
 
 
-    private ApiResponse<AllocationMap> upsertAllocationMapWithHttpInfo(String scope, String code, AllocationMapRequest allocationMapRequest) throws ApiException {
-        okhttp3.Call localVarCall = upsertAllocationMapValidateBeforeCall(scope, code, allocationMapRequest, null, new ConfigurationOptions());
+    private ApiResponse<AllocationMap> upsertAllocationMapWithHttpInfo(String scope, String code, AllocationMapRequest allocationMapRequest, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = upsertAllocationMapValidateBeforeCall(scope, code, allocationMapRequest, effectiveAt, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AllocationMap>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<AllocationMap> upsertAllocationMapWithHttpInfo(String scope, String code, AllocationMapRequest allocationMapRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = upsertAllocationMapValidateBeforeCall(scope, code, allocationMapRequest, null, opts);
+    private ApiResponse<AllocationMap> upsertAllocationMapWithHttpInfo(String scope, String code, AllocationMapRequest allocationMapRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertAllocationMapValidateBeforeCall(scope, code, allocationMapRequest, effectiveAt, null, opts);
         Type localVarReturnType = new TypeToken<AllocationMap>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call upsertAllocationMapAsync(String scope, String code, AllocationMapRequest allocationMapRequest, final ApiCallback<AllocationMap> _callback) throws ApiException {
+    private okhttp3.Call upsertAllocationMapAsync(String scope, String code, AllocationMapRequest allocationMapRequest, String effectiveAt, final ApiCallback<AllocationMap> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertAllocationMapValidateBeforeCall(scope, code, allocationMapRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = upsertAllocationMapValidateBeforeCall(scope, code, allocationMapRequest, effectiveAt, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<AllocationMap>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call upsertAllocationMapAsync(String scope, String code, AllocationMapRequest allocationMapRequest, final ApiCallback<AllocationMap> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call upsertAllocationMapAsync(String scope, String code, AllocationMapRequest allocationMapRequest, String effectiveAt, final ApiCallback<AllocationMap> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = upsertAllocationMapValidateBeforeCall(scope, code, allocationMapRequest, _callback, opts);
+        okhttp3.Call localVarCall = upsertAllocationMapValidateBeforeCall(scope, code, allocationMapRequest, effectiveAt, _callback, opts);
         Type localVarReturnType = new TypeToken<AllocationMap>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -2089,11 +2093,22 @@ public class AllocationMapsApi {
         private final String scope;
         private final String code;
         private final AllocationMapRequest allocationMapRequest;
+        private String effectiveAt;
 
         private APIupsertAllocationMapRequest(String scope, String code, AllocationMapRequest allocationMapRequest) {
             this.scope = scope;
             this.code = code;
             this.allocationMapRequest = allocationMapRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. (optional)
+         * @return APIupsertAllocationMapRequest
+         */
+        public APIupsertAllocationMapRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
         }
 
         /**
@@ -2110,7 +2125,7 @@ public class AllocationMapsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return upsertAllocationMapCall(scope, code, allocationMapRequest, _callback);
+            return upsertAllocationMapCall(scope, code, allocationMapRequest, effectiveAt, _callback);
         }
 
         /**
@@ -2126,7 +2141,7 @@ public class AllocationMapsApi {
          </table>
          */
         public AllocationMap execute() throws ApiException {
-            ApiResponse<AllocationMap> localVarResp = upsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest);
+            ApiResponse<AllocationMap> localVarResp = upsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest, effectiveAt);
             return localVarResp.getData();
         }
 
@@ -2143,7 +2158,7 @@ public class AllocationMapsApi {
          </table>
          */
         public AllocationMap execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<AllocationMap> localVarResp = upsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest, opts);
+            ApiResponse<AllocationMap> localVarResp = upsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest, effectiveAt, opts);
             return localVarResp.getData();
         }
 
@@ -2160,7 +2175,7 @@ public class AllocationMapsApi {
          </table>
          */
         public ApiResponse<AllocationMap> executeWithHttpInfo() throws ApiException {
-            return upsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest);
+            return upsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest, effectiveAt);
         }
 
         /**
@@ -2176,7 +2191,7 @@ public class AllocationMapsApi {
          </table>
          */
         public ApiResponse<AllocationMap> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return upsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest, opts);
+            return upsertAllocationMapWithHttpInfo(scope, code, allocationMapRequest, effectiveAt, opts);
         }
 
         /**
@@ -2193,7 +2208,7 @@ public class AllocationMapsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AllocationMap> _callback) throws ApiException {
-            return upsertAllocationMapAsync(scope, code, allocationMapRequest, _callback);
+            return upsertAllocationMapAsync(scope, code, allocationMapRequest, effectiveAt, _callback);
         }
 
         /**
@@ -2210,7 +2225,7 @@ public class AllocationMapsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<AllocationMap> _callback, ConfigurationOptions opts) throws ApiException {
-            return upsertAllocationMapAsync(scope, code, allocationMapRequest, _callback, opts);
+            return upsertAllocationMapAsync(scope, code, allocationMapRequest, effectiveAt, _callback, opts);
         }
     }
 

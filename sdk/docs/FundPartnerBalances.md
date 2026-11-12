@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **recallable** | **java.math.BigDecimal** | The returned capital that may be recalled. | [default to java.math.BigDecimal]
 **unfunded** | **java.math.BigDecimal** | The unfunded capital. | [default to java.math.BigDecimal]
 **funded** | **java.math.BigDecimal** | The funded capital. | [default to java.math.BigDecimal]
-**outstandingCalls** | **java.math.BigDecimal** | Capital called but not yet paid in. Omitted on a register line that has had returned capital marked recallable, since recalled capital is not yet tracked as a balance and the figure would exclude it. | [optional] [default to java.math.BigDecimal]
+**outstandingCalls** | **java.math.BigDecimal** | Capital called but not yet paid in, counting capital that was returned as recallable and has since been recalled. Omitted while a line that has had returned capital marked recallable has not been rebuilt with recalled capital as a balance, since the figure could then miss an unpaid recall. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.FundPartnerBalances;

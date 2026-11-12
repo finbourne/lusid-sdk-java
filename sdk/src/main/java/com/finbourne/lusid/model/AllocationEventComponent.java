@@ -17,6 +17,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -69,6 +70,14 @@ public class AllocationEventComponent {
   public static final String SERIALIZED_NAME_TAX_CHARACTER = "taxCharacter";
   @SerializedName(SERIALIZED_NAME_TAX_CHARACTER)
   private String taxCharacter;
+
+  public static final String SERIALIZED_NAME_RECALLABLE_AMOUNT = "recallableAmount";
+  @SerializedName(SERIALIZED_NAME_RECALLABLE_AMOUNT)
+  private java.math.BigDecimal recallableAmount;
+
+  public static final String SERIALIZED_NAME_RECALLABLE_UNTIL = "recallableUntil";
+  @SerializedName(SERIALIZED_NAME_RECALLABLE_UNTIL)
+  private OffsetDateTime recallableUntil;
 
   public AllocationEventComponent() {
   }
@@ -178,6 +187,48 @@ public class AllocationEventComponent {
   }
 
 
+  public AllocationEventComponent recallableAmount(java.math.BigDecimal recallableAmount) {
+    
+    this.recallableAmount = recallableAmount;
+    return this;
+  }
+
+   /**
+   * For the ROC component of a Distribution only, how much of the component the fund may call back, between zero and the component amount. Shared pro rata to each investor&#39;s ROC share. Absent means the allocation map&#39;s recall window decides.
+   * @return recallableAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getRecallableAmount() {
+    return recallableAmount;
+  }
+
+
+  public void setRecallableAmount(java.math.BigDecimal recallableAmount) {
+    this.recallableAmount = recallableAmount;
+  }
+
+
+  public AllocationEventComponent recallableUntil(OffsetDateTime recallableUntil) {
+    
+    this.recallableUntil = recallableUntil;
+    return this;
+  }
+
+   /**
+   * For the ROC component of a Distribution only, the last date the recallable amount may be called back. Must not be before the event date and requires a non-zero recallable amount.
+   * @return recallableUntil
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getRecallableUntil() {
+    return recallableUntil;
+  }
+
+
+  public void setRecallableUntil(OffsetDateTime recallableUntil) {
+    this.recallableUntil = recallableUntil;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -192,7 +243,9 @@ public class AllocationEventComponent {
         (this.amount.compareTo(allocationEventComponent.getAmount()) == 0) &&
         Objects.equals(this.originMemberShortCode, allocationEventComponent.originMemberShortCode) &&
         Objects.equals(this.waterfallTier, allocationEventComponent.waterfallTier) &&
-        Objects.equals(this.taxCharacter, allocationEventComponent.taxCharacter);
+        Objects.equals(this.taxCharacter, allocationEventComponent.taxCharacter) &&
+        (this.recallableAmount.compareTo(allocationEventComponent.getRecallableAmount()) == 0) &&
+        Objects.equals(this.recallableUntil, allocationEventComponent.recallableUntil);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -201,7 +254,7 @@ public class AllocationEventComponent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(component, amount, originMemberShortCode, waterfallTier, taxCharacter);
+    return Objects.hash(component, amount, originMemberShortCode, waterfallTier, taxCharacter, recallableAmount, recallableUntil);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -220,6 +273,8 @@ public class AllocationEventComponent {
     sb.append("    originMemberShortCode: ").append(toIndentedString(originMemberShortCode)).append("\n");
     sb.append("    waterfallTier: ").append(toIndentedString(waterfallTier)).append("\n");
     sb.append("    taxCharacter: ").append(toIndentedString(taxCharacter)).append("\n");
+    sb.append("    recallableAmount: ").append(toIndentedString(recallableAmount)).append("\n");
+    sb.append("    recallableUntil: ").append(toIndentedString(recallableUntil)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -247,6 +302,8 @@ public class AllocationEventComponent {
     openapiFields.add("originMemberShortCode");
     openapiFields.add("waterfallTier");
     openapiFields.add("taxCharacter");
+    openapiFields.add("recallableAmount");
+    openapiFields.add("recallableUntil");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

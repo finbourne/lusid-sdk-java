@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.FlowConventions;
+import com.finbourne.lusid.model.RelativeDateOffset;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -63,6 +64,10 @@ public class ResetSchedule {
   public static final String SERIALIZED_NAME_FREQUENCY = "frequency";
   @SerializedName(SERIALIZED_NAME_FREQUENCY)
   private String frequency;
+
+  public static final String SERIALIZED_NAME_FUNDING_START_LAG = "fundingStartLag";
+  @SerializedName(SERIALIZED_NAME_FUNDING_START_LAG)
+  private RelativeDateOffset fundingStartLag;
 
   public static final String SERIALIZED_NAME_LAST_RESET_DATE = "lastResetDate";
   @SerializedName(SERIALIZED_NAME_LAST_RESET_DATE)
@@ -134,6 +139,27 @@ public class ResetSchedule {
   }
 
 
+  public ResetSchedule fundingStartLag(RelativeDateOffset fundingStartLag) {
+    
+    this.fundingStartLag = fundingStartLag;
+    return this;
+  }
+
+   /**
+   * Get fundingStartLag
+   * @return fundingStartLag
+  **/
+  @jakarta.annotation.Nullable
+  public RelativeDateOffset getFundingStartLag() {
+    return fundingStartLag;
+  }
+
+
+  public void setFundingStartLag(RelativeDateOffset fundingStartLag) {
+    this.fundingStartLag = fundingStartLag;
+  }
+
+
   public ResetSchedule lastResetDate(OffsetDateTime lastResetDate) {
     
     this.lastResetDate = lastResetDate;
@@ -168,6 +194,7 @@ public class ResetSchedule {
     return Objects.equals(this.conventions, resetSchedule.conventions) &&
         Objects.equals(this.firstResetDate, resetSchedule.firstResetDate) &&
         Objects.equals(this.frequency, resetSchedule.frequency) &&
+        Objects.equals(this.fundingStartLag, resetSchedule.fundingStartLag) &&
         Objects.equals(this.lastResetDate, resetSchedule.lastResetDate);
   }
 
@@ -177,7 +204,7 @@ public class ResetSchedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(conventions, firstResetDate, frequency, lastResetDate);
+    return Objects.hash(conventions, firstResetDate, frequency, fundingStartLag, lastResetDate);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -194,6 +221,7 @@ public class ResetSchedule {
     sb.append("    conventions: ").append(toIndentedString(conventions)).append("\n");
     sb.append("    firstResetDate: ").append(toIndentedString(firstResetDate)).append("\n");
     sb.append("    frequency: ").append(toIndentedString(frequency)).append("\n");
+    sb.append("    fundingStartLag: ").append(toIndentedString(fundingStartLag)).append("\n");
     sb.append("    lastResetDate: ").append(toIndentedString(lastResetDate)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -220,6 +248,7 @@ public class ResetSchedule {
     openapiFields.add("conventions");
     openapiFields.add("firstResetDate");
     openapiFields.add("frequency");
+    openapiFields.add("fundingStartLag");
     openapiFields.add("lastResetDate");
 
     // a set of required properties/fields (JSON key names)
@@ -253,6 +282,10 @@ public class ResetSchedule {
       }
       if (!jsonObj.get("frequency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `frequency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("frequency").toString()));
+      }
+      // validate the optional field `fundingStartLag`
+      if (jsonObj.get("fundingStartLag") != null && !jsonObj.get("fundingStartLag").isJsonNull()) {
+        RelativeDateOffset.validateJsonElement(jsonObj.get("fundingStartLag"));
       }
   }
 

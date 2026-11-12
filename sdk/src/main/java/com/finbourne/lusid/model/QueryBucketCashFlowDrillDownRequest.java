@@ -424,10 +424,10 @@ public class QueryBucketCashFlowDrillDownRequest {
   }
 
    /**
-   * Where the ladder opens: the window start of the bucketed request being drilled into, on or before BucketStart. The opening balance of the bucket is the ladder&#39;s balance at BucketStart. Without it the cash flows are returned as before and the balances are left out.
+   * Where the ladder opens: the window start of the bucketed request being drilled into, on or before BucketStart. The opening balance of the first bucket is the ladder&#39;s balance at BucketStart. Required.
    * @return windowStart
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public OffsetDateTime getWindowStart() {
     return windowStart;
   }
@@ -469,7 +469,7 @@ public class QueryBucketCashFlowDrillDownRequest {
    * Get bucketingSchedule
    * @return bucketingSchedule
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public BucketingSchedule getBucketingSchedule() {
     return bucketingSchedule;
   }
@@ -487,7 +487,7 @@ public class QueryBucketCashFlowDrillDownRequest {
   }
 
    /**
-   * With a BucketingSchedule, how a cash flow is allocated to a period. Only RoundUp, the default, is supported; RoundDown is refused. Which period a cash flow on a boundary falls in is decided by StartInclusive and EndInclusive. Available values: RoundUp, RoundDown.
+   * How a cash flow is allocated to a period. Only RoundUp, the default, is supported; RoundDown is refused. Which period a cash flow on a boundary falls in is decided by StartInclusive and EndInclusive. Available values: RoundUp, RoundDown.
    * @return roundingMethod
   **/
   @jakarta.annotation.Nullable
@@ -614,6 +614,8 @@ public class QueryBucketCashFlowDrillDownRequest {
     openapiRequiredFields.add("portfolioEntityIds");
     openapiRequiredFields.add("effectiveAt");
     openapiRequiredFields.add("recipeId");
+    openapiRequiredFields.add("windowStart");
+    openapiRequiredFields.add("bucketingSchedule");
   }
 
  /**
@@ -674,10 +676,8 @@ public class QueryBucketCashFlowDrillDownRequest {
       if ((jsonObj.get("startingBalance") != null && !jsonObj.get("startingBalance").isJsonNull()) && !jsonObj.get("startingBalance").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `startingBalance` to be a primitive type in the JSON string but got `%s`", jsonObj.get("startingBalance").toString()));
       }
-      // validate the optional field `bucketingSchedule`
-      if (jsonObj.get("bucketingSchedule") != null && !jsonObj.get("bucketingSchedule").isJsonNull()) {
-        BucketingSchedule.validateJsonElement(jsonObj.get("bucketingSchedule"));
-      }
+      // validate the required field `bucketingSchedule`
+      BucketingSchedule.validateJsonElement(jsonObj.get("bucketingSchedule"));
       if ((jsonObj.get("roundingMethod") != null && !jsonObj.get("roundingMethod").isJsonNull()) && !jsonObj.get("roundingMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `roundingMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("roundingMethod").toString()));
       }

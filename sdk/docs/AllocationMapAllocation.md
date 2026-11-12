@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **component** | **String** | The component of the event the share belongs to. Absent when the event was resolved whole. | [optional] [default to String]
 **originMemberShortCode** | **String** | The deal the share is for, when a capital call&#39;s use of proceeds split one component across deals. Absent when the component&#39;s own origin applies. | [optional] [default to String]
+**recallableAmount** | **java.math.BigDecimal** | For the ROC component of a Distribution with a recallable amount, the investor record&#39;s pro rata share of it. Absent otherwise. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.AllocationMapAllocation;
@@ -30,6 +31,7 @@ java.math.BigDecimal Amount = new java.math.BigDecimal("100.00");
 ResourceId PortfolioId = new ResourceId();
 @jakarta.annotation.Nullable String Component = "example Component";
 @jakarta.annotation.Nullable String OriginMemberShortCode = "example OriginMemberShortCode";
+@jakarta.annotation.Nullable java.math.BigDecimal RecallableAmount = new java.math.BigDecimal("100.00");
 
 
 AllocationMapAllocation allocationMapAllocationInstance = new AllocationMapAllocation()
@@ -41,7 +43,8 @@ AllocationMapAllocation allocationMapAllocationInstance = new AllocationMapAlloc
     .CommitmentLineId(CommitmentLineId)
     .PortfolioId(PortfolioId)
     .Component(Component)
-    .OriginMemberShortCode(OriginMemberShortCode);
+    .OriginMemberShortCode(OriginMemberShortCode)
+    .RecallableAmount(RecallableAmount);
 ```
 
 

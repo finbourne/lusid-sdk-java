@@ -449,7 +449,7 @@ Class | Method | HTTP request | Description
 *InstrumentEventTypesApi* | [**listTransactionTemplates**](docs/InstrumentEventTypesApi.md#listtransactiontemplates) | **GET** /api/instrumenteventtypes/transactiontemplates | ListTransactionTemplates: List Transaction Templates
 *InstrumentEventTypesApi* | [**updateTransactionTemplate**](docs/InstrumentEventTypesApi.md#updatetransactiontemplate) | **PUT** /api/instrumenteventtypes/{instrumentEventType}/transactiontemplates/{instrumentType}/{scope} | UpdateTransactionTemplate: Update Transaction Template
 *InstrumentEventsApi* | [**queryApplicableInstrumentEvents**](docs/InstrumentEventsApi.md#queryapplicableinstrumentevents) | **POST** /api/instrumentevents/$queryApplicableInstrumentEvents | QueryApplicableInstrumentEvents: Returns a list of applicable instrument events based on the holdings of the portfolios and date range specified in the query.
-*InstrumentEventsApi* | [**queryBucketCashFlowDrillDown**](docs/InstrumentEventsApi.md#querybucketcashflowdrilldown) | **POST** /api/instrumentevents/$queryBucketCashFlowDrillDown | QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage.
+*InstrumentEventsApi* | [**queryBucketCashFlowDrillDown**](docs/InstrumentEventsApi.md#querybucketcashflowdrilldown) | **POST** /api/instrumentevents/$queryBucketCashFlowDrillDown | [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage.
 *InstrumentEventsApi* | [**queryBucketedCashFlows**](docs/InstrumentEventsApi.md#querybucketedcashflows) | **POST** /api/instrumentevents/$queryBucketedCashFlows | QueryBucketedCashFlows: Returns bucketed cashflows based on the holdings of the portfolios and date range specified in the query.
 *InstrumentEventsApi* | [**queryCashFlows**](docs/InstrumentEventsApi.md#querycashflows) | **POST** /api/instrumentevents/$queryCashFlows | QueryCashFlows: Returns a list of cashflows based on the holdings of the portfolios and date range specified in the query.
 *InstrumentEventsApi* | [**queryInstrumentEvents**](docs/InstrumentEventsApi.md#queryinstrumentevents) | **POST** /api/instrumentevents/$query | QueryInstrumentEvents: Returns a list of instrument events based on the holdings of the portfolios and date range specified in the query.
@@ -1162,16 +1162,12 @@ Class | Method | HTTP request | Description
  - [BreakCodeSource](docs/BreakCodeSource.md)
  - [Bucket](docs/Bucket.md)
  - [BucketAmounts](docs/BucketAmounts.md)
- - [BucketBalanceFigures](docs/BucketBalanceFigures.md)
  - [BucketBorderConfiguration](docs/BucketBorderConfiguration.md)
- - [BucketCashFlowBalance](docs/BucketCashFlowBalance.md)
  - [BucketCashFlowBucket](docs/BucketCashFlowBucket.md)
  - [BucketCashFlowDrillDownResponse](docs/BucketCashFlowDrillDownResponse.md)
- - [BucketCashFlowSubtotal](docs/BucketCashFlowSubtotal.md)
  - [BucketCurrencySubtotal](docs/BucketCurrencySubtotal.md)
  - [BucketDefinition](docs/BucketDefinition.md)
  - [BucketMembership](docs/BucketMembership.md)
- - [BucketNetOfHaircutBalance](docs/BucketNetOfHaircutBalance.md)
  - [BucketSeedValue](docs/BucketSeedValue.md)
  - [BucketSeedValueRequest](docs/BucketSeedValueRequest.md)
  - [BucketSetClassSeed](docs/BucketSetClassSeed.md)
@@ -1499,7 +1495,6 @@ Class | Method | HTTP request | Description
  - [DecimalListComplianceParameter](docs/DecimalListComplianceParameter.md)
  - [DecoratedComplianceRunSummary](docs/DecoratedComplianceRunSummary.md)
  - [DecoratedComplianceRunSummaryRequest](docs/DecoratedComplianceRunSummaryRequest.md)
- - [DeemedDisposal](docs/DeemedDisposal.md)
  - [DeleteAccountsResponse](docs/DeleteAccountsResponse.md)
  - [DeleteCustodianAccountsResponse](docs/DeleteCustodianAccountsResponse.md)
  - [DeleteDataQualityRule](docs/DeleteDataQualityRule.md)
@@ -1554,6 +1549,7 @@ Class | Method | HTTP request | Description
  - [EditTransferRequest](docs/EditTransferRequest.md)
  - [EditTransferResponse](docs/EditTransferResponse.md)
  - [EffectiveRange](docs/EffectiveRange.md)
+ - [ElectionProrationRate](docs/ElectionProrationRate.md)
  - [ElectionSpecification](docs/ElectionSpecification.md)
  - [EligibilityCalculation](docs/EligibilityCalculation.md)
  - [EligibleCollateralAssetSelector](docs/EligibleCollateralAssetSelector.md)
@@ -1680,6 +1676,7 @@ Class | Method | HTTP request | Description
  - [FundPartnerBalances](docs/FundPartnerBalances.md)
  - [FundPartnerUnfundedReconciliation](docs/FundPartnerUnfundedReconciliation.md)
  - [FundPartnerUnfundedReconciliationLine](docs/FundPartnerUnfundedReconciliationLine.md)
+ - [FundPartnerUnfundedReconciliationWarning](docs/FundPartnerUnfundedReconciliationWarning.md)
  - [FundPartnersTotals](docs/FundPartnersTotals.md)
  - [FundPnlBreakdown](docs/FundPnlBreakdown.md)
  - [FundPreviousNAV](docs/FundPreviousNAV.md)

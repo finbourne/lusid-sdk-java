@@ -5,7 +5,7 @@ One tenor bucket for one portfolio, payment currency and set of sub-holding keys
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bucketId** | **String** | Identifies the bucket: the bucket&#39;s start (as yyyy-MM-dd), the payment currency, each sub-holding key&#39;s address and value, and the portfolio&#39;s scope and code, separated by &#39;|&#39;. | [optional] [default to String]
+**bucketId** | **String** | Identifies the bucket: a 32 character lowercase hexadecimal hash of its period (start and end), payment currency, portfolio and sub-holding keys. It is stable, the same bucket has the same id in every response, and it is opaque: compare it, do not take it apart. | [optional] [default to String]
 **bucketStart** | [**OffsetDateTime**](OffsetDateTime.md) | The start of the period the bucket covers. | [optional] [default to OffsetDateTime]
 **bucketEnd** | [**OffsetDateTime**](OffsetDateTime.md) | The end of the period the bucket covers. | [optional] [default to OffsetDateTime]
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]

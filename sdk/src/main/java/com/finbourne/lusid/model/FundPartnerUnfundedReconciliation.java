@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.FundPartnerUnfundedReconciliationLine;
+import com.finbourne.lusid.model.FundPartnerUnfundedReconciliationWarning;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -117,6 +119,10 @@ public class FundPartnerUnfundedReconciliation {
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
   private List<FundPartnerUnfundedReconciliationLine> lines = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<FundPartnerUnfundedReconciliationWarning> warnings;
 
   public FundPartnerUnfundedReconciliation() {
   }
@@ -465,6 +471,35 @@ public class FundPartnerUnfundedReconciliation {
   }
 
 
+  public FundPartnerUnfundedReconciliation warnings(List<FundPartnerUnfundedReconciliationWarning> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public FundPartnerUnfundedReconciliation addWarningsItem(FundPartnerUnfundedReconciliationWarning warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Soft warnings about how the statement was built. Empty when the period and the register agree without caveats.
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<FundPartnerUnfundedReconciliationWarning> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<FundPartnerUnfundedReconciliationWarning> warnings) {
+    this.warnings = warnings;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -490,12 +525,24 @@ public class FundPartnerUnfundedReconciliation {
         (this.registerUnfunded.compareTo(fundPartnerUnfundedReconciliation.getRegisterUnfunded()) == 0) &&
         (this.difference.compareTo(fundPartnerUnfundedReconciliation.getDifference()) == 0) &&
         Objects.equals(this.ties, fundPartnerUnfundedReconciliation.ties) &&
-        Objects.equals(this.lines, fundPartnerUnfundedReconciliation.lines);
+        Objects.equals(this.lines, fundPartnerUnfundedReconciliation.lines) &&
+        Objects.equals(this.warnings, fundPartnerUnfundedReconciliation.warnings);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, fundId, currency, periodFrom, periodTo, openingUnfunded, contributionsInsideCommitment, recallableDistributions, expiredRecallable, commitmentChanges, transfers, closingUnfunded, registerUnfunded, difference, ties, lines);
+    return Objects.hash(investorRecordId, fundId, currency, periodFrom, periodTo, openingUnfunded, contributionsInsideCommitment, recallableDistributions, expiredRecallable, commitmentChanges, transfers, closingUnfunded, registerUnfunded, difference, ties, lines, warnings);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -518,6 +565,7 @@ public class FundPartnerUnfundedReconciliation {
     sb.append("    difference: ").append(toIndentedString(difference)).append("\n");
     sb.append("    ties: ").append(toIndentedString(ties)).append("\n");
     sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -556,6 +604,7 @@ public class FundPartnerUnfundedReconciliation {
     openapiFields.add("difference");
     openapiFields.add("ties");
     openapiFields.add("lines");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -615,6 +664,20 @@ public class FundPartnerUnfundedReconciliation {
       for (int i = 0; i < jsonArraylines.size(); i++) {
         FundPartnerUnfundedReconciliationLine.validateJsonElement(jsonArraylines.get(i));
       };
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            FundPartnerUnfundedReconciliationWarning.validateJsonElement(jsonArraywarnings.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

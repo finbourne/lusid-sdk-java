@@ -11,11 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.BucketCashFlowBalance;
 import com.finbourne.lusid.model.BucketCashFlowBucket;
-import com.finbourne.lusid.model.BucketCashFlowSubtotal;
 import com.finbourne.lusid.model.BucketCurrencySubtotal;
-import com.finbourne.lusid.model.CashFlowDetail;
 import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -23,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,65 +52,29 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The cash flows inside one bucket, with the bucket&#39;s balances as the ladder of QueryBucketedCashFlows has them.
+ * The cash flows of a range of effective dates, split into periods by a BucketingSchedule: for each period, member portfolio,  payment currency and sub-holding key combination, its opening balance, the cash flows that make up its activity, and its  closing balance. Each balance and each cash flow appears once, in its bucket.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BucketCashFlowDrillDownResponse {
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<CashFlowDetail> values = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private URI href;
-
   public static final String SERIALIZED_NAME_REPORT_CURRENCY = "reportCurrency";
   @SerializedName(SERIALIZED_NAME_REPORT_CURRENCY)
   private String reportCurrency;
-
-  public static final String SERIALIZED_NAME_BALANCES = "balances";
-  @SerializedName(SERIALIZED_NAME_BALANCES)
-  private List<BucketCashFlowBalance> balances;
-
-  public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
-  @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
-  private String nextPage;
-
-  public static final String SERIALIZED_NAME_PREVIOUS_PAGE = "previousPage";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
-  private String previousPage;
-
-  public static final String SERIALIZED_NAME_ISSUES = "issues";
-  @SerializedName(SERIALIZED_NAME_ISSUES)
-  private List<String> issues;
 
   public static final String SERIALIZED_NAME_WINDOW_START = "windowStart";
   @SerializedName(SERIALIZED_NAME_WINDOW_START)
   private OffsetDateTime windowStart;
 
-  public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
-  @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
-  private OffsetDateTime effectiveAt;
-
-  public static final String SERIALIZED_NAME_START_INCLUSIVE = "startInclusive";
-  @SerializedName(SERIALIZED_NAME_START_INCLUSIVE)
-  private Boolean startInclusive;
-
-  public static final String SERIALIZED_NAME_END_INCLUSIVE = "endInclusive";
-  @SerializedName(SERIALIZED_NAME_END_INCLUSIVE)
-  private Boolean endInclusive;
-
   public static final String SERIALIZED_NAME_BUCKETS = "buckets";
   @SerializedName(SERIALIZED_NAME_BUCKETS)
-  private List<BucketCashFlowBucket> buckets;
+  private List<BucketCashFlowBucket> buckets = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CURRENCY_SUBTOTALS = "currencySubtotals";
   @SerializedName(SERIALIZED_NAME_CURRENCY_SUBTOTALS)
-  private List<BucketCurrencySubtotal> currencySubtotals;
+  private List<BucketCurrencySubtotal> currencySubtotals = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_SUBTOTAL = "subtotal";
-  @SerializedName(SERIALIZED_NAME_SUBTOTAL)
-  private BucketCashFlowSubtotal subtotal;
+  public static final String SERIALIZED_NAME_ISSUES = "issues";
+  @SerializedName(SERIALIZED_NAME_ISSUES)
+  private List<String> issues;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -123,56 +83,6 @@ public class BucketCashFlowDrillDownResponse {
   public BucketCashFlowDrillDownResponse() {
   }
 
-  public BucketCashFlowDrillDownResponse values(List<CashFlowDetail> values) {
-    
-    this.values = values;
-    return this;
-  }
-
-  public BucketCashFlowDrillDownResponse addValuesItem(CashFlowDetail valuesItem) {
-    if (this.values == null) {
-      this.values = new ArrayList<>();
-    }
-    this.values.add(valuesItem);
-    return this;
-  }
-
-   /**
-   * Get values
-   * @return values
-  **/
-  @jakarta.annotation.Nonnull
-  public List<CashFlowDetail> getValues() {
-    return values;
-  }
-
-
-  public void setValues(List<CashFlowDetail> values) {
-    this.values = values;
-  }
-
-
-  public BucketCashFlowDrillDownResponse href(URI href) {
-    
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * Get href
-   * @return href
-  **/
-  @jakarta.annotation.Nullable
-  public URI getHref() {
-    return href;
-  }
-
-
-  public void setHref(URI href) {
-    this.href = href;
-  }
-
-
   public BucketCashFlowDrillDownResponse reportCurrency(String reportCurrency) {
     
     this.reportCurrency = reportCurrency;
@@ -180,7 +90,7 @@ public class BucketCashFlowDrillDownResponse {
   }
 
    /**
-   * The report currency the converted fields are in; absent when none was requested.
+   * The report currency the cash flows&#39; converted fields are in; absent when none was requested.
    * @return reportCurrency
   **/
   @jakarta.annotation.Nullable
@@ -194,106 +104,6 @@ public class BucketCashFlowDrillDownResponse {
   }
 
 
-  public BucketCashFlowDrillDownResponse balances(List<BucketCashFlowBalance> balances) {
-    
-    this.balances = balances;
-    return this;
-  }
-
-  public BucketCashFlowDrillDownResponse addBalancesItem(BucketCashFlowBalance balancesItem) {
-    if (this.balances == null) {
-      this.balances = new ArrayList<>();
-    }
-    this.balances.add(balancesItem);
-    return this;
-  }
-
-   /**
-   * The bucket&#39;s opening balance, activity and closing balance per payment currency, in the payment currency, in the report  currency when one was requested, and net of haircut when haircut rules were supplied. Absent when no WindowStart was supplied, and when a BucketingSchedule was  supplied: the Buckets and CurrencySubtotals carry the balances then.
-   * @return balances
-  **/
-  @jakarta.annotation.Nullable
-  public List<BucketCashFlowBalance> getBalances() {
-    return balances;
-  }
-
-
-  public void setBalances(List<BucketCashFlowBalance> balances) {
-    this.balances = balances;
-  }
-
-
-  public BucketCashFlowDrillDownResponse nextPage(String nextPage) {
-    
-    this.nextPage = nextPage;
-    return this;
-  }
-
-   /**
-   * The next page of results: never present, as the cash flows of a bucket are not paged; kept so this response is a superset of the list it replaces.
-   * @return nextPage
-  **/
-  @jakarta.annotation.Nullable
-  public String getNextPage() {
-    return nextPage;
-  }
-
-
-  public void setNextPage(String nextPage) {
-    this.nextPage = nextPage;
-  }
-
-
-  public BucketCashFlowDrillDownResponse previousPage(String previousPage) {
-    
-    this.previousPage = previousPage;
-    return this;
-  }
-
-   /**
-   * The previous page of results: never present; see NextPage.
-   * @return previousPage
-  **/
-  @jakarta.annotation.Nullable
-  public String getPreviousPage() {
-    return previousPage;
-  }
-
-
-  public void setPreviousPage(String previousPage) {
-    this.previousPage = previousPage;
-  }
-
-
-  public BucketCashFlowDrillDownResponse issues(List<String> issues) {
-    
-    this.issues = issues;
-    return this;
-  }
-
-  public BucketCashFlowDrillDownResponse addIssuesItem(String issuesItem) {
-    if (this.issues == null) {
-      this.issues = new ArrayList<>();
-    }
-    this.issues.add(issuesItem);
-    return this;
-  }
-
-   /**
-   * Why balances, or report currency figures, are absent when they were asked for; absent when there is nothing to report.
-   * @return issues
-  **/
-  @jakarta.annotation.Nullable
-  public List<String> getIssues() {
-    return issues;
-  }
-
-
-  public void setIssues(List<String> issues) {
-    this.issues = issues;
-  }
-
-
   public BucketCashFlowDrillDownResponse windowStart(OffsetDateTime windowStart) {
     
     this.windowStart = windowStart;
@@ -301,10 +111,10 @@ public class BucketCashFlowDrillDownResponse {
   }
 
    /**
-   * The window start the buckets&#39; balances run from. Present with BucketingSchedule.
+   * The window start the buckets&#39; balances run from: where the first bucket&#39;s opening balance is taken.
    * @return windowStart
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public OffsetDateTime getWindowStart() {
     return windowStart;
   }
@@ -312,69 +122,6 @@ public class BucketCashFlowDrillDownResponse {
 
   public void setWindowStart(OffsetDateTime windowStart) {
     this.windowStart = windowStart;
-  }
-
-
-  public BucketCashFlowDrillDownResponse effectiveAt(OffsetDateTime effectiveAt) {
-    
-    this.effectiveAt = effectiveAt;
-    return this;
-  }
-
-   /**
-   * The valuation date the cash flows were evaluated at. Present with BucketingSchedule.
-   * @return effectiveAt
-  **/
-  @jakarta.annotation.Nullable
-  public OffsetDateTime getEffectiveAt() {
-    return effectiveAt;
-  }
-
-
-  public void setEffectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
-  }
-
-
-  public BucketCashFlowDrillDownResponse startInclusive(Boolean startInclusive) {
-    
-    this.startInclusive = startInclusive;
-    return this;
-  }
-
-   /**
-   * Whether a cash flow paid exactly on a bucket&#39;s start is in it. Present with BucketingSchedule.
-   * @return startInclusive
-  **/
-  @jakarta.annotation.Nullable
-  public Boolean getStartInclusive() {
-    return startInclusive;
-  }
-
-
-  public void setStartInclusive(Boolean startInclusive) {
-    this.startInclusive = startInclusive;
-  }
-
-
-  public BucketCashFlowDrillDownResponse endInclusive(Boolean endInclusive) {
-    
-    this.endInclusive = endInclusive;
-    return this;
-  }
-
-   /**
-   * Whether a cash flow paid exactly on a bucket&#39;s end is in it. Present with BucketingSchedule.
-   * @return endInclusive
-  **/
-  @jakarta.annotation.Nullable
-  public Boolean getEndInclusive() {
-    return endInclusive;
-  }
-
-
-  public void setEndInclusive(Boolean endInclusive) {
-    this.endInclusive = endInclusive;
   }
 
 
@@ -393,10 +140,10 @@ public class BucketCashFlowDrillDownResponse {
   }
 
    /**
-   * One bucket per period of the schedule, per member portfolio, payment currency and sub-holding key combination, each with its  opening balance, closing balance and activity. Present only when a BucketingSchedule was supplied.
+   * One bucket per period of the schedule, per member portfolio, payment currency and sub-holding key combination, each with its  opening balance, activity and closing balance.
    * @return buckets
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public List<BucketCashFlowBucket> getBuckets() {
     return buckets;
   }
@@ -422,10 +169,10 @@ public class BucketCashFlowDrillDownResponse {
   }
 
    /**
-   * The buckets summed across portfolios and sub-holding keys, one per period and payment currency. Present only with Buckets.
+   * The buckets summed across portfolios and sub-holding keys, one per period and payment currency.
    * @return currencySubtotals
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public List<BucketCurrencySubtotal> getCurrencySubtotals() {
     return currencySubtotals;
   }
@@ -436,24 +183,32 @@ public class BucketCashFlowDrillDownResponse {
   }
 
 
-  public BucketCashFlowDrillDownResponse subtotal(BucketCashFlowSubtotal subtotal) {
+  public BucketCashFlowDrillDownResponse issues(List<String> issues) {
     
-    this.subtotal = subtotal;
+    this.issues = issues;
+    return this;
+  }
+
+  public BucketCashFlowDrillDownResponse addIssuesItem(String issuesItem) {
+    if (this.issues == null) {
+      this.issues = new ArrayList<>();
+    }
+    this.issues.add(issuesItem);
     return this;
   }
 
    /**
-   * Get subtotal
-   * @return subtotal
+   * What the balances do not cover, for example that they are in the payment currency only and gross of haircut; absent when there is nothing to report.
+   * @return issues
   **/
   @jakarta.annotation.Nullable
-  public BucketCashFlowSubtotal getSubtotal() {
-    return subtotal;
+  public List<String> getIssues() {
+    return issues;
   }
 
 
-  public void setSubtotal(BucketCashFlowSubtotal subtotal) {
-    this.subtotal = subtotal;
+  public void setIssues(List<String> issues) {
+    this.issues = issues;
   }
 
 
@@ -496,20 +251,11 @@ public class BucketCashFlowDrillDownResponse {
       return false;
     }
     BucketCashFlowDrillDownResponse bucketCashFlowDrillDownResponse = (BucketCashFlowDrillDownResponse) o;
-    return Objects.equals(this.values, bucketCashFlowDrillDownResponse.values) &&
-        Objects.equals(this.href, bucketCashFlowDrillDownResponse.href) &&
-        Objects.equals(this.reportCurrency, bucketCashFlowDrillDownResponse.reportCurrency) &&
-        Objects.equals(this.balances, bucketCashFlowDrillDownResponse.balances) &&
-        Objects.equals(this.nextPage, bucketCashFlowDrillDownResponse.nextPage) &&
-        Objects.equals(this.previousPage, bucketCashFlowDrillDownResponse.previousPage) &&
-        Objects.equals(this.issues, bucketCashFlowDrillDownResponse.issues) &&
+    return Objects.equals(this.reportCurrency, bucketCashFlowDrillDownResponse.reportCurrency) &&
         Objects.equals(this.windowStart, bucketCashFlowDrillDownResponse.windowStart) &&
-        Objects.equals(this.effectiveAt, bucketCashFlowDrillDownResponse.effectiveAt) &&
-        Objects.equals(this.startInclusive, bucketCashFlowDrillDownResponse.startInclusive) &&
-        Objects.equals(this.endInclusive, bucketCashFlowDrillDownResponse.endInclusive) &&
         Objects.equals(this.buckets, bucketCashFlowDrillDownResponse.buckets) &&
         Objects.equals(this.currencySubtotals, bucketCashFlowDrillDownResponse.currencySubtotals) &&
-        Objects.equals(this.subtotal, bucketCashFlowDrillDownResponse.subtotal) &&
+        Objects.equals(this.issues, bucketCashFlowDrillDownResponse.issues) &&
         Objects.equals(this.links, bucketCashFlowDrillDownResponse.links);
   }
 
@@ -519,7 +265,7 @@ public class BucketCashFlowDrillDownResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, href, reportCurrency, balances, nextPage, previousPage, issues, windowStart, effectiveAt, startInclusive, endInclusive, buckets, currencySubtotals, subtotal, links);
+    return Objects.hash(reportCurrency, windowStart, buckets, currencySubtotals, issues, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -533,20 +279,11 @@ public class BucketCashFlowDrillDownResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class BucketCashFlowDrillDownResponse {\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    reportCurrency: ").append(toIndentedString(reportCurrency)).append("\n");
-    sb.append("    balances: ").append(toIndentedString(balances)).append("\n");
-    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
-    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
-    sb.append("    issues: ").append(toIndentedString(issues)).append("\n");
     sb.append("    windowStart: ").append(toIndentedString(windowStart)).append("\n");
-    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
-    sb.append("    startInclusive: ").append(toIndentedString(startInclusive)).append("\n");
-    sb.append("    endInclusive: ").append(toIndentedString(endInclusive)).append("\n");
     sb.append("    buckets: ").append(toIndentedString(buckets)).append("\n");
     sb.append("    currencySubtotals: ").append(toIndentedString(currencySubtotals)).append("\n");
-    sb.append("    subtotal: ").append(toIndentedString(subtotal)).append("\n");
+    sb.append("    issues: ").append(toIndentedString(issues)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -570,25 +307,18 @@ public class BucketCashFlowDrillDownResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("values");
-    openapiFields.add("href");
     openapiFields.add("reportCurrency");
-    openapiFields.add("balances");
-    openapiFields.add("nextPage");
-    openapiFields.add("previousPage");
-    openapiFields.add("issues");
     openapiFields.add("windowStart");
-    openapiFields.add("effectiveAt");
-    openapiFields.add("startInclusive");
-    openapiFields.add("endInclusive");
     openapiFields.add("buckets");
     openapiFields.add("currencySubtotals");
-    openapiFields.add("subtotal");
+    openapiFields.add("issues");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("values");
+    openapiRequiredFields.add("windowStart");
+    openapiRequiredFields.add("buckets");
+    openapiRequiredFields.add("currencySubtotals");
   }
 
  /**
@@ -611,77 +341,32 @@ public class BucketCashFlowDrillDownResponse {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("values").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
-      }
-
-      JsonArray jsonArrayvalues = jsonObj.getAsJsonArray("values");
-      // validate the required field `values` (array)
-      for (int i = 0; i < jsonArrayvalues.size(); i++) {
-        CashFlowDetail.validateJsonElement(jsonArrayvalues.get(i));
-      };
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
-      }
       if ((jsonObj.get("reportCurrency") != null && !jsonObj.get("reportCurrency").isJsonNull()) && !jsonObj.get("reportCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reportCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportCurrency").toString()));
       }
-      if (jsonObj.get("balances") != null && !jsonObj.get("balances").isJsonNull()) {
-        JsonArray jsonArraybalances = jsonObj.getAsJsonArray("balances");
-        if (jsonArraybalances != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("balances").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `balances` to be an array in the JSON string but got `%s`", jsonObj.get("balances").toString()));
-          }
+      // ensure the json data is an array
+      if (!jsonObj.get("buckets").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `buckets` to be an array in the JSON string but got `%s`", jsonObj.get("buckets").toString()));
+      }
 
-          // validate the optional field `balances` (array)
-          for (int i = 0; i < jsonArraybalances.size(); i++) {
-            BucketCashFlowBalance.validateJsonElement(jsonArraybalances.get(i));
-          };
-        }
+      JsonArray jsonArraybuckets = jsonObj.getAsJsonArray("buckets");
+      // validate the required field `buckets` (array)
+      for (int i = 0; i < jsonArraybuckets.size(); i++) {
+        BucketCashFlowBucket.validateJsonElement(jsonArraybuckets.get(i));
+      };
+      // ensure the json data is an array
+      if (!jsonObj.get("currencySubtotals").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `currencySubtotals` to be an array in the JSON string but got `%s`", jsonObj.get("currencySubtotals").toString()));
       }
-      if ((jsonObj.get("nextPage") != null && !jsonObj.get("nextPage").isJsonNull()) && !jsonObj.get("nextPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nextPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPage").toString()));
-      }
-      if ((jsonObj.get("previousPage") != null && !jsonObj.get("previousPage").isJsonNull()) && !jsonObj.get("previousPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `previousPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousPage").toString()));
-      }
+
+      JsonArray jsonArraycurrencySubtotals = jsonObj.getAsJsonArray("currencySubtotals");
+      // validate the required field `currencySubtotals` (array)
+      for (int i = 0; i < jsonArraycurrencySubtotals.size(); i++) {
+        BucketCurrencySubtotal.validateJsonElement(jsonArraycurrencySubtotals.get(i));
+      };
       // ensure the optional json data is an array if present
       if (jsonObj.get("issues") != null && !jsonObj.get("issues").isJsonNull() && !jsonObj.get("issues").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `issues` to be an array in the JSON string but got `%s`", jsonObj.get("issues").toString()));
-      }
-      if (jsonObj.get("buckets") != null && !jsonObj.get("buckets").isJsonNull()) {
-        JsonArray jsonArraybuckets = jsonObj.getAsJsonArray("buckets");
-        if (jsonArraybuckets != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("buckets").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `buckets` to be an array in the JSON string but got `%s`", jsonObj.get("buckets").toString()));
-          }
-
-          // validate the optional field `buckets` (array)
-          for (int i = 0; i < jsonArraybuckets.size(); i++) {
-            BucketCashFlowBucket.validateJsonElement(jsonArraybuckets.get(i));
-          };
-        }
-      }
-      if (jsonObj.get("currencySubtotals") != null && !jsonObj.get("currencySubtotals").isJsonNull()) {
-        JsonArray jsonArraycurrencySubtotals = jsonObj.getAsJsonArray("currencySubtotals");
-        if (jsonArraycurrencySubtotals != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("currencySubtotals").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `currencySubtotals` to be an array in the JSON string but got `%s`", jsonObj.get("currencySubtotals").toString()));
-          }
-
-          // validate the optional field `currencySubtotals` (array)
-          for (int i = 0; i < jsonArraycurrencySubtotals.size(); i++) {
-            BucketCurrencySubtotal.validateJsonElement(jsonArraycurrencySubtotals.get(i));
-          };
-        }
-      }
-      // validate the optional field `subtotal`
-      if (jsonObj.get("subtotal") != null && !jsonObj.get("subtotal").isJsonNull()) {
-        BucketCashFlowSubtotal.validateJsonElement(jsonObj.get("subtotal"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

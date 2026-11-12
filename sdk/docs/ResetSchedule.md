@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **conventions** | [**FlowConventions**](FlowConventions.md) |  | [optional] [default to FlowConventions]
 **firstResetDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date of the first price reset. Optional; when absent the reset dates are rolled forward from the swap start date. | [optional] [default to OffsetDateTime]
 **frequency** | **String** | The frequency at which the asset price is reset and the price return is exchanged, e.g. 3M. | [default to String]
+**fundingStartLag** | [**RelativeDateOffset**](RelativeDateOffset.md) |  | [optional] [default to RelativeDateOffset]
 **lastResetDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date of the last price reset. Optional; when absent the reset dates are rolled forward until the swap maturity date. | [optional] [default to OffsetDateTime]
 
 ```java
@@ -19,6 +20,7 @@ import java.net.URI;
 FlowConventions Conventions = new FlowConventions();
 @jakarta.annotation.Nullable OffsetDateTime FirstResetDate = OffsetDateTime.now();
 String Frequency = "example Frequency";
+RelativeDateOffset FundingStartLag = new RelativeDateOffset();
 @jakarta.annotation.Nullable OffsetDateTime LastResetDate = OffsetDateTime.now();
 
 
@@ -26,6 +28,7 @@ ResetSchedule resetScheduleInstance = new ResetSchedule()
     .Conventions(Conventions)
     .FirstResetDate(FirstResetDate)
     .Frequency(Frequency)
+    .FundingStartLag(FundingStartLag)
     .LastResetDate(LastResetDate);
 ```
 

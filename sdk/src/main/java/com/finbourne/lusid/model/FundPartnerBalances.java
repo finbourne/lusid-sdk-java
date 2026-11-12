@@ -239,7 +239,7 @@ public class FundPartnerBalances {
   }
 
    /**
-   * Capital called but not yet paid in. Omitted on a register line that has had returned capital marked recallable, since recalled capital is not yet tracked as a balance and the figure would exclude it.
+   * Capital called but not yet paid in, counting capital that was returned as recallable and has since been recalled. Omitted while a line that has had returned capital marked recallable has not been rebuilt with recalled capital as a balance, since the figure could then miss an unpaid recall.
    * @return outstandingCalls
   **/
   @jakarta.annotation.Nullable

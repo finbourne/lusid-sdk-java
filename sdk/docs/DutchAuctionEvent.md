@@ -25,6 +25,10 @@ Name | Type | Description | Notes
 **fractionalUnitsCashPrice** | **java.math.BigDecimal** | Cash-in-lieu price per fractional unit on the SECU and CASE paths.  Null indicates round-down disposition of fractional remainders.  Distinct from the CASE path&#39;s main cash settlement (which lives on CashAndSecurityOfferElection). | [optional] [default to java.math.BigDecimal]
 **fractionalUnitsCashCurrency** | **String** | Currency of the cash-in-lieu paid on fractional remainders on the SECU and CASE paths.  Required when FractionalUnitsCashPrice is non-null. | [optional] [default to String]
 **bidPrice** | **java.math.BigDecimal** | Per-holder bid price submitted at instruction time. Audit-only; no calculation impact. | [optional] [default to java.math.BigDecimal]
+**electionProrationRates** | [**List&lt;ElectionProrationRate&gt;**](ElectionProrationRate.md) | Optional proration rate per option, keyed by election key. An entry overrides ProrationRate for that  election; an option without an entry uses ProrationRate. Each key must name a TenderOffer, SecurityOffer,  CashAndSecurityOffer or MixedLotConstituents election of this event, once, with a rate in (0, 1]. | [optional] [default to List<ElectionProrationRate>]
+**minPieceSize** | **java.math.BigDecimal** | Optional minimum tradable piece of the accepted quantity, in face for a bond and in units otherwise.  Must be strictly positive when set. With AcceptedQuantityRounding RoundDown, an accepted quantity below it  is rounded to zero. | [optional] [default to java.math.BigDecimal]
+**minIncrement** | **java.math.BigDecimal** | Optional tradable increment above MinPieceSize, in the same unit. When set, MinPieceSize must also be set.  Must be strictly positive. With AcceptedQuantityRounding RoundDown, the accepted quantity is rounded down to  MinPieceSize plus a whole number of increments. | [optional] [default to java.math.BigDecimal]
+**acceptedQuantityRounding** | **String** | How a prorated accepted quantity that is not a whole tradable lot is disposed of. RoundDown rounds it down  to the tradable lot, or to a whole unit when no lot size is given, and the remainder stays in the holding.  CashInLieu accepts the unrounded quantity. When omitted the accepted quantity is not rounded. Available values: RoundDown, CashInLieu. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.DutchAuctionEvent;
@@ -52,6 +56,10 @@ NewInstrument NewInstrument = new NewInstrument();
 @jakarta.annotation.Nullable java.math.BigDecimal FractionalUnitsCashPrice = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String FractionalUnitsCashCurrency = "example FractionalUnitsCashCurrency";
 @jakarta.annotation.Nullable java.math.BigDecimal BidPrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable List<ElectionProrationRate> ElectionProrationRates = new List<ElectionProrationRate>();
+@jakarta.annotation.Nullable java.math.BigDecimal MinPieceSize = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal MinIncrement = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String AcceptedQuantityRounding = "example AcceptedQuantityRounding";
 
 
 DutchAuctionEvent dutchAuctionEventInstance = new DutchAuctionEvent()
@@ -74,7 +82,11 @@ DutchAuctionEvent dutchAuctionEventInstance = new DutchAuctionEvent()
     .NewInstrument(NewInstrument)
     .FractionalUnitsCashPrice(FractionalUnitsCashPrice)
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
-    .BidPrice(BidPrice);
+    .BidPrice(BidPrice)
+    .ElectionProrationRates(ElectionProrationRates)
+    .MinPieceSize(MinPieceSize)
+    .MinIncrement(MinIncrement)
+    .AcceptedQuantityRounding(AcceptedQuantityRounding);
 ```
 
 

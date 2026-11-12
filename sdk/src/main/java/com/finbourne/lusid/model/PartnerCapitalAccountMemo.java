@@ -168,7 +168,7 @@ public class PartnerCapitalAccountMemo {
   }
 
    /**
-   * Called contributions not yet received from the partner. Omitted when a register line of the partner has had returned capital marked recallable, since recalled capital is not yet tracked as a balance and the figure would exclude it.
+   * Called contributions not yet received from the partner, counting capital that was returned as recallable and has since been recalled. Omitted while a register line of the partner that has had returned capital marked recallable has not been rebuilt with recalled capital as a balance, since the figure could then miss an unpaid recall; the declared distributions are then served gross.
    * @return contributionsReceivable
   **/
   @jakarta.annotation.Nullable

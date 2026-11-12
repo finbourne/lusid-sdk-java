@@ -99,6 +99,10 @@ public class AllocationMap {
   @SerializedName(SERIALIZED_NAME_ILPA_TRANSACTION_TYPES)
   private List<AllocationMapIlpaTransactionType> ilpaTransactionTypes;
 
+  public static final String SERIALIZED_NAME_EXCUSE_CAP_MULTIPLE = "excuseCapMultiple";
+  @SerializedName(SERIALIZED_NAME_EXCUSE_CAP_MULTIPLE)
+  private java.math.BigDecimal excuseCapMultiple;
+
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
@@ -336,6 +340,27 @@ public class AllocationMap {
   }
 
 
+  public AllocationMap excuseCapMultiple(java.math.BigDecimal excuseCapMultiple) {
+    
+    this.excuseCapMultiple = excuseCapMultiple;
+    return this;
+  }
+
+   /**
+   * How far above its pro-rata share of a call a line may be taken when other participants are excused, as a multiple of that share: the LPA&#39;s over-call cap. At least 1. Absent means the platform default of 1.25.
+   * @return excuseCapMultiple
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getExcuseCapMultiple() {
+    return excuseCapMultiple;
+  }
+
+
+  public void setExcuseCapMultiple(java.math.BigDecimal excuseCapMultiple) {
+    this.excuseCapMultiple = excuseCapMultiple;
+  }
+
+
   public AllocationMap version(Version version) {
     
     this.version = version;
@@ -406,6 +431,7 @@ public class AllocationMap {
         Objects.equals(this.basisByEventType, allocationMap.basisByEventType) &&
         Objects.equals(this.roundingPartnerLine, allocationMap.roundingPartnerLine) &&
         Objects.equals(this.ilpaTransactionTypes, allocationMap.ilpaTransactionTypes) &&
+        (this.excuseCapMultiple.compareTo(allocationMap.getExcuseCapMultiple()) == 0) &&
         Objects.equals(this.version, allocationMap.version) &&
         Objects.equals(this.links, allocationMap.links);
   }
@@ -416,7 +442,7 @@ public class AllocationMap {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, name, description, structureMemberId, inheritsFrom, participants, basisByEventType, roundingPartnerLine, ilpaTransactionTypes, version, links);
+    return Objects.hash(href, id, name, description, structureMemberId, inheritsFrom, participants, basisByEventType, roundingPartnerLine, ilpaTransactionTypes, excuseCapMultiple, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -440,6 +466,7 @@ public class AllocationMap {
     sb.append("    basisByEventType: ").append(toIndentedString(basisByEventType)).append("\n");
     sb.append("    roundingPartnerLine: ").append(toIndentedString(roundingPartnerLine)).append("\n");
     sb.append("    ilpaTransactionTypes: ").append(toIndentedString(ilpaTransactionTypes)).append("\n");
+    sb.append("    excuseCapMultiple: ").append(toIndentedString(excuseCapMultiple)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -474,6 +501,7 @@ public class AllocationMap {
     openapiFields.add("basisByEventType");
     openapiFields.add("roundingPartnerLine");
     openapiFields.add("ilpaTransactionTypes");
+    openapiFields.add("excuseCapMultiple");
     openapiFields.add("version");
     openapiFields.add("links");
 

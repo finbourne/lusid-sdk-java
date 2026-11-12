@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **paidInCapitalPortfolioCcyAmount** | **java.math.BigDecimal** | The paid-in capital the destination line takes over, already in the portfolio&#39;s base currency: the source line&#39;s PaidInCapitalPortfolioCcy balance share, accumulated at historical rates, not a spot conversion of PaidInCapitalAmount. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for PaidInCapitalPortfolioCcy while the Out side gives up its share, and the transaction type configuration must include the PaidInCapitalPortfolioCcy movement for the twin to move. | [optional] [default to java.math.BigDecimal]
 **returnedCapitalPortfolioCcyAmount** | **java.math.BigDecimal** | The returned capital the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for ReturnedCapitalPortfolioCcy while the Out side gives up its share, and the transaction type configuration must include the ReturnedCapitalPortfolioCcy movement for the twin to move. | [optional] [default to java.math.BigDecimal]
 **excessCapitalReturnedPortfolioCcyAmount** | **java.math.BigDecimal** | The cumulative excess capital returned that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for ExcessCapitalReturnedPortfolioCcy while the Out side gives up its share, and the transaction type configuration must include the ExcessCapitalReturnedPortfolioCcy movement for the twin to move. | [optional] [default to java.math.BigDecimal]
+**recalledCapitalAmount** | **java.math.BigDecimal** | The cumulative recalled capital that the destination line takes over, in the commitment currency. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for RecalledCapital while the Out side gives up its share, and the transaction type configuration must include the RecalledCapital movement for the balance to move. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.CapitalInterestTransferEvent;
@@ -62,6 +63,7 @@ String ToLineId = "example ToLineId";
 @jakarta.annotation.Nullable java.math.BigDecimal PaidInCapitalPortfolioCcyAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal ReturnedCapitalPortfolioCcyAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal ExcessCapitalReturnedPortfolioCcyAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal RecalledCapitalAmount = new java.math.BigDecimal("100.00");
 
 
 CapitalInterestTransferEvent capitalInterestTransferEventInstance = new CapitalInterestTransferEvent()
@@ -89,7 +91,8 @@ CapitalInterestTransferEvent capitalInterestTransferEventInstance = new CapitalI
     .ExcessCapitalReturnedAmount(ExcessCapitalReturnedAmount)
     .PaidInCapitalPortfolioCcyAmount(PaidInCapitalPortfolioCcyAmount)
     .ReturnedCapitalPortfolioCcyAmount(ReturnedCapitalPortfolioCcyAmount)
-    .ExcessCapitalReturnedPortfolioCcyAmount(ExcessCapitalReturnedPortfolioCcyAmount);
+    .ExcessCapitalReturnedPortfolioCcyAmount(ExcessCapitalReturnedPortfolioCcyAmount)
+    .RecalledCapitalAmount(RecalledCapitalAmount);
 ```
 
 

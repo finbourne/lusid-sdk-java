@@ -396,7 +396,7 @@ public class BlockRequest {
   }
 
    /**
-   * Swept blocks are considered no longer of active interest, and no longer take part in various order management processes
+   * Swept blocks are considered no longer of active interest, and no longer take part in various order management processes. If not supplied, an existing block keeps its current value and a new block is not swept.
    * @return isSwept
   **/
   @jakarta.annotation.Nullable

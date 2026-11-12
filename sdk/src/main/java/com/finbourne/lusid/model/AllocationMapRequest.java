@@ -93,6 +93,10 @@ public class AllocationMapRequest {
   @SerializedName(SERIALIZED_NAME_ILPA_TRANSACTION_TYPES)
   private List<AllocationMapIlpaTransactionType> ilpaTransactionTypes;
 
+  public static final String SERIALIZED_NAME_EXCUSE_CAP_MULTIPLE = "excuseCapMultiple";
+  @SerializedName(SERIALIZED_NAME_EXCUSE_CAP_MULTIPLE)
+  private java.math.BigDecimal excuseCapMultiple;
+
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
   private OffsetDateTime effectiveAt;
@@ -305,6 +309,27 @@ public class AllocationMapRequest {
   }
 
 
+  public AllocationMapRequest excuseCapMultiple(java.math.BigDecimal excuseCapMultiple) {
+    
+    this.excuseCapMultiple = excuseCapMultiple;
+    return this;
+  }
+
+   /**
+   * How far above its pro-rata share of a call a line may be taken when other participants are excused, as a multiple of that share: the LPA&#39;s over-call cap. At least 1. Absent means the platform default of 1.25.
+   * @return excuseCapMultiple
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getExcuseCapMultiple() {
+    return excuseCapMultiple;
+  }
+
+
+  public void setExcuseCapMultiple(java.math.BigDecimal excuseCapMultiple) {
+    this.excuseCapMultiple = excuseCapMultiple;
+  }
+
+
   public AllocationMapRequest effectiveAt(OffsetDateTime effectiveAt) {
     
     this.effectiveAt = effectiveAt;
@@ -312,7 +337,7 @@ public class AllocationMapRequest {
   }
 
    /**
-   * The effective datetime from which the Allocation Map applies. Defaults to the beginning of time if not specified, so that the map is visible at every effective datetime.
+   * The effective datetime from which the Allocation Map applies. On create, defaults to the beginning of time if not specified, so that the map is visible at every effective datetime. On update of an existing Allocation Map it is required, in the body or as the effectiveAt query parameter, so that a change is never back-dated or forward-dated by accident.
    * @return effectiveAt
   **/
   @jakarta.annotation.Nullable
@@ -345,6 +370,7 @@ public class AllocationMapRequest {
         Objects.equals(this.basisByEventType, allocationMapRequest.basisByEventType) &&
         Objects.equals(this.roundingPartnerLine, allocationMapRequest.roundingPartnerLine) &&
         Objects.equals(this.ilpaTransactionTypes, allocationMapRequest.ilpaTransactionTypes) &&
+        (this.excuseCapMultiple.compareTo(allocationMapRequest.getExcuseCapMultiple()) == 0) &&
         Objects.equals(this.effectiveAt, allocationMapRequest.effectiveAt);
   }
 
@@ -354,7 +380,7 @@ public class AllocationMapRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, name, description, structureMemberId, inheritsFrom, participants, basisByEventType, roundingPartnerLine, ilpaTransactionTypes, effectiveAt);
+    return Objects.hash(code, name, description, structureMemberId, inheritsFrom, participants, basisByEventType, roundingPartnerLine, ilpaTransactionTypes, excuseCapMultiple, effectiveAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -377,6 +403,7 @@ public class AllocationMapRequest {
     sb.append("    basisByEventType: ").append(toIndentedString(basisByEventType)).append("\n");
     sb.append("    roundingPartnerLine: ").append(toIndentedString(roundingPartnerLine)).append("\n");
     sb.append("    ilpaTransactionTypes: ").append(toIndentedString(ilpaTransactionTypes)).append("\n");
+    sb.append("    excuseCapMultiple: ").append(toIndentedString(excuseCapMultiple)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -409,6 +436,7 @@ public class AllocationMapRequest {
     openapiFields.add("basisByEventType");
     openapiFields.add("roundingPartnerLine");
     openapiFields.add("ilpaTransactionTypes");
+    openapiFields.add("excuseCapMultiple");
     openapiFields.add("effectiveAt");
 
     // a set of required properties/fields (JSON key names)

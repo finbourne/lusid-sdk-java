@@ -103,7 +103,7 @@ public class InflationIndexationEvent extends InstrumentEvent {
   }
 
    /**
-   * The calendar day on which the new index ratio applies. On an event LUSID generates it carries the bond&#39;s  local offset, so its date part is the bond&#39;s local calendar day; it is returned as generated and not  normalised to UTC. An upserted event may give it with any offset; it is normalised to UTC when stored.
+   * The instant from which the new index ratio applies: the bond&#39;s local midnight on the indexation day. On an  event LUSID generates it is returned in UTC, and the event id names the bond&#39;s local calendar day. An  upserted event may give it with any offset; it is normalised to UTC when stored.
    * @return eventDate
   **/
   @jakarta.annotation.Nullable

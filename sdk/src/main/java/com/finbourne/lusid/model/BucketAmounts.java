@@ -49,17 +49,13 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * An amount in the payment currency and, when a report currency was requested, in the report currency.
+ * An amount in the payment currency.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BucketAmounts {
   public static final String SERIALIZED_NAME_LOCAL = "local";
   @SerializedName(SERIALIZED_NAME_LOCAL)
   private java.math.BigDecimal local;
-
-  public static final String SERIALIZED_NAME_REPORT_CURRENCY = "reportCurrency";
-  @SerializedName(SERIALIZED_NAME_REPORT_CURRENCY)
-  private java.math.BigDecimal reportCurrency;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -86,27 +82,6 @@ public class BucketAmounts {
 
   public void setLocal(java.math.BigDecimal local) {
     this.local = local;
-  }
-
-
-  public BucketAmounts reportCurrency(java.math.BigDecimal reportCurrency) {
-    
-    this.reportCurrency = reportCurrency;
-    return this;
-  }
-
-   /**
-   * The amount in the report currency. Absent when no report currency was requested.
-   * @return reportCurrency
-  **/
-  @jakarta.annotation.Nullable
-  public java.math.BigDecimal getReportCurrency() {
-    return reportCurrency;
-  }
-
-
-  public void setReportCurrency(java.math.BigDecimal reportCurrency) {
-    this.reportCurrency = reportCurrency;
   }
 
 
@@ -150,7 +125,6 @@ public class BucketAmounts {
     }
     BucketAmounts bucketAmounts = (BucketAmounts) o;
     return (this.local.compareTo(bucketAmounts.getLocal()) == 0) &&
-        (this.reportCurrency.compareTo(bucketAmounts.getReportCurrency()) == 0) &&
         Objects.equals(this.links, bucketAmounts.links);
   }
 
@@ -160,7 +134,7 @@ public class BucketAmounts {
 
   @Override
   public int hashCode() {
-    return Objects.hash(local, reportCurrency, links);
+    return Objects.hash(local, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -175,7 +149,6 @@ public class BucketAmounts {
     StringBuilder sb = new StringBuilder();
     sb.append("class BucketAmounts {\n");
     sb.append("    local: ").append(toIndentedString(local)).append("\n");
-    sb.append("    reportCurrency: ").append(toIndentedString(reportCurrency)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -200,7 +173,6 @@ public class BucketAmounts {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("local");
-    openapiFields.add("reportCurrency");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.DeemedDisposal;
 import com.finbourne.lusid.model.NavSettlementConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.SwingPricingRule;
@@ -151,10 +150,6 @@ public class NavType {
   public static final String SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME = "chargeableGainsRegime";
   @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME)
   private String chargeableGainsRegime;
-
-  public static final String SERIALIZED_NAME_DEEMED_DISPOSAL = "deemedDisposal";
-  @SerializedName(SERIALIZED_NAME_DEEMED_DISPOSAL)
-  private DeemedDisposal deemedDisposal;
 
   public NavType() {
   }
@@ -687,27 +682,6 @@ public class NavType {
   }
 
 
-  public NavType deemedDisposal(DeemedDisposal deemedDisposal) {
-    
-    this.deemedDisposal = deemedDisposal;
-    return this;
-  }
-
-   /**
-   * Get deemedDisposal
-   * @return deemedDisposal
-  **/
-  @jakarta.annotation.Nullable
-  public DeemedDisposal getDeemedDisposal() {
-    return deemedDisposal;
-  }
-
-
-  public void setDeemedDisposal(DeemedDisposal deemedDisposal) {
-    this.deemedDisposal = deemedDisposal;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -741,8 +715,7 @@ public class NavType {
         Objects.equals(this.swingPricing, navType.swingPricing) &&
         Objects.equals(this.notionalDealingCostTableId, navType.notionalDealingCostTableId) &&
         Objects.equals(this.valuationTemplateId, navType.valuationTemplateId) &&
-        Objects.equals(this.chargeableGainsRegime, navType.chargeableGainsRegime) &&
-        Objects.equals(this.deemedDisposal, navType.deemedDisposal);
+        Objects.equals(this.chargeableGainsRegime, navType.chargeableGainsRegime);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -751,7 +724,7 @@ public class NavType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing, notionalDealingCostTableId, valuationTemplateId, chargeableGainsRegime, deemedDisposal);
+    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing, notionalDealingCostTableId, valuationTemplateId, chargeableGainsRegime);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -789,7 +762,6 @@ public class NavType {
     sb.append("    notionalDealingCostTableId: ").append(toIndentedString(notionalDealingCostTableId)).append("\n");
     sb.append("    valuationTemplateId: ").append(toIndentedString(valuationTemplateId)).append("\n");
     sb.append("    chargeableGainsRegime: ").append(toIndentedString(chargeableGainsRegime)).append("\n");
-    sb.append("    deemedDisposal: ").append(toIndentedString(deemedDisposal)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -836,7 +808,6 @@ public class NavType {
     openapiFields.add("notionalDealingCostTableId");
     openapiFields.add("valuationTemplateId");
     openapiFields.add("chargeableGainsRegime");
-    openapiFields.add("deemedDisposal");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -946,10 +917,6 @@ public class NavType {
       }
       if ((jsonObj.get("chargeableGainsRegime") != null && !jsonObj.get("chargeableGainsRegime").isJsonNull()) && !jsonObj.get("chargeableGainsRegime").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chargeableGainsRegime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chargeableGainsRegime").toString()));
-      }
-      // validate the optional field `deemedDisposal`
-      if (jsonObj.get("deemedDisposal") != null && !jsonObj.get("deemedDisposal").isJsonNull()) {
-        DeemedDisposal.validateJsonElement(jsonObj.get("deemedDisposal"));
       }
   }
 

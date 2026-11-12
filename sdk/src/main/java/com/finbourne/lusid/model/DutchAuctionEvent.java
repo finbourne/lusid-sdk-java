@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.CashAndSecurityOfferElection;
+import com.finbourne.lusid.model.ElectionProrationRate;
 import com.finbourne.lusid.model.InstrumentEvent;
 import com.finbourne.lusid.model.LapseElection;
 import com.finbourne.lusid.model.MixedLotConstituentsElection;
@@ -140,6 +141,22 @@ public class DutchAuctionEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_BID_PRICE = "bidPrice";
   @SerializedName(SERIALIZED_NAME_BID_PRICE)
   private java.math.BigDecimal bidPrice;
+
+  public static final String SERIALIZED_NAME_ELECTION_PRORATION_RATES = "electionProrationRates";
+  @SerializedName(SERIALIZED_NAME_ELECTION_PRORATION_RATES)
+  private List<ElectionProrationRate> electionProrationRates;
+
+  public static final String SERIALIZED_NAME_MIN_PIECE_SIZE = "minPieceSize";
+  @SerializedName(SERIALIZED_NAME_MIN_PIECE_SIZE)
+  private java.math.BigDecimal minPieceSize;
+
+  public static final String SERIALIZED_NAME_MIN_INCREMENT = "minIncrement";
+  @SerializedName(SERIALIZED_NAME_MIN_INCREMENT)
+  private java.math.BigDecimal minIncrement;
+
+  public static final String SERIALIZED_NAME_ACCEPTED_QUANTITY_ROUNDING = "acceptedQuantityRounding";
+  @SerializedName(SERIALIZED_NAME_ACCEPTED_QUANTITY_ROUNDING)
+  private String acceptedQuantityRounding;
 
   public DutchAuctionEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -613,6 +630,98 @@ public class DutchAuctionEvent extends InstrumentEvent {
   }
 
 
+  public DutchAuctionEvent electionProrationRates(List<ElectionProrationRate> electionProrationRates) {
+    
+    this.electionProrationRates = electionProrationRates;
+    return this;
+  }
+
+  public DutchAuctionEvent addElectionProrationRatesItem(ElectionProrationRate electionProrationRatesItem) {
+    if (this.electionProrationRates == null) {
+      this.electionProrationRates = new ArrayList<>();
+    }
+    this.electionProrationRates.add(electionProrationRatesItem);
+    return this;
+  }
+
+   /**
+   * Optional proration rate per option, keyed by election key. An entry overrides ProrationRate for that  election; an option without an entry uses ProrationRate. Each key must name a TenderOffer, SecurityOffer,  CashAndSecurityOffer or MixedLotConstituents election of this event, once, with a rate in (0, 1].
+   * @return electionProrationRates
+  **/
+  @jakarta.annotation.Nullable
+  public List<ElectionProrationRate> getElectionProrationRates() {
+    return electionProrationRates;
+  }
+
+
+  public void setElectionProrationRates(List<ElectionProrationRate> electionProrationRates) {
+    this.electionProrationRates = electionProrationRates;
+  }
+
+
+  public DutchAuctionEvent minPieceSize(java.math.BigDecimal minPieceSize) {
+    
+    this.minPieceSize = minPieceSize;
+    return this;
+  }
+
+   /**
+   * Optional minimum tradable piece of the accepted quantity, in face for a bond and in units otherwise.  Must be strictly positive when set. With AcceptedQuantityRounding RoundDown, an accepted quantity below it  is rounded to zero.
+   * @return minPieceSize
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getMinPieceSize() {
+    return minPieceSize;
+  }
+
+
+  public void setMinPieceSize(java.math.BigDecimal minPieceSize) {
+    this.minPieceSize = minPieceSize;
+  }
+
+
+  public DutchAuctionEvent minIncrement(java.math.BigDecimal minIncrement) {
+    
+    this.minIncrement = minIncrement;
+    return this;
+  }
+
+   /**
+   * Optional tradable increment above MinPieceSize, in the same unit. When set, MinPieceSize must also be set.  Must be strictly positive. With AcceptedQuantityRounding RoundDown, the accepted quantity is rounded down to  MinPieceSize plus a whole number of increments.
+   * @return minIncrement
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getMinIncrement() {
+    return minIncrement;
+  }
+
+
+  public void setMinIncrement(java.math.BigDecimal minIncrement) {
+    this.minIncrement = minIncrement;
+  }
+
+
+  public DutchAuctionEvent acceptedQuantityRounding(String acceptedQuantityRounding) {
+    
+    this.acceptedQuantityRounding = acceptedQuantityRounding;
+    return this;
+  }
+
+   /**
+   * How a prorated accepted quantity that is not a whole tradable lot is disposed of. RoundDown rounds it down  to the tradable lot, or to a whole unit when no lot size is given, and the remainder stays in the holding.  CashInLieu accepts the unrounded quantity. When omitted the accepted quantity is not rounded. Available values: RoundDown, CashInLieu.
+   * @return acceptedQuantityRounding
+  **/
+  @jakarta.annotation.Nullable
+  public String getAcceptedQuantityRounding() {
+    return acceptedQuantityRounding;
+  }
+
+
+  public void setAcceptedQuantityRounding(String acceptedQuantityRounding) {
+    this.acceptedQuantityRounding = acceptedQuantityRounding;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -643,6 +752,10 @@ public class DutchAuctionEvent extends InstrumentEvent {
         (this.fractionalUnitsCashPrice.compareTo(dutchAuctionEvent.getFractionalUnitsCashPrice()) == 0) &&
         Objects.equals(this.fractionalUnitsCashCurrency, dutchAuctionEvent.fractionalUnitsCashCurrency) &&
         (this.bidPrice.compareTo(dutchAuctionEvent.getBidPrice()) == 0) &&
+        Objects.equals(this.electionProrationRates, dutchAuctionEvent.electionProrationRates) &&
+        (this.minPieceSize.compareTo(dutchAuctionEvent.getMinPieceSize()) == 0) &&
+        (this.minIncrement.compareTo(dutchAuctionEvent.getMinIncrement()) == 0) &&
+        Objects.equals(this.acceptedQuantityRounding, dutchAuctionEvent.acceptedQuantityRounding) &&
         super.equals(o);
   }
 
@@ -652,7 +765,7 @@ public class DutchAuctionEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentDate, marketDeadlineDate, currency, tenderOfferElections, securityOfferElections, cashAndSecurityOfferElections, lapseElections, mixedLotConstituentsElections, unknownProceedsElections, responseDeadlineDate, earlyResponseDeadline, exDate, recordDate, announcementDate, targetQuantity, prorationRate, newInstrument, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, bidPrice, super.hashCode());
+    return Objects.hash(paymentDate, marketDeadlineDate, currency, tenderOfferElections, securityOfferElections, cashAndSecurityOfferElections, lapseElections, mixedLotConstituentsElections, unknownProceedsElections, responseDeadlineDate, earlyResponseDeadline, exDate, recordDate, announcementDate, targetQuantity, prorationRate, newInstrument, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, bidPrice, electionProrationRates, minPieceSize, minIncrement, acceptedQuantityRounding, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -687,6 +800,10 @@ public class DutchAuctionEvent extends InstrumentEvent {
     sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
     sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
     sb.append("    bidPrice: ").append(toIndentedString(bidPrice)).append("\n");
+    sb.append("    electionProrationRates: ").append(toIndentedString(electionProrationRates)).append("\n");
+    sb.append("    minPieceSize: ").append(toIndentedString(minPieceSize)).append("\n");
+    sb.append("    minIncrement: ").append(toIndentedString(minIncrement)).append("\n");
+    sb.append("    acceptedQuantityRounding: ").append(toIndentedString(acceptedQuantityRounding)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -730,6 +847,10 @@ public class DutchAuctionEvent extends InstrumentEvent {
     openapiFields.add("fractionalUnitsCashPrice");
     openapiFields.add("fractionalUnitsCashCurrency");
     openapiFields.add("bidPrice");
+    openapiFields.add("electionProrationRates");
+    openapiFields.add("minPieceSize");
+    openapiFields.add("minIncrement");
+    openapiFields.add("acceptedQuantityRounding");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

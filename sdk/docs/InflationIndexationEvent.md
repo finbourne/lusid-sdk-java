@@ -6,7 +6,7 @@ The day-on-day change in the indexed face of an inflation-linked bond, as its in
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency** | **String** | The bond&#39;s domestic currency. | [default to String]
-**eventDate** | [**OffsetDateTime**](OffsetDateTime.md) | The calendar day on which the new index ratio applies. On an event LUSID generates it carries the bond&#39;s  local offset, so its date part is the bond&#39;s local calendar day; it is returned as generated and not  normalised to UTC. An upserted event may give it with any offset; it is normalised to UTC when stored. | [optional] [default to OffsetDateTime]
+**eventDate** | [**OffsetDateTime**](OffsetDateTime.md) | The instant from which the new index ratio applies: the bond&#39;s local midnight on the indexation day. On an  event LUSID generates it is returned in UTC, and the event id names the bond&#39;s local calendar day. An  upserted event may give it with any offset; it is normalised to UTC when stored. | [optional] [default to OffsetDateTime]
 **indexRatioAfter** | **java.math.BigDecimal** | The bond&#39;s un-floored inflation index ratio on the event date. | [default to java.math.BigDecimal]
 **indexRatioBefore** | **java.math.BigDecimal** | The bond&#39;s un-floored inflation index ratio on the day before the event date. | [default to java.math.BigDecimal]
 **indexedFaceChangePerUnit** | **java.math.BigDecimal** | The day&#39;s change in indexed face per unit: the un-indexed face per unit multiplied by  (index ratio after minus index ratio before). | [default to java.math.BigDecimal]

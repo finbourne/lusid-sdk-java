@@ -696,7 +696,7 @@ public class AllocationMapsApiExample {
 
 ## upsertAllocationMap
 
-> AllocationMap upsertAllocationMap(scope, code, allocationMapRequest)
+> AllocationMap upsertAllocationMap(scope, code, allocationMapRequest, effectiveAt)
 
 [EARLY ACCESS] UpsertAllocationMap: Upsert an Allocation Map.
 
@@ -744,11 +744,12 @@ public class AllocationMapsApiExample {
         String scope = "scope_example"; // String | The scope of the Allocation Map.
         String code = "code_example"; // String | The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map.
         AllocationMapRequest allocationMapRequest = new AllocationMapRequest(); // AllocationMapRequest | The definition of the Allocation Map.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time.
         try {
             // uncomment the below to set overrides at the request level
-            // AllocationMap result = apiInstance.upsertAllocationMap(scope, code, allocationMapRequest).execute(opts);
+            // AllocationMap result = apiInstance.upsertAllocationMap(scope, code, allocationMapRequest, effectiveAt).execute(opts);
 
-            AllocationMap result = apiInstance.upsertAllocationMap(scope, code, allocationMapRequest).execute();
+            AllocationMap result = apiInstance.upsertAllocationMap(scope, code, allocationMapRequest, effectiveAt).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling AllocationMapsApi#upsertAllocationMap");
@@ -768,6 +769,7 @@ public class AllocationMapsApiExample {
 | **scope** | **String**| The scope of the Allocation Map. | |
 | **code** | **String**| The code of the Allocation Map. Together with the scope this uniquely identifies the Allocation Map. | |
 | **allocationMapRequest** | [**AllocationMapRequest**](AllocationMapRequest.md)| The definition of the Allocation Map. | |
+| **effectiveAt** | **String**| The effective datetime or cut label from which the definition applies, when the request body does not give one. Required to update an existing Allocation Map; a new one created without it applies from the beginning of time. | [optional] |
 
 ### Return type
 

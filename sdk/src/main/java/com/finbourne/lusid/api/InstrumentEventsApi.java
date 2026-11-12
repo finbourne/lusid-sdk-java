@@ -480,7 +480,7 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The buckets of the requested range, each with its balances and its cashflows. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -496,7 +496,7 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The buckets of the requested range, each with its balances and its cashflows. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -513,7 +513,7 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The buckets of the requested range, each with its balances and its cashflows. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -530,7 +530,7 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The buckets of the requested range, each with its balances and its cashflows. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -546,7 +546,7 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The buckets of the requested range, each with its balances and its cashflows. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -563,7 +563,7 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The buckets of the requested range, each with its balances and its cashflows. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -580,7 +580,7 @@ public class InstrumentEventsApi {
          * @http.response.details
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-            <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
+            <tr><td> 200 </td><td> The buckets of the requested range, each with its balances and its cashflows. </td><td>  -  </td></tr>
             <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
@@ -591,13 +591,13 @@ public class InstrumentEventsApi {
     }
 
     /**
-     * QueryBucketCashFlowDrillDown: Returns the individual cashflows that make up a single cashflow bucket, with their source lineage.
-     * Returns the individual cashflows inside the requested bucket window for the holdings of the specified  portfolios, annotated with the source (Instrument, Transaction or SRS) that produced each cashflow.     The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
+     * [EARLY ACCESS] QueryBucketCashFlowDrillDown: Returns the cashflow buckets of a range of dates, each with its balances and the individual cashflows that make it up, with their source lineage.
+     * Splits the range from BucketStart to BucketEnd into periods with the BucketingSchedule, and returns one bucket per period,  member portfolio, payment currency and sub-holding key combination. Each bucket has its opening balance, the individual  cashflows that make up its activity, and its closing balance, so every balance and every cashflow appears once. Each  cashflow is annotated with the source (Instrument, Transaction or SRS) that produced it.     The drill-down returns the complete resolved stream, including transaction-sourced cashflows, which  bucketed responses using the (default) InstrumentCashFlow representation exclude. To reconcile the  drill-down against such a bucketed response, first exclude rows with a sourceType of &#39;Transaction&#39;.
      * @return APIqueryBucketCashFlowDrillDownRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The individual cashflows inside the requested bucket, with the bucket&#39;s balances. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The buckets of the requested range, each with its balances and its cashflows. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

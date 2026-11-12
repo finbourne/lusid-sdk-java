@@ -320,7 +320,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group.
+   * The apportionment results for the valuation point: one fund-level entry plus one entry per allocation group. Empty for a non-unitised fund, which has nothing to apportion.
    * @return apportionmentResults
   **/
   @jakarta.annotation.Nullable
@@ -349,7 +349,7 @@ public class ValuationPointDataResponse {
   }
 
    /**
-   * The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV.
+   * The bucket set results for the valuation point: for each bucket set, the per-node (fund and share class) buckets and NAV. A non-unitised fund has a fund node only.
    * @return bucketSetResults
   **/
   @jakarta.annotation.Nullable

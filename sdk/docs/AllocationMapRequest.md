@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **basisByEventType** | [**List&lt;AllocationMapEventBasis&gt;**](AllocationMapEventBasis.md) | The basis on which each kind of allocation event is shared between the participants. At most one entry per event type and component; an entry without a component is the default for the event type. | [optional] [default to List<AllocationMapEventBasis>]
 **roundingPartnerLine** | **String** | The investor record that takes every minor unit left over when the shares of an event are rounded. Absent means the leftover is spread one minor unit at a time over the largest remainders. | [optional] [default to String]
 **ilpaTransactionTypes** | [**List&lt;AllocationMapIlpaTransactionType&gt;**](AllocationMapIlpaTransactionType.md) | The ILPA transaction types the map reports particular kinds of allocation event under, where they differ from the default for the event type and component. At most one entry per event type and component; an entry without a component is the default for the event type. Every value must be one the system IlpaTransactionType data type lists. | [optional] [default to List<AllocationMapIlpaTransactionType>]
-**effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime from which the Allocation Map applies. Defaults to the beginning of time if not specified, so that the map is visible at every effective datetime. | [optional] [default to OffsetDateTime]
+**excuseCapMultiple** | **java.math.BigDecimal** | How far above its pro-rata share of a call a line may be taken when other participants are excused, as a multiple of that share: the LPA&#39;s over-call cap. At least 1. Absent means the platform default of 1.25. | [optional] [default to java.math.BigDecimal]
+**effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime from which the Allocation Map applies. On create, defaults to the beginning of time if not specified, so that the map is visible at every effective datetime. On update of an existing Allocation Map it is required, in the body or as the effectiveAt query parameter, so that a change is never back-dated or forward-dated by accident. | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.AllocationMapRequest;
@@ -31,6 +32,7 @@ AllocationMapParticipants Participants = new AllocationMapParticipants();
 @jakarta.annotation.Nullable List<AllocationMapEventBasis> BasisByEventType = new List<AllocationMapEventBasis>();
 @jakarta.annotation.Nullable String RoundingPartnerLine = "example RoundingPartnerLine";
 @jakarta.annotation.Nullable List<AllocationMapIlpaTransactionType> IlpaTransactionTypes = new List<AllocationMapIlpaTransactionType>();
+@jakarta.annotation.Nullable java.math.BigDecimal ExcuseCapMultiple = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable OffsetDateTime EffectiveAt = OffsetDateTime.now();
 
 
@@ -44,6 +46,7 @@ AllocationMapRequest allocationMapRequestInstance = new AllocationMapRequest()
     .BasisByEventType(BasisByEventType)
     .RoundingPartnerLine(RoundingPartnerLine)
     .IlpaTransactionTypes(IlpaTransactionTypes)
+    .ExcuseCapMultiple(ExcuseCapMultiple)
     .EffectiveAt(EffectiveAt);
 ```
 
