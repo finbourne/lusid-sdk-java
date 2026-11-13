@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The movement of a proportion of a CapitalInterest line&#39;s capital balances from one line to another.  The source (Out) side moves every balance by the fraction; the destination (In) side receives the  amounts given on the event. Mode distinguishes a genuine transfer between investors from a correction  of a mis-booked position. The portfolio-currency twin amounts (PaidInCapitalPortfolioCcyAmount,  ReturnedCapitalPortfolioCcyAmount and ExcessCapitalReturnedPortfolioCcyAmount) are not derived: an In side  that omits them books zero for the ...PortfolioCcy twins while the Out side gives up its share, and a  client-maintained transaction type configuration must include the ...PortfolioCcy twin movements for the  twins to move at all.
+ * The movement of a proportion of a CapitalInterest line&#39;s capital balances from one line to another.  The source (Out) side moves every balance by the fraction; the destination (In) side receives the  amounts given on the event. Mode distinguishes a genuine transfer between investors from a correction  of a mis-booked position. The portfolio-currency twin amounts (PaidInCapitalPortfolioCcyAmount,  ReturnedCapitalPortfolioCcyAmount and ExcessCapitalReturnedPortfolioCcyAmount) are not derived from the  commitment-currency amounts: an In side carries the source line&#39;s share of each twin balance, as the Out side  gives it up, and a client-maintained transaction type configuration must include the ...PortfolioCcy twin  movements for the twins to move at all.  The supported way to move an interest between partners is a Transfer allocation event (eventType Transfer on  the allocation events endpoint), which derives both sides from the register, plans and books them together  and posts to the general ledger and the capital account. Direct Out/In pairs upserted as instrument events  remain for migrations: they move register balances only, post nothing to the general ledger or the capital  account, and are validated as a pair. An In side must have an Out side for the same lines on the same date, in  the same request or already on the source, and its amounts must equal what that Out side moves, balance by  balance, the excess capital returned and the portfolio-currency twins included; otherwise the request is  refused naming the balance and both events, and nothing is written. One Out side has one In side: a second In  side for the same lines on the same date is refused, and so is an In side whose Out side shares its source line  and date with another Out side, in the request or already on the source, because the engine applies  same-instant transfers in entry order and the second moves what the first left; book transfers out of one  line at distinct instants. The source line must already be on the register when the pair is upserted; a line  whose history arrives in the same request is refused as not on the register.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CapitalInterestTransferEvent extends InstrumentEvent {
@@ -587,7 +587,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
    /**
-   * The funded capital received by the destination line, for a line whose drawdowns were booked against the stored funded balance rather than paid-in capital. Used on the &#39;In&#39; side only; must not be negative.
+   * The funded capital received by the destination line beyond its paid-in capital: the share of what the source line holds as a stored funded balance, from drawdowns booked against funded capital rather than paid-in capital. Paid-in capital already funds the destination, so for a line funded through paid-in capital this is zero or omitted; a figure here equal to the paid-in would fund the destination twice and is refused. Used on the &#39;In&#39; side only; must not be negative.
    * @return fundedCapitalAmount
   **/
   @jakarta.annotation.Nullable
@@ -629,7 +629,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
    /**
-   * The paid-in capital the destination line takes over, already in the portfolio&#39;s base currency: the source line&#39;s PaidInCapitalPortfolioCcy balance share, accumulated at historical rates, not a spot conversion of PaidInCapitalAmount. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for PaidInCapitalPortfolioCcy while the Out side gives up its share, and the transaction type configuration must include the PaidInCapitalPortfolioCcy movement for the twin to move.
+   * The paid-in capital the destination line takes over, already in the portfolio&#39;s base currency: the source line&#39;s PaidInCapitalPortfolioCcy balance share, accumulated at historical rates, not a spot conversion of PaidInCapitalAmount. Used on the &#39;In&#39; side only; must not be negative. An In side carries the source line&#39;s share of PaidInCapitalPortfolioCcy, as the Out side gives it up, and is refused when it omits a share the source line carries, and the transaction type configuration must include the PaidInCapitalPortfolioCcy movement for the twin to move.
    * @return paidInCapitalPortfolioCcyAmount
   **/
   @jakarta.annotation.Nullable
@@ -650,7 +650,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
    /**
-   * The returned capital the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for ReturnedCapitalPortfolioCcy while the Out side gives up its share, and the transaction type configuration must include the ReturnedCapitalPortfolioCcy movement for the twin to move.
+   * The returned capital the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side carries the source line&#39;s share of ReturnedCapitalPortfolioCcy, as the Out side gives it up, and is refused when it omits a share the source line carries, and the transaction type configuration must include the ReturnedCapitalPortfolioCcy movement for the twin to move.
    * @return returnedCapitalPortfolioCcyAmount
   **/
   @jakarta.annotation.Nullable
@@ -671,7 +671,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
    /**
-   * The cumulative excess capital returned that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for ExcessCapitalReturnedPortfolioCcy while the Out side gives up its share, and the transaction type configuration must include the ExcessCapitalReturnedPortfolioCcy movement for the twin to move.
+   * The cumulative excess capital returned that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side carries the source line&#39;s share of ExcessCapitalReturnedPortfolioCcy, as the Out side gives it up, and is refused when it omits a share the source line carries, and the transaction type configuration must include the ExcessCapitalReturnedPortfolioCcy movement for the twin to move.
    * @return excessCapitalReturnedPortfolioCcyAmount
   **/
   @jakarta.annotation.Nullable
@@ -692,7 +692,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
    /**
-   * The cumulative recalled capital that the destination line takes over, in the commitment currency. Used on the &#39;In&#39; side only; must not be negative. An In side that omits it books zero for RecalledCapital while the Out side gives up its share, and the transaction type configuration must include the RecalledCapital movement for the balance to move.
+   * The cumulative recalled capital that the destination line takes over, in the commitment currency. Used on the &#39;In&#39; side only; must not be negative. An In side carries the source line&#39;s share of RecalledCapital, as the Out side gives it up, and is refused when it omits a share the source line carries, and the transaction type configuration must include the RecalledCapital movement for the balance to move.
    * @return recalledCapitalAmount
   **/
   @jakarta.annotation.Nullable

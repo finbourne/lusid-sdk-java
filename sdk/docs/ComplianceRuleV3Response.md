@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **check** | [**ComplianceRuleV3Check**](ComplianceRuleV3Check.md) |  | [optional] [default to ComplianceRuleV3Check]
 **computedFilter** | [**ComplianceRuleV3ComputedFilter**](ComplianceRuleV3ComputedFilter.md) |  | [optional] [default to ComplianceRuleV3ComputedFilter]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
+**plainEnglish** | **String** |  | [optional] [default to String]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -35,6 +36,7 @@ ComplianceRuleV3Measure Measure = new ComplianceRuleV3Measure();
 ComplianceRuleV3Check Check = new ComplianceRuleV3Check();
 ComplianceRuleV3ComputedFilter ComputedFilter = new ComplianceRuleV3ComputedFilter();
 Version Version = new Version();
+@jakarta.annotation.Nullable String PlainEnglish = "example PlainEnglish";
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -50,6 +52,7 @@ ComplianceRuleV3Response complianceRuleV3ResponseInstance = new ComplianceRuleV3
     .Check(Check)
     .ComputedFilter(ComputedFilter)
     .Version(Version)
+    .PlainEnglish(PlainEnglish)
     .Links(Links);
 ```
 

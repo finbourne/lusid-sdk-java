@@ -103,6 +103,10 @@ public class ComplianceRuleV3Response {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
 
+  public static final String SERIALIZED_NAME_PLAIN_ENGLISH = "plainEnglish";
+  @SerializedName(SERIALIZED_NAME_PLAIN_ENGLISH)
+  private String plainEnglish;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -349,6 +353,27 @@ public class ComplianceRuleV3Response {
   }
 
 
+  public ComplianceRuleV3Response plainEnglish(String plainEnglish) {
+    
+    this.plainEnglish = plainEnglish;
+    return this;
+  }
+
+   /**
+   * Get plainEnglish
+   * @return plainEnglish
+  **/
+  @jakarta.annotation.Nullable
+  public String getPlainEnglish() {
+    return plainEnglish;
+  }
+
+
+  public void setPlainEnglish(String plainEnglish) {
+    this.plainEnglish = plainEnglish;
+  }
+
+
   public ComplianceRuleV3Response links(List<Link> links) {
     
     this.links = links;
@@ -399,6 +424,7 @@ public class ComplianceRuleV3Response {
         Objects.equals(this.check, complianceRuleV3Response.check) &&
         Objects.equals(this.computedFilter, complianceRuleV3Response.computedFilter) &&
         Objects.equals(this.version, complianceRuleV3Response.version) &&
+        Objects.equals(this.plainEnglish, complianceRuleV3Response.plainEnglish) &&
         Objects.equals(this.links, complianceRuleV3Response.links);
   }
 
@@ -408,7 +434,7 @@ public class ComplianceRuleV3Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, active, subject, filter, groupBy, measure, check, computedFilter, version, links);
+    return Objects.hash(id, name, description, active, subject, filter, groupBy, measure, check, computedFilter, version, plainEnglish, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -433,6 +459,7 @@ public class ComplianceRuleV3Response {
     sb.append("    check: ").append(toIndentedString(check)).append("\n");
     sb.append("    computedFilter: ").append(toIndentedString(computedFilter)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    plainEnglish: ").append(toIndentedString(plainEnglish)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -467,6 +494,7 @@ public class ComplianceRuleV3Response {
     openapiFields.add("check");
     openapiFields.add("computedFilter");
     openapiFields.add("version");
+    openapiFields.add("plainEnglish");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -522,6 +550,9 @@ public class ComplianceRuleV3Response {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonElement(jsonObj.get("version"));
+      }
+      if ((jsonObj.get("plainEnglish") != null && !jsonObj.get("plainEnglish").isJsonNull()) && !jsonObj.get("plainEnglish").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `plainEnglish` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plainEnglish").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

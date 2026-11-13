@@ -125,6 +125,14 @@ public class LegDefinition {
   @SerializedName(SERIALIZED_NAME_INTERMEDIATE_NOTIONAL_EXCHANGE)
   private Boolean intermediateNotionalExchange;
 
+  public static final String SERIALIZED_NAME_INITIAL_EXCHANGE_AMOUNT = "initialExchangeAmount";
+  @SerializedName(SERIALIZED_NAME_INITIAL_EXCHANGE_AMOUNT)
+  private java.math.BigDecimal initialExchangeAmount;
+
+  public static final String SERIALIZED_NAME_FINAL_EXCHANGE_AMOUNT = "finalExchangeAmount";
+  @SerializedName(SERIALIZED_NAME_FINAL_EXCHANGE_AMOUNT)
+  private java.math.BigDecimal finalExchangeAmount;
+
   public LegDefinition() {
   }
 
@@ -485,6 +493,48 @@ public class LegDefinition {
   }
 
 
+  public LegDefinition initialExchangeAmount(java.math.BigDecimal initialExchangeAmount) {
+    
+    this.initialExchangeAmount = initialExchangeAmount;
+    return this;
+  }
+
+   /**
+   * The amount exchanged at the start of the leg, when NotionalExchangeType is Initial or Both.  Defaults to the notional. Coupons accrue on the notional regardless. Must be non-negative, and cannot be  set together with an FxLinkedNotionalSchedule.
+   * @return initialExchangeAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getInitialExchangeAmount() {
+    return initialExchangeAmount;
+  }
+
+
+  public void setInitialExchangeAmount(java.math.BigDecimal initialExchangeAmount) {
+    this.initialExchangeAmount = initialExchangeAmount;
+  }
+
+
+  public LegDefinition finalExchangeAmount(java.math.BigDecimal finalExchangeAmount) {
+    
+    this.finalExchangeAmount = finalExchangeAmount;
+    return this;
+  }
+
+   /**
+   * The amount exchanged at maturity, when NotionalExchangeType is Final or Both.  Defaults to the notional. Coupons accrue on the notional regardless. Must be non-negative, and cannot be  set together with an FxLinkedNotionalSchedule.
+   * @return finalExchangeAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFinalExchangeAmount() {
+    return finalExchangeAmount;
+  }
+
+
+  public void setFinalExchangeAmount(java.math.BigDecimal finalExchangeAmount) {
+    this.finalExchangeAmount = finalExchangeAmount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -511,7 +561,9 @@ public class LegDefinition {
         Objects.equals(this.lastRegularPaymentDate, legDefinition.lastRegularPaymentDate) &&
         Objects.equals(this.lastCouponType, legDefinition.lastCouponType) &&
         Objects.equals(this.fxLinkedNotionalSchedule, legDefinition.fxLinkedNotionalSchedule) &&
-        Objects.equals(this.intermediateNotionalExchange, legDefinition.intermediateNotionalExchange);
+        Objects.equals(this.intermediateNotionalExchange, legDefinition.intermediateNotionalExchange) &&
+        (this.initialExchangeAmount.compareTo(legDefinition.getInitialExchangeAmount()) == 0) &&
+        (this.finalExchangeAmount.compareTo(legDefinition.getFinalExchangeAmount()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -520,7 +572,7 @@ public class LegDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(conventionName, conventions, indexConvention, indexConventionName, notionalExchangeType, payReceive, rateOrSpread, resetConvention, stubType, compounding, amortisation, firstRegularPaymentDate, firstCouponType, lastRegularPaymentDate, lastCouponType, fxLinkedNotionalSchedule, intermediateNotionalExchange);
+    return Objects.hash(conventionName, conventions, indexConvention, indexConventionName, notionalExchangeType, payReceive, rateOrSpread, resetConvention, stubType, compounding, amortisation, firstRegularPaymentDate, firstCouponType, lastRegularPaymentDate, lastCouponType, fxLinkedNotionalSchedule, intermediateNotionalExchange, initialExchangeAmount, finalExchangeAmount);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -551,6 +603,8 @@ public class LegDefinition {
     sb.append("    lastCouponType: ").append(toIndentedString(lastCouponType)).append("\n");
     sb.append("    fxLinkedNotionalSchedule: ").append(toIndentedString(fxLinkedNotionalSchedule)).append("\n");
     sb.append("    intermediateNotionalExchange: ").append(toIndentedString(intermediateNotionalExchange)).append("\n");
+    sb.append("    initialExchangeAmount: ").append(toIndentedString(initialExchangeAmount)).append("\n");
+    sb.append("    finalExchangeAmount: ").append(toIndentedString(finalExchangeAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -590,6 +644,8 @@ public class LegDefinition {
     openapiFields.add("lastCouponType");
     openapiFields.add("fxLinkedNotionalSchedule");
     openapiFields.add("intermediateNotionalExchange");
+    openapiFields.add("initialExchangeAmount");
+    openapiFields.add("finalExchangeAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

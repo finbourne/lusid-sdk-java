@@ -2788,7 +2788,7 @@ public class OrderManagementApi {
     }
 
     /**
-     * [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
+     * RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
      * Allocates Executions for a given list of placements to a specified set of portfolios by weight,  creating Allocations to record the results. Used for the unsolicited Block and Block Trade booking flows where no Orders exist against the Block.  Weights are relative to each other and are not required to sum to 1 or 100.
      * @param weightedAllocationServiceRunRequest The placement IDs to allocate against, and the portfolio weights to use for the allocation split. (required)
      * @return APIrunAllocationServiceWithWeightsRequest

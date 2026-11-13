@@ -79,12 +79,14 @@ import com.finbourne.lusid.model.ResourceListOfNavActivityAdjustmentResponse;
 import com.finbourne.lusid.model.ResourceListOfPartnerStatement;
 import com.finbourne.lusid.model.ResourceListOfSeries;
 import com.finbourne.lusid.model.ResourceListOfTaxExceptionItem;
+import com.finbourne.lusid.model.ResourceListOfTaxProvision;
 import com.finbourne.lusid.model.RevertValuationPointDataRequest;
 import com.finbourne.lusid.model.RevertValuationPointResponse;
 import com.finbourne.lusid.model.SeriesDefinitionRequest;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
 import com.finbourne.lusid.model.TaxCostRecordRequest;
+import com.finbourne.lusid.model.TaxProvision;
 import com.finbourne.lusid.model.TaxSyncStatus;
 import com.finbourne.lusid.model.UpdateValuationPointRequest;
 import com.finbourne.lusid.model.UpsertExternalDealingEstimatesRequest;
@@ -1194,6 +1196,271 @@ public class FundsApi {
      */
     public APIaddSeriesRequest addSeries(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest) {
         return new APIaddSeriesRequest(scope, code, seriesDefinitionRequest);
+    }
+    private okhttp3.Call approveTaxProvisionCall(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return approveTaxProvisionCall(scope, code, diaryEntryCode, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call approveTaxProvisionCall(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}/tax/provision/approve"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "diaryEntryCode" + "}", localVarApiClient.escapeString(diaryEntryCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call approveTaxProvisionValidateBeforeCall(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling approveTaxProvision(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling approveTaxProvision(Async)");
+        }
+
+        // verify the required parameter 'diaryEntryCode' is set
+        if (diaryEntryCode == null) {
+            throw new ApiException("Missing the required parameter 'diaryEntryCode' when calling approveTaxProvision(Async)");
+        }
+
+        return approveTaxProvisionCall(scope, code, diaryEntryCode, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<TaxProvision> approveTaxProvisionWithHttpInfo(String scope, String code, String diaryEntryCode, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = approveTaxProvisionValidateBeforeCall(scope, code, diaryEntryCode, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxProvision>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TaxProvision> approveTaxProvisionWithHttpInfo(String scope, String code, String diaryEntryCode, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = approveTaxProvisionValidateBeforeCall(scope, code, diaryEntryCode, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<TaxProvision>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call approveTaxProvisionAsync(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback<TaxProvision> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = approveTaxProvisionValidateBeforeCall(scope, code, diaryEntryCode, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxProvision>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call approveTaxProvisionAsync(String scope, String code, String diaryEntryCode, String navTypeCode, final ApiCallback<TaxProvision> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = approveTaxProvisionValidateBeforeCall(scope, code, diaryEntryCode, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<TaxProvision>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIapproveTaxProvisionRequest {
+        private final String scope;
+        private final String code;
+        private final String diaryEntryCode;
+        private String navTypeCode;
+
+        private APIapproveTaxProvisionRequest(String scope, String code, String diaryEntryCode) {
+            this.scope = scope;
+            this.code = code;
+            this.diaryEntryCode = diaryEntryCode;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, approves the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIapproveTaxProvisionRequest
+         */
+        public APIapproveTaxProvisionRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for approveTaxProvision
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The approved deferred-tax provision </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return approveTaxProvisionCall(scope, code, diaryEntryCode, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute approveTaxProvision request
+         * @return TaxProvision
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The approved deferred-tax provision </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxProvision execute() throws ApiException {
+            ApiResponse<TaxProvision> localVarResp = approveTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute approveTaxProvision request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TaxProvision
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The approved deferred-tax provision </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxProvision execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TaxProvision> localVarResp = approveTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute approveTaxProvision request with HTTP info returned
+         * @return ApiResponse&lt;TaxProvision&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The approved deferred-tax provision </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxProvision> executeWithHttpInfo() throws ApiException {
+            return approveTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, navTypeCode);
+        }
+
+        /**
+         * Execute approveTaxProvision request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TaxProvision&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The approved deferred-tax provision </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxProvision> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return approveTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, navTypeCode, opts);
+        }
+
+        /**
+         * Execute approveTaxProvision request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The approved deferred-tax provision </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxProvision> _callback) throws ApiException {
+            return approveTaxProvisionAsync(scope, code, diaryEntryCode, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute approveTaxProvision request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The approved deferred-tax provision </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxProvision> _callback, ConfigurationOptions opts) throws ApiException {
+            return approveTaxProvisionAsync(scope, code, diaryEntryCode, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point.
+     * Moves the Valuation Point&#39;s deferred-tax provision from Estimate to Approved, stores it as the official  document and books the movement since the previous approved Valuation Point as an accrual on the Fund.  Approving an already approved provision fails. Until tax elections can be configured on the Fund every  provision is struck under the default elections: a 20% rate, indexation allowance applied and losses carried  forward.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param diaryEntryCode The Diary Entry code of the Valuation Point whose provision is approved. (required)
+     * @return APIapproveTaxProvisionRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The approved deferred-tax provision </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIapproveTaxProvisionRequest approveTaxProvision(String scope, String code, String diaryEntryCode) {
+        return new APIapproveTaxProvisionRequest(scope, code, diaryEntryCode);
     }
     private okhttp3.Call calculateManagementFeesCall(String scope, String code, ManagementFeeRequest managementFeeRequest, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return calculateManagementFeesCall(scope, code, managementFeeRequest, asAt,  _callback, new ConfigurationOptions());
@@ -10693,6 +10960,289 @@ public class FundsApi {
     public APIgetSeriesRequest getSeries(String scope, String code) {
         return new APIgetSeriesRequest(scope, code);
     }
+    private okhttp3.Call getTaxProvisionCall(String scope, String code, String diaryEntryCode, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return getTaxProvisionCall(scope, code, diaryEntryCode, asAt, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getTaxProvisionCall(String scope, String code, String diaryEntryCode, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/tax/provision"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (diaryEntryCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("diaryEntryCode", diaryEntryCode));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTaxProvisionValidateBeforeCall(String scope, String code, String diaryEntryCode, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getTaxProvision(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getTaxProvision(Async)");
+        }
+
+        // verify the required parameter 'diaryEntryCode' is set
+        if (diaryEntryCode == null) {
+            throw new ApiException("Missing the required parameter 'diaryEntryCode' when calling getTaxProvision(Async)");
+        }
+
+        return getTaxProvisionCall(scope, code, diaryEntryCode, asAt, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<TaxProvision> getTaxProvisionWithHttpInfo(String scope, String code, String diaryEntryCode, OffsetDateTime asAt, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = getTaxProvisionValidateBeforeCall(scope, code, diaryEntryCode, asAt, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxProvision>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<TaxProvision> getTaxProvisionWithHttpInfo(String scope, String code, String diaryEntryCode, OffsetDateTime asAt, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getTaxProvisionValidateBeforeCall(scope, code, diaryEntryCode, asAt, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<TaxProvision>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getTaxProvisionAsync(String scope, String code, String diaryEntryCode, OffsetDateTime asAt, String navTypeCode, final ApiCallback<TaxProvision> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTaxProvisionValidateBeforeCall(scope, code, diaryEntryCode, asAt, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<TaxProvision>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getTaxProvisionAsync(String scope, String code, String diaryEntryCode, OffsetDateTime asAt, String navTypeCode, final ApiCallback<TaxProvision> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getTaxProvisionValidateBeforeCall(scope, code, diaryEntryCode, asAt, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<TaxProvision>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetTaxProvisionRequest {
+        private final String scope;
+        private final String code;
+        private final String diaryEntryCode;
+        private OffsetDateTime asAt;
+        private String navTypeCode;
+
+        private APIgetTaxProvisionRequest(String scope, String code, String diaryEntryCode) {
+            this.scope = scope;
+            this.code = code;
+            this.diaryEntryCode = diaryEntryCode;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the provision. Defaults to returning the latest version if not specified. (optional)
+         * @return APIgetTaxProvisionRequest
+         */
+        public APIgetTaxProvisionRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, the provision of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetTaxProvisionRequest
+         */
+        public APIgetTaxProvisionRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for getTaxProvision
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provision of the Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getTaxProvisionCall(scope, code, diaryEntryCode, asAt, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute getTaxProvision request
+         * @return TaxProvision
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provision of the Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxProvision execute() throws ApiException {
+            ApiResponse<TaxProvision> localVarResp = getTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, asAt, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTaxProvision request. Use any specified configuration options to override any other configuration for this request only.
+         * @return TaxProvision
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provision of the Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public TaxProvision execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<TaxProvision> localVarResp = getTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, asAt, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getTaxProvision request with HTTP info returned
+         * @return ApiResponse&lt;TaxProvision&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provision of the Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxProvision> executeWithHttpInfo() throws ApiException {
+            return getTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, asAt, navTypeCode);
+        }
+
+        /**
+         * Execute getTaxProvision request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;TaxProvision&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provision of the Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<TaxProvision> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getTaxProvisionWithHttpInfo(scope, code, diaryEntryCode, asAt, navTypeCode, opts);
+        }
+
+        /**
+         * Execute getTaxProvision request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provision of the Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxProvision> _callback) throws ApiException {
+            return getTaxProvisionAsync(scope, code, diaryEntryCode, asAt, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute getTaxProvision request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provision of the Valuation Point </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<TaxProvision> _callback, ConfigurationOptions opts) throws ApiException {
+            return getTaxProvisionAsync(scope, code, diaryEntryCode, asAt, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point.
+     * Returns the deferred-tax provision struck for the specified Valuation Point. Where the provision has been  approved by the asAt it is returned as stored, otherwise a live estimate is returned. Until tax elections  can be configured on the Fund every provision is struck under the default elections: a 20% rate, indexation  allowance applied and losses carried forward.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param diaryEntryCode The Diary Entry code of the Valuation Point the provision is for. (required)
+     * @return APIgetTaxProvisionRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The deferred-tax provision of the Valuation Point </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetTaxProvisionRequest getTaxProvision(String scope, String code, String diaryEntryCode) {
+        return new APIgetTaxProvisionRequest(scope, code, diaryEntryCode);
+    }
     private okhttp3.Call getTaxSyncStatusCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getTaxSyncStatusCall(scope, code, asAt,  _callback, new ConfigurationOptions());
     }
@@ -11860,7 +12410,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] GetValuationPointJournalEntryLines: Get the Journal Entry Lines for the given Fund.
-     * Gets the Journal Entry Lines for the given Valuation Point for a Fund.     The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.
+     * Gets the Journal Entry Lines for the given Valuation Point for a Fund.     The Journal Entry Lines have been generated from transactions, translated via posting rules and used in the valuation point.     Lines are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s lines in the order the accounting engine produced them, so the order is stable across pages.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataQueryParameters The arguments to use for querying the Journal Entry Lines. (required)
@@ -12203,7 +12753,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
-     * Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.
+     * Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.     Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataQueryParameters The arguments to use for generating the PnL summary. (required)
@@ -12934,7 +13484,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund.
-     * Gets the Transactions for the given Valuation Point for a Fund.
+     * Gets the Transactions for the given Valuation Point for a Fund.     Transactions are returned grouped by portfolio, ordered by portfolio scope and then code (ordinal), with each portfolio&#39;s transactions in the order the accounting engine produced them, so the order is stable across pages.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataQueryParameters The arguments to use for querying the transactions. (required)
@@ -13650,7 +14200,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund.
-     * Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.
+     * Gets all transactions that remain unsettled as at the specified Valuation Point for a Fund,  looking back from inception. Settlement status is point-in-time: post-cutoff settlement  activity does not alter the result.     Rows are returned ordered by portfolio (scope then code, ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding keys, so the order is total and stable across pages.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param singleValuationPointQueryParameters The arguments to use for querying the unsettled transactions. (required)
@@ -17126,6 +17676,307 @@ public class FundsApi {
      */
     public APIlistTaxExceptionsAcrossFundsRequest listTaxExceptionsAcrossFunds() {
         return new APIlistTaxExceptionsAcrossFundsRequest();
+    }
+    private okhttp3.Call listTaxProvisionsCall(String scope, String code, OffsetDateTime fromEffectiveAt, OffsetDateTime toEffectiveAt, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return listTaxProvisionsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listTaxProvisionsCall(String scope, String code, OffsetDateTime fromEffectiveAt, OffsetDateTime toEffectiveAt, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/tax/provisions"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (fromEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromEffectiveAt", fromEffectiveAt));
+        }
+
+        if (toEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("toEffectiveAt", toEffectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listTaxProvisionsValidateBeforeCall(String scope, String code, OffsetDateTime fromEffectiveAt, OffsetDateTime toEffectiveAt, OffsetDateTime asAt, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listTaxProvisions(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listTaxProvisions(Async)");
+        }
+
+        return listTaxProvisionsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ResourceListOfTaxProvision> listTaxProvisionsWithHttpInfo(String scope, String code, OffsetDateTime fromEffectiveAt, OffsetDateTime toEffectiveAt, OffsetDateTime asAt, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = listTaxProvisionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxProvision>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ResourceListOfTaxProvision> listTaxProvisionsWithHttpInfo(String scope, String code, OffsetDateTime fromEffectiveAt, OffsetDateTime toEffectiveAt, OffsetDateTime asAt, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listTaxProvisionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxProvision>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listTaxProvisionsAsync(String scope, String code, OffsetDateTime fromEffectiveAt, OffsetDateTime toEffectiveAt, OffsetDateTime asAt, String navTypeCode, final ApiCallback<ResourceListOfTaxProvision> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxProvisionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxProvision>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listTaxProvisionsAsync(String scope, String code, OffsetDateTime fromEffectiveAt, OffsetDateTime toEffectiveAt, OffsetDateTime asAt, String navTypeCode, final ApiCallback<ResourceListOfTaxProvision> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listTaxProvisionsValidateBeforeCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<ResourceListOfTaxProvision>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistTaxProvisionsRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime fromEffectiveAt;
+        private OffsetDateTime toEffectiveAt;
+        private OffsetDateTime asAt;
+        private String navTypeCode;
+
+        private APIlistTaxProvisionsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set fromEffectiveAt
+         * @param fromEffectiveAt The lower bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the start of the Fund if not specified. (optional)
+         * @return APIlistTaxProvisionsRequest
+         */
+        public APIlistTaxProvisionsRequest fromEffectiveAt(OffsetDateTime fromEffectiveAt) {
+            this.fromEffectiveAt = fromEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set toEffectiveAt
+         * @param toEffectiveAt The upper bound effective datetime (inclusive) of the Valuation Points to include. Defaults to the latest Valuation Point if not specified. (optional)
+         * @return APIlistTaxProvisionsRequest
+         */
+        public APIlistTaxProvisionsRequest toEffectiveAt(OffsetDateTime toEffectiveAt) {
+            this.toEffectiveAt = toEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the provisions. Defaults to returning the latest version if not specified. (optional)
+         * @return APIlistTaxProvisionsRequest
+         */
+        public APIlistTaxProvisionsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, the provisions of the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIlistTaxProvisionsRequest
+         */
+        public APIlistTaxProvisionsRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for listTaxProvisions
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provisions of the Fund&#39;s Valuation Points in the window </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listTaxProvisionsCall(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute listTaxProvisions request
+         * @return ResourceListOfTaxProvision
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provisions of the Fund&#39;s Valuation Points in the window </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTaxProvision execute() throws ApiException {
+            ApiResponse<ResourceListOfTaxProvision> localVarResp = listTaxProvisionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTaxProvisions request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ResourceListOfTaxProvision
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provisions of the Fund&#39;s Valuation Points in the window </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ResourceListOfTaxProvision execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListOfTaxProvision> localVarResp = listTaxProvisionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listTaxProvisions request with HTTP info returned
+         * @return ApiResponse&lt;ResourceListOfTaxProvision&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provisions of the Fund&#39;s Valuation Points in the window </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTaxProvision> executeWithHttpInfo() throws ApiException {
+            return listTaxProvisionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode);
+        }
+
+        /**
+         * Execute listTaxProvisions request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ResourceListOfTaxProvision&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provisions of the Fund&#39;s Valuation Points in the window </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ResourceListOfTaxProvision> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listTaxProvisionsWithHttpInfo(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, opts);
+        }
+
+        /**
+         * Execute listTaxProvisions request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provisions of the Fund&#39;s Valuation Points in the window </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTaxProvision> _callback) throws ApiException {
+            return listTaxProvisionsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute listTaxProvisions request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The deferred-tax provisions of the Fund&#39;s Valuation Points in the window </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListOfTaxProvision> _callback, ConfigurationOptions opts) throws ApiException {
+            return listTaxProvisionsAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAt, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund.
+     * Returns the deferred-tax provision of every Valuation Point whose effective date lies in the window, oldest first.  Unapproved Valuation Points are estimated live, so the window may cover at most 100 Valuation Points. Until tax  elections can be configured on the Fund every provision is struck under the default elections: a 20% rate,  indexation allowance applied and losses carried forward.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @return APIlistTaxProvisionsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The deferred-tax provisions of the Fund&#39;s Valuation Points in the window </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistTaxProvisionsRequest listTaxProvisions(String scope, String code) {
+        return new APIlistTaxProvisionsRequest(scope, code);
     }
     private okhttp3.Call listValuationPointComplexMarketDataCall(String scope, String code, ValuationPointDataQueryParameters valuationPointDataQueryParameters, OffsetDateTime asAt, Integer limit, String page, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return listValuationPointComplexMarketDataCall(scope, code, valuationPointDataQueryParameters, asAt, limit, page, navTypeCode,  _callback, new ConfigurationOptions());

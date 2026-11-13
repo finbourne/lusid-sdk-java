@@ -138,7 +138,7 @@ public class InflationSwap extends LusidInstrument {
    * Get inflationLeg
    * @return inflationLeg
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public InflationLeg getInflationLeg() {
     return inflationLeg;
   }
@@ -159,7 +159,7 @@ public class InflationSwap extends LusidInstrument {
    * Get fixedLeg
    * @return fixedLeg
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public FixedLeg getFixedLeg() {
     return fixedLeg;
   }
@@ -300,8 +300,6 @@ public class InflationSwap extends LusidInstrument {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("startDate");
     openapiRequiredFields.add("maturityDate");
-    openapiRequiredFields.add("inflationLeg");
-    openapiRequiredFields.add("fixedLeg");
     openapiRequiredFields.add("instrumentType");
   }
 

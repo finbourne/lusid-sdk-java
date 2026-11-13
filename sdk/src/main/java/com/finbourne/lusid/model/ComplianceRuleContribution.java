@@ -11,7 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.ComplianceKeyUsed;
 import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -19,9 +19,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -54,10 +54,6 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplianceRuleContribution {
-  public static final String SERIALIZED_NAME_INDEX = "index";
-  @SerializedName(SERIALIZED_NAME_INDEX)
-  private Integer index;
-
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
   private ResourceId portfolioId;
@@ -82,41 +78,16 @@ public class ComplianceRuleContribution {
   @SerializedName(SERIALIZED_NAME_HOLDING_ID)
   private String holdingId;
 
-  public static final String SERIALIZED_NAME_RESULT_VALUES = "resultValues";
-  @SerializedName(SERIALIZED_NAME_RESULT_VALUES)
-  private Map<String, java.math.BigDecimal> resultValues = new HashMap<>();
+  public static final String SERIALIZED_NAME_HELD_BY = "heldBy";
+  @SerializedName(SERIALIZED_NAME_HELD_BY)
+  private String heldBy;
 
-  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
-  @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_RELATED_PROPERTIES = "relatedProperties";
-  @SerializedName(SERIALIZED_NAME_RELATED_PROPERTIES)
-  private Map<String, String> relatedProperties = new HashMap<>();
+  public static final String SERIALIZED_NAME_KEYS_USED = "keysUsed";
+  @SerializedName(SERIALIZED_NAME_KEYS_USED)
+  private List<ComplianceKeyUsed> keysUsed = new ArrayList<>();
 
   public ComplianceRuleContribution() {
   }
-
-  public ComplianceRuleContribution index(Integer index) {
-    
-    this.index = index;
-    return this;
-  }
-
-   /**
-   * The position of this contribution within the compliance run.
-   * @return index
-  **/
-  @jakarta.annotation.Nonnull
-  public Integer getIndex() {
-    return index;
-  }
-
-
-  public void setIndex(Integer index) {
-    this.index = index;
-  }
-
 
   public ComplianceRuleContribution portfolioId(ResourceId portfolioId) {
     
@@ -244,90 +215,53 @@ public class ComplianceRuleContribution {
   }
 
 
-  public ComplianceRuleContribution resultValues(Map<String, java.math.BigDecimal> resultValues) {
+  public ComplianceRuleContribution heldBy(String heldBy) {
     
-    this.resultValues = resultValues;
-    return this;
-  }
-
-  public ComplianceRuleContribution putResultValuesItem(String key, java.math.BigDecimal resultValuesItem) {
-    if (this.resultValues == null) {
-      this.resultValues = new HashMap<>();
-    }
-    this.resultValues.put(key, resultValuesItem);
+    this.heldBy = heldBy;
     return this;
   }
 
    /**
-   * Dictionary of AddressKey (as string) and their corresponding decimal valuation results for this contribution.
-   * @return resultValues
+   * Optional. Where this holding sits relative to the rule&#39;s benchmark: portfolio, benchmark or both.  Meaningful only for benchmark-relative rules.
+   * @return heldBy
   **/
-  @jakarta.annotation.Nonnull
-  public Map<String, java.math.BigDecimal> getResultValues() {
-    return resultValues;
+  @jakarta.annotation.Nullable
+  public String getHeldBy() {
+    return heldBy;
   }
 
 
-  public void setResultValues(Map<String, java.math.BigDecimal> resultValues) {
-    this.resultValues = resultValues;
+  public void setHeldBy(String heldBy) {
+    this.heldBy = heldBy;
   }
 
 
-  public ComplianceRuleContribution properties(Map<String, Property> properties) {
+  public ComplianceRuleContribution keysUsed(List<ComplianceKeyUsed> keysUsed) {
     
-    this.properties = properties;
+    this.keysUsed = keysUsed;
     return this;
   }
 
-  public ComplianceRuleContribution putPropertiesItem(String key, Property propertiesItem) {
-    if (this.properties == null) {
-      this.properties = new HashMap<>();
+  public ComplianceRuleContribution addKeysUsedItem(ComplianceKeyUsed keysUsedItem) {
+    if (this.keysUsed == null) {
+      this.keysUsed = new ArrayList<>();
     }
-    this.properties.put(key, propertiesItem);
+    this.keysUsed.add(keysUsedItem);
     return this;
   }
 
    /**
-   * Dictionary of PropertyKey (as string) and their corresponding property for this contribution.
-   * @return properties
+   * The keys this holding contributed to the rule: each key the rule read (plus the portfolio NAV key), with the  role(s) it played, the holding&#39;s own value for it, and which bag the value came from.
+   * @return keysUsed
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, Property> getProperties() {
-    return properties;
+  public List<ComplianceKeyUsed> getKeysUsed() {
+    return keysUsed;
   }
 
 
-  public void setProperties(Map<String, Property> properties) {
-    this.properties = properties;
-  }
-
-
-  public ComplianceRuleContribution relatedProperties(Map<String, String> relatedProperties) {
-    
-    this.relatedProperties = relatedProperties;
-    return this;
-  }
-
-  public ComplianceRuleContribution putRelatedPropertiesItem(String key, String relatedPropertiesItem) {
-    if (this.relatedProperties == null) {
-      this.relatedProperties = new HashMap<>();
-    }
-    this.relatedProperties.put(key, relatedPropertiesItem);
-    return this;
-  }
-
-   /**
-   * Dictionary of related property keys (as string) and their string values, read from related entities across a relationship.
-   * @return relatedProperties
-  **/
-  @jakarta.annotation.Nonnull
-  public Map<String, String> getRelatedProperties() {
-    return relatedProperties;
-  }
-
-
-  public void setRelatedProperties(Map<String, String> relatedProperties) {
-    this.relatedProperties = relatedProperties;
+  public void setKeysUsed(List<ComplianceKeyUsed> keysUsed) {
+    this.keysUsed = keysUsed;
   }
 
 
@@ -341,16 +275,14 @@ public class ComplianceRuleContribution {
       return false;
     }
     ComplianceRuleContribution complianceRuleContribution = (ComplianceRuleContribution) o;
-    return Objects.equals(this.index, complianceRuleContribution.index) &&
-        Objects.equals(this.portfolioId, complianceRuleContribution.portfolioId) &&
+    return Objects.equals(this.portfolioId, complianceRuleContribution.portfolioId) &&
         Objects.equals(this.orderId, complianceRuleContribution.orderId) &&
         Objects.equals(this.instrument, complianceRuleContribution.instrument) &&
         Objects.equals(this.instrumentType, complianceRuleContribution.instrumentType) &&
         Objects.equals(this.holdingType, complianceRuleContribution.holdingType) &&
         Objects.equals(this.holdingId, complianceRuleContribution.holdingId) &&
-        Objects.equals(this.resultValues, complianceRuleContribution.resultValues) &&
-        Objects.equals(this.properties, complianceRuleContribution.properties) &&
-        Objects.equals(this.relatedProperties, complianceRuleContribution.relatedProperties);
+        Objects.equals(this.heldBy, complianceRuleContribution.heldBy) &&
+        Objects.equals(this.keysUsed, complianceRuleContribution.keysUsed);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -359,7 +291,7 @@ public class ComplianceRuleContribution {
 
   @Override
   public int hashCode() {
-    return Objects.hash(index, portfolioId, orderId, instrument, instrumentType, holdingType, holdingId, resultValues, properties, relatedProperties);
+    return Objects.hash(portfolioId, orderId, instrument, instrumentType, holdingType, holdingId, heldBy, keysUsed);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -373,16 +305,14 @@ public class ComplianceRuleContribution {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ComplianceRuleContribution {\n");
-    sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    instrument: ").append(toIndentedString(instrument)).append("\n");
     sb.append("    instrumentType: ").append(toIndentedString(instrumentType)).append("\n");
     sb.append("    holdingType: ").append(toIndentedString(holdingType)).append("\n");
     sb.append("    holdingId: ").append(toIndentedString(holdingId)).append("\n");
-    sb.append("    resultValues: ").append(toIndentedString(resultValues)).append("\n");
-    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
-    sb.append("    relatedProperties: ").append(toIndentedString(relatedProperties)).append("\n");
+    sb.append("    heldBy: ").append(toIndentedString(heldBy)).append("\n");
+    sb.append("    keysUsed: ").append(toIndentedString(keysUsed)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -405,25 +335,20 @@ public class ComplianceRuleContribution {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("index");
     openapiFields.add("portfolioId");
     openapiFields.add("orderId");
     openapiFields.add("instrument");
     openapiFields.add("instrumentType");
     openapiFields.add("holdingType");
     openapiFields.add("holdingId");
-    openapiFields.add("resultValues");
-    openapiFields.add("properties");
-    openapiFields.add("relatedProperties");
+    openapiFields.add("heldBy");
+    openapiFields.add("keysUsed");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("index");
     openapiRequiredFields.add("portfolioId");
     openapiRequiredFields.add("instrument");
-    openapiRequiredFields.add("resultValues");
-    openapiRequiredFields.add("properties");
-    openapiRequiredFields.add("relatedProperties");
+    openapiRequiredFields.add("keysUsed");
   }
 
  /**
@@ -464,6 +389,19 @@ public class ComplianceRuleContribution {
       if ((jsonObj.get("holdingId") != null && !jsonObj.get("holdingId").isJsonNull()) && !jsonObj.get("holdingId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `holdingId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("holdingId").toString()));
       }
+      if ((jsonObj.get("heldBy") != null && !jsonObj.get("heldBy").isJsonNull()) && !jsonObj.get("heldBy").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `heldBy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("heldBy").toString()));
+      }
+      // ensure the json data is an array
+      if (!jsonObj.get("keysUsed").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `keysUsed` to be an array in the JSON string but got `%s`", jsonObj.get("keysUsed").toString()));
+      }
+
+      JsonArray jsonArraykeysUsed = jsonObj.getAsJsonArray("keysUsed");
+      // validate the required field `keysUsed` (array)
+      for (int i = 0; i < jsonArraykeysUsed.size(); i++) {
+        ComplianceKeyUsed.validateJsonElement(jsonArraykeysUsed.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

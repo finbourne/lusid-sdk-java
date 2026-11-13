@@ -18,9 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -49,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A plain-English description of a V3 compliance rule. This is a minimal placeholder shape: the plain-English  generator is delivered separately, so the Lines property is currently empty and only the rule&#39;s identity  and subject are populated.
+ * A plain-English description of a V3 compliance rule: its identity, the kind of entity it examines, and a  single sentence describing what it checks. The sentence is empty for a rule the generator cannot fully  express.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplianceRuleV3DescribeResponse {
@@ -61,9 +59,9 @@ public class ComplianceRuleV3DescribeResponse {
   @SerializedName(SERIALIZED_NAME_SUBJECT)
   private String subject;
 
-  public static final String SERIALIZED_NAME_LINES = "lines";
-  @SerializedName(SERIALIZED_NAME_LINES)
-  private List<String> lines;
+  public static final String SERIALIZED_NAME_PLAIN_ENGLISH = "plainEnglish";
+  @SerializedName(SERIALIZED_NAME_PLAIN_ENGLISH)
+  private String plainEnglish;
 
   public ComplianceRuleV3DescribeResponse() {
   }
@@ -110,32 +108,24 @@ public class ComplianceRuleV3DescribeResponse {
   }
 
 
-  public ComplianceRuleV3DescribeResponse lines(List<String> lines) {
+  public ComplianceRuleV3DescribeResponse plainEnglish(String plainEnglish) {
     
-    this.lines = lines;
-    return this;
-  }
-
-  public ComplianceRuleV3DescribeResponse addLinesItem(String linesItem) {
-    if (this.lines == null) {
-      this.lines = new ArrayList<>();
-    }
-    this.lines.add(linesItem);
+    this.plainEnglish = plainEnglish;
     return this;
   }
 
    /**
-   * Get lines
-   * @return lines
+   * Get plainEnglish
+   * @return plainEnglish
   **/
   @jakarta.annotation.Nullable
-  public List<String> getLines() {
-    return lines;
+  public String getPlainEnglish() {
+    return plainEnglish;
   }
 
 
-  public void setLines(List<String> lines) {
-    this.lines = lines;
+  public void setPlainEnglish(String plainEnglish) {
+    this.plainEnglish = plainEnglish;
   }
 
 
@@ -151,7 +141,7 @@ public class ComplianceRuleV3DescribeResponse {
     ComplianceRuleV3DescribeResponse complianceRuleV3DescribeResponse = (ComplianceRuleV3DescribeResponse) o;
     return Objects.equals(this.id, complianceRuleV3DescribeResponse.id) &&
         Objects.equals(this.subject, complianceRuleV3DescribeResponse.subject) &&
-        Objects.equals(this.lines, complianceRuleV3DescribeResponse.lines);
+        Objects.equals(this.plainEnglish, complianceRuleV3DescribeResponse.plainEnglish);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -160,7 +150,7 @@ public class ComplianceRuleV3DescribeResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, subject, lines);
+    return Objects.hash(id, subject, plainEnglish);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -176,7 +166,7 @@ public class ComplianceRuleV3DescribeResponse {
     sb.append("class ComplianceRuleV3DescribeResponse {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
-    sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
+    sb.append("    plainEnglish: ").append(toIndentedString(plainEnglish)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -201,7 +191,7 @@ public class ComplianceRuleV3DescribeResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("id");
     openapiFields.add("subject");
-    openapiFields.add("lines");
+    openapiFields.add("plainEnglish");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -227,9 +217,8 @@ public class ComplianceRuleV3DescribeResponse {
       if ((jsonObj.get("subject") != null && !jsonObj.get("subject").isJsonNull()) && !jsonObj.get("subject").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `subject` to be a primitive type in the JSON string but got `%s`", jsonObj.get("subject").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("lines") != null && !jsonObj.get("lines").isJsonNull() && !jsonObj.get("lines").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lines` to be an array in the JSON string but got `%s`", jsonObj.get("lines").toString()));
+      if ((jsonObj.get("plainEnglish") != null && !jsonObj.get("plainEnglish").isJsonNull()) && !jsonObj.get("plainEnglish").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `plainEnglish` to be a primitive type in the JSON string but got `%s`", jsonObj.get("plainEnglish").toString()));
       }
   }
 

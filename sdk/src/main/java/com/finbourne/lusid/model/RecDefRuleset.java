@@ -78,7 +78,7 @@ public class RecDefRuleset {
   }
 
    /**
-   * The type of reconciliation this entry configures. Must be valid for the definitionType, and must match the reconciliationType of the referenced matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
+   * The type of reconciliation this entry configures. A custom entity type is written as its name, which starts with ~. Must be valid for the definitionType, and must match the reconciliationType of the referenced matching ruleset. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
    * @return recType
   **/
   @jakarta.annotation.Nonnull

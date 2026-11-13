@@ -5,8 +5,9 @@ The collection of reconciliation results for a given rec type within a rec insta
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**recType** | **String** | The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. | [default to String]
+**recType** | **String** | The type of rec that this result set belongs to (e.g. Holding). Together with the rec instance, this uniquely identifies the result set. Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio, CustomEntity. | [default to String]
 **externalRecTypeName** | **String** | The client&#39;s name for an External rec type, as stamped from the matching ruleset&#39;s externalRecType when the run executed. Null for native rec types. Filterable. | [optional] [default to String]
+**customEntityType** | **String** | The name of the custom entity type, which starts with ~. Set when the rec type is CustomEntity and null for every other rec type. Filterable. | [optional] [default to String]
 **recInstance** | [**RecInstanceSummary**](RecInstanceSummary.md) |  | [default to RecInstanceSummary]
 **runNumber** | **Integer** | The run number within the instance. Increments with each re-run. | [default to Integer]
 **runAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime at which the run happened. | [default to OffsetDateTime]
@@ -31,6 +32,7 @@ import java.net.URI;
 
 String RecType = "example RecType";
 @jakarta.annotation.Nullable String ExternalRecTypeName = "example ExternalRecTypeName";
+@jakarta.annotation.Nullable String CustomEntityType = "example CustomEntityType";
 RecInstanceSummary RecInstance = new RecInstanceSummary();
 Integer RunNumber = new Integer("100.00");
 OffsetDateTime RunAsAt = OffsetDateTime.now();
@@ -51,6 +53,7 @@ Version Version = new Version();
 RecResultSet recResultSetInstance = new RecResultSet()
     .RecType(RecType)
     .ExternalRecTypeName(ExternalRecTypeName)
+    .CustomEntityType(CustomEntityType)
     .RecInstance(RecInstance)
     .RunNumber(RunNumber)
     .RunAsAt(RunAsAt)

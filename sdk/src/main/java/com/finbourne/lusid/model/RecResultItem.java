@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.RecResultCustomEntityItem;
 import com.finbourne.lusid.model.RecResultExternalIdentifiersItem;
 import com.finbourne.lusid.model.RecResultHoldingImpact;
 import com.finbourne.lusid.model.RecResultHoldingItem;
@@ -80,6 +81,7 @@ public class RecResultItem extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'RecResultItem' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<RecResultCustomEntityItem> adapterRecResultCustomEntityItem = gson.getDelegateAdapter(this, TypeToken.get(RecResultCustomEntityItem.class));
             final TypeAdapter<RecResultExternalIdentifiersItem> adapterRecResultExternalIdentifiersItem = gson.getDelegateAdapter(this, TypeToken.get(RecResultExternalIdentifiersItem.class));
             final TypeAdapter<RecResultHoldingItem> adapterRecResultHoldingItem = gson.getDelegateAdapter(this, TypeToken.get(RecResultHoldingItem.class));
             final TypeAdapter<RecResultRelationalDataItem> adapterRecResultRelationalDataItem = gson.getDelegateAdapter(this, TypeToken.get(RecResultRelationalDataItem.class));
@@ -95,6 +97,12 @@ public class RecResultItem extends AbstractOpenApiSchema {
                         return;
                     }
 
+                    // check if the actual instance is of the type `RecResultCustomEntityItem`
+                    if (value.getActualInstance() instanceof RecResultCustomEntityItem) {
+                      JsonElement element = adapterRecResultCustomEntityItem.toJsonTree((RecResultCustomEntityItem)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
                     // check if the actual instance is of the type `RecResultExternalIdentifiersItem`
                     if (value.getActualInstance() instanceof RecResultExternalIdentifiersItem) {
                       JsonElement element = adapterRecResultExternalIdentifiersItem.toJsonTree((RecResultExternalIdentifiersItem)value.getActualInstance());
@@ -131,7 +139,7 @@ public class RecResultItem extends AbstractOpenApiSchema {
                       elementAdapter.write(out, element);
                       return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: RecResultCustomEntityItem, RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem");
                 }
 
                 @Override
@@ -148,6 +156,10 @@ public class RecResultItem extends AbstractOpenApiSchema {
                     } else  {
                         // look up the discriminator value in the field `itemType`
                         switch (jsonObject.get("itemType").getAsString()) {
+                            case "CustomEntity":
+                                deserialized = adapterRecResultCustomEntityItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
                             case "Holding":
                                 deserialized = adapterRecResultHoldingItem.fromJsonTree(jsonObject);
                                 newRecResultItem.setActualInstance(deserialized);
@@ -162,6 +174,10 @@ public class RecResultItem extends AbstractOpenApiSchema {
                                 return newRecResultItem;
                             case "Portfolio":
                                 deserialized = adapterRecResultResourceIdItem.fromJsonTree(jsonObject);
+                                newRecResultItem.setActualInstance(deserialized);
+                                return newRecResultItem;
+                            case "RecResultCustomEntityItem":
+                                deserialized = adapterRecResultCustomEntityItem.fromJsonTree(jsonObject);
                                 newRecResultItem.setActualInstance(deserialized);
                                 return newRecResultItem;
                             case "RecResultExternalIdentifiersItem":
@@ -205,7 +221,7 @@ public class RecResultItem extends AbstractOpenApiSchema {
                                 newRecResultItem.setActualInstance(deserialized);
                                 return newRecResultItem;
                             default:
-                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for RecResultItem. Possible values: Holding Instrument LegalEntity Portfolio RecResultExternalIdentifiersItem RecResultHoldingItem RecResultRelationalDataItem RecResultResourceIdItem RecResultSettlementActivityItem RecResultTransactionItem RelationalDataPoint SettlementActivity Transaction ValuedHolding", jsonObject.get("itemType").getAsString()));
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for RecResultItem. Possible values: CustomEntity Holding Instrument LegalEntity Portfolio RecResultCustomEntityItem RecResultExternalIdentifiersItem RecResultHoldingItem RecResultRelationalDataItem RecResultResourceIdItem RecResultSettlementActivityItem RecResultTransactionItem RelationalDataPoint SettlementActivity Transaction ValuedHolding", jsonObject.get("itemType").getAsString()));
                         }
                     }
 
@@ -213,6 +229,18 @@ public class RecResultItem extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
+                    // deserialize RecResultCustomEntityItem
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      RecResultCustomEntityItem.validateJsonElement(jsonElement);
+                      actualAdapter = adapterRecResultCustomEntityItem;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'RecResultCustomEntityItem'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for RecResultCustomEntityItem failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'RecResultCustomEntityItem'", e);
+                    }
                     // deserialize RecResultExternalIdentifiersItem
                     try {
                       // validate the JSON object to see if any exception is thrown
@@ -305,6 +333,11 @@ public class RecResultItem extends AbstractOpenApiSchema {
         super("oneOf", Boolean.FALSE);
     }
 
+    public RecResultItem(RecResultCustomEntityItem o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public RecResultItem(RecResultExternalIdentifiersItem o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
@@ -336,6 +369,7 @@ public class RecResultItem extends AbstractOpenApiSchema {
     }
 
     static {
+        schemas.put("RecResultCustomEntityItem", RecResultCustomEntityItem.class);
         schemas.put("RecResultExternalIdentifiersItem", RecResultExternalIdentifiersItem.class);
         schemas.put("RecResultHoldingItem", RecResultHoldingItem.class);
         schemas.put("RecResultRelationalDataItem", RecResultRelationalDataItem.class);
@@ -352,12 +386,17 @@ public class RecResultItem extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem
+     * RecResultCustomEntityItem, RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem
      *
      * It could be an instance of the 'oneOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
+        if (instance instanceof RecResultCustomEntityItem) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (instance instanceof RecResultExternalIdentifiersItem) {
             super.setActualInstance(instance);
             return;
@@ -388,20 +427,30 @@ public class RecResultItem extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem");
+        throw new RuntimeException("Invalid instance type. Must be RecResultCustomEntityItem, RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem
+     * RecResultCustomEntityItem, RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem
      *
-     * @return The actual instance (RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem)
+     * @return The actual instance (RecResultCustomEntityItem, RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem)
      */
     @Override
     public Object getActualInstance() {
         return super.getActualInstance();
     }
 
+    /**
+     * Get the actual instance of `RecResultCustomEntityItem`. If the actual instance is not `RecResultCustomEntityItem`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `RecResultCustomEntityItem`
+     * @throws ClassCastException if the instance is not `RecResultCustomEntityItem`
+     */
+    public RecResultCustomEntityItem getRecResultCustomEntityItem() throws ClassCastException {
+        return (RecResultCustomEntityItem)super.getActualInstance();
+    }
     /**
      * Get the actual instance of `RecResultExternalIdentifiersItem`. If the actual instance is not `RecResultExternalIdentifiersItem`,
      * the ClassCastException will be thrown.
@@ -473,6 +522,14 @@ public class RecResultItem extends AbstractOpenApiSchema {
     // validate oneOf schemas one by one
     int validCount = 0;
     ArrayList<String> errorMessages = new ArrayList<>();
+    // validate the json string with RecResultCustomEntityItem
+    try {
+      RecResultCustomEntityItem.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for RecResultCustomEntityItem failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
     // validate the json string with RecResultExternalIdentifiersItem
     try {
       RecResultExternalIdentifiersItem.validateJsonElement(jsonElement);
@@ -522,7 +579,7 @@ public class RecResultItem extends AbstractOpenApiSchema {
       // continue to the next one
     }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for RecResultItem with oneOf schemas: RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      throw new IOException(String.format("The JSON string is invalid for RecResultItem with oneOf schemas: RecResultCustomEntityItem, RecResultExternalIdentifiersItem, RecResultHoldingItem, RecResultRelationalDataItem, RecResultResourceIdItem, RecResultSettlementActivityItem, RecResultTransactionItem. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 

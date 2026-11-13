@@ -349,6 +349,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**accrueCarry**](docs/FundsApi.md#accruecarry) | **POST** /api/funds/{scope}/{code}/carry/$accrue | [EARLY ACCESS] AccrueCarry: [EXPERIMENTAL] AccrueCarry: Accrue carried interest to the Fund's partners.
 *FundsApi* | [**addAllocationGroups**](docs/FundsApi.md#addallocationgroups) | **POST** /api/funds/{scope}/{code}/allocationgroups | [EARLY ACCESS] AddAllocationGroups: Add Allocation Groups to a Fund.
 *FundsApi* | [**addSeries**](docs/FundsApi.md#addseries) | **POST** /api/funds/{scope}/{code}/series | [EARLY ACCESS] AddSeries: Add Series to a Fund.
+*FundsApi* | [**approveTaxProvision**](docs/FundsApi.md#approvetaxprovision) | **POST** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}/tax/provision/approve | [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point.
 *FundsApi* | [**calculateManagementFees**](docs/FundsApi.md#calculatemanagementfees) | **POST** /api/funds/{scope}/{code}/fees/$calculate | [EARLY ACCESS] CalculateManagementFees: [EXPERIMENTAL] CalculateManagementFees: Calculate the management fee per partner for a period.
 *FundsApi* | [**createFacility**](docs/FundsApi.md#createfacility) | **POST** /api/funds/{scope}/{code}/facilities | [EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility.
 *FundsApi* | [**createFee**](docs/FundsApi.md#createfee) | **POST** /api/funds/{scope}/{code}/fees | [EARLY ACCESS] CreateFee: Create a Fee.
@@ -383,6 +384,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**getPartners**](docs/FundsApi.md#getpartners) | **GET** /api/funds/{scope}/{code}/partners | [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund.
 *FundsApi* | [**getPartnershipConfigPack**](docs/FundsApi.md#getpartnershipconfigpack) | **GET** /api/funds/{scope}/{code}/partnershipaccounting/configpack | [EARLY ACCESS] GetPartnershipConfigPack: [EXPERIMENTAL] GetPartnershipConfigPack: Get the partnership configuration pack of a Fund.
 *FundsApi* | [**getSeries**](docs/FundsApi.md#getseries) | **GET** /api/funds/{scope}/{code}/series | [EARLY ACCESS] GetSeries: [EARLY ACCESS] GetSeries: List the Series of a Fund.
+*FundsApi* | [**getTaxProvision**](docs/FundsApi.md#gettaxprovision) | **GET** /api/funds/{scope}/{code}/tax/provision | [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point.
 *FundsApi* | [**getTaxSyncStatus**](docs/FundsApi.md#gettaxsyncstatus) | **GET** /api/funds/{scope}/{code}/tax/sync | [EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund.
 *FundsApi* | [**getValuationForFund**](docs/FundsApi.md#getvaluationforfund) | **POST** /api/funds/{scope}/{code}/$valuation | [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund.
 *FundsApi* | [**getValuationPointData**](docs/FundsApi.md#getvaluationpointdata) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund.
@@ -403,6 +405,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**listTaxCostRecords**](docs/FundsApi.md#listtaxcostrecords) | **GET** /api/funds/{scope}/{code}/taxcostrecords | [EXPERIMENTAL] ListTaxCostRecords: [EXPERIMENTAL] ListTaxCostRecords: List Tax Cost Records for a specified Fund.
 *FundsApi* | [**listTaxExceptions**](docs/FundsApi.md#listtaxexceptions) | **GET** /api/funds/{scope}/{code}/tax/exceptions | [EARLY ACCESS] ListTaxExceptions: [EARLY ACCESS] ListTaxExceptions: List the open tax exceptions of a Fund.
 *FundsApi* | [**listTaxExceptionsAcrossFunds**](docs/FundsApi.md#listtaxexceptionsacrossfunds) | **GET** /api/tax/exceptions | [EARLY ACCESS] ListTaxExceptionsAcrossFunds: [EARLY ACCESS] ListTaxExceptionsAcrossFunds: List the open tax exceptions across every Fund.
+*FundsApi* | [**listTaxProvisions**](docs/FundsApi.md#listtaxprovisions) | **GET** /api/funds/{scope}/{code}/tax/provisions | [EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions: List the deferred-tax provisions of a Fund.
 *FundsApi* | [**listValuationPointComplexMarketData**](docs/FundsApi.md#listvaluationpointcomplexmarketdata) | **POST** /api/funds/{scope}/{code}/valuationpoints/complexmarketdata/$query | [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
 *FundsApi* | [**listValuationPointInstruments**](docs/FundsApi.md#listvaluationpointinstruments) | **GET** /api/funds/{scope}/{code}/valuationpoints/instruments/$query | [EARLY ACCESS] ListValuationPointInstruments: List Instruments inside a valuation point
 *FundsApi* | [**listValuationPointOverview**](docs/FundsApi.md#listvaluationpointoverview) | **GET** /api/funds/{scope}/{code}/valuationPointOverview | [EARLY ACCESS] ListValuationPointOverview: List Valuation Points Overview for a given Fund.
@@ -536,7 +539,7 @@ Class | Method | HTTP request | Description
 *OrderManagementApi* | [**placeBlocks**](docs/OrderManagementApi.md#placeblocks) | **POST** /api/ordermanagement/placeblocks | [EARLY ACCESS] PlaceBlocks: Places blocks for a given list of placement requests.
 *OrderManagementApi* | [**previewBlocks**](docs/OrderManagementApi.md#previewblocks) | **POST** /api/ordermanagement/$previewblocks | PreviewBlocks: Preview the blocks a set of orders would form
 *OrderManagementApi* | [**runAllocationService**](docs/OrderManagementApi.md#runallocationservice) | **POST** /api/ordermanagement/allocate | RunAllocationService: Runs the Allocation Service
-*OrderManagementApi* | [**runAllocationServiceWithWeights**](docs/OrderManagementApi.md#runallocationservicewithweights) | **POST** /api/ordermanagement/allocate/weighted | [EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
+*OrderManagementApi* | [**runAllocationServiceWithWeights**](docs/OrderManagementApi.md#runallocationservicewithweights) | **POST** /api/ordermanagement/allocate/weighted | RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
 *OrderManagementApi* | [**sweepBlocks**](docs/OrderManagementApi.md#sweepblocks) | **POST** /api/ordermanagement/SweepBlocks | [EXPERIMENTAL] SweepBlocks: Sweeps specified blocks, for each block that meets the requirements. The request may be partially successful.
 *OrderManagementApi* | [**updateOrders**](docs/OrderManagementApi.md#updateorders) | **POST** /api/ordermanagement/updateorders | [EARLY ACCESS] UpdateOrders: Update existing orders
 *OrderManagementApi* | [**updatePlacements**](docs/OrderManagementApi.md#updateplacements) | **POST** /api/ordermanagement/$updateplacements | [EARLY ACCESS] UpdatePlacements: Update existing placements
@@ -1298,6 +1301,10 @@ Class | Method | HTTP request | Description
  - [ComplexMarketDataActivityAdjustment](docs/ComplexMarketDataActivityAdjustment.md)
  - [ComplexMarketDataId](docs/ComplexMarketDataId.md)
  - [ComplianceBreachedOrderInfo](docs/ComplianceBreachedOrderInfo.md)
+ - [ComplianceComparison](docs/ComplianceComparison.md)
+ - [ComplianceComparisonOperand](docs/ComplianceComparisonOperand.md)
+ - [ComplianceGroupKey](docs/ComplianceGroupKey.md)
+ - [ComplianceKeyUsed](docs/ComplianceKeyUsed.md)
  - [ComplianceParameter](docs/ComplianceParameter.md)
  - [ComplianceParameterType](docs/ComplianceParameterType.md)
  - [ComplianceRule](docs/ComplianceRule.md)
@@ -2398,6 +2405,7 @@ Class | Method | HTTP request | Description
  - [RecResultAssignmentUpdate](docs/RecResultAssignmentUpdate.md)
  - [RecResultCountByReviewStatus](docs/RecResultCountByReviewStatus.md)
  - [RecResultCounts](docs/RecResultCounts.md)
+ - [RecResultCustomEntityItem](docs/RecResultCustomEntityItem.md)
  - [RecResultDecisionGroup](docs/RecResultDecisionGroup.md)
  - [RecResultDecisionUpdate](docs/RecResultDecisionUpdate.md)
  - [RecResultException](docs/RecResultException.md)
@@ -2567,6 +2575,7 @@ Class | Method | HTTP request | Description
  - [ResourceListOfTaxClassification](docs/ResourceListOfTaxClassification.md)
  - [ResourceListOfTaxClassificationExceptionRecord](docs/ResourceListOfTaxClassificationExceptionRecord.md)
  - [ResourceListOfTaxExceptionItem](docs/ResourceListOfTaxExceptionItem.md)
+ - [ResourceListOfTaxProvision](docs/ResourceListOfTaxProvision.md)
  - [ResourceListOfTaxRuleSet](docs/ResourceListOfTaxRuleSet.md)
  - [ResourceListOfTransaction](docs/ResourceListOfTransaction.md)
  - [ResourceListOfTransactionFeeType](docs/ResourceListOfTransactionFeeType.md)
@@ -2759,6 +2768,8 @@ Class | Method | HTTP request | Description
  - [TaxExceptionItem](docs/TaxExceptionItem.md)
  - [TaxExceptionRootCause](docs/TaxExceptionRootCause.md)
  - [TaxPortfolioSyncStatus](docs/TaxPortfolioSyncStatus.md)
+ - [TaxProvision](docs/TaxProvision.md)
+ - [TaxProvisionMovement](docs/TaxProvisionMovement.md)
  - [TaxRule](docs/TaxRule.md)
  - [TaxRuleSet](docs/TaxRuleSet.md)
  - [TaxSyncStatus](docs/TaxSyncStatus.md)

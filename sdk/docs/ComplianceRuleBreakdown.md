@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**groupId** | **Integer** | A stable identifier for this group within the rule, the same across the rule-result and breakdown endpoints,  so a group can be correlated between the two. | [default to Integer]
 **groupStatus** | **String** | The status of this subset of results. | [default to String]
 **resultsUsed** | **Map&lt;String, java.math.BigDecimal&gt;** | Dictionary of AddressKey (as string) and their corresponding decimal values, that were used in this rule. | [default to Map<String, java.math.BigDecimal>]
 **formulaValues** | **Map&lt;String, java.math.BigDecimal&gt;** | The value each formula within the check criterion evaluated to for this group. Empty where the criterion  compares a single value or is not numerical, since the operand values already recorded describe those. | [optional] [default to Map<String, java.math.BigDecimal>]
@@ -17,6 +18,7 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
+Integer GroupId = new Integer("100.00");
 String GroupStatus = "example GroupStatus";
 Map<String, java.math.BigDecimal> ResultsUsed = new Map<String, java.math.BigDecimal>();
 @jakarta.annotation.Nullable Map<String, java.math.BigDecimal> FormulaValues = new Map<String, java.math.BigDecimal>();
@@ -26,6 +28,7 @@ List<LineageMember> Lineage = new List<LineageMember>();
 
 
 ComplianceRuleBreakdown complianceRuleBreakdownInstance = new ComplianceRuleBreakdown()
+    .GroupId(GroupId)
     .GroupStatus(GroupStatus)
     .ResultsUsed(ResultsUsed)
     .FormulaValues(FormulaValues)

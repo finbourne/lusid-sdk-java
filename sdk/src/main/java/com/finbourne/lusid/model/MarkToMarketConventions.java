@@ -62,6 +62,14 @@ public class MarkToMarketConventions {
   @SerializedName(SERIALIZED_NAME_MINUTE_OFFSET_TENOR)
   private String minuteOffsetTenor;
 
+  public static final String SERIALIZED_NAME_MTM_SETTLE_DAYS = "mtmSettleDays";
+  @SerializedName(SERIALIZED_NAME_MTM_SETTLE_DAYS)
+  private Integer mtmSettleDays;
+
+  public static final String SERIALIZED_NAME_MTM_SETTLEMENT_CALENDAR = "mtmSettlementCalendar";
+  @SerializedName(SERIALIZED_NAME_MTM_SETTLEMENT_CALENDAR)
+  private String mtmSettlementCalendar;
+
   public MarkToMarketConventions() {
   }
 
@@ -128,6 +136,48 @@ public class MarkToMarketConventions {
   }
 
 
+  public MarkToMarketConventions mtmSettleDays(Integer mtmSettleDays) {
+    
+    this.mtmSettleDays = mtmSettleDays;
+    return this;
+  }
+
+   /**
+   * The number of business days after each mark to market date on which its variation margin is paid.  This is an optional field, defaulting to 0 (paid on the mark to market date); if a value is provided it must be between 0 and 10 inclusive.
+   * @return mtmSettleDays
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getMtmSettleDays() {
+    return mtmSettleDays;
+  }
+
+
+  public void setMtmSettleDays(Integer mtmSettleDays) {
+    this.mtmSettleDays = mtmSettleDays;
+  }
+
+
+  public MarkToMarketConventions mtmSettlementCalendar(String mtmSettlementCalendar) {
+    
+    this.mtmSettlementCalendar = mtmSettlementCalendar;
+    return this;
+  }
+
+   /**
+   * The calendar the mark to market settlement days are counted on.  This is an optional field; if no value is provided the mark to market calendar is used, and without that only weekends are non-business days.
+   * @return mtmSettlementCalendar
+  **/
+  @jakarta.annotation.Nullable
+  public String getMtmSettlementCalendar() {
+    return mtmSettlementCalendar;
+  }
+
+
+  public void setMtmSettlementCalendar(String mtmSettlementCalendar) {
+    this.mtmSettlementCalendar = mtmSettlementCalendar;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,7 +190,9 @@ public class MarkToMarketConventions {
     MarkToMarketConventions markToMarketConventions = (MarkToMarketConventions) o;
     return Objects.equals(this.calendarCode, markToMarketConventions.calendarCode) &&
         Objects.equals(this.hourOffsetTenor, markToMarketConventions.hourOffsetTenor) &&
-        Objects.equals(this.minuteOffsetTenor, markToMarketConventions.minuteOffsetTenor);
+        Objects.equals(this.minuteOffsetTenor, markToMarketConventions.minuteOffsetTenor) &&
+        Objects.equals(this.mtmSettleDays, markToMarketConventions.mtmSettleDays) &&
+        Objects.equals(this.mtmSettlementCalendar, markToMarketConventions.mtmSettlementCalendar);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -149,7 +201,7 @@ public class MarkToMarketConventions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(calendarCode, hourOffsetTenor, minuteOffsetTenor);
+    return Objects.hash(calendarCode, hourOffsetTenor, minuteOffsetTenor, mtmSettleDays, mtmSettlementCalendar);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +218,8 @@ public class MarkToMarketConventions {
     sb.append("    calendarCode: ").append(toIndentedString(calendarCode)).append("\n");
     sb.append("    hourOffsetTenor: ").append(toIndentedString(hourOffsetTenor)).append("\n");
     sb.append("    minuteOffsetTenor: ").append(toIndentedString(minuteOffsetTenor)).append("\n");
+    sb.append("    mtmSettleDays: ").append(toIndentedString(mtmSettleDays)).append("\n");
+    sb.append("    mtmSettlementCalendar: ").append(toIndentedString(mtmSettlementCalendar)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,6 +245,8 @@ public class MarkToMarketConventions {
     openapiFields.add("calendarCode");
     openapiFields.add("hourOffsetTenor");
     openapiFields.add("minuteOffsetTenor");
+    openapiFields.add("mtmSettleDays");
+    openapiFields.add("mtmSettlementCalendar");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -217,6 +273,9 @@ public class MarkToMarketConventions {
       }
       if ((jsonObj.get("minuteOffsetTenor") != null && !jsonObj.get("minuteOffsetTenor").isJsonNull()) && !jsonObj.get("minuteOffsetTenor").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `minuteOffsetTenor` to be a primitive type in the JSON string but got `%s`", jsonObj.get("minuteOffsetTenor").toString()));
+      }
+      if ((jsonObj.get("mtmSettlementCalendar") != null && !jsonObj.get("mtmSettlementCalendar").isJsonNull()) && !jsonObj.get("mtmSettlementCalendar").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `mtmSettlementCalendar` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mtmSettlementCalendar").toString()));
       }
   }
 

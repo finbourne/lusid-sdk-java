@@ -22,9 +22,8 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,17 +59,13 @@ public class ComplianceSummaryRuleResultWithContributions {
   @SerializedName(SERIALIZED_NAME_RULE_ID)
   private ResourceId ruleId;
 
-  public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
-  @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
-  private ResourceId templateId;
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private String status;
 
-  public static final String SERIALIZED_NAME_VARIATION = "variation";
-  @SerializedName(SERIALIZED_NAME_VARIATION)
-  private String variation;
-
-  public static final String SERIALIZED_NAME_RULE_STATUS = "ruleStatus";
-  @SerializedName(SERIALIZED_NAME_RULE_STATUS)
-  private String ruleStatus;
+  public static final String SERIALIZED_NAME_CHECK_TYPE = "checkType";
+  @SerializedName(SERIALIZED_NAME_CHECK_TYPE)
+  private String checkType;
 
   public static final String SERIALIZED_NAME_AFFECTED_PORTFOLIOS = "affectedPortfolios";
   @SerializedName(SERIALIZED_NAME_AFFECTED_PORTFOLIOS)
@@ -78,19 +73,15 @@ public class ComplianceSummaryRuleResultWithContributions {
 
   public static final String SERIALIZED_NAME_AFFECTED_ORDERS = "affectedOrders";
   @SerializedName(SERIALIZED_NAME_AFFECTED_ORDERS)
-  private List<ResourceId> affectedOrders = new ArrayList<>();
+  private List<ResourceId> affectedOrders;
 
-  public static final String SERIALIZED_NAME_PARAMETERS_USED = "parametersUsed";
-  @SerializedName(SERIALIZED_NAME_PARAMETERS_USED)
-  private Map<String, String> parametersUsed = new HashMap<>();
-
-  public static final String SERIALIZED_NAME_RULE_BREAKDOWN = "ruleBreakdown";
-  @SerializedName(SERIALIZED_NAME_RULE_BREAKDOWN)
-  private List<ComplianceRuleBreakdownWithContributions> ruleBreakdown = new ArrayList<>();
+  public static final String SERIALIZED_NAME_GROUPS = "groups";
+  @SerializedName(SERIALIZED_NAME_GROUPS)
+  private List<ComplianceRuleBreakdownWithContributions> groups = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_OTHER_POSITIONS_CONSIDERED = "otherPositionsConsidered";
   @SerializedName(SERIALIZED_NAME_OTHER_POSITIONS_CONSIDERED)
-  private List<ComplianceRuleContribution> otherPositionsConsidered = new ArrayList<>();
+  private List<ComplianceRuleContribution> otherPositionsConsidered;
 
   public ComplianceSummaryRuleResultWithContributions() {
   }
@@ -116,66 +107,45 @@ public class ComplianceSummaryRuleResultWithContributions {
   }
 
 
-  public ComplianceSummaryRuleResultWithContributions templateId(ResourceId templateId) {
+  public ComplianceSummaryRuleResultWithContributions status(String status) {
     
-    this.templateId = templateId;
+    this.status = status;
     return this;
   }
 
    /**
-   * Get templateId
-   * @return templateId
+   * Get status
+   * @return status
   **/
   @jakarta.annotation.Nonnull
-  public ResourceId getTemplateId() {
-    return templateId;
+  public String getStatus() {
+    return status;
   }
 
 
-  public void setTemplateId(ResourceId templateId) {
-    this.templateId = templateId;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
-  public ComplianceSummaryRuleResultWithContributions variation(String variation) {
+  public ComplianceSummaryRuleResultWithContributions checkType(String checkType) {
     
-    this.variation = variation;
+    this.checkType = checkType;
     return this;
   }
 
    /**
-   * Get variation
-   * @return variation
+   * The kind of check the rule applied across its groups: \&quot;PercentCheck\&quot; or \&quot;Check\&quot;. Static per rule. Absent for a  rule no check reached.
+   * @return checkType
   **/
-  @jakarta.annotation.Nonnull
-  public String getVariation() {
-    return variation;
+  @jakarta.annotation.Nullable
+  public String getCheckType() {
+    return checkType;
   }
 
 
-  public void setVariation(String variation) {
-    this.variation = variation;
-  }
-
-
-  public ComplianceSummaryRuleResultWithContributions ruleStatus(String ruleStatus) {
-    
-    this.ruleStatus = ruleStatus;
-    return this;
-  }
-
-   /**
-   * Get ruleStatus
-   * @return ruleStatus
-  **/
-  @jakarta.annotation.Nonnull
-  public String getRuleStatus() {
-    return ruleStatus;
-  }
-
-
-  public void setRuleStatus(String ruleStatus) {
-    this.ruleStatus = ruleStatus;
+  public void setCheckType(String checkType) {
+    this.checkType = checkType;
   }
 
 
@@ -223,10 +193,10 @@ public class ComplianceSummaryRuleResultWithContributions {
   }
 
    /**
-   * Get affectedOrders
+   * The orders the rule affected. Omitted for a holdings-based run.
    * @return affectedOrders
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<ResourceId> getAffectedOrders() {
     return affectedOrders;
   }
@@ -237,61 +207,32 @@ public class ComplianceSummaryRuleResultWithContributions {
   }
 
 
-  public ComplianceSummaryRuleResultWithContributions parametersUsed(Map<String, String> parametersUsed) {
+  public ComplianceSummaryRuleResultWithContributions groups(List<ComplianceRuleBreakdownWithContributions> groups) {
     
-    this.parametersUsed = parametersUsed;
+    this.groups = groups;
     return this;
   }
 
-  public ComplianceSummaryRuleResultWithContributions putParametersUsedItem(String key, String parametersUsedItem) {
-    if (this.parametersUsed == null) {
-      this.parametersUsed = new HashMap<>();
+  public ComplianceSummaryRuleResultWithContributions addGroupsItem(ComplianceRuleBreakdownWithContributions groupsItem) {
+    if (this.groups == null) {
+      this.groups = new ArrayList<>();
     }
-    this.parametersUsed.put(key, parametersUsedItem);
+    this.groups.add(groupsItem);
     return this;
   }
 
    /**
-   * Get parametersUsed
-   * @return parametersUsed
+   * Get groups
+   * @return groups
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, String> getParametersUsed() {
-    return parametersUsed;
+  public List<ComplianceRuleBreakdownWithContributions> getGroups() {
+    return groups;
   }
 
 
-  public void setParametersUsed(Map<String, String> parametersUsed) {
-    this.parametersUsed = parametersUsed;
-  }
-
-
-  public ComplianceSummaryRuleResultWithContributions ruleBreakdown(List<ComplianceRuleBreakdownWithContributions> ruleBreakdown) {
-    
-    this.ruleBreakdown = ruleBreakdown;
-    return this;
-  }
-
-  public ComplianceSummaryRuleResultWithContributions addRuleBreakdownItem(ComplianceRuleBreakdownWithContributions ruleBreakdownItem) {
-    if (this.ruleBreakdown == null) {
-      this.ruleBreakdown = new ArrayList<>();
-    }
-    this.ruleBreakdown.add(ruleBreakdownItem);
-    return this;
-  }
-
-   /**
-   * Get ruleBreakdown
-   * @return ruleBreakdown
-  **/
-  @jakarta.annotation.Nonnull
-  public List<ComplianceRuleBreakdownWithContributions> getRuleBreakdown() {
-    return ruleBreakdown;
-  }
-
-
-  public void setRuleBreakdown(List<ComplianceRuleBreakdownWithContributions> ruleBreakdown) {
-    this.ruleBreakdown = ruleBreakdown;
+  public void setGroups(List<ComplianceRuleBreakdownWithContributions> groups) {
+    this.groups = groups;
   }
 
 
@@ -310,10 +251,10 @@ public class ComplianceSummaryRuleResultWithContributions {
   }
 
    /**
-   * The rest of the basis the rule was measured against but did not directly evaluate — the positions in  the referenced/denominator (or initial) group that are not in the RuleBreakdown&#39;s  contributions. Together with those contributions this forms the whole basis, with no overlap, so a  breach can be explained against the full picture (e.g. the non-equity remainder behind an equity limit).  Empty when the rule evaluated everything it considered.
+   * The rest of the basis the rule was measured against but did not directly evaluate — the positions in  the referenced/denominator (or initial) group that are not in a group&#39;s contributions. Together with those  contributions this forms the whole basis, with no overlap, so a breach can be explained against the full picture  (e.g. the non-equity remainder behind an equity limit). Omitted when the rule evaluated everything it considered.
    * @return otherPositionsConsidered
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<ComplianceRuleContribution> getOtherPositionsConsidered() {
     return otherPositionsConsidered;
   }
@@ -335,19 +276,28 @@ public class ComplianceSummaryRuleResultWithContributions {
     }
     ComplianceSummaryRuleResultWithContributions complianceSummaryRuleResultWithContributions = (ComplianceSummaryRuleResultWithContributions) o;
     return Objects.equals(this.ruleId, complianceSummaryRuleResultWithContributions.ruleId) &&
-        Objects.equals(this.templateId, complianceSummaryRuleResultWithContributions.templateId) &&
-        Objects.equals(this.variation, complianceSummaryRuleResultWithContributions.variation) &&
-        Objects.equals(this.ruleStatus, complianceSummaryRuleResultWithContributions.ruleStatus) &&
+        Objects.equals(this.status, complianceSummaryRuleResultWithContributions.status) &&
+        Objects.equals(this.checkType, complianceSummaryRuleResultWithContributions.checkType) &&
         Objects.equals(this.affectedPortfolios, complianceSummaryRuleResultWithContributions.affectedPortfolios) &&
         Objects.equals(this.affectedOrders, complianceSummaryRuleResultWithContributions.affectedOrders) &&
-        Objects.equals(this.parametersUsed, complianceSummaryRuleResultWithContributions.parametersUsed) &&
-        Objects.equals(this.ruleBreakdown, complianceSummaryRuleResultWithContributions.ruleBreakdown) &&
+        Objects.equals(this.groups, complianceSummaryRuleResultWithContributions.groups) &&
         Objects.equals(this.otherPositionsConsidered, complianceSummaryRuleResultWithContributions.otherPositionsConsidered);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleId, templateId, variation, ruleStatus, affectedPortfolios, affectedOrders, parametersUsed, ruleBreakdown, otherPositionsConsidered);
+    return Objects.hash(ruleId, status, checkType, affectedPortfolios, affectedOrders, groups, otherPositionsConsidered);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -355,13 +305,11 @@ public class ComplianceSummaryRuleResultWithContributions {
     StringBuilder sb = new StringBuilder();
     sb.append("class ComplianceSummaryRuleResultWithContributions {\n");
     sb.append("    ruleId: ").append(toIndentedString(ruleId)).append("\n");
-    sb.append("    templateId: ").append(toIndentedString(templateId)).append("\n");
-    sb.append("    variation: ").append(toIndentedString(variation)).append("\n");
-    sb.append("    ruleStatus: ").append(toIndentedString(ruleStatus)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    checkType: ").append(toIndentedString(checkType)).append("\n");
     sb.append("    affectedPortfolios: ").append(toIndentedString(affectedPortfolios)).append("\n");
     sb.append("    affectedOrders: ").append(toIndentedString(affectedOrders)).append("\n");
-    sb.append("    parametersUsed: ").append(toIndentedString(parametersUsed)).append("\n");
-    sb.append("    ruleBreakdown: ").append(toIndentedString(ruleBreakdown)).append("\n");
+    sb.append("    groups: ").append(toIndentedString(groups)).append("\n");
     sb.append("    otherPositionsConsidered: ").append(toIndentedString(otherPositionsConsidered)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -386,26 +334,19 @@ public class ComplianceSummaryRuleResultWithContributions {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("ruleId");
-    openapiFields.add("templateId");
-    openapiFields.add("variation");
-    openapiFields.add("ruleStatus");
+    openapiFields.add("status");
+    openapiFields.add("checkType");
     openapiFields.add("affectedPortfolios");
     openapiFields.add("affectedOrders");
-    openapiFields.add("parametersUsed");
-    openapiFields.add("ruleBreakdown");
+    openapiFields.add("groups");
     openapiFields.add("otherPositionsConsidered");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("ruleId");
-    openapiRequiredFields.add("templateId");
-    openapiRequiredFields.add("variation");
-    openapiRequiredFields.add("ruleStatus");
+    openapiRequiredFields.add("status");
     openapiRequiredFields.add("affectedPortfolios");
-    openapiRequiredFields.add("affectedOrders");
-    openapiRequiredFields.add("parametersUsed");
-    openapiRequiredFields.add("ruleBreakdown");
-    openapiRequiredFields.add("otherPositionsConsidered");
+    openapiRequiredFields.add("groups");
   }
 
  /**
@@ -430,13 +371,11 @@ public class ComplianceSummaryRuleResultWithContributions {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `ruleId`
       ResourceId.validateJsonElement(jsonObj.get("ruleId"));
-      // validate the required field `templateId`
-      ResourceId.validateJsonElement(jsonObj.get("templateId"));
-      if (!jsonObj.get("variation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `variation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variation").toString()));
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
-      if (!jsonObj.get("ruleStatus").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ruleStatus` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ruleStatus").toString()));
+      if ((jsonObj.get("checkType") != null && !jsonObj.get("checkType").isJsonNull()) && !jsonObj.get("checkType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `checkType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("checkType").toString()));
       }
       // ensure the json data is an array
       if (!jsonObj.get("affectedPortfolios").isJsonArray()) {
@@ -448,36 +387,44 @@ public class ComplianceSummaryRuleResultWithContributions {
       for (int i = 0; i < jsonArrayaffectedPortfolios.size(); i++) {
         ResourceId.validateJsonElement(jsonArrayaffectedPortfolios.get(i));
       };
+      if (jsonObj.get("affectedOrders") != null && !jsonObj.get("affectedOrders").isJsonNull()) {
+        JsonArray jsonArrayaffectedOrders = jsonObj.getAsJsonArray("affectedOrders");
+        if (jsonArrayaffectedOrders != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("affectedOrders").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `affectedOrders` to be an array in the JSON string but got `%s`", jsonObj.get("affectedOrders").toString()));
+          }
+
+          // validate the optional field `affectedOrders` (array)
+          for (int i = 0; i < jsonArrayaffectedOrders.size(); i++) {
+            ResourceId.validateJsonElement(jsonArrayaffectedOrders.get(i));
+          };
+        }
+      }
       // ensure the json data is an array
-      if (!jsonObj.get("affectedOrders").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `affectedOrders` to be an array in the JSON string but got `%s`", jsonObj.get("affectedOrders").toString()));
+      if (!jsonObj.get("groups").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `groups` to be an array in the JSON string but got `%s`", jsonObj.get("groups").toString()));
       }
 
-      JsonArray jsonArrayaffectedOrders = jsonObj.getAsJsonArray("affectedOrders");
-      // validate the required field `affectedOrders` (array)
-      for (int i = 0; i < jsonArrayaffectedOrders.size(); i++) {
-        ResourceId.validateJsonElement(jsonArrayaffectedOrders.get(i));
+      JsonArray jsonArraygroups = jsonObj.getAsJsonArray("groups");
+      // validate the required field `groups` (array)
+      for (int i = 0; i < jsonArraygroups.size(); i++) {
+        ComplianceRuleBreakdownWithContributions.validateJsonElement(jsonArraygroups.get(i));
       };
-      // ensure the json data is an array
-      if (!jsonObj.get("ruleBreakdown").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ruleBreakdown` to be an array in the JSON string but got `%s`", jsonObj.get("ruleBreakdown").toString()));
-      }
+      if (jsonObj.get("otherPositionsConsidered") != null && !jsonObj.get("otherPositionsConsidered").isJsonNull()) {
+        JsonArray jsonArrayotherPositionsConsidered = jsonObj.getAsJsonArray("otherPositionsConsidered");
+        if (jsonArrayotherPositionsConsidered != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("otherPositionsConsidered").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `otherPositionsConsidered` to be an array in the JSON string but got `%s`", jsonObj.get("otherPositionsConsidered").toString()));
+          }
 
-      JsonArray jsonArrayruleBreakdown = jsonObj.getAsJsonArray("ruleBreakdown");
-      // validate the required field `ruleBreakdown` (array)
-      for (int i = 0; i < jsonArrayruleBreakdown.size(); i++) {
-        ComplianceRuleBreakdownWithContributions.validateJsonElement(jsonArrayruleBreakdown.get(i));
-      };
-      // ensure the json data is an array
-      if (!jsonObj.get("otherPositionsConsidered").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `otherPositionsConsidered` to be an array in the JSON string but got `%s`", jsonObj.get("otherPositionsConsidered").toString()));
+          // validate the optional field `otherPositionsConsidered` (array)
+          for (int i = 0; i < jsonArrayotherPositionsConsidered.size(); i++) {
+            ComplianceRuleContribution.validateJsonElement(jsonArrayotherPositionsConsidered.get(i));
+          };
+        }
       }
-
-      JsonArray jsonArrayotherPositionsConsidered = jsonObj.getAsJsonArray("otherPositionsConsidered");
-      // validate the required field `otherPositionsConsidered` (array)
-      for (int i = 0; i < jsonArrayotherPositionsConsidered.size(); i++) {
-        ComplianceRuleContribution.validateJsonElement(jsonArrayotherPositionsConsidered.get(i));
-      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

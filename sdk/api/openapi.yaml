@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10605
+  version: 0.11.10628
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -28091,72 +28091,60 @@ paths:
                   code: run-1
                 instigatedAt: 2020-01-05T00:00:00.0000000+00:00
                 completedAt: 2020-01-05T00:00:01.0000000+00:00
+                ruleDefinitionsAsAt: 2020-01-05T00:00:00.0000000+00:00
                 schedule: PreTrade
                 ruleResult:
                   ruleId:
                     scope: SomeScope
                     code: rule-1
-                  templateId:
-                    scope: system
-                    code: template-1
-                  variation: standard
-                  ruleStatus: failed
+                  status: failed
+                  checkType: PercentCheck
                   affectedPortfolios:
                   - scope: PortfolioScope
                     code: PortfolioCode
                   affectedOrders:
                   - scope: OrderScope
                     code: OrderCode
-                  parametersUsed:
-                    UpperBound: "30"
-                    LowerBound: "0"
-                  ruleBreakdown:
-                  - groupStatus: failed
-                    resultsUsed:
+                  groups:
+                  - groupId: 0
+                    status: failed
+                    results:
                       Valuation/PV: 650
                       Exposure/PV: 650
-                    propertiesUsed:
+                    properties:
                       Instrument/data/Issuer:
                       - key: Instrument/data/Issuer
                         value:
                           labelValue: ABC
-                    missingDataInformation:
-                    - No Missing Data
-                    lineage:
-                    - index: 0
-                      label: Initial
-                      subLabel: Initial
-                      infoType: ""
-                      information: ""
-                    - index: 1
-                      label: Step1
-                      subLabel: SomeStep1Information
-                      infoType: ""
-                      information: ""
-                    - index: 2
-                      label: Step2
-                      subLabel: Step2
-                      infoType: ""
-                      information: ""
                     contributions:
-                    - index: 0
-                      portfolioId:
+                    - portfolioId:
                         scope: PortfolioScope
                         code: PortfolioCode
                       instrument: LUID_00003D5F
                       instrumentType: Bond
                       holdingType: P
                       holdingId: "1234567890"
-                      resultValues:
-                        Valuation/PV: 650
-                      properties:
-                        Instrument/data/Issuer:
-                          key: Instrument/data/Issuer
-                          value:
-                            labelValue: ABC
-                      relatedProperties:
-                        LegalEntity/data/LEI: 5493001KJTIIGC8Y1R12
-                  otherPositionsConsidered: []
+                      heldBy: portfolio
+                      keysUsed:
+                      - key: Valuation/PV
+                        roles:
+                        - numerator
+                        value: 650
+                        source: results
+                      - key: Instrument/data/Issuer
+                        roles:
+                        - filter
+                        value: ABC
+                        source: properties
+                      - key: LegalEntity/data/LEI
+                        roles:
+                        - operand
+                        value: 5493001KJTIIGC8Y1R12
+                        source: relatedProperties
+                    missingDataInformation:
+                    - No Missing Data
+                    contributionCount: 0
+                    contributionsTruncated: false
               schema:
                 $ref: '#/components/schemas/ComplianceRuleResultV2WithContributions'
             application/json:
@@ -28166,72 +28154,60 @@ paths:
                   code: run-1
                 instigatedAt: 2020-01-05T00:00:00.0000000+00:00
                 completedAt: 2020-01-05T00:00:01.0000000+00:00
+                ruleDefinitionsAsAt: 2020-01-05T00:00:00.0000000+00:00
                 schedule: PreTrade
                 ruleResult:
                   ruleId:
                     scope: SomeScope
                     code: rule-1
-                  templateId:
-                    scope: system
-                    code: template-1
-                  variation: standard
-                  ruleStatus: failed
+                  status: failed
+                  checkType: PercentCheck
                   affectedPortfolios:
                   - scope: PortfolioScope
                     code: PortfolioCode
                   affectedOrders:
                   - scope: OrderScope
                     code: OrderCode
-                  parametersUsed:
-                    UpperBound: "30"
-                    LowerBound: "0"
-                  ruleBreakdown:
-                  - groupStatus: failed
-                    resultsUsed:
+                  groups:
+                  - groupId: 0
+                    status: failed
+                    results:
                       Valuation/PV: 650
                       Exposure/PV: 650
-                    propertiesUsed:
+                    properties:
                       Instrument/data/Issuer:
                       - key: Instrument/data/Issuer
                         value:
                           labelValue: ABC
-                    missingDataInformation:
-                    - No Missing Data
-                    lineage:
-                    - index: 0
-                      label: Initial
-                      subLabel: Initial
-                      infoType: ""
-                      information: ""
-                    - index: 1
-                      label: Step1
-                      subLabel: SomeStep1Information
-                      infoType: ""
-                      information: ""
-                    - index: 2
-                      label: Step2
-                      subLabel: Step2
-                      infoType: ""
-                      information: ""
                     contributions:
-                    - index: 0
-                      portfolioId:
+                    - portfolioId:
                         scope: PortfolioScope
                         code: PortfolioCode
                       instrument: LUID_00003D5F
                       instrumentType: Bond
                       holdingType: P
                       holdingId: "1234567890"
-                      resultValues:
-                        Valuation/PV: 650
-                      properties:
-                        Instrument/data/Issuer:
-                          key: Instrument/data/Issuer
-                          value:
-                            labelValue: ABC
-                      relatedProperties:
-                        LegalEntity/data/LEI: 5493001KJTIIGC8Y1R12
-                  otherPositionsConsidered: []
+                      heldBy: portfolio
+                      keysUsed:
+                      - key: Valuation/PV
+                        roles:
+                        - numerator
+                        value: 650
+                        source: results
+                      - key: Instrument/data/Issuer
+                        roles:
+                        - filter
+                        value: ABC
+                        source: properties
+                      - key: LegalEntity/data/LEI
+                        roles:
+                        - operand
+                        value: 5493001KJTIIGC8Y1R12
+                        source: relatedProperties
+                    missingDataInformation:
+                    - No Missing Data
+                    contributionCount: 0
+                    contributionsTruncated: false
               schema:
                 $ref: '#/components/schemas/ComplianceRuleResultV2WithContributions'
             text/json:
@@ -28241,72 +28217,60 @@ paths:
                   code: run-1
                 instigatedAt: 2020-01-05T00:00:00.0000000+00:00
                 completedAt: 2020-01-05T00:00:01.0000000+00:00
+                ruleDefinitionsAsAt: 2020-01-05T00:00:00.0000000+00:00
                 schedule: PreTrade
                 ruleResult:
                   ruleId:
                     scope: SomeScope
                     code: rule-1
-                  templateId:
-                    scope: system
-                    code: template-1
-                  variation: standard
-                  ruleStatus: failed
+                  status: failed
+                  checkType: PercentCheck
                   affectedPortfolios:
                   - scope: PortfolioScope
                     code: PortfolioCode
                   affectedOrders:
                   - scope: OrderScope
                     code: OrderCode
-                  parametersUsed:
-                    UpperBound: "30"
-                    LowerBound: "0"
-                  ruleBreakdown:
-                  - groupStatus: failed
-                    resultsUsed:
+                  groups:
+                  - groupId: 0
+                    status: failed
+                    results:
                       Valuation/PV: 650
                       Exposure/PV: 650
-                    propertiesUsed:
+                    properties:
                       Instrument/data/Issuer:
                       - key: Instrument/data/Issuer
                         value:
                           labelValue: ABC
-                    missingDataInformation:
-                    - No Missing Data
-                    lineage:
-                    - index: 0
-                      label: Initial
-                      subLabel: Initial
-                      infoType: ""
-                      information: ""
-                    - index: 1
-                      label: Step1
-                      subLabel: SomeStep1Information
-                      infoType: ""
-                      information: ""
-                    - index: 2
-                      label: Step2
-                      subLabel: Step2
-                      infoType: ""
-                      information: ""
                     contributions:
-                    - index: 0
-                      portfolioId:
+                    - portfolioId:
                         scope: PortfolioScope
                         code: PortfolioCode
                       instrument: LUID_00003D5F
                       instrumentType: Bond
                       holdingType: P
                       holdingId: "1234567890"
-                      resultValues:
-                        Valuation/PV: 650
-                      properties:
-                        Instrument/data/Issuer:
-                          key: Instrument/data/Issuer
-                          value:
-                            labelValue: ABC
-                      relatedProperties:
-                        LegalEntity/data/LEI: 5493001KJTIIGC8Y1R12
-                  otherPositionsConsidered: []
+                      heldBy: portfolio
+                      keysUsed:
+                      - key: Valuation/PV
+                        roles:
+                        - numerator
+                        value: 650
+                        source: results
+                      - key: Instrument/data/Issuer
+                        roles:
+                        - filter
+                        value: ABC
+                        source: properties
+                      - key: LegalEntity/data/LEI
+                        roles:
+                        - operand
+                        value: 5493001KJTIIGC8Y1R12
+                        source: relatedProperties
+                    missingDataInformation:
+                    - No Missing Data
+                    contributionCount: 0
+                    contributionsTruncated: false
               schema:
                 $ref: '#/components/schemas/ComplianceRuleResultV2WithContributions'
           description: The position-level breakdown for the requested rule of a compliance
@@ -28605,7 +28569,8 @@ paths:
                     UpperBound: "30"
                     LowerBound: "0"
                   ruleBreakdown:
-                  - groupStatus: failed
+                  - groupId: 0
+                    groupStatus: failed
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
@@ -28663,7 +28628,8 @@ paths:
                     UpperBound: "30"
                     LowerBound: "0"
                   ruleBreakdown:
-                  - groupStatus: failed
+                  - groupId: 0
+                    groupStatus: failed
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
@@ -28721,7 +28687,8 @@ paths:
                     UpperBound: "30"
                     LowerBound: "0"
                   ruleBreakdown:
-                  - groupStatus: failed
+                  - groupId: 0
+                    groupStatus: failed
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
@@ -29240,7 +29207,8 @@ paths:
                     UpperBound: "30"
                     LowerBound: "0"
                   ruleBreakdown:
-                  - groupStatus: failed
+                  - groupId: 0
+                    groupStatus: failed
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
@@ -29298,7 +29266,8 @@ paths:
                     UpperBound: "30"
                     LowerBound: "0"
                   ruleBreakdown:
-                  - groupStatus: failed
+                  - groupId: 0
+                    groupStatus: failed
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
@@ -29356,7 +29325,8 @@ paths:
                     UpperBound: "30"
                     LowerBound: "0"
                   ruleBreakdown:
-                  - groupStatus: failed
+                  - groupId: 0
+                    groupStatus: failed
                     resultsUsed:
                       Valuation/PV: 650
                       Exposure/PV: 650
@@ -31740,8 +31710,8 @@ paths:
   /api/compliance/v3/rules/{scope}/{code}/$describe:
     get:
       description: "Use this endpoint to retrieve a plain-English description of a\
-        \ V3 compliance rule. The description\r\ngenerator is delivered separately,\
-        \ so the description lines are currently empty."
+        \ V3 compliance rule as a single\r\nsentence. The sentence is empty for a\
+        \ rule the generator cannot fully express."
       operationId: DescribeComplianceRuleV3
       parameters:
       - description: The compliance rule's scope.
@@ -60343,6 +60313,390 @@ paths:
       - Funds
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
+  /api/funds/{scope}/{code}/tax/provision:
+    get:
+      description: "Returns the deferred-tax provision struck for the specified Valuation\
+        \ Point. Where the provision has been\r\napproved by the asAt it is returned\
+        \ as stored, otherwise a live estimate is returned. Until tax elections\r\n\
+        can be configured on the Fund every provision is struck under the default\
+        \ elections: a 20% rate, indexation\r\nallowance applied and losses carried\
+        \ forward."
+      operationId: GetTaxProvision
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The Diary Entry code of the Valuation Point the provision is
+          for.
+        explode: true
+        in: query
+        name: diaryEntryCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the provision. Defaults
+          to returning the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "When provided, the provision of the specified NAV Type, otherwise\
+          \ the Primary NAV Type will be used."
+        explode: true
+        in: query
+        name: navTypeCode
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: http://finbourne.com
+                fund:
+                  scope: FundScope
+                  code: FundCode
+                navTypeCode: DefaultNavType
+                diaryEntryCode: VP-2024-03-31
+                effectiveAt: 2024-03-31T00:00:00.0000000+00:00
+                asAt: 2024-04-01T09:00:00.0000000+00:00
+                status: Approved
+                realisedGains: 125000
+                unrealisedGains: 48000
+                indexationAllowance: 12000
+                lossesBroughtForward: 20000
+                lossesUsed: 20000
+                lossesCarriedForward: 0
+                rateApplied: 0.25
+                provisionAmount: 38250
+                movement:
+                  realised: 31250
+                  unrealisedChange: 12000
+                  rateChange: 0
+                  lossOffset: -5000
+                approvedBy: 00u1abc2defGHIJKLM3p7
+                approvedAt: 2024-04-01T09:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxProvision'
+            application/json:
+              example:
+                href: http://finbourne.com
+                fund:
+                  scope: FundScope
+                  code: FundCode
+                navTypeCode: DefaultNavType
+                diaryEntryCode: VP-2024-03-31
+                effectiveAt: 2024-03-31T00:00:00.0000000+00:00
+                asAt: 2024-04-01T09:00:00.0000000+00:00
+                status: Approved
+                realisedGains: 125000
+                unrealisedGains: 48000
+                indexationAllowance: 12000
+                lossesBroughtForward: 20000
+                lossesUsed: 20000
+                lossesCarriedForward: 0
+                rateApplied: 0.25
+                provisionAmount: 38250
+                movement:
+                  realised: 31250
+                  unrealisedChange: 12000
+                  rateChange: 0
+                  lossOffset: -5000
+                approvedBy: 00u1abc2defGHIJKLM3p7
+                approvedAt: 2024-04-01T09:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxProvision'
+            text/json:
+              example:
+                href: http://finbourne.com
+                fund:
+                  scope: FundScope
+                  code: FundCode
+                navTypeCode: DefaultNavType
+                diaryEntryCode: VP-2024-03-31
+                effectiveAt: 2024-03-31T00:00:00.0000000+00:00
+                asAt: 2024-04-01T09:00:00.0000000+00:00
+                status: Approved
+                realisedGains: 125000
+                unrealisedGains: 48000
+                indexationAllowance: 12000
+                lossesBroughtForward: 20000
+                lossesUsed: 20000
+                lossesCarriedForward: 0
+                rateApplied: 0.25
+                provisionAmount: 38250
+                movement:
+                  realised: 31250
+                  unrealisedChange: 12000
+                  rateChange: 0
+                  lossOffset: -5000
+                approvedBy: 00u1abc2defGHIJKLM3p7
+                approvedAt: 2024-04-01T09:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxProvision'
+          description: The deferred-tax provision of the Valuation Point
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get\
+        \ the deferred-tax provision of a Valuation Point."
+      tags:
+      - Funds
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/funds/{scope}/{code}/tax/provisions:
+    get:
+      description: "Returns the deferred-tax provision of every Valuation Point whose\
+        \ effective date lies in the window, oldest first.\r\nUnapproved Valuation\
+        \ Points are estimated live, so the window may cover at most 100 Valuation\
+        \ Points. Until tax\r\nelections can be configured on the Fund every provision\
+        \ is struck under the default elections: a 20% rate,\r\nindexation allowance\
+        \ applied and losses carried forward."
+      operationId: ListTaxProvisions
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The lower bound effective datetime (inclusive) of the Valuation
+          Points to include. Defaults to the start of the Fund if not specified.
+        explode: true
+        in: query
+        name: fromEffectiveAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: The upper bound effective datetime (inclusive) of the Valuation
+          Points to include. Defaults to the latest Valuation Point if not specified.
+        explode: true
+        in: query
+        name: toEffectiveAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: The asAt datetime at which to retrieve the provisions. Defaults
+          to returning the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "When provided, the provisions of the specified NAV Type, otherwise\
+          \ the Primary NAV Type will be used."
+        explode: true
+        in: query
+        name: navTypeCode
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - href: http://finbourne.com
+                  fund:
+                    scope: FundScope
+                    code: FundCode
+                  navTypeCode: DefaultNavType
+                  diaryEntryCode: VP-2024-03-31
+                  effectiveAt: 2024-03-31T00:00:00.0000000+00:00
+                  asAt: 2024-04-01T09:00:00.0000000+00:00
+                  status: Approved
+                  realisedGains: 125000
+                  unrealisedGains: 48000
+                  indexationAllowance: 12000
+                  lossesBroughtForward: 20000
+                  lossesUsed: 20000
+                  lossesCarriedForward: 0
+                  rateApplied: 0.25
+                  provisionAmount: 38250
+                  movement:
+                    realised: 31250
+                    unrealisedChange: 12000
+                    rateChange: 0
+                    lossOffset: -5000
+                  approvedBy: 00u1abc2defGHIJKLM3p7
+                  approvedAt: 2024-04-01T09:00:00.0000000+00:00
+                href: http://finbourne.com
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxProvision'
+            application/json:
+              example:
+                values:
+                - href: http://finbourne.com
+                  fund:
+                    scope: FundScope
+                    code: FundCode
+                  navTypeCode: DefaultNavType
+                  diaryEntryCode: VP-2024-03-31
+                  effectiveAt: 2024-03-31T00:00:00.0000000+00:00
+                  asAt: 2024-04-01T09:00:00.0000000+00:00
+                  status: Approved
+                  realisedGains: 125000
+                  unrealisedGains: 48000
+                  indexationAllowance: 12000
+                  lossesBroughtForward: 20000
+                  lossesUsed: 20000
+                  lossesCarriedForward: 0
+                  rateApplied: 0.25
+                  provisionAmount: 38250
+                  movement:
+                    realised: 31250
+                    unrealisedChange: 12000
+                    rateChange: 0
+                    lossOffset: -5000
+                  approvedBy: 00u1abc2defGHIJKLM3p7
+                  approvedAt: 2024-04-01T09:00:00.0000000+00:00
+                href: http://finbourne.com
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxProvision'
+            text/json:
+              example:
+                values:
+                - href: http://finbourne.com
+                  fund:
+                    scope: FundScope
+                    code: FundCode
+                  navTypeCode: DefaultNavType
+                  diaryEntryCode: VP-2024-03-31
+                  effectiveAt: 2024-03-31T00:00:00.0000000+00:00
+                  asAt: 2024-04-01T09:00:00.0000000+00:00
+                  status: Approved
+                  realisedGains: 125000
+                  unrealisedGains: 48000
+                  indexationAllowance: 12000
+                  lossesBroughtForward: 20000
+                  lossesUsed: 20000
+                  lossesCarriedForward: 0
+                  rateApplied: 0.25
+                  provisionAmount: 38250
+                  movement:
+                    realised: 31250
+                    unrealisedChange: 12000
+                    rateChange: 0
+                    lossOffset: -5000
+                  approvedBy: 00u1abc2defGHIJKLM3p7
+                  approvedAt: 2024-04-01T09:00:00.0000000+00:00
+                href: http://finbourne.com
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfTaxProvision'
+          description: The deferred-tax provisions of the Fund's Valuation Points
+            in the window
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ListTaxProvisions: [EARLY ACCESS] ListTaxProvisions:\
+        \ List the deferred-tax provisions of a Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/funds/{scope}/{code}/tax/scope:
     get:
       description: "Returns the fund's portfolios within the UK chargeable-gains regime\
@@ -66278,7 +66632,10 @@ paths:
     post:
       description: "Gets the Journal Entry Lines for the given Valuation Point for\
         \ a Fund.\r\n \r\nThe Journal Entry Lines have been generated from transactions,\
-        \ translated via posting rules and used in the valuation point."
+        \ translated via posting rules and used in the valuation point.\r\n \r\nLines\
+        \ are returned grouped by portfolio, ordered by portfolio scope and then code\
+        \ (ordinal), with each portfolio's lines in the order the accounting engine\
+        \ produced them, so the order is stable across pages."
       operationId: GetValuationPointJournalEntryLines
       parameters:
       - description: The scope of the Fund.
@@ -66703,8 +67060,11 @@ paths:
       x-accepts: application/json
   /api/funds/{scope}/{code}/valuationpoints/pnlsummary/$query:
     post:
-      description: Gets the PnL Summary lines from the Journal Entry Lines produced
-        when calculating the Valuation Point.
+      description: "Gets the PnL Summary lines from the Journal Entry Lines produced\
+        \ when calculating the Valuation Point.\r\n \r\nRows are returned ordered\
+        \ by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting\
+        \ date, activity date and source id, with the remaining Journal Entry Line\
+        \ fields as tie-breakers, so the order is total and stable across pages."
       operationId: GetValuationPointPnlSummary
       parameters:
       - description: The scope of the Fund.
@@ -67217,7 +67577,11 @@ paths:
       x-accepts: application/json
   /api/funds/{scope}/{code}/valuationpoints/transactions/$query:
     post:
-      description: Gets the Transactions for the given Valuation Point for a Fund.
+      description: "Gets the Transactions for the given Valuation Point for a Fund.\r\
+        \n \r\nTransactions are returned grouped by portfolio, ordered by portfolio\
+        \ scope and then code (ordinal), with each portfolio's transactions in the\
+        \ order the accounting engine produced them, so the order is stable across\
+        \ pages."
       operationId: GetValuationPointTransactions
       parameters:
       - description: The scope of the Fund.
@@ -68480,7 +68844,9 @@ paths:
       description: "Gets all transactions that remain unsettled as at the specified\
         \ Valuation Point for a Fund,\r\nlooking back from inception. Settlement status\
         \ is point-in-time: post-cutoff settlement\r\nactivity does not alter the\
-        \ result."
+        \ result.\r\n \r\nRows are returned ordered by portfolio (scope then code,\
+        \ ordinal), then by trade date, entry time, transaction id (ordinal) and sub-holding\
+        \ keys, so the order is total and stable across pages."
       operationId: GetValuationPointUnsettledTransactions
       parameters:
       - description: The scope of the Fund.
@@ -68752,6 +69118,177 @@ paths:
       security:
       - oauth2: []
       summary: "[EARLY ACCESS] DeleteValuationPoint: Delete a Valuation Point."
+      tags:
+      - Funds
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}/tax/provision/approve:
+    post:
+      description: "Moves the Valuation Point's deferred-tax provision from Estimate\
+        \ to Approved, stores it as the official\r\ndocument and books the movement\
+        \ since the previous approved Valuation Point as an accrual on the Fund.\r\
+        \nApproving an already approved provision fails. Until tax elections can be\
+        \ configured on the Fund every\r\nprovision is struck under the default elections:\
+        \ a 20% rate, indexation allowance applied and losses carried\r\nforward."
+      operationId: ApproveTaxProvision
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The Diary Entry code of the Valuation Point whose provision is
+          approved.
+        explode: false
+        in: path
+        name: diaryEntryCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "When provided, approves the provision of the specified NAV Type,\
+          \ otherwise the Primary NAV Type will be used."
+        explode: true
+        in: query
+        name: navTypeCode
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: http://finbourne.com
+                fund:
+                  scope: FundScope
+                  code: FundCode
+                navTypeCode: DefaultNavType
+                diaryEntryCode: VP-2024-03-31
+                effectiveAt: 2024-03-31T00:00:00.0000000+00:00
+                asAt: 2024-04-01T09:00:00.0000000+00:00
+                status: Approved
+                realisedGains: 125000
+                unrealisedGains: 48000
+                indexationAllowance: 12000
+                lossesBroughtForward: 20000
+                lossesUsed: 20000
+                lossesCarriedForward: 0
+                rateApplied: 0.25
+                provisionAmount: 38250
+                movement:
+                  realised: 31250
+                  unrealisedChange: 12000
+                  rateChange: 0
+                  lossOffset: -5000
+                approvedBy: 00u1abc2defGHIJKLM3p7
+                approvedAt: 2024-04-01T09:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxProvision'
+            application/json:
+              example:
+                href: http://finbourne.com
+                fund:
+                  scope: FundScope
+                  code: FundCode
+                navTypeCode: DefaultNavType
+                diaryEntryCode: VP-2024-03-31
+                effectiveAt: 2024-03-31T00:00:00.0000000+00:00
+                asAt: 2024-04-01T09:00:00.0000000+00:00
+                status: Approved
+                realisedGains: 125000
+                unrealisedGains: 48000
+                indexationAllowance: 12000
+                lossesBroughtForward: 20000
+                lossesUsed: 20000
+                lossesCarriedForward: 0
+                rateApplied: 0.25
+                provisionAmount: 38250
+                movement:
+                  realised: 31250
+                  unrealisedChange: 12000
+                  rateChange: 0
+                  lossOffset: -5000
+                approvedBy: 00u1abc2defGHIJKLM3p7
+                approvedAt: 2024-04-01T09:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxProvision'
+            text/json:
+              example:
+                href: http://finbourne.com
+                fund:
+                  scope: FundScope
+                  code: FundCode
+                navTypeCode: DefaultNavType
+                diaryEntryCode: VP-2024-03-31
+                effectiveAt: 2024-03-31T00:00:00.0000000+00:00
+                asAt: 2024-04-01T09:00:00.0000000+00:00
+                status: Approved
+                realisedGains: 125000
+                unrealisedGains: 48000
+                indexationAllowance: 12000
+                lossesBroughtForward: 20000
+                lossesUsed: 20000
+                lossesCarriedForward: 0
+                rateApplied: 0.25
+                provisionAmount: 38250
+                movement:
+                  realised: 31250
+                  unrealisedChange: 12000
+                  rateChange: 0
+                  lossOffset: -5000
+                approvedBy: 00u1abc2defGHIJKLM3p7
+                approvedAt: 2024-04-01T09:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/TaxProvision'
+          description: The approved deferred-tax provision
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision:\
+        \ Approve the deferred-tax provision of a Valuation Point."
       tags:
       - Funds
       x-fbn-apistatus: EarlyAccess
@@ -96079,11 +96616,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] RunAllocationServiceWithWeights: Runs the Allocation\
-        \ Service with portfolio weights"
+      summary: "RunAllocationServiceWithWeights: Runs the Allocation Service with\
+        \ portfolio weights"
       tags:
       - Order Management
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: Stable
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/ordermanagement/booktransactions:
@@ -203870,7 +204407,7 @@ components:
           description: "The rec type whose results this item targets (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
             \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
-            \ Portfolio."
+            \ Portfolio, CustomEntity."
           maxLength: 64
           minLength: 1
           type: string
@@ -203930,6 +204467,7 @@ components:
               scope: scope
             asAtInstantiated: 2000-01-23T04:56:07.000+00:00
             assignedRole: assignedRole
+            customEntityType: customEntityType
             datesReconciled:
               rightAsAt: 2000-01-23T04:56:07.000+00:00
               leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
@@ -204183,6 +204721,7 @@ components:
             scope: scope
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
           assignedRole: assignedRole
+          customEntityType: customEntityType
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
@@ -204373,6 +204912,7 @@ components:
             scope: scope
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
           assignedRole: assignedRole
+          customEntityType: customEntityType
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
@@ -204624,7 +205164,7 @@ components:
           description: "The rec type whose results this item targets (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
             \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
-            \ Portfolio."
+            \ Portfolio, CustomEntity."
           maxLength: 64
           minLength: 1
           type: string
@@ -204692,6 +205232,7 @@ components:
                 scope: scope
               asAtInstantiated: 2000-01-23T04:56:07.000+00:00
               assignedRole: assignedRole
+              customEntityType: customEntityType
               datesReconciled:
                 rightAsAt: 2000-01-23T04:56:07.000+00:00
                 leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
@@ -204882,6 +205423,7 @@ components:
                 scope: scope
               asAtInstantiated: 2000-01-23T04:56:07.000+00:00
               assignedRole: assignedRole
+              customEntityType: customEntityType
               datesReconciled:
                 rightAsAt: 2000-01-23T04:56:07.000+00:00
                 leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
@@ -209842,18 +210384,30 @@ components:
             nullable: true
             type: boolean
           workout:
-            description: "The redemption date a callable ComplexBond is struck to.\r\
-              \n \r\nSupported string (enumeration) values are: [Maturity, NextCall].\r\
-              \nDefaults to Maturity - the bond's flows to final maturity - when not\
-              \ supplied.\r\n \r\nNextCall: the spread-anchored valuation (and so\
-              \ every Risk/Rates and Risk/Credit bump of it), the\r\nanchor solved\
-              \ from the price, and the z-spread family (Analytic/ZSpread, SpreadDuration,\
-              \ CS01,\r\nCS01/Central) discount the flows the bond pays if redeemed\
-              \ at its next call: no flow after the call,\r\nthe principal outstanding\
-              \ on the call date repaid at the call strike. The looked-up PV is unchanged,\r\
-              \nand Valuation/Diagnostics/Model/PricingHorizon reports the call date.\
-              \ A bond with no live call is\r\nstruck to maturity; a shape the workout\
-              \ truncation refuses fails by name."
+            description: "The redemption date a ComplexBond is struck to.\r\n \r\n\
+              Supported string (enumeration) values are: [Maturity, NextCall, NextReset,\
+              \ ExpectedMaturity].\r\nDefaults to Maturity - the bond's flows to final\
+              \ maturity - when not supplied.\r\n \r\nNextCall: the spread-anchored\
+              \ valuation (and so every Risk/Rates and Risk/Credit bump of it), the\r\
+              \nanchor solved from the price, and the z-spread family (Analytic/ZSpread,\
+              \ SpreadDuration, CS01,\r\nCS01/Central) discount the flows the bond\
+              \ pays if redeemed at its next call: no flow after the call,\r\nthe\
+              \ principal outstanding on the call date repaid at the call strike.\
+              \ The looked-up PV is unchanged,\r\nand Valuation/Diagnostics/Model/PricingHorizon\
+              \ reports the call date. A bond with no live call is\r\nstruck to maturity;\
+              \ a shape the workout truncation refuses fails by name.\r\n \r\nNextReset:\
+              \ a floater is struck the same way to the accrual start of its next\
+              \ floating coupon, repaid\r\nat par, and PricingHorizon reports the\
+              \ reset date. A fixed bond, or a floater past its last reset, is\r\n\
+              struck to maturity.\r\n \r\nExpectedMaturity: an amortising bond, an\
+              \ asset-backed pool in particular, is struck to the\r\nweighted-average\
+              \ life of its principal flows after the valuation date rounded to the\
+              \ nearest payment\r\ndate: the scheduled and projected paydowns are\
+              \ kept to that date and the balance outstanding there is\r\nrepaid at\
+              \ par. The paydowns of an asset-backed pool follow its pool factors\
+              \ and constant prepayment\r\nrate, so the date agrees with the WeightedAverageLife\
+              \ analytic, and PricingHorizon reports it. A bullet,\r\nor a bond whose\
+              \ expected maturity is its final payment date, is struck to maturity."
             nullable: true
             type: string
           modelOptionsType:
@@ -217567,10 +218121,13 @@ components:
             nullable: true
             type: number
           fundedCapitalAmount:
-            description: "The funded capital received by the destination line, for\
-              \ a line whose drawdowns were booked against the stored funded balance\
-              \ rather than paid-in capital. Used on the 'In' side only; must not\
-              \ be negative."
+            description: "The funded capital received by the destination line beyond\
+              \ its paid-in capital: the share of what the source line holds as a\
+              \ stored funded balance, from drawdowns booked against funded capital\
+              \ rather than paid-in capital. Paid-in capital already funds the destination,\
+              \ so for a line funded through paid-in capital this is zero or omitted;\
+              \ a figure here equal to the paid-in would fund the destination twice\
+              \ and is refused. Used on the 'In' side only; must not be negative."
             format: double
             nullable: true
             type: number
@@ -217586,20 +218143,21 @@ components:
               \ in the portfolio's base currency: the source line's PaidInCapitalPortfolioCcy\
               \ balance share, accumulated at historical rates, not a spot conversion\
               \ of PaidInCapitalAmount. Used on the 'In' side only; must not be negative.\
-              \ An In side that omits it books zero for PaidInCapitalPortfolioCcy\
-              \ while the Out side gives up its share, and the transaction type configuration\
-              \ must include the PaidInCapitalPortfolioCcy movement for the twin to\
-              \ move."
+              \ An In side carries the source line's share of PaidInCapitalPortfolioCcy,\
+              \ as the Out side gives it up, and is refused when it omits a share\
+              \ the source line carries, and the transaction type configuration must\
+              \ include the PaidInCapitalPortfolioCcy movement for the twin to move."
             format: double
             nullable: true
             type: number
           returnedCapitalPortfolioCcyAmount:
             description: "The returned capital the destination line takes over, already\
               \ in the portfolio's base currency at the source line's historical rates.\
-              \ Used on the 'In' side only; must not be negative. An In side that\
-              \ omits it books zero for ReturnedCapitalPortfolioCcy while the Out\
-              \ side gives up its share, and the transaction type configuration must\
-              \ include the ReturnedCapitalPortfolioCcy movement for the twin to move."
+              \ Used on the 'In' side only; must not be negative. An In side carries\
+              \ the source line's share of ReturnedCapitalPortfolioCcy, as the Out\
+              \ side gives it up, and is refused when it omits a share the source\
+              \ line carries, and the transaction type configuration must include\
+              \ the ReturnedCapitalPortfolioCcy movement for the twin to move."
             format: double
             nullable: true
             type: number
@@ -217607,19 +218165,22 @@ components:
             description: "The cumulative excess capital returned that the destination\
               \ line takes over, already in the portfolio's base currency at the source\
               \ line's historical rates. Used on the 'In' side only; must not be negative.\
-              \ An In side that omits it books zero for ExcessCapitalReturnedPortfolioCcy\
-              \ while the Out side gives up its share, and the transaction type configuration\
-              \ must include the ExcessCapitalReturnedPortfolioCcy movement for the\
-              \ twin to move."
+              \ An In side carries the source line's share of ExcessCapitalReturnedPortfolioCcy,\
+              \ as the Out side gives it up, and is refused when it omits a share\
+              \ the source line carries, and the transaction type configuration must\
+              \ include the ExcessCapitalReturnedPortfolioCcy movement for the twin\
+              \ to move."
             format: double
             nullable: true
             type: number
           recalledCapitalAmount:
             description: "The cumulative recalled capital that the destination line\
               \ takes over, in the commitment currency. Used on the 'In' side only;\
-              \ must not be negative. An In side that omits it books zero for RecalledCapital\
-              \ while the Out side gives up its share, and the transaction type configuration\
-              \ must include the RecalledCapital movement for the balance to move."
+              \ must not be negative. An In side carries the source line's share of\
+              \ RecalledCapital, as the Out side gives it up, and is refused when\
+              \ it omits a share the source line carries, and the transaction type\
+              \ configuration must include the RecalledCapital movement for the balance\
+              \ to move."
             format: double
             nullable: true
             type: number
@@ -217808,11 +218369,29 @@ components:
         \ given on the event. Mode distinguishes a genuine transfer between investors\
         \ from a correction\r\nof a mis-booked position. The portfolio-currency twin\
         \ amounts (PaidInCapitalPortfolioCcyAmount,\r\nReturnedCapitalPortfolioCcyAmount\
-        \ and ExcessCapitalReturnedPortfolioCcyAmount) are not derived: an In side\r\
-        \nthat omits them books zero for the ...PortfolioCcy twins while the Out side\
-        \ gives up its share, and a\r\nclient-maintained transaction type configuration\
-        \ must include the ...PortfolioCcy twin movements for the\r\ntwins to move\
-        \ at all."
+        \ and ExcessCapitalReturnedPortfolioCcyAmount) are not derived from the\r\n\
+        commitment-currency amounts: an In side carries the source line's share of\
+        \ each twin balance, as the Out side\r\ngives it up, and a client-maintained\
+        \ transaction type configuration must include the ...PortfolioCcy twin\r\n\
+        movements for the twins to move at all.\r\nThe supported way to move an interest\
+        \ between partners is a Transfer allocation event (eventType Transfer on\r\
+        \nthe allocation events endpoint), which derives both sides from the register,\
+        \ plans and books them together\r\nand posts to the general ledger and the\
+        \ capital account. Direct Out/In pairs upserted as instrument events\r\nremain\
+        \ for migrations: they move register balances only, post nothing to the general\
+        \ ledger or the capital\r\naccount, and are validated as a pair. An In side\
+        \ must have an Out side for the same lines on the same date, in\r\nthe same\
+        \ request or already on the source, and its amounts must equal what that Out\
+        \ side moves, balance by\r\nbalance, the excess capital returned and the portfolio-currency\
+        \ twins included; otherwise the request is\r\nrefused naming the balance and\
+        \ both events, and nothing is written. One Out side has one In side: a second\
+        \ In\r\nside for the same lines on the same date is refused, and so is an\
+        \ In side whose Out side shares its source line\r\nand date with another Out\
+        \ side, in the request or already on the source, because the engine applies\r\
+        \nsame-instant transfers in entry order and the second moves what the first\
+        \ left; book transfers out of one\r\nline at distinct instants. The source\
+        \ line must already be on the register when the pair is upserted; a line\r\
+        \nwhose history arrives in the same request is refused as not on the register."
     CapitalisationEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -226032,6 +226611,120 @@ components:
       - listRuleResult
       - orderId
       type: object
+    ComplianceComparison:
+      additionalProperties: false
+      description: "A single leaf comparison the check criterion made, re-evaluated\
+        \ for this group. A result of null is a comparison the\r\ngroup held no data\
+        \ for (the criterion short-circuited past it)."
+      example:
+        predicate: predicate
+        left:
+          expression: expression
+          value: 5.962133916683182
+        right:
+          expression: expression
+          value: 5.962133916683182
+        passed: true
+        operator: operator
+      properties:
+        predicate:
+          minLength: 1
+          type: string
+        left:
+          $ref: '#/components/schemas/ComplianceComparisonOperand'
+        operator:
+          minLength: 1
+          type: string
+        right:
+          $ref: '#/components/schemas/ComplianceComparisonOperand'
+        passed:
+          description: "Whether this leaf met its criterion for the group: true where\
+            \ it held, false for a breaching leaf. Absent for a\r\ncomparison the\
+            \ group carried no data for (the criterion short-circuited past it)."
+          nullable: true
+          type: boolean
+      required:
+      - left
+      - operator
+      - predicate
+      - right
+      type: object
+    ComplianceComparisonOperand:
+      additionalProperties: false
+      description: "One side of a comparison: the sub-expression that produced it\
+        \ and, where the group carried the data to evaluate it,\r\nits value. The\
+        \ value is absent for a non-numeric constant, a reference list, or an operand\
+        \ the group held no data for."
+      example:
+        expression: expression
+        value: 5.962133916683182
+      properties:
+        expression:
+          maxLength: 6000
+          minLength: 0
+          type: string
+        value:
+          format: double
+          nullable: true
+          type: number
+      required:
+      - expression
+      type: object
+    ComplianceGroupKey:
+      additionalProperties: false
+      description: "The dimension a group was formed on: the key the grouping step\
+        \ read, and this group's value for it."
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          maxLength: 6000
+          minLength: 0
+          type: string
+        value:
+          maxLength: 6000
+          minLength: 0
+          type: string
+      required:
+      - key
+      - value
+      type: object
+    ComplianceKeyUsed:
+      additionalProperties: false
+      description: "A key a holding contributed to the rule: the key, the role(s)\
+        \ it played in the rule, the holding's own value for\r\nit, and which bag\
+        \ the value was read from."
+      example:
+        roles:
+        - roles
+        - roles
+        source: source
+        value: ""
+        key: key
+      properties:
+        key:
+          maxLength: 6000
+          minLength: 0
+          type: string
+        roles:
+          items:
+            type: string
+          type: array
+        value:
+          description: "This holding's own value for the key. Polymorphic: a number\
+            \ for a result or metric property, a label string for\r\na label property,\
+            \ or a string for a related property."
+          nullable: true
+        source:
+          maxLength: 6000
+          minLength: 0
+          type: string
+      required:
+      - key
+      - roles
+      - source
+      type: object
     ComplianceParameter:
       additionalProperties: false
       discriminator:
@@ -226212,12 +226905,12 @@ components:
         lineage:
         - subLabel: subLabel
           infoType: infoType
-          index: 6
+          index: 5
           information: information
           label: label
         - subLabel: subLabel
           infoType: infoType
-          index: 6
+          index: 5
           information: information
           label: label
         missingDataInformation:
@@ -226257,12 +226950,19 @@ components:
                 - values
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
+        groupId: 0
         groupStatus: groupStatus
         resultsUsed:
-          key: 0.8008281904610115
-        formulaValues:
           key: 6.027456183070403
+        formulaValues:
+          key: 1.4658129805029452
       properties:
+        groupId:
+          description: "A stable identifier for this group within the rule, the same\
+            \ across the rule-result and breakdown endpoints,\r\nso a group can be\
+            \ correlated between the two."
+          format: int32
+          type: integer
         groupStatus:
           description: The status of this subset of results.
           minLength: 1
@@ -226304,6 +227004,7 @@ components:
             $ref: '#/components/schemas/LineageMember'
           type: array
       required:
+      - groupId
       - groupStatus
       - lineage
       - missingDataInformation
@@ -226316,12 +227017,12 @@ components:
         lineage:
         - subLabel: subLabel
           infoType: infoType
-          index: 6
+          index: 5
           information: information
           label: label
         - subLabel: subLabel
           infoType: infoType
-          index: 6
+          index: 5
           information: information
           label: label
         missingDataInformation:
@@ -226407,20 +227108,11 @@ components:
     ComplianceRuleBreakdownWithContributions:
       additionalProperties: false
       example:
-        lineage:
-        - subLabel: subLabel
-          infoType: infoType
-          index: 6
-          information: information
-          label: label
-        - subLabel: subLabel
-          infoType: infoType
-          index: 6
-          information: information
-          label: label
+        nav: 6.027456183070403
         missingDataInformation:
         - missingDataInformation
         - missingDataInformation
+        contributionsTruncated: true
         contributions:
         - instrumentType: instrumentType
           portfolioId:
@@ -226429,32 +227121,23 @@ components:
           orderId:
             code: code
             scope: scope
+          heldBy: heldBy
           holdingType: holdingType
-          resultValues:
-            key: 5.962133916683182
-          relatedProperties:
-            key: relatedProperties
-          index: 1
           instrument: instrument
+          keysUsed:
+          - roles:
+            - roles
+            - roles
+            source: source
+            value: ""
+            key: key
+          - roles:
+            - roles
+            - roles
+            source: source
+            value: ""
+            key: key
           holdingId: holdingId
-          properties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
         - instrumentType: instrumentType
           portfolioId:
             code: code
@@ -226462,33 +227145,52 @@ components:
           orderId:
             code: code
             scope: scope
+          heldBy: heldBy
           holdingType: holdingType
-          resultValues:
-            key: 5.962133916683182
-          relatedProperties:
-            key: relatedProperties
-          index: 1
           instrument: instrument
+          keysUsed:
+          - roles:
+            - roles
+            - roles
+            source: source
+            value: ""
+            key: key
+          - roles:
+            - roles
+            - roles
+            source: source
+            value: ""
+            key: key
           holdingId: holdingId
-          properties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
-        propertiesUsed:
+        groupId: 0
+        comparisons:
+        - predicate: predicate
+          left:
+            expression: expression
+            value: 5.962133916683182
+          right:
+            expression: expression
+            value: 5.962133916683182
+          passed: true
+          operator: operator
+        - predicate: predicate
+          left:
+            expression: expression
+            value: 5.962133916683182
+          right:
+            expression: expression
+            value: 5.962133916683182
+          passed: true
+          operator: operator
+        contributionCount: 2
+        formulaValues:
+          key: 5.637376656633329
+        results:
+          key: 1.4658129805029452
+        groupKey:
+          value: value
+          key: key
+        properties:
           key:
           - referenceData:
               key:
@@ -226522,40 +227224,58 @@ components:
                 - values
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
-        groupStatus: groupStatus
-        resultsUsed:
-          key: 0.8008281904610115
+        status: status
       properties:
-        groupStatus:
+        groupId:
+          description: "A stable identifier for this group within the rule, matching\
+            \ the same group in the rule-result endpoint."
+          format: int32
+          type: integer
+        status:
           description: The status of this subset of results.
           minLength: 1
           type: string
-        resultsUsed:
+        groupKey:
+          $ref: '#/components/schemas/ComplianceGroupKey'
+        nav:
+          description: The portfolio net asset value the group sits within. Absent
+            where no contribution carried it.
+          format: double
+          nullable: true
+          type: number
+        results:
           additionalProperties:
             format: double
             type: number
-          description: "Dictionary of AddressKey (as string) and their corresponding\
-            \ decimal values, that were used in this rule."
+          description: The valuation result totals the group aggregated. Omitted when
+            empty.
+          nullable: true
           type: object
-        propertiesUsed:
+        comparisons:
+          description: "Every leaf comparison the check criterion made for this group,\
+            \ drawn from both the hard and the soft limit.\r\nOmitted for a group\
+            \ no check reached."
+          items:
+            $ref: '#/components/schemas/ComplianceComparison'
+          nullable: true
+          type: array
+        properties:
           additionalProperties:
             items:
               $ref: '#/components/schemas/Property'
             nullable: true
             type: array
-          description: "Dictionary of PropertyKey (as string) and their corresponding\
-            \ Properties, that were used in this rule"
+          description: The property values the group aggregated. Omitted when empty.
+          nullable: true
           type: object
-        missingDataInformation:
-          description: List of string information detailing data that was missing
-            from contributions processed in this rule
-          items:
-            type: string
-          type: array
-        lineage:
-          items:
-            $ref: '#/components/schemas/LineageMember'
-          type: array
+        formulaValues:
+          additionalProperties:
+            format: double
+            type: number
+          description: The value each formula within the check criterion evaluated
+            to for this group. Omitted when empty.
+          nullable: true
+          type: object
         contributions:
           description: "The per-position contributions aggregated into this rule breakdown\
             \ group. Empty when the run\r\ngenuinely produced no contributions; a\
@@ -226564,13 +227284,28 @@ components:
           items:
             $ref: '#/components/schemas/ComplianceRuleContribution'
           type: array
+        missingDataInformation:
+          description: List of string information detailing data that was missing
+            from contributions processed in this rule. Omitted when empty.
+          items:
+            type: string
+          nullable: true
+          type: array
+        contributionCount:
+          description: "The number of contributions aggregated into this group, before\
+            \ any cap."
+          format: int32
+          type: integer
+        contributionsTruncated:
+          description: Whether the reported contributions were capped below ContributionCount.
+            Always false today.
+          type: boolean
       required:
+      - contributionCount
       - contributions
-      - groupStatus
-      - lineage
-      - missingDataInformation
-      - propertiesUsed
-      - resultsUsed
+      - contributionsTruncated
+      - groupId
+      - status
       type: object
     ComplianceRuleContribution:
       additionalProperties: false
@@ -226582,37 +227317,24 @@ components:
         orderId:
           code: code
           scope: scope
+        heldBy: heldBy
         holdingType: holdingType
-        resultValues:
-          key: 5.962133916683182
-        relatedProperties:
-          key: relatedProperties
-        index: 1
         instrument: instrument
+        keysUsed:
+        - roles:
+          - roles
+          - roles
+          source: source
+          value: ""
+          key: key
+        - roles:
+          - roles
+          - roles
+          source: source
+          value: ""
+          key: key
         holdingId: holdingId
-        properties:
-          key:
-            referenceData:
-              key:
-                stringValue: stringValue
-                numericValue: 6.027456183070403
-            effectiveUntil: 2000-01-23T04:56:07.000+00:00
-            value:
-              metricValue:
-                unit: unit
-                value: 0.8008281904610115
-              labelValue: labelValue
-              labelValueSet:
-                values:
-                - values
-                - values
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            key: key
       properties:
-        index:
-          description: The position of this contribution within the compliance run.
-          format: int32
-          type: integer
         portfolioId:
           $ref: '#/components/schemas/ResourceId'
         orderId:
@@ -226642,33 +227364,25 @@ components:
           minLength: 0
           nullable: true
           type: string
-        resultValues:
-          additionalProperties:
-            format: double
-            type: number
-          description: Dictionary of AddressKey (as string) and their corresponding
-            decimal valuation results for this contribution.
-          type: object
-        properties:
-          additionalProperties:
-            $ref: '#/components/schemas/Property'
-          description: Dictionary of PropertyKey (as string) and their corresponding
-            property for this contribution.
-          type: object
-        relatedProperties:
-          additionalProperties:
-            nullable: true
-            type: string
-          description: "Dictionary of related property keys (as string) and their\
-            \ string values, read from related entities across a relationship."
-          type: object
+        heldBy:
+          description: "Optional. Where this holding sits relative to the rule's benchmark:\
+            \ portfolio, benchmark or both.\r\nMeaningful only for benchmark-relative\
+            \ rules."
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
+        keysUsed:
+          description: "The keys this holding contributed to the rule: each key the\
+            \ rule read (plus the portfolio NAV key), with the\r\nrole(s) it played,\
+            \ the holding's own value for it, and which bag the value came from."
+          items:
+            $ref: '#/components/schemas/ComplianceKeyUsed'
+          type: array
       required:
-      - index
       - instrument
+      - keysUsed
       - portfolioId
-      - properties
-      - relatedProperties
-      - resultValues
       type: object
     ComplianceRuleEntity:
       additionalProperties: false
@@ -227228,12 +227942,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -227273,20 +227987,21 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
+            groupId: 0
             groupStatus: groupStatus
             resultsUsed:
-              key: 0.8008281904610115
-            formulaValues:
               key: 6.027456183070403
+            formulaValues:
+              key: 1.4658129805029452
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -227326,11 +228041,12 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
+            groupId: 0
             groupStatus: groupStatus
             resultsUsed:
-              key: 0.8008281904610115
-            formulaValues:
               key: 6.027456183070403
+            formulaValues:
+              key: 1.4658129805029452
           affectedPortfolios:
           - code: code
             scope: scope
@@ -227379,252 +228095,252 @@ components:
       example:
         schedule: schedule
         completedAt: 2000-01-23T04:56:07.000+00:00
+        ruleDefinitionsAsAt: 2000-01-23T04:56:07.000+00:00
         runId:
           code: code
           scope: scope
         ruleResult:
-          ruleBreakdown:
-          - lineage:
-            - subLabel: subLabel
-              infoType: infoType
-              index: 6
-              information: information
-              label: label
-            - subLabel: subLabel
-              infoType: infoType
-              index: 6
-              information: information
-              label: label
-            missingDataInformation:
-            - missingDataInformation
-            - missingDataInformation
-            contributions:
-            - instrumentType: instrumentType
-              portfolioId:
-                code: code
-                scope: scope
-              orderId:
-                code: code
-                scope: scope
-              holdingType: holdingType
-              resultValues:
-                key: 5.962133916683182
-              relatedProperties:
-                key: relatedProperties
-              index: 1
-              instrument: instrument
-              holdingId: holdingId
-              properties:
-                key:
-                  referenceData:
-                    key:
-                      stringValue: stringValue
-                      numericValue: 6.027456183070403
-                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                  value:
-                    metricValue:
-                      unit: unit
-                      value: 0.8008281904610115
-                    labelValue: labelValue
-                    labelValueSet:
-                      values:
-                      - values
-                      - values
-                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                  key: key
-            - instrumentType: instrumentType
-              portfolioId:
-                code: code
-                scope: scope
-              orderId:
-                code: code
-                scope: scope
-              holdingType: holdingType
-              resultValues:
-                key: 5.962133916683182
-              relatedProperties:
-                key: relatedProperties
-              index: 1
-              instrument: instrument
-              holdingId: holdingId
-              properties:
-                key:
-                  referenceData:
-                    key:
-                      stringValue: stringValue
-                      numericValue: 6.027456183070403
-                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                  value:
-                    metricValue:
-                      unit: unit
-                      value: 0.8008281904610115
-                    labelValue: labelValue
-                    labelValueSet:
-                      values:
-                      - values
-                      - values
-                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                  key: key
-            propertiesUsed:
-              key:
-              - referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-              - referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-            groupStatus: groupStatus
-            resultsUsed:
-              key: 0.8008281904610115
-          - lineage:
-            - subLabel: subLabel
-              infoType: infoType
-              index: 6
-              information: information
-              label: label
-            - subLabel: subLabel
-              infoType: infoType
-              index: 6
-              information: information
-              label: label
-            missingDataInformation:
-            - missingDataInformation
-            - missingDataInformation
-            contributions:
-            - instrumentType: instrumentType
-              portfolioId:
-                code: code
-                scope: scope
-              orderId:
-                code: code
-                scope: scope
-              holdingType: holdingType
-              resultValues:
-                key: 5.962133916683182
-              relatedProperties:
-                key: relatedProperties
-              index: 1
-              instrument: instrument
-              holdingId: holdingId
-              properties:
-                key:
-                  referenceData:
-                    key:
-                      stringValue: stringValue
-                      numericValue: 6.027456183070403
-                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                  value:
-                    metricValue:
-                      unit: unit
-                      value: 0.8008281904610115
-                    labelValue: labelValue
-                    labelValueSet:
-                      values:
-                      - values
-                      - values
-                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                  key: key
-            - instrumentType: instrumentType
-              portfolioId:
-                code: code
-                scope: scope
-              orderId:
-                code: code
-                scope: scope
-              holdingType: holdingType
-              resultValues:
-                key: 5.962133916683182
-              relatedProperties:
-                key: relatedProperties
-              index: 1
-              instrument: instrument
-              holdingId: holdingId
-              properties:
-                key:
-                  referenceData:
-                    key:
-                      stringValue: stringValue
-                      numericValue: 6.027456183070403
-                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                  value:
-                    metricValue:
-                      unit: unit
-                      value: 0.8008281904610115
-                    labelValue: labelValue
-                    labelValueSet:
-                      values:
-                      - values
-                      - values
-                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                  key: key
-            propertiesUsed:
-              key:
-              - referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-              - referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-            groupStatus: groupStatus
-            resultsUsed:
-              key: 0.8008281904610115
+          checkType: checkType
           affectedPortfolios:
           - code: code
             scope: scope
           - code: code
             scope: scope
+          groups:
+          - nav: 6.027456183070403
+            missingDataInformation:
+            - missingDataInformation
+            - missingDataInformation
+            contributionsTruncated: true
+            contributions:
+            - instrumentType: instrumentType
+              portfolioId:
+                code: code
+                scope: scope
+              orderId:
+                code: code
+                scope: scope
+              heldBy: heldBy
+              holdingType: holdingType
+              instrument: instrument
+              keysUsed:
+              - roles:
+                - roles
+                - roles
+                source: source
+                value: ""
+                key: key
+              - roles:
+                - roles
+                - roles
+                source: source
+                value: ""
+                key: key
+              holdingId: holdingId
+            - instrumentType: instrumentType
+              portfolioId:
+                code: code
+                scope: scope
+              orderId:
+                code: code
+                scope: scope
+              heldBy: heldBy
+              holdingType: holdingType
+              instrument: instrument
+              keysUsed:
+              - roles:
+                - roles
+                - roles
+                source: source
+                value: ""
+                key: key
+              - roles:
+                - roles
+                - roles
+                source: source
+                value: ""
+                key: key
+              holdingId: holdingId
+            groupId: 0
+            comparisons:
+            - predicate: predicate
+              left:
+                expression: expression
+                value: 5.962133916683182
+              right:
+                expression: expression
+                value: 5.962133916683182
+              passed: true
+              operator: operator
+            - predicate: predicate
+              left:
+                expression: expression
+                value: 5.962133916683182
+              right:
+                expression: expression
+                value: 5.962133916683182
+              passed: true
+              operator: operator
+            contributionCount: 2
+            formulaValues:
+              key: 5.637376656633329
+            results:
+              key: 1.4658129805029452
+            groupKey:
+              value: value
+              key: key
+            properties:
+              key:
+              - referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+              - referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
+          - nav: 6.027456183070403
+            missingDataInformation:
+            - missingDataInformation
+            - missingDataInformation
+            contributionsTruncated: true
+            contributions:
+            - instrumentType: instrumentType
+              portfolioId:
+                code: code
+                scope: scope
+              orderId:
+                code: code
+                scope: scope
+              heldBy: heldBy
+              holdingType: holdingType
+              instrument: instrument
+              keysUsed:
+              - roles:
+                - roles
+                - roles
+                source: source
+                value: ""
+                key: key
+              - roles:
+                - roles
+                - roles
+                source: source
+                value: ""
+                key: key
+              holdingId: holdingId
+            - instrumentType: instrumentType
+              portfolioId:
+                code: code
+                scope: scope
+              orderId:
+                code: code
+                scope: scope
+              heldBy: heldBy
+              holdingType: holdingType
+              instrument: instrument
+              keysUsed:
+              - roles:
+                - roles
+                - roles
+                source: source
+                value: ""
+                key: key
+              - roles:
+                - roles
+                - roles
+                source: source
+                value: ""
+                key: key
+              holdingId: holdingId
+            groupId: 0
+            comparisons:
+            - predicate: predicate
+              left:
+                expression: expression
+                value: 5.962133916683182
+              right:
+                expression: expression
+                value: 5.962133916683182
+              passed: true
+              operator: operator
+            - predicate: predicate
+              left:
+                expression: expression
+                value: 5.962133916683182
+              right:
+                expression: expression
+                value: 5.962133916683182
+              passed: true
+              operator: operator
+            contributionCount: 2
+            formulaValues:
+              key: 5.637376656633329
+            results:
+              key: 1.4658129805029452
+            groupKey:
+              value: value
+              key: key
+            properties:
+              key:
+              - referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+              - referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
           affectedOrders:
           - code: code
             scope: scope
@@ -227633,13 +228349,6 @@ components:
           ruleId:
             code: code
             scope: scope
-          templateId:
-            code: code
-            scope: scope
-          ruleStatus: ruleStatus
-          variation: variation
-          parametersUsed:
-            key: parametersUsed
           otherPositionsConsidered:
           - instrumentType: instrumentType
             portfolioId:
@@ -227648,32 +228357,23 @@ components:
             orderId:
               code: code
               scope: scope
+            heldBy: heldBy
             holdingType: holdingType
-            resultValues:
-              key: 5.962133916683182
-            relatedProperties:
-              key: relatedProperties
-            index: 1
             instrument: instrument
+            keysUsed:
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
             holdingId: holdingId
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
           - instrumentType: instrumentType
             portfolioId:
               code: code
@@ -227681,32 +228381,24 @@ components:
             orderId:
               code: code
               scope: scope
+            heldBy: heldBy
             holdingType: holdingType
-            resultValues:
-              key: 5.962133916683182
-            relatedProperties:
-              key: relatedProperties
-            index: 1
             instrument: instrument
+            keysUsed:
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
             holdingId: holdingId
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
+          status: status
         instigatedAt: 2000-01-23T04:56:07.000+00:00
       properties:
         runId:
@@ -227715,6 +228407,9 @@ components:
           format: date-time
           type: string
         completedAt:
+          format: date-time
+          type: string
+        ruleDefinitionsAsAt:
           format: date-time
           type: string
         schedule:
@@ -227726,6 +228421,7 @@ components:
       required:
       - completedAt
       - instigatedAt
+      - ruleDefinitionsAsAt
       - ruleResult
       - runId
       - schedule
@@ -228397,18 +229093,16 @@ components:
       type: object
     ComplianceRuleV3DescribeResponse:
       additionalProperties: false
-      description: "A plain-English description of a V3 compliance rule. This is a\
-        \ minimal placeholder shape: the plain-English\r\ngenerator is delivered separately,\
-        \ so the Lines property is currently empty and only the rule's identity\r\n\
-        and subject are populated."
+      description: "A plain-English description of a V3 compliance rule: its identity,\
+        \ the kind of entity it examines, and a\r\nsingle sentence describing what\
+        \ it checks. The sentence is empty for a rule the generator cannot fully\r\
+        \nexpress."
       example:
         subject: subject
         id:
           code: code
           scope: scope
-        lines:
-        - lines
-        - lines
+        plainEnglish: plainEnglish
       properties:
         id:
           $ref: '#/components/schemas/ResourceId'
@@ -228416,11 +229110,9 @@ components:
           description: "Available values: Holdings, Orders."
           nullable: true
           type: string
-        lines:
-          items:
-            type: string
+        plainEnglish:
           nullable: true
-          type: array
+          type: string
       type: object
     ComplianceRuleV3FilterNode:
       additionalProperties: false
@@ -228556,19 +229248,7 @@ components:
       description: "A V3 compliance rule as returned by the API: its identity and\
         \ administrative fields, its full\r\ndefinition, and its version."
       example:
-        filter:
-          filterNodeType: filterNodeType
-        measure:
-          filter:
-            filterNodeType: filterNodeType
-          metric: metric
-          weightMetric: weightMetric
-          denominatorMetric: denominatorMetric
-          aggregate: aggregate
-          denominator: denominator
-          denominatorProperty: denominatorProperty
         subject: subject
-        name: name
         description: description
         active: true
         computedFilter:
@@ -228603,18 +229283,6 @@ components:
                 inclusive: true
                 value: 0.8008281904610115
           selectOutsideBounds: true
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        id:
-          code: code
-          scope: scope
         groupBy:
         - groupBy
         - groupBy
@@ -228650,6 +229318,31 @@ components:
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
+        filter:
+          filterNodeType: filterNodeType
+        measure:
+          filter:
+            filterNodeType: filterNodeType
+          metric: metric
+          weightMetric: weightMetric
+          denominatorMetric: denominatorMetric
+          aggregate: aggregate
+          denominator: denominator
+          denominatorProperty: denominatorProperty
+        name: name
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id:
+          code: code
+          scope: scope
+        plainEnglish: plainEnglish
       properties:
         id:
           $ref: '#/components/schemas/ResourceId'
@@ -228680,6 +229373,9 @@ components:
           $ref: '#/components/schemas/ComplianceRuleV3ComputedFilter'
         version:
           $ref: '#/components/schemas/Version'
+        plainEnglish:
+          nullable: true
+          type: string
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -229008,12 +229704,12 @@ components:
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 5
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 5
             information: information
             label: label
           missingDataInformation:
@@ -229053,20 +229749,21 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
+          groupId: 0
           groupStatus: groupStatus
           resultsUsed:
-            key: 0.8008281904610115
-          formulaValues:
             key: 6.027456183070403
+          formulaValues:
+            key: 1.4658129805029452
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 5
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 5
             information: information
             label: label
           missingDataInformation:
@@ -229106,11 +229803,12 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
+          groupId: 0
           groupStatus: groupStatus
           resultsUsed:
-            key: 0.8008281904610115
-          formulaValues:
             key: 6.027456183070403
+          formulaValues:
+            key: 1.4658129805029452
         affectedPortfolios:
         - code: code
           scope: scope
@@ -229176,12 +229874,12 @@ components:
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 5
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 5
             information: information
             label: label
           missingDataInformation:
@@ -229229,12 +229927,12 @@ components:
         - lineage:
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 5
             information: information
             label: label
           - subLabel: subLabel
             infoType: infoType
-            index: 6
+            index: 5
             information: information
             label: label
           missingDataInformation:
@@ -229343,248 +230041,247 @@ components:
     ComplianceSummaryRuleResultWithContributions:
       additionalProperties: false
       example:
-        ruleBreakdown:
-        - lineage:
-          - subLabel: subLabel
-            infoType: infoType
-            index: 6
-            information: information
-            label: label
-          - subLabel: subLabel
-            infoType: infoType
-            index: 6
-            information: information
-            label: label
-          missingDataInformation:
-          - missingDataInformation
-          - missingDataInformation
-          contributions:
-          - instrumentType: instrumentType
-            portfolioId:
-              code: code
-              scope: scope
-            orderId:
-              code: code
-              scope: scope
-            holdingType: holdingType
-            resultValues:
-              key: 5.962133916683182
-            relatedProperties:
-              key: relatedProperties
-            index: 1
-            instrument: instrument
-            holdingId: holdingId
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-          - instrumentType: instrumentType
-            portfolioId:
-              code: code
-              scope: scope
-            orderId:
-              code: code
-              scope: scope
-            holdingType: holdingType
-            resultValues:
-              key: 5.962133916683182
-            relatedProperties:
-              key: relatedProperties
-            index: 1
-            instrument: instrument
-            holdingId: holdingId
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-          propertiesUsed:
-            key:
-            - referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
-            - referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
-          groupStatus: groupStatus
-          resultsUsed:
-            key: 0.8008281904610115
-        - lineage:
-          - subLabel: subLabel
-            infoType: infoType
-            index: 6
-            information: information
-            label: label
-          - subLabel: subLabel
-            infoType: infoType
-            index: 6
-            information: information
-            label: label
-          missingDataInformation:
-          - missingDataInformation
-          - missingDataInformation
-          contributions:
-          - instrumentType: instrumentType
-            portfolioId:
-              code: code
-              scope: scope
-            orderId:
-              code: code
-              scope: scope
-            holdingType: holdingType
-            resultValues:
-              key: 5.962133916683182
-            relatedProperties:
-              key: relatedProperties
-            index: 1
-            instrument: instrument
-            holdingId: holdingId
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-          - instrumentType: instrumentType
-            portfolioId:
-              code: code
-              scope: scope
-            orderId:
-              code: code
-              scope: scope
-            holdingType: holdingType
-            resultValues:
-              key: 5.962133916683182
-            relatedProperties:
-              key: relatedProperties
-            index: 1
-            instrument: instrument
-            holdingId: holdingId
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-          propertiesUsed:
-            key:
-            - referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
-            - referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
-          groupStatus: groupStatus
-          resultsUsed:
-            key: 0.8008281904610115
+        checkType: checkType
         affectedPortfolios:
         - code: code
           scope: scope
         - code: code
           scope: scope
+        groups:
+        - nav: 6.027456183070403
+          missingDataInformation:
+          - missingDataInformation
+          - missingDataInformation
+          contributionsTruncated: true
+          contributions:
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            heldBy: heldBy
+            holdingType: holdingType
+            instrument: instrument
+            keysUsed:
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            holdingId: holdingId
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            heldBy: heldBy
+            holdingType: holdingType
+            instrument: instrument
+            keysUsed:
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            holdingId: holdingId
+          groupId: 0
+          comparisons:
+          - predicate: predicate
+            left:
+              expression: expression
+              value: 5.962133916683182
+            right:
+              expression: expression
+              value: 5.962133916683182
+            passed: true
+            operator: operator
+          - predicate: predicate
+            left:
+              expression: expression
+              value: 5.962133916683182
+            right:
+              expression: expression
+              value: 5.962133916683182
+            passed: true
+            operator: operator
+          contributionCount: 2
+          formulaValues:
+            key: 5.637376656633329
+          results:
+            key: 1.4658129805029452
+          groupKey:
+            value: value
+            key: key
+          properties:
+            key:
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          status: status
+        - nav: 6.027456183070403
+          missingDataInformation:
+          - missingDataInformation
+          - missingDataInformation
+          contributionsTruncated: true
+          contributions:
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            heldBy: heldBy
+            holdingType: holdingType
+            instrument: instrument
+            keysUsed:
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            holdingId: holdingId
+          - instrumentType: instrumentType
+            portfolioId:
+              code: code
+              scope: scope
+            orderId:
+              code: code
+              scope: scope
+            heldBy: heldBy
+            holdingType: holdingType
+            instrument: instrument
+            keysUsed:
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            - roles:
+              - roles
+              - roles
+              source: source
+              value: ""
+              key: key
+            holdingId: holdingId
+          groupId: 0
+          comparisons:
+          - predicate: predicate
+            left:
+              expression: expression
+              value: 5.962133916683182
+            right:
+              expression: expression
+              value: 5.962133916683182
+            passed: true
+            operator: operator
+          - predicate: predicate
+            left:
+              expression: expression
+              value: 5.962133916683182
+            right:
+              expression: expression
+              value: 5.962133916683182
+            passed: true
+            operator: operator
+          contributionCount: 2
+          formulaValues:
+            key: 5.637376656633329
+          results:
+            key: 1.4658129805029452
+          groupKey:
+            value: value
+            key: key
+          properties:
+            key:
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+            - referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          status: status
         affectedOrders:
         - code: code
           scope: scope
@@ -229593,13 +230290,6 @@ components:
         ruleId:
           code: code
           scope: scope
-        templateId:
-          code: code
-          scope: scope
-        ruleStatus: ruleStatus
-        variation: variation
-        parametersUsed:
-          key: parametersUsed
         otherPositionsConsidered:
         - instrumentType: instrumentType
           portfolioId:
@@ -229608,32 +230298,23 @@ components:
           orderId:
             code: code
             scope: scope
+          heldBy: heldBy
           holdingType: holdingType
-          resultValues:
-            key: 5.962133916683182
-          relatedProperties:
-            key: relatedProperties
-          index: 1
           instrument: instrument
+          keysUsed:
+          - roles:
+            - roles
+            - roles
+            source: source
+            value: ""
+            key: key
+          - roles:
+            - roles
+            - roles
+            source: source
+            value: ""
+            key: key
           holdingId: holdingId
-          properties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
         - instrumentType: instrumentType
           portfolioId:
             code: code
@@ -229641,81 +230322,67 @@ components:
           orderId:
             code: code
             scope: scope
+          heldBy: heldBy
           holdingType: holdingType
-          resultValues:
-            key: 5.962133916683182
-          relatedProperties:
-            key: relatedProperties
-          index: 1
           instrument: instrument
+          keysUsed:
+          - roles:
+            - roles
+            - roles
+            source: source
+            value: ""
+            key: key
+          - roles:
+            - roles
+            - roles
+            source: source
+            value: ""
+            key: key
           holdingId: holdingId
-          properties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
+        status: status
       properties:
         ruleId:
           $ref: '#/components/schemas/ResourceId'
-        templateId:
-          $ref: '#/components/schemas/ResourceId'
-        variation:
+        status:
           minLength: 1
           type: string
-        ruleStatus:
-          minLength: 1
+        checkType:
+          description: "The kind of check the rule applied across its groups: \"PercentCheck\"\
+            \ or \"Check\". Static per rule. Absent for a\r\nrule no check reached."
+          nullable: true
           type: string
         affectedPortfolios:
           items:
             $ref: '#/components/schemas/ResourceId'
           type: array
         affectedOrders:
+          description: The orders the rule affected. Omitted for a holdings-based
+            run.
           items:
             $ref: '#/components/schemas/ResourceId'
+          nullable: true
           type: array
-        parametersUsed:
-          additionalProperties:
-            nullable: true
-            type: string
-          type: object
-        ruleBreakdown:
+        groups:
           items:
             $ref: '#/components/schemas/ComplianceRuleBreakdownWithContributions'
           type: array
         otherPositionsConsidered:
           description: "The rest of the basis the rule was measured against but did\
             \ not directly evaluate — the positions in\r\nthe referenced/denominator\
-            \ (or initial) group that are not in the RuleBreakdown's\r\ncontributions.\
-            \ Together with those contributions this forms the whole basis, with no\
-            \ overlap, so a\r\nbreach can be explained against the full picture (e.g.\
-            \ the non-equity remainder behind an equity limit).\r\nEmpty when the\
-            \ rule evaluated everything it considered."
+            \ (or initial) group that are not in a group's contributions. Together\
+            \ with those\r\ncontributions this forms the whole basis, with no overlap,\
+            \ so a breach can be explained against the full picture\r\n(e.g. the non-equity\
+            \ remainder behind an equity limit). Omitted when the rule evaluated everything\
+            \ it considered."
           items:
             $ref: '#/components/schemas/ComplianceRuleContribution'
+          nullable: true
           type: array
       required:
-      - affectedOrders
       - affectedPortfolios
-      - otherPositionsConsidered
-      - parametersUsed
-      - ruleBreakdown
+      - groups
       - ruleId
-      - ruleStatus
-      - templateId
-      - variation
+      - status
       type: object
     ComplianceTemplate:
       additionalProperties: false
@@ -234708,9 +235375,11 @@ components:
         recType:
           description: "The type of reconciliation to perform. External reconciles\
             \ non-native data on both sides, described by the datasetSchemas and the\
-            \ externalRecType. Available values: Holding, CashHolding, Valuation,\
-            \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ externalRecType. A custom entity type is written as its name, which\
+            \ starts with ~. Available values: Holding, CashHolding, Valuation, InputTransaction,\
+            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
+            \ Portfolio."
+          maxLength: 64
           minLength: 1
           type: string
         externalRecType:
@@ -250013,6 +250682,18 @@ components:
           instructionReference:
             nullable: true
             type: string
+          accruedInterestPerUnit:
+            description: "Optional per-unit interest accrued on the old bond that\
+              \ the offer pays in cash, on the same basis as the\r\ncash offer price.\
+              \ Taken from the offer terms and never calculated. If supplied and above\
+              \ zero, each chosen\r\nelection that removes the old units (security,\
+              \ cash, cash-and-security, consent-and-exchange or mixed lot)\r\nbooks\
+              \ one additional cash transaction per holding of units removed multiplied\
+              \ by this value. Bond and\r\ncomplex bond instrument types only. Must\
+              \ be 0 or more. If left empty or 0, no accrued interest is booked."
+            format: double
+            nullable: true
+            type: number
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -265098,6 +265779,14 @@ components:
             format: double
             nullable: true
             type: number
+          paymentDate:
+            description: "The date the variation margin is paid: the effective date\
+              \ plus the future's mark to market settlement offset.\r\nThis is an\
+              \ optional field; when absent the variation margin is paid on the effective\
+              \ date."
+            format: date-time
+            nullable: true
+            type: string
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -272034,10 +272723,11 @@ components:
             \ The '...PortfolioCcy' balances are the same balances in the portfolio's\
             \ base currency, each movement converted at its own RateToPortfolio on\
             \ the day it was booked and never re-translated at a later spot rate;\
-            \ source them from 'PortfolioAmount'. 'ExcessCapitalReturned' is the cumulative\
-            \ excess capital the fund has handed back, kept separately because a return\
-            \ of excess lowers PaidInCapital and restores UncalledCommitment at the\
-            \ same time. 'UnfundedCapital' is a deprecated alias of 'UncalledCommitment';\
+            \ source them from 'PortfolioAmount', or from 'PortfolioAmountAtAverageRate'\
+            \ to unwind one at the average rate it was built at. 'ExcessCapitalReturned'\
+            \ is the cumulative excess capital the fund has handed back, kept separately\
+            \ because a return of excess lowers PaidInCapital and restores UncalledCommitment\
+            \ at the same time. 'UnfundedCapital' is a deprecated alias of 'UncalledCommitment';\
             \ 'FundedCapital' is served as PaidInCapital less ReturnedCapital and\
             \ new configuration should target those two instead. Available values:\
             \ CommittedCapital, FundedCapital, UnfundedCapital, RecallableCapital,\
@@ -272050,13 +272740,18 @@ components:
           description: "The movement value that sources the adjustment. Allowed values:\
             \ 'Amount' (the movement's signed amount in transaction currency), 'Units'\
             \ (the movement's signed units), 'PortfolioAmount' (the movement's signed\
-            \ amount converted to portfolio currency) and 'ProportionOfBalance' (the\
+            \ amount converted to portfolio currency), 'ProportionOfBalance' (the\
             \ movement's amount is read as a proportion between 0 and 1 of the balance\
             \ already held under the key, and the adjustment is that proportion of\
-            \ the balance rounded to the holding currency's minor unit). 'PortfolioAmount'\
-            \ is accepted only on the '...PortfolioCcy' keys, which are kept in the\
+            \ the balance rounded to the holding currency's minor unit) and 'PortfolioAmountAtAverageRate'\
+            \ (the movement's signed amount converted to portfolio currency at the\
+            \ average rate the balance was built at, that is the balance over its\
+            \ holding-currency twin before the movement, or at the movement's own\
+            \ rate when the twin holds nothing; used to unwind a portfolio-currency\
+            \ balance at the rates it was built at). 'PortfolioAmount' and 'PortfolioAmountAtAverageRate'\
+            \ are accepted only on the '...PortfolioCcy' keys, which are kept in the\
             \ portfolio's base currency; 'Units' is not accepted on any key. Available\
-            \ values: Amount, Units, PortfolioAmount, ProportionOfBalance."
+            \ values: Amount, Units, PortfolioAmount, ProportionOfBalance, PortfolioAmountAtAverageRate."
           minLength: 1
           type: string
         direction:
@@ -274204,8 +274899,6 @@ components:
             - StripBond
             type: string
         required:
-        - fixedLeg
-        - inflationLeg
         - instrumentType
         - maturityDate
         - startDate
@@ -284287,6 +284980,22 @@ components:
           description: Indicates whether there are intermediate notional exchanges.
           nullable: true
           type: boolean
+        initialExchangeAmount:
+          description: "The amount exchanged at the start of the leg, when NotionalExchangeType\
+            \ is Initial or Both.\r\nDefaults to the notional. Coupons accrue on the\
+            \ notional regardless. Must be non-negative, and cannot be\r\nset together\
+            \ with an FxLinkedNotionalSchedule."
+          format: double
+          nullable: true
+          type: number
+        finalExchangeAmount:
+          description: "The amount exchanged at maturity, when NotionalExchangeType\
+            \ is Final or Both.\r\nDefaults to the notional. Coupons accrue on the\
+            \ notional regardless. Must be non-negative, and cannot be\r\nset together\
+            \ with an FxLinkedNotionalSchedule."
+          format: double
+          nullable: true
+          type: number
       required:
       - notionalExchangeType
       - payReceive
@@ -284375,7 +285084,7 @@ components:
       example:
         subLabel: subLabel
         infoType: infoType
-        index: 6
+        index: 5
         information: information
         label: label
       properties:
@@ -286437,9 +287146,11 @@ components:
         entityType:
           description: "The type of LUSID entity to reconcile, which is also the rec\
             \ type of the results. Supported types: Instrument, LegalEntity, Portfolio.\
-            \ Must equal the reconciliationType of the matching ruleset. Available\
-            \ values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction,\
+            \ A custom entity type is written as its name, which starts with ~. Must\
+            \ equal the reconciliationType of the matching ruleset. Available values:\
+            \ Holding, CashHolding, Valuation, InputTransaction, OutputTransaction,\
             \ SettlementActivity, External, Instrument, LegalEntity, Portfolio."
+          maxLength: 64
           minLength: 1
           type: string
         matchingRulesetId:
@@ -289638,6 +290349,23 @@ components:
           minLength: 0
           nullable: true
           type: string
+        mtmSettleDays:
+          description: "The number of business days after each mark to market date\
+            \ on which its variation margin is paid.\r\nThis is an optional field,\
+            \ defaulting to 0 (paid on the mark to market date); if a value is provided\
+            \ it must be between 0 and 10 inclusive."
+          format: int32
+          nullable: true
+          type: integer
+        mtmSettlementCalendar:
+          description: "The calendar the mark to market settlement days are counted\
+            \ on.\r\nThis is an optional field; if no value is provided the mark to\
+            \ market calendar is used, and without that only weekends are non-business\
+            \ days."
+          maxLength: 50
+          minLength: 0
+          nullable: true
+          type: string
       type: object
     MasteredInstrument:
       allOf:
@@ -289894,9 +290622,11 @@ components:
         recType:
           description: "The type of reconciliation to perform. External reconciles\
             \ non-native data on both sides, described by the datasetSchemas and the\
-            \ externalRecType. Available values: Holding, CashHolding, Valuation,\
-            \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ externalRecType. A custom entity type is written as its name, which\
+            \ starts with ~. Available values: Holding, CashHolding, Valuation, InputTransaction,\
+            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
+            \ Portfolio."
+          maxLength: 64
           minLength: 1
           type: string
         externalRecType:
@@ -301733,19 +302463,7 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - filter:
-            filterNodeType: filterNodeType
-          measure:
-            filter:
-              filterNodeType: filterNodeType
-            metric: metric
-            weightMetric: weightMetric
-            denominatorMetric: denominatorMetric
-            aggregate: aggregate
-            denominator: denominator
-            denominatorProperty: denominatorProperty
-          subject: subject
-          name: name
+        - subject: subject
           description: description
           active: true
           computedFilter:
@@ -301780,18 +302498,6 @@ components:
                   inclusive: true
                   value: 0.8008281904610115
             selectOutsideBounds: true
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          id:
-            code: code
-            scope: scope
           groupBy:
           - groupBy
           - groupBy
@@ -301827,7 +302533,7 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
-        - filter:
+          filter:
             filterNodeType: filterNodeType
           measure:
             filter:
@@ -301838,8 +302544,21 @@ components:
             aggregate: aggregate
             denominator: denominator
             denominatorProperty: denominatorProperty
-          subject: subject
           name: name
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          plainEnglish: plainEnglish
+        - subject: subject
           description: description
           active: true
           computedFilter:
@@ -301874,18 +302593,6 @@ components:
                   inclusive: true
                   value: 0.8008281904610115
             selectOutsideBounds: true
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          id:
-            code: code
-            scope: scope
           groupBy:
           - groupBy
           - groupBy
@@ -301921,6 +302628,31 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          filter:
+            filterNodeType: filterNodeType
+          measure:
+            filter:
+              filterNodeType: filterNodeType
+            metric: metric
+            weightMetric: weightMetric
+            denominatorMetric: denominatorMetric
+            aggregate: aggregate
+            denominator: denominator
+            denominatorProperty: denominatorProperty
+          name: name
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          plainEnglish: plainEnglish
         links:
         - method: method
           description: description
@@ -317354,6 +318086,7 @@ components:
             scope: scope
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
           assignedRole: assignedRole
+          customEntityType: customEntityType
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
@@ -317544,6 +318277,7 @@ components:
             scope: scope
           asAtInstantiated: 2000-01-23T04:56:07.000+00:00
           assignedRole: assignedRole
+          customEntityType: customEntityType
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
             leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
@@ -317766,6 +318500,7 @@ components:
           execution:
             errorDetail: errorDetail
             outcome: outcome
+          customEntityType: customEntityType
           runAsAt: 2000-01-23T04:56:07.000+00:00
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
@@ -318040,6 +318775,7 @@ components:
           execution:
             errorDetail: errorDetail
             outcome: outcome
+          customEntityType: customEntityType
           runAsAt: 2000-01-23T04:56:07.000+00:00
           datesReconciled:
             rightAsAt: 2000-01-23T04:56:07.000+00:00
@@ -339517,9 +340253,12 @@ components:
           description: "The entity within the dataset. Required when type is PortfolioContents,\
             \ in which case it is one of: Holding, Valuation, Transaction, OutputTransaction,\
             \ SettlementActivity. Required when type is LusidEntity, in which case\
-            \ it is Instrument, LegalEntity or Portfolio. Must be omitted when type\
-            \ is RelationalData. Available values: Holding, Valuation, Transaction,\
-            \ OutputTransaction, SettlementActivity, Instrument, LegalEntity, Portfolio."
+            \ it is Instrument, LegalEntity or Portfolio, or the name of a custom\
+            \ entity type, which starts with ~. Must be omitted when type is RelationalData.\
+            \ Available values: Holding, Valuation, Transaction, OutputTransaction,\
+            \ SettlementActivity, Instrument, LegalEntity, Portfolio."
+          maxLength: 64
+          minLength: 1
           nullable: true
           type: string
         relationalDatasetDefinitionId:
@@ -339839,11 +340578,13 @@ components:
       additionalProperties: false
       properties:
         recType:
-          description: "The type of reconciliation this entry configures. Must be\
-            \ valid for the definitionType, and must match the reconciliationType\
-            \ of the referenced matching ruleset. Available values: Holding, CashHolding,\
+          description: "The type of reconciliation this entry configures. A custom\
+            \ entity type is written as its name, which starts with ~. Must be valid\
+            \ for the definitionType, and must match the reconciliationType of the\
+            \ referenced matching ruleset. Available values: Holding, CashHolding,\
             \ Valuation, InputTransaction, OutputTransaction, SettlementActivity,\
             \ External, Instrument, LegalEntity, Portfolio."
+          maxLength: 64
           minLength: 1
           type: string
         matchingRulesetId:
@@ -340448,7 +341189,7 @@ components:
           description: "The rec type of the linked result. Always differs from this\
             \ result's rec type. Available values: Holding, CashHolding, Valuation,\
             \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ LegalEntity, Portfolio, CustomEntity."
           minLength: 1
           type: string
         linkedBy:
@@ -342391,6 +343132,7 @@ components:
           scope: scope
         asAtInstantiated: 2000-01-23T04:56:07.000+00:00
         assignedRole: assignedRole
+        customEntityType: customEntityType
         datesReconciled:
           rightAsAt: 2000-01-23T04:56:07.000+00:00
           leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
@@ -342591,13 +343333,19 @@ components:
           description: "The type of rec that the result belongs to (e.g. Holding).\
             \ Available values: Holding, CashHolding, Valuation, InputTransaction,\
             \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
-            \ Portfolio."
+            \ Portfolio, CustomEntity."
           minLength: 1
           type: string
         externalRecTypeName:
           description: "The client's name for an External rec type, as stamped from\
             \ the matching ruleset's externalRecType when the run executed. Null for\
             \ native rec types. Filterable."
+          nullable: true
+          type: string
+        customEntityType:
+          description: "The name of the custom entity type, which starts with ~. Set\
+            \ when the rec type is CustomEntity and null for every other rec type.\
+            \ Filterable."
           nullable: true
           type: string
         instanceId:
@@ -342825,6 +343573,73 @@ components:
       - openExceptions
       - total
       type: object
+    RecResultCustomEntityItem:
+      additionalProperties: false
+      description: "An item within a rec result for one custom entity: one entity\
+        \ on a side of a LusidEntity rec of a custom entity\r\ntype. The entity unique\
+        \ id identifies it. The item also holds the display name and the identifiers\
+        \ of the entity."
+      properties:
+        entityType:
+          description: The custom entity type of the entity the run read. It starts
+            with a tilde.
+          minLength: 1
+          type: string
+        entityUniqueId:
+          description: The unique id of the entity the run read. It identifies the
+            entity across scopes.
+          minLength: 1
+          type: string
+        entityDisplayName:
+          description: "The display name of the entity, as it stood at the dates the\
+            \ run read its side."
+          nullable: true
+          type: string
+        identifiers:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The unique identifiers of the entity, keyed by identifier\
+            \ property key. The values are as at the dates the run read the side of\
+            \ the item, so they can differ from the current values."
+          type: object
+        itemType:
+          description: "The polymorphic item-type discriminator: Holding, ValuedHolding,\
+            \ Transaction, SettlementActivity, RelationalDataPoint or the entity type\
+            \ of a LusidEntity rec. Names the item rather than the rec type: Holding\
+            \ and CashHolding recs produce Holding items, a Valuation rec produces\
+            \ ValuedHolding items, both transaction rec types produce Transaction\
+            \ items, and a relational dataset side produces RelationalDataPoint items\
+            \ whatever the rec type. A LusidEntity rec produces items of its entity\
+            \ type, for example Instrument items. Available values: SettlementActivity,\
+            \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
+            \ LegalEntity, Portfolio, CustomEntity."
+          minLength: 1
+          type: string
+        ruleAndAttributeValues:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "The core rule, aggregate rule and supplemental attribute values\
+            \ for the item, keyed by name."
+          nullable: true
+          type: object
+        writebackSuggestions:
+          description: "The writebacks suggested against this item, as configured\
+            \ by the matching ruleset's writebackConfigurations. Only ever populated\
+            \ on target-side items. Suggestions only: a user is expected to review\
+            \ them before acting. Required, but may be empty."
+          items:
+            $ref: '#/components/schemas/WritebackSuggestion'
+          readOnly: true
+          type: array
+      required:
+      - entityType
+      - entityUniqueId
+      - identifiers
+      - itemType
+      - writebackSuggestions
+      type: object
     RecResultDecisionGroup:
       additionalProperties: false
       description: The group-decision detail carried on every member of a FixAsGroup
@@ -342958,7 +343773,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ LegalEntity, Portfolio, CustomEntity."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -343072,7 +343887,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ LegalEntity, Portfolio, CustomEntity."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -343111,6 +343926,7 @@ components:
           Instrument: '#/components/schemas/RecResultExternalIdentifiersItem'
           LegalEntity: '#/components/schemas/RecResultExternalIdentifiersItem'
           Portfolio: '#/components/schemas/RecResultResourceIdItem'
+          CustomEntity: '#/components/schemas/RecResultCustomEntityItem'
         propertyName: itemType
       example:
         itemType: itemType
@@ -343120,6 +343936,7 @@ components:
         - writebackType: writebackType
         - writebackType: writebackType
       oneOf:
+      - $ref: '#/components/schemas/RecResultCustomEntityItem'
       - $ref: '#/components/schemas/RecResultExternalIdentifiersItem'
       - $ref: '#/components/schemas/RecResultHoldingItem'
       - $ref: '#/components/schemas/RecResultRelationalDataItem'
@@ -343137,7 +343954,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ LegalEntity, Portfolio, CustomEntity."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -343278,7 +344095,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ LegalEntity, Portfolio, CustomEntity."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -343333,7 +344150,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ LegalEntity, Portfolio, CustomEntity."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -343399,6 +344216,7 @@ components:
         execution:
           errorDetail: errorDetail
           outcome: outcome
+        customEntityType: customEntityType
         runAsAt: 2000-01-23T04:56:07.000+00:00
         datesReconciled:
           rightAsAt: 2000-01-23T04:56:07.000+00:00
@@ -343675,13 +344493,19 @@ components:
             \ Together with the rec instance, this uniquely identifies the result\
             \ set. Available values: Holding, CashHolding, Valuation, InputTransaction,\
             \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
-            \ Portfolio."
+            \ Portfolio, CustomEntity."
           minLength: 1
           type: string
         externalRecTypeName:
           description: "The client's name for an External rec type, as stamped from\
             \ the matching ruleset's externalRecType when the run executed. Null for\
             \ native rec types. Filterable."
+          nullable: true
+          type: string
+        customEntityType:
+          description: "The name of the custom entity type, which starts with ~. Set\
+            \ when the rec type is CustomEntity and null for every other rec type.\
+            \ Filterable."
           nullable: true
           type: string
         recInstance:
@@ -343879,7 +344703,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ LegalEntity, Portfolio, CustomEntity."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -343956,7 +344780,7 @@ components:
             \ whatever the rec type. A LusidEntity rec produces items of its entity\
             \ type, for example Instrument items. Available values: SettlementActivity,\
             \ Holding, Transaction, ValuedHolding, RelationalDataPoint, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ LegalEntity, Portfolio, CustomEntity."
           minLength: 1
           type: string
         ruleAndAttributeValues:
@@ -368319,6 +369143,111 @@ components:
       required:
       - values
       type: object
+    ResourceListOfTaxProvision:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - indexationAllowance: 1.4658129805029452
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          rateApplied: 7.061401241503109
+          approvedBy: approvedBy
+          diaryEntryCode: diaryEntryCode
+          navTypeCode: navTypeCode
+          approvedAt: 2000-01-23T04:56:07.000+00:00
+          provisionAmount: 9.301444243932576
+          fund:
+            code: code
+            scope: scope
+          lossesBroughtForward: 5.962133916683182
+          realisedGains: 0.8008281904610115
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          unrealisedGains: 6.027456183070403
+          lossesUsed: 5.637376656633329
+          lossesCarriedForward: 2.3021358869347655
+          movement:
+            unrealisedChange: 2.027123023002322
+            lossOffset: 7.386281948385884
+            realised: 3.616076749251911
+            rateChange: 4.145608029883936
+          status: status
+        - indexationAllowance: 1.4658129805029452
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          asAt: 2000-01-23T04:56:07.000+00:00
+          rateApplied: 7.061401241503109
+          approvedBy: approvedBy
+          diaryEntryCode: diaryEntryCode
+          navTypeCode: navTypeCode
+          approvedAt: 2000-01-23T04:56:07.000+00:00
+          provisionAmount: 9.301444243932576
+          fund:
+            code: code
+            scope: scope
+          lossesBroughtForward: 5.962133916683182
+          realisedGains: 0.8008281904610115
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          unrealisedGains: 6.027456183070403
+          lossesUsed: 5.637376656633329
+          lossesCarriedForward: 2.3021358869347655
+          movement:
+            unrealisedChange: 2.027123023002322
+            lossOffset: 7.386281948385884
+            realised: 3.616076749251911
+            rateChange: 4.145608029883936
+          status: status
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/TaxProvision'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
     ResourceListOfTaxRuleSet:
       additionalProperties: false
       example:
@@ -387759,6 +388688,191 @@ components:
       - inSync
       - portfolioId
       type: object
+    TaxProvision:
+      additionalProperties: false
+      description: "The deferred tax provision struck for a fund at a valuation point:\
+        \ the realised and notionally realised\r\n(deemed disposal) gains it is built\
+        \ from, the indexation and loss relief applied, the rate, the resulting\r\n\
+        provision amount, its movement since the previous valuation point and, once\
+        \ approved, who approved it."
+      example:
+        indexationAllowance: 1.4658129805029452
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        asAt: 2000-01-23T04:56:07.000+00:00
+        rateApplied: 7.061401241503109
+        approvedBy: approvedBy
+        diaryEntryCode: diaryEntryCode
+        navTypeCode: navTypeCode
+        approvedAt: 2000-01-23T04:56:07.000+00:00
+        provisionAmount: 9.301444243932576
+        fund:
+          code: code
+          scope: scope
+        lossesBroughtForward: 5.962133916683182
+        realisedGains: 0.8008281904610115
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        unrealisedGains: 6.027456183070403
+        lossesUsed: 5.637376656633329
+        lossesCarriedForward: 2.3021358869347655
+        movement:
+          unrealisedChange: 2.027123023002322
+          lossOffset: 7.386281948385884
+          realised: 3.616076749251911
+          rateChange: 4.145608029883936
+        status: status
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        fund:
+          $ref: '#/components/schemas/ResourceId'
+        navTypeCode:
+          description: The NAV type the provision was struck for.
+          minLength: 1
+          type: string
+        diaryEntryCode:
+          description: The diary entry code of the valuation point the provision was
+            struck at.
+          minLength: 1
+          type: string
+        effectiveAt:
+          description: The effective date of the valuation point the provision was
+            struck at.
+          format: date-time
+          type: string
+        asAt:
+          description: The asAt datetime at which this version of the provision was
+            recorded.
+          format: date-time
+          type: string
+        status:
+          description: Whether the provision is an Estimate or has been Approved.
+            An approved provision has been posted to the fund as an accrual.
+          minLength: 1
+          type: string
+        realisedGains:
+          description: "The chargeable gains realised by disposals since the start\
+            \ of the tax period, after indexation allowance."
+          format: double
+          type: number
+        unrealisedGains:
+          description: The chargeable gains that would arise on a notional deemed
+            disposal of the fund's holdings at the valuation point.
+          format: double
+          type: number
+        indexationAllowance:
+          description: The indexation allowance taken against the gains in this provision.
+          format: double
+          type: number
+        lossesBroughtForward:
+          description: The allowable losses standing at the start of the tax period
+            and available to offset gains.
+          format: double
+          type: number
+        lossesUsed:
+          description: The losses brought forward that were used against the gains
+            in this provision.
+          format: double
+          type: number
+        lossesCarriedForward:
+          description: "The allowable losses remaining after this provision, to be\
+            \ carried forward to the next tax period. Only realised losses are carried;\
+            \ a notional loss on the deemed disposal is not."
+          format: double
+          type: number
+        rateApplied:
+          description: The tax rate applied to the net chargeable gains to arrive
+            at the provision amount.
+          format: double
+          type: number
+        provisionAmount:
+          description: The deferred tax provision amount at the valuation point.
+          format: double
+          type: number
+        movement:
+          $ref: '#/components/schemas/TaxProvisionMovement'
+        approvedBy:
+          description: "The user who approved the provision, if it has been approved."
+          nullable: true
+          type: string
+        approvedAt:
+          description: "The asAt datetime at which the provision was approved, if\
+            \ it has been approved."
+          format: date-time
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - asAt
+      - diaryEntryCode
+      - effectiveAt
+      - fund
+      - indexationAllowance
+      - lossesBroughtForward
+      - lossesCarriedForward
+      - lossesUsed
+      - movement
+      - navTypeCode
+      - provisionAmount
+      - rateApplied
+      - realisedGains
+      - status
+      - unrealisedGains
+      type: object
+    TaxProvisionMovement:
+      additionalProperties: false
+      description: "The movement in a fund's deferred tax provision between the previous\
+        \ valuation point and this one,\r\nsplit into the realised gains crystallised\
+        \ in the period, the change in the unrealised position,\r\nthe effect of a\
+        \ change in the applied rate and the offset from losses brought forward."
+      example:
+        unrealisedChange: 2.027123023002322
+        lossOffset: 7.386281948385884
+        realised: 3.616076749251911
+        rateChange: 4.145608029883936
+      properties:
+        realised:
+          description: The part of the movement that is due to gains realised in the
+            period.
+          format: double
+          type: number
+        unrealisedChange:
+          description: The part of the movement that is due to the change in the unrealised
+            position.
+          format: double
+          type: number
+        rateChange:
+          description: The part of the movement that is due to a change in the applied
+            rate.
+          format: double
+          type: number
+        lossOffset:
+          description: The part of the movement that is due to losses brought forward
+            being offset against gains.
+          format: double
+          type: number
+      required:
+      - lossOffset
+      - rateChange
+      - realised
+      - unrealisedChange
+      type: object
     TaxRule:
       additionalProperties: false
       example:
@@ -403547,9 +404661,11 @@ components:
         recType:
           description: "The type of reconciliation to perform. External reconciles\
             \ non-native data on both sides, described by the datasetSchemas and the\
-            \ externalRecType. Available values: Holding, CashHolding, Valuation,\
-            \ InputTransaction, OutputTransaction, SettlementActivity, External, Instrument,\
-            \ LegalEntity, Portfolio."
+            \ externalRecType. A custom entity type is written as its name, which\
+            \ starts with ~. Available values: Holding, CashHolding, Valuation, InputTransaction,\
+            \ OutputTransaction, SettlementActivity, External, Instrument, LegalEntity,\
+            \ Portfolio."
+          maxLength: 64
           minLength: 1
           type: string
         externalRecType:
@@ -405510,12 +406626,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -405563,12 +406679,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -405637,12 +406753,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -405690,12 +406806,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -405798,12 +406914,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -405843,20 +406959,21 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
+            groupId: 0
             groupStatus: groupStatus
             resultsUsed:
-              key: 0.8008281904610115
-            formulaValues:
               key: 6.027456183070403
+            formulaValues:
+              key: 1.4658129805029452
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -405896,11 +407013,12 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
+            groupId: 0
             groupStatus: groupStatus
             resultsUsed:
-              key: 0.8008281904610115
-            formulaValues:
               key: 6.027456183070403
+            formulaValues:
+              key: 1.4658129805029452
           affectedPortfolios:
           - code: code
             scope: scope
@@ -405925,12 +407043,12 @@ components:
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -405970,20 +407088,21 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
+            groupId: 0
             groupStatus: groupStatus
             resultsUsed:
-              key: 0.8008281904610115
-            formulaValues:
               key: 6.027456183070403
+            formulaValues:
+              key: 1.4658129805029452
           - lineage:
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             - subLabel: subLabel
               infoType: infoType
-              index: 6
+              index: 5
               information: information
               label: label
             missingDataInformation:
@@ -406023,11 +407142,12 @@ components:
                     - values
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
                 key: key
+            groupId: 0
             groupStatus: groupStatus
             resultsUsed:
-              key: 0.8008281904610115
-            formulaValues:
               key: 6.027456183070403
+            formulaValues:
+              key: 1.4658129805029452
           affectedPortfolios:
           - code: code
             scope: scope

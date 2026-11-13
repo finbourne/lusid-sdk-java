@@ -6,7 +6,7 @@ One item of a batch comment request. The operation (add/edit/delete) is inferred
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instanceId** | [**RecInstanceId**](RecInstanceId.md) |  | [default to RecInstanceId]
-**recType** | **String** | The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio. | [default to String]
+**recType** | **String** | The rec type whose results this item targets (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio, CustomEntity. | [default to String]
 **recResultId** | **String** | The rec result the comment operation targets. | [default to String]
 **commentId** | **String** | The comment id. Null with text &#x3D; add; provided with text &#x3D; edit; provided with null text &#x3D; delete. | [optional] [default to String]
 **commentText** | **String** | The comment body. See operation inference. | [optional] [default to String]

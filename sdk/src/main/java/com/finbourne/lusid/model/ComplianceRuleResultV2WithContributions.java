@@ -64,6 +64,10 @@ public class ComplianceRuleResultV2WithContributions {
   @SerializedName(SERIALIZED_NAME_COMPLETED_AT)
   private OffsetDateTime completedAt;
 
+  public static final String SERIALIZED_NAME_RULE_DEFINITIONS_AS_AT = "ruleDefinitionsAsAt";
+  @SerializedName(SERIALIZED_NAME_RULE_DEFINITIONS_AS_AT)
+  private OffsetDateTime ruleDefinitionsAsAt;
+
   public static final String SERIALIZED_NAME_SCHEDULE = "schedule";
   @SerializedName(SERIALIZED_NAME_SCHEDULE)
   private String schedule;
@@ -138,6 +142,27 @@ public class ComplianceRuleResultV2WithContributions {
   }
 
 
+  public ComplianceRuleResultV2WithContributions ruleDefinitionsAsAt(OffsetDateTime ruleDefinitionsAsAt) {
+    
+    this.ruleDefinitionsAsAt = ruleDefinitionsAsAt;
+    return this;
+  }
+
+   /**
+   * Get ruleDefinitionsAsAt
+   * @return ruleDefinitionsAsAt
+  **/
+  @jakarta.annotation.Nonnull
+  public OffsetDateTime getRuleDefinitionsAsAt() {
+    return ruleDefinitionsAsAt;
+  }
+
+
+  public void setRuleDefinitionsAsAt(OffsetDateTime ruleDefinitionsAsAt) {
+    this.ruleDefinitionsAsAt = ruleDefinitionsAsAt;
+  }
+
+
   public ComplianceRuleResultV2WithContributions schedule(String schedule) {
     
     this.schedule = schedule;
@@ -193,13 +218,14 @@ public class ComplianceRuleResultV2WithContributions {
     return Objects.equals(this.runId, complianceRuleResultV2WithContributions.runId) &&
         Objects.equals(this.instigatedAt, complianceRuleResultV2WithContributions.instigatedAt) &&
         Objects.equals(this.completedAt, complianceRuleResultV2WithContributions.completedAt) &&
+        Objects.equals(this.ruleDefinitionsAsAt, complianceRuleResultV2WithContributions.ruleDefinitionsAsAt) &&
         Objects.equals(this.schedule, complianceRuleResultV2WithContributions.schedule) &&
         Objects.equals(this.ruleResult, complianceRuleResultV2WithContributions.ruleResult);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(runId, instigatedAt, completedAt, schedule, ruleResult);
+    return Objects.hash(runId, instigatedAt, completedAt, ruleDefinitionsAsAt, schedule, ruleResult);
   }
 
   @Override
@@ -209,6 +235,7 @@ public class ComplianceRuleResultV2WithContributions {
     sb.append("    runId: ").append(toIndentedString(runId)).append("\n");
     sb.append("    instigatedAt: ").append(toIndentedString(instigatedAt)).append("\n");
     sb.append("    completedAt: ").append(toIndentedString(completedAt)).append("\n");
+    sb.append("    ruleDefinitionsAsAt: ").append(toIndentedString(ruleDefinitionsAsAt)).append("\n");
     sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
     sb.append("    ruleResult: ").append(toIndentedString(ruleResult)).append("\n");
     sb.append("}");
@@ -236,6 +263,7 @@ public class ComplianceRuleResultV2WithContributions {
     openapiFields.add("runId");
     openapiFields.add("instigatedAt");
     openapiFields.add("completedAt");
+    openapiFields.add("ruleDefinitionsAsAt");
     openapiFields.add("schedule");
     openapiFields.add("ruleResult");
 
@@ -244,6 +272,7 @@ public class ComplianceRuleResultV2WithContributions {
     openapiRequiredFields.add("runId");
     openapiRequiredFields.add("instigatedAt");
     openapiRequiredFields.add("completedAt");
+    openapiRequiredFields.add("ruleDefinitionsAsAt");
     openapiRequiredFields.add("schedule");
     openapiRequiredFields.add("ruleResult");
   }

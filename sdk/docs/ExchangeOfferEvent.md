@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **fractionalUnitsRoundingConvention** | **String** | The convention used to round the fractional units entitlement. Defaults to Floor. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding. | [optional] [default to String]
 **fractionalUnitsDecimalPlaces** | **Integer** | The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces. | [optional] [default to Integer]
 **instructionReference** | **String** |  | [optional] [default to String]
+**accruedInterestPerUnit** | **java.math.BigDecimal** | Optional per-unit interest accrued on the old bond that the offer pays in cash, on the same basis as the  cash offer price. Taken from the offer terms and never calculated. If supplied and above zero, each chosen  election that removes the old units (security, cash, cash-and-security, consent-and-exchange or mixed lot)  books one additional cash transaction per holding of units removed multiplied by this value. Bond and  complex bond instrument types only. Must be 0 or more. If left empty or 0, no accrued interest is booked. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.ExchangeOfferEvent;
@@ -50,6 +51,7 @@ NewInstrument NewInstrument = new NewInstrument();
 @jakarta.annotation.Nullable String FractionalUnitsRoundingConvention = "example FractionalUnitsRoundingConvention";
 @jakarta.annotation.Nullable Integer FractionalUnitsDecimalPlaces = new Integer("100.00");
 @jakarta.annotation.Nullable String InstructionReference = "example InstructionReference";
+@jakarta.annotation.Nullable java.math.BigDecimal AccruedInterestPerUnit = new java.math.BigDecimal("100.00");
 
 
 ExchangeOfferEvent exchangeOfferEventInstance = new ExchangeOfferEvent()
@@ -71,7 +73,8 @@ ExchangeOfferEvent exchangeOfferEventInstance = new ExchangeOfferEvent()
     .FractionalUnitsCashCurrency(FractionalUnitsCashCurrency)
     .FractionalUnitsRoundingConvention(FractionalUnitsRoundingConvention)
     .FractionalUnitsDecimalPlaces(FractionalUnitsDecimalPlaces)
-    .InstructionReference(InstructionReference);
+    .InstructionReference(InstructionReference)
+    .AccruedInterestPerUnit(AccruedInterestPerUnit);
 ```
 
 

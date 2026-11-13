@@ -64,6 +64,10 @@ public class FutureMarkToMarketEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_NOTIONAL_AMOUNT_PER_UNIT)
   private java.math.BigDecimal notionalAmountPerUnit;
 
+  public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
+  @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
+  private OffsetDateTime paymentDate;
+
   public FutureMarkToMarketEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -131,6 +135,27 @@ public class FutureMarkToMarketEvent extends InstrumentEvent {
   }
 
 
+  public FutureMarkToMarketEvent paymentDate(OffsetDateTime paymentDate) {
+    
+    this.paymentDate = paymentDate;
+    return this;
+  }
+
+   /**
+   * The date the variation margin is paid: the effective date plus the future&#39;s mark to market settlement offset.  This is an optional field; when absent the variation margin is paid on the effective date.
+   * @return paymentDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getPaymentDate() {
+    return paymentDate;
+  }
+
+
+  public void setPaymentDate(OffsetDateTime paymentDate) {
+    this.paymentDate = paymentDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -144,6 +169,7 @@ public class FutureMarkToMarketEvent extends InstrumentEvent {
     return Objects.equals(this.effectiveDate, futureMarkToMarketEvent.effectiveDate) &&
         Objects.equals(this.settlementCurrency, futureMarkToMarketEvent.settlementCurrency) &&
         (this.notionalAmountPerUnit.compareTo(futureMarkToMarketEvent.getNotionalAmountPerUnit()) == 0) &&
+        Objects.equals(this.paymentDate, futureMarkToMarketEvent.paymentDate) &&
         super.equals(o);
   }
 
@@ -153,7 +179,7 @@ public class FutureMarkToMarketEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveDate, settlementCurrency, notionalAmountPerUnit, super.hashCode());
+    return Objects.hash(effectiveDate, settlementCurrency, notionalAmountPerUnit, paymentDate, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -171,6 +197,7 @@ public class FutureMarkToMarketEvent extends InstrumentEvent {
     sb.append("    effectiveDate: ").append(toIndentedString(effectiveDate)).append("\n");
     sb.append("    settlementCurrency: ").append(toIndentedString(settlementCurrency)).append("\n");
     sb.append("    notionalAmountPerUnit: ").append(toIndentedString(notionalAmountPerUnit)).append("\n");
+    sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -197,6 +224,7 @@ public class FutureMarkToMarketEvent extends InstrumentEvent {
     openapiFields.add("effectiveDate");
     openapiFields.add("settlementCurrency");
     openapiFields.add("notionalAmountPerUnit");
+    openapiFields.add("paymentDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

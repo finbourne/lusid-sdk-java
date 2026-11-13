@@ -90,6 +90,10 @@ public class RecResult {
   @SerializedName(SERIALIZED_NAME_EXTERNAL_REC_TYPE_NAME)
   private String externalRecTypeName;
 
+  public static final String SERIALIZED_NAME_CUSTOM_ENTITY_TYPE = "customEntityType";
+  @SerializedName(SERIALIZED_NAME_CUSTOM_ENTITY_TYPE)
+  private String customEntityType;
+
   public static final String SERIALIZED_NAME_INSTANCE_ID = "instanceId";
   @SerializedName(SERIALIZED_NAME_INSTANCE_ID)
   private RecInstanceId instanceId;
@@ -259,7 +263,7 @@ public class RecResult {
   }
 
    /**
-   * The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio.
+   * The type of rec that the result belongs to (e.g. Holding). Available values: Holding, CashHolding, Valuation, InputTransaction, OutputTransaction, SettlementActivity, External, Instrument, LegalEntity, Portfolio, CustomEntity.
    * @return recType
   **/
   @jakarta.annotation.Nonnull
@@ -291,6 +295,27 @@ public class RecResult {
 
   public void setExternalRecTypeName(String externalRecTypeName) {
     this.externalRecTypeName = externalRecTypeName;
+  }
+
+
+  public RecResult customEntityType(String customEntityType) {
+    
+    this.customEntityType = customEntityType;
+    return this;
+  }
+
+   /**
+   * The name of the custom entity type, which starts with ~. Set when the rec type is CustomEntity and null for every other rec type. Filterable.
+   * @return customEntityType
+  **/
+  @jakarta.annotation.Nullable
+  public String getCustomEntityType() {
+    return customEntityType;
+  }
+
+
+  public void setCustomEntityType(String customEntityType) {
+    this.customEntityType = customEntityType;
   }
 
 
@@ -869,6 +894,7 @@ public class RecResult {
         Objects.equals(this.firstRunSeen, recResult.firstRunSeen) &&
         Objects.equals(this.recType, recResult.recType) &&
         Objects.equals(this.externalRecTypeName, recResult.externalRecTypeName) &&
+        Objects.equals(this.customEntityType, recResult.customEntityType) &&
         Objects.equals(this.instanceId, recResult.instanceId) &&
         Objects.equals(this.asAtInstantiated, recResult.asAtInstantiated) &&
         Objects.equals(this.recDefinitionId, recResult.recDefinitionId) &&
@@ -901,7 +927,7 @@ public class RecResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, resultNumber, firstRunSeen, recType, externalRecTypeName, instanceId, asAtInstantiated, recDefinitionId, recDefinitionDisplayName, runNumber, runAsAt, datesReconciled, resultType, resultCardinality, resultLifeCycle, exception, review, coreRules, aggregateRules, supplementalAttributes, items, linkedResults, comments, properties, assignedUser, assignedRole, href, version, links);
+    return Objects.hash(id, resultNumber, firstRunSeen, recType, externalRecTypeName, customEntityType, instanceId, asAtInstantiated, recDefinitionId, recDefinitionDisplayName, runNumber, runAsAt, datesReconciled, resultType, resultCardinality, resultLifeCycle, exception, review, coreRules, aggregateRules, supplementalAttributes, items, linkedResults, comments, properties, assignedUser, assignedRole, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -920,6 +946,7 @@ public class RecResult {
     sb.append("    firstRunSeen: ").append(toIndentedString(firstRunSeen)).append("\n");
     sb.append("    recType: ").append(toIndentedString(recType)).append("\n");
     sb.append("    externalRecTypeName: ").append(toIndentedString(externalRecTypeName)).append("\n");
+    sb.append("    customEntityType: ").append(toIndentedString(customEntityType)).append("\n");
     sb.append("    instanceId: ").append(toIndentedString(instanceId)).append("\n");
     sb.append("    asAtInstantiated: ").append(toIndentedString(asAtInstantiated)).append("\n");
     sb.append("    recDefinitionId: ").append(toIndentedString(recDefinitionId)).append("\n");
@@ -971,6 +998,7 @@ public class RecResult {
     openapiFields.add("firstRunSeen");
     openapiFields.add("recType");
     openapiFields.add("externalRecTypeName");
+    openapiFields.add("customEntityType");
     openapiFields.add("instanceId");
     openapiFields.add("asAtInstantiated");
     openapiFields.add("recDefinitionId");
@@ -1049,6 +1077,9 @@ public class RecResult {
       }
       if ((jsonObj.get("externalRecTypeName") != null && !jsonObj.get("externalRecTypeName").isJsonNull()) && !jsonObj.get("externalRecTypeName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `externalRecTypeName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("externalRecTypeName").toString()));
+      }
+      if ((jsonObj.get("customEntityType") != null && !jsonObj.get("customEntityType").isJsonNull()) && !jsonObj.get("customEntityType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `customEntityType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("customEntityType").toString()));
       }
       // validate the required field `instanceId`
       RecInstanceId.validateJsonElement(jsonObj.get("instanceId"));
