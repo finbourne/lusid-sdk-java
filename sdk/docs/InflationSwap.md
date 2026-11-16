@@ -1,5 +1,5 @@
 # com.finbourne.lusid.model.InflationSwap
-LUSID representation of an Inflation Swap.  The implementation supports the following swap types:  * Zero Coupon inflation swap, with a single payment at maturity.  * LPI Swap (capped and floored)  * Year on Year inflation swap     This instrument has multiple legs, to see how legs are used in LUSID see [How does LUSID handle instrument legs?](https://support.lusid.com/docs/how-does-lusid-handle-instrument-legs).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | InflationLeg | Cash flows with a rate relating to an underlying inflation index. |  | 2 | FixedLeg | Cash flows with a fixed rate. |  | 3 | AdditionalPayments | Cash flows relating to any additional payments (optional). |
+LUSID representation of an Inflation Swap.  The implementation supports the following swap types:  * Zero Coupon inflation swap, with a single payment at maturity.  * LPI Swap (capped and floored)  * Year on Year inflation swap     This instrument has multiple legs, to see how legs are used in LUSID see [How does LUSID handle instrument legs?](https://support.lusid.com/docs/how-does-lusid-handle-instrument-legs).     | Leg Index | Leg Identifier | Description |  | --------- | -------------- | ----------- |  | 1 | InflationLeg | Cash flows with a rate relating to an underlying inflation index. |  | 2 | FixedLeg | Cash flows with a fixed rate. |  | 3 | AdditionalPayments | Cash flows relating to any additional payments (optional). |     With `legs`, the legs are in the order given and identified as InflationLeg, FixedLeg or FloatingLeg, so a  linker asset swap, a year-on-year or LPI swap against a floating leg, an income swap or a cross-currency  proceeds asset swap books as one instrument. The `inflationLeg` and `fixedLeg` fields remain for the original  shape and cannot be combined with `legs`.
 
 ## Properties
 
@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **fixedLeg** | [**FixedLeg**](FixedLeg.md) |  | [optional] [default to FixedLeg]
 **additionalPayments** | [**List&lt;AdditionalPayment&gt;**](AdditionalPayment.md) | Optional additional payments at a given date e.g. to level off an uneven inflation swap.  The dates must be distinct and either all payments are Pay or all payments are Receive. | [optional] [default to List<AdditionalPayment>]
 **timeZoneConventions** | [**TimeZoneConventions**](TimeZoneConventions.md) |  | [optional] [default to TimeZoneConventions]
+**legs** | [**List&lt;LusidInstrument&gt;**](LusidInstrument.md) | The legs of the swap: exactly two, exactly one of them an InflationLeg and the other a FixedLeg or a  FloatingLeg, one paid and one received, each starting on or after the swap and maturing on or before it.  The legs may be in different currencies; the first leg&#39;s currency is the swap&#39;s domestic currency.  Not set together with InflationLeg and FixedLeg. In this shape capRate and floorRate are accepted only on  a YearOnYear inflation leg. | [optional] [default to List<LusidInstrument>]
 
 ```java
 import com.finbourne.lusid.model.InflationSwap;
@@ -24,6 +25,7 @@ InflationLeg InflationLeg = new InflationLeg();
 FixedLeg FixedLeg = new FixedLeg();
 @jakarta.annotation.Nullable List<AdditionalPayment> AdditionalPayments = new List<AdditionalPayment>();
 TimeZoneConventions TimeZoneConventions = new TimeZoneConventions();
+@jakarta.annotation.Nullable List<LusidInstrument> Legs = new List<LusidInstrument>();
 
 
 InflationSwap inflationSwapInstance = new InflationSwap()
@@ -32,7 +34,8 @@ InflationSwap inflationSwapInstance = new InflationSwap()
     .InflationLeg(InflationLeg)
     .FixedLeg(FixedLeg)
     .AdditionalPayments(AdditionalPayments)
-    .TimeZoneConventions(TimeZoneConventions);
+    .TimeZoneConventions(TimeZoneConventions)
+    .Legs(Legs);
 ```
 
 

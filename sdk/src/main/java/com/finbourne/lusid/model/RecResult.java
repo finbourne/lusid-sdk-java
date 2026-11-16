@@ -21,6 +21,7 @@ import com.finbourne.lusid.model.RecLinkedResult;
 import com.finbourne.lusid.model.RecResultException;
 import com.finbourne.lusid.model.RecResultItemDetails;
 import com.finbourne.lusid.model.RecResultReview;
+import com.finbourne.lusid.model.RecResultStreak;
 import com.finbourne.lusid.model.RecUserComment;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.SupplementalAttributeValues;
@@ -81,6 +82,10 @@ public class RecResult {
   public static final String SERIALIZED_NAME_FIRST_RUN_SEEN = "firstRunSeen";
   @SerializedName(SERIALIZED_NAME_FIRST_RUN_SEEN)
   private Integer firstRunSeen;
+
+  public static final String SERIALIZED_NAME_AS_AT_FIRST_SEEN = "asAtFirstSeen";
+  @SerializedName(SERIALIZED_NAME_AS_AT_FIRST_SEEN)
+  private OffsetDateTime asAtFirstSeen;
 
   public static final String SERIALIZED_NAME_REC_TYPE = "recType";
   @SerializedName(SERIALIZED_NAME_REC_TYPE)
@@ -165,6 +170,10 @@ public class RecResult {
   public static final String SERIALIZED_NAME_COMMENTS = "comments";
   @SerializedName(SERIALIZED_NAME_COMMENTS)
   private List<RecUserComment> comments = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_STREAK = "streak";
+  @SerializedName(SERIALIZED_NAME_STREAK)
+  private RecResultStreak streak;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -253,6 +262,27 @@ public class RecResult {
 
   public void setFirstRunSeen(Integer firstRunSeen) {
     this.firstRunSeen = firstRunSeen;
+  }
+
+
+  public RecResult asAtFirstSeen(OffsetDateTime asAtFirstSeen) {
+    
+    this.asAtFirstSeen = asAtFirstSeen;
+    return this;
+  }
+
+   /**
+   * The runAsAt of the run in which the result first appeared in its instance, the run numbered firstRunSeen. Written once: re-runs leave it unchanged.
+   * @return asAtFirstSeen
+  **/
+  @jakarta.annotation.Nonnull
+  public OffsetDateTime getAsAtFirstSeen() {
+    return asAtFirstSeen;
+  }
+
+
+  public void setAsAtFirstSeen(OffsetDateTime asAtFirstSeen) {
+    this.asAtFirstSeen = asAtFirstSeen;
   }
 
 
@@ -737,6 +767,27 @@ public class RecResult {
   }
 
 
+  public RecResult streak(RecResultStreak streak) {
+    
+    this.streak = streak;
+    return this;
+  }
+
+   /**
+   * Get streak
+   * @return streak
+  **/
+  @jakarta.annotation.Nullable
+  public RecResultStreak getStreak() {
+    return streak;
+  }
+
+
+  public void setStreak(RecResultStreak streak) {
+    this.streak = streak;
+  }
+
+
   public RecResult properties(Map<String, PerpetualProperty> properties) {
     
     this.properties = properties;
@@ -892,6 +943,7 @@ public class RecResult {
     return Objects.equals(this.id, recResult.id) &&
         Objects.equals(this.resultNumber, recResult.resultNumber) &&
         Objects.equals(this.firstRunSeen, recResult.firstRunSeen) &&
+        Objects.equals(this.asAtFirstSeen, recResult.asAtFirstSeen) &&
         Objects.equals(this.recType, recResult.recType) &&
         Objects.equals(this.externalRecTypeName, recResult.externalRecTypeName) &&
         Objects.equals(this.customEntityType, recResult.customEntityType) &&
@@ -913,6 +965,7 @@ public class RecResult {
         Objects.equals(this.items, recResult.items) &&
         Objects.equals(this.linkedResults, recResult.linkedResults) &&
         Objects.equals(this.comments, recResult.comments) &&
+        Objects.equals(this.streak, recResult.streak) &&
         Objects.equals(this.properties, recResult.properties) &&
         Objects.equals(this.assignedUser, recResult.assignedUser) &&
         Objects.equals(this.assignedRole, recResult.assignedRole) &&
@@ -927,7 +980,7 @@ public class RecResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, resultNumber, firstRunSeen, recType, externalRecTypeName, customEntityType, instanceId, asAtInstantiated, recDefinitionId, recDefinitionDisplayName, runNumber, runAsAt, datesReconciled, resultType, resultCardinality, resultLifeCycle, exception, review, coreRules, aggregateRules, supplementalAttributes, items, linkedResults, comments, properties, assignedUser, assignedRole, href, version, links);
+    return Objects.hash(id, resultNumber, firstRunSeen, asAtFirstSeen, recType, externalRecTypeName, customEntityType, instanceId, asAtInstantiated, recDefinitionId, recDefinitionDisplayName, runNumber, runAsAt, datesReconciled, resultType, resultCardinality, resultLifeCycle, exception, review, coreRules, aggregateRules, supplementalAttributes, items, linkedResults, comments, streak, properties, assignedUser, assignedRole, href, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -944,6 +997,7 @@ public class RecResult {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    resultNumber: ").append(toIndentedString(resultNumber)).append("\n");
     sb.append("    firstRunSeen: ").append(toIndentedString(firstRunSeen)).append("\n");
+    sb.append("    asAtFirstSeen: ").append(toIndentedString(asAtFirstSeen)).append("\n");
     sb.append("    recType: ").append(toIndentedString(recType)).append("\n");
     sb.append("    externalRecTypeName: ").append(toIndentedString(externalRecTypeName)).append("\n");
     sb.append("    customEntityType: ").append(toIndentedString(customEntityType)).append("\n");
@@ -965,6 +1019,7 @@ public class RecResult {
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    linkedResults: ").append(toIndentedString(linkedResults)).append("\n");
     sb.append("    comments: ").append(toIndentedString(comments)).append("\n");
+    sb.append("    streak: ").append(toIndentedString(streak)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    assignedUser: ").append(toIndentedString(assignedUser)).append("\n");
     sb.append("    assignedRole: ").append(toIndentedString(assignedRole)).append("\n");
@@ -996,6 +1051,7 @@ public class RecResult {
     openapiFields.add("id");
     openapiFields.add("resultNumber");
     openapiFields.add("firstRunSeen");
+    openapiFields.add("asAtFirstSeen");
     openapiFields.add("recType");
     openapiFields.add("externalRecTypeName");
     openapiFields.add("customEntityType");
@@ -1017,6 +1073,7 @@ public class RecResult {
     openapiFields.add("items");
     openapiFields.add("linkedResults");
     openapiFields.add("comments");
+    openapiFields.add("streak");
     openapiFields.add("properties");
     openapiFields.add("assignedUser");
     openapiFields.add("assignedRole");
@@ -1029,6 +1086,7 @@ public class RecResult {
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("resultNumber");
     openapiRequiredFields.add("firstRunSeen");
+    openapiRequiredFields.add("asAtFirstSeen");
     openapiRequiredFields.add("recType");
     openapiRequiredFields.add("instanceId");
     openapiRequiredFields.add("asAtInstantiated");
@@ -1157,6 +1215,10 @@ public class RecResult {
       for (int i = 0; i < jsonArraycomments.size(); i++) {
         RecUserComment.validateJsonElement(jsonArraycomments.get(i));
       };
+      // validate the optional field `streak`
+      if (jsonObj.get("streak") != null && !jsonObj.get("streak").isJsonNull()) {
+        RecResultStreak.validateJsonElement(jsonObj.get("streak"));
+      }
       if ((jsonObj.get("assignedUser") != null && !jsonObj.get("assignedUser").isJsonNull()) && !jsonObj.get("assignedUser").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `assignedUser` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assignedUser").toString()));
       }

@@ -198,7 +198,7 @@ public class BucketCashFlowDrillDownResponse {
   }
 
    /**
-   * What the balances do not cover, for example that they are in the payment currency only and gross of haircut; absent when there is nothing to report.
+   * What the balances do not cover, for example that they are gross of haircut, or that no rate was found to give them in the report currency; absent when there is nothing to report.
    * @return issues
   **/
   @jakarta.annotation.Nullable

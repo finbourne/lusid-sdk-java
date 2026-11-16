@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **qtd** | **java.math.BigDecimal** | The quarter-to-date amount for the row. | [default to java.math.BigDecimal]
 **ytd** | **java.math.BigDecimal** | The year-to-date amount for the row. | [default to java.math.BigDecimal]
 **itd** | **java.math.BigDecimal** | The inception-to-date amount for the row. | [default to java.math.BigDecimal]
+**details** | [**List&lt;PartnerCapitalAccountRowDetail&gt;**](PartnerCapitalAccountRowDetail.md) | Labelled parts of the row&#39;s total, each already included in the row&#39;s columns. Tax withheld from a distribution on the partner&#39;s behalf is counted as distributed and shown here as its own entry against the distribution it was withheld on. Empty for a row with nothing to break out. | [optional] [default to List<PartnerCapitalAccountRowDetail>]
 
 ```java
 import com.finbourne.lusid.model.PartnerCapitalAccountRow;
@@ -20,13 +21,15 @@ String RowType = "example RowType";
 java.math.BigDecimal Qtd = new java.math.BigDecimal("100.00");
 java.math.BigDecimal Ytd = new java.math.BigDecimal("100.00");
 java.math.BigDecimal Itd = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable List<PartnerCapitalAccountRowDetail> Details = new List<PartnerCapitalAccountRowDetail>();
 
 
 PartnerCapitalAccountRow partnerCapitalAccountRowInstance = new PartnerCapitalAccountRow()
     .RowType(RowType)
     .Qtd(Qtd)
     .Ytd(Ytd)
-    .Itd(Itd);
+    .Itd(Itd)
+    .Details(Details);
 ```
 
 

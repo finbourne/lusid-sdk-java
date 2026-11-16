@@ -18,7 +18,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,6 +59,14 @@ public class CollateralInstrument {
   public static final String SERIALIZED_NAME_INSTRUMENT = "instrument";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT)
   private MasteredInstrument instrument;
+
+  public static final String SERIALIZED_NAME_COLLATERAL_START_DATE = "collateralStartDate";
+  @SerializedName(SERIALIZED_NAME_COLLATERAL_START_DATE)
+  private OffsetDateTime collateralStartDate;
+
+  public static final String SERIALIZED_NAME_COLLATERAL_END_DATE = "collateralEndDate";
+  @SerializedName(SERIALIZED_NAME_COLLATERAL_END_DATE)
+  private OffsetDateTime collateralEndDate;
 
   public CollateralInstrument() {
   }
@@ -103,6 +113,48 @@ public class CollateralInstrument {
   }
 
 
+  public CollateralInstrument collateralStartDate(OffsetDateTime collateralStartDate) {
+    
+    this.collateralStartDate = collateralStartDate;
+    return this;
+  }
+
+   /**
+   * The date from which the instrument is held as collateral for this repurchase agreement.  Read only: an instrument upsert cannot set or change it. An existing value must be sent back unchanged.  When not set, the instrument is held from the StartDate of the FlexibleRepo.
+   * @return collateralStartDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getCollateralStartDate() {
+    return collateralStartDate;
+  }
+
+
+  public void setCollateralStartDate(OffsetDateTime collateralStartDate) {
+    this.collateralStartDate = collateralStartDate;
+  }
+
+
+  public CollateralInstrument collateralEndDate(OffsetDateTime collateralEndDate) {
+    
+    this.collateralEndDate = collateralEndDate;
+    return this;
+  }
+
+   /**
+   * The date on which the instrument stops being held as collateral for this repurchase agreement.  Read only: an instrument upsert cannot set or change it. An existing value must be sent back unchanged.  When not set, the instrument is held until the MaturityDate of the FlexibleRepo.
+   * @return collateralEndDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getCollateralEndDate() {
+    return collateralEndDate;
+  }
+
+
+  public void setCollateralEndDate(OffsetDateTime collateralEndDate) {
+    this.collateralEndDate = collateralEndDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -114,12 +166,25 @@ public class CollateralInstrument {
     }
     CollateralInstrument collateralInstrument = (CollateralInstrument) o;
     return (this.units.compareTo(collateralInstrument.getUnits()) == 0) &&
-        Objects.equals(this.instrument, collateralInstrument.instrument);
+        Objects.equals(this.instrument, collateralInstrument.instrument) &&
+        Objects.equals(this.collateralStartDate, collateralInstrument.collateralStartDate) &&
+        Objects.equals(this.collateralEndDate, collateralInstrument.collateralEndDate);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(units, instrument);
+    return Objects.hash(units, instrument, collateralStartDate, collateralEndDate);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -128,6 +193,8 @@ public class CollateralInstrument {
     sb.append("class CollateralInstrument {\n");
     sb.append("    units: ").append(toIndentedString(units)).append("\n");
     sb.append("    instrument: ").append(toIndentedString(instrument)).append("\n");
+    sb.append("    collateralStartDate: ").append(toIndentedString(collateralStartDate)).append("\n");
+    sb.append("    collateralEndDate: ").append(toIndentedString(collateralEndDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -152,6 +219,8 @@ public class CollateralInstrument {
     openapiFields = new HashSet<String>();
     openapiFields.add("units");
     openapiFields.add("instrument");
+    openapiFields.add("collateralStartDate");
+    openapiFields.add("collateralEndDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -151,6 +151,10 @@ public class NavType {
   @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME)
   private String chargeableGainsRegime;
 
+  public static final String SERIALIZED_NAME_CASH_COST_RELIEF_METHOD = "cashCostReliefMethod";
+  @SerializedName(SERIALIZED_NAME_CASH_COST_RELIEF_METHOD)
+  private String cashCostReliefMethod;
+
   public NavType() {
   }
 
@@ -682,6 +686,27 @@ public class NavType {
   }
 
 
+  public NavType cashCostReliefMethod(String cashCostReliefMethod) {
+    
+    this.cashCostReliefMethod = cashCostReliefMethod;
+    return this;
+  }
+
+   /**
+   * How this Nav Type relieves base cost when a cash position&#39;s local balance reduces towards zero. This can be: AverageCost or SettlementAmount. Omit it, or supply AverageCost, and a cash disposal releases the position&#39;s average base cost and posts the difference to the contra leg as realised FX on the settlement date. Under SettlementAmount, a cash disposal releases the base amount at which the contra leg of the same transaction is posted, so the settlement nets to nil in base currency and no realised FX is posted on the cash leg; the cash position then carries the unrecognised FX in its base cost until the deemed exposure event recognises it. It cannot be combined with calculateTradeDateToSettlementFxPnL, whether set on the Nav Type&#39;s settlement configuration or inherited from a portfolio&#39;s; a valuation point on the Nav Type fails while a transaction type in its scope turns calculateTradeDateToSettlementFxPnL on for a movement; and it can be changed on an existing Nav Type only while the Nav Type has no positions. Available values: AverageCost, SettlementAmount.
+   * @return cashCostReliefMethod
+  **/
+  @jakarta.annotation.Nullable
+  public String getCashCostReliefMethod() {
+    return cashCostReliefMethod;
+  }
+
+
+  public void setCashCostReliefMethod(String cashCostReliefMethod) {
+    this.cashCostReliefMethod = cashCostReliefMethod;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -715,7 +740,8 @@ public class NavType {
         Objects.equals(this.swingPricing, navType.swingPricing) &&
         Objects.equals(this.notionalDealingCostTableId, navType.notionalDealingCostTableId) &&
         Objects.equals(this.valuationTemplateId, navType.valuationTemplateId) &&
-        Objects.equals(this.chargeableGainsRegime, navType.chargeableGainsRegime);
+        Objects.equals(this.chargeableGainsRegime, navType.chargeableGainsRegime) &&
+        Objects.equals(this.cashCostReliefMethod, navType.cashCostReliefMethod);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -724,7 +750,7 @@ public class NavType {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing, notionalDealingCostTableId, valuationTemplateId, chargeableGainsRegime);
+    return Objects.hash(status, code, displayName, description, chartOfAccountsId, postingModuleCodes, cleardownModuleCodes, settlementConfiguration, valuationRecipeId, holdingRecipeId, accountingMethod, subHoldingKeys, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, leaderNavTypeCode, transactionTemplateScope, transactionExclusionFilter, pricingBasis, swingPricing, notionalDealingCostTableId, valuationTemplateId, chargeableGainsRegime, cashCostReliefMethod);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -762,6 +788,7 @@ public class NavType {
     sb.append("    notionalDealingCostTableId: ").append(toIndentedString(notionalDealingCostTableId)).append("\n");
     sb.append("    valuationTemplateId: ").append(toIndentedString(valuationTemplateId)).append("\n");
     sb.append("    chargeableGainsRegime: ").append(toIndentedString(chargeableGainsRegime)).append("\n");
+    sb.append("    cashCostReliefMethod: ").append(toIndentedString(cashCostReliefMethod)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -808,6 +835,7 @@ public class NavType {
     openapiFields.add("notionalDealingCostTableId");
     openapiFields.add("valuationTemplateId");
     openapiFields.add("chargeableGainsRegime");
+    openapiFields.add("cashCostReliefMethod");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -917,6 +945,9 @@ public class NavType {
       }
       if ((jsonObj.get("chargeableGainsRegime") != null && !jsonObj.get("chargeableGainsRegime").isJsonNull()) && !jsonObj.get("chargeableGainsRegime").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chargeableGainsRegime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chargeableGainsRegime").toString()));
+      }
+      if ((jsonObj.get("cashCostReliefMethod") != null && !jsonObj.get("cashCostReliefMethod").isJsonNull()) && !jsonObj.get("cashCostReliefMethod").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cashCostReliefMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashCostReliefMethod").toString()));
       }
   }
 

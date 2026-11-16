@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AmortisationHorizon;
 import com.finbourne.lusid.model.FractionalUnitsTrueUpConfiguration;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.WhtParameters;
@@ -72,6 +73,10 @@ public class CreatePortfolioDetails {
   public static final String SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME = "chargeableGainsRegime";
   @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME)
   private String chargeableGainsRegime;
+
+  public static final String SERIALIZED_NAME_AMORTISATION_HORIZON = "amortisationHorizon";
+  @SerializedName(SERIALIZED_NAME_AMORTISATION_HORIZON)
+  private AmortisationHorizon amortisationHorizon;
 
   public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
   @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
@@ -185,6 +190,27 @@ public class CreatePortfolioDetails {
   }
 
 
+  public CreatePortfolioDetails amortisationHorizon(AmortisationHorizon amortisationHorizon) {
+    
+    this.amortisationHorizon = amortisationHorizon;
+    return this;
+  }
+
+   /**
+   * Get amortisationHorizon
+   * @return amortisationHorizon
+  **/
+  @jakarta.annotation.Nullable
+  public AmortisationHorizon getAmortisationHorizon() {
+    return amortisationHorizon;
+  }
+
+
+  public void setAmortisationHorizon(AmortisationHorizon amortisationHorizon) {
+    this.amortisationHorizon = amortisationHorizon;
+  }
+
+
   public CreatePortfolioDetails whtParameters(WhtParameters whtParameters) {
     
     this.whtParameters = whtParameters;
@@ -221,6 +247,7 @@ public class CreatePortfolioDetails {
         Objects.equals(this.fractionalUnitsTrueUpConfiguration, createPortfolioDetails.fractionalUnitsTrueUpConfiguration) &&
         Objects.equals(this.holdingsFungibility, createPortfolioDetails.holdingsFungibility) &&
         Objects.equals(this.chargeableGainsRegime, createPortfolioDetails.chargeableGainsRegime) &&
+        Objects.equals(this.amortisationHorizon, createPortfolioDetails.amortisationHorizon) &&
         Objects.equals(this.whtParameters, createPortfolioDetails.whtParameters);
   }
 
@@ -230,7 +257,7 @@ public class CreatePortfolioDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(corporateActionSourceId, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime, whtParameters);
+    return Objects.hash(corporateActionSourceId, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime, amortisationHorizon, whtParameters);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -249,6 +276,7 @@ public class CreatePortfolioDetails {
     sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("    holdingsFungibility: ").append(toIndentedString(holdingsFungibility)).append("\n");
     sb.append("    chargeableGainsRegime: ").append(toIndentedString(chargeableGainsRegime)).append("\n");
+    sb.append("    amortisationHorizon: ").append(toIndentedString(amortisationHorizon)).append("\n");
     sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -277,6 +305,7 @@ public class CreatePortfolioDetails {
     openapiFields.add("fractionalUnitsTrueUpConfiguration");
     openapiFields.add("holdingsFungibility");
     openapiFields.add("chargeableGainsRegime");
+    openapiFields.add("amortisationHorizon");
     openapiFields.add("whtParameters");
 
     // a set of required properties/fields (JSON key names)
@@ -312,6 +341,10 @@ public class CreatePortfolioDetails {
       }
       if ((jsonObj.get("chargeableGainsRegime") != null && !jsonObj.get("chargeableGainsRegime").isJsonNull()) && !jsonObj.get("chargeableGainsRegime").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chargeableGainsRegime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chargeableGainsRegime").toString()));
+      }
+      // validate the optional field `amortisationHorizon`
+      if (jsonObj.get("amortisationHorizon") != null && !jsonObj.get("amortisationHorizon").isJsonNull()) {
+        AmortisationHorizon.validateJsonElement(jsonObj.get("amortisationHorizon"));
       }
       // validate the optional field `whtParameters`
       if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {

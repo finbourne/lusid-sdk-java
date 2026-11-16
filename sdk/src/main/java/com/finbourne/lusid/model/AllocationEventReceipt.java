@@ -99,6 +99,14 @@ public class AllocationEventReceipt {
   @SerializedName(SERIALIZED_NAME_POSTING_ID)
   private String postingId;
 
+  public static final String SERIALIZED_NAME_SETTLED_LINE_ID = "settledLineId";
+  @SerializedName(SERIALIZED_NAME_SETTLED_LINE_ID)
+  private String settledLineId;
+
+  public static final String SERIALIZED_NAME_REFERENCE = "reference";
+  @SerializedName(SERIALIZED_NAME_REFERENCE)
+  private String reference;
+
   public AllocationEventReceipt() {
   }
 
@@ -354,6 +362,48 @@ public class AllocationEventReceipt {
   }
 
 
+  public AllocationEventReceipt settledLineId(String settledLineId) {
+    
+    this.settledLineId = settledLineId;
+    return this;
+  }
+
+   /**
+   * The register line the receipt settled, as the booking posted it. Written by the booking, not by the caller; absent on a receipt recorded before the line was kept.
+   * @return settledLineId
+  **/
+  @jakarta.annotation.Nullable
+  public String getSettledLineId() {
+    return settledLineId;
+  }
+
+
+  public void setSettledLineId(String settledLineId) {
+    this.settledLineId = settledLineId;
+  }
+
+
+  public AllocationEventReceipt reference(String reference) {
+    
+    this.reference = reference;
+    return this;
+  }
+
+   /**
+   * The caller&#39;s reference the receipt was recorded under, as sent. Absent on a receipt sent without one.
+   * @return reference
+  **/
+  @jakarta.annotation.Nullable
+  public String getReference() {
+    return reference;
+  }
+
+
+  public void setReference(String reference) {
+    this.reference = reference;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -375,7 +425,9 @@ public class AllocationEventReceipt {
         (this.bankCharge.compareTo(allocationEventReceipt.getBankCharge()) == 0) &&
         Objects.equals(this.bankChargeBearer, allocationEventReceipt.bankChargeBearer) &&
         (this.shortfallWrittenOff.compareTo(allocationEventReceipt.getShortfallWrittenOff()) == 0) &&
-        Objects.equals(this.postingId, allocationEventReceipt.postingId);
+        Objects.equals(this.postingId, allocationEventReceipt.postingId) &&
+        Objects.equals(this.settledLineId, allocationEventReceipt.settledLineId) &&
+        Objects.equals(this.reference, allocationEventReceipt.reference);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -384,7 +436,7 @@ public class AllocationEventReceipt {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, amount, receiptDate, applied, refund, paymentCurrency, paymentFxRate, fxDifference, bankCharge, bankChargeBearer, shortfallWrittenOff, postingId);
+    return Objects.hash(investorRecordId, amount, receiptDate, applied, refund, paymentCurrency, paymentFxRate, fxDifference, bankCharge, bankChargeBearer, shortfallWrittenOff, postingId, settledLineId, reference);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -410,6 +462,8 @@ public class AllocationEventReceipt {
     sb.append("    bankChargeBearer: ").append(toIndentedString(bankChargeBearer)).append("\n");
     sb.append("    shortfallWrittenOff: ").append(toIndentedString(shortfallWrittenOff)).append("\n");
     sb.append("    postingId: ").append(toIndentedString(postingId)).append("\n");
+    sb.append("    settledLineId: ").append(toIndentedString(settledLineId)).append("\n");
+    sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -444,6 +498,8 @@ public class AllocationEventReceipt {
     openapiFields.add("bankChargeBearer");
     openapiFields.add("shortfallWrittenOff");
     openapiFields.add("postingId");
+    openapiFields.add("settledLineId");
+    openapiFields.add("reference");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -473,6 +529,12 @@ public class AllocationEventReceipt {
       }
       if ((jsonObj.get("postingId") != null && !jsonObj.get("postingId").isJsonNull()) && !jsonObj.get("postingId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `postingId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postingId").toString()));
+      }
+      if ((jsonObj.get("settledLineId") != null && !jsonObj.get("settledLineId").isJsonNull()) && !jsonObj.get("settledLineId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `settledLineId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("settledLineId").toString()));
+      }
+      if ((jsonObj.get("reference") != null && !jsonObj.get("reference").isJsonNull()) && !jsonObj.get("reference").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reference` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reference").toString()));
       }
   }
 

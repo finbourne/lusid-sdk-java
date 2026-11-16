@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AmortisationHorizon;
 import com.finbourne.lusid.model.FractionalUnitsTrueUpConfiguration;
 import com.finbourne.lusid.model.InstrumentEventConfiguration;
 import com.finbourne.lusid.model.PortfolioSettlementConfiguration;
@@ -215,6 +216,10 @@ public class CreateDerivedTransactionPortfolioRequest {
   public static final String SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME = "chargeableGainsRegime";
   @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME)
   private String chargeableGainsRegime;
+
+  public static final String SERIALIZED_NAME_AMORTISATION_HORIZON = "amortisationHorizon";
+  @SerializedName(SERIALIZED_NAME_AMORTISATION_HORIZON)
+  private AmortisationHorizon amortisationHorizon;
 
   public CreateDerivedTransactionPortfolioRequest() {
   }
@@ -676,6 +681,27 @@ public class CreateDerivedTransactionPortfolioRequest {
   }
 
 
+  public CreateDerivedTransactionPortfolioRequest amortisationHorizon(AmortisationHorizon amortisationHorizon) {
+    
+    this.amortisationHorizon = amortisationHorizon;
+    return this;
+  }
+
+   /**
+   * Get amortisationHorizon
+   * @return amortisationHorizon
+  **/
+  @jakarta.annotation.Nullable
+  public AmortisationHorizon getAmortisationHorizon() {
+    return amortisationHorizon;
+  }
+
+
+  public void setAmortisationHorizon(AmortisationHorizon amortisationHorizon) {
+    this.amortisationHorizon = amortisationHorizon;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -706,7 +732,8 @@ public class CreateDerivedTransactionPortfolioRequest {
         Objects.equals(this.taxLotSelectionCostBasis, createDerivedTransactionPortfolioRequest.taxLotSelectionCostBasis) &&
         Objects.equals(this.fractionalUnitsTrueUpConfiguration, createDerivedTransactionPortfolioRequest.fractionalUnitsTrueUpConfiguration) &&
         Objects.equals(this.holdingsFungibility, createDerivedTransactionPortfolioRequest.holdingsFungibility) &&
-        Objects.equals(this.chargeableGainsRegime, createDerivedTransactionPortfolioRequest.chargeableGainsRegime);
+        Objects.equals(this.chargeableGainsRegime, createDerivedTransactionPortfolioRequest.chargeableGainsRegime) &&
+        Objects.equals(this.amortisationHorizon, createDerivedTransactionPortfolioRequest.amortisationHorizon);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -715,7 +742,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, parentPortfolioId, created, enablementDate, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime);
+    return Objects.hash(displayName, description, code, parentPortfolioId, created, enablementDate, corporateActionSourceId, accountingMethod, subHoldingKeys, instrumentScopes, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, amortisationRuleSetId, instrumentEventConfiguration, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime, amortisationHorizon);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -750,6 +777,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("    holdingsFungibility: ").append(toIndentedString(holdingsFungibility)).append("\n");
     sb.append("    chargeableGainsRegime: ").append(toIndentedString(chargeableGainsRegime)).append("\n");
+    sb.append("    amortisationHorizon: ").append(toIndentedString(amortisationHorizon)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -793,6 +821,7 @@ public class CreateDerivedTransactionPortfolioRequest {
     openapiFields.add("fractionalUnitsTrueUpConfiguration");
     openapiFields.add("holdingsFungibility");
     openapiFields.add("chargeableGainsRegime");
+    openapiFields.add("amortisationHorizon");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -883,6 +912,10 @@ public class CreateDerivedTransactionPortfolioRequest {
       }
       if ((jsonObj.get("chargeableGainsRegime") != null && !jsonObj.get("chargeableGainsRegime").isJsonNull()) && !jsonObj.get("chargeableGainsRegime").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chargeableGainsRegime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chargeableGainsRegime").toString()));
+      }
+      // validate the optional field `amortisationHorizon`
+      if (jsonObj.get("amortisationHorizon") != null && !jsonObj.get("amortisationHorizon").isJsonNull()) {
+        AmortisationHorizon.validateJsonElement(jsonObj.get("amortisationHorizon"));
       }
   }
 

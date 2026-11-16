@@ -12,6 +12,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getAllocationEventReceivables**](AllocationEventsApi.md#getAllocationEventReceivables) | **GET** /api/allocationevents/{scope}/{code}/receivables | [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event. |
 | [**listAllocationEvents**](AllocationEventsApi.md#listAllocationEvents) | **GET** /api/allocationevents | [EARLY ACCESS] ListAllocationEvents: List Allocation Events. |
 | [**listAllocationPaymentHolds**](AllocationEventsApi.md#listAllocationPaymentHolds) | **GET** /api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/holds | [EARLY ACCESS] ListAllocationPaymentHolds: [EARLY ACCESS] ListAllocationPaymentHolds: List the holds placed on a partner&#39;s payment. |
+| [**payAllocationEventRefund**](AllocationEventsApi.md#payAllocationEventRefund) | **POST** /api/allocationevents/{scope}/{code}/refunds | [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event. |
 | [**planAllocationEventBooking**](AllocationEventsApi.md#planAllocationEventBooking) | **POST** /api/allocationevents/{scope}/{code}/plan | [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event. |
 | [**putAllocationPaymentHold**](AllocationEventsApi.md#putAllocationPaymentHold) | **PUT** /api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/hold | [EARLY ACCESS] PutAllocationPaymentHold: [EARLY ACCESS] PutAllocationPaymentHold: Place, move or release a hold on a partner&#39;s payment. |
 | [**reallocateAllocationEvent**](AllocationEventsApi.md#reallocateAllocationEvent) | **POST** /api/allocationevents/{scope}/{code}/reallocate | [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event. |
@@ -790,6 +791,103 @@ public class AllocationEventsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The holds placed on the partner&#39;s payment. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## payAllocationEventRefund
+
+> AllocationEvent payAllocationEventRefund(scope, code, allocationEventRefundPaymentRequest, effectiveAt)
+
+[EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event.
+
+Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.AllocationEventsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class AllocationEventsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // AllocationEventsApi apiInstance = apiFactory.build(AllocationEventsApi.class);
+
+        AllocationEventsApi apiInstance = ApiFactoryBuilder.build(fileName).build(AllocationEventsApi.class);
+        String scope = "scope_example"; // String | The scope of the Allocation Event.
+        String code = "code_example"; // String | The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event.
+        AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest = new AllocationEventRefundPaymentRequest(); // AllocationEventRefundPaymentRequest | The investor, amount, date and reference of the payment.
+        String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version's own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // AllocationEvent result = apiInstance.payAllocationEventRefund(scope, code, allocationEventRefundPaymentRequest, effectiveAt).execute(opts);
+
+            AllocationEvent result = apiInstance.payAllocationEventRefund(scope, code, allocationEventRefundPaymentRequest, effectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AllocationEventsApi#payAllocationEventRefund");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Allocation Event. | |
+| **code** | **String**| The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. | |
+| **allocationEventRefundPaymentRequest** | [**AllocationEventRefundPaymentRequest**](AllocationEventRefundPaymentRequest.md)| The investor, amount, date and reference of the payment. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. | [optional] |
+
+### Return type
+
+[**AllocationEvent**](AllocationEvent.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Allocation Event with the refund payment recorded. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **open** | [**BucketAmounts**](BucketAmounts.md) |  | [optional] [default to BucketAmounts]
 **activityTotal** | [**BucketAmounts**](BucketAmounts.md) |  | [optional] [default to BucketAmounts]
 **close** | [**BucketAmounts**](BucketAmounts.md) |  | [optional] [default to BucketAmounts]
+**fxTranslation** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -25,6 +26,7 @@ OffsetDateTime BucketEnd = OffsetDateTime.now();
 BucketAmounts Open = new BucketAmounts();
 BucketAmounts ActivityTotal = new BucketAmounts();
 BucketAmounts Close = new BucketAmounts();
+CurrencyAndAmount FxTranslation = new CurrencyAndAmount();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -35,6 +37,7 @@ BucketCurrencySubtotal bucketCurrencySubtotalInstance = new BucketCurrencySubtot
     .Open(Open)
     .ActivityTotal(ActivityTotal)
     .Close(Close)
+    .FxTranslation(FxTranslation)
     .Links(Links);
 ```
 

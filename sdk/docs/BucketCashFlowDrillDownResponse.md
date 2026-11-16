@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **windowStart** | [**OffsetDateTime**](OffsetDateTime.md) | The window start the buckets&#39; balances run from: where the first bucket&#39;s opening balance is taken. | [default to OffsetDateTime]
 **buckets** | [**List&lt;BucketCashFlowBucket&gt;**](BucketCashFlowBucket.md) | One bucket per period of the schedule, per member portfolio, payment currency and sub-holding key combination, each with its  opening balance, activity and closing balance. | [default to List<BucketCashFlowBucket>]
 **currencySubtotals** | [**List&lt;BucketCurrencySubtotal&gt;**](BucketCurrencySubtotal.md) | The buckets summed across portfolios and sub-holding keys, one per period and payment currency. | [default to List<BucketCurrencySubtotal>]
-**issues** | **List&lt;String&gt;** | What the balances do not cover, for example that they are in the payment currency only and gross of haircut; absent when there is nothing to report. | [optional] [default to List<String>]
+**issues** | **List&lt;String&gt;** | What the balances do not cover, for example that they are gross of haircut, or that no rate was found to give them in the report currency; absent when there is nothing to report. | [optional] [default to List<String>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java

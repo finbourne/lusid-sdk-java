@@ -675,7 +675,7 @@ public class ConfigurationRecipeApiExample {
 
 ## listDerivedRecipes
 
-> ResourceListOfGetRecipeResponse listDerivedRecipes(asAt, filter)
+> ResourceListOfGetRecipeResponse listDerivedRecipes(asAt, filter, sortBy)
 
 ListDerivedRecipes: List the complete set of all Configuration Recipes, both from the configuration recipe store and also from expanded recipe composers.
 
@@ -721,12 +721,13 @@ public class ConfigurationRecipeApiExample {
 
         ConfigurationRecipeApi apiInstance = ApiFactoryBuilder.build(fileName).build(ConfigurationRecipeApi.class);
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified.
-        String filter = "filter_example"; // String | Expression to filter the result set, note this functionality is not yet enabled for this endpoint.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
         try {
             // uncomment the below to set overrides at the request level
-            // ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter).execute(opts);
+            // ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter, sortBy).execute(opts);
 
-            ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter).execute();
+            ResourceListOfGetRecipeResponse result = apiInstance.listDerivedRecipes(asAt, filter, sortBy).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling ConfigurationRecipeApi#listDerivedRecipes");
@@ -744,7 +745,8 @@ public class ConfigurationRecipeApiExample {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Configuration Recipes. Defaults to latest if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the result set, note this functionality is not yet enabled for this endpoint. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:   https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
 
 ### Return type
 

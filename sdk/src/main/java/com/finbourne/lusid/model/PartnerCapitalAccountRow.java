@@ -11,13 +11,17 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.PartnerCapitalAccountRowDetail;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,6 +68,10 @@ public class PartnerCapitalAccountRow {
   public static final String SERIALIZED_NAME_ITD = "itd";
   @SerializedName(SERIALIZED_NAME_ITD)
   private java.math.BigDecimal itd;
+
+  public static final String SERIALIZED_NAME_DETAILS = "details";
+  @SerializedName(SERIALIZED_NAME_DETAILS)
+  private List<PartnerCapitalAccountRowDetail> details;
 
   public PartnerCapitalAccountRow() {
   }
@@ -152,6 +160,35 @@ public class PartnerCapitalAccountRow {
   }
 
 
+  public PartnerCapitalAccountRow details(List<PartnerCapitalAccountRowDetail> details) {
+    
+    this.details = details;
+    return this;
+  }
+
+  public PartnerCapitalAccountRow addDetailsItem(PartnerCapitalAccountRowDetail detailsItem) {
+    if (this.details == null) {
+      this.details = new ArrayList<>();
+    }
+    this.details.add(detailsItem);
+    return this;
+  }
+
+   /**
+   * Labelled parts of the row&#39;s total, each already included in the row&#39;s columns. Tax withheld from a distribution on the partner&#39;s behalf is counted as distributed and shown here as its own entry against the distribution it was withheld on. Empty for a row with nothing to break out.
+   * @return details
+  **/
+  @jakarta.annotation.Nullable
+  public List<PartnerCapitalAccountRowDetail> getDetails() {
+    return details;
+  }
+
+
+  public void setDetails(List<PartnerCapitalAccountRowDetail> details) {
+    this.details = details;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -165,12 +202,24 @@ public class PartnerCapitalAccountRow {
     return Objects.equals(this.rowType, partnerCapitalAccountRow.rowType) &&
         (this.qtd.compareTo(partnerCapitalAccountRow.getQtd()) == 0) &&
         (this.ytd.compareTo(partnerCapitalAccountRow.getYtd()) == 0) &&
-        (this.itd.compareTo(partnerCapitalAccountRow.getItd()) == 0);
+        (this.itd.compareTo(partnerCapitalAccountRow.getItd()) == 0) &&
+        Objects.equals(this.details, partnerCapitalAccountRow.details);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rowType, qtd, ytd, itd);
+    return Objects.hash(rowType, qtd, ytd, itd, details);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -181,6 +230,7 @@ public class PartnerCapitalAccountRow {
     sb.append("    qtd: ").append(toIndentedString(qtd)).append("\n");
     sb.append("    ytd: ").append(toIndentedString(ytd)).append("\n");
     sb.append("    itd: ").append(toIndentedString(itd)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -207,6 +257,7 @@ public class PartnerCapitalAccountRow {
     openapiFields.add("qtd");
     openapiFields.add("ytd");
     openapiFields.add("itd");
+    openapiFields.add("details");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -238,6 +289,20 @@ public class PartnerCapitalAccountRow {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("rowType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `rowType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("rowType").toString()));
+      }
+      if (jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) {
+        JsonArray jsonArraydetails = jsonObj.getAsJsonArray("details");
+        if (jsonArraydetails != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("details").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `details` to be an array in the JSON string but got `%s`", jsonObj.get("details").toString()));
+          }
+
+          // validate the optional field `details` (array)
+          for (int i = 0; i < jsonArraydetails.size(); i++) {
+            PartnerCapitalAccountRowDetail.validateJsonElement(jsonArraydetails.get(i));
+          };
+        }
       }
   }
 

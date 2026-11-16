@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **effectiveCapabilities** | **Map&lt;String, String&gt;** | Derived on the way out; ignored on the way in. | [optional] [default to Map<String, String>]
 **presentation** | [**PresentationConfiguration**](PresentationConfiguration.md) |  | [optional] [default to PresentationConfiguration]
 **allocationBases** | [**List&lt;AllocationBasisRule&gt;**](AllocationBasisRule.md) |  | [optional] [default to List<AllocationBasisRule>]
+**allocationBucketSet** | **String** |  | [optional] [default to String]
+**allocationRules** | [**List&lt;AllocationRule&gt;**](AllocationRule.md) | On the way in, the configuration&#39;s rules or its overrides of a system set&#39;s rules; on the way out, the  effective rules the fund allocates by. | [optional] [default to List<AllocationRule>]
 
 ```java
 import com.finbourne.lusid.model.PartnershipAccountingConfiguration;
@@ -31,6 +33,8 @@ SeriesConfiguration Series = new SeriesConfiguration();
 @jakarta.annotation.Nullable Map<String, String> EffectiveCapabilities = new Map<String, String>();
 PresentationConfiguration Presentation = new PresentationConfiguration();
 @jakarta.annotation.Nullable List<AllocationBasisRule> AllocationBases = new List<AllocationBasisRule>();
+@jakarta.annotation.Nullable String AllocationBucketSet = "example AllocationBucketSet";
+@jakarta.annotation.Nullable List<AllocationRule> AllocationRules = new List<AllocationRule>();
 
 
 PartnershipAccountingConfiguration partnershipAccountingConfigurationInstance = new PartnershipAccountingConfiguration()
@@ -43,7 +47,9 @@ PartnershipAccountingConfiguration partnershipAccountingConfigurationInstance = 
     .Series(Series)
     .EffectiveCapabilities(EffectiveCapabilities)
     .Presentation(Presentation)
-    .AllocationBases(AllocationBases);
+    .AllocationBases(AllocationBases)
+    .AllocationBucketSet(AllocationBucketSet)
+    .AllocationRules(AllocationRules);
 ```
 
 

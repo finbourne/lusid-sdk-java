@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.PartnershipAllocationProblem;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -45,7 +46,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The partnership accounting view of a valuation point: what is left on the income summary to allocate to the  partners, and the configuration pack the allocation books under.
+ * The partnership accounting view of a valuation point: what is left on the income summary to allocate to the  partners, the configuration pack the allocation books under and, when the period cannot be allocated as it  stands, why.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PartnershipAccountingValuationPointData {
@@ -61,6 +62,10 @@ public class PartnershipAccountingValuationPointData {
   @SerializedName(SERIALIZED_NAME_CONFIG_PACK_CODE)
   private String configPackCode;
 
+  public static final String SERIALIZED_NAME_ALLOCATION_PROBLEM = "allocationProblem";
+  @SerializedName(SERIALIZED_NAME_ALLOCATION_PROBLEM)
+  private PartnershipAllocationProblem allocationProblem;
+
   public PartnershipAccountingValuationPointData() {
   }
 
@@ -71,7 +76,7 @@ public class PartnershipAccountingValuationPointData {
   }
 
    /**
-   * The profit and loss of the valuation point&#39;s period that has not yet been allocated to the partners: what the period&#39;s income, gain and expense lines would pool, less what the partner allocation has posted for the period. Must be zero before the valuation point can be finalised.
+   * The profit and loss of the valuation point&#39;s period that has not yet been allocated to the partners: what the period&#39;s profit and loss lines, as the allocation bucket set classifies them, would pool, less what the partner allocation has posted for the period. Lines no bucket claims count as unallocated. Must be zero before the valuation point can be finalised.
    * @return unallocatedIncomeSummary
   **/
   @jakarta.annotation.Nonnull
@@ -127,6 +132,27 @@ public class PartnershipAccountingValuationPointData {
   }
 
 
+  public PartnershipAccountingValuationPointData allocationProblem(PartnershipAllocationProblem allocationProblem) {
+    
+    this.allocationProblem = allocationProblem;
+    return this;
+  }
+
+   /**
+   * Get allocationProblem
+   * @return allocationProblem
+  **/
+  @jakarta.annotation.Nullable
+  public PartnershipAllocationProblem getAllocationProblem() {
+    return allocationProblem;
+  }
+
+
+  public void setAllocationProblem(PartnershipAllocationProblem allocationProblem) {
+    this.allocationProblem = allocationProblem;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +165,13 @@ public class PartnershipAccountingValuationPointData {
     PartnershipAccountingValuationPointData partnershipAccountingValuationPointData = (PartnershipAccountingValuationPointData) o;
     return (this.unallocatedIncomeSummary.compareTo(partnershipAccountingValuationPointData.getUnallocatedIncomeSummary()) == 0) &&
         Objects.equals(this.configPackScope, partnershipAccountingValuationPointData.configPackScope) &&
-        Objects.equals(this.configPackCode, partnershipAccountingValuationPointData.configPackCode);
+        Objects.equals(this.configPackCode, partnershipAccountingValuationPointData.configPackCode) &&
+        Objects.equals(this.allocationProblem, partnershipAccountingValuationPointData.allocationProblem);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unallocatedIncomeSummary, configPackScope, configPackCode);
+    return Objects.hash(unallocatedIncomeSummary, configPackScope, configPackCode, allocationProblem);
   }
 
   @Override
@@ -154,6 +181,7 @@ public class PartnershipAccountingValuationPointData {
     sb.append("    unallocatedIncomeSummary: ").append(toIndentedString(unallocatedIncomeSummary)).append("\n");
     sb.append("    configPackScope: ").append(toIndentedString(configPackScope)).append("\n");
     sb.append("    configPackCode: ").append(toIndentedString(configPackCode)).append("\n");
+    sb.append("    allocationProblem: ").append(toIndentedString(allocationProblem)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,6 +207,7 @@ public class PartnershipAccountingValuationPointData {
     openapiFields.add("unallocatedIncomeSummary");
     openapiFields.add("configPackScope");
     openapiFields.add("configPackCode");
+    openapiFields.add("allocationProblem");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -212,6 +241,10 @@ public class PartnershipAccountingValuationPointData {
       }
       if (!jsonObj.get("configPackCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `configPackCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("configPackCode").toString()));
+      }
+      // validate the optional field `allocationProblem`
+      if (jsonObj.get("allocationProblem") != null && !jsonObj.get("allocationProblem").isJsonNull()) {
+        PartnershipAllocationProblem.validateJsonElement(jsonObj.get("allocationProblem"));
       }
   }
 

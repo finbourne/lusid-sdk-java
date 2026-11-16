@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.PartnerAllocation;
+import com.finbourne.lusid.model.PartnerAllocationPoolSources;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -69,6 +70,10 @@ public class PartnerAllocationPool {
   @SerializedName(SERIALIZED_NAME_BASIS)
   private String basis;
 
+  public static final String SERIALIZED_NAME_BASIS_SOURCE = "basisSource";
+  @SerializedName(SERIALIZED_NAME_BASIS_SOURCE)
+  private String basisSource;
+
   public static final String SERIALIZED_NAME_ALLOCATIONS = "allocations";
   @SerializedName(SERIALIZED_NAME_ALLOCATIONS)
   private List<PartnerAllocation> allocations = new ArrayList<>();
@@ -76,6 +81,34 @@ public class PartnerAllocationPool {
   public static final String SERIALIZED_NAME_RESIDUAL = "residual";
   @SerializedName(SERIALIZED_NAME_RESIDUAL)
   private java.math.BigDecimal residual;
+
+  public static final String SERIALIZED_NAME_POOL_ID = "poolId";
+  @SerializedName(SERIALIZED_NAME_POOL_ID)
+  private String poolId;
+
+  public static final String SERIALIZED_NAME_BUCKET_SET = "bucketSet";
+  @SerializedName(SERIALIZED_NAME_BUCKET_SET)
+  private String bucketSet;
+
+  public static final String SERIALIZED_NAME_BASIS_LEVEL = "basisLevel";
+  @SerializedName(SERIALIZED_NAME_BASIS_LEVEL)
+  private String basisLevel;
+
+  public static final String SERIALIZED_NAME_EXEMPTION = "exemption";
+  @SerializedName(SERIALIZED_NAME_EXEMPTION)
+  private String exemption;
+
+  public static final String SERIALIZED_NAME_EXCLUDED_INVESTOR_RECORD_IDS = "excludedInvestorRecordIds";
+  @SerializedName(SERIALIZED_NAME_EXCLUDED_INVESTOR_RECORD_IDS)
+  private List<String> excludedInvestorRecordIds;
+
+  public static final String SERIALIZED_NAME_REPORT_ROW = "reportRow";
+  @SerializedName(SERIALIZED_NAME_REPORT_ROW)
+  private String reportRow;
+
+  public static final String SERIALIZED_NAME_SOURCES = "sources";
+  @SerializedName(SERIALIZED_NAME_SOURCES)
+  private PartnerAllocationPoolSources sources;
 
   public PartnerAllocationPool() {
   }
@@ -164,6 +197,27 @@ public class PartnerAllocationPool {
   }
 
 
+  public PartnerAllocationPool basisSource(String basisSource) {
+    
+    this.basisSource = basisSource;
+    return this;
+  }
+
+   /**
+   * Where the figures a deal pool was shared on came from; absent on a fund-level pool, which is shared on the register&#39;s balances. Available values: DealContributions (what each partner paid into the pool&#39;s deal, from the booked allocation events), Fallback (a deal pool no partner has paid into, shared on its character&#39;s fund-level basis instead).
+   * @return basisSource
+  **/
+  @jakarta.annotation.Nullable
+  public String getBasisSource() {
+    return basisSource;
+  }
+
+
+  public void setBasisSource(String basisSource) {
+    this.basisSource = basisSource;
+  }
+
+
   public PartnerAllocationPool allocations(List<PartnerAllocation> allocations) {
     
     this.allocations = allocations;
@@ -214,6 +268,161 @@ public class PartnerAllocationPool {
   }
 
 
+  public PartnerAllocationPool poolId(String poolId) {
+    
+    this.poolId = poolId;
+    return this;
+  }
+
+   /**
+   * The pool&#39;s identifier: the allocation rule&#39;s bucket id, or TAG: followed by the character for lines pooled by their distribution character tag.
+   * @return poolId
+  **/
+  @jakarta.annotation.Nonnull
+  public String getPoolId() {
+    return poolId;
+  }
+
+
+  public void setPoolId(String poolId) {
+    this.poolId = poolId;
+  }
+
+
+  public PartnerAllocationPool bucketSet(String bucketSet) {
+    
+    this.bucketSet = bucketSet;
+    return this;
+  }
+
+   /**
+   * The code of the allocation bucket set the pool was classified by, with its version, for example PA-ALLOCATION-v1.
+   * @return bucketSet
+  **/
+  @jakarta.annotation.Nonnull
+  public String getBucketSet() {
+    return bucketSet;
+  }
+
+
+  public void setBucketSet(String bucketSet) {
+    this.bucketSet = bucketSet;
+  }
+
+
+  public PartnerAllocationPool basisLevel(String basisLevel) {
+    
+    this.basisLevel = basisLevel;
+    return this;
+  }
+
+   /**
+   * Which level of the basis precedence decided the pool&#39;s basis. Available values: Rule (the bucket rule&#39;s own basis), CharacterDefault (the configuration&#39;s allocationBases entry for the character), BuiltIn (the built-in default for the character).
+   * @return basisLevel
+  **/
+  @jakarta.annotation.Nonnull
+  public String getBasisLevel() {
+    return basisLevel;
+  }
+
+
+  public void setBasisLevel(String basisLevel) {
+    this.basisLevel = basisLevel;
+  }
+
+
+  public PartnerAllocationPool exemption(String exemption) {
+    
+    this.exemption = exemption;
+    return this;
+  }
+
+   /**
+   * The register flag that sat partners out of the pool. Available values: None, FeeExempt, ExpenseExempt.
+   * @return exemption
+  **/
+  @jakarta.annotation.Nonnull
+  public String getExemption() {
+    return exemption;
+  }
+
+
+  public void setExemption(String exemption) {
+    this.exemption = exemption;
+  }
+
+
+  public PartnerAllocationPool excludedInvestorRecordIds(List<String> excludedInvestorRecordIds) {
+    
+    this.excludedInvestorRecordIds = excludedInvestorRecordIds;
+    return this;
+  }
+
+  public PartnerAllocationPool addExcludedInvestorRecordIdsItem(String excludedInvestorRecordIdsItem) {
+    if (this.excludedInvestorRecordIds == null) {
+      this.excludedInvestorRecordIds = new ArrayList<>();
+    }
+    this.excludedInvestorRecordIds.add(excludedInvestorRecordIdsItem);
+    return this;
+  }
+
+   /**
+   * The partners the pool&#39;s rule left out of it.
+   * @return excludedInvestorRecordIds
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getExcludedInvestorRecordIds() {
+    return excludedInvestorRecordIds;
+  }
+
+
+  public void setExcludedInvestorRecordIds(List<String> excludedInvestorRecordIds) {
+    this.excludedInvestorRecordIds = excludedInvestorRecordIds;
+  }
+
+
+  public PartnerAllocationPool reportRow(String reportRow) {
+    
+    this.reportRow = reportRow;
+    return this;
+  }
+
+   /**
+   * The capital account row the pool&#39;s allocations land on, derived from the character. Available values: NetOperatingIncome, ManagementFeesGross, RealisedGainLoss, UnrealisedGainLoss.
+   * @return reportRow
+  **/
+  @jakarta.annotation.Nullable
+  public String getReportRow() {
+    return reportRow;
+  }
+
+
+  public void setReportRow(String reportRow) {
+    this.reportRow = reportRow;
+  }
+
+
+  public PartnerAllocationPool sources(PartnerAllocationPoolSources sources) {
+    
+    this.sources = sources;
+    return this;
+  }
+
+   /**
+   * Get sources
+   * @return sources
+  **/
+  @jakarta.annotation.Nonnull
+  public PartnerAllocationPoolSources getSources() {
+    return sources;
+  }
+
+
+  public void setSources(PartnerAllocationPoolSources sources) {
+    this.sources = sources;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -228,8 +437,16 @@ public class PartnerAllocationPool {
         Objects.equals(this.originMemberShortCode, partnerAllocationPool.originMemberShortCode) &&
         (this.poolAmount.compareTo(partnerAllocationPool.getPoolAmount()) == 0) &&
         Objects.equals(this.basis, partnerAllocationPool.basis) &&
+        Objects.equals(this.basisSource, partnerAllocationPool.basisSource) &&
         Objects.equals(this.allocations, partnerAllocationPool.allocations) &&
-        (this.residual.compareTo(partnerAllocationPool.getResidual()) == 0);
+        (this.residual.compareTo(partnerAllocationPool.getResidual()) == 0) &&
+        Objects.equals(this.poolId, partnerAllocationPool.poolId) &&
+        Objects.equals(this.bucketSet, partnerAllocationPool.bucketSet) &&
+        Objects.equals(this.basisLevel, partnerAllocationPool.basisLevel) &&
+        Objects.equals(this.exemption, partnerAllocationPool.exemption) &&
+        Objects.equals(this.excludedInvestorRecordIds, partnerAllocationPool.excludedInvestorRecordIds) &&
+        Objects.equals(this.reportRow, partnerAllocationPool.reportRow) &&
+        Objects.equals(this.sources, partnerAllocationPool.sources);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -238,7 +455,7 @@ public class PartnerAllocationPool {
 
   @Override
   public int hashCode() {
-    return Objects.hash(character, originMemberShortCode, poolAmount, basis, allocations, residual);
+    return Objects.hash(character, originMemberShortCode, poolAmount, basis, basisSource, allocations, residual, poolId, bucketSet, basisLevel, exemption, excludedInvestorRecordIds, reportRow, sources);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -256,8 +473,16 @@ public class PartnerAllocationPool {
     sb.append("    originMemberShortCode: ").append(toIndentedString(originMemberShortCode)).append("\n");
     sb.append("    poolAmount: ").append(toIndentedString(poolAmount)).append("\n");
     sb.append("    basis: ").append(toIndentedString(basis)).append("\n");
+    sb.append("    basisSource: ").append(toIndentedString(basisSource)).append("\n");
     sb.append("    allocations: ").append(toIndentedString(allocations)).append("\n");
     sb.append("    residual: ").append(toIndentedString(residual)).append("\n");
+    sb.append("    poolId: ").append(toIndentedString(poolId)).append("\n");
+    sb.append("    bucketSet: ").append(toIndentedString(bucketSet)).append("\n");
+    sb.append("    basisLevel: ").append(toIndentedString(basisLevel)).append("\n");
+    sb.append("    exemption: ").append(toIndentedString(exemption)).append("\n");
+    sb.append("    excludedInvestorRecordIds: ").append(toIndentedString(excludedInvestorRecordIds)).append("\n");
+    sb.append("    reportRow: ").append(toIndentedString(reportRow)).append("\n");
+    sb.append("    sources: ").append(toIndentedString(sources)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -284,8 +509,16 @@ public class PartnerAllocationPool {
     openapiFields.add("originMemberShortCode");
     openapiFields.add("poolAmount");
     openapiFields.add("basis");
+    openapiFields.add("basisSource");
     openapiFields.add("allocations");
     openapiFields.add("residual");
+    openapiFields.add("poolId");
+    openapiFields.add("bucketSet");
+    openapiFields.add("basisLevel");
+    openapiFields.add("exemption");
+    openapiFields.add("excludedInvestorRecordIds");
+    openapiFields.add("reportRow");
+    openapiFields.add("sources");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -294,6 +527,11 @@ public class PartnerAllocationPool {
     openapiRequiredFields.add("basis");
     openapiRequiredFields.add("allocations");
     openapiRequiredFields.add("residual");
+    openapiRequiredFields.add("poolId");
+    openapiRequiredFields.add("bucketSet");
+    openapiRequiredFields.add("basisLevel");
+    openapiRequiredFields.add("exemption");
+    openapiRequiredFields.add("sources");
   }
 
  /**
@@ -325,6 +563,9 @@ public class PartnerAllocationPool {
       if (!jsonObj.get("basis").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `basis` to be a primitive type in the JSON string but got `%s`", jsonObj.get("basis").toString()));
       }
+      if ((jsonObj.get("basisSource") != null && !jsonObj.get("basisSource").isJsonNull()) && !jsonObj.get("basisSource").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `basisSource` to be a primitive type in the JSON string but got `%s`", jsonObj.get("basisSource").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("allocations").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `allocations` to be an array in the JSON string but got `%s`", jsonObj.get("allocations").toString()));
@@ -335,6 +576,27 @@ public class PartnerAllocationPool {
       for (int i = 0; i < jsonArrayallocations.size(); i++) {
         PartnerAllocation.validateJsonElement(jsonArrayallocations.get(i));
       };
+      if (!jsonObj.get("poolId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `poolId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("poolId").toString()));
+      }
+      if (!jsonObj.get("bucketSet").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `bucketSet` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bucketSet").toString()));
+      }
+      if (!jsonObj.get("basisLevel").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `basisLevel` to be a primitive type in the JSON string but got `%s`", jsonObj.get("basisLevel").toString()));
+      }
+      if (!jsonObj.get("exemption").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `exemption` to be a primitive type in the JSON string but got `%s`", jsonObj.get("exemption").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("excludedInvestorRecordIds") != null && !jsonObj.get("excludedInvestorRecordIds").isJsonNull() && !jsonObj.get("excludedInvestorRecordIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `excludedInvestorRecordIds` to be an array in the JSON string but got `%s`", jsonObj.get("excludedInvestorRecordIds").toString()));
+      }
+      if ((jsonObj.get("reportRow") != null && !jsonObj.get("reportRow").isJsonNull()) && !jsonObj.get("reportRow").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reportRow` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportRow").toString()));
+      }
+      // validate the required field `sources`
+      PartnerAllocationPoolSources.validateJsonElement(jsonObj.get("sources"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

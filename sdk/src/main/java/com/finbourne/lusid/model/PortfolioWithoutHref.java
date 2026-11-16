@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AmortisationHorizon;
 import com.finbourne.lusid.model.FractionalUnitsTrueUpConfiguration;
 import com.finbourne.lusid.model.InstrumentEventConfiguration;
 import com.finbourne.lusid.model.Link;
@@ -298,6 +299,10 @@ public class PortfolioWithoutHref {
   public static final String SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME = "chargeableGainsRegime";
   @SerializedName(SERIALIZED_NAME_CHARGEABLE_GAINS_REGIME)
   private String chargeableGainsRegime;
+
+  public static final String SERIALIZED_NAME_AMORTISATION_HORIZON = "amortisationHorizon";
+  @SerializedName(SERIALIZED_NAME_AMORTISATION_HORIZON)
+  private AmortisationHorizon amortisationHorizon;
 
   public static final String SERIALIZED_NAME_WHT_PARAMETERS = "whtParameters";
   @SerializedName(SERIALIZED_NAME_WHT_PARAMETERS)
@@ -901,6 +906,27 @@ public class PortfolioWithoutHref {
   }
 
 
+  public PortfolioWithoutHref amortisationHorizon(AmortisationHorizon amortisationHorizon) {
+    
+    this.amortisationHorizon = amortisationHorizon;
+    return this;
+  }
+
+   /**
+   * Get amortisationHorizon
+   * @return amortisationHorizon
+  **/
+  @jakarta.annotation.Nullable
+  public AmortisationHorizon getAmortisationHorizon() {
+    return amortisationHorizon;
+  }
+
+
+  public void setAmortisationHorizon(AmortisationHorizon amortisationHorizon) {
+    this.amortisationHorizon = amortisationHorizon;
+  }
+
+
   public PortfolioWithoutHref whtParameters(WhtParameters whtParameters) {
     
     this.whtParameters = whtParameters;
@@ -988,6 +1014,7 @@ public class PortfolioWithoutHref {
         Objects.equals(this.fractionalUnitsTrueUpConfiguration, portfolioWithoutHref.fractionalUnitsTrueUpConfiguration) &&
         Objects.equals(this.holdingsFungibility, portfolioWithoutHref.holdingsFungibility) &&
         Objects.equals(this.chargeableGainsRegime, portfolioWithoutHref.chargeableGainsRegime) &&
+        Objects.equals(this.amortisationHorizon, portfolioWithoutHref.amortisationHorizon) &&
         Objects.equals(this.whtParameters, portfolioWithoutHref.whtParameters) &&
         Objects.equals(this.links, portfolioWithoutHref.links);
   }
@@ -998,7 +1025,7 @@ public class PortfolioWithoutHref {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime, whtParameters, links);
+    return Objects.hash(id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime, amortisationHorizon, whtParameters, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1039,6 +1066,7 @@ public class PortfolioWithoutHref {
     sb.append("    fractionalUnitsTrueUpConfiguration: ").append(toIndentedString(fractionalUnitsTrueUpConfiguration)).append("\n");
     sb.append("    holdingsFungibility: ").append(toIndentedString(holdingsFungibility)).append("\n");
     sb.append("    chargeableGainsRegime: ").append(toIndentedString(chargeableGainsRegime)).append("\n");
+    sb.append("    amortisationHorizon: ").append(toIndentedString(amortisationHorizon)).append("\n");
     sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -1090,6 +1118,7 @@ public class PortfolioWithoutHref {
     openapiFields.add("fractionalUnitsTrueUpConfiguration");
     openapiFields.add("holdingsFungibility");
     openapiFields.add("chargeableGainsRegime");
+    openapiFields.add("amortisationHorizon");
     openapiFields.add("whtParameters");
     openapiFields.add("links");
 
@@ -1207,6 +1236,10 @@ public class PortfolioWithoutHref {
       }
       if ((jsonObj.get("chargeableGainsRegime") != null && !jsonObj.get("chargeableGainsRegime").isJsonNull()) && !jsonObj.get("chargeableGainsRegime").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `chargeableGainsRegime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("chargeableGainsRegime").toString()));
+      }
+      // validate the optional field `amortisationHorizon`
+      if (jsonObj.get("amortisationHorizon") != null && !jsonObj.get("amortisationHorizon").isJsonNull()) {
+        AmortisationHorizon.validateJsonElement(jsonObj.get("amortisationHorizon"));
       }
       // validate the optional field `whtParameters`
       if (jsonObj.get("whtParameters") != null && !jsonObj.get("whtParameters").isJsonNull()) {

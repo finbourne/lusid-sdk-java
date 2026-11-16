@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.OutputTransaction;
+import com.finbourne.lusid.model.SettlementFx;
 import com.finbourne.lusid.model.TransactionSettlementInstruction;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -59,6 +60,10 @@ public class SettlementInstructionWithTransaction {
   @SerializedName(SERIALIZED_NAME_MATCHED_TRANSACTION)
   private OutputTransaction matchedTransaction;
 
+  public static final String SERIALIZED_NAME_SETTLEMENT_FX = "settlementFx";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_FX)
+  private SettlementFx settlementFx;
+
   public SettlementInstructionWithTransaction() {
   }
 
@@ -104,6 +109,27 @@ public class SettlementInstructionWithTransaction {
   }
 
 
+  public SettlementInstructionWithTransaction settlementFx(SettlementFx settlementFx) {
+    
+    this.settlementFx = settlementFx;
+    return this;
+  }
+
+   /**
+   * Get settlementFx
+   * @return settlementFx
+  **/
+  @jakarta.annotation.Nullable
+  public SettlementFx getSettlementFx() {
+    return settlementFx;
+  }
+
+
+  public void setSettlementFx(SettlementFx settlementFx) {
+    this.settlementFx = settlementFx;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -115,12 +141,13 @@ public class SettlementInstructionWithTransaction {
     }
     SettlementInstructionWithTransaction settlementInstructionWithTransaction = (SettlementInstructionWithTransaction) o;
     return Objects.equals(this.settlementInstruction, settlementInstructionWithTransaction.settlementInstruction) &&
-        Objects.equals(this.matchedTransaction, settlementInstructionWithTransaction.matchedTransaction);
+        Objects.equals(this.matchedTransaction, settlementInstructionWithTransaction.matchedTransaction) &&
+        Objects.equals(this.settlementFx, settlementInstructionWithTransaction.settlementFx);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(settlementInstruction, matchedTransaction);
+    return Objects.hash(settlementInstruction, matchedTransaction, settlementFx);
   }
 
   @Override
@@ -129,6 +156,7 @@ public class SettlementInstructionWithTransaction {
     sb.append("class SettlementInstructionWithTransaction {\n");
     sb.append("    settlementInstruction: ").append(toIndentedString(settlementInstruction)).append("\n");
     sb.append("    matchedTransaction: ").append(toIndentedString(matchedTransaction)).append("\n");
+    sb.append("    settlementFx: ").append(toIndentedString(settlementFx)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -153,6 +181,7 @@ public class SettlementInstructionWithTransaction {
     openapiFields = new HashSet<String>();
     openapiFields.add("settlementInstruction");
     openapiFields.add("matchedTransaction");
+    openapiFields.add("settlementFx");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -178,6 +207,10 @@ public class SettlementInstructionWithTransaction {
       // validate the optional field `matchedTransaction`
       if (jsonObj.get("matchedTransaction") != null && !jsonObj.get("matchedTransaction").isJsonNull()) {
         OutputTransaction.validateJsonElement(jsonObj.get("matchedTransaction"));
+      }
+      // validate the optional field `settlementFx`
+      if (jsonObj.get("settlementFx") != null && !jsonObj.get("settlementFx").isJsonNull()) {
+        SettlementFx.validateJsonElement(jsonObj.get("settlementFx"));
       }
   }
 

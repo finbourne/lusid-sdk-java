@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,7 +59,7 @@ public class WeightedAllocationServiceRunRequest {
 
   public static final String SERIALIZED_NAME_PORTFOLIO_WEIGHTS = "portfolioWeights";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_WEIGHTS)
-  private List<PortfolioWeight> portfolioWeights;
+  private List<PortfolioWeight> portfolioWeights = new ArrayList<>();
 
   public WeightedAllocationServiceRunRequest() {
   }
@@ -112,7 +111,7 @@ public class WeightedAllocationServiceRunRequest {
    * The set of Portfolios and their associated weights to use for allocation.
    * @return portfolioWeights
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public List<PortfolioWeight> getPortfolioWeights() {
     return portfolioWeights;
   }
@@ -137,20 +136,9 @@ public class WeightedAllocationServiceRunRequest {
         Objects.equals(this.portfolioWeights, weightedAllocationServiceRunRequest.portfolioWeights);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(placementIds, portfolioWeights);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -187,6 +175,7 @@ public class WeightedAllocationServiceRunRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("placementIds");
+    openapiRequiredFields.add("portfolioWeights");
   }
 
  /**
@@ -219,20 +208,16 @@ public class WeightedAllocationServiceRunRequest {
       for (int i = 0; i < jsonArrayplacementIds.size(); i++) {
         ResourceId.validateJsonElement(jsonArrayplacementIds.get(i));
       };
-      if (jsonObj.get("portfolioWeights") != null && !jsonObj.get("portfolioWeights").isJsonNull()) {
-        JsonArray jsonArrayportfolioWeights = jsonObj.getAsJsonArray("portfolioWeights");
-        if (jsonArrayportfolioWeights != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("portfolioWeights").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `portfolioWeights` to be an array in the JSON string but got `%s`", jsonObj.get("portfolioWeights").toString()));
-          }
-
-          // validate the optional field `portfolioWeights` (array)
-          for (int i = 0; i < jsonArrayportfolioWeights.size(); i++) {
-            PortfolioWeight.validateJsonElement(jsonArrayportfolioWeights.get(i));
-          };
-        }
+      // ensure the json data is an array
+      if (!jsonObj.get("portfolioWeights").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `portfolioWeights` to be an array in the JSON string but got `%s`", jsonObj.get("portfolioWeights").toString()));
       }
+
+      JsonArray jsonArrayportfolioWeights = jsonObj.getAsJsonArray("portfolioWeights");
+      // validate the required field `portfolioWeights` (array)
+      for (int i = 0; i < jsonArrayportfolioWeights.size(); i++) {
+        PortfolioWeight.validateJsonElement(jsonArrayportfolioWeights.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

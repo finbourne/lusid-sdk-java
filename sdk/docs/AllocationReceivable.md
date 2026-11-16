@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **bucket** | **String** | The ageing bucket: Current, 1-30, 31-60, 61-90 or 90+. | [optional] [default to String]
 **portfolio** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **side** | **String** | Whether the record owes on its own line (LP) or as a feeder&#39;s roll-up on the master (ROLLUP). | [optional] [default to String]
+**refundPayable** | **java.math.BigDecimal** | What the fund still owes the investor record back: receipts beyond what it owed, less the refunds paid out. Zero once the event is reversed, when the reversal&#39;s own refund takes over. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.AllocationReceivable;
@@ -28,6 +29,7 @@ Integer DaysPastDue = new Integer("100.00");
 @jakarta.annotation.Nullable String Bucket = "example Bucket";
 ResourceId Portfolio = new ResourceId();
 @jakarta.annotation.Nullable String Side = "example Side";
+java.math.BigDecimal RefundPayable = new java.math.BigDecimal("100.00");
 
 
 AllocationReceivable allocationReceivableInstance = new AllocationReceivable()
@@ -38,7 +40,8 @@ AllocationReceivable allocationReceivableInstance = new AllocationReceivable()
     .DaysPastDue(DaysPastDue)
     .Bucket(Bucket)
     .Portfolio(Portfolio)
-    .Side(Side);
+    .Side(Side)
+    .RefundPayable(RefundPayable);
 ```
 
 

@@ -11,6 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AccruedFeeLine;
+import com.finbourne.lusid.model.IgnoredDistributionTag;
 import com.finbourne.lusid.model.PartnerAllocationPool;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.UnattributedAmount;
@@ -24,6 +26,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -90,6 +93,18 @@ public class PartnerAllocationRunResult {
   public static final String SERIALIZED_NAME_BOOKED_TRANSACTION_IDS = "bookedTransactionIds";
   @SerializedName(SERIALIZED_NAME_BOOKED_TRANSACTION_IDS)
   private List<String> bookedTransactionIds = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<String> warnings;
+
+  public static final String SERIALIZED_NAME_IGNORED_TAGS = "ignoredTags";
+  @SerializedName(SERIALIZED_NAME_IGNORED_TAGS)
+  private List<IgnoredDistributionTag> ignoredTags;
+
+  public static final String SERIALIZED_NAME_ACCRUED_FEES = "accruedFees";
+  @SerializedName(SERIALIZED_NAME_ACCRUED_FEES)
+  private List<AccruedFeeLine> accruedFees;
 
   public PartnerAllocationRunResult() {
   }
@@ -235,7 +250,7 @@ public class PartnerAllocationRunResult {
   }
 
    /**
-   * The pools of fund-level amount that were allocated.
+   * The pools of fund-level amount that were allocated, in the allocation bucket set&#39;s bucket order with any tag pools after.
    * @return pools
   **/
   @jakarta.annotation.Nonnull
@@ -264,7 +279,7 @@ public class PartnerAllocationRunResult {
   }
 
    /**
-   * Fund-level amounts that no pool claimed.
+   * Always empty: every profit and loss line is now pooled or the run is refused. Kept for one release.
    * @return unattributed
   **/
   @jakarta.annotation.Nonnull
@@ -307,6 +322,93 @@ public class PartnerAllocationRunResult {
   }
 
 
+  public PartnerAllocationRunResult warnings(List<String> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public PartnerAllocationRunResult addWarningsItem(String warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * What the run noticed but did not refuse, for example an excluded investor record that is not on the register at the period end.
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<String> warnings) {
+    this.warnings = warnings;
+  }
+
+
+  public PartnerAllocationRunResult ignoredTags(List<IgnoredDistributionTag> ignoredTags) {
+    
+    this.ignoredTags = ignoredTags;
+    return this;
+  }
+
+  public PartnerAllocationRunResult addIgnoredTagsItem(IgnoredDistributionTag ignoredTagsItem) {
+    if (this.ignoredTags == null) {
+      this.ignoredTags = new ArrayList<>();
+    }
+    this.ignoredTags.add(ignoredTagsItem);
+    return this;
+  }
+
+   /**
+   * The distribution character tags the run did not pool by, by account.
+   * @return ignoredTags
+  **/
+  @jakarta.annotation.Nullable
+  public List<IgnoredDistributionTag> getIgnoredTags() {
+    return ignoredTags;
+  }
+
+
+  public void setIgnoredTags(List<IgnoredDistributionTag> ignoredTags) {
+    this.ignoredTags = ignoredTags;
+  }
+
+
+  public PartnerAllocationRunResult accruedFees(List<AccruedFeeLine> accruedFees) {
+    
+    this.accruedFees = accruedFees;
+    return this;
+  }
+
+  public PartnerAllocationRunResult addAccruedFeesItem(AccruedFeeLine accruedFeesItem) {
+    if (this.accruedFees == null) {
+      this.accruedFees = new ArrayList<>();
+    }
+    this.accruedFees.add(accruedFeesItem);
+    return this;
+  }
+
+   /**
+   * The management fees accrued per partner in the period, which the accrual allocates and the run therefore leaves out of the pools.
+   * @return accruedFees
+  **/
+  @jakarta.annotation.Nullable
+  public List<AccruedFeeLine> getAccruedFees() {
+    return accruedFees;
+  }
+
+
+  public void setAccruedFees(List<AccruedFeeLine> accruedFees) {
+    this.accruedFees = accruedFees;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -325,12 +427,26 @@ public class PartnerAllocationRunResult {
         Objects.equals(this.runId, partnerAllocationRunResult.runId) &&
         Objects.equals(this.pools, partnerAllocationRunResult.pools) &&
         Objects.equals(this.unattributed, partnerAllocationRunResult.unattributed) &&
-        Objects.equals(this.bookedTransactionIds, partnerAllocationRunResult.bookedTransactionIds);
+        Objects.equals(this.bookedTransactionIds, partnerAllocationRunResult.bookedTransactionIds) &&
+        Objects.equals(this.warnings, partnerAllocationRunResult.warnings) &&
+        Objects.equals(this.ignoredTags, partnerAllocationRunResult.ignoredTags) &&
+        Objects.equals(this.accruedFees, partnerAllocationRunResult.accruedFees);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fundId, periodStart, periodEnd, navTypeCode, status, runId, pools, unattributed, bookedTransactionIds);
+    return Objects.hash(fundId, periodStart, periodEnd, navTypeCode, status, runId, pools, unattributed, bookedTransactionIds, warnings, ignoredTags, accruedFees);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -346,6 +462,9 @@ public class PartnerAllocationRunResult {
     sb.append("    pools: ").append(toIndentedString(pools)).append("\n");
     sb.append("    unattributed: ").append(toIndentedString(unattributed)).append("\n");
     sb.append("    bookedTransactionIds: ").append(toIndentedString(bookedTransactionIds)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    ignoredTags: ").append(toIndentedString(ignoredTags)).append("\n");
+    sb.append("    accruedFees: ").append(toIndentedString(accruedFees)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -377,6 +496,9 @@ public class PartnerAllocationRunResult {
     openapiFields.add("pools");
     openapiFields.add("unattributed");
     openapiFields.add("bookedTransactionIds");
+    openapiFields.add("warnings");
+    openapiFields.add("ignoredTags");
+    openapiFields.add("accruedFees");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -447,6 +569,38 @@ public class PartnerAllocationRunResult {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("bookedTransactionIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `bookedTransactionIds` to be an array in the JSON string but got `%s`", jsonObj.get("bookedTransactionIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull() && !jsonObj.get("warnings").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+      }
+      if (jsonObj.get("ignoredTags") != null && !jsonObj.get("ignoredTags").isJsonNull()) {
+        JsonArray jsonArrayignoredTags = jsonObj.getAsJsonArray("ignoredTags");
+        if (jsonArrayignoredTags != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("ignoredTags").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `ignoredTags` to be an array in the JSON string but got `%s`", jsonObj.get("ignoredTags").toString()));
+          }
+
+          // validate the optional field `ignoredTags` (array)
+          for (int i = 0; i < jsonArrayignoredTags.size(); i++) {
+            IgnoredDistributionTag.validateJsonElement(jsonArrayignoredTags.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("accruedFees") != null && !jsonObj.get("accruedFees").isJsonNull()) {
+        JsonArray jsonArrayaccruedFees = jsonObj.getAsJsonArray("accruedFees");
+        if (jsonArrayaccruedFees != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("accruedFees").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `accruedFees` to be an array in the JSON string but got `%s`", jsonObj.get("accruedFees").toString()));
+          }
+
+          // validate the optional field `accruedFees` (array)
+          for (int i = 0; i < jsonArrayaccruedFees.size(); i++) {
+            AccruedFeeLine.validateJsonElement(jsonArrayaccruedFees.get(i));
+          };
+        }
       }
   }
 

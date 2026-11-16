@@ -18,6 +18,7 @@ import com.finbourne.lusid.model.AllocationEventComponent;
 import com.finbourne.lusid.model.AllocationEventDealFunding;
 import com.finbourne.lusid.model.AllocationEventEqualisation;
 import com.finbourne.lusid.model.AllocationEventReceipt;
+import com.finbourne.lusid.model.AllocationEventRefundPayment;
 import com.finbourne.lusid.model.AllocationEventReversal;
 import com.finbourne.lusid.model.AllocationEventRoundingResidual;
 import com.finbourne.lusid.model.AllocationEventTransfer;
@@ -196,6 +197,10 @@ public class AllocationEvent {
   public static final String SERIALIZED_NAME_RECEIPTS = "receipts";
   @SerializedName(SERIALIZED_NAME_RECEIPTS)
   private List<AllocationEventReceipt> receipts;
+
+  public static final String SERIALIZED_NAME_REFUND_PAYMENTS = "refundPayments";
+  @SerializedName(SERIALIZED_NAME_REFUND_PAYMENTS)
+  private List<AllocationEventRefundPayment> refundPayments;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -948,6 +953,35 @@ public class AllocationEvent {
   }
 
 
+  public AllocationEvent refundPayments(List<AllocationEventRefundPayment> refundPayments) {
+    
+    this.refundPayments = refundPayments;
+    return this;
+  }
+
+  public AllocationEvent addRefundPaymentsItem(AllocationEventRefundPayment refundPaymentsItem) {
+    if (this.refundPayments == null) {
+      this.refundPayments = new ArrayList<>();
+    }
+    this.refundPayments.add(refundPaymentsItem);
+    return this;
+  }
+
+   /**
+   * The refunds paid out against the event to investors whose receipts exceeded what they owed, in the order they were recorded.
+   * @return refundPayments
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationEventRefundPayment> getRefundPayments() {
+    return refundPayments;
+  }
+
+
+  public void setRefundPayments(List<AllocationEventRefundPayment> refundPayments) {
+    this.refundPayments = refundPayments;
+  }
+
+
   public AllocationEvent links(List<Link> links) {
     
     this.links = links;
@@ -1019,6 +1053,7 @@ public class AllocationEvent {
         Objects.equals(this.dueDate, allocationEvent.dueDate) &&
         Objects.equals(this.settlementDate, allocationEvent.settlementDate) &&
         Objects.equals(this.receipts, allocationEvent.receipts) &&
+        Objects.equals(this.refundPayments, allocationEvent.refundPayments) &&
         Objects.equals(this.links, allocationEvent.links);
   }
 
@@ -1028,7 +1063,7 @@ public class AllocationEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, description, allocationMapId, eventType, amount, currency, eventDate, status, basisSource, allocations, bookingReference, bookedAt, reallocationReason, components, residuals, basisDiagnostics, writtenIds, bookingErrors, warnings, transfers, equalisation, useOfProceeds, dealFunding, version, parentAllocationEventId, replaces, reversal, noticeDate, dueDate, settlementDate, receipts, links);
+    return Objects.hash(href, id, description, allocationMapId, eventType, amount, currency, eventDate, status, basisSource, allocations, bookingReference, bookedAt, reallocationReason, components, residuals, basisDiagnostics, writtenIds, bookingErrors, warnings, transfers, equalisation, useOfProceeds, dealFunding, version, parentAllocationEventId, replaces, reversal, noticeDate, dueDate, settlementDate, receipts, refundPayments, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1074,6 +1109,7 @@ public class AllocationEvent {
     sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
     sb.append("    settlementDate: ").append(toIndentedString(settlementDate)).append("\n");
     sb.append("    receipts: ").append(toIndentedString(receipts)).append("\n");
+    sb.append("    refundPayments: ").append(toIndentedString(refundPayments)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1129,6 +1165,7 @@ public class AllocationEvent {
     openapiFields.add("dueDate");
     openapiFields.add("settlementDate");
     openapiFields.add("receipts");
+    openapiFields.add("refundPayments");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1328,6 +1365,20 @@ public class AllocationEvent {
           // validate the optional field `receipts` (array)
           for (int i = 0; i < jsonArrayreceipts.size(); i++) {
             AllocationEventReceipt.validateJsonElement(jsonArrayreceipts.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("refundPayments") != null && !jsonObj.get("refundPayments").isJsonNull()) {
+        JsonArray jsonArrayrefundPayments = jsonObj.getAsJsonArray("refundPayments");
+        if (jsonArrayrefundPayments != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("refundPayments").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `refundPayments` to be an array in the JSON string but got `%s`", jsonObj.get("refundPayments").toString()));
+          }
+
+          // validate the optional field `refundPayments` (array)
+          for (int i = 0; i < jsonArrayrefundPayments.size(); i++) {
+            AllocationEventRefundPayment.validateJsonElement(jsonArrayrefundPayments.get(i));
           };
         }
       }

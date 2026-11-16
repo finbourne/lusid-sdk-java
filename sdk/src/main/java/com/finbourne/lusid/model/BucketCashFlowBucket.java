@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.BucketAmounts;
 import com.finbourne.lusid.model.CashFlowDetail;
+import com.finbourne.lusid.model.CurrencyAndAmount;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.ResourceId;
@@ -99,6 +100,14 @@ public class BucketCashFlowBucket {
   public static final String SERIALIZED_NAME_CLOSE = "close";
   @SerializedName(SERIALIZED_NAME_CLOSE)
   private BucketAmounts close;
+
+  public static final String SERIALIZED_NAME_STARTING_BALANCE_RATE = "startingBalanceRate";
+  @SerializedName(SERIALIZED_NAME_STARTING_BALANCE_RATE)
+  private java.math.BigDecimal startingBalanceRate;
+
+  public static final String SERIALIZED_NAME_FX_TRANSLATION = "fxTranslation";
+  @SerializedName(SERIALIZED_NAME_FX_TRANSLATION)
+  private CurrencyAndAmount fxTranslation;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -333,6 +342,48 @@ public class BucketCashFlowBucket {
   }
 
 
+  public BucketCashFlowBucket startingBalanceRate(java.math.BigDecimal startingBalanceRate) {
+    
+    this.startingBalanceRate = startingBalanceRate;
+    return this;
+  }
+
+   /**
+   * The spot rate the starting balance (the holdings&#39; cash at the window start) was converted at to open the report currency balances, under a rate type other than FxSpot. Absent under FxSpot, when the starting balance is zero, or when no report currency was requested.
+   * @return startingBalanceRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getStartingBalanceRate() {
+    return startingBalanceRate;
+  }
+
+
+  public void setStartingBalanceRate(java.math.BigDecimal startingBalanceRate) {
+    this.startingBalanceRate = startingBalanceRate;
+  }
+
+
+  public BucketCashFlowBucket fxTranslation(CurrencyAndAmount fxTranslation) {
+    
+    this.fxTranslation = fxTranslation;
+    return this;
+  }
+
+   /**
+   * Get fxTranslation
+   * @return fxTranslation
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getFxTranslation() {
+    return fxTranslation;
+  }
+
+
+  public void setFxTranslation(CurrencyAndAmount fxTranslation) {
+    this.fxTranslation = fxTranslation;
+  }
+
+
   public BucketCashFlowBucket links(List<Link> links) {
     
     this.links = links;
@@ -382,6 +433,8 @@ public class BucketCashFlowBucket {
         Objects.equals(this.activityTotal, bucketCashFlowBucket.activityTotal) &&
         Objects.equals(this.activity, bucketCashFlowBucket.activity) &&
         Objects.equals(this.close, bucketCashFlowBucket.close) &&
+        (this.startingBalanceRate.compareTo(bucketCashFlowBucket.getStartingBalanceRate()) == 0) &&
+        Objects.equals(this.fxTranslation, bucketCashFlowBucket.fxTranslation) &&
         Objects.equals(this.links, bucketCashFlowBucket.links);
   }
 
@@ -391,7 +444,7 @@ public class BucketCashFlowBucket {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bucketId, bucketStart, bucketEnd, portfolioId, currency, subHoldingKeys, open, activityTotal, activity, close, links);
+    return Objects.hash(bucketId, bucketStart, bucketEnd, portfolioId, currency, subHoldingKeys, open, activityTotal, activity, close, startingBalanceRate, fxTranslation, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -415,6 +468,8 @@ public class BucketCashFlowBucket {
     sb.append("    activityTotal: ").append(toIndentedString(activityTotal)).append("\n");
     sb.append("    activity: ").append(toIndentedString(activity)).append("\n");
     sb.append("    close: ").append(toIndentedString(close)).append("\n");
+    sb.append("    startingBalanceRate: ").append(toIndentedString(startingBalanceRate)).append("\n");
+    sb.append("    fxTranslation: ").append(toIndentedString(fxTranslation)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -448,6 +503,8 @@ public class BucketCashFlowBucket {
     openapiFields.add("activityTotal");
     openapiFields.add("activity");
     openapiFields.add("close");
+    openapiFields.add("startingBalanceRate");
+    openapiFields.add("fxTranslation");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -502,6 +559,10 @@ public class BucketCashFlowBucket {
       // validate the optional field `close`
       if (jsonObj.get("close") != null && !jsonObj.get("close").isJsonNull()) {
         BucketAmounts.validateJsonElement(jsonObj.get("close"));
+      }
+      // validate the optional field `fxTranslation`
+      if (jsonObj.get("fxTranslation") != null && !jsonObj.get("fxTranslation").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("fxTranslation"));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

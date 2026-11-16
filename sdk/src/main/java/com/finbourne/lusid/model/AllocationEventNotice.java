@@ -84,6 +84,10 @@ public class AllocationEventNotice {
   @SerializedName(SERIALIZED_NAME_NET_AMOUNT_DUE)
   private java.math.BigDecimal netAmountDue;
 
+  public static final String SERIALIZED_NAME_TAX_WITHHELD = "taxWithheld";
+  @SerializedName(SERIALIZED_NAME_TAX_WITHHELD)
+  private java.math.BigDecimal taxWithheld;
+
   public static final String SERIALIZED_NAME_UNFUNDED_RECONCILIATION = "unfundedReconciliation";
   @SerializedName(SERIALIZED_NAME_UNFUNDED_RECONCILIATION)
   private AllocationEventNoticeUnfundedReconciliation unfundedReconciliation;
@@ -210,7 +214,7 @@ public class AllocationEventNotice {
   }
 
    /**
-   * The notice lines, one per component of the partner&#39;s allocation.
+   * The notice lines, one per component of the partner&#39;s allocation. Tax withheld from a distribution on the partner&#39;s behalf is its own line, under the Distribution: Withholding Tax transaction type, as part of what is distributed.
    * @return lines
   **/
   @jakarta.annotation.Nonnull
@@ -231,7 +235,7 @@ public class AllocationEventNotice {
   }
 
    /**
-   * The net amount due, positive when the partner pays the fund and negative when the fund pays the partner.
+   * The net amount due, positive when the partner pays the fund and negative when the fund pays the partner. On a distribution it is what the partner is paid: the lines less any tax withheld on the partner&#39;s behalf.
    * @return netAmountDue
   **/
   @jakarta.annotation.Nonnull
@@ -242,6 +246,27 @@ public class AllocationEventNotice {
 
   public void setNetAmountDue(java.math.BigDecimal netAmountDue) {
     this.netAmountDue = netAmountDue;
+  }
+
+
+  public AllocationEventNotice taxWithheld(java.math.BigDecimal taxWithheld) {
+    
+    this.taxWithheld = taxWithheld;
+    return this;
+  }
+
+   /**
+   * Tax withheld from the distribution on the partner&#39;s behalf: distributed to the partner but paid to the tax authority rather than to them, so it is not in the net amount due. Zero when nothing was withheld.
+   * @return taxWithheld
+  **/
+  @jakarta.annotation.Nonnull
+  public java.math.BigDecimal getTaxWithheld() {
+    return taxWithheld;
+  }
+
+
+  public void setTaxWithheld(java.math.BigDecimal taxWithheld) {
+    this.taxWithheld = taxWithheld;
   }
 
 
@@ -387,6 +412,7 @@ public class AllocationEventNotice {
         Objects.equals(this.currency, allocationEventNotice.currency) &&
         Objects.equals(this.lines, allocationEventNotice.lines) &&
         (this.netAmountDue.compareTo(allocationEventNotice.getNetAmountDue()) == 0) &&
+        (this.taxWithheld.compareTo(allocationEventNotice.getTaxWithheld()) == 0) &&
         Objects.equals(this.unfundedReconciliation, allocationEventNotice.unfundedReconciliation) &&
         Objects.equals(this.cumulative, allocationEventNotice.cumulative) &&
         Objects.equals(this.gpColumn, allocationEventNotice.gpColumn) &&
@@ -401,7 +427,7 @@ public class AllocationEventNotice {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fund, event, partner, currency, lines, netAmountDue, unfundedReconciliation, cumulative, gpColumn, wire, paymentHold, watermark);
+    return Objects.hash(fund, event, partner, currency, lines, netAmountDue, taxWithheld, unfundedReconciliation, cumulative, gpColumn, wire, paymentHold, watermark);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -421,6 +447,7 @@ public class AllocationEventNotice {
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
     sb.append("    netAmountDue: ").append(toIndentedString(netAmountDue)).append("\n");
+    sb.append("    taxWithheld: ").append(toIndentedString(taxWithheld)).append("\n");
     sb.append("    unfundedReconciliation: ").append(toIndentedString(unfundedReconciliation)).append("\n");
     sb.append("    cumulative: ").append(toIndentedString(cumulative)).append("\n");
     sb.append("    gpColumn: ").append(toIndentedString(gpColumn)).append("\n");
@@ -455,6 +482,7 @@ public class AllocationEventNotice {
     openapiFields.add("currency");
     openapiFields.add("lines");
     openapiFields.add("netAmountDue");
+    openapiFields.add("taxWithheld");
     openapiFields.add("unfundedReconciliation");
     openapiFields.add("cumulative");
     openapiFields.add("gpColumn");
@@ -470,6 +498,7 @@ public class AllocationEventNotice {
     openapiRequiredFields.add("currency");
     openapiRequiredFields.add("lines");
     openapiRequiredFields.add("netAmountDue");
+    openapiRequiredFields.add("taxWithheld");
     openapiRequiredFields.add("unfundedReconciliation");
     openapiRequiredFields.add("cumulative");
   }

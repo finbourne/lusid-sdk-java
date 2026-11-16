@@ -143,6 +143,10 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_ACCRUED_INTEREST_PER_UNIT)
   private java.math.BigDecimal accruedInterestPerUnit;
 
+  public static final String SERIALIZED_NAME_PRORATION_RATE = "prorationRate";
+  @SerializedName(SERIALIZED_NAME_PRORATION_RATE)
+  private java.math.BigDecimal prorationRate = java.math.BigDecimal.valueOf(1d);
+
   public ExchangeOfferEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -631,6 +635,27 @@ public class ExchangeOfferEvent extends InstrumentEvent {
   }
 
 
+  public ExchangeOfferEvent prorationRate(java.math.BigDecimal prorationRate) {
+    
+    this.prorationRate = prorationRate;
+    return this;
+  }
+
+   /**
+   * The fraction of the instructed units that the offeror accepts. Defaults to 1, the whole instruction.  Must be greater than 0 and less than or equal to 1. The event removes the instructed units multiplied by  this rate from the old instrument; the new units, the cash and the cost follow the accepted units. The  units not accepted stay on the old instrument at their own cost.
+   * @return prorationRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getProrationRate() {
+    return prorationRate;
+  }
+
+
+  public void setProrationRate(java.math.BigDecimal prorationRate) {
+    this.prorationRate = prorationRate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -661,6 +686,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
         Objects.equals(this.fractionalUnitsDecimalPlaces, exchangeOfferEvent.fractionalUnitsDecimalPlaces) &&
         Objects.equals(this.instructionReference, exchangeOfferEvent.instructionReference) &&
         (this.accruedInterestPerUnit.compareTo(exchangeOfferEvent.getAccruedInterestPerUnit()) == 0) &&
+        (this.prorationRate.compareTo(exchangeOfferEvent.getProrationRate()) == 0) &&
         super.equals(o);
   }
 
@@ -670,7 +696,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveDate, settlementDate, eventSource, newInstrument, cashOfferElections, securityOfferElections, mixedLotConstituentsElections, lapseElections, cashAndSecurityOfferElections, consentAndExchangeElections, abstainElections, unknownProceedsElections, minPieceSize, minIncrement, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, instructionReference, accruedInterestPerUnit, super.hashCode());
+    return Objects.hash(effectiveDate, settlementDate, eventSource, newInstrument, cashOfferElections, securityOfferElections, mixedLotConstituentsElections, lapseElections, cashAndSecurityOfferElections, consentAndExchangeElections, abstainElections, unknownProceedsElections, minPieceSize, minIncrement, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, instructionReference, accruedInterestPerUnit, prorationRate, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -705,6 +731,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
     sb.append("    fractionalUnitsDecimalPlaces: ").append(toIndentedString(fractionalUnitsDecimalPlaces)).append("\n");
     sb.append("    instructionReference: ").append(toIndentedString(instructionReference)).append("\n");
     sb.append("    accruedInterestPerUnit: ").append(toIndentedString(accruedInterestPerUnit)).append("\n");
+    sb.append("    prorationRate: ").append(toIndentedString(prorationRate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -748,6 +775,7 @@ public class ExchangeOfferEvent extends InstrumentEvent {
     openapiFields.add("fractionalUnitsDecimalPlaces");
     openapiFields.add("instructionReference");
     openapiFields.add("accruedInterestPerUnit");
+    openapiFields.add("prorationRate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

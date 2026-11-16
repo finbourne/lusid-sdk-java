@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.ResponseMetaData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,7 +21,9 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -88,6 +91,10 @@ public class SideDefinition {
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Map<String, List<ResponseMetaData>> metadata;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -285,6 +292,35 @@ public class SideDefinition {
   }
 
 
+  public SideDefinition metadata(Map<String, List<ResponseMetaData>> metadata) {
+    
+    this.metadata = metadata;
+    return this;
+  }
+
+  public SideDefinition putMetadataItem(String key, List<ResponseMetaData> metadataItem) {
+    if (this.metadata == null) {
+      this.metadata = new HashMap<>();
+    }
+    this.metadata.put(key, metadataItem);
+    return this;
+  }
+
+   /**
+   * Contains warnings related to the side definition, such as a stored copy of a platform side that differs from the platform&#39;s current definition.
+   * @return metadata
+  **/
+  @jakarta.annotation.Nullable
+  public Map<String, List<ResponseMetaData>> getMetadata() {
+    return metadata;
+  }
+
+
+  public void setMetadata(Map<String, List<ResponseMetaData>> metadata) {
+    this.metadata = metadata;
+  }
+
+
   public SideDefinition links(List<Link> links) {
     
     this.links = links;
@@ -333,6 +369,7 @@ public class SideDefinition {
         Objects.equals(this.notionalAmount, sideDefinition.notionalAmount) &&
         Objects.equals(this.currentFace, sideDefinition.currentFace) &&
         Objects.equals(this.scope, sideDefinition.scope) &&
+        Objects.equals(this.metadata, sideDefinition.metadata) &&
         Objects.equals(this.links, sideDefinition.links);
   }
 
@@ -342,7 +379,7 @@ public class SideDefinition {
 
   @Override
   public int hashCode() {
-    return Objects.hash(side, security, currency, rate, units, amount, notionalAmount, currentFace, scope, links);
+    return Objects.hash(side, security, currency, rate, units, amount, notionalAmount, currentFace, scope, metadata, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -365,6 +402,7 @@ public class SideDefinition {
     sb.append("    notionalAmount: ").append(toIndentedString(notionalAmount)).append("\n");
     sb.append("    currentFace: ").append(toIndentedString(currentFace)).append("\n");
     sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -397,6 +435,7 @@ public class SideDefinition {
     openapiFields.add("notionalAmount");
     openapiFields.add("currentFace");
     openapiFields.add("scope");
+    openapiFields.add("metadata");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

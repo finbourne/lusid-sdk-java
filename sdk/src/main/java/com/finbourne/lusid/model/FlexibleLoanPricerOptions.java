@@ -59,6 +59,10 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_USE_PRICE_QUOTE_FOR_CLEAN_P_V)
   private Boolean usePriceQuoteForCleanPV;
 
+  public static final String SERIALIZED_NAME_EXCLUDE_INCOME_FROM_P_V = "excludeIncomeFromPV";
+  @SerializedName(SERIALIZED_NAME_EXCLUDE_INCOME_FROM_P_V)
+  private Boolean excludeIncomeFromPV;
+
   public FlexibleLoanPricerOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -105,6 +109,27 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
   }
 
 
+  public FlexibleLoanPricerOptions excludeIncomeFromPV(Boolean excludeIncomeFromPV) {
+    
+    this.excludeIncomeFromPV = excludeIncomeFromPV;
+    return this;
+  }
+
+   /**
+   * Read by a TotalReturnSwap whose asset leg has a ResetSchedule and whose underlying pays interest or coupons. If set to true the swap&#39;s PV leaves out the underlying&#39;s interest and coupon payments and adds the interest accrued on them to the valuation date instead, so CleanPV is the price return and PV is CleanPV + Accrued.
+   * @return excludeIncomeFromPV
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getExcludeIncomeFromPV() {
+    return excludeIncomeFromPV;
+  }
+
+
+  public void setExcludeIncomeFromPV(Boolean excludeIncomeFromPV) {
+    this.excludeIncomeFromPV = excludeIncomeFromPV;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -117,6 +142,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
     FlexibleLoanPricerOptions flexibleLoanPricerOptions = (FlexibleLoanPricerOptions) o;
     return Objects.equals(this.setCleanPVToZero, flexibleLoanPricerOptions.setCleanPVToZero) &&
         Objects.equals(this.usePriceQuoteForCleanPV, flexibleLoanPricerOptions.usePriceQuoteForCleanPV) &&
+        Objects.equals(this.excludeIncomeFromPV, flexibleLoanPricerOptions.excludeIncomeFromPV) &&
         super.equals(o);
   }
 
@@ -126,7 +152,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(setCleanPVToZero, usePriceQuoteForCleanPV, super.hashCode());
+    return Objects.hash(setCleanPVToZero, usePriceQuoteForCleanPV, excludeIncomeFromPV, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -143,6 +169,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    setCleanPVToZero: ").append(toIndentedString(setCleanPVToZero)).append("\n");
     sb.append("    usePriceQuoteForCleanPV: ").append(toIndentedString(usePriceQuoteForCleanPV)).append("\n");
+    sb.append("    excludeIncomeFromPV: ").append(toIndentedString(excludeIncomeFromPV)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -168,6 +195,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
     openapiFields.add("modelOptionsType");
     openapiFields.add("setCleanPVToZero");
     openapiFields.add("usePriceQuoteForCleanPV");
+    openapiFields.add("excludeIncomeFromPV");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

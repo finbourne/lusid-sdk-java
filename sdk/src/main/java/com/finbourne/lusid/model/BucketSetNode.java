@@ -170,7 +170,7 @@ public class BucketSetNode {
   }
 
    /**
-   * The net asset value at this node, in the fund currency.
+   * The net asset value at this node, in the fund currency. It is the sum of the node&#39;s buckets&#39; cumulative values, leaving out the reserved _unmatched_* buckets: those hold journal entry lines no bucket classified, which are reported for diagnosis but are not part of the valuation. On an estimate with unmatched lines the NAV is therefore less than the sum of every bucket shown. A finalised valuation point has no unmatched amounts.
    * @return nav
   **/
   @jakarta.annotation.Nullable

@@ -55,6 +55,7 @@ Class | Method | HTTP request | Description
 *AllocationEventsApi* | [**getAllocationEventReceivables**](docs/AllocationEventsApi.md#getallocationeventreceivables) | **GET** /api/allocationevents/{scope}/{code}/receivables | [EARLY ACCESS] GetAllocationEventReceivables: Get the receivables of an Allocation Event.
 *AllocationEventsApi* | [**listAllocationEvents**](docs/AllocationEventsApi.md#listallocationevents) | **GET** /api/allocationevents | [EARLY ACCESS] ListAllocationEvents: List Allocation Events.
 *AllocationEventsApi* | [**listAllocationPaymentHolds**](docs/AllocationEventsApi.md#listallocationpaymentholds) | **GET** /api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/holds | [EARLY ACCESS] ListAllocationPaymentHolds: [EARLY ACCESS] ListAllocationPaymentHolds: List the holds placed on a partner's payment.
+*AllocationEventsApi* | [**payAllocationEventRefund**](docs/AllocationEventsApi.md#payallocationeventrefund) | **POST** /api/allocationevents/{scope}/{code}/refunds | [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event.
 *AllocationEventsApi* | [**planAllocationEventBooking**](docs/AllocationEventsApi.md#planallocationeventbooking) | **POST** /api/allocationevents/{scope}/{code}/plan | [EARLY ACCESS] PlanAllocationEventBooking: Plan the booking of an Allocation Event.
 *AllocationEventsApi* | [**putAllocationPaymentHold**](docs/AllocationEventsApi.md#putallocationpaymenthold) | **PUT** /api/allocationevents/{scope}/{code}/allocations/{investorRecordId}/hold | [EARLY ACCESS] PutAllocationPaymentHold: [EARLY ACCESS] PutAllocationPaymentHold: Place, move or release a hold on a partner's payment.
 *AllocationEventsApi* | [**reallocateAllocationEvent**](docs/AllocationEventsApi.md#reallocateallocationevent) | **POST** /api/allocationevents/{scope}/{code}/reallocate | [EARLY ACCESS] ReallocateAllocationEvent: Reallocate an Allocation Event.
@@ -291,6 +292,11 @@ Class | Method | HTTP request | Description
 *DataTypesApi* | [**updateDataType**](docs/DataTypesApi.md#updatedatatype) | **PUT** /api/datatypes/{scope}/{code} | [EARLY ACCESS] UpdateDataType: Update data type definition
 *DataTypesApi* | [**updateReferenceData**](docs/DataTypesApi.md#updatereferencedata) | **PUT** /api/datatypes/{scope}/{code}/referencedata | [EARLY ACCESS] UpdateReferenceData: Update all reference data on a data type, includes the reference values, the field definitions, field values
 *DataTypesApi* | [**updateReferenceValues**](docs/DataTypesApi.md#updatereferencevalues) | **PUT** /api/datatypes/{scope}/{code}/referencedatavalues | [EARLY ACCESS] UpdateReferenceValues: Update reference data on a data type
+*DeemedDisposalDefinitionsApi* | [**createDeemedDisposalDefinition**](docs/DeemedDisposalDefinitionsApi.md#createdeemeddisposaldefinition) | **POST** /api/deemeddisposaldefinitions/{scope} | [EXPERIMENTAL] CreateDeemedDisposalDefinition: Create a Deemed Disposal Definition.
+*DeemedDisposalDefinitionsApi* | [**deleteDeemedDisposalDefinition**](docs/DeemedDisposalDefinitionsApi.md#deletedeemeddisposaldefinition) | **DELETE** /api/deemeddisposaldefinitions/{scope}/{code} | [EXPERIMENTAL] DeleteDeemedDisposalDefinition: Delete a Deemed Disposal Definition.
+*DeemedDisposalDefinitionsApi* | [**getDeemedDisposalDefinition**](docs/DeemedDisposalDefinitionsApi.md#getdeemeddisposaldefinition) | **GET** /api/deemeddisposaldefinitions/{scope}/{code} | [EXPERIMENTAL] GetDeemedDisposalDefinition: Get a Deemed Disposal Definition.
+*DeemedDisposalDefinitionsApi* | [**listDeemedDisposalDefinitions**](docs/DeemedDisposalDefinitionsApi.md#listdeemeddisposaldefinitions) | **GET** /api/deemeddisposaldefinitions | [EXPERIMENTAL] ListDeemedDisposalDefinitions: List Deemed Disposal Definitions.
+*DeemedDisposalDefinitionsApi* | [**updateDeemedDisposalDefinition**](docs/DeemedDisposalDefinitionsApi.md#updatedeemeddisposaldefinition) | **PUT** /api/deemeddisposaldefinitions/{scope}/{code} | [EXPERIMENTAL] UpdateDeemedDisposalDefinition: Update a Deemed Disposal Definition.
 *DerivedTransactionPortfoliosApi* | [**createDerivedPortfolio**](docs/DerivedTransactionPortfoliosApi.md#createderivedportfolio) | **POST** /api/derivedtransactionportfolios/{scope} | CreateDerivedPortfolio: Create derived portfolio
 *DerivedTransactionPortfoliosApi* | [**deleteDerivedPortfolioDetails**](docs/DerivedTransactionPortfoliosApi.md#deletederivedportfoliodetails) | **DELETE** /api/derivedtransactionportfolios/{scope}/{code}/details | [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
 *EligibleCollateralSchedulesApi* | [**createEligibleCollateralSchedule**](docs/EligibleCollateralSchedulesApi.md#createeligiblecollateralschedule) | **POST** /api/eligiblecollateralschedules/{scope} | [EXPERIMENTAL] CreateEligibleCollateralSchedule: Create an Eligible Collateral Schedule.
@@ -349,6 +355,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**accrueCarry**](docs/FundsApi.md#accruecarry) | **POST** /api/funds/{scope}/{code}/carry/$accrue | [EARLY ACCESS] AccrueCarry: [EXPERIMENTAL] AccrueCarry: Accrue carried interest to the Fund's partners.
 *FundsApi* | [**addAllocationGroups**](docs/FundsApi.md#addallocationgroups) | **POST** /api/funds/{scope}/{code}/allocationgroups | [EARLY ACCESS] AddAllocationGroups: Add Allocation Groups to a Fund.
 *FundsApi* | [**addSeries**](docs/FundsApi.md#addseries) | **POST** /api/funds/{scope}/{code}/series | [EARLY ACCESS] AddSeries: Add Series to a Fund.
+*FundsApi* | [**advanceTaxReturn**](docs/FundsApi.md#advancetaxreturn) | **POST** /api/funds/{scope}/{code}/tax/return/advance | [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step.
 *FundsApi* | [**approveTaxProvision**](docs/FundsApi.md#approvetaxprovision) | **POST** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}/tax/provision/approve | [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point.
 *FundsApi* | [**calculateManagementFees**](docs/FundsApi.md#calculatemanagementfees) | **POST** /api/funds/{scope}/{code}/fees/$calculate | [EARLY ACCESS] CalculateManagementFees: [EXPERIMENTAL] CalculateManagementFees: Calculate the management fee per partner for a period.
 *FundsApi* | [**createFacility**](docs/FundsApi.md#createfacility) | **POST** /api/funds/{scope}/{code}/facilities | [EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility.
@@ -384,7 +391,14 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**getPartners**](docs/FundsApi.md#getpartners) | **GET** /api/funds/{scope}/{code}/partners | [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund.
 *FundsApi* | [**getPartnershipConfigPack**](docs/FundsApi.md#getpartnershipconfigpack) | **GET** /api/funds/{scope}/{code}/partnershipaccounting/configpack | [EARLY ACCESS] GetPartnershipConfigPack: [EXPERIMENTAL] GetPartnershipConfigPack: Get the partnership configuration pack of a Fund.
 *FundsApi* | [**getSeries**](docs/FundsApi.md#getseries) | **GET** /api/funds/{scope}/{code}/series | [EARLY ACCESS] GetSeries: [EARLY ACCESS] GetSeries: List the Series of a Fund.
+*FundsApi* | [**getTaxDeemedDisposal**](docs/FundsApi.md#gettaxdeemeddisposal) | **GET** /api/funds/{scope}/{code}/tax/deemed-disposals/{holdingId}/{date} | [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal.
+*FundsApi* | [**getTaxDeemedDisposals**](docs/FundsApi.md#gettaxdeemeddisposals) | **GET** /api/funds/{scope}/{code}/tax/deemed-disposals | [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company.
+*FundsApi* | [**getTaxFundReconciliation**](docs/FundsApi.md#gettaxfundreconciliation) | **GET** /api/funds/{scope}/{code}/tax/fund-reconciliation | [EARLY ACCESS] GetTaxFundReconciliation: [EARLY ACCESS] GetTaxFundReconciliation: Reconcile a company's tax figures to its member funds.
+*FundsApi* | [**getTaxFundReconciliationHolding**](docs/FundsApi.md#gettaxfundreconciliationholding) | **GET** /api/funds/{scope}/{code}/tax/fund-reconciliation/holdings/{holdingId} | [EARLY ACCESS] GetTaxFundReconciliationHolding: [EARLY ACCESS] GetTaxFundReconciliationHolding: Drill into one holding of the company-to-funds reconciliation.
+*FundsApi* | [**getTaxLedgerReconciliation**](docs/FundsApi.md#gettaxledgerreconciliation) | **GET** /api/funds/{scope}/{code}/tax/ledger-reconciliation | [EARLY ACCESS] GetTaxLedgerReconciliation: [EARLY ACCESS] GetTaxLedgerReconciliation: Reconcile the tax figures of a Fund or company to its ledger.
+*FundsApi* | [**getTaxLedgerReconciliationHolding**](docs/FundsApi.md#gettaxledgerreconciliationholding) | **GET** /api/funds/{scope}/{code}/tax/ledger-reconciliation/holdings/{holdingId} | [EARLY ACCESS] GetTaxLedgerReconciliationHolding: [EARLY ACCESS] GetTaxLedgerReconciliationHolding: Drill into one holding of the tax-to-ledger reconciliation.
 *FundsApi* | [**getTaxProvision**](docs/FundsApi.md#gettaxprovision) | **GET** /api/funds/{scope}/{code}/tax/provision | [EARLY ACCESS] GetTaxProvision: [EARLY ACCESS] GetTaxProvision: Get the deferred-tax provision of a Valuation Point.
+*FundsApi* | [**getTaxReturn**](docs/FundsApi.md#gettaxreturn) | **GET** /api/funds/{scope}/{code}/tax/return | [EARLY ACCESS] GetTaxReturn: [EARLY ACCESS] GetTaxReturn: Get the year-end tax return of a Fund or company.
 *FundsApi* | [**getTaxSyncStatus**](docs/FundsApi.md#gettaxsyncstatus) | **GET** /api/funds/{scope}/{code}/tax/sync | [EARLY ACCESS] GetTaxSyncStatus: [EARLY ACCESS] GetTaxSyncStatus: Get the tax sync position of each portfolio in a Fund.
 *FundsApi* | [**getValuationForFund**](docs/FundsApi.md#getvaluationforfund) | **POST** /api/funds/{scope}/{code}/$valuation | [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund.
 *FundsApi* | [**getValuationPointData**](docs/FundsApi.md#getvaluationpointdata) | **POST** /api/funds/{scope}/{code}/valuationpoints/$query | [EARLY ACCESS] GetValuationPointData: Get Valuation Point Data for a Fund.
@@ -416,6 +430,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**queryCashStatementLocalCurrency**](docs/FundsApi.md#querycashstatementlocalcurrency) | **POST** /api/funds/{scope}/{code}/valuationpoints/cashstatementlocalcurrency/$query | [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
 *FundsApi* | [**revertValuationPointToEstimate**](docs/FundsApi.md#revertvaluationpointtoestimate) | **POST** /api/funds/{scope}/{code}/valuationpoints/$reverttoestimate | [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
 *FundsApi* | [**runPartnerAllocations**](docs/FundsApi.md#runpartnerallocations) | **POST** /api/funds/{scope}/{code}/partnerallocations/$run | [EARLY ACCESS] RunPartnerAllocations: [EXPERIMENTAL] RunPartnerAllocations: Allocate a period's income to the Fund's partners.
+*FundsApi* | [**sendBackTaxReturn**](docs/FundsApi.md#sendbacktaxreturn) | **POST** /api/funds/{scope}/{code}/tax/return/send-back | [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step.
 *FundsApi* | [**setShareClassInstruments**](docs/FundsApi.md#setshareclassinstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
 *FundsApi* | [**updateValuationPoint**](docs/FundsApi.md#updatevaluationpoint) | **PUT** /api/funds/{scope}/{code}/valuationpoints | [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point.
 *FundsApi* | [**upsertBookmark**](docs/FundsApi.md#upsertbookmark) | **POST** /api/funds/{scope}/{code}/bookmarks | [EARLY ACCESS] UpsertBookmark: Upsert a bookmark.
@@ -424,6 +439,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**upsertFeeProperties**](docs/FundsApi.md#upsertfeeproperties) | **POST** /api/funds/{scope}/{code}/fees/{feeCode}/properties/$upsert | [EARLY ACCESS] UpsertFeeProperties: Upsert Fee properties.
 *FundsApi* | [**upsertFundProperties**](docs/FundsApi.md#upsertfundproperties) | **POST** /api/funds/{scope}/{code}/properties/$upsert | [EARLY ACCESS] UpsertFundProperties: Upsert Fund properties.
 *FundsApi* | [**upsertNavActivityAdjustments**](docs/FundsApi.md#upsertnavactivityadjustments) | **POST** /api/funds/{scope}/{code}/navAdjustment | [EARLY ACCESS] UpsertNavActivityAdjustments: Upsert NAV adjustment activities to a valuation point
+*FundsApi* | [**upsertShareClassProperties**](docs/FundsApi.md#upsertshareclassproperties) | **POST** /api/funds/{scope}/{code}/shareclasses/{shareClassShortCode}/properties/$upsert | [EARLY ACCESS] UpsertShareClassProperties: Upsert Share Class properties.
 *FundsApi* | [**upsertTaxCostRecords**](docs/FundsApi.md#upserttaxcostrecords) | **POST** /api/funds/{scope}/{code}/taxcostrecords | [EXPERIMENTAL] UpsertTaxCostRecords: [EXPERIMENTAL] UpsertTaxCostRecords: Upsert Tax Cost Records for a specified Fund.
 *GroupReconciliationsApi* | [**batchUpdateComparisonResults**](docs/GroupReconciliationsApi.md#batchupdatecomparisonresults) | **POST** /api/reconciliations/groupreconciliationdefinitions/{scope}/{code}/comparisonresults/$batchReview | [EXPERIMENTAL] BatchUpdateComparisonResults: Add User Review entries for a range of comparison results related to a specific GroupReconciliationDefinition.
 *GroupReconciliationsApi* | [**createComparisonRuleset**](docs/GroupReconciliationsApi.md#createcomparisonruleset) | **POST** /api/reconciliations/comparisonrulesets | [EXPERIMENTAL] CreateComparisonRuleset: Create a Group Reconciliation Comparison Ruleset
@@ -976,6 +992,7 @@ Class | Method | HTTP request | Description
  - [AccountedTransaction](docs/AccountedTransaction.md)
  - [AccountingMethod](docs/AccountingMethod.md)
  - [AccountsUpsertResponse](docs/AccountsUpsertResponse.md)
+ - [AccruedFeeLine](docs/AccruedFeeLine.md)
  - [AccumulationEvent](docs/AccumulationEvent.md)
  - [ActionId](docs/ActionId.md)
  - [AddBusinessDaysToDateRequest](docs/AddBusinessDaysToDateRequest.md)
@@ -1038,6 +1055,8 @@ Class | Method | HTTP request | Description
  - [AllocationEventReceipt](docs/AllocationEventReceipt.md)
  - [AllocationEventReceiptRequest](docs/AllocationEventReceiptRequest.md)
  - [AllocationEventRefund](docs/AllocationEventRefund.md)
+ - [AllocationEventRefundPayment](docs/AllocationEventRefundPayment.md)
+ - [AllocationEventRefundPaymentRequest](docs/AllocationEventRefundPaymentRequest.md)
  - [AllocationEventRequest](docs/AllocationEventRequest.md)
  - [AllocationEventReversal](docs/AllocationEventReversal.md)
  - [AllocationEventReverseRequest](docs/AllocationEventReverseRequest.md)
@@ -1073,12 +1092,15 @@ Class | Method | HTTP request | Description
  - [AllocationReceivablesAgeing](docs/AllocationReceivablesAgeing.md)
  - [AllocationRegisterReceivable](docs/AllocationRegisterReceivable.md)
  - [AllocationRequest](docs/AllocationRequest.md)
+ - [AllocationRule](docs/AllocationRule.md)
+ - [AllocationRuleEffective](docs/AllocationRuleEffective.md)
  - [AllocationServiceRunAllocation](docs/AllocationServiceRunAllocation.md)
  - [AllocationServiceRunResponse](docs/AllocationServiceRunResponse.md)
  - [AllocationServiceRunWarning](docs/AllocationServiceRunWarning.md)
  - [AllocationSetRequest](docs/AllocationSetRequest.md)
  - [AmendCommitmentEvent](docs/AmendCommitmentEvent.md)
  - [AmortisationEvent](docs/AmortisationEvent.md)
+ - [AmortisationHorizon](docs/AmortisationHorizon.md)
  - [AmortisationRule](docs/AmortisationRule.md)
  - [AmortisationRuleSet](docs/AmortisationRuleSet.md)
  - [Amount](docs/Amount.md)
@@ -1502,6 +1524,8 @@ Class | Method | HTTP request | Description
  - [DecimalListComplianceParameter](docs/DecimalListComplianceParameter.md)
  - [DecoratedComplianceRunSummary](docs/DecoratedComplianceRunSummary.md)
  - [DecoratedComplianceRunSummaryRequest](docs/DecoratedComplianceRunSummaryRequest.md)
+ - [DeemedDisposalDefinition](docs/DeemedDisposalDefinition.md)
+ - [DeemedDisposalDefinitionRequest](docs/DeemedDisposalDefinitionRequest.md)
  - [DeleteAccountsResponse](docs/DeleteAccountsResponse.md)
  - [DeleteCustodianAccountsResponse](docs/DeleteCustodianAccountsResponse.md)
  - [DeleteDataQualityRule](docs/DeleteDataQualityRule.md)
@@ -1816,6 +1840,7 @@ Class | Method | HTTP request | Description
  - [IdentifierDefinition](docs/IdentifierDefinition.md)
  - [IdentifierForResolution](docs/IdentifierForResolution.md)
  - [IdentifierPartSchema](docs/IdentifierPartSchema.md)
+ - [IgnoredDistributionTag](docs/IgnoredDistributionTag.md)
  - [IndexConvention](docs/IndexConvention.md)
  - [IndexModelOptions](docs/IndexModelOptions.md)
  - [IndexProjectionDependency](docs/IndexProjectionDependency.md)
@@ -2096,6 +2121,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfCustomEntityType](docs/PagedResourceListOfCustomEntityType.md)
  - [PagedResourceListOfCutLabelDefinition](docs/PagedResourceListOfCutLabelDefinition.md)
  - [PagedResourceListOfDataTypeSummary](docs/PagedResourceListOfDataTypeSummary.md)
+ - [PagedResourceListOfDeemedDisposalDefinition](docs/PagedResourceListOfDeemedDisposalDefinition.md)
  - [PagedResourceListOfDialectId](docs/PagedResourceListOfDialectId.md)
  - [PagedResourceListOfDiaryEntry](docs/PagedResourceListOfDiaryEntry.md)
  - [PagedResourceListOfEligibleCollateralSchedule](docs/PagedResourceListOfEligibleCollateralSchedule.md)
@@ -2183,11 +2209,13 @@ Class | Method | HTTP request | Description
  - [ParticipationSetRequest](docs/ParticipationSetRequest.md)
  - [PartnerAllocation](docs/PartnerAllocation.md)
  - [PartnerAllocationPool](docs/PartnerAllocationPool.md)
+ - [PartnerAllocationPoolSources](docs/PartnerAllocationPoolSources.md)
  - [PartnerAllocationRunRequest](docs/PartnerAllocationRunRequest.md)
  - [PartnerAllocationRunResult](docs/PartnerAllocationRunResult.md)
  - [PartnerCapitalAccount](docs/PartnerCapitalAccount.md)
  - [PartnerCapitalAccountMemo](docs/PartnerCapitalAccountMemo.md)
  - [PartnerCapitalAccountRow](docs/PartnerCapitalAccountRow.md)
+ - [PartnerCapitalAccountRowDetail](docs/PartnerCapitalAccountRowDetail.md)
  - [PartnerPerformance](docs/PartnerPerformance.md)
  - [PartnerPerformanceCashFlow](docs/PartnerPerformanceCashFlow.md)
  - [PartnerPerformanceMeasures](docs/PartnerPerformanceMeasures.md)
@@ -2198,6 +2226,7 @@ Class | Method | HTTP request | Description
  - [PartnerStatementRequest](docs/PartnerStatementRequest.md)
  - [PartnershipAccountingConfiguration](docs/PartnershipAccountingConfiguration.md)
  - [PartnershipAccountingValuationPointData](docs/PartnershipAccountingValuationPointData.md)
+ - [PartnershipAllocationProblem](docs/PartnershipAllocationProblem.md)
  - [PartnershipConfigPack](docs/PartnershipConfigPack.md)
  - [PartyTerms](docs/PartyTerms.md)
  - [PaymentDetailsApplicableEntity](docs/PaymentDetailsApplicableEntity.md)
@@ -2371,6 +2400,7 @@ Class | Method | HTTP request | Description
  - [RealisedGainLossMatchedLot](docs/RealisedGainLossMatchedLot.md)
  - [RecActivitySinceEffectiveAt](docs/RecActivitySinceEffectiveAt.md)
  - [RecActivityWindow](docs/RecActivityWindow.md)
+ - [RecAgedResult](docs/RecAgedResult.md)
  - [RecApprovalDecision](docs/RecApprovalDecision.md)
  - [RecAsAtPolicy](docs/RecAsAtPolicy.md)
  - [RecClosedExceptionCounts](docs/RecClosedExceptionCounts.md)
@@ -2421,6 +2451,9 @@ Class | Method | HTTP request | Description
  - [RecResultSet](docs/RecResultSet.md)
  - [RecResultSetApprovalDecisionRequest](docs/RecResultSetApprovalDecisionRequest.md)
  - [RecResultSettlementActivityItem](docs/RecResultSettlementActivityItem.md)
+ - [RecResultStreak](docs/RecResultStreak.md)
+ - [RecResultStreakPredecessor](docs/RecResultStreakPredecessor.md)
+ - [RecResultSubStreak](docs/RecResultSubStreak.md)
  - [RecResultTransactionItem](docs/RecResultTransactionItem.md)
  - [RecReview](docs/RecReview.md)
  - [RecReviewConfiguration](docs/RecReviewConfiguration.md)
@@ -2671,6 +2704,7 @@ Class | Method | HTTP request | Description
  - [SettlementConfigurationCategory](docs/SettlementConfigurationCategory.md)
  - [SettlementConfigurationMethodOverride](docs/SettlementConfigurationMethodOverride.md)
  - [SettlementCycle](docs/SettlementCycle.md)
+ - [SettlementFx](docs/SettlementFx.md)
  - [SettlementInLieu](docs/SettlementInLieu.md)
  - [SettlementInstructionAmendRequest](docs/SettlementInstructionAmendRequest.md)
  - [SettlementInstructionQuery](docs/SettlementInstructionQuery.md)
@@ -2686,6 +2720,7 @@ Class | Method | HTTP request | Description
  - [ShareClassDefinition](docs/ShareClassDefinition.md)
  - [ShareClassDetails](docs/ShareClassDetails.md)
  - [ShareClassPnlBreakdown](docs/ShareClassPnlBreakdown.md)
+ - [ShareClassProperties](docs/ShareClassProperties.md)
  - [ShareClassRoundingConvention](docs/ShareClassRoundingConvention.md)
  - [SharesPremiumDividendEvent](docs/SharesPremiumDividendEvent.md)
  - [ShiftValueCondition](docs/ShiftValueCondition.md)
@@ -2756,6 +2791,7 @@ Class | Method | HTTP request | Description
  - [SwingTriggerEvaluation](docs/SwingTriggerEvaluation.md)
  - [TargetTaxLot](docs/TargetTaxLot.md)
  - [TargetTaxLotRequest](docs/TargetTaxLotRequest.md)
+ - [TaxAccountingPeriod](docs/TaxAccountingPeriod.md)
  - [TaxClassification](docs/TaxClassification.md)
  - [TaxClassificationDecisionStep](docs/TaxClassificationDecisionStep.md)
  - [TaxClassificationDetail](docs/TaxClassificationDetail.md)
@@ -2765,11 +2801,29 @@ Class | Method | HTTP request | Description
  - [TaxClassificationInputs](docs/TaxClassificationInputs.md)
  - [TaxCostRecord](docs/TaxCostRecord.md)
  - [TaxCostRecordRequest](docs/TaxCostRecordRequest.md)
+ - [TaxDeemedDisposalResponse](docs/TaxDeemedDisposalResponse.md)
+ - [TaxDeemedDisposalsResponse](docs/TaxDeemedDisposalsResponse.md)
  - [TaxExceptionItem](docs/TaxExceptionItem.md)
  - [TaxExceptionRootCause](docs/TaxExceptionRootCause.md)
+ - [TaxFundReconciliationHoldingResponse](docs/TaxFundReconciliationHoldingResponse.md)
+ - [TaxFundReconciliationProxyRow](docs/TaxFundReconciliationProxyRow.md)
+ - [TaxFundReconciliationResponse](docs/TaxFundReconciliationResponse.md)
+ - [TaxLedgerReconciliationHoldingResponse](docs/TaxLedgerReconciliationHoldingResponse.md)
+ - [TaxLedgerReconciliationResponse](docs/TaxLedgerReconciliationResponse.md)
  - [TaxPortfolioSyncStatus](docs/TaxPortfolioSyncStatus.md)
  - [TaxProvision](docs/TaxProvision.md)
  - [TaxProvisionMovement](docs/TaxProvisionMovement.md)
+ - [TaxReconciliationBridgeRow](docs/TaxReconciliationBridgeRow.md)
+ - [TaxReconciliationDifferenceRow](docs/TaxReconciliationDifferenceRow.md)
+ - [TaxReturnDisposalRow](docs/TaxReturnDisposalRow.md)
+ - [TaxReturnExcludedRow](docs/TaxReturnExcludedRow.md)
+ - [TaxReturnLoanRelationshipRow](docs/TaxReturnLoanRelationshipRow.md)
+ - [TaxReturnMemoRow](docs/TaxReturnMemoRow.md)
+ - [TaxReturnResponse](docs/TaxReturnResponse.md)
+ - [TaxReturnSpreadInstalment](docs/TaxReturnSpreadInstalment.md)
+ - [TaxReturnTransitionRequest](docs/TaxReturnTransitionRequest.md)
+ - [TaxReturnVintage](docs/TaxReturnVintage.md)
+ - [TaxReturnWorkflowStep](docs/TaxReturnWorkflowStep.md)
  - [TaxRule](docs/TaxRule.md)
  - [TaxRuleSet](docs/TaxRuleSet.md)
  - [TaxSyncStatus](docs/TaxSyncStatus.md)
@@ -2874,6 +2928,7 @@ Class | Method | HTTP request | Description
  - [UnitisationData](docs/UnitisationData.md)
  - [UnitsRatio](docs/UnitsRatio.md)
  - [UnknownProceedsElection](docs/UnknownProceedsElection.md)
+ - [UnmatchedBreakdown](docs/UnmatchedBreakdown.md)
  - [UnmatchedHoldingMethod](docs/UnmatchedHoldingMethod.md)
  - [UnsettledTransaction](docs/UnsettledTransaction.md)
  - [UnsettledTransactionCounterLegRevaluation](docs/UnsettledTransactionCounterLegRevaluation.md)
@@ -2888,6 +2943,7 @@ Class | Method | HTTP request | Description
  - [UpdateCustomEntityTypeRequest](docs/UpdateCustomEntityTypeRequest.md)
  - [UpdateCutLabelDefinitionRequest](docs/UpdateCutLabelDefinitionRequest.md)
  - [UpdateDataTypeRequest](docs/UpdateDataTypeRequest.md)
+ - [UpdateDeemedDisposalDefinitionRequest](docs/UpdateDeemedDisposalDefinitionRequest.md)
  - [UpdateDepositAmountEvent](docs/UpdateDepositAmountEvent.md)
  - [UpdateDerivedPropertyDefinitionRequest](docs/UpdateDerivedPropertyDefinitionRequest.md)
  - [UpdateFeeTypeRequest](docs/UpdateFeeTypeRequest.md)

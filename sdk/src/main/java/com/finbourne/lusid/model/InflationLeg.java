@@ -99,6 +99,34 @@ public class InflationLeg extends LusidInstrument {
   @SerializedName(SERIALIZED_NAME_TIME_ZONE_CONVENTIONS)
   private TimeZoneConventions timeZoneConventions;
 
+  public static final String SERIALIZED_NAME_FIXED_RATE = "fixedRate";
+  @SerializedName(SERIALIZED_NAME_FIXED_RATE)
+  private java.math.BigDecimal fixedRate;
+
+  public static final String SERIALIZED_NAME_BASE_C_P_I_DATE = "baseCPIDate";
+  @SerializedName(SERIALIZED_NAME_BASE_C_P_I_DATE)
+  private OffsetDateTime baseCPIDate;
+
+  public static final String SERIALIZED_NAME_INDEX_PRECISION = "indexPrecision";
+  @SerializedName(SERIALIZED_NAME_INDEX_PRECISION)
+  private Integer indexPrecision;
+
+  public static final String SERIALIZED_NAME_PRINCIPAL_PROTECTION = "principalProtection";
+  @SerializedName(SERIALIZED_NAME_PRINCIPAL_PROTECTION)
+  private Boolean principalProtection;
+
+  public static final String SERIALIZED_NAME_NOTIONAL_EXCHANGE_TYPE = "notionalExchangeType";
+  @SerializedName(SERIALIZED_NAME_NOTIONAL_EXCHANGE_TYPE)
+  private String notionalExchangeType;
+
+  public static final String SERIALIZED_NAME_INITIAL_EXCHANGE_AMOUNT = "initialExchangeAmount";
+  @SerializedName(SERIALIZED_NAME_INITIAL_EXCHANGE_AMOUNT)
+  private java.math.BigDecimal initialExchangeAmount;
+
+  public static final String SERIALIZED_NAME_FINAL_EXCHANGE_AMOUNT = "finalExchangeAmount";
+  @SerializedName(SERIALIZED_NAME_FINAL_EXCHANGE_AMOUNT)
+  private java.math.BigDecimal finalExchangeAmount;
+
   public InflationLeg() {
     // this.instrumentType = this.getClass().getSimpleName();
   }
@@ -194,7 +222,7 @@ public class InflationLeg extends LusidInstrument {
   }
 
    /**
-   * The calculation type.  ZeroCoupon is used for CPILegs where there is a single payment at maturity of  Notional docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk (CPI(T) / CPI(T0) - 1)  where CPI(T0) is the BaseCPI of this leg  YearOnYear is used for YoY and LPI swap legs where there is a series of annual payments  Notional docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk dayCount docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk (CPI(t) / CPI(t-1) - 1)  If a cap and floor is added to this it becomes an LPI swap leg.  Compounded is used for inflation swap legs where there is a series of annual payments  Notional docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk dayCount docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk (CPI(t) / CPI(T0) - 1)  i.e. the BaseCPI is used every year. These swaps are not as common as CPI or    Supported string (enumeration) values are: [ZeroCoupon, YearOnYear, Compounded].
+   * The calculation type.  ZeroCoupon is used for CPILegs where there is a single payment at maturity of  Notional docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk (CPI(T) / CPI(T0) - 1)  where CPI(T0) is the BaseCPI of this leg  YearOnYear is used for YoY and LPI swap legs where there is a series of annual payments  Notional docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk dayCount docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk (CPI(t) / CPI(t-1) - 1)  If a cap and floor is added to this it becomes an LPI swap leg.  Compounded is used for inflation swap legs where there is a series of annual payments  Notional docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk dayCount docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk (CPI(t) / CPI(T0) - 1)  i.e. the BaseCPI is used every year. These swaps are not as common as CPI or    IndexedCoupon is used for the coupon stream of an inflation-linked bond, where each period pays  Notional docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk FixedRate docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk dayCount docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk IndexRatio(t)  and IndexRatio(t) is CPI(t) / BaseCPI rounded to IndexPrecision, as on InflationLinkedBond.     Supported string (enumeration) values are: [ZeroCoupon, YearOnYear, Compounded, IndexedCoupon].
    * @return calculationType
   **/
   @jakarta.annotation.Nonnull
@@ -215,7 +243,7 @@ public class InflationLeg extends LusidInstrument {
   }
 
    /**
-   * Optional cap, needed for LPI Legs or CPI Legs with Caps
+   * Optional cap on a YearOnYear leg: each period&#39;s 12-month inflation rate is clamped to at most this rate before  the accrual fraction is applied, at any payment frequency, so an LPI leg caps each year at 5%. In the legs  form of an InflationSwap it is rejected on a ZeroCoupon, Compounded or IndexedCoupon leg, where it would clamp  the total change since the start. In the deprecated inflationLeg form a ZeroCoupon or Compounded cap keeps  clamping that total change, as today.
    * @return capRate
   **/
   @jakarta.annotation.Nullable
@@ -236,7 +264,7 @@ public class InflationLeg extends LusidInstrument {
   }
 
    /**
-   * Optional floor, needed for LPI Legs or CPI Legs with Floors.
+   * Optional floor on a YearOnYear leg: each period&#39;s 12-month inflation rate is clamped to at least this rate  before the accrual fraction is applied, at any payment frequency, so a 0% floor stops deflation being paid.  In the legs form of an InflationSwap it is rejected on a ZeroCoupon, Compounded or IndexedCoupon leg, where it  would clamp the total change since the start. In the deprecated inflationLeg form a ZeroCoupon or Compounded  floor keeps clamping that total change, as today.
    * @return floorRate
   **/
   @jakarta.annotation.Nullable
@@ -334,6 +362,153 @@ public class InflationLeg extends LusidInstrument {
   }
 
 
+  public InflationLeg fixedRate(java.math.BigDecimal fixedRate) {
+    
+    this.fixedRate = fixedRate;
+    return this;
+  }
+
+   /**
+   * The real coupon rate of an IndexedCoupon leg: each period pays Notional docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk FixedRate docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk dayCount docker-compose.yml Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish README.md resources test_sdk IndexRatio.  Required when CalculationType is IndexedCoupon and not allowed otherwise.
+   * @return fixedRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFixedRate() {
+    return fixedRate;
+  }
+
+
+  public void setFixedRate(java.math.BigDecimal fixedRate) {
+    this.fixedRate = fixedRate;
+  }
+
+
+  public InflationLeg baseCPIDate(OffsetDateTime baseCPIDate) {
+    
+    this.baseCPIDate = baseCPIDate;
+    return this;
+  }
+
+   /**
+   * Optional date the base CPI is observed on, with the same meaning as on InflationLinkedBond: the un-lagged  date (for a bond asset swap, the bond&#39;s dated date) whose reference CPI is the base. Defaults to the StartDate.  Ignored when BaseCPI is given.
+   * @return baseCPIDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getBaseCPIDate() {
+    return baseCPIDate;
+  }
+
+
+  public void setBaseCPIDate(OffsetDateTime baseCPIDate) {
+    this.baseCPIDate = baseCPIDate;
+  }
+
+
+  public InflationLeg indexPrecision(Integer indexPrecision) {
+    
+    this.indexPrecision = indexPrecision;
+    return this;
+  }
+
+   /**
+   * Number of decimal places the IndexedCoupon index ratio is rounded to, as on InflationLinkedBond. Defaults to 5.
+   * @return indexPrecision
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getIndexPrecision() {
+    return indexPrecision;
+  }
+
+
+  public void setIndexPrecision(Integer indexPrecision) {
+    this.indexPrecision = indexPrecision;
+  }
+
+
+  public InflationLeg principalProtection(Boolean principalProtection) {
+    
+    this.principalProtection = principalProtection;
+    return this;
+  }
+
+   /**
+   * Whether an indexed final notional exchange is floored at par, paying max(IndexRatio, 1) times the amount, as on  InflationLinkedBond. Coupons are never floored. Defaults to true.
+   * @return principalProtection
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getPrincipalProtection() {
+    return principalProtection;
+  }
+
+
+  public void setPrincipalProtection(Boolean principalProtection) {
+    this.principalProtection = principalProtection;
+  }
+
+
+  public InflationLeg notionalExchangeType(String notionalExchangeType) {
+    
+    this.notionalExchangeType = notionalExchangeType;
+    return this;
+  }
+
+   /**
+   * Which notional exchanges the leg makes. The start exchange pays the un-indexed amount against the leg; the  maturity exchange pays the amount times the index ratio with the leg, floored at par under PrincipalProtection.     Supported string (enumeration) values are: [None, Initial, Final, Both].  Defaults to \&quot;None\&quot; if not set.
+   * @return notionalExchangeType
+  **/
+  @jakarta.annotation.Nullable
+  public String getNotionalExchangeType() {
+    return notionalExchangeType;
+  }
+
+
+  public void setNotionalExchangeType(String notionalExchangeType) {
+    this.notionalExchangeType = notionalExchangeType;
+  }
+
+
+  public InflationLeg initialExchangeAmount(java.math.BigDecimal initialExchangeAmount) {
+    
+    this.initialExchangeAmount = initialExchangeAmount;
+    return this;
+  }
+
+   /**
+   * The amount exchanged at the start of the leg, when NotionalExchangeType is Initial or Both. Defaults to the  notional. Never indexed. Must be non-negative.
+   * @return initialExchangeAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getInitialExchangeAmount() {
+    return initialExchangeAmount;
+  }
+
+
+  public void setInitialExchangeAmount(java.math.BigDecimal initialExchangeAmount) {
+    this.initialExchangeAmount = initialExchangeAmount;
+  }
+
+
+  public InflationLeg finalExchangeAmount(java.math.BigDecimal finalExchangeAmount) {
+    
+    this.finalExchangeAmount = finalExchangeAmount;
+    return this;
+  }
+
+   /**
+   * The real amount exchanged at maturity, when NotionalExchangeType is Final or Both. Defaults to the notional.  Paid times the index ratio, floored at par under PrincipalProtection. Must be non-negative.
+   * @return finalExchangeAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFinalExchangeAmount() {
+    return finalExchangeAmount;
+  }
+
+
+  public void setFinalExchangeAmount(java.math.BigDecimal finalExchangeAmount) {
+    this.finalExchangeAmount = finalExchangeAmount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -355,6 +530,13 @@ public class InflationLeg extends LusidInstrument {
         (this.notional.compareTo(inflationLeg.getNotional()) == 0) &&
         Objects.equals(this.payReceive, inflationLeg.payReceive) &&
         Objects.equals(this.timeZoneConventions, inflationLeg.timeZoneConventions) &&
+        (this.fixedRate.compareTo(inflationLeg.getFixedRate()) == 0) &&
+        Objects.equals(this.baseCPIDate, inflationLeg.baseCPIDate) &&
+        Objects.equals(this.indexPrecision, inflationLeg.indexPrecision) &&
+        Objects.equals(this.principalProtection, inflationLeg.principalProtection) &&
+        Objects.equals(this.notionalExchangeType, inflationLeg.notionalExchangeType) &&
+        (this.initialExchangeAmount.compareTo(inflationLeg.getInitialExchangeAmount()) == 0) &&
+        (this.finalExchangeAmount.compareTo(inflationLeg.getFinalExchangeAmount()) == 0) &&
         super.equals(o);
   }
 
@@ -364,7 +546,7 @@ public class InflationLeg extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, baseCPI, calculationType, capRate, floorRate, inflationIndexConventions, notional, payReceive, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, baseCPI, calculationType, capRate, floorRate, inflationIndexConventions, notional, payReceive, timeZoneConventions, fixedRate, baseCPIDate, indexPrecision, principalProtection, notionalExchangeType, initialExchangeAmount, finalExchangeAmount, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -390,6 +572,13 @@ public class InflationLeg extends LusidInstrument {
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
     sb.append("    payReceive: ").append(toIndentedString(payReceive)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
+    sb.append("    fixedRate: ").append(toIndentedString(fixedRate)).append("\n");
+    sb.append("    baseCPIDate: ").append(toIndentedString(baseCPIDate)).append("\n");
+    sb.append("    indexPrecision: ").append(toIndentedString(indexPrecision)).append("\n");
+    sb.append("    principalProtection: ").append(toIndentedString(principalProtection)).append("\n");
+    sb.append("    notionalExchangeType: ").append(toIndentedString(notionalExchangeType)).append("\n");
+    sb.append("    initialExchangeAmount: ").append(toIndentedString(initialExchangeAmount)).append("\n");
+    sb.append("    finalExchangeAmount: ").append(toIndentedString(finalExchangeAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -424,6 +613,13 @@ public class InflationLeg extends LusidInstrument {
     openapiFields.add("notional");
     openapiFields.add("payReceive");
     openapiFields.add("timeZoneConventions");
+    openapiFields.add("fixedRate");
+    openapiFields.add("baseCPIDate");
+    openapiFields.add("indexPrecision");
+    openapiFields.add("principalProtection");
+    openapiFields.add("notionalExchangeType");
+    openapiFields.add("initialExchangeAmount");
+    openapiFields.add("finalExchangeAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

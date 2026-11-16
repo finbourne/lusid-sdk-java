@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.UnmatchedBreakdown;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -95,6 +96,10 @@ public class BucketSetResultBucket {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
+
+  public static final String SERIALIZED_NAME_UNMATCHED_BREAKDOWN = "unmatchedBreakdown";
+  @SerializedName(SERIALIZED_NAME_UNMATCHED_BREAKDOWN)
+  private UnmatchedBreakdown unmatchedBreakdown;
 
   public BucketSetResultBucket() {
   }
@@ -338,6 +343,27 @@ public class BucketSetResultBucket {
   }
 
 
+  public BucketSetResultBucket unmatchedBreakdown(UnmatchedBreakdown unmatchedBreakdown) {
+    
+    this.unmatchedBreakdown = unmatchedBreakdown;
+    return this;
+  }
+
+   /**
+   * Get unmatchedBreakdown
+   * @return unmatchedBreakdown
+  **/
+  @jakarta.annotation.Nullable
+  public UnmatchedBreakdown getUnmatchedBreakdown() {
+    return unmatchedBreakdown;
+  }
+
+
+  public void setUnmatchedBreakdown(UnmatchedBreakdown unmatchedBreakdown) {
+    this.unmatchedBreakdown = unmatchedBreakdown;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -358,7 +384,8 @@ public class BucketSetResultBucket {
         (this.unitsInIssue.compareTo(bucketSetResultBucket.getUnitsInIssue()) == 0) &&
         (this.previousCumulativePerUnitValue.compareTo(bucketSetResultBucket.getPreviousCumulativePerUnitValue()) == 0) &&
         (this.cumulativePerUnitValue.compareTo(bucketSetResultBucket.getCumulativePerUnitValue()) == 0) &&
-        Objects.equals(this.displayName, bucketSetResultBucket.displayName);
+        Objects.equals(this.displayName, bucketSetResultBucket.displayName) &&
+        Objects.equals(this.unmatchedBreakdown, bucketSetResultBucket.unmatchedBreakdown);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -367,7 +394,7 @@ public class BucketSetResultBucket {
 
   @Override
   public int hashCode() {
-    return Objects.hash(bucketId, bucketType, value, previousCumulativeValue, cumulativeValue, sourceBreakdown, perUnitValue, unitsInIssue, previousCumulativePerUnitValue, cumulativePerUnitValue, displayName);
+    return Objects.hash(bucketId, bucketType, value, previousCumulativeValue, cumulativeValue, sourceBreakdown, perUnitValue, unitsInIssue, previousCumulativePerUnitValue, cumulativePerUnitValue, displayName, unmatchedBreakdown);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -392,6 +419,7 @@ public class BucketSetResultBucket {
     sb.append("    previousCumulativePerUnitValue: ").append(toIndentedString(previousCumulativePerUnitValue)).append("\n");
     sb.append("    cumulativePerUnitValue: ").append(toIndentedString(cumulativePerUnitValue)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    unmatchedBreakdown: ").append(toIndentedString(unmatchedBreakdown)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -425,6 +453,7 @@ public class BucketSetResultBucket {
     openapiFields.add("previousCumulativePerUnitValue");
     openapiFields.add("cumulativePerUnitValue");
     openapiFields.add("displayName");
+    openapiFields.add("unmatchedBreakdown");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -463,6 +492,10 @@ public class BucketSetResultBucket {
       }
       if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
+      // validate the optional field `unmatchedBreakdown`
+      if (jsonObj.get("unmatchedBreakdown") != null && !jsonObj.get("unmatchedBreakdown").isJsonNull()) {
+        UnmatchedBreakdown.validateJsonElement(jsonObj.get("unmatchedBreakdown"));
       }
   }
 

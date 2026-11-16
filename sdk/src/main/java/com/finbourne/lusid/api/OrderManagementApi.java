@@ -2396,7 +2396,7 @@ public class OrderManagementApi {
 
         /**
          * Set cancelAndCorrect
-         * @param cancelAndCorrect Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to false, which leaves allocations with booked transactions untouched. (optional, default to false)
+         * @param cancelAndCorrect Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to true. Set to false to leave allocations with booked transactions untouched. (optional, default to true)
          * @return APIrunAllocationServiceRequest
          */
         public APIrunAllocationServiceRequest cancelAndCorrect(Boolean cancelAndCorrect) {
@@ -2661,7 +2661,7 @@ public class OrderManagementApi {
 
         /**
          * Set cancelAndCorrect
-         * @param cancelAndCorrect Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to false)
+         * @param cancelAndCorrect Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. (optional, default to true)
          * @return APIrunAllocationServiceWithWeightsRequest
          */
         public APIrunAllocationServiceWithWeightsRequest cancelAndCorrect(Boolean cancelAndCorrect) {

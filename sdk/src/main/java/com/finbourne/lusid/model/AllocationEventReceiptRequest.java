@@ -83,6 +83,10 @@ public class AllocationEventReceiptRequest {
   @SerializedName(SERIALIZED_NAME_BANK_CHARGE_BEARER)
   private String bankChargeBearer;
 
+  public static final String SERIALIZED_NAME_REFERENCE = "reference";
+  @SerializedName(SERIALIZED_NAME_REFERENCE)
+  private String reference;
+
   public AllocationEventReceiptRequest() {
   }
 
@@ -254,6 +258,27 @@ public class AllocationEventReceiptRequest {
   }
 
 
+  public AllocationEventReceiptRequest reference(String reference) {
+    
+    this.reference = reference;
+    return this;
+  }
+
+   /**
+   * The caller&#39;s reference for the payment, for instance a bank statement line or a source row id, of 1 to 128 characters. Optional. Posting the same reference again with the same investor record, amount, currency and receipt date returns the event unchanged and writes nothing; with other content it is refused. Without a reference a repeated receipt is a second payment, warned as a possible duplicate when an earlier receipt matches it.
+   * @return reference
+  **/
+  @jakarta.annotation.Nullable
+  public String getReference() {
+    return reference;
+  }
+
+
+  public void setReference(String reference) {
+    this.reference = reference;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -271,7 +296,8 @@ public class AllocationEventReceiptRequest {
         (this.paymentFxRate.compareTo(allocationEventReceiptRequest.getPaymentFxRate()) == 0) &&
         (this.noticeFxRate.compareTo(allocationEventReceiptRequest.getNoticeFxRate()) == 0) &&
         (this.bankCharge.compareTo(allocationEventReceiptRequest.getBankCharge()) == 0) &&
-        Objects.equals(this.bankChargeBearer, allocationEventReceiptRequest.bankChargeBearer);
+        Objects.equals(this.bankChargeBearer, allocationEventReceiptRequest.bankChargeBearer) &&
+        Objects.equals(this.reference, allocationEventReceiptRequest.reference);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -280,7 +306,7 @@ public class AllocationEventReceiptRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, amount, receiptDate, paymentCurrency, paymentFxRate, noticeFxRate, bankCharge, bankChargeBearer);
+    return Objects.hash(investorRecordId, amount, receiptDate, paymentCurrency, paymentFxRate, noticeFxRate, bankCharge, bankChargeBearer, reference);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -302,6 +328,7 @@ public class AllocationEventReceiptRequest {
     sb.append("    noticeFxRate: ").append(toIndentedString(noticeFxRate)).append("\n");
     sb.append("    bankCharge: ").append(toIndentedString(bankCharge)).append("\n");
     sb.append("    bankChargeBearer: ").append(toIndentedString(bankChargeBearer)).append("\n");
+    sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -332,6 +359,7 @@ public class AllocationEventReceiptRequest {
     openapiFields.add("noticeFxRate");
     openapiFields.add("bankCharge");
     openapiFields.add("bankChargeBearer");
+    openapiFields.add("reference");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -368,6 +396,9 @@ public class AllocationEventReceiptRequest {
       }
       if ((jsonObj.get("bankChargeBearer") != null && !jsonObj.get("bankChargeBearer").isJsonNull()) && !jsonObj.get("bankChargeBearer").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `bankChargeBearer` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bankChargeBearer").toString()));
+      }
+      if ((jsonObj.get("reference") != null && !jsonObj.get("reference").isJsonNull()) && !jsonObj.get("reference").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reference` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reference").toString()));
       }
   }
 

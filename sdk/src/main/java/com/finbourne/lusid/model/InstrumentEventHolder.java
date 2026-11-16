@@ -256,7 +256,7 @@ public class InstrumentEventHolder {
    * The description of the instrument event.
    * @return description
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getDescription() {
     return description;
   }
@@ -552,7 +552,6 @@ public class InstrumentEventHolder {
     openapiRequiredFields.add("instrumentIdentifiers");
     openapiRequiredFields.add("lusidInstrumentId");
     openapiRequiredFields.add("instrumentScope");
-    openapiRequiredFields.add("description");
     openapiRequiredFields.add("eventDateRange");
     openapiRequiredFields.add("instrumentEvent");
   }
@@ -590,7 +589,7 @@ public class InstrumentEventHolder {
       if (!jsonObj.get("instrumentScope").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `instrumentScope` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instrumentScope").toString()));
       }
-      if (!jsonObj.get("description").isJsonPrimitive()) {
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
       // validate the required field `eventDateRange`

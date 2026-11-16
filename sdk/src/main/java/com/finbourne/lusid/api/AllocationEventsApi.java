@@ -29,6 +29,7 @@ import com.finbourne.lusid.model.AllocationEvent;
 import com.finbourne.lusid.model.AllocationEventBookRequest;
 import com.finbourne.lusid.model.AllocationEventReallocateRequest;
 import com.finbourne.lusid.model.AllocationEventReceiptRequest;
+import com.finbourne.lusid.model.AllocationEventRefundPaymentRequest;
 import com.finbourne.lusid.model.AllocationEventRequest;
 import com.finbourne.lusid.model.AllocationEventReverseRequest;
 import com.finbourne.lusid.model.AllocationEventUnbookRequest;
@@ -2245,6 +2246,274 @@ public class AllocationEventsApi {
      */
     public APIlistAllocationPaymentHoldsRequest listAllocationPaymentHolds(String scope, String code, String investorRecordId) {
         return new APIlistAllocationPaymentHoldsRequest(scope, code, investorRecordId);
+    }
+    private okhttp3.Call payAllocationEventRefundCall(String scope, String code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
+        return payAllocationEventRefundCall(scope, code, allocationEventRefundPaymentRequest, effectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call payAllocationEventRefundCall(String scope, String code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = allocationEventRefundPaymentRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/allocationevents/{scope}/{code}/refunds"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call payAllocationEventRefundValidateBeforeCall(String scope, String code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, String effectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling payAllocationEventRefund(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling payAllocationEventRefund(Async)");
+        }
+
+        // verify the required parameter 'allocationEventRefundPaymentRequest' is set
+        if (allocationEventRefundPaymentRequest == null) {
+            throw new ApiException("Missing the required parameter 'allocationEventRefundPaymentRequest' when calling payAllocationEventRefund(Async)");
+        }
+
+        return payAllocationEventRefundCall(scope, code, allocationEventRefundPaymentRequest, effectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AllocationEvent> payAllocationEventRefundWithHttpInfo(String scope, String code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, String effectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = payAllocationEventRefundValidateBeforeCall(scope, code, allocationEventRefundPaymentRequest, effectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AllocationEvent> payAllocationEventRefundWithHttpInfo(String scope, String code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, String effectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = payAllocationEventRefundValidateBeforeCall(scope, code, allocationEventRefundPaymentRequest, effectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call payAllocationEventRefundAsync(String scope, String code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, String effectiveAt, final ApiCallback<AllocationEvent> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = payAllocationEventRefundValidateBeforeCall(scope, code, allocationEventRefundPaymentRequest, effectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call payAllocationEventRefundAsync(String scope, String code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest, String effectiveAt, final ApiCallback<AllocationEvent> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = payAllocationEventRefundValidateBeforeCall(scope, code, allocationEventRefundPaymentRequest, effectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<AllocationEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpayAllocationEventRefundRequest {
+        private final String scope;
+        private final String code;
+        private final AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest;
+        private String effectiveAt;
+
+        private APIpayAllocationEventRefundRequest(String scope, String code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.allocationEventRefundPaymentRequest = allocationEventRefundPaymentRequest;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to read the Allocation Event paying the refund. The payment is recorded on the version in force at that time, from that version&#39;s own effective date; the payment posting is dated by the request. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIpayAllocationEventRefundRequest
+         */
+        public APIpayAllocationEventRefundRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for payAllocationEventRefund
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the refund payment recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return payAllocationEventRefundCall(scope, code, allocationEventRefundPaymentRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute payAllocationEventRefund request
+         * @return AllocationEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the refund payment recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationEvent execute() throws ApiException {
+            ApiResponse<AllocationEvent> localVarResp = payAllocationEventRefundWithHttpInfo(scope, code, allocationEventRefundPaymentRequest, effectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute payAllocationEventRefund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AllocationEvent
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the refund payment recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AllocationEvent execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AllocationEvent> localVarResp = payAllocationEventRefundWithHttpInfo(scope, code, allocationEventRefundPaymentRequest, effectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute payAllocationEventRefund request with HTTP info returned
+         * @return ApiResponse&lt;AllocationEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the refund payment recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationEvent> executeWithHttpInfo() throws ApiException {
+            return payAllocationEventRefundWithHttpInfo(scope, code, allocationEventRefundPaymentRequest, effectiveAt);
+        }
+
+        /**
+         * Execute payAllocationEventRefund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AllocationEvent&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the refund payment recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AllocationEvent> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return payAllocationEventRefundWithHttpInfo(scope, code, allocationEventRefundPaymentRequest, effectiveAt, opts);
+        }
+
+        /**
+         * Execute payAllocationEventRefund request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the refund payment recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationEvent> _callback) throws ApiException {
+            return payAllocationEventRefundAsync(scope, code, allocationEventRefundPaymentRequest, effectiveAt, _callback);
+        }
+
+        /**
+         * Execute payAllocationEventRefund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The Allocation Event with the refund payment recorded. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AllocationEvent> _callback, ConfigurationOptions opts) throws ApiException {
+            return payAllocationEventRefundAsync(scope, code, allocationEventRefundPaymentRequest, effectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] PayAllocationEventRefund: Pay out a refund owed on an Allocation Event.
+     * Pay out part or all of the refund owed to an investor whose receipt against a booked capital call exceeded  what it owed. The cash leaves the fund against the refund payable the receipt recorded; no register balance  moves, since the excess was never paid-in capital. The amount may not exceed what is still payable, may be no  finer than the event currency&#39;s minor unit, and may not be dated before the receipt that created the payable.  Posting the same reference again returns the event unchanged.
+     * @param scope The scope of the Allocation Event. (required)
+     * @param code The code of the Allocation Event. Together with the scope this uniquely identifies the Allocation Event. (required)
+     * @param allocationEventRefundPaymentRequest The investor, amount, date and reference of the payment. (required)
+     * @return APIpayAllocationEventRefundRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The Allocation Event with the refund payment recorded. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIpayAllocationEventRefundRequest payAllocationEventRefund(String scope, String code, AllocationEventRefundPaymentRequest allocationEventRefundPaymentRequest) {
+        return new APIpayAllocationEventRefundRequest(scope, code, allocationEventRefundPaymentRequest);
     }
     private okhttp3.Call planAllocationEventBookingCall(String scope, String code, AllocationEventBookRequest allocationEventBookRequest, String effectiveAt, final ApiCallback _callback) throws ApiException {
         return planAllocationEventBookingCall(scope, code, allocationEventBookRequest, effectiveAt,  _callback, new ConfigurationOptions());

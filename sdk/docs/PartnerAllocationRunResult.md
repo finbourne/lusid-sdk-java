@@ -11,9 +11,12 @@ Name | Type | Description | Notes
 **navTypeCode** | **String** | The NAV type to allocate under. Defaults to the fund&#39;s primary NAV type. | [default to String]
 **status** | **String** | The outcome of the run. Available values: Computed, Booked, DryRun. | [default to String]
 **runId** | **String** | The identifier of the run, which prefixes every transaction it books. | [default to String]
-**pools** | [**List&lt;PartnerAllocationPool&gt;**](PartnerAllocationPool.md) | The pools of fund-level amount that were allocated. | [default to List<PartnerAllocationPool>]
-**unattributed** | [**List&lt;UnattributedAmount&gt;**](UnattributedAmount.md) | Fund-level amounts that no pool claimed. | [default to List<UnattributedAmount>]
+**pools** | [**List&lt;PartnerAllocationPool&gt;**](PartnerAllocationPool.md) | The pools of fund-level amount that were allocated, in the allocation bucket set&#39;s bucket order with any tag pools after. | [default to List<PartnerAllocationPool>]
+**unattributed** | [**List&lt;UnattributedAmount&gt;**](UnattributedAmount.md) | Always empty: every profit and loss line is now pooled or the run is refused. Kept for one release. | [default to List<UnattributedAmount>]
 **bookedTransactionIds** | **List&lt;String&gt;** | The identifiers of the transactions the run booked, if any. | [default to List<String>]
+**warnings** | **List&lt;String&gt;** | What the run noticed but did not refuse, for example an excluded investor record that is not on the register at the period end. | [optional] [default to List<String>]
+**ignoredTags** | [**List&lt;IgnoredDistributionTag&gt;**](IgnoredDistributionTag.md) | The distribution character tags the run did not pool by, by account. | [optional] [default to List<IgnoredDistributionTag>]
+**accruedFees** | [**List&lt;AccruedFeeLine&gt;**](AccruedFeeLine.md) | The management fees accrued per partner in the period, which the accrual allocates and the run therefore leaves out of the pools. | [optional] [default to List<AccruedFeeLine>]
 
 ```java
 import com.finbourne.lusid.model.PartnerAllocationRunResult;
@@ -30,6 +33,9 @@ String RunId = "example RunId";
 List<PartnerAllocationPool> Pools = new List<PartnerAllocationPool>();
 List<UnattributedAmount> Unattributed = new List<UnattributedAmount>();
 List<String> BookedTransactionIds = new List<String>();
+@jakarta.annotation.Nullable List<String> Warnings = new List<String>();
+@jakarta.annotation.Nullable List<IgnoredDistributionTag> IgnoredTags = new List<IgnoredDistributionTag>();
+@jakarta.annotation.Nullable List<AccruedFeeLine> AccruedFees = new List<AccruedFeeLine>();
 
 
 PartnerAllocationRunResult partnerAllocationRunResultInstance = new PartnerAllocationRunResult()
@@ -41,7 +47,10 @@ PartnerAllocationRunResult partnerAllocationRunResultInstance = new PartnerAlloc
     .RunId(RunId)
     .Pools(Pools)
     .Unattributed(Unattributed)
-    .BookedTransactionIds(BookedTransactionIds);
+    .BookedTransactionIds(BookedTransactionIds)
+    .Warnings(Warnings)
+    .IgnoredTags(IgnoredTags)
+    .AccruedFees(AccruedFees);
 ```
 
 

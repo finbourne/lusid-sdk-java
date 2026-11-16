@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **previousCumulativePerUnitValue** | **java.math.BigDecimal** | The bucket&#39;s cumulative value at the start of the period, per unit in issue at that point - so it reads as it did at the previous valuation point rather than being restated at this period&#39;s unit count. Omitted where the bucket had no per-unit value at the previous valuation point: on the fund node, where the share class or the bucket is not unitised, where the share class then had no units in issue, and at the fund&#39;s first valuation point. | [optional] [default to java.math.BigDecimal]
 **cumulativePerUnitValue** | **java.math.BigDecimal** | The bucket&#39;s cumulative value at the end of the period per unit in issue (CumulativeValue divided by UnitsInIssue), unrounded. Omitted where either the share class or the bucket is not unitised, and where a unitised share class has no units in issue to divide by. | [optional] [default to java.math.BigDecimal]
 **displayName** | **String** | The display name of the bucket, as configured on the fund configuration. | [optional] [default to String]
+**unmatchedBreakdown** | [**UnmatchedBreakdown**](UnmatchedBreakdown.md) |  | [optional] [default to UnmatchedBreakdown]
 
 ```java
 import com.finbourne.lusid.model.BucketSetResultBucket;
@@ -34,6 +35,7 @@ java.math.BigDecimal CumulativeValue = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal PreviousCumulativePerUnitValue = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal CumulativePerUnitValue = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String DisplayName = "example DisplayName";
+UnmatchedBreakdown UnmatchedBreakdown = new UnmatchedBreakdown();
 
 
 BucketSetResultBucket bucketSetResultBucketInstance = new BucketSetResultBucket()
@@ -47,7 +49,8 @@ BucketSetResultBucket bucketSetResultBucketInstance = new BucketSetResultBucket(
     .UnitsInIssue(UnitsInIssue)
     .PreviousCumulativePerUnitValue(PreviousCumulativePerUnitValue)
     .CumulativePerUnitValue(CumulativePerUnitValue)
-    .DisplayName(DisplayName);
+    .DisplayName(DisplayName)
+    .UnmatchedBreakdown(UnmatchedBreakdown);
 ```
 
 

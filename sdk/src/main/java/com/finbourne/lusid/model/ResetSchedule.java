@@ -73,6 +73,10 @@ public class ResetSchedule {
   @SerializedName(SERIALIZED_NAME_LAST_RESET_DATE)
   private OffsetDateTime lastResetDate;
 
+  public static final String SERIALIZED_NAME_PAYMENT_LAG = "paymentLag";
+  @SerializedName(SERIALIZED_NAME_PAYMENT_LAG)
+  private RelativeDateOffset paymentLag;
+
   public ResetSchedule() {
   }
 
@@ -181,6 +185,27 @@ public class ResetSchedule {
   }
 
 
+  public ResetSchedule paymentLag(RelativeDateOffset paymentLag) {
+    
+    this.paymentLag = paymentLag;
+    return this;
+  }
+
+   /**
+   * Get paymentLag
+   * @return paymentLag
+  **/
+  @jakarta.annotation.Nullable
+  public RelativeDateOffset getPaymentLag() {
+    return paymentLag;
+  }
+
+
+  public void setPaymentLag(RelativeDateOffset paymentLag) {
+    this.paymentLag = paymentLag;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -195,7 +220,8 @@ public class ResetSchedule {
         Objects.equals(this.firstResetDate, resetSchedule.firstResetDate) &&
         Objects.equals(this.frequency, resetSchedule.frequency) &&
         Objects.equals(this.fundingStartLag, resetSchedule.fundingStartLag) &&
-        Objects.equals(this.lastResetDate, resetSchedule.lastResetDate);
+        Objects.equals(this.lastResetDate, resetSchedule.lastResetDate) &&
+        Objects.equals(this.paymentLag, resetSchedule.paymentLag);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -204,7 +230,7 @@ public class ResetSchedule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(conventions, firstResetDate, frequency, fundingStartLag, lastResetDate);
+    return Objects.hash(conventions, firstResetDate, frequency, fundingStartLag, lastResetDate, paymentLag);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -223,6 +249,7 @@ public class ResetSchedule {
     sb.append("    frequency: ").append(toIndentedString(frequency)).append("\n");
     sb.append("    fundingStartLag: ").append(toIndentedString(fundingStartLag)).append("\n");
     sb.append("    lastResetDate: ").append(toIndentedString(lastResetDate)).append("\n");
+    sb.append("    paymentLag: ").append(toIndentedString(paymentLag)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -250,6 +277,7 @@ public class ResetSchedule {
     openapiFields.add("frequency");
     openapiFields.add("fundingStartLag");
     openapiFields.add("lastResetDate");
+    openapiFields.add("paymentLag");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -286,6 +314,10 @@ public class ResetSchedule {
       // validate the optional field `fundingStartLag`
       if (jsonObj.get("fundingStartLag") != null && !jsonObj.get("fundingStartLag").isJsonNull()) {
         RelativeDateOffset.validateJsonElement(jsonObj.get("fundingStartLag"));
+      }
+      // validate the optional field `paymentLag`
+      if (jsonObj.get("paymentLag") != null && !jsonObj.get("paymentLag").isJsonNull()) {
+        RelativeDateOffset.validateJsonElement(jsonObj.get("paymentLag"));
       }
   }
 

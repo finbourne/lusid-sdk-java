@@ -48,7 +48,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * Amends the total committed capital of a CapitalInterest. A positive amount increases the commitment and a  negative amount decreases it.
+ * Amends the total committed capital of a CapitalInterest. The component says whether the amount raises  (&#39;Commitment&#39;) or lowers (&#39;Release&#39;) the commitment.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AmendCommitmentEvent extends InstrumentEvent {
@@ -96,7 +96,7 @@ public class AmendCommitmentEvent extends InstrumentEvent {
   }
 
    /**
-   * The signed change to the total commitment. Positive implies an increase, and negative implies a  decrease.
+   * The amount the total commitment is amended by. Must not be negative: the component decides whether  it raises or lowers the commitment.
    * @return amount
   **/
   @jakarta.annotation.Nonnull
@@ -117,7 +117,7 @@ public class AmendCommitmentEvent extends InstrumentEvent {
   }
 
    /**
-   * The component of the commitment the amendment is recorded under: &#39;Commitment&#39; for a commitment made  or upsized, &#39;Release&#39; for committed capital released. Optional; when absent the sign of the amount  decides.
+   * The component of the commitment the amendment is recorded under: &#39;Commitment&#39; for a commitment made  or upsized, which raises the commitment by the amount, or &#39;Release&#39; for committed capital released,  which lowers it by the amount. Optional; when absent the amount raises the commitment. Available values: Commitment, Release.
    * @return component
   **/
   @jakarta.annotation.Nullable

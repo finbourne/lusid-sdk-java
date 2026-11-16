@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **event** | [**AllocationEventNoticeEvent**](AllocationEventNoticeEvent.md) |  | [default to AllocationEventNoticeEvent]
 **partner** | [**AllocationEventNoticePartner**](AllocationEventNoticePartner.md) |  | [default to AllocationEventNoticePartner]
 **currency** | **String** | The currency the notice amounts are expressed in. | [default to String]
-**lines** | [**List&lt;AllocationEventNoticeLine&gt;**](AllocationEventNoticeLine.md) | The notice lines, one per component of the partner&#39;s allocation. | [default to List<AllocationEventNoticeLine>]
-**netAmountDue** | **java.math.BigDecimal** | The net amount due, positive when the partner pays the fund and negative when the fund pays the partner. | [default to java.math.BigDecimal]
+**lines** | [**List&lt;AllocationEventNoticeLine&gt;**](AllocationEventNoticeLine.md) | The notice lines, one per component of the partner&#39;s allocation. Tax withheld from a distribution on the partner&#39;s behalf is its own line, under the Distribution: Withholding Tax transaction type, as part of what is distributed. | [default to List<AllocationEventNoticeLine>]
+**netAmountDue** | **java.math.BigDecimal** | The net amount due, positive when the partner pays the fund and negative when the fund pays the partner. On a distribution it is what the partner is paid: the lines less any tax withheld on the partner&#39;s behalf. | [default to java.math.BigDecimal]
+**taxWithheld** | **java.math.BigDecimal** | Tax withheld from the distribution on the partner&#39;s behalf: distributed to the partner but paid to the tax authority rather than to them, so it is not in the net amount due. Zero when nothing was withheld. | [default to java.math.BigDecimal]
 **unfundedReconciliation** | [**AllocationEventNoticeUnfundedReconciliation**](AllocationEventNoticeUnfundedReconciliation.md) |  | [default to AllocationEventNoticeUnfundedReconciliation]
 **cumulative** | [**AllocationEventNoticeCumulative**](AllocationEventNoticeCumulative.md) |  | [default to AllocationEventNoticeCumulative]
 **gpColumn** | [**AllocationEventNoticeCumulative**](AllocationEventNoticeCumulative.md) |  | [optional] [default to AllocationEventNoticeCumulative]
@@ -30,6 +31,7 @@ AllocationEventNoticePartner Partner = new AllocationEventNoticePartner();
 String Currency = "example Currency";
 List<AllocationEventNoticeLine> Lines = new List<AllocationEventNoticeLine>();
 java.math.BigDecimal NetAmountDue = new java.math.BigDecimal("100.00");
+java.math.BigDecimal TaxWithheld = new java.math.BigDecimal("100.00");
 AllocationEventNoticeUnfundedReconciliation UnfundedReconciliation = new AllocationEventNoticeUnfundedReconciliation();
 AllocationEventNoticeCumulative Cumulative = new AllocationEventNoticeCumulative();
 AllocationEventNoticeCumulative GpColumn = new AllocationEventNoticeCumulative();
@@ -45,6 +47,7 @@ AllocationEventNotice allocationEventNoticeInstance = new AllocationEventNotice(
     .Currency(Currency)
     .Lines(Lines)
     .NetAmountDue(NetAmountDue)
+    .TaxWithheld(TaxWithheld)
     .UnfundedReconciliation(UnfundedReconciliation)
     .Cumulative(Cumulative)
     .GpColumn(GpColumn)

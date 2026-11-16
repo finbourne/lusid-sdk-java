@@ -83,6 +83,10 @@ public class AllocationReceivable {
   @SerializedName(SERIALIZED_NAME_SIDE)
   private String side;
 
+  public static final String SERIALIZED_NAME_REFUND_PAYABLE = "refundPayable";
+  @SerializedName(SERIALIZED_NAME_REFUND_PAYABLE)
+  private java.math.BigDecimal refundPayable;
+
   public AllocationReceivable() {
   }
 
@@ -254,6 +258,27 @@ public class AllocationReceivable {
   }
 
 
+  public AllocationReceivable refundPayable(java.math.BigDecimal refundPayable) {
+    
+    this.refundPayable = refundPayable;
+    return this;
+  }
+
+   /**
+   * What the fund still owes the investor record back: receipts beyond what it owed, less the refunds paid out. Zero once the event is reversed, when the reversal&#39;s own refund takes over.
+   * @return refundPayable
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getRefundPayable() {
+    return refundPayable;
+  }
+
+
+  public void setRefundPayable(java.math.BigDecimal refundPayable) {
+    this.refundPayable = refundPayable;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -271,7 +296,8 @@ public class AllocationReceivable {
         Objects.equals(this.daysPastDue, allocationReceivable.daysPastDue) &&
         Objects.equals(this.bucket, allocationReceivable.bucket) &&
         Objects.equals(this.portfolio, allocationReceivable.portfolio) &&
-        Objects.equals(this.side, allocationReceivable.side);
+        Objects.equals(this.side, allocationReceivable.side) &&
+        (this.refundPayable.compareTo(allocationReceivable.getRefundPayable()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -280,7 +306,7 @@ public class AllocationReceivable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, called, received, outstanding, daysPastDue, bucket, portfolio, side);
+    return Objects.hash(investorRecordId, called, received, outstanding, daysPastDue, bucket, portfolio, side, refundPayable);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -302,6 +328,7 @@ public class AllocationReceivable {
     sb.append("    bucket: ").append(toIndentedString(bucket)).append("\n");
     sb.append("    portfolio: ").append(toIndentedString(portfolio)).append("\n");
     sb.append("    side: ").append(toIndentedString(side)).append("\n");
+    sb.append("    refundPayable: ").append(toIndentedString(refundPayable)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -332,6 +359,7 @@ public class AllocationReceivable {
     openapiFields.add("bucket");
     openapiFields.add("portfolio");
     openapiFields.add("side");
+    openapiFields.add("refundPayable");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
