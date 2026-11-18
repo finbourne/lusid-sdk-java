@@ -9,10 +9,12 @@ Name | Type | Description | Notes
 **createdDate** | [**OffsetDateTime**](OffsetDateTime.md) | The active date of this order instruction. | [default to OffsetDateTime]
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. | [optional] [default to Map<String, String>]
-**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | [optional] [default to java.math.BigDecimal]
-**weight** | **java.math.BigDecimal** | The proportion of the total portfolio value ordered for the given instrument ordered. | [optional] [default to java.math.BigDecimal]
+**quantity** | **java.math.BigDecimal** | The quantity of given instrument. | [optional] [default to java.math.BigDecimal]
+**weight** | **java.math.BigDecimal** | The proportion of the total portfolio value. | [optional] [default to java.math.BigDecimal]
 **price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this execution. | [optional] [default to Map<String, PerpetualProperty>]
+**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**instructionType** | **String** | Whether the instruction is a change to the holding or a target for it, one of: Change, Target. Defaults to Target for a weight-only instruction and to Change otherwise. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.OrderInstructionRequest;
@@ -28,6 +30,8 @@ ResourceId PortfolioId = new ResourceId();
 @jakarta.annotation.Nullable java.math.BigDecimal Weight = new java.math.BigDecimal("100.00");
 CurrencyAndAmount Price = new CurrencyAndAmount();
 @jakarta.annotation.Nullable Map<String, PerpetualProperty> Properties = new Map<String, PerpetualProperty>();
+CurrencyAndAmount Amount = new CurrencyAndAmount();
+@jakarta.annotation.Nullable String InstructionType = "example InstructionType";
 
 
 OrderInstructionRequest orderInstructionRequestInstance = new OrderInstructionRequest()
@@ -38,7 +42,9 @@ OrderInstructionRequest orderInstructionRequestInstance = new OrderInstructionRe
     .Quantity(Quantity)
     .Weight(Weight)
     .Price(Price)
-    .Properties(Properties);
+    .Properties(Properties)
+    .Amount(Amount)
+    .InstructionType(InstructionType);
 ```
 
 

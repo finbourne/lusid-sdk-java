@@ -97,6 +97,10 @@ public class UpsertComplianceRuleV3Request {
   @SerializedName(SERIALIZED_NAME_COMPUTED_FILTER)
   private ComplianceRuleV3ComputedFilter computedFilter;
 
+  public static final String SERIALIZED_NAME_SCHEDULE = "schedule";
+  @SerializedName(SERIALIZED_NAME_SCHEDULE)
+  private String schedule;
+
   public UpsertComplianceRuleV3Request() {
   }
 
@@ -318,6 +322,27 @@ public class UpsertComplianceRuleV3Request {
   }
 
 
+  public UpsertComplianceRuleV3Request schedule(String schedule) {
+    
+    this.schedule = schedule;
+    return this;
+  }
+
+   /**
+   * Available values: PreTrade, PostTrade, PreAndPostTrade.
+   * @return schedule
+  **/
+  @jakarta.annotation.Nullable
+  public String getSchedule() {
+    return schedule;
+  }
+
+
+  public void setSchedule(String schedule) {
+    this.schedule = schedule;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -337,7 +362,8 @@ public class UpsertComplianceRuleV3Request {
         Objects.equals(this.groupBy, upsertComplianceRuleV3Request.groupBy) &&
         Objects.equals(this.measure, upsertComplianceRuleV3Request.measure) &&
         Objects.equals(this.check, upsertComplianceRuleV3Request.check) &&
-        Objects.equals(this.computedFilter, upsertComplianceRuleV3Request.computedFilter);
+        Objects.equals(this.computedFilter, upsertComplianceRuleV3Request.computedFilter) &&
+        Objects.equals(this.schedule, upsertComplianceRuleV3Request.schedule);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -346,7 +372,7 @@ public class UpsertComplianceRuleV3Request {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, active, subject, filter, groupBy, measure, check, computedFilter);
+    return Objects.hash(id, name, description, active, subject, filter, groupBy, measure, check, computedFilter, schedule);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -370,6 +396,7 @@ public class UpsertComplianceRuleV3Request {
     sb.append("    measure: ").append(toIndentedString(measure)).append("\n");
     sb.append("    check: ").append(toIndentedString(check)).append("\n");
     sb.append("    computedFilter: ").append(toIndentedString(computedFilter)).append("\n");
+    sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -402,6 +429,7 @@ public class UpsertComplianceRuleV3Request {
     openapiFields.add("measure");
     openapiFields.add("check");
     openapiFields.add("computedFilter");
+    openapiFields.add("schedule");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -458,6 +486,9 @@ public class UpsertComplianceRuleV3Request {
       // validate the optional field `computedFilter`
       if (jsonObj.get("computedFilter") != null && !jsonObj.get("computedFilter").isJsonNull()) {
         ComplianceRuleV3ComputedFilter.validateJsonElement(jsonObj.get("computedFilter"));
+      }
+      if ((jsonObj.get("schedule") != null && !jsonObj.get("schedule").isJsonNull()) && !jsonObj.get("schedule").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `schedule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("schedule").toString()));
       }
   }
 

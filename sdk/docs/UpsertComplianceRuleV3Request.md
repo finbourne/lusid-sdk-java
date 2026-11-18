@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **measure** | [**ComplianceRuleV3Measure**](ComplianceRuleV3Measure.md) |  | [default to ComplianceRuleV3Measure]
 **check** | [**ComplianceRuleV3Check**](ComplianceRuleV3Check.md) |  | [default to ComplianceRuleV3Check]
 **computedFilter** | [**ComplianceRuleV3ComputedFilter**](ComplianceRuleV3ComputedFilter.md) |  | [optional] [default to ComplianceRuleV3ComputedFilter]
+**schedule** | **String** | Available values: PreTrade, PostTrade, PreAndPostTrade. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.UpsertComplianceRuleV3Request;
@@ -32,6 +33,7 @@ ComplianceRuleV3FilterNode Filter = new ComplianceRuleV3FilterNode();
 ComplianceRuleV3Measure Measure = new ComplianceRuleV3Measure();
 ComplianceRuleV3Check Check = new ComplianceRuleV3Check();
 ComplianceRuleV3ComputedFilter ComputedFilter = new ComplianceRuleV3ComputedFilter();
+@jakarta.annotation.Nullable String Schedule = "example Schedule";
 
 
 UpsertComplianceRuleV3Request upsertComplianceRuleV3RequestInstance = new UpsertComplianceRuleV3Request()
@@ -44,7 +46,8 @@ UpsertComplianceRuleV3Request upsertComplianceRuleV3RequestInstance = new Upsert
     .GroupBy(GroupBy)
     .Measure(Measure)
     .Check(Check)
-    .ComputedFilter(ComputedFilter);
+    .ComputedFilter(ComputedFilter)
+    .Schedule(Schedule);
 ```
 
 

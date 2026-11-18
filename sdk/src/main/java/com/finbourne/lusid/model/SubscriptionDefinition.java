@@ -440,7 +440,7 @@ public class SubscriptionDefinition {
   }
 
    /**
-   * The instrument identifiers each published holding carries, as Instrument/default/{type} property keys,  for example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.  Not valid for a transactions subscription.
+   * The instrument identifiers each published change carries, as Instrument/default/{type} property keys, for  example Instrument/default/ClientInternal. Each must name an instrument identifier type. At most 5.
    * @return instrumentIdentifiers
   **/
   @jakarta.annotation.Nullable

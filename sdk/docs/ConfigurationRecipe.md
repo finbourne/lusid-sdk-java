@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **description** | **String** | User can assign a description to understand more humanly the recipe. | [optional] [default to String]
 **holding** | [**HoldingContext**](HoldingContext.md) |  | [optional] [default to HoldingContext]
 **translation** | [**TranslationContext**](TranslationContext.md) |  | [optional] [default to TranslationContext]
+**loanOptions** | [**LoanOptions**](LoanOptions.md) |  | [optional] [default to LoanOptions]
 
 ```java
 import com.finbourne.lusid.model.ConfigurationRecipe;
@@ -28,6 +29,7 @@ AggregationContext Aggregation = new AggregationContext();
 @jakarta.annotation.Nullable String Description = "example Description";
 HoldingContext Holding = new HoldingContext();
 TranslationContext Translation = new TranslationContext();
+LoanOptions LoanOptions = new LoanOptions();
 
 
 ConfigurationRecipe configurationRecipeInstance = new ConfigurationRecipe()
@@ -38,7 +40,8 @@ ConfigurationRecipe configurationRecipeInstance = new ConfigurationRecipe()
     .Aggregation(Aggregation)
     .Description(Description)
     .Holding(Holding)
-    .Translation(Translation);
+    .Translation(Translation)
+    .LoanOptions(LoanOptions);
 ```
 
 

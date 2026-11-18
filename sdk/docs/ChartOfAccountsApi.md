@@ -4,6 +4,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**correctPostingModuleRuleVersion**](ChartOfAccountsApi.md#correctPostingModuleRuleVersion) | **PUT** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/versions/{version} | [EARLY ACCESS] CorrectPostingModuleRuleVersion: Correct a version of a rule of a Posting Module |
 | [**createChartOfAccounts**](ChartOfAccountsApi.md#createChartOfAccounts) | **POST** /api/chartofaccounts/{scope} | [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts |
 | [**createCleardownModule**](ChartOfAccountsApi.md#createCleardownModule) | **POST** /api/chartofaccounts/{scope}/{code}/cleardownmodules | [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module |
 | [**createGeneralLedgerProfile**](ChartOfAccountsApi.md#createGeneralLedgerProfile) | **POST** /api/chartofaccounts/{scope}/{code}/generalledgerprofile | [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile. |
@@ -13,6 +14,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deleteCleardownModule**](ChartOfAccountsApi.md#deleteCleardownModule) | **DELETE** /api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode} | [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module. |
 | [**deleteGeneralLedgerProfile**](ChartOfAccountsApi.md#deleteGeneralLedgerProfile) | **DELETE** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode} | [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. |
 | [**deletePostingModule**](ChartOfAccountsApi.md#deletePostingModule) | **DELETE** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EARLY ACCESS] DeletePostingModule: Delete a Posting Module. |
+| [**deletePostingModuleRuleVersion**](ChartOfAccountsApi.md#deletePostingModuleRuleVersion) | **DELETE** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/versions/{version} | [EARLY ACCESS] DeletePostingModuleRuleVersion: Delete a version of a rule of a Posting Module |
 | [**getAccount**](ChartOfAccountsApi.md#getAccount) | **GET** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode} | [EARLY ACCESS] GetAccount: Get Account |
 | [**getAccountProperties**](ChartOfAccountsApi.md#getAccountProperties) | **GET** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties | [EARLY ACCESS] GetAccountProperties: Get Account properties |
 | [**getChartOfAccounts**](ChartOfAccountsApi.md#getChartOfAccounts) | **GET** /api/chartofaccounts/{scope}/{code} | [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts |
@@ -40,6 +42,107 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**upsertAccounts**](ChartOfAccountsApi.md#upsertAccounts) | **POST** /api/chartofaccounts/{scope}/{code}/accounts | [EARLY ACCESS] UpsertAccounts: Upsert Accounts |
 | [**upsertChartOfAccountsProperties**](ChartOfAccountsApi.md#upsertChartOfAccountsProperties) | **POST** /api/chartofaccounts/{scope}/{code}/properties/$upsert | [EARLY ACCESS] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties |
 
+
+
+## correctPostingModuleRuleVersion
+
+> PostingModuleRulesUpdatedResponse correctPostingModuleRuleVersion(scope, code, postingModuleCode, ruleId, version, correctPostingModuleRuleVersionRequest)
+
+[EARLY ACCESS] CorrectPostingModuleRuleVersion: Correct a version of a rule of a Posting Module
+
+Replace the general ledger account, filter and effective window of one version of a Posting Rule, identified by  its ruleId and version. The version keeps its ruleId, version and originalRuleId. The rule&#39;s other versions and  every other rule are left as they are. The request replaces all four fields: an effectiveFrom or effectiveUntil  that is not provided is cleared, so provide the existing dates to keep the version&#39;s window.     Journal Entry Lines in closed periods are not changed. Activity in a closed period that falls in the corrected  version&#39;s window is moved to the corrected account in the next open period, by a reversal and a true-up. To  change the account from a date onwards without restating earlier activity, supersede the rule instead.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ChartOfAccountsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
+        ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
+        String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+        String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
+        String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module to be updated.
+        String ruleId = "ruleId_example"; // String | The identifier of the Posting Rule.
+        Integer version = 56; // Integer | The version of the Posting Rule to correct.
+        CorrectPostingModuleRuleVersionRequest correctPostingModuleRuleVersionRequest = new CorrectPostingModuleRuleVersionRequest(); // CorrectPostingModuleRuleVersionRequest | The corrected content of the version.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PostingModuleRulesUpdatedResponse result = apiInstance.correctPostingModuleRuleVersion(scope, code, postingModuleCode, ruleId, version, correctPostingModuleRuleVersionRequest).execute(opts);
+
+            PostingModuleRulesUpdatedResponse result = apiInstance.correctPostingModuleRuleVersion(scope, code, postingModuleCode, ruleId, version, correctPostingModuleRuleVersionRequest).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ChartOfAccountsApi#correctPostingModuleRuleVersion");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
+| **postingModuleCode** | **String**| The code of the Posting Module to be updated. | |
+| **ruleId** | **String**| The identifier of the Posting Rule. | |
+| **version** | **Integer**| The version of the Posting Rule to correct. | |
+| **correctPostingModuleRuleVersionRequest** | [**CorrectPostingModuleRuleVersionRequest**](CorrectPostingModuleRuleVersionRequest.md)| The corrected content of the version. | |
+
+### Return type
+
+[**PostingModuleRulesUpdatedResponse**](PostingModuleRulesUpdatedResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Posting Module with updated rules. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
 ## createChartOfAccounts
@@ -889,6 +992,105 @@ public class ChartOfAccountsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The datetime that the Posting Module was deleted. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deletePostingModuleRuleVersion
+
+> PostingModuleRulesUpdatedResponse deletePostingModuleRuleVersion(scope, code, postingModuleCode, ruleId, version)
+
+[EARLY ACCESS] DeletePostingModuleRuleVersion: Delete a version of a rule of a Posting Module
+
+Delete one version of a Posting Rule, identified by its ruleId and version. The rule&#39;s other versions and every  other rule are left as they are, and keep their version numbers.     Journal Entry Lines in closed periods are not changed. Activity in a closed period that the deleted version  posted is moved, in the next open period, to the account of the rule that now matches it, by a reversal and a  true-up.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class ChartOfAccountsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // ChartOfAccountsApi apiInstance = apiFactory.build(ChartOfAccountsApi.class);
+
+        ChartOfAccountsApi apiInstance = ApiFactoryBuilder.build(fileName).build(ChartOfAccountsApi.class);
+        String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+        String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
+        String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module to be updated.
+        String ruleId = "ruleId_example"; // String | The identifier of the Posting Rule.
+        Integer version = 56; // Integer | The version of the Posting Rule to delete.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PostingModuleRulesUpdatedResponse result = apiInstance.deletePostingModuleRuleVersion(scope, code, postingModuleCode, ruleId, version).execute(opts);
+
+            PostingModuleRulesUpdatedResponse result = apiInstance.deletePostingModuleRuleVersion(scope, code, postingModuleCode, ruleId, version).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ChartOfAccountsApi#deletePostingModuleRuleVersion");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
+| **postingModuleCode** | **String**| The code of the Posting Module to be updated. | |
+| **ruleId** | **String**| The identifier of the Posting Rule. | |
+| **version** | **Integer**| The version of the Posting Rule to delete. | |
+
+### Return type
+
+[**PostingModuleRulesUpdatedResponse**](PostingModuleRulesUpdatedResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The Posting Module with updated rules. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

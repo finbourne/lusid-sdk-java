@@ -99,6 +99,10 @@ public class ComplianceRuleV3Response {
   @SerializedName(SERIALIZED_NAME_COMPUTED_FILTER)
   private ComplianceRuleV3ComputedFilter computedFilter;
 
+  public static final String SERIALIZED_NAME_SCHEDULE = "schedule";
+  @SerializedName(SERIALIZED_NAME_SCHEDULE)
+  private String schedule;
+
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
@@ -332,6 +336,27 @@ public class ComplianceRuleV3Response {
   }
 
 
+  public ComplianceRuleV3Response schedule(String schedule) {
+    
+    this.schedule = schedule;
+    return this;
+  }
+
+   /**
+   * Available values: PreTrade, PostTrade, PreAndPostTrade.
+   * @return schedule
+  **/
+  @jakarta.annotation.Nullable
+  public String getSchedule() {
+    return schedule;
+  }
+
+
+  public void setSchedule(String schedule) {
+    this.schedule = schedule;
+  }
+
+
   public ComplianceRuleV3Response version(Version version) {
     
     this.version = version;
@@ -423,6 +448,7 @@ public class ComplianceRuleV3Response {
         Objects.equals(this.measure, complianceRuleV3Response.measure) &&
         Objects.equals(this.check, complianceRuleV3Response.check) &&
         Objects.equals(this.computedFilter, complianceRuleV3Response.computedFilter) &&
+        Objects.equals(this.schedule, complianceRuleV3Response.schedule) &&
         Objects.equals(this.version, complianceRuleV3Response.version) &&
         Objects.equals(this.plainEnglish, complianceRuleV3Response.plainEnglish) &&
         Objects.equals(this.links, complianceRuleV3Response.links);
@@ -434,7 +460,7 @@ public class ComplianceRuleV3Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, active, subject, filter, groupBy, measure, check, computedFilter, version, plainEnglish, links);
+    return Objects.hash(id, name, description, active, subject, filter, groupBy, measure, check, computedFilter, schedule, version, plainEnglish, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -458,6 +484,7 @@ public class ComplianceRuleV3Response {
     sb.append("    measure: ").append(toIndentedString(measure)).append("\n");
     sb.append("    check: ").append(toIndentedString(check)).append("\n");
     sb.append("    computedFilter: ").append(toIndentedString(computedFilter)).append("\n");
+    sb.append("    schedule: ").append(toIndentedString(schedule)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    plainEnglish: ").append(toIndentedString(plainEnglish)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -493,6 +520,7 @@ public class ComplianceRuleV3Response {
     openapiFields.add("measure");
     openapiFields.add("check");
     openapiFields.add("computedFilter");
+    openapiFields.add("schedule");
     openapiFields.add("version");
     openapiFields.add("plainEnglish");
     openapiFields.add("links");
@@ -546,6 +574,9 @@ public class ComplianceRuleV3Response {
       // validate the optional field `computedFilter`
       if (jsonObj.get("computedFilter") != null && !jsonObj.get("computedFilter").isJsonNull()) {
         ComplianceRuleV3ComputedFilter.validateJsonElement(jsonObj.get("computedFilter"));
+      }
+      if ((jsonObj.get("schedule") != null && !jsonObj.get("schedule").isJsonNull()) && !jsonObj.get("schedule").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `schedule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("schedule").toString()));
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

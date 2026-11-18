@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **recipeId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **scenarioDiagnostics** | [**ScenarioDiagnostics**](ScenarioDiagnostics.md) |  | [optional] [default to ScenarioDiagnostics]
 **recipeProvenance** | [**RecipeProvenance**](RecipeProvenance.md) |  | [optional] [default to RecipeProvenance]
+**warnings** | [**List&lt;Warning&gt;**](Warning.md) |  | [optional] [default to List<Warning>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -32,6 +33,7 @@ ResultDataSchema DataSchema = new ResultDataSchema();
 ResourceId RecipeId = new ResourceId();
 ScenarioDiagnostics ScenarioDiagnostics = new ScenarioDiagnostics();
 RecipeProvenance RecipeProvenance = new RecipeProvenance();
+@jakarta.annotation.Nullable List<Warning> Warnings = new List<Warning>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -46,6 +48,7 @@ ListAggregationResponse listAggregationResponseInstance = new ListAggregationRes
     .RecipeId(RecipeId)
     .ScenarioDiagnostics(ScenarioDiagnostics)
     .RecipeProvenance(RecipeProvenance)
+    .Warnings(Warnings)
     .Links(Links);
 ```
 

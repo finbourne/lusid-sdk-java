@@ -10,13 +10,15 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this execution. | [optional] [default to Map<String, PerpetualProperty>]
 **portfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument ordered. | [default to Map<String, String>]
-**quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | [optional] [default to java.math.BigDecimal]
-**weight** | **java.math.BigDecimal** | The proportion of the total portfolio value ordered for the given instrument ordered. | [optional] [default to java.math.BigDecimal]
+**quantity** | **java.math.BigDecimal** | The quantity of given instrument. | [optional] [default to java.math.BigDecimal]
+**weight** | **java.math.BigDecimal** | The proportion of the total portfolio value. | [optional] [default to java.math.BigDecimal]
 **price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **instrumentScope** | **String** | The scope in which the instrument lies | [optional] [default to String]
 **lusidInstrumentId** | **String** | The LUSID instrument id for the instrument ordered. | [optional] [default to String]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **dataModelMembership** | [**DataModelMembership**](DataModelMembership.md) |  | [optional] [default to DataModelMembership]
+**amount** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**instructionType** | **String** | Whether the instruction is a change to the holding or a target for it, one of: Change, Target. Defaults to Target for a weight-only instruction and to Change otherwise. | [optional] [default to String]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -37,6 +39,8 @@ CurrencyAndAmount Price = new CurrencyAndAmount();
 @jakarta.annotation.Nullable String LusidInstrumentId = "example LusidInstrumentId";
 Version Version = new Version();
 DataModelMembership DataModelMembership = new DataModelMembership();
+CurrencyAndAmount Amount = new CurrencyAndAmount();
+@jakarta.annotation.Nullable String InstructionType = "example InstructionType";
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -53,6 +57,8 @@ OrderInstruction orderInstructionInstance = new OrderInstruction()
     .LusidInstrumentId(LusidInstrumentId)
     .Version(Version)
     .DataModelMembership(DataModelMembership)
+    .Amount(Amount)
+    .InstructionType(InstructionType)
     .Links(Links);
 ```
 

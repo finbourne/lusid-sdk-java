@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
 *CalendarsApi* | [**listCalendarsInScope**](docs/CalendarsApi.md#listcalendarsinscope) | **GET** /api/calendars/generic/{scope} | ListCalendarsInScope: List all calenders in a specified scope
 *CalendarsApi* | [**resolveTenors**](docs/CalendarsApi.md#resolvetenors) | **POST** /api/calendars/tenors/resolve | [EARLY ACCESS] ResolveTenors: Resolve tenor strings to settlement dates.
 *CalendarsApi* | [**updateCalendar**](docs/CalendarsApi.md#updatecalendar) | **POST** /api/calendars/generic/{scope}/{code} | [EARLY ACCESS] UpdateCalendar: Update a calendar
+*ChartOfAccountsApi* | [**correctPostingModuleRuleVersion**](docs/ChartOfAccountsApi.md#correctpostingmoduleruleversion) | **PUT** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/versions/{version} | [EARLY ACCESS] CorrectPostingModuleRuleVersion: Correct a version of a rule of a Posting Module
 *ChartOfAccountsApi* | [**createChartOfAccounts**](docs/ChartOfAccountsApi.md#createchartofaccounts) | **POST** /api/chartofaccounts/{scope} | [EARLY ACCESS] CreateChartOfAccounts: Create a Chart of Accounts
 *ChartOfAccountsApi* | [**createCleardownModule**](docs/ChartOfAccountsApi.md#createcleardownmodule) | **POST** /api/chartofaccounts/{scope}/{code}/cleardownmodules | [EARLY ACCESS] CreateCleardownModule: Create a Cleardown Module
 *ChartOfAccountsApi* | [**createGeneralLedgerProfile**](docs/ChartOfAccountsApi.md#creategeneralledgerprofile) | **POST** /api/chartofaccounts/{scope}/{code}/generalledgerprofile | [EARLY ACCESS] CreateGeneralLedgerProfile: Create a General Ledger Profile.
@@ -116,6 +117,7 @@ Class | Method | HTTP request | Description
 *ChartOfAccountsApi* | [**deleteCleardownModule**](docs/ChartOfAccountsApi.md#deletecleardownmodule) | **DELETE** /api/chartofaccounts/{scope}/{code}/cleardownmodules/{cleardownModuleCode} | [EARLY ACCESS] DeleteCleardownModule: Delete a Cleardown Module.
 *ChartOfAccountsApi* | [**deleteGeneralLedgerProfile**](docs/ChartOfAccountsApi.md#deletegeneralledgerprofile) | **DELETE** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode} | [EARLY ACCESS] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
 *ChartOfAccountsApi* | [**deletePostingModule**](docs/ChartOfAccountsApi.md#deletepostingmodule) | **DELETE** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EARLY ACCESS] DeletePostingModule: Delete a Posting Module.
+*ChartOfAccountsApi* | [**deletePostingModuleRuleVersion**](docs/ChartOfAccountsApi.md#deletepostingmoduleruleversion) | **DELETE** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/versions/{version} | [EARLY ACCESS] DeletePostingModuleRuleVersion: Delete a version of a rule of a Posting Module
 *ChartOfAccountsApi* | [**getAccount**](docs/ChartOfAccountsApi.md#getaccount) | **GET** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode} | [EARLY ACCESS] GetAccount: Get Account
 *ChartOfAccountsApi* | [**getAccountProperties**](docs/ChartOfAccountsApi.md#getaccountproperties) | **GET** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties | [EARLY ACCESS] GetAccountProperties: Get Account properties
 *ChartOfAccountsApi* | [**getChartOfAccounts**](docs/ChartOfAccountsApi.md#getchartofaccounts) | **GET** /api/chartofaccounts/{scope}/{code} | [EARLY ACCESS] GetChartOfAccounts: Get ChartOfAccounts
@@ -431,6 +433,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**producePartnerStatement**](docs/FundsApi.md#producepartnerstatement) | **POST** /api/funds/{scope}/{code}/partners/{investorRecordId}/statements | [EARLY ACCESS] ProducePartnerStatement: [EXPERIMENTAL] ProducePartnerStatement: Produce a partner's capital statement for a period.
 *FundsApi* | [**queryCashStatement**](docs/FundsApi.md#querycashstatement) | **POST** /api/funds/{scope}/{code}/valuationpoints/cashstatement/$query | [DEPRECATED] QueryCashStatement: [DEPRECATED] QueryCashStatement: Query cash statement for a Fund valuation point.
 *FundsApi* | [**queryCashStatementLocalCurrency**](docs/FundsApi.md#querycashstatementlocalcurrency) | **POST** /api/funds/{scope}/{code}/valuationpoints/cashstatementlocalcurrency/$query | [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
+*FundsApi* | [**reactivateNavTypes**](docs/FundsApi.md#reactivatenavtypes) | **POST** /api/funds/{scope}/{code}/reactivateNavTypes | [EXPERIMENTAL] ReactivateNavTypes: [EXPERIMENTAL] ReactivateNavTypes: Reactivate previously deactivated NAV types on a Fund.
 *FundsApi* | [**revertValuationPointToEstimate**](docs/FundsApi.md#revertvaluationpointtoestimate) | **POST** /api/funds/{scope}/{code}/valuationpoints/$reverttoestimate | [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
 *FundsApi* | [**runPartnerAllocations**](docs/FundsApi.md#runpartnerallocations) | **POST** /api/funds/{scope}/{code}/partnerallocations/$run | [EARLY ACCESS] RunPartnerAllocations: [EXPERIMENTAL] RunPartnerAllocations: Allocate a period's income to the Fund's partners.
 *FundsApi* | [**sendBackTaxReturn**](docs/FundsApi.md#sendbacktaxreturn) | **POST** /api/funds/{scope}/{code}/tax/return/send-back | [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step.
@@ -1410,6 +1413,7 @@ Class | Method | HTTP request | Description
  - [CorporateActionTransitionComponent](docs/CorporateActionTransitionComponent.md)
  - [CorporateActionTransitionComponentRequest](docs/CorporateActionTransitionComponentRequest.md)
  - [CorporateActionTransitionRequest](docs/CorporateActionTransitionRequest.md)
+ - [CorrectPostingModuleRuleVersionRequest](docs/CorrectPostingModuleRuleVersionRequest.md)
  - [CounterpartyAgreement](docs/CounterpartyAgreement.md)
  - [CounterpartyIdentifier](docs/CounterpartyIdentifier.md)
  - [CounterpartyRiskInformation](docs/CounterpartyRiskInformation.md)
@@ -1850,6 +1854,7 @@ Class | Method | HTTP request | Description
  - [IndexConvention](docs/IndexConvention.md)
  - [IndexModelOptions](docs/IndexModelOptions.md)
  - [IndexProjectionDependency](docs/IndexProjectionDependency.md)
+ - [IndicativeAmountMetric](docs/IndicativeAmountMetric.md)
  - [IndustryClassifier](docs/IndustryClassifier.md)
  - [InflationConvexityOptions](docs/InflationConvexityOptions.md)
  - [InflationCurveData](docs/InflationCurveData.md)
@@ -1903,6 +1908,7 @@ Class | Method | HTTP request | Description
  - [InstrumentSearchProperty](docs/InstrumentSearchProperty.md)
  - [InstrumentType](docs/InstrumentType.md)
  - [InterestPaymentEvent](docs/InterestPaymentEvent.md)
+ - [InterestPaymentWithPrincipalEvent](docs/InterestPaymentWithPrincipalEvent.md)
  - [InterestRateSwap](docs/InterestRateSwap.md)
  - [InterestRateSwaption](docs/InterestRateSwaption.md)
  - [IntermediateComplianceStep](docs/IntermediateComplianceStep.md)
@@ -1944,6 +1950,7 @@ Class | Method | HTTP request | Description
  - [LoanFacilityTaxLotState](docs/LoanFacilityTaxLotState.md)
  - [LoanInterestCapitalisationEvent](docs/LoanInterestCapitalisationEvent.md)
  - [LoanInterestRepaymentEvent](docs/LoanInterestRepaymentEvent.md)
+ - [LoanOptions](docs/LoanOptions.md)
  - [LoanPeriod](docs/LoanPeriod.md)
  - [LoanPrincipalRepaymentEvent](docs/LoanPrincipalRepaymentEvent.md)
  - [LockPeriodDiaryEntryRequest](docs/LockPeriodDiaryEntryRequest.md)
@@ -2035,6 +2042,7 @@ Class | Method | HTTP request | Description
  - [NavSettlementConfiguration](docs/NavSettlementConfiguration.md)
  - [NavSettlementConfigurationCategory](docs/NavSettlementConfigurationCategory.md)
  - [NavType](docs/NavType.md)
+ - [NavTypeCatchUp](docs/NavTypeCatchUp.md)
  - [NavTypeDefinition](docs/NavTypeDefinition.md)
  - [NavTypeSelection](docs/NavTypeSelection.md)
  - [NettingRecommendation](docs/NettingRecommendation.md)
@@ -2406,6 +2414,7 @@ Class | Method | HTTP request | Description
  - [RateCurveShiftScale](docs/RateCurveShiftScale.md)
  - [RawVendorEvent](docs/RawVendorEvent.md)
  - [ReOpenPeriodDiaryEntryRequest](docs/ReOpenPeriodDiaryEntryRequest.md)
+ - [ReactivatedNavTypesResponse](docs/ReactivatedNavTypesResponse.md)
  - [RealisedGainLoss](docs/RealisedGainLoss.md)
  - [RealisedGainLossChargeableGains](docs/RealisedGainLossChargeableGains.md)
  - [RealisedGainLossMatchedLot](docs/RealisedGainLossMatchedLot.md)
@@ -2649,6 +2658,7 @@ Class | Method | HTTP request | Description
  - [ResultValueString](docs/ResultValueString.md)
  - [ResultValueType](docs/ResultValueType.md)
  - [RetainElection](docs/RetainElection.md)
+ - [ReturnMetric](docs/ReturnMetric.md)
  - [ReturnZeroPvOptions](docs/ReturnZeroPvOptions.md)
  - [ReturnsEntity](docs/ReturnsEntity.md)
  - [ReturnsMetric](docs/ReturnsMetric.md)

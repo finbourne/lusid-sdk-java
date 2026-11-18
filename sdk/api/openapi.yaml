@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10675
+  version: 0.11.10685
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -20319,6 +20319,253 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/versions/{version}:
+    delete:
+      description: "Delete one version of a Posting Rule, identified by its ruleId\
+        \ and version. The rule's other versions and every\r\nother rule are left\
+        \ as they are, and keep their version numbers.\r\n \r\nJournal Entry Lines\
+        \ in closed periods are not changed. Activity in a closed period that the\
+        \ deleted version\r\nposted is moved, in the next open period, to the account\
+        \ of the rule that now matches it, by a reversal and a\r\ntrue-up."
+      operationId: DeletePostingModuleRuleVersion
+      parameters:
+      - description: The scope of the Chart of Accounts.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Chart of Accounts. Together with the scope this
+          uniquely identifies the Chart of Accounts.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Posting Module to be updated.
+        explode: false
+        in: path
+        name: postingModuleCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The identifier of the Posting Rule.
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The version of the Posting Rule to delete.
+        explode: false
+        in: path
+        name: version
+        required: true
+        schema:
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PostingModuleRulesUpdatedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostingModuleRulesUpdatedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PostingModuleRulesUpdatedResponse'
+          description: The Posting Module with updated rules.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] DeletePostingModuleRuleVersion: Delete a version of\
+        \ a rule of a Posting Module"
+      tags:
+      - Chart Of Accounts
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    put:
+      description: "Replace the general ledger account, filter and effective window\
+        \ of one version of a Posting Rule, identified by\r\nits ruleId and version.\
+        \ The version keeps its ruleId, version and originalRuleId. The rule's other\
+        \ versions and\r\nevery other rule are left as they are. The request replaces\
+        \ all four fields: an effectiveFrom or effectiveUntil\r\nthat is not provided\
+        \ is cleared, so provide the existing dates to keep the version's window.\r\
+        \n \r\nJournal Entry Lines in closed periods are not changed. Activity in\
+        \ a closed period that falls in the corrected\r\nversion's window is moved\
+        \ to the corrected account in the next open period, by a reversal and a true-up.\
+        \ To\r\nchange the account from a date onwards without restating earlier activity,\
+        \ supersede the rule instead."
+      operationId: CorrectPostingModuleRuleVersion
+      parameters:
+      - description: The scope of the Chart of Accounts.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Chart of Accounts. Together with the scope this
+          uniquely identifies the Chart of Accounts.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Posting Module to be updated.
+        explode: false
+        in: path
+        name: postingModuleCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The identifier of the Posting Rule.
+        explode: false
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The version of the Posting Rule to correct.
+        explode: false
+        in: path
+        name: version
+        required: true
+        schema:
+          format: int32
+          maximum: 2147483647
+          minimum: 1
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              generalLedgerAccountCode: "100002355"
+              ruleFilter: EconomicBucket eq 'NA_Income'
+              effectiveFrom: 2026-02-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/CorrectPostingModuleRuleVersionRequest'
+          application/json:
+            example:
+              generalLedgerAccountCode: "100002355"
+              ruleFilter: EconomicBucket eq 'NA_Income'
+              effectiveFrom: 2026-02-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/CorrectPostingModuleRuleVersionRequest'
+          text/json:
+            example:
+              generalLedgerAccountCode: "100002355"
+              ruleFilter: EconomicBucket eq 'NA_Income'
+              effectiveFrom: 2026-02-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/CorrectPostingModuleRuleVersionRequest'
+          application/*+json:
+            example:
+              generalLedgerAccountCode: "100002355"
+              ruleFilter: EconomicBucket eq 'NA_Income'
+              effectiveFrom: 2026-02-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/CorrectPostingModuleRuleVersionRequest'
+        description: The corrected content of the version.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PostingModuleRulesUpdatedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostingModuleRulesUpdatedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PostingModuleRulesUpdatedResponse'
+          description: The Posting Module with updated rules.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] CorrectPostingModuleRuleVersion: Correct a version\
+        \ of a rule of a Posting Module"
+      tags:
+      - Chart Of Accounts
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/chartofaccounts/{scope}/{code}/properties:
     get:
       description: Get all the properties of a single chart of accounts.
@@ -31316,6 +31563,7 @@ paths:
                   hard:
                     value: 10
                     inclusive: true
+              schedule: PreAndPostTrade
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleV3Request'
           application/json:
@@ -31347,6 +31595,7 @@ paths:
                   hard:
                     value: 10
                     inclusive: true
+              schedule: PreAndPostTrade
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleV3Request'
           text/json:
@@ -31378,6 +31627,7 @@ paths:
                   hard:
                     value: 10
                     inclusive: true
+              schedule: PreAndPostTrade
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleV3Request'
           application/*+json:
@@ -31409,6 +31659,7 @@ paths:
                   hard:
                     value: 10
                     inclusive: true
+              schedule: PreAndPostTrade
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleV3Request'
       responses:
@@ -31444,6 +31695,7 @@ paths:
                     hard:
                       value: 10
                       inclusive: true
+                schedule: PreAndPostTrade
               schema:
                 $ref: '#/components/schemas/ComplianceRuleV3Response'
             application/json:
@@ -31476,6 +31728,7 @@ paths:
                     hard:
                       value: 10
                       inclusive: true
+                schedule: PreAndPostTrade
               schema:
                 $ref: '#/components/schemas/ComplianceRuleV3Response'
             text/json:
@@ -31508,6 +31761,7 @@ paths:
                     hard:
                       value: 10
                       inclusive: true
+                schedule: PreAndPostTrade
               schema:
                 $ref: '#/components/schemas/ComplianceRuleV3Response'
           description: The upserted V3 compliance rule.
@@ -31575,6 +31829,7 @@ paths:
                   hard:
                     value: 10
                     inclusive: true
+              schedule: PreAndPostTrade
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleV3Request'
           application/json:
@@ -31606,6 +31861,7 @@ paths:
                   hard:
                     value: 10
                     inclusive: true
+              schedule: PreAndPostTrade
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleV3Request'
           text/json:
@@ -31637,6 +31893,7 @@ paths:
                   hard:
                     value: 10
                     inclusive: true
+              schedule: PreAndPostTrade
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleV3Request'
           application/*+json:
@@ -31668,6 +31925,7 @@ paths:
                   hard:
                     value: 10
                     inclusive: true
+              schedule: PreAndPostTrade
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleV3Request'
       responses:
@@ -31703,6 +31961,7 @@ paths:
                     hard:
                       value: 10
                       inclusive: true
+                schedule: PreAndPostTrade
               schema:
                 $ref: '#/components/schemas/ComplianceRuleV3Response'
             application/json:
@@ -31735,6 +31994,7 @@ paths:
                     hard:
                       value: 10
                       inclusive: true
+                schedule: PreAndPostTrade
               schema:
                 $ref: '#/components/schemas/ComplianceRuleV3Response'
             text/json:
@@ -31767,6 +32027,7 @@ paths:
                     hard:
                       value: 10
                       inclusive: true
+                schedule: PreAndPostTrade
               schema:
                 $ref: '#/components/schemas/ComplianceRuleV3Response'
           description: The validated V3 compliance rule definition.
@@ -31939,6 +32200,7 @@ paths:
                     hard:
                       value: 10
                       inclusive: true
+                schedule: PreAndPostTrade
               schema:
                 $ref: '#/components/schemas/ComplianceRuleV3Response'
             application/json:
@@ -31971,6 +32233,7 @@ paths:
                     hard:
                       value: 10
                       inclusive: true
+                schedule: PreAndPostTrade
               schema:
                 $ref: '#/components/schemas/ComplianceRuleV3Response'
             text/json:
@@ -32003,6 +32266,7 @@ paths:
                     hard:
                       value: 10
                       inclusive: true
+                schedule: PreAndPostTrade
               schema:
                 $ref: '#/components/schemas/ComplianceRuleV3Response'
           description: The requested V3 compliance rule.
@@ -60311,6 +60575,113 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/funds/{scope}/{code}/reactivateNavTypes:
+    post:
+      description: "Returns the deactivated NAV types to Active. For followers, the\
+        \ response includes the number of valuation\r\npoints the leader finalised\
+        \ while the follower was dormant. Leaders reactivate with no catch-up counts."
+      operationId: ReactivateNavTypes
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - NavTypeCode1
+            - NavTypeCode2
+            schema:
+              items:
+                type: string
+              type: array
+          application/json:
+            example:
+            - NavTypeCode1
+            - NavTypeCode2
+            schema:
+              items:
+                type: string
+              type: array
+          text/json:
+            example:
+            - NavTypeCode1
+            - NavTypeCode2
+            schema:
+              items:
+                type: string
+              type: array
+          application/*+json:
+            example:
+            - NavTypeCode1
+            - NavTypeCode2
+            schema:
+              items:
+                type: string
+              type: array
+        description: The codes of the nav types to be reactivated.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReactivatedNavTypesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReactivatedNavTypesResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReactivatedNavTypesResponse'
+          description: "The updated Fund with the specified NAV types reactivated,\
+            \ and catch-up counts for followers."
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] ReactivateNavTypes: [EXPERIMENTAL] ReactivateNavTypes:\
+        \ Reactivate previously deactivated NAV types on a Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/funds/{scope}/{code}/series:
     get:
       description: "Lists the Series defined on the Share Classes of the Fund, optionally\
@@ -79865,7 +80236,8 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent,\
+          \ InterestPaymentWithPrincipalEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -79987,7 +80359,8 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent,\
+          \ InterestPaymentWithPrincipalEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -80117,7 +80490,8 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent,\
+          \ InterestPaymentWithPrincipalEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -80353,7 +80727,8 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent,\
+          \ InterestPaymentWithPrincipalEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -80590,7 +80965,8 @@ paths:
           \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
           \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
           \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
+          \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent,\
+          \ InterestPaymentWithPrincipalEvent."
         explode: false
         in: path
         name: instrumentEventType
@@ -198034,7 +198410,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198165,6 +198541,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - dividendCurrency
@@ -198696,7 +199073,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -198827,6 +199204,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -199583,8 +199961,8 @@ components:
         \ to report returns for, the returns id\r\nunder which upserted returns are\
         \ stored and the Returns entity that configures a calculation, the\r\neffective\
         \ window, the metrics to report and the period grid granularity. Supports\
-        \ a `Portfolio` or a\r\n`PortfolioGroup` entity, the period `Return` metric\
-        \ and a `Daily` grid."
+        \ a `Portfolio` or a\r\n`PortfolioGroup` entity, the period `Return` and `IndicativeAmount`\
+        \ metrics and a `Daily` grid."
       example:
         period: period
         asAt: 2000-01-23T04:56:07.000+00:00
@@ -205010,7 +205388,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205141,6 +205519,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -205210,7 +205589,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -205341,6 +205720,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amountReduced
@@ -207388,7 +207768,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -207519,6 +207899,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -213748,7 +214129,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -213879,6 +214260,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -213954,7 +214336,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214085,6 +214467,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -214360,7 +214743,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214491,6 +214874,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - agreedCleanPrice
@@ -214656,7 +215040,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -214787,6 +215171,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - agreedCleanPrice
@@ -215138,7 +215523,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215269,6 +215654,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - callPrice
@@ -215342,7 +215728,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215473,6 +215859,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -215593,7 +215980,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -215724,6 +216111,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -219757,7 +220145,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -219888,6 +220276,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - exerciseCurrency
@@ -221138,7 +221527,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -221269,6 +221658,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -221609,7 +221999,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -221740,6 +222130,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -221876,7 +222267,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -222007,6 +222398,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -222093,7 +222485,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -222224,6 +222616,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashElections
@@ -222302,7 +222695,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -222433,6 +222826,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -222840,7 +223234,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -222971,6 +223365,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - direction
@@ -223096,7 +223491,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -223227,6 +223622,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -223299,7 +223695,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -223430,6 +223826,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -223951,7 +224348,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -224082,6 +224479,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashElections
@@ -224164,7 +224562,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -224295,6 +224693,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashElections
@@ -224578,7 +224977,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -224709,6 +225108,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashFlowValue
@@ -225221,7 +225621,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -225352,6 +225752,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -225956,7 +226357,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -226087,6 +226488,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - constituentWeight
@@ -226270,7 +226672,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -226401,6 +226803,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - changeType
@@ -227401,7 +227804,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -227532,6 +227935,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -227989,7 +228393,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -228120,6 +228524,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -229844,7 +230249,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -229975,6 +230380,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -230187,7 +230593,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -230318,6 +230724,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - domCcy
@@ -230393,7 +230800,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -230524,6 +230931,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -234019,6 +234427,7 @@ components:
           asAtDate: 2000-01-23T04:56:07.000+00:00
         filter:
           filterNodeType: filterNodeType
+        schedule: schedule
         measure:
           filter:
             filterNodeType: filterNodeType
@@ -234070,6 +234479,10 @@ components:
           $ref: '#/components/schemas/ComplianceRuleV3Check'
         computedFilter:
           $ref: '#/components/schemas/ComplianceRuleV3ComputedFilter'
+        schedule:
+          description: "Available values: PreTrade, PostTrade, PreAndPostTrade."
+          nullable: true
+          type: string
         version:
           $ref: '#/components/schemas/Version'
         plainEnglish:
@@ -236316,6 +236729,8 @@ components:
             parameters: parameters
             modelOptions:
               modelOptionsType: Invalid
+        loanOptions:
+          enhancedRounding: true
       properties:
         scope:
           description: The scope used when updating or inserting the Configuration
@@ -236348,6 +236763,8 @@ components:
           $ref: '#/components/schemas/HoldingContext'
         translation:
           $ref: '#/components/schemas/TranslationContext'
+        loanOptions:
+          $ref: '#/components/schemas/LoanOptions'
       required:
       - code
       - scope
@@ -236571,7 +236988,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -236702,6 +237119,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -237091,7 +237509,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237222,6 +237640,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - contractDetails
@@ -237432,7 +237851,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -237563,6 +237982,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -238237,6 +238657,46 @@ components:
             $ref: '#/components/schemas/CorporateActionTransitionComponentRequest'
           nullable: true
           type: array
+      type: object
+    CorrectPostingModuleRuleVersionRequest:
+      additionalProperties: false
+      description: The corrected content of one version of a Posting Rule. The version
+        keeps its rule identifier and version number.
+      example:
+        generalLedgerAccountCode: generalLedgerAccountCode
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+        ruleFilter: ruleFilter
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+      properties:
+        generalLedgerAccountCode:
+          description: The general ledger account this version of the rule posts the
+            Activity credit or debit to.
+          maxLength: 512
+          minLength: 1
+          pattern: "^[\\s\\S]*$"
+          type: string
+        ruleFilter:
+          description: The filter syntax for this version of the rule. See https://support.lusid.com/docs/assigning-economic-activity-to-general-ledger-accounts-using-posting-rules
+            for more information on filter syntax.
+          maxLength: 16384
+          minLength: 1
+          pattern: "^[\\s\\S]*$"
+          type: string
+        effectiveFrom:
+          description: "The inclusive accounting date from which this version of the\
+            \ rule applies. If not set, it applies from the beginning of time."
+          format: date-time
+          nullable: true
+          type: string
+        effectiveUntil:
+          description: "The exclusive accounting date until which this version of\
+            \ the rule applies. If not set, it applies until the end of time."
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - generalLedgerAccountCode
+      - ruleFilter
       type: object
     CounterpartyAgreement:
       additionalProperties: false
@@ -241244,6 +241704,8 @@ components:
               parameters: parameters
               modelOptions:
                 modelOptionsType: Invalid
+          loanOptions:
+            enhancedRounding: true
         asAt: 2000-01-23T04:56:07.000+00:00
         effectiveAt: effectiveAt
         recipeCreationMarketDataScopes:
@@ -243626,7 +244088,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -243757,6 +244219,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -249513,7 +249976,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -249644,6 +250107,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -249779,7 +250243,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -249910,6 +250374,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -249984,7 +250449,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -250115,6 +250580,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -250190,7 +250656,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -250321,6 +250787,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -250387,7 +250854,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -250518,6 +250985,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -250579,7 +251047,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -250710,6 +251178,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -251441,7 +251910,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251572,6 +252041,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashElections
@@ -251659,7 +252129,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251790,6 +252260,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashElections
@@ -251854,7 +252325,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -251985,6 +252456,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -252054,7 +252526,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252185,6 +252657,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -252268,7 +252741,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252399,6 +252872,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -252710,7 +253184,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -252841,6 +253315,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -252945,7 +253420,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -253076,6 +253551,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - closeOutAmount
@@ -253182,7 +253658,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -253313,6 +253789,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -255816,7 +256293,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -255947,6 +256424,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - eventSource
@@ -256628,7 +257106,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -256759,6 +257237,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - anchorDate
@@ -257141,7 +257620,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257272,6 +257751,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -257637,7 +258117,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257768,6 +258248,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -257848,7 +258329,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -257979,6 +258460,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -258066,7 +258548,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -258197,6 +258679,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -258272,7 +258755,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -258403,6 +258886,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -261391,7 +261875,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261522,6 +262006,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -261592,7 +262077,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261723,6 +262208,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -261787,7 +262273,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -261918,6 +262404,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -261988,7 +262475,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -262119,6 +262606,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -262206,7 +262694,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -262337,6 +262825,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -266341,7 +266830,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -266472,6 +266961,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -270808,7 +271298,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -270939,6 +271429,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -271010,7 +271501,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -271141,6 +271632,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -271990,7 +272482,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -272121,6 +272613,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - domAmountPerUnit
@@ -274486,6 +274979,8 @@ components:
               parameters: parameters
               modelOptions:
                 modelOptionsType: Invalid
+          loanOptions:
+            enhancedRounding: true
       properties:
         href:
           description: The specific Uniform Resource Identifier (URI) for this resource
@@ -274997,7 +275492,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -275128,6 +275623,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - contractStates
@@ -278996,6 +279492,29 @@ components:
         E.g. If the interest leg of a swap is a FloatingLeg, then it will declare\
         \ an IndexProjectionDependency upon pricing.\r\nThis is to indicate that pricing\
         \ the floating leg requires predictions of future fixings of the index."
+    IndicativeAmountMetric:
+      additionalProperties: false
+      description: "The amount a seed amount has grown to by the end of each period\
+        \ of the grid: the seed amount multiplied by\r\none plus the return since\
+        \ the start of the requested window, geometrically linking the period returns."
+      properties:
+        seedAmount:
+          maxLength: 64
+          minLength: 1
+          type: string
+        type:
+          description: "Available values: Return, IndicativeAmount."
+          minLength: 1
+          type: string
+        alias:
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+      - seedAmount
+      - type
+      type: object
     IndustryClassifier:
       additionalProperties: false
       description: "Object describing a particular industry classifier,\r\nwhich comprises\
@@ -279380,7 +279899,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -279511,6 +280030,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -280284,7 +280804,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -280415,6 +280935,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - effectiveAt
@@ -280488,7 +281009,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -280619,6 +281140,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - anchorDate
@@ -281274,7 +281796,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -281405,6 +281927,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - callCurrency
@@ -282897,7 +283420,8 @@ components:
             \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
             \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
             \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-            \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
+            \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent,\
+            \ InterestPaymentWithPrincipalEvent."
           enum:
           - TransitionEvent
           - InformationalEvent
@@ -283028,6 +283552,7 @@ components:
           - SharesPremiumDividendEvent
           - CashDistributionFromNonEligibleSecuritiesSalesEvent
           - InflationIndexationEvent
+          - InterestPaymentWithPrincipalEvent
           type: string
       required:
       - instrumentEventType
@@ -284180,6 +284705,7 @@ components:
       - SharesPremiumDividendEvent
       - CashDistributionFromNonEligibleSecuritiesSalesEvent
       - InflationIndexationEvent
+      - InterestPaymentWithPrincipalEvent
       type: string
     InstrumentIdTypeDescriptor:
       additionalProperties: false
@@ -285184,7 +285710,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -285315,6 +285841,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashElections
@@ -285324,6 +285851,253 @@ components:
         \ from a debt issuer to its noteholders,\r\ncarrying a per-unit absolute interest\
         \ rate on each CashElection. Supports Mandatory\r\n(single declared election)\
         \ and MandatoryWithChoices (one election per offered currency) participation."
+    InterestPaymentWithPrincipalEvent:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentEvent'
+      - properties:
+          exDate:
+            description: "The entitlement date of both the interest and the principal\
+              \ (:98A::RDTE). Units settled on this date are\r\neligible. Required."
+            format: date-time
+            type: string
+          paymentDate:
+            description: "The date the interest and the principal are paid, and the\
+              \ date the next factor takes effect (:98A::PAYD).\r\nRequired; on or\
+              \ after exDate. It must equal the scheduled payment date for the event\
+              \ to replace the\r\nschedule's coupon and paydown."
+            format: date-time
+            type: string
+          currency:
+            description: "The ISO 4217 code of the currency in which both the interest\
+              \ and the principal are paid (:11A::OPTN).\r\nRequired."
+            type: string
+          couponPerUnit:
+            description: "The gross interest paid for each unit of original face held\
+              \ on the ex date, before any shortfall or\r\ndeferral. Required and\
+              \ strictly positive."
+            format: double
+            nullable: true
+            type: number
+          principalPerUnit:
+            description: "The principal repaid for each unit of original face held\
+              \ on the ex date: previous minus next factor, minus\r\nany same-date\
+              \ write-off factor, plus any same-date deferral factor. Required and\
+              \ strictly positive. It is not\r\nchecked against the two factors, because\
+              \ a same-date write-off or deferral legitimately moves the factor\r\n\
+              difference away from the principal paid."
+            format: double
+            nullable: true
+            type: number
+          previousFactor:
+            description: "The pool factor in force until paymentDate (:92A::PRFC).\
+              \ Required, together with nextFactor and above it, so\r\nthe notified\
+              \ pool factor reduction can be reconciled against the custodian's factor\
+              \ file."
+            format: double
+            nullable: true
+            type: number
+          nextFactor:
+            description: "The pool factor in force from paymentDate (:92A::NWFC).\
+              \ Required, together with previousFactor; strictly\r\npositive and below\
+              \ previousFactor."
+            format: double
+            nullable: true
+            type: number
+          pricePerUnit:
+            description: "The price per 1 of principal repaid (:90A::OFFR or :90B::OFFR),\
+              \ with 1 representing par; PRCT/98 is sent as\r\n0.98. Optional, above\
+              \ 0 and below 2; a null is read as 1, so an omitted price is par."
+            format: double
+            nullable: true
+            type: number
+          instrumentEventType:
+            description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
+              \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
+              \ AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent,\
+              \ RawVendorEvent, InformationalErrorEvent, BondCouponEvent, DividendReinvestmentEvent,\
+              \ AccumulationEvent, BondPrincipalEvent, DividendOptionEvent, MaturityEvent,\
+              \ FxForwardSettlementEvent, ExpiryEvent, ScripDividendEvent, StockDividendEvent,\
+              \ ReverseStockSplitEvent, CapitalDistributionEvent, SpinOffEvent, MergerEvent,\
+              \ FutureExpiryEvent, SwapCashFlowEvent, SwapPrincipalEvent, CreditPremiumCashFlowEvent,\
+              \ CdsCreditEvent, CdxCreditEvent, MbsCouponEvent, MbsPrincipalEvent,\
+              \ BonusIssueEvent, MbsPrincipalWriteOffEvent, MbsInterestDeferralEvent,\
+              \ MbsInterestShortfallEvent, TenderEvent, CallOnIntermediateSecuritiesEvent,\
+              \ IntermediateSecuritiesDistributionEvent, OptionExercisePhysicalEvent,\
+              \ OptionExerciseCashEvent, ProtectionPayoutCashFlowEvent, TermDepositInterestEvent,\
+              \ TermDepositPrincipalEvent, EarlyRedemptionEvent, FutureMarkToMarketEvent,\
+              \ AdjustGlobalCommitmentEvent, ContractInitialisationEvent, DrawdownEvent,\
+              \ LoanInterestRepaymentEvent, UpdateDepositAmountEvent, LoanPrincipalRepaymentEvent,\
+              \ DepositInterestPaymentEvent, DepositCloseEvent, LoanFacilityContractRolloverEvent,\
+              \ RepurchaseOfferEvent, RepoPartialClosureEvent, RepoCashFlowEvent,\
+              \ FlexibleRepoInterestPaymentEvent, FlexibleRepoCashFlowEvent, FlexibleRepoCollateralEvent,\
+              \ ConversionEvent, FlexibleRepoPartialClosureEvent, FlexibleRepoFullClosureEvent,\
+              \ CapletFloorletCashFlowEvent, EarlyCloseOutEvent, DepositRollEvent,\
+              \ ConsentEvent, DrawingEvent, CapitalGainsDistributionEvent, ExchangeOfferEvent,\
+              \ DutchAuctionEvent, WorthlessEvent, PutRedemptionEvent, LoanFacilityDelayedCompensationPaymentEvent,\
+              \ InterestPaymentEvent, PriorityIssueEvent, ClassActionEvent, BankruptcyEvent,\
+              \ LiquidationPaymentEvent, PartialDefeasanceEvent, SecurityWriteOffEvent,\
+              \ WarrantsExerciseEvent, PariPassuEvent, ChangeEvent, PikBondCouponEvent,\
+              \ PikBondCashCouponEvent, PikBondInterestCapitalisationEvent, PikBondPrincipalEvent,\
+              \ DelistingEvent, PikBondInterestEvent, CommodityForwardCashSettlementEvent,\
+              \ PaymentInKindEvent, CommodityForwardPhysicalSettlementEvent, CancelSwapEvent,\
+              \ BondOptionTerminationEvent, TerminationEvent, CommodityCalendarSwapCashFlowEvent,\
+              \ DepositSweepEvent, BondForwardCashSettlementEvent, BondForwardTerminationEvent,\
+              \ AmendCommitmentEvent, CapitalCallEvent, FundDistributionEvent, NavReportEvent,\
+              \ DividendSuspensionEvent, LoanInterestCapitalisationEvent, TotalReturnSwapCashFlowEvent,\
+              \ GlobalLoanFacilityReinitialisationEvent, InvestorLoanFacilityReinitialisationEvent,\
+              \ CapitalCallReceiptEvent, RecallableCapitalExpiryEvent, CapitalInterestTransferEvent,\
+              \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent,\
+              \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
+              \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
+              \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
+            enum:
+            - TransitionEvent
+            - InformationalEvent
+            - OpenEvent
+            - CloseEvent
+            - StockSplitEvent
+            - BondDefaultEvent
+            - CashDividendEvent
+            - AmortisationEvent
+            - CashFlowEvent
+            - ExerciseEvent
+            - ResetEvent
+            - TriggerEvent
+            - RawVendorEvent
+            - InformationalErrorEvent
+            - BondCouponEvent
+            - DividendReinvestmentEvent
+            - AccumulationEvent
+            - BondPrincipalEvent
+            - DividendOptionEvent
+            - MaturityEvent
+            - FxForwardSettlementEvent
+            - ExpiryEvent
+            - ScripDividendEvent
+            - StockDividendEvent
+            - ReverseStockSplitEvent
+            - CapitalDistributionEvent
+            - SpinOffEvent
+            - MergerEvent
+            - FutureExpiryEvent
+            - SwapCashFlowEvent
+            - SwapPrincipalEvent
+            - CreditPremiumCashFlowEvent
+            - CdsCreditEvent
+            - CdxCreditEvent
+            - MbsCouponEvent
+            - MbsPrincipalEvent
+            - BonusIssueEvent
+            - MbsPrincipalWriteOffEvent
+            - MbsInterestDeferralEvent
+            - MbsInterestShortfallEvent
+            - TenderEvent
+            - CallOnIntermediateSecuritiesEvent
+            - IntermediateSecuritiesDistributionEvent
+            - OptionExercisePhysicalEvent
+            - OptionExerciseCashEvent
+            - ProtectionPayoutCashFlowEvent
+            - TermDepositInterestEvent
+            - TermDepositPrincipalEvent
+            - EarlyRedemptionEvent
+            - FutureMarkToMarketEvent
+            - AdjustGlobalCommitmentEvent
+            - ContractInitialisationEvent
+            - DrawdownEvent
+            - LoanInterestRepaymentEvent
+            - UpdateDepositAmountEvent
+            - LoanPrincipalRepaymentEvent
+            - DepositInterestPaymentEvent
+            - DepositCloseEvent
+            - LoanFacilityContractRolloverEvent
+            - RepurchaseOfferEvent
+            - RepoPartialClosureEvent
+            - RepoCashFlowEvent
+            - FlexibleRepoInterestPaymentEvent
+            - FlexibleRepoCashFlowEvent
+            - FlexibleRepoCollateralEvent
+            - ConversionEvent
+            - FlexibleRepoPartialClosureEvent
+            - FlexibleRepoFullClosureEvent
+            - CapletFloorletCashFlowEvent
+            - EarlyCloseOutEvent
+            - DepositRollEvent
+            - ConsentEvent
+            - DrawingEvent
+            - CapitalGainsDistributionEvent
+            - ExchangeOfferEvent
+            - DutchAuctionEvent
+            - WorthlessEvent
+            - PutRedemptionEvent
+            - LoanFacilityDelayedCompensationPaymentEvent
+            - InterestPaymentEvent
+            - PriorityIssueEvent
+            - ClassActionEvent
+            - BankruptcyEvent
+            - LiquidationPaymentEvent
+            - PartialDefeasanceEvent
+            - SecurityWriteOffEvent
+            - WarrantsExerciseEvent
+            - PariPassuEvent
+            - ChangeEvent
+            - PikBondCouponEvent
+            - PikBondCashCouponEvent
+            - PikBondInterestCapitalisationEvent
+            - PikBondPrincipalEvent
+            - DelistingEvent
+            - PikBondInterestEvent
+            - CommodityForwardCashSettlementEvent
+            - PaymentInKindEvent
+            - CommodityForwardPhysicalSettlementEvent
+            - CancelSwapEvent
+            - BondOptionTerminationEvent
+            - TerminationEvent
+            - CommodityCalendarSwapCashFlowEvent
+            - DepositSweepEvent
+            - BondForwardCashSettlementEvent
+            - BondForwardTerminationEvent
+            - AmendCommitmentEvent
+            - CapitalCallEvent
+            - FundDistributionEvent
+            - NavReportEvent
+            - DividendSuspensionEvent
+            - LoanInterestCapitalisationEvent
+            - TotalReturnSwapCashFlowEvent
+            - GlobalLoanFacilityReinitialisationEvent
+            - InvestorLoanFacilityReinitialisationEvent
+            - CapitalCallReceiptEvent
+            - RecallableCapitalExpiryEvent
+            - CapitalInterestTransferEvent
+            - FacilityDrawEvent
+            - FacilityRepaymentEvent
+            - FacilityInterestEvent
+            - FacilityCommitmentFeeEvent
+            - InstalmentCallEvent
+            - DepositInterestCapitalisationEvent
+            - PartialRedemptionWithoutReductionOfNominalValueEvent
+            - StripBondCashflowEvent
+            - CapitalisationEvent
+            - SharesPremiumDividendEvent
+            - CashDistributionFromNonEligibleSecuritiesSalesEvent
+            - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
+            type: string
+        required:
+        - currency
+        - instrumentEventType
+        type: object
+      description: "Interest Payment with Principal (PRII, ISO 15022 :22F::CAEV//PRII):\
+        \ an event which consists of two components,\r\nthe decrease of the amortised\
+        \ value of a pool factor security and an interest payment. A notified PRII\
+        \ on an\r\nasset-backed ComplexBond (RMBS, CMO or ABS) carries the interest\
+        \ of one payment date and the principal paydown\r\nof the same date side by\
+        \ side: couponPerUnit of original face is paid as interest, and principalPerUnit\
+        \ of\r\noriginal face is repaid at pricePerUnit, par when omitted, as the\
+        \ pool factor falls from previousFactor to\r\nnextFactor. The holder keeps\
+        \ its original face (units) and the current face falls with the factor. On\
+        \ its\r\npayment date it replaces the schedule's MbsCouponEvent and MbsPrincipalEvent.\
+        \ Mandatory participation only."
     InterestRateSwap:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -285797,7 +286571,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -285928,6 +286702,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -288583,7 +289358,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -288714,6 +289489,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -290557,7 +291333,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -290688,6 +291464,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashOfferElections
@@ -290799,6 +291576,11 @@ components:
             skipped:
             - skipped
             - skipped
+          warnings:
+          - entityId: entityId
+            message: message
+          - entityId: entityId
+            message: message
           aggregationFailures:
           - reason: reason
             measure: measure
@@ -290892,6 +291674,11 @@ components:
             skipped:
             - skipped
             - skipped
+          warnings:
+          - entityId: entityId
+            message: message
+          - entityId: entityId
+            message: message
           aggregationFailures:
           - reason: reason
             measure: measure
@@ -290998,6 +291785,11 @@ components:
           skipped:
           - skipped
           - skipped
+        warnings:
+        - entityId: entityId
+          message: message
+        - entityId: entityId
+          message: message
         aggregationFailures:
         - reason: reason
           measure: measure
@@ -291056,6 +291848,11 @@ components:
           $ref: '#/components/schemas/ScenarioDiagnostics'
         recipeProvenance:
           $ref: '#/components/schemas/RecipeProvenance'
+        warnings:
+          items:
+            $ref: '#/components/schemas/Warning'
+          nullable: true
+          type: array
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -291283,7 +292080,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -291414,6 +292211,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -291491,7 +292289,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -291622,6 +292420,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -291815,7 +292614,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -291946,6 +292745,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -292021,7 +292821,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -292152,6 +292952,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -292159,6 +292960,24 @@ components:
         type: object
       description: Event to signify the repayment of interest accrued against a loan
         holding.
+    LoanOptions:
+      additionalProperties: false
+      description: Options for loan facilities and their contracts.
+      example:
+        enhancedRounding: true
+      properties:
+        enhancedRounding:
+          description: "If true, loan facility figures are kept at full precision.\
+            \ A principal repayment that pays a contract down to\r\nwithin its currency's\
+            \ smallest unit (for example, under a cent) repays it in full: the leftover\
+            \ below that\r\nprecision, the contract's remaining limit and the undrawn\
+            \ commitment are written off, so the position closes\r\nrather than staying\
+            \ open with a fraction of a cent, and a term facility repaid to that precision\
+            \ has its\r\nremaining units and limit booked out. A facility trade's\
+            \ share of each contract is also computed without\r\nrounding dust. If\
+            \ false, these figures are calculated as before. Defaults to false."
+          type: boolean
+      type: object
     LoanPeriod:
       additionalProperties: false
       properties:
@@ -292255,7 +293074,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -292386,6 +293205,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -296099,7 +296919,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -296230,6 +297050,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -296297,7 +297118,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -296428,6 +297249,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -296497,7 +297319,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -296628,6 +297450,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -296699,7 +297522,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -296830,6 +297653,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -296925,7 +297749,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -297056,6 +297880,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -297126,7 +297951,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -297257,6 +298082,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -297629,7 +298455,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -297760,6 +298586,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -298638,7 +299465,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -298769,6 +299596,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -299042,6 +299870,27 @@ components:
       - transactionTemplateScope
       - transactionTypeScope
       - valuationRecipeId
+      type: object
+    NavTypeCatchUp:
+      additionalProperties: false
+      description: The number of valuation points the leader finalised while a follower
+        NAV type was dormant (deactivated).
+      example:
+        navTypeCode: navTypeCode
+        catchUpCount: 0
+      properties:
+        navTypeCode:
+          description: The code of the follower NAV type that was reactivated.
+          minLength: 1
+          type: string
+        catchUpCount:
+          description: The number of valuation points the leader finalised while this
+            follower NAV type was dormant (deactivated).
+          format: int32
+          type: integer
+      required:
+      - catchUpCount
+      - navTypeCode
       type: object
     NavTypeDefinition:
       additionalProperties: false
@@ -299677,7 +300526,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -299808,6 +300657,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -300040,7 +300890,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -300171,6 +301021,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - exerciseType
@@ -300301,7 +301152,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -300432,6 +301283,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - exerciseType
@@ -301730,6 +302582,9 @@ components:
       additionalProperties: false
       description: Record of an order instruction
       example:
+        amount:
+          amount: 0.8008281904610115
+          currency: currency
         quantity: 0.8008281904610115
         instrumentScope: instrumentScope
         weight: 6.027456183070403
@@ -301753,6 +302608,7 @@ components:
         portfolioId:
           code: code
           scope: scope
+        instructionType: instructionType
         price:
           amount: 0.8008281904610115
           currency: currency
@@ -301823,13 +302679,12 @@ components:
           description: The instrument ordered.
           type: object
         quantity:
-          description: The quantity of given instrument ordered.
+          description: The quantity of given instrument.
           format: double
           nullable: true
           type: number
         weight:
-          description: The proportion of the total portfolio value ordered for the
-            given instrument ordered.
+          description: The proportion of the total portfolio value.
           format: double
           nullable: true
           type: number
@@ -301847,6 +302702,14 @@ components:
           $ref: '#/components/schemas/Version'
         dataModelMembership:
           $ref: '#/components/schemas/DataModelMembership'
+        amount:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        instructionType:
+          description: "Whether the instruction is a change to the holding or a target\
+            \ for it, one of: Change, Target. Defaults to Target for a weight-only\
+            \ instruction and to Change otherwise."
+          nullable: true
+          type: string
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -301861,11 +302724,15 @@ components:
       additionalProperties: false
       description: A request to create or update a Order Instruction.
       example:
+        amount:
+          amount: 0.8008281904610115
+          currency: currency
         createdDate: 2000-01-23T04:56:07.000+00:00
         portfolioId:
           code: code
           scope: scope
         quantity: 0.8008281904610115
+        instructionType: instructionType
         price:
           amount: 0.8008281904610115
           currency: currency
@@ -301908,13 +302775,12 @@ components:
           nullable: true
           type: object
         quantity:
-          description: The quantity of given instrument ordered.
+          description: The quantity of given instrument.
           format: double
           nullable: true
           type: number
         weight:
-          description: The proportion of the total portfolio value ordered for the
-            given instrument ordered.
+          description: The proportion of the total portfolio value.
           format: double
           nullable: true
           type: number
@@ -301926,6 +302792,16 @@ components:
           description: Client-defined properties associated with this execution.
           nullable: true
           type: object
+        amount:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        instructionType:
+          description: "Whether the instruction is a change to the holding or a target\
+            \ for it, one of: Change, Target. Defaults to Target for a weight-only\
+            \ instruction and to Change otherwise."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          type: string
       required:
       - createdDate
       - id
@@ -301935,11 +302811,15 @@ components:
       description: A request to create or update multiple OrderInstructions.
       example:
         requests:
-        - createdDate: 2000-01-23T04:56:07.000+00:00
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          createdDate: 2000-01-23T04:56:07.000+00:00
           portfolioId:
             code: code
             scope: scope
           quantity: 0.8008281904610115
+          instructionType: instructionType
           price:
             amount: 0.8008281904610115
             currency: currency
@@ -301965,11 +302845,15 @@ components:
                   - values
                   - values
               key: key
-        - createdDate: 2000-01-23T04:56:07.000+00:00
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          createdDate: 2000-01-23T04:56:07.000+00:00
           portfolioId:
             code: code
             scope: scope
           quantity: 0.8008281904610115
+          instructionType: instructionType
           price:
             amount: 0.8008281904610115
             currency: currency
@@ -308033,6 +308917,7 @@ components:
             asAtDate: 2000-01-23T04:56:07.000+00:00
           filter:
             filterNodeType: filterNodeType
+          schedule: schedule
           measure:
             filter:
               filterNodeType: filterNodeType
@@ -308128,6 +309013,7 @@ components:
             asAtDate: 2000-01-23T04:56:07.000+00:00
           filter:
             filterNodeType: filterNodeType
+          schedule: schedule
           measure:
             filter:
               filterNodeType: filterNodeType
@@ -320240,7 +321126,10 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - quantity: 0.8008281904610115
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          quantity: 0.8008281904610115
           instrumentScope: instrumentScope
           weight: 6.027456183070403
           instrumentIdentifiers:
@@ -320263,6 +321152,7 @@ components:
           portfolioId:
             code: code
             scope: scope
+          instructionType: instructionType
           price:
             amount: 0.8008281904610115
             currency: currency
@@ -320311,7 +321201,10 @@ components:
               - validationFailures
               - validationFailures
               status: status
-        - quantity: 0.8008281904610115
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          quantity: 0.8008281904610115
           instrumentScope: instrumentScope
           weight: 6.027456183070403
           instrumentIdentifiers:
@@ -320334,6 +321227,7 @@ components:
           portfolioId:
             code: code
             scope: scope
+          instructionType: instructionType
           price:
             amount: 0.8008281904610115
             currency: currency
@@ -328103,7 +328997,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -328234,6 +329128,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -328378,7 +329273,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -328509,6 +329404,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -328610,7 +329506,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -328741,6 +329637,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -329236,9 +330133,11 @@ components:
           type: array
         unattributed:
           description: "Always empty: every profit and loss line is pooled or the\
-            \ run is refused. Kept until no published SDK requires it."
+            \ run is refused. No longer required; removed once no published SDK requires\
+            \ it."
           items:
             $ref: '#/components/schemas/UnattributedAmount'
+          nullable: true
           type: array
         bookedTransactionIds:
           description: "The identifiers of the transactions the run booked, if any."
@@ -329276,7 +330175,6 @@ components:
       - pools
       - runId
       - status
-      - unattributed
       type: object
     PartnerCapitalAccount:
       additionalProperties: false
@@ -330817,7 +331715,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -330948,6 +331846,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -331977,7 +332876,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -332108,6 +333007,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -332174,7 +333074,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -332305,6 +333205,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -332391,7 +333292,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -332522,6 +333423,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -332653,7 +333555,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -332784,6 +333686,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -332858,7 +333761,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -332989,6 +333892,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -334089,7 +334993,22 @@ components:
             \ has no value. The formula can read resultType, resultCardinality, resultLifecycle,\
             \ exception.status, exception.closureType, exception.asAtClosed, exception.asAtClosureInvalidated,\
             \ review.status, review.decision and review.decisionGroup.groupNumber.\
-            \ It reads rules by name as CoreRules[name] and AggregateRules[name].\
+            \ It can read the streak: streak.age and streak.countInstances, age and\
+            \ countInstances on streak.differenceStreak and streak.openStreak, streak.predecessor.streakTypes,\
+            \ and the fields of a RecAgedResult on streak.startResult, streak.predecessor.result\
+            \ and each sub-streak's startResult. An age is a period, which you compare\
+            \ with an ISO 8601 duration such as P5D. On a sub-streak that the predecessor\
+            \ does not extend, the age is zero and the count and startResult are null.\
+            \ A cleared result keeps the streak of its last run, so its ages stop\
+            \ growing. On a result without a streak, every streak field is null. In\
+            \ a comparison, a formula reads a null countInstances, runNumber or firstRunSeen\
+            \ as zero, also on a sub-streak that the predecessor does not extend.\
+            \ For example, streak.countInstances lt 2 is true on a result without\
+            \ a streak. Every other comparison on a null field is false, also inside\
+            \ not (...). The exception is eq when both sides are null. Use exists\
+            \ or not exists to check for the streak first, for example: if(streak\
+            \ not exists) then 'First' else if(streak.age lt P2D) then 'New' else\
+            \ 'Watch'. It reads rules by name as CoreRules[name] and AggregateRules[name].\
             \ Each rule has .leftValue, .rightValue and .appliedTolerance.toleranceType.\
             \ A numeric aggregate rule also has .difference. You can compare CoreRules[name]\
             \ with no side by eq, in or startswith. The comparison is true if either\
@@ -341668,7 +342587,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -341799,6 +342718,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -343905,7 +344825,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -344036,6 +344956,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -344179,7 +345100,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -344310,6 +345231,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashOfferElections
@@ -346350,7 +347272,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -346481,6 +347403,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - effectiveAt
@@ -346491,6 +347414,615 @@ components:
       description: "A generic event derived from the economic definition of an instrument.\
         \ This should be considered purely\r\ninformational; any data provided by\
         \ this event is not guaranteed to be processable by LUSID."
+    ReactivatedNavTypesResponse:
+      additionalProperties: false
+      description: "The response from reactivating NAV types on a fund. Contains the\
+        \ updated fund and, for each\r\nreactivated follower, the number of valuation\
+        \ points finalised while the follower was dormant."
+      example:
+        fund:
+          instrumentScope: instrumentScope
+          displayName: displayName
+          yearEndDate:
+            month: 7
+            day: 5
+          reportingPrices:
+          - source: source
+            label: label
+          - source: source
+            label: label
+          allocationGroups:
+          - apportionmentMethodProperty:
+              code: code
+              scope: scope
+            shareClassShortCode: shareClassShortCode
+            classes:
+            - shareClassShortCode: shareClassShortCode
+              apportionmentFactor: 2.3021358869347655
+              shareClassSeriesCode: shareClassSeriesCode
+            - shareClassShortCode: shareClassShortCode
+              apportionmentFactor: 2.3021358869347655
+              shareClassSeriesCode: shareClassSeriesCode
+            name: name
+            description: description
+            formula: formula
+          - apportionmentMethodProperty:
+              code: code
+              scope: scope
+            shareClassShortCode: shareClassShortCode
+            classes:
+            - shareClassShortCode: shareClassShortCode
+              apportionmentFactor: 2.3021358869347655
+              shareClassSeriesCode: shareClassSeriesCode
+            - shareClassShortCode: shareClassShortCode
+              apportionmentFactor: 2.3021358869347655
+              shareClassSeriesCode: shareClassSeriesCode
+            name: name
+            description: description
+            formula: formula
+          description: description
+          shareClassInstruments:
+          - launchPrice: 0.8008281904610115
+            instrumentScope: instrumentScope
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            launchDate: 2000-01-23T04:56:07.000+00:00
+            lusidInstrumentId: lusidInstrumentId
+          - launchPrice: 0.8008281904610115
+            instrumentScope: instrumentScope
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            launchDate: 2000-01-23T04:56:07.000+00:00
+            lusidInstrumentId: lusidInstrumentId
+          type: type
+          valuationTemplateId:
+            code: code
+            scope: scope
+          baseCurrency: baseCurrency
+          whtParameters:
+            whtConfig:
+              code: code
+              scope: scope
+            profileType: profileType
+            taxCountry: taxCountry
+          inceptionDate: 2000-01-23T04:56:07.000+00:00
+          pricingMethodology:
+            swingPolicy:
+              spreads:
+                outflow:
+                  tiers:
+                  - bps: 6.84685269835264
+                    lowerBoundExclusive: 1.0246457001441578
+                    upperBoundInclusive: 1.4894159098541704
+                  - bps: 6.84685269835264
+                    lowerBoundExclusive: 1.0246457001441578
+                    upperBoundInclusive: 1.4894159098541704
+                  basis: basis
+                inflow:
+                  tiers:
+                  - bps: 6.84685269835264
+                    lowerBoundExclusive: 1.0246457001441578
+                    upperBoundInclusive: 1.4894159098541704
+                  - bps: 6.84685269835264
+                    lowerBoundExclusive: 1.0246457001441578
+                    upperBoundInclusive: 1.4894159098541704
+                  basis: basis
+              approvalMode: approvalMode
+              inflowTrigger:
+                threshold: 7.457744773683766
+                type: type
+              outflowTrigger:
+                threshold: 7.457744773683766
+                type: type
+              defaultSpreadSource: defaultSpreadSource
+              baseline:
+                includeNdc: true
+                source: source
+            derivation:
+              bidSpreadBps: 1.1730742509559433
+              includeNdc: true
+              offerSpreadBps: 4.965218492984954
+              realSide: realSide
+            priceLabels: priceLabels
+            outputShape: outputShape
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          shortCode: shortCode
+          aborId:
+            code: code
+            scope: scope
+          dealingEstimates:
+            requireComplete: true
+            sources:
+            - sources
+            - sources
+            unitValuation: unitValuation
+            countPending: true
+          fundInstrument:
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+          fundConfigurationId:
+            code: code
+            scope: scope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          decimalPlaces: 18
+          shareClasses:
+          - launchPrice: 9.301444243932576
+            distributionType: distributionType
+            domCcy: domCcy
+            shareClassShortCode: shareClassShortCode
+            description: description
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            launchDate: 2000-01-23T04:56:07.000+00:00
+            roundingConventionsPrice:
+            - precision: 7
+              roundingType: roundingType
+              precisionType: precisionType
+            - precision: 7
+              roundingType: roundingType
+              precisionType: precisionType
+            whtParameters:
+              whtConfig:
+                code: code
+                scope: scope
+              profileType: profileType
+              taxCountry: taxCountry
+            roundingConventionsUnits:
+            - precision: 1
+              roundingType: roundingType
+            - precision: 1
+              roundingType: roundingType
+            distributionPaymentType: distributionPaymentType
+            hedging: hedging
+            series:
+            - launchPrice: 7.061401241503109
+              domCcy: domCcy
+              shareClassShortCode: shareClassShortCode
+              seriesIdentifier: seriesIdentifier
+              seriesType: seriesType
+              launchPriceType: launchPriceType
+              launchDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              status: status
+            - launchPrice: 7.061401241503109
+              domCcy: domCcy
+              shareClassShortCode: shareClassShortCode
+              seriesIdentifier: seriesIdentifier
+              seriesType: seriesType
+              launchPriceType: launchPriceType
+              launchDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              status: status
+            timeZoneConventions:
+              startOfDay: startOfDay
+              primaryTimeZone: primaryTimeZone
+              primaryMarketOpen: primaryMarketOpen
+            name: name
+            tradingConventions:
+              minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
+              priceScaleFactor: 3.616076749251911
+              minimumOrderSize: 2.027123023002322
+              priceQuotationType: priceQuotationType
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            investorType: investorType
+          - launchPrice: 9.301444243932576
+            distributionType: distributionType
+            domCcy: domCcy
+            shareClassShortCode: shareClassShortCode
+            description: description
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            launchDate: 2000-01-23T04:56:07.000+00:00
+            roundingConventionsPrice:
+            - precision: 7
+              roundingType: roundingType
+              precisionType: precisionType
+            - precision: 7
+              roundingType: roundingType
+              precisionType: precisionType
+            whtParameters:
+              whtConfig:
+                code: code
+                scope: scope
+              profileType: profileType
+              taxCountry: taxCountry
+            roundingConventionsUnits:
+            - precision: 1
+              roundingType: roundingType
+            - precision: 1
+              roundingType: roundingType
+            distributionPaymentType: distributionPaymentType
+            hedging: hedging
+            series:
+            - launchPrice: 7.061401241503109
+              domCcy: domCcy
+              shareClassShortCode: shareClassShortCode
+              seriesIdentifier: seriesIdentifier
+              seriesType: seriesType
+              launchPriceType: launchPriceType
+              launchDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              status: status
+            - launchPrice: 7.061401241503109
+              domCcy: domCcy
+              shareClassShortCode: shareClassShortCode
+              seriesIdentifier: seriesIdentifier
+              seriesType: seriesType
+              launchPriceType: launchPriceType
+              launchDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              status: status
+            timeZoneConventions:
+              startOfDay: startOfDay
+              primaryTimeZone: primaryTimeZone
+              primaryMarketOpen: primaryMarketOpen
+            name: name
+            tradingConventions:
+              minimumOrderIncrement: 4.145608029883936
+              priceFractionConvention: priceFractionConvention
+              priceScaleFactor: 3.616076749251911
+              minimumOrderSize: 2.027123023002322
+              priceQuotationType: priceQuotationType
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            investorType: investorType
+          primaryNavType:
+            subHoldingKeys:
+            - subHoldingKeys
+            - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
+            code: code
+            swingPricing:
+              thresholdPercentageOfNav: 0.5637376656633328
+              inflowBasis: inflowBasis
+              outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
+            displayName: displayName
+            description: description
+            chartOfAccountsId:
+              code: code
+              scope: scope
+            valuationTemplateId:
+              code: code
+              scope: scope
+            holdingRecipeId:
+              code: code
+              scope: scope
+            settlementConfiguration:
+              cashSettlement:
+                calculateInstructionToPortfolioRate: true
+                calculateTradeDateToSettlementFxPnL: true
+              deferredCashReceipt:
+                calculateInstructionToPortfolioRate: true
+                calculateTradeDateToSettlementFxPnL: true
+            cashGainLossCalculationDate: cashGainLossCalculationDate
+            chargeableGainsRegime: chargeableGainsRegime
+            leaderNavTypeCode: leaderNavTypeCode
+            accountingMethod: accountingMethod
+            pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
+            cashCostReliefMethod: cashCostReliefMethod
+            status: status
+          taxTransparency: taxTransparency
+          portfolioIds:
+          - code: code
+            displayName: displayName
+            scope: scope
+            description: description
+            portfolioEntityType: portfolioEntityType
+          - code: code
+            displayName: displayName
+            scope: scope
+            description: description
+            portfolioEntityType: portfolioEntityType
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          investorStructure: investorStructure
+          additionalNavTypes:
+          - subHoldingKeys:
+            - subHoldingKeys
+            - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
+            code: code
+            swingPricing:
+              thresholdPercentageOfNav: 0.5637376656633328
+              inflowBasis: inflowBasis
+              outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
+            displayName: displayName
+            description: description
+            chartOfAccountsId:
+              code: code
+              scope: scope
+            valuationTemplateId:
+              code: code
+              scope: scope
+            holdingRecipeId:
+              code: code
+              scope: scope
+            settlementConfiguration:
+              cashSettlement:
+                calculateInstructionToPortfolioRate: true
+                calculateTradeDateToSettlementFxPnL: true
+              deferredCashReceipt:
+                calculateInstructionToPortfolioRate: true
+                calculateTradeDateToSettlementFxPnL: true
+            cashGainLossCalculationDate: cashGainLossCalculationDate
+            chargeableGainsRegime: chargeableGainsRegime
+            leaderNavTypeCode: leaderNavTypeCode
+            accountingMethod: accountingMethod
+            pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
+            cashCostReliefMethod: cashCostReliefMethod
+            status: status
+          - subHoldingKeys:
+            - subHoldingKeys
+            - subHoldingKeys
+            transactionExclusionFilter: transactionExclusionFilter
+            code: code
+            swingPricing:
+              thresholdPercentageOfNav: 0.5637376656633328
+              inflowBasis: inflowBasis
+              outflowBasis: outflowBasis
+            notionalDealingCostTableId:
+              code: code
+              scope: scope
+            displayName: displayName
+            description: description
+            chartOfAccountsId:
+              code: code
+              scope: scope
+            valuationTemplateId:
+              code: code
+              scope: scope
+            holdingRecipeId:
+              code: code
+              scope: scope
+            settlementConfiguration:
+              cashSettlement:
+                calculateInstructionToPortfolioRate: true
+                calculateTradeDateToSettlementFxPnL: true
+              deferredCashReceipt:
+                calculateInstructionToPortfolioRate: true
+                calculateTradeDateToSettlementFxPnL: true
+            cashGainLossCalculationDate: cashGainLossCalculationDate
+            chargeableGainsRegime: chargeableGainsRegime
+            leaderNavTypeCode: leaderNavTypeCode
+            accountingMethod: accountingMethod
+            pricingBasis: pricingBasis
+            amortisationRuleSetId:
+              code: code
+              scope: scope
+            postingModuleCodes:
+            - postingModuleCodes
+            - postingModuleCodes
+            transactionTypeScope: transactionTypeScope
+            transactionTemplateScope: transactionTemplateScope
+            cleardownModuleCodes:
+            - cleardownModuleCodes
+            - cleardownModuleCodes
+            amortisationMethod: amortisationMethod
+            valuationRecipeId:
+              code: code
+              scope: scope
+            cashCostReliefMethod: cashCostReliefMethod
+            status: status
+          createInstrument: true
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        catchUpCounts:
+        - navTypeCode: navTypeCode
+          catchUpCount: 0
+        - navTypeCode: navTypeCode
+          catchUpCount: 0
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        fund:
+          $ref: '#/components/schemas/Fund'
+        catchUpCounts:
+          description: "For each reactivated follower, the number of valuation points\
+            \ the leader finalised while the follower was dormant. Leaders are not\
+            \ included (they have no catch-up)."
+          items:
+            $ref: '#/components/schemas/NavTypeCatchUp'
+          nullable: true
+          type: array
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - fund
+      type: object
     RealisedGainLoss:
       additionalProperties: false
       example:
@@ -346928,7 +348460,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -347059,6 +348591,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -354223,7 +355756,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -354354,6 +355887,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -354435,7 +355969,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -354566,6 +356100,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -354835,7 +356370,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -354966,6 +356501,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashOfferElections
@@ -355058,7 +356594,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -355189,6 +356725,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - fixingDate
@@ -362317,6 +363854,8 @@ components:
                 parameters: parameters
                 modelOptions:
                   modelOptionsType: Invalid
+            loanOptions:
+              enhancedRounding: true
         - links:
           - method: method
             description: description
@@ -362692,6 +364231,8 @@ components:
                 parameters: parameters
                 modelOptions:
                   modelOptionsType: Invalid
+            loanOptions:
+              enhancedRounding: true
         links:
         - method: method
           description: description
@@ -369134,7 +370675,10 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - quantity: 0.8008281904610115
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          quantity: 0.8008281904610115
           instrumentScope: instrumentScope
           weight: 6.027456183070403
           instrumentIdentifiers:
@@ -369157,6 +370701,7 @@ components:
           portfolioId:
             code: code
             scope: scope
+          instructionType: instructionType
           price:
             amount: 0.8008281904610115
             currency: currency
@@ -369205,7 +370750,10 @@ components:
               - validationFailures
               - validationFailures
               status: status
-        - quantity: 0.8008281904610115
+        - amount:
+            amount: 0.8008281904610115
+            currency: currency
+          quantity: 0.8008281904610115
           instrumentScope: instrumentScope
           weight: 6.027456183070403
           instrumentIdentifiers:
@@ -369228,6 +370776,7 @@ components:
           portfolioId:
             code: code
             scope: scope
+          instructionType: instructionType
           price:
             amount: 0.8008281904610115
             currency: currency
@@ -383775,6 +385324,22 @@ components:
       required:
       - electionKey
       type: object
+    ReturnMetric:
+      additionalProperties: false
+      description: The rate of return over each period of the grid.
+      properties:
+        type:
+          description: "Available values: Return, IndicativeAmount."
+          minLength: 1
+          type: string
+        alias:
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+      - type
+      type: object
     ReturnsEntity:
       additionalProperties: false
       description: "Returns entity, used for configuring the calculation of aggregated\
@@ -383829,23 +385394,34 @@ components:
       type: object
     ReturnsMetric:
       additionalProperties: false
-      description: "A metric requested from the aggregated-returns (TWR) endpoint.\
-        \ Supports only the\r\nperiod `Return` (the grid granularity is set on the\
-        \ request via Period, not per metric);\r\n`Alias` is the key the metric appears\
-        \ under in the response's metricsValue dictionary."
+      description: "Base class for a metric requested from the aggregated-returns\
+        \ (TWR) endpoint, measured over each period of\r\nthe grid (the grid granularity\
+        \ is set on the request via Period, not per metric). Polymorphic by type;\r\
+        \neach supported type has a corresponding inherited class carrying the inputs\
+        \ only that metric takes."
+      discriminator:
+        mapping:
+          Return: '#/components/schemas/ReturnMetric'
+          IndicativeAmount: '#/components/schemas/IndicativeAmountMetric'
+        propertyName: type
       example:
         alias: alias
         type: type
+      oneOf:
+      - $ref: '#/components/schemas/IndicativeAmountMetric'
+      - $ref: '#/components/schemas/ReturnMetric'
       properties:
         type:
-          description: "Available values: Return."
-          nullable: true
+          description: "Available values: Return, IndicativeAmount."
+          minLength: 1
           type: string
         alias:
           maxLength: 256
           minLength: 0
           nullable: true
           type: string
+      required:
+      - type
       type: object
     ReturnZeroPvOptions:
       additionalProperties: false
@@ -383966,7 +385542,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -384097,6 +385673,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -385642,7 +387219,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -385773,6 +387350,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -385962,7 +387540,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -386093,6 +387671,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -391116,7 +392695,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -391247,6 +392826,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashElections
@@ -392084,7 +393664,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -392215,6 +393795,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -392960,7 +394541,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -393091,6 +394672,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -393188,7 +394770,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -393319,6 +394901,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -393811,7 +395394,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -393942,6 +395525,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - cashFlowPerUnit
@@ -394398,10 +395982,9 @@ components:
           nullable: true
           type: integer
         instrumentIdentifiers:
-          description: "The instrument identifiers each published holding carries,\
-            \ as Instrument/default/{type} property keys,\r\nfor example Instrument/default/ClientInternal.\
-            \ Each must name an instrument identifier type. At most 5.\r\nNot valid\
-            \ for a transactions subscription."
+          description: "The instrument identifiers each published change carries,\
+            \ as Instrument/default/{type} property keys, for\r\nexample Instrument/default/ClientInternal.\
+            \ Each must name an instrument identifier type. At most 5."
           items:
             description: "The key that uniquely identifies the property. It has the\
               \ format {domain}/{scope}/{code}."
@@ -394618,7 +396201,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -394749,6 +396332,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -394817,7 +396401,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -394948,6 +396532,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -397916,7 +399501,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -398047,6 +399632,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -398254,7 +399840,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -398385,6 +399971,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -398448,7 +400035,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -398579,6 +400166,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - currency
@@ -398645,7 +400233,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             minLength: 1
             type: string
           triggeringEventId:
@@ -398735,7 +400323,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -398866,6 +400454,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -399539,7 +401128,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -399670,6 +401259,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - component
@@ -407245,7 +408835,8 @@ components:
             \ FacilityDrawEvent, FacilityRepaymentEvent, FacilityInterestEvent, FacilityCommitmentFeeEvent,\
             \ InstalmentCallEvent, DepositInterestCapitalisationEvent, PartialRedemptionWithoutReductionOfNominalValueEvent,\
             \ StripBondCashflowEvent, CapitalisationEvent, SharesPremiumDividendEvent,\
-            \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent."
+            \ CashDistributionFromNonEligibleSecuritiesSalesEvent, InflationIndexationEvent,\
+            \ InterestPaymentWithPrincipalEvent."
           minLength: 1
           type: string
         supportedInstrumentTypes:
@@ -409388,7 +410979,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -409519,6 +411110,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -410326,7 +411918,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -410457,6 +412049,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -412633,7 +414226,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -412764,6 +414357,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - amount
@@ -415236,6 +416830,7 @@ components:
       example:
         filter:
           filterNodeType: filterNodeType
+        schedule: schedule
         measure:
           filter:
             filterNodeType: filterNodeType
@@ -415337,6 +416932,10 @@ components:
           $ref: '#/components/schemas/ComplianceRuleV3Check'
         computedFilter:
           $ref: '#/components/schemas/ComplianceRuleV3ComputedFilter'
+        schedule:
+          description: "Available values: PreTrade, PostTrade, PreAndPostTrade."
+          nullable: true
+          type: string
       required:
       - active
       - check
@@ -421941,6 +423540,8 @@ components:
               parameters: parameters
               modelOptions:
                 modelOptionsType: Invalid
+          loanOptions:
+            enhancedRounding: true
       properties:
         configurationRecipe:
           $ref: '#/components/schemas/ConfigurationRecipe'
@@ -444688,7 +446289,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -444819,6 +446420,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType
@@ -446121,7 +447723,7 @@ components:
               \ FacilityCommitmentFeeEvent, InstalmentCallEvent, DepositInterestCapitalisationEvent,\
               \ PartialRedemptionWithoutReductionOfNominalValueEvent, StripBondCashflowEvent,\
               \ CapitalisationEvent, SharesPremiumDividendEvent, CashDistributionFromNonEligibleSecuritiesSalesEvent,\
-              \ InflationIndexationEvent."
+              \ InflationIndexationEvent, InterestPaymentWithPrincipalEvent."
             enum:
             - TransitionEvent
             - InformationalEvent
@@ -446252,6 +447854,7 @@ components:
             - SharesPremiumDividendEvent
             - CashDistributionFromNonEligibleSecuritiesSalesEvent
             - InflationIndexationEvent
+            - InterestPaymentWithPrincipalEvent
             type: string
         required:
         - instrumentEventType

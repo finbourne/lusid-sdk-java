@@ -17,6 +17,7 @@ import com.finbourne.lusid.model.RecipeProvenance;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.ResultDataSchema;
 import com.finbourne.lusid.model.ScenarioDiagnostics;
+import com.finbourne.lusid.model.Warning;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -100,6 +101,10 @@ public class ListAggregationResponse {
   public static final String SERIALIZED_NAME_RECIPE_PROVENANCE = "recipeProvenance";
   @SerializedName(SERIALIZED_NAME_RECIPE_PROVENANCE)
   private RecipeProvenance recipeProvenance;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<Warning> warnings;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -334,6 +339,35 @@ public class ListAggregationResponse {
   }
 
 
+  public ListAggregationResponse warnings(List<Warning> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public ListAggregationResponse addWarningsItem(Warning warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<Warning> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<Warning> warnings) {
+    this.warnings = warnings;
+  }
+
+
   public ListAggregationResponse links(List<Link> links) {
     
     this.links = links;
@@ -383,6 +417,7 @@ public class ListAggregationResponse {
         Objects.equals(this.recipeId, listAggregationResponse.recipeId) &&
         Objects.equals(this.scenarioDiagnostics, listAggregationResponse.scenarioDiagnostics) &&
         Objects.equals(this.recipeProvenance, listAggregationResponse.recipeProvenance) &&
+        Objects.equals(this.warnings, listAggregationResponse.warnings) &&
         Objects.equals(this.links, listAggregationResponse.links);
   }
 
@@ -392,7 +427,7 @@ public class ListAggregationResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationEffectiveAt, aggregationAsAt, href, data, aggregationCurrency, dataSchema, aggregationFailures, recipeId, scenarioDiagnostics, recipeProvenance, links);
+    return Objects.hash(aggregationEffectiveAt, aggregationAsAt, href, data, aggregationCurrency, dataSchema, aggregationFailures, recipeId, scenarioDiagnostics, recipeProvenance, warnings, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -416,6 +451,7 @@ public class ListAggregationResponse {
     sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("    scenarioDiagnostics: ").append(toIndentedString(scenarioDiagnostics)).append("\n");
     sb.append("    recipeProvenance: ").append(toIndentedString(recipeProvenance)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -449,6 +485,7 @@ public class ListAggregationResponse {
     openapiFields.add("recipeId");
     openapiFields.add("scenarioDiagnostics");
     openapiFields.add("recipeProvenance");
+    openapiFields.add("warnings");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -507,6 +544,20 @@ public class ListAggregationResponse {
       // validate the optional field `recipeProvenance`
       if (jsonObj.get("recipeProvenance") != null && !jsonObj.get("recipeProvenance").isJsonNull()) {
         RecipeProvenance.validateJsonElement(jsonObj.get("recipeProvenance"));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            Warning.validateJsonElement(jsonArraywarnings.get(i));
+          };
+        }
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

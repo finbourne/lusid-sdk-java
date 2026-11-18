@@ -281,7 +281,9 @@ public enum InstrumentEventType {
   
   CASHDISTRIBUTIONFROMNONELIGIBLESECURITIESSALESEVENT("CashDistributionFromNonEligibleSecuritiesSalesEvent"),
   
-  INFLATIONINDEXATIONEVENT("InflationIndexationEvent");
+  INFLATIONINDEXATIONEVENT("InflationIndexationEvent"),
+  
+  INTERESTPAYMENTWITHPRINCIPALEVENT("InterestPaymentWithPrincipalEvent");
 
   private String value;
 

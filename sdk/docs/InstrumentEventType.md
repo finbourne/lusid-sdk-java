@@ -143,6 +143,7 @@ InstrumentEventType method = InstrumentEventType.CAPITALISATIONEVENT;
 InstrumentEventType method = InstrumentEventType.SHARESPREMIUMDIVIDENDEVENT;
 InstrumentEventType method = InstrumentEventType.CASHDISTRIBUTIONFROMNONELIGIBLESECURITIESSALESEVENT;
 InstrumentEventType method = InstrumentEventType.INFLATIONINDEXATIONEVENT;
+InstrumentEventType method = InstrumentEventType.INTERESTPAYMENTWITHPRINCIPALEVENT;
 ```
 
 

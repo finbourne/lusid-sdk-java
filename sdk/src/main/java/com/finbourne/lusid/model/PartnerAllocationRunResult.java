@@ -88,7 +88,7 @@ public class PartnerAllocationRunResult {
 
   public static final String SERIALIZED_NAME_UNATTRIBUTED = "unattributed";
   @SerializedName(SERIALIZED_NAME_UNATTRIBUTED)
-  private List<UnattributedAmount> unattributed = new ArrayList<>();
+  private List<UnattributedAmount> unattributed;
 
   public static final String SERIALIZED_NAME_BOOKED_TRANSACTION_IDS = "bookedTransactionIds";
   @SerializedName(SERIALIZED_NAME_BOOKED_TRANSACTION_IDS)
@@ -279,10 +279,10 @@ public class PartnerAllocationRunResult {
   }
 
    /**
-   * Always empty: every profit and loss line is pooled or the run is refused. Kept until no published SDK requires it.
+   * Always empty: every profit and loss line is pooled or the run is refused. No longer required; removed once no published SDK requires it.
    * @return unattributed
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public List<UnattributedAmount> getUnattributed() {
     return unattributed;
   }
@@ -509,7 +509,6 @@ public class PartnerAllocationRunResult {
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("runId");
     openapiRequiredFields.add("pools");
-    openapiRequiredFields.add("unattributed");
     openapiRequiredFields.add("bookedTransactionIds");
   }
 
@@ -554,16 +553,20 @@ public class PartnerAllocationRunResult {
       for (int i = 0; i < jsonArraypools.size(); i++) {
         PartnerAllocationPool.validateJsonElement(jsonArraypools.get(i));
       };
-      // ensure the json data is an array
-      if (!jsonObj.get("unattributed").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `unattributed` to be an array in the JSON string but got `%s`", jsonObj.get("unattributed").toString()));
-      }
+      if (jsonObj.get("unattributed") != null && !jsonObj.get("unattributed").isJsonNull()) {
+        JsonArray jsonArrayunattributed = jsonObj.getAsJsonArray("unattributed");
+        if (jsonArrayunattributed != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("unattributed").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `unattributed` to be an array in the JSON string but got `%s`", jsonObj.get("unattributed").toString()));
+          }
 
-      JsonArray jsonArrayunattributed = jsonObj.getAsJsonArray("unattributed");
-      // validate the required field `unattributed` (array)
-      for (int i = 0; i < jsonArrayunattributed.size(); i++) {
-        UnattributedAmount.validateJsonElement(jsonArrayunattributed.get(i));
-      };
+          // validate the optional field `unattributed` (array)
+          for (int i = 0; i < jsonArrayunattributed.size(); i++) {
+            UnattributedAmount.validateJsonElement(jsonArrayunattributed.get(i));
+          };
+        }
+      }
       // ensure the required json array is present
       if (jsonObj.get("bookedTransactionIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");

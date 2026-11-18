@@ -109,6 +109,14 @@ public class OrderInstruction {
   @SerializedName(SERIALIZED_NAME_DATA_MODEL_MEMBERSHIP)
   private DataModelMembership dataModelMembership;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
+
+  public static final String SERIALIZED_NAME_INSTRUCTION_TYPE = "instructionType";
+  @SerializedName(SERIALIZED_NAME_INSTRUCTION_TYPE)
+  private String instructionType;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -244,7 +252,7 @@ public class OrderInstruction {
   }
 
    /**
-   * The quantity of given instrument ordered.
+   * The quantity of given instrument.
    * @return quantity
   **/
   @jakarta.annotation.Nullable
@@ -265,7 +273,7 @@ public class OrderInstruction {
   }
 
    /**
-   * The proportion of the total portfolio value ordered for the given instrument ordered.
+   * The proportion of the total portfolio value.
    * @return weight
   **/
   @jakarta.annotation.Nullable
@@ -384,6 +392,48 @@ public class OrderInstruction {
   }
 
 
+  public OrderInstruction amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
+  }
+
+
+  public OrderInstruction instructionType(String instructionType) {
+    
+    this.instructionType = instructionType;
+    return this;
+  }
+
+   /**
+   * Whether the instruction is a change to the holding or a target for it, one of: Change, Target. Defaults to Target for a weight-only instruction and to Change otherwise.
+   * @return instructionType
+  **/
+  @jakarta.annotation.Nullable
+  public String getInstructionType() {
+    return instructionType;
+  }
+
+
+  public void setInstructionType(String instructionType) {
+    this.instructionType = instructionType;
+  }
+
+
   public OrderInstruction links(List<Link> links) {
     
     this.links = links;
@@ -435,6 +485,8 @@ public class OrderInstruction {
         Objects.equals(this.lusidInstrumentId, orderInstruction.lusidInstrumentId) &&
         Objects.equals(this.version, orderInstruction.version) &&
         Objects.equals(this.dataModelMembership, orderInstruction.dataModelMembership) &&
+        Objects.equals(this.amount, orderInstruction.amount) &&
+        Objects.equals(this.instructionType, orderInstruction.instructionType) &&
         Objects.equals(this.links, orderInstruction.links);
   }
 
@@ -444,7 +496,7 @@ public class OrderInstruction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdDate, properties, portfolioId, instrumentIdentifiers, quantity, weight, price, instrumentScope, lusidInstrumentId, version, dataModelMembership, links);
+    return Objects.hash(id, createdDate, properties, portfolioId, instrumentIdentifiers, quantity, weight, price, instrumentScope, lusidInstrumentId, version, dataModelMembership, amount, instructionType, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -470,6 +522,8 @@ public class OrderInstruction {
     sb.append("    lusidInstrumentId: ").append(toIndentedString(lusidInstrumentId)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    dataModelMembership: ").append(toIndentedString(dataModelMembership)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    instructionType: ").append(toIndentedString(instructionType)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -505,6 +559,8 @@ public class OrderInstruction {
     openapiFields.add("lusidInstrumentId");
     openapiFields.add("version");
     openapiFields.add("dataModelMembership");
+    openapiFields.add("amount");
+    openapiFields.add("instructionType");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -557,6 +613,13 @@ public class OrderInstruction {
       // validate the optional field `dataModelMembership`
       if (jsonObj.get("dataModelMembership") != null && !jsonObj.get("dataModelMembership").isJsonNull()) {
         DataModelMembership.validateJsonElement(jsonObj.get("dataModelMembership"));
+      }
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
+      if ((jsonObj.get("instructionType") != null && !jsonObj.get("instructionType").isJsonNull()) && !jsonObj.get("instructionType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instructionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instructionType").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

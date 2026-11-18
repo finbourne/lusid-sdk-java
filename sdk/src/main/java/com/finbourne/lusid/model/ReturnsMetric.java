@@ -11,6 +11,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.IndicativeAmountMetric;
+import com.finbourne.lusid.model.ReturnMetric;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,153 +22,235 @@ import java.io.IOException;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
 
+
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParseException;
 
 import com.finbourne.lusid.JSON;
 
-/**
- * A metric requested from the aggregated-returns (TWR) endpoint. Supports only the  period &#x60;Return&#x60; (the grid granularity is set on the request via Period, not per metric);  &#x60;Alias&#x60; is the key the metric appears under in the response&#39;s metricsValue dictionary.
- */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ReturnsMetric {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+public class ReturnsMetric extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(ReturnsMetric.class.getName());
 
-  public static final String SERIALIZED_NAME_ALIAS = "alias";
-  @SerializedName(SERIALIZED_NAME_ALIAS)
-  private String alias;
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!ReturnsMetric.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'ReturnsMetric' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<IndicativeAmountMetric> adapterIndicativeAmountMetric = gson.getDelegateAdapter(this, TypeToken.get(IndicativeAmountMetric.class));
+            final TypeAdapter<ReturnMetric> adapterReturnMetric = gson.getDelegateAdapter(this, TypeToken.get(ReturnMetric.class));
 
-  public ReturnsMetric() {
-  }
+            return (TypeAdapter<T>) new TypeAdapter<ReturnsMetric>() {
+                @Override
+                public void write(JsonWriter out, ReturnsMetric value) throws IOException {
+                    if (value == null || value.getActualInstance() == null) {
+                        elementAdapter.write(out, null);
+                        return;
+                    }
 
-  public ReturnsMetric type(String type) {
-    
-    this.type = type;
-    return this;
-  }
+                    // check if the actual instance is of the type `IndicativeAmountMetric`
+                    if (value.getActualInstance() instanceof IndicativeAmountMetric) {
+                      JsonElement element = adapterIndicativeAmountMetric.toJsonTree((IndicativeAmountMetric)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    // check if the actual instance is of the type `ReturnMetric`
+                    if (value.getActualInstance() instanceof ReturnMetric) {
+                      JsonElement element = adapterReturnMetric.toJsonTree((ReturnMetric)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: IndicativeAmountMetric, ReturnMetric");
+                }
 
-   /**
-   * Available values: Return.
-   * @return type
-  **/
-  @jakarta.annotation.Nullable
-  public String getType() {
-    return type;
-  }
+                @Override
+                public ReturnsMetric read(JsonReader in) throws IOException {
+                    Object deserialized = null;
+                    JsonElement jsonElement = elementAdapter.read(in);
 
+                    JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-  public void setType(String type) {
-    this.type = type;
-  }
+                    // use discriminator value for faster oneOf lookup
+                    ReturnsMetric newReturnsMetric = new ReturnsMetric();
+                    if (jsonObject.get("type") == null) {
+                        log.log(Level.WARNING, "Failed to lookup discriminator value for ReturnsMetric as `type` was not found in the payload or the payload is empty.");
+                    } else  {
+                        // look up the discriminator value in the field `type`
+                        switch (jsonObject.get("type").getAsString()) {
+                            case "IndicativeAmount":
+                                deserialized = adapterIndicativeAmountMetric.fromJsonTree(jsonObject);
+                                newReturnsMetric.setActualInstance(deserialized);
+                                return newReturnsMetric;
+                            case "IndicativeAmountMetric":
+                                deserialized = adapterIndicativeAmountMetric.fromJsonTree(jsonObject);
+                                newReturnsMetric.setActualInstance(deserialized);
+                                return newReturnsMetric;
+                            case "Return":
+                                deserialized = adapterReturnMetric.fromJsonTree(jsonObject);
+                                newReturnsMetric.setActualInstance(deserialized);
+                                return newReturnsMetric;
+                            case "ReturnMetric":
+                                deserialized = adapterReturnMetric.fromJsonTree(jsonObject);
+                                newReturnsMetric.setActualInstance(deserialized);
+                                return newReturnsMetric;
+                            default:
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ReturnsMetric. Possible values: IndicativeAmount IndicativeAmountMetric Return ReturnMetric", jsonObject.get("type").getAsString()));
+                        }
+                    }
 
+                    int match = 0;
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
-  public ReturnsMetric alias(String alias) {
-    
-    this.alias = alias;
-    return this;
-  }
+                    // deserialize IndicativeAmountMetric
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      IndicativeAmountMetric.validateJsonElement(jsonElement);
+                      actualAdapter = adapterIndicativeAmountMetric;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'IndicativeAmountMetric'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for IndicativeAmountMetric failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'IndicativeAmountMetric'", e);
+                    }
+                    // deserialize ReturnMetric
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      ReturnMetric.validateJsonElement(jsonElement);
+                      actualAdapter = adapterReturnMetric;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'ReturnMetric'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for ReturnMetric failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'ReturnMetric'", e);
+                    }
 
-   /**
-   * Get alias
-   * @return alias
-  **/
-  @jakarta.annotation.Nullable
-  public String getAlias() {
-    return alias;
-  }
+                    if (match == 1) {
+                        ReturnsMetric ret = new ReturnsMetric();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    }
 
-
-  public void setAlias(String alias) {
-    this.alias = alias;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+                    throw new IOException(String.format("Failed deserialization for ReturnsMetric: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                }
+            }.nullSafe();
+        }
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    // store a list of schema names defined in oneOf
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
+
+    public ReturnsMetric() {
+        super("oneOf", Boolean.FALSE);
     }
-    ReturnsMetric returnsMetric = (ReturnsMetric) o;
-    return Objects.equals(this.type, returnsMetric.type) &&
-        Objects.equals(this.alias, returnsMetric.alias);
-  }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(type, alias);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
+    public ReturnsMetric(IndicativeAmountMetric o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
     }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
-  }
 
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ReturnsMetric {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    alias: ").append(toIndentedString(alias)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
+    public ReturnsMetric(ReturnMetric o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
     }
-    return o.toString().replace("\n", "\n    ");
-  }
 
+    static {
+        schemas.put("IndicativeAmountMetric", IndicativeAmountMetric.class);
+        schemas.put("ReturnMetric", ReturnMetric.class);
+    }
 
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
+    @Override
+    public Map<String, Class<?>> getSchemas() {
+        return ReturnsMetric.schemas;
+    }
 
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("alias");
+    /**
+     * Set the instance that matches the oneOf child schema, check
+     * the instance parameter is valid against the oneOf child schemas:
+     * IndicativeAmountMetric, ReturnMetric
+     *
+     * It could be an instance of the 'oneOf' schemas.
+     */
+    @Override
+    public void setActualInstance(Object instance) {
+        if (instance instanceof IndicativeAmountMetric) {
+            super.setActualInstance(instance);
+            return;
+        }
 
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-  }
+        if (instance instanceof ReturnMetric) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be IndicativeAmountMetric, ReturnMetric");
+    }
+
+    /**
+     * Get the actual instance, which can be the following:
+     * IndicativeAmountMetric, ReturnMetric
+     *
+     * @return The actual instance (IndicativeAmountMetric, ReturnMetric)
+     */
+    @Override
+    public Object getActualInstance() {
+        return super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `IndicativeAmountMetric`. If the actual instance is not `IndicativeAmountMetric`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `IndicativeAmountMetric`
+     * @throws ClassCastException if the instance is not `IndicativeAmountMetric`
+     */
+    public IndicativeAmountMetric getIndicativeAmountMetric() throws ClassCastException {
+        return (IndicativeAmountMetric)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `ReturnMetric`. If the actual instance is not `ReturnMetric`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `ReturnMetric`
+     * @throws ClassCastException if the instance is not `ReturnMetric`
+     */
+    public ReturnMetric getReturnMetric() throws ClassCastException {
+        return (ReturnMetric)super.getActualInstance();
+    }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
@@ -175,46 +259,27 @@ public class ReturnsMetric {
   * @throws IOException if the JSON Element is invalid with respect to ReturnsMetric
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!ReturnsMetric.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ReturnsMetric is not found in the empty JSON string", ReturnsMetric.openapiRequiredFields.toString()));
-        }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      if ((jsonObj.get("alias") != null && !jsonObj.get("alias").isJsonNull()) && !jsonObj.get("alias").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `alias` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alias").toString()));
-      }
-  }
-
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
-    @SuppressWarnings("unchecked")
-    @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ReturnsMetric.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ReturnsMetric' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ReturnsMetric> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ReturnsMetric.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<ReturnsMetric>() {
-           @Override
-           public void write(JsonWriter out, ReturnsMetric value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public ReturnsMetric read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+    // validate oneOf schemas one by one
+    int validCount = 0;
+    ArrayList<String> errorMessages = new ArrayList<>();
+    // validate the json string with IndicativeAmountMetric
+    try {
+      IndicativeAmountMetric.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for IndicativeAmountMetric failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    // validate the json string with ReturnMetric
+    try {
+      ReturnMetric.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for ReturnMetric failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
+    if (validCount != 1) {
+      throw new IOException(String.format("The JSON string is invalid for ReturnsMetric with oneOf schemas: IndicativeAmountMetric, ReturnMetric. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 
@@ -238,3 +303,4 @@ public class ReturnsMetric {
     return JSON.getGson().toJson(this);
   }
 }
+

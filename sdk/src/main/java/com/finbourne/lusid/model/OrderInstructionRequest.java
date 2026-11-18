@@ -88,6 +88,14 @@ public class OrderInstructionRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, PerpetualProperty> properties;
 
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private CurrencyAndAmount amount;
+
+  public static final String SERIALIZED_NAME_INSTRUCTION_TYPE = "instructionType";
+  @SerializedName(SERIALIZED_NAME_INSTRUCTION_TYPE)
+  private String instructionType;
+
   public OrderInstructionRequest() {
   }
 
@@ -190,7 +198,7 @@ public class OrderInstructionRequest {
   }
 
    /**
-   * The quantity of given instrument ordered.
+   * The quantity of given instrument.
    * @return quantity
   **/
   @jakarta.annotation.Nullable
@@ -211,7 +219,7 @@ public class OrderInstructionRequest {
   }
 
    /**
-   * The proportion of the total portfolio value ordered for the given instrument ordered.
+   * The proportion of the total portfolio value.
    * @return weight
   **/
   @jakarta.annotation.Nullable
@@ -275,6 +283,48 @@ public class OrderInstructionRequest {
   }
 
 
+  public OrderInstructionRequest amount(CurrencyAndAmount amount) {
+    
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * Get amount
+   * @return amount
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getAmount() {
+    return amount;
+  }
+
+
+  public void setAmount(CurrencyAndAmount amount) {
+    this.amount = amount;
+  }
+
+
+  public OrderInstructionRequest instructionType(String instructionType) {
+    
+    this.instructionType = instructionType;
+    return this;
+  }
+
+   /**
+   * Whether the instruction is a change to the holding or a target for it, one of: Change, Target. Defaults to Target for a weight-only instruction and to Change otherwise.
+   * @return instructionType
+  **/
+  @jakarta.annotation.Nullable
+  public String getInstructionType() {
+    return instructionType;
+  }
+
+
+  public void setInstructionType(String instructionType) {
+    this.instructionType = instructionType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -292,7 +342,9 @@ public class OrderInstructionRequest {
         (this.quantity.compareTo(orderInstructionRequest.getQuantity()) == 0) &&
         (this.weight.compareTo(orderInstructionRequest.getWeight()) == 0) &&
         Objects.equals(this.price, orderInstructionRequest.price) &&
-        Objects.equals(this.properties, orderInstructionRequest.properties);
+        Objects.equals(this.properties, orderInstructionRequest.properties) &&
+        Objects.equals(this.amount, orderInstructionRequest.amount) &&
+        Objects.equals(this.instructionType, orderInstructionRequest.instructionType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -301,7 +353,7 @@ public class OrderInstructionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdDate, portfolioId, instrumentIdentifiers, quantity, weight, price, properties);
+    return Objects.hash(id, createdDate, portfolioId, instrumentIdentifiers, quantity, weight, price, properties, amount, instructionType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -323,6 +375,8 @@ public class OrderInstructionRequest {
     sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    instructionType: ").append(toIndentedString(instructionType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -353,6 +407,8 @@ public class OrderInstructionRequest {
     openapiFields.add("weight");
     openapiFields.add("price");
     openapiFields.add("properties");
+    openapiFields.add("amount");
+    openapiFields.add("instructionType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -389,6 +445,13 @@ public class OrderInstructionRequest {
       // validate the optional field `price`
       if (jsonObj.get("price") != null && !jsonObj.get("price").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("price"));
+      }
+      // validate the optional field `amount`
+      if (jsonObj.get("amount") != null && !jsonObj.get("amount").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("amount"));
+      }
+      if ((jsonObj.get("instructionType") != null && !jsonObj.get("instructionType").isJsonNull()) && !jsonObj.get("instructionType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `instructionType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("instructionType").toString()));
       }
   }
 
