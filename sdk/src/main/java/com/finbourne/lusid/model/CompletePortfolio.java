@@ -82,12 +82,16 @@ public class CompletePortfolio {
   @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_ID)
   private ResourceId parentPortfolioId;
 
+  public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_IDS = "parentPortfolioIds";
+  @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_IDS)
+  private List<ResourceId> parentPortfolioIds;
+
   public static final String SERIALIZED_NAME_IS_DERIVED = "isDerived";
   @SerializedName(SERIALIZED_NAME_IS_DERIVED)
   private Boolean isDerived;
 
   /**
-   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
+   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition, Composite.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -97,7 +101,9 @@ public class CompletePortfolio {
     
     DERIVEDTRANSACTION("DerivedTransaction"),
     
-    SIMPLEPOSITION("SimplePosition");
+    SIMPLEPOSITION("SimplePosition"),
+    
+    COMPOSITE("Composite");
 
     private String value;
 
@@ -298,6 +304,35 @@ public class CompletePortfolio {
   }
 
 
+  public CompletePortfolio parentPortfolioIds(List<ResourceId> parentPortfolioIds) {
+    
+    this.parentPortfolioIds = parentPortfolioIds;
+    return this;
+  }
+
+  public CompletePortfolio addParentPortfolioIdsItem(ResourceId parentPortfolioIdsItem) {
+    if (this.parentPortfolioIds == null) {
+      this.parentPortfolioIds = new ArrayList<>();
+    }
+    this.parentPortfolioIds.add(parentPortfolioIdsItem);
+    return this;
+  }
+
+   /**
+   * The scope and code of each portfolio this portfolio takes its contents from: the parent of a derived transaction portfolio, or the constituents of a composite portfolio at the effective date. Empty for a portfolio with no parent.
+   * @return parentPortfolioIds
+  **/
+  @jakarta.annotation.Nullable
+  public List<ResourceId> getParentPortfolioIds() {
+    return parentPortfolioIds;
+  }
+
+
+  public void setParentPortfolioIds(List<ResourceId> parentPortfolioIds) {
+    this.parentPortfolioIds = parentPortfolioIds;
+  }
+
+
    /**
    * Whether or not this is a derived portfolio.
    * @return isDerived
@@ -317,7 +352,7 @@ public class CompletePortfolio {
   }
 
    /**
-   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
+   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition, Composite.
    * @return type
   **/
   @jakarta.annotation.Nullable
@@ -476,6 +511,7 @@ public class CompletePortfolio {
         Objects.equals(this.displayName, completePortfolio.displayName) &&
         Objects.equals(this.created, completePortfolio.created) &&
         Objects.equals(this.parentPortfolioId, completePortfolio.parentPortfolioId) &&
+        Objects.equals(this.parentPortfolioIds, completePortfolio.parentPortfolioIds) &&
         Objects.equals(this.isDerived, completePortfolio.isDerived) &&
         Objects.equals(this.type, completePortfolio.type) &&
         Objects.equals(this.version, completePortfolio.version) &&
@@ -491,7 +527,7 @@ public class CompletePortfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, href, description, displayName, created, parentPortfolioId, isDerived, type, version, properties, baseCurrency, subHoldingKeys, links);
+    return Objects.hash(id, href, description, displayName, created, parentPortfolioId, parentPortfolioIds, isDerived, type, version, properties, baseCurrency, subHoldingKeys, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -511,6 +547,7 @@ public class CompletePortfolio {
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    parentPortfolioId: ").append(toIndentedString(parentPortfolioId)).append("\n");
+    sb.append("    parentPortfolioIds: ").append(toIndentedString(parentPortfolioIds)).append("\n");
     sb.append("    isDerived: ").append(toIndentedString(isDerived)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
@@ -546,6 +583,7 @@ public class CompletePortfolio {
     openapiFields.add("displayName");
     openapiFields.add("created");
     openapiFields.add("parentPortfolioId");
+    openapiFields.add("parentPortfolioIds");
     openapiFields.add("isDerived");
     openapiFields.add("type");
     openapiFields.add("version");
@@ -594,6 +632,20 @@ public class CompletePortfolio {
       // validate the optional field `parentPortfolioId`
       if (jsonObj.get("parentPortfolioId") != null && !jsonObj.get("parentPortfolioId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("parentPortfolioId"));
+      }
+      if (jsonObj.get("parentPortfolioIds") != null && !jsonObj.get("parentPortfolioIds").isJsonNull()) {
+        JsonArray jsonArrayparentPortfolioIds = jsonObj.getAsJsonArray("parentPortfolioIds");
+        if (jsonArrayparentPortfolioIds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("parentPortfolioIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `parentPortfolioIds` to be an array in the JSON string but got `%s`", jsonObj.get("parentPortfolioIds").toString()));
+          }
+
+          // validate the optional field `parentPortfolioIds` (array)
+          for (int i = 0; i < jsonArrayparentPortfolioIds.size(); i++) {
+            ResourceId.validateJsonElement(jsonArrayparentPortfolioIds.get(i));
+          };
+        }
       }
       if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

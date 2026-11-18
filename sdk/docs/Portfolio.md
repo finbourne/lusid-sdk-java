@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. | [optional] [default to URI]
 **id** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
-**type** | **String** | The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition. | [default to String]
+**type** | **String** | The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition, Composite. | [default to String]
 **displayName** | **String** | The name of the portfolio. | [default to String]
 **description** | **String** | The long form description of the portfolio. | [optional] [default to String]
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. | [default to OffsetDateTime]
 **enablementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime from which instrument events and corporate actions are generated and applied to the portfolio. Transactions and holdings booked to the portfolio contribute to holdings, valuations and other computed results from its creation date whatever the enablement date. Defaults to the portfolio&#39;s creation date when not explicitly set. | [optional] [default to OffsetDateTime]
 **parentPortfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**parentPortfolioIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The scope and code of each portfolio this portfolio takes its contents from: the parent of a derived transaction portfolio, or the constituents of a composite portfolio at the effective date. Empty for a portfolio with no parent. | [optional] [default to List<ResourceId>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **stagedModifications** | [**StagedModificationsInfo**](StagedModificationsInfo.md) |  | [optional] [default to StagedModificationsInfo]
 **isDerived** | **Boolean** | Whether or not this is a derived portfolio. | [optional] [default to Boolean]
@@ -51,6 +52,7 @@ String DisplayName = "example DisplayName";
 OffsetDateTime Created = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime EnablementDate = OffsetDateTime.now();
 ResourceId ParentPortfolioId = new ResourceId();
+@jakarta.annotation.Nullable List<ResourceId> ParentPortfolioIds = new List<ResourceId>();
 Version Version = new Version();
 StagedModificationsInfo StagedModifications = new StagedModificationsInfo();
 Boolean IsDerived = true;
@@ -85,6 +87,7 @@ Portfolio portfolioInstance = new Portfolio()
     .Created(Created)
     .EnablementDate(EnablementDate)
     .ParentPortfolioId(ParentPortfolioId)
+    .ParentPortfolioIds(ParentPortfolioIds)
     .Version(Version)
     .StagedModifications(StagedModifications)
     .IsDerived(IsDerived)

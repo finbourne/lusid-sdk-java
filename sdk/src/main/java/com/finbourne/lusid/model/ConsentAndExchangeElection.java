@@ -19,6 +19,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,6 +66,14 @@ public class ConsentAndExchangeElection {
   public static final String SERIALIZED_NAME_UNITS_RATIO = "unitsRatio";
   @SerializedName(SERIALIZED_NAME_UNITS_RATIO)
   private UnitsRatio unitsRatio;
+
+  public static final String SERIALIZED_NAME_CONSENT_FEE_PRICE = "consentFeePrice";
+  @SerializedName(SERIALIZED_NAME_CONSENT_FEE_PRICE)
+  private java.math.BigDecimal consentFeePrice;
+
+  public static final String SERIALIZED_NAME_CONSENT_FEE_CURRENCY = "consentFeeCurrency";
+  @SerializedName(SERIALIZED_NAME_CONSENT_FEE_CURRENCY)
+  private String consentFeeCurrency;
 
   public ConsentAndExchangeElection() {
   }
@@ -153,6 +162,48 @@ public class ConsentAndExchangeElection {
   }
 
 
+  public ConsentAndExchangeElection consentFeePrice(java.math.BigDecimal consentFeePrice) {
+    
+    this.consentFeePrice = consentFeePrice;
+    return this;
+  }
+
+   /**
+   * Optional. The consent fee paid to holders who consent, on top of the exchange consideration. Quoted per 1,000 of face for bonds, using the current notional at the effective date of the event, and per unit for other instruments. Must be greater than 0. Required together with ConsentFeeCurrency, and only supported on an ExchangeOfferEvent.
+   * @return consentFeePrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getConsentFeePrice() {
+    return consentFeePrice;
+  }
+
+
+  public void setConsentFeePrice(java.math.BigDecimal consentFeePrice) {
+    this.consentFeePrice = consentFeePrice;
+  }
+
+
+  public ConsentAndExchangeElection consentFeeCurrency(String consentFeeCurrency) {
+    
+    this.consentFeeCurrency = consentFeeCurrency;
+    return this;
+  }
+
+   /**
+   * Optional. Currency of the consent fee. Required if a consent fee price is provided, and only supported on an ExchangeOfferEvent.
+   * @return consentFeeCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getConsentFeeCurrency() {
+    return consentFeeCurrency;
+  }
+
+
+  public void setConsentFeeCurrency(String consentFeeCurrency) {
+    this.consentFeeCurrency = consentFeeCurrency;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -166,12 +217,25 @@ public class ConsentAndExchangeElection {
     return Objects.equals(this.electionKey, consentAndExchangeElection.electionKey) &&
         Objects.equals(this.isDefault, consentAndExchangeElection.isDefault) &&
         Objects.equals(this.isChosen, consentAndExchangeElection.isChosen) &&
-        Objects.equals(this.unitsRatio, consentAndExchangeElection.unitsRatio);
+        Objects.equals(this.unitsRatio, consentAndExchangeElection.unitsRatio) &&
+        (this.consentFeePrice.compareTo(consentAndExchangeElection.getConsentFeePrice()) == 0) &&
+        Objects.equals(this.consentFeeCurrency, consentAndExchangeElection.consentFeeCurrency);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(electionKey, isDefault, isChosen, unitsRatio);
+    return Objects.hash(electionKey, isDefault, isChosen, unitsRatio, consentFeePrice, consentFeeCurrency);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -182,6 +246,8 @@ public class ConsentAndExchangeElection {
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
     sb.append("    isChosen: ").append(toIndentedString(isChosen)).append("\n");
     sb.append("    unitsRatio: ").append(toIndentedString(unitsRatio)).append("\n");
+    sb.append("    consentFeePrice: ").append(toIndentedString(consentFeePrice)).append("\n");
+    sb.append("    consentFeeCurrency: ").append(toIndentedString(consentFeeCurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -208,6 +274,8 @@ public class ConsentAndExchangeElection {
     openapiFields.add("isDefault");
     openapiFields.add("isChosen");
     openapiFields.add("unitsRatio");
+    openapiFields.add("consentFeePrice");
+    openapiFields.add("consentFeeCurrency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -240,6 +308,9 @@ public class ConsentAndExchangeElection {
       }
       // validate the required field `unitsRatio`
       UnitsRatio.validateJsonElement(jsonObj.get("unitsRatio"));
+      if ((jsonObj.get("consentFeeCurrency") != null && !jsonObj.get("consentFeeCurrency").isJsonNull()) && !jsonObj.get("consentFeeCurrency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `consentFeeCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("consentFeeCurrency").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -62,7 +62,7 @@ public class PortfolioSearchResult {
   private ResourceId id;
 
   /**
-   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
+   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition, Composite.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -72,7 +72,9 @@ public class PortfolioSearchResult {
     
     DERIVEDTRANSACTION("DerivedTransaction"),
     
-    SIMPLEPOSITION("SimplePosition");
+    SIMPLEPOSITION("SimplePosition"),
+    
+    COMPOSITE("Composite");
 
     private String value;
 
@@ -140,6 +142,10 @@ public class PortfolioSearchResult {
   @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_ID)
   private ResourceId parentPortfolioId;
 
+  public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_IDS = "parentPortfolioIds";
+  @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_IDS)
+  private List<ResourceId> parentPortfolioIds;
+
   public static final String SERIALIZED_NAME_BASE_CURRENCY = "baseCurrency";
   @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
   private String baseCurrency;
@@ -191,7 +197,7 @@ public class PortfolioSearchResult {
   }
 
    /**
-   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
+   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition, Composite.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -322,6 +328,35 @@ public class PortfolioSearchResult {
   }
 
 
+  public PortfolioSearchResult parentPortfolioIds(List<ResourceId> parentPortfolioIds) {
+    
+    this.parentPortfolioIds = parentPortfolioIds;
+    return this;
+  }
+
+  public PortfolioSearchResult addParentPortfolioIdsItem(ResourceId parentPortfolioIdsItem) {
+    if (this.parentPortfolioIds == null) {
+      this.parentPortfolioIds = new ArrayList<>();
+    }
+    this.parentPortfolioIds.add(parentPortfolioIdsItem);
+    return this;
+  }
+
+   /**
+   * The scope and code of each portfolio this portfolio takes its contents from: the parent of a derived transaction portfolio, or the constituents of a composite portfolio at the effective date. Empty for a portfolio with no parent.
+   * @return parentPortfolioIds
+  **/
+  @jakarta.annotation.Nullable
+  public List<ResourceId> getParentPortfolioIds() {
+    return parentPortfolioIds;
+  }
+
+
+  public void setParentPortfolioIds(List<ResourceId> parentPortfolioIds) {
+    this.parentPortfolioIds = parentPortfolioIds;
+  }
+
+
   public PortfolioSearchResult baseCurrency(String baseCurrency) {
     
     this.baseCurrency = baseCurrency;
@@ -419,6 +454,7 @@ public class PortfolioSearchResult {
         Objects.equals(this.isDerived, portfolioSearchResult.isDerived) &&
         Objects.equals(this.created, portfolioSearchResult.created) &&
         Objects.equals(this.parentPortfolioId, portfolioSearchResult.parentPortfolioId) &&
+        Objects.equals(this.parentPortfolioIds, portfolioSearchResult.parentPortfolioIds) &&
         Objects.equals(this.baseCurrency, portfolioSearchResult.baseCurrency) &&
         Objects.equals(this.properties, portfolioSearchResult.properties) &&
         Objects.equals(this.links, portfolioSearchResult.links);
@@ -430,7 +466,7 @@ public class PortfolioSearchResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, href, description, displayName, isDerived, created, parentPortfolioId, baseCurrency, properties, links);
+    return Objects.hash(id, type, href, description, displayName, isDerived, created, parentPortfolioId, parentPortfolioIds, baseCurrency, properties, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -452,6 +488,7 @@ public class PortfolioSearchResult {
     sb.append("    isDerived: ").append(toIndentedString(isDerived)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    parentPortfolioId: ").append(toIndentedString(parentPortfolioId)).append("\n");
+    sb.append("    parentPortfolioIds: ").append(toIndentedString(parentPortfolioIds)).append("\n");
     sb.append("    baseCurrency: ").append(toIndentedString(baseCurrency)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -485,6 +522,7 @@ public class PortfolioSearchResult {
     openapiFields.add("isDerived");
     openapiFields.add("created");
     openapiFields.add("parentPortfolioId");
+    openapiFields.add("parentPortfolioIds");
     openapiFields.add("baseCurrency");
     openapiFields.add("properties");
     openapiFields.add("links");
@@ -534,6 +572,20 @@ public class PortfolioSearchResult {
       // validate the optional field `parentPortfolioId`
       if (jsonObj.get("parentPortfolioId") != null && !jsonObj.get("parentPortfolioId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("parentPortfolioId"));
+      }
+      if (jsonObj.get("parentPortfolioIds") != null && !jsonObj.get("parentPortfolioIds").isJsonNull()) {
+        JsonArray jsonArrayparentPortfolioIds = jsonObj.getAsJsonArray("parentPortfolioIds");
+        if (jsonArrayparentPortfolioIds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("parentPortfolioIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `parentPortfolioIds` to be an array in the JSON string but got `%s`", jsonObj.get("parentPortfolioIds").toString()));
+          }
+
+          // validate the optional field `parentPortfolioIds` (array)
+          for (int i = 0; i < jsonArrayparentPortfolioIds.size(); i++) {
+            ResourceId.validateJsonElement(jsonArrayparentPortfolioIds.get(i));
+          };
+        }
       }
       if ((jsonObj.get("baseCurrency") != null && !jsonObj.get("baseCurrency").isJsonNull()) && !jsonObj.get("baseCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `baseCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("baseCurrency").toString()));

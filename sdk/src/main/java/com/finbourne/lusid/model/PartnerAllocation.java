@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -60,6 +61,10 @@ public class PartnerAllocation {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
   private java.math.BigDecimal amount;
+
+  public static final String SERIALIZED_NAME_REASON = "reason";
+  @SerializedName(SERIALIZED_NAME_REASON)
+  private String reason;
 
   public PartnerAllocation() {
   }
@@ -127,6 +132,27 @@ public class PartnerAllocation {
   }
 
 
+  public PartnerAllocation reason(String reason) {
+    
+    this.reason = reason;
+    return this;
+  }
+
+   /**
+   * Why a partner listed at 0.00 took no share of the pool. Available values: Excluded (the bucket&#39;s rule leaves the partner out), Exempt (the partner&#39;s register flag sits it out), ZeroBasis (the partner has nothing on the pool&#39;s basis). Absent on a partner that shares; a partner at 0.00 with no reason shares the pool, but its share rounded to nothing at the pool&#39;s scale.
+   * @return reason
+  **/
+  @jakarta.annotation.Nullable
+  public String getReason() {
+    return reason;
+  }
+
+
+  public void setReason(String reason) {
+    this.reason = reason;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +165,24 @@ public class PartnerAllocation {
     PartnerAllocation partnerAllocation = (PartnerAllocation) o;
     return Objects.equals(this.investorRecordId, partnerAllocation.investorRecordId) &&
         (this.basisWeight.compareTo(partnerAllocation.getBasisWeight()) == 0) &&
-        (this.amount.compareTo(partnerAllocation.getAmount()) == 0);
+        (this.amount.compareTo(partnerAllocation.getAmount()) == 0) &&
+        Objects.equals(this.reason, partnerAllocation.reason);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, basisWeight, amount);
+    return Objects.hash(investorRecordId, basisWeight, amount, reason);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -154,6 +192,7 @@ public class PartnerAllocation {
     sb.append("    investorRecordId: ").append(toIndentedString(investorRecordId)).append("\n");
     sb.append("    basisWeight: ").append(toIndentedString(basisWeight)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,6 +218,7 @@ public class PartnerAllocation {
     openapiFields.add("investorRecordId");
     openapiFields.add("basisWeight");
     openapiFields.add("amount");
+    openapiFields.add("reason");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -209,6 +249,9 @@ public class PartnerAllocation {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("investorRecordId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `investorRecordId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("investorRecordId").toString()));
+      }
+      if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
       }
   }
 

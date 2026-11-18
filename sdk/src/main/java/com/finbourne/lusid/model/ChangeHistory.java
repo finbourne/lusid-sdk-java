@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.ChangeItem;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -123,6 +124,10 @@ public class ChangeHistory {
   public static final String SERIALIZED_NAME_CHANGES = "changes";
   @SerializedName(SERIALIZED_NAME_CHANGES)
   private List<ChangeItem> changes = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_SOURCE_PORTFOLIO_ID = "sourcePortfolioId";
+  @SerializedName(SERIALIZED_NAME_SOURCE_PORTFOLIO_ID)
+  private ResourceId sourcePortfolioId;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -244,6 +249,27 @@ public class ChangeHistory {
   }
 
 
+  public ChangeHistory sourcePortfolioId(ResourceId sourcePortfolioId) {
+    
+    this.sourcePortfolioId = sourcePortfolioId;
+    return this;
+  }
+
+   /**
+   * Get sourcePortfolioId
+   * @return sourcePortfolioId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getSourcePortfolioId() {
+    return sourcePortfolioId;
+  }
+
+
+  public void setSourcePortfolioId(ResourceId sourcePortfolioId) {
+    this.sourcePortfolioId = sourcePortfolioId;
+  }
+
+
   public ChangeHistory links(List<Link> links) {
     
     this.links = links;
@@ -288,6 +314,7 @@ public class ChangeHistory {
         Objects.equals(this.requestId, changeHistory.requestId) &&
         Objects.equals(this.action, changeHistory.action) &&
         Objects.equals(this.changes, changeHistory.changes) &&
+        Objects.equals(this.sourcePortfolioId, changeHistory.sourcePortfolioId) &&
         Objects.equals(this.links, changeHistory.links);
   }
 
@@ -297,7 +324,7 @@ public class ChangeHistory {
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, modifiedAsAt, requestId, action, changes, links);
+    return Objects.hash(userId, modifiedAsAt, requestId, action, changes, sourcePortfolioId, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -316,6 +343,7 @@ public class ChangeHistory {
     sb.append("    requestId: ").append(toIndentedString(requestId)).append("\n");
     sb.append("    action: ").append(toIndentedString(action)).append("\n");
     sb.append("    changes: ").append(toIndentedString(changes)).append("\n");
+    sb.append("    sourcePortfolioId: ").append(toIndentedString(sourcePortfolioId)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -344,6 +372,7 @@ public class ChangeHistory {
     openapiFields.add("requestId");
     openapiFields.add("action");
     openapiFields.add("changes");
+    openapiFields.add("sourcePortfolioId");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -394,6 +423,10 @@ public class ChangeHistory {
       for (int i = 0; i < jsonArraychanges.size(); i++) {
         ChangeItem.validateJsonElement(jsonArraychanges.get(i));
       };
+      // validate the optional field `sourcePortfolioId`
+      if (jsonObj.get("sourcePortfolioId") != null && !jsonObj.get("sourcePortfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("sourcePortfolioId"));
+      }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         if (jsonArraylinks != null) {

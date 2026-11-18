@@ -3087,7 +3087,7 @@ public class ChartOfAccountsApiExample {
 
 [EARLY ACCESS] SupersedePostingModuleRule: Supersede a rule of a Posting Module
 
-Supersede a Posting Rule by one or more rules in a single write. Every rule in the request records the superseded  ruleId as its originalRuleId. At most one of them may have the superseded ruleId: it becomes the rule&#39;s next  version, and the rule&#39;s latest version stops applying from its effectiveFrom, unless it already ends by then; it  is never extended. Any other rule is new and must not have the ruleId of an existing rule. The rules take the  latest version&#39;s place in the rule list, in the order given.
+Supersede a Posting Rule by one or more rules in a single write. The superseded rule&#39;s latest version stops  applying from the replacements&#39; effectiveFrom date. All replacement rules must share the same effectiveFrom.  Every rule in the request records the superseded ruleId as its originalRuleId. At most one of them may have  the superseded ruleId: it becomes the rule&#39;s next version. Any other rule is new and must not have the ruleId  of an existing rule. The rules take the latest version&#39;s place in the rule list, in the order given.
 
 ### Example
 

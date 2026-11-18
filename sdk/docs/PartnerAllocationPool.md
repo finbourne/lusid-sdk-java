@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **poolAmount** | **java.math.BigDecimal** | The amount in the pool. | [default to java.math.BigDecimal]
 **basis** | **String** | The basis the pool was shared on. Available values: CommittedCapital, PaidInCapital, DealPaidIn. | [default to String]
 **basisSource** | **String** | Where the figures a deal pool was shared on came from; absent on a fund-level pool, which is shared on the register&#39;s balances. Available values: DealContributions (what each partner paid into the pool&#39;s deal, from the booked allocation events), Fallback (a deal pool no partner has paid into, shared on its character&#39;s fund-level basis instead). | [optional] [default to String]
-**allocations** | [**List&lt;PartnerAllocation&gt;**](PartnerAllocation.md) | Each partner&#39;s share of the pool. | [default to List<PartnerAllocation>]
+**allocations** | [**List&lt;PartnerAllocation&gt;**](PartnerAllocation.md) | Each partner&#39;s share of the pool; a partner who took none is listed at 0.00 with the reason. | [default to List<PartnerAllocation>]
 **residual** | **java.math.BigDecimal** | The rounding residual, carried by the largest allocation. | [default to java.math.BigDecimal]
 **poolId** | **String** | The pool&#39;s identifier: the allocation rule&#39;s bucket id, or TAG: followed by the character for lines pooled by their distribution character tag. | [default to String]
 **bucketSet** | **String** | The code of the allocation bucket set the pool was classified by, with its version, for example PA-ALLOCATION-v1. | [default to String]

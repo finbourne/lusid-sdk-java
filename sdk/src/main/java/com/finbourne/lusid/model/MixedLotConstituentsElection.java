@@ -78,6 +78,14 @@ public class MixedLotConstituentsElection {
   @SerializedName(SERIALIZED_NAME_COST_FACTOR)
   private java.math.BigDecimal costFactor;
 
+  public static final String SERIALIZED_NAME_CONSENT_FEE_PRICE = "consentFeePrice";
+  @SerializedName(SERIALIZED_NAME_CONSENT_FEE_PRICE)
+  private java.math.BigDecimal consentFeePrice;
+
+  public static final String SERIALIZED_NAME_CONSENT_FEE_CURRENCY = "consentFeeCurrency";
+  @SerializedName(SERIALIZED_NAME_CONSENT_FEE_CURRENCY)
+  private String consentFeeCurrency;
+
   public MixedLotConstituentsElection() {
   }
 
@@ -223,6 +231,48 @@ public class MixedLotConstituentsElection {
   }
 
 
+  public MixedLotConstituentsElection consentFeePrice(java.math.BigDecimal consentFeePrice) {
+    
+    this.consentFeePrice = consentFeePrice;
+    return this;
+  }
+
+   /**
+   * Optional. The consent fee paid to holders who consent, on top of the exchange consideration. Quoted per 1,000 of face for bonds, using the current notional at the effective date of the event, and per unit for other instruments. Must be greater than 0. Required together with ConsentFeeCurrency, and only supported on an ExchangeOfferEvent.
+   * @return consentFeePrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getConsentFeePrice() {
+    return consentFeePrice;
+  }
+
+
+  public void setConsentFeePrice(java.math.BigDecimal consentFeePrice) {
+    this.consentFeePrice = consentFeePrice;
+  }
+
+
+  public MixedLotConstituentsElection consentFeeCurrency(String consentFeeCurrency) {
+    
+    this.consentFeeCurrency = consentFeeCurrency;
+    return this;
+  }
+
+   /**
+   * Optional. Currency of the consent fee. Required if a consent fee price is provided, and only supported on an ExchangeOfferEvent.
+   * @return consentFeeCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getConsentFeeCurrency() {
+    return consentFeeCurrency;
+  }
+
+
+  public void setConsentFeeCurrency(String consentFeeCurrency) {
+    this.consentFeeCurrency = consentFeeCurrency;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -238,7 +288,9 @@ public class MixedLotConstituentsElection {
         Objects.equals(this.isChosen, mixedLotConstituentsElection.isChosen) &&
         Objects.equals(this.securitiesConstituents, mixedLotConstituentsElection.securitiesConstituents) &&
         Objects.equals(this.cashConstituents, mixedLotConstituentsElection.cashConstituents) &&
-        (this.costFactor.compareTo(mixedLotConstituentsElection.getCostFactor()) == 0);
+        (this.costFactor.compareTo(mixedLotConstituentsElection.getCostFactor()) == 0) &&
+        (this.consentFeePrice.compareTo(mixedLotConstituentsElection.getConsentFeePrice()) == 0) &&
+        Objects.equals(this.consentFeeCurrency, mixedLotConstituentsElection.consentFeeCurrency);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -247,7 +299,7 @@ public class MixedLotConstituentsElection {
 
   @Override
   public int hashCode() {
-    return Objects.hash(electionKey, isDefault, isChosen, securitiesConstituents, cashConstituents, costFactor);
+    return Objects.hash(electionKey, isDefault, isChosen, securitiesConstituents, cashConstituents, costFactor, consentFeePrice, consentFeeCurrency);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -267,6 +319,8 @@ public class MixedLotConstituentsElection {
     sb.append("    securitiesConstituents: ").append(toIndentedString(securitiesConstituents)).append("\n");
     sb.append("    cashConstituents: ").append(toIndentedString(cashConstituents)).append("\n");
     sb.append("    costFactor: ").append(toIndentedString(costFactor)).append("\n");
+    sb.append("    consentFeePrice: ").append(toIndentedString(consentFeePrice)).append("\n");
+    sb.append("    consentFeeCurrency: ").append(toIndentedString(consentFeeCurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -295,6 +349,8 @@ public class MixedLotConstituentsElection {
     openapiFields.add("securitiesConstituents");
     openapiFields.add("cashConstituents");
     openapiFields.add("costFactor");
+    openapiFields.add("consentFeePrice");
+    openapiFields.add("consentFeeCurrency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -351,6 +407,9 @@ public class MixedLotConstituentsElection {
             CashOfferConstituent.validateJsonElement(jsonArraycashConstituents.get(i));
           };
         }
+      }
+      if ((jsonObj.get("consentFeeCurrency") != null && !jsonObj.get("consentFeeCurrency").isJsonNull()) && !jsonObj.get("consentFeeCurrency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `consentFeeCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("consentFeeCurrency").toString()));
       }
   }
 

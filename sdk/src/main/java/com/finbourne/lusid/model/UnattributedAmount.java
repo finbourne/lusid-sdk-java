@@ -45,7 +45,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * An amount on the income summary an allocation run could not attribute to any pool.
+ * An amount on the income summary an allocation run could not attribute to any pool. Always empty: every profit and  loss line is pooled or the run is refused. Kept, required, until no published SDK requires it.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UnattributedAmount {

@@ -79,6 +79,14 @@ public class CashAndSecurityOfferElection {
   @SerializedName(SERIALIZED_NAME_UNITS_RATIO)
   private UnitsRatio unitsRatio;
 
+  public static final String SERIALIZED_NAME_CONSENT_FEE_PRICE = "consentFeePrice";
+  @SerializedName(SERIALIZED_NAME_CONSENT_FEE_PRICE)
+  private java.math.BigDecimal consentFeePrice;
+
+  public static final String SERIALIZED_NAME_CONSENT_FEE_CURRENCY = "consentFeeCurrency";
+  @SerializedName(SERIALIZED_NAME_CONSENT_FEE_CURRENCY)
+  private String consentFeeCurrency;
+
   public CashAndSecurityOfferElection() {
   }
 
@@ -229,6 +237,48 @@ public class CashAndSecurityOfferElection {
   }
 
 
+  public CashAndSecurityOfferElection consentFeePrice(java.math.BigDecimal consentFeePrice) {
+    
+    this.consentFeePrice = consentFeePrice;
+    return this;
+  }
+
+   /**
+   * Optional. The consent fee paid to holders who consent, on top of the exchange consideration. Quoted per 1,000 of face for bonds, using the current notional at the effective date of the event, and per unit for other instruments. Must be greater than 0. Required together with ConsentFeeCurrency, and only supported on an ExchangeOfferEvent.
+   * @return consentFeePrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getConsentFeePrice() {
+    return consentFeePrice;
+  }
+
+
+  public void setConsentFeePrice(java.math.BigDecimal consentFeePrice) {
+    this.consentFeePrice = consentFeePrice;
+  }
+
+
+  public CashAndSecurityOfferElection consentFeeCurrency(String consentFeeCurrency) {
+    
+    this.consentFeeCurrency = consentFeeCurrency;
+    return this;
+  }
+
+   /**
+   * Optional. Currency of the consent fee. Required if a consent fee price is provided, and only supported on an ExchangeOfferEvent.
+   * @return consentFeeCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getConsentFeeCurrency() {
+    return consentFeeCurrency;
+  }
+
+
+  public void setConsentFeeCurrency(String consentFeeCurrency) {
+    this.consentFeeCurrency = consentFeeCurrency;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -245,7 +295,9 @@ public class CashAndSecurityOfferElection {
         Objects.equals(this.electionKey, cashAndSecurityOfferElection.electionKey) &&
         Objects.equals(this.isChosen, cashAndSecurityOfferElection.isChosen) &&
         Objects.equals(this.isDefault, cashAndSecurityOfferElection.isDefault) &&
-        Objects.equals(this.unitsRatio, cashAndSecurityOfferElection.unitsRatio);
+        Objects.equals(this.unitsRatio, cashAndSecurityOfferElection.unitsRatio) &&
+        (this.consentFeePrice.compareTo(cashAndSecurityOfferElection.getConsentFeePrice()) == 0) &&
+        Objects.equals(this.consentFeeCurrency, cashAndSecurityOfferElection.consentFeeCurrency);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -254,7 +306,7 @@ public class CashAndSecurityOfferElection {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cashOfferCurrency, cashOfferPrice, costFactor, electionKey, isChosen, isDefault, unitsRatio);
+    return Objects.hash(cashOfferCurrency, cashOfferPrice, costFactor, electionKey, isChosen, isDefault, unitsRatio, consentFeePrice, consentFeeCurrency);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -275,6 +327,8 @@ public class CashAndSecurityOfferElection {
     sb.append("    isChosen: ").append(toIndentedString(isChosen)).append("\n");
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
     sb.append("    unitsRatio: ").append(toIndentedString(unitsRatio)).append("\n");
+    sb.append("    consentFeePrice: ").append(toIndentedString(consentFeePrice)).append("\n");
+    sb.append("    consentFeeCurrency: ").append(toIndentedString(consentFeeCurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -304,6 +358,8 @@ public class CashAndSecurityOfferElection {
     openapiFields.add("isChosen");
     openapiFields.add("isDefault");
     openapiFields.add("unitsRatio");
+    openapiFields.add("consentFeePrice");
+    openapiFields.add("consentFeeCurrency");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -341,6 +397,9 @@ public class CashAndSecurityOfferElection {
       }
       // validate the required field `unitsRatio`
       UnitsRatio.validateJsonElement(jsonObj.get("unitsRatio"));
+      if ((jsonObj.get("consentFeeCurrency") != null && !jsonObj.get("consentFeeCurrency").isJsonNull()) && !jsonObj.get("consentFeeCurrency").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `consentFeeCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("consentFeeCurrency").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

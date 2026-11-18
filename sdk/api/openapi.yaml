@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10662
+  version: 0.11.10675
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1271,6 +1271,12 @@ tags:
   name: Complex Market Data
 - description: Methods for storage and retrieval of generic compliance data
   name: Compliance
+- description: "A composite portfolio composes several constituent portfolios, merging\
+    \ their positions into one consolidated holding while holding its own transactions\
+    \ and configuration. Note that a composite portfolio is a type of portfolio, so\
+    \ endpoints in the Portfolios API can also be called to read its holdings, transactions\
+    \ and valuations."
+  name: Composite Portfolios
 - description: Methods for the storage and retrieval of Configuration Recipe and Composer
     documents. Read more about these in the LUSID Knowledge Base here https://support.lusid.com/what-is-a-lusid-recipe-and-how-is-it-used.
   name: Configuration Recipe
@@ -20174,12 +20180,13 @@ paths:
   /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules/{ruleId}/$supersede:
     post:
       description: "Supersede a Posting Rule by one or more rules in a single write.\
-        \ Every rule in the request records the superseded\r\nruleId as its originalRuleId.\
-        \ At most one of them may have the superseded ruleId: it becomes the rule's\
-        \ next\r\nversion, and the rule's latest version stops applying from its effectiveFrom,\
-        \ unless it already ends by then; it\r\nis never extended. Any other rule\
-        \ is new and must not have the ruleId of an existing rule. The rules take\
-        \ the\r\nlatest version's place in the rule list, in the order given."
+        \ The superseded rule's latest version stops\r\napplying from the replacements'\
+        \ effectiveFrom date. All replacement rules must share the same effectiveFrom.\r\
+        \nEvery rule in the request records the superseded ruleId as its originalRuleId.\
+        \ At most one of them may have\r\nthe superseded ruleId: it becomes the rule's\
+        \ next version. Any other rule is new and must not have the ruleId\r\nof an\
+        \ existing rule. The rules take the latest version's place in the rule list,\
+        \ in the order given."
       operationId: SupersedePostingModuleRule
       parameters:
       - description: The scope of the Chart of Accounts.
@@ -32351,6 +32358,297 @@ paths:
         \ rules pre-trade against a portfolio group."
       tags:
       - Compliance
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/compositeportfolios/{scope}:
+    post:
+      description: "Create a composite portfolio from a set of constituent portfolios.\
+        \ Every constituent must be a transaction\r\nportfolio or a derived transaction\
+        \ portfolio, and must share the base currency of the composite portfolio."
+      operationId: CreateCompositePortfolio
+      parameters:
+      - description: The scope in which to create the composite portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              displayName: Composite UK
+              description: Composite of the UK and European portfolios
+              code: CompositeUk
+              constituents:
+              - portfolioId:
+                  scope: Finbourne
+                  code: PortfolioUk
+                fromDate: 2018-03-05T12:00:00.0000000+00:00
+              - portfolioId:
+                  scope: Finbourne
+                  code: PortfolioEurope
+              baseCurrency: GBP
+              accountingMethod: Default
+              properties:
+                Portfolio/Manager/Name:
+                  key: Portfolio/Manager/Name
+                  value:
+                    labelValue: Matt Smith
+                  effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
+              amortisationMethod: NoAmortisation
+              instrumentEventConfiguration:
+                transactionTemplateScopes:
+                - default
+                recipeId:
+                  scope: default
+                  code: MyRecipeCode
+              transactionExclusionFilter: Transaction/default/Source eq 'ExcludeMe'
+            schema:
+              $ref: '#/components/schemas/CreateCompositePortfolioRequest'
+          application/json:
+            example:
+              displayName: Composite UK
+              description: Composite of the UK and European portfolios
+              code: CompositeUk
+              constituents:
+              - portfolioId:
+                  scope: Finbourne
+                  code: PortfolioUk
+                fromDate: 2018-03-05T12:00:00.0000000+00:00
+              - portfolioId:
+                  scope: Finbourne
+                  code: PortfolioEurope
+              baseCurrency: GBP
+              accountingMethod: Default
+              properties:
+                Portfolio/Manager/Name:
+                  key: Portfolio/Manager/Name
+                  value:
+                    labelValue: Matt Smith
+                  effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
+              amortisationMethod: NoAmortisation
+              instrumentEventConfiguration:
+                transactionTemplateScopes:
+                - default
+                recipeId:
+                  scope: default
+                  code: MyRecipeCode
+              transactionExclusionFilter: Transaction/default/Source eq 'ExcludeMe'
+            schema:
+              $ref: '#/components/schemas/CreateCompositePortfolioRequest'
+          text/json:
+            example:
+              displayName: Composite UK
+              description: Composite of the UK and European portfolios
+              code: CompositeUk
+              constituents:
+              - portfolioId:
+                  scope: Finbourne
+                  code: PortfolioUk
+                fromDate: 2018-03-05T12:00:00.0000000+00:00
+              - portfolioId:
+                  scope: Finbourne
+                  code: PortfolioEurope
+              baseCurrency: GBP
+              accountingMethod: Default
+              properties:
+                Portfolio/Manager/Name:
+                  key: Portfolio/Manager/Name
+                  value:
+                    labelValue: Matt Smith
+                  effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
+              amortisationMethod: NoAmortisation
+              instrumentEventConfiguration:
+                transactionTemplateScopes:
+                - default
+                recipeId:
+                  scope: default
+                  code: MyRecipeCode
+              transactionExclusionFilter: Transaction/default/Source eq 'ExcludeMe'
+            schema:
+              $ref: '#/components/schemas/CreateCompositePortfolioRequest'
+          application/*+json:
+            example:
+              displayName: Composite UK
+              description: Composite of the UK and European portfolios
+              code: CompositeUk
+              constituents:
+              - portfolioId:
+                  scope: Finbourne
+                  code: PortfolioUk
+                fromDate: 2018-03-05T12:00:00.0000000+00:00
+              - portfolioId:
+                  scope: Finbourne
+                  code: PortfolioEurope
+              baseCurrency: GBP
+              accountingMethod: Default
+              properties:
+                Portfolio/Manager/Name:
+                  key: Portfolio/Manager/Name
+                  value:
+                    labelValue: Matt Smith
+                  effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
+              amortisationMethod: NoAmortisation
+              instrumentEventConfiguration:
+                transactionTemplateScopes:
+                - default
+                recipeId:
+                  scope: default
+                  code: MyRecipeCode
+              transactionExclusionFilter: Transaction/default/Source eq 'ExcludeMe'
+            schema:
+              $ref: '#/components/schemas/CreateCompositePortfolioRequest'
+        description: The definition of the composite portfolio.
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PortfolioWithWarnings'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortfolioWithWarnings'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PortfolioWithWarnings'
+          description: "The created composite portfolio, with populated id, and any\
+            \ warnings about its configuration"
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] CreateCompositePortfolio: Create composite portfolio"
+      tags:
+      - Composite Portfolios
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/compositeportfolios/{scope}/{code}/constituents:
+    post:
+      description: "Add a constituent to a composite portfolio. The constituent contributes\
+        \ its whole history, so it joins no\r\nlater than its own creation date, which\
+        \ is taken when no FromDate is supplied."
+      operationId: ChangeCompositePortfolioMembership
+      parameters:
+      - description: The scope of the composite portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The code of the composite portfolio. Together with the scope\
+          \ this uniquely identifies\r\n the composite portfolio."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              portfolioId:
+                scope: Finbourne
+                code: PortfolioAsia
+              fromDate: 2019-01-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/ChangeCompositePortfolioMembershipRequest'
+          application/json:
+            example:
+              portfolioId:
+                scope: Finbourne
+                code: PortfolioAsia
+              fromDate: 2019-01-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/ChangeCompositePortfolioMembershipRequest'
+          text/json:
+            example:
+              portfolioId:
+                scope: Finbourne
+                code: PortfolioAsia
+              fromDate: 2019-01-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/ChangeCompositePortfolioMembershipRequest'
+          application/*+json:
+            example:
+              portfolioId:
+                scope: Finbourne
+                code: PortfolioAsia
+              fromDate: 2019-01-01T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/ChangeCompositePortfolioMembershipRequest'
+        description: The membership change to apply.
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PortfolioWithWarnings'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortfolioWithWarnings'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PortfolioWithWarnings'
+          description: "The composite portfolio with its membership changed, and any\
+            \ warnings about its configuration"
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] ChangeCompositePortfolioMembership: Change composite\
+        \ portfolio membership"
+      tags:
+      - Composite Portfolios
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
       x-accepts: application/json
@@ -59546,6 +59844,95 @@ paths:
       - oauth2: []
       summary: "[EARLY ACCESS] GetPartnershipConfigPack: [EXPERIMENTAL] GetPartnershipConfigPack:\
         \ Get the partnership configuration pack of a Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/funds/{scope}/{code}/partnershipaccounting/typecheck:
+    get:
+      description: "Resolve every transaction type the Fund's portfolios book with,\
+        \ through their transaction type scope and each\r\nsource in it, and compare\
+        \ the register balance deltas each type's movements carry against the type\
+        \ contract of\r\nthe Fund's partnership configuration pack. A type whose deltas\
+        \ are not its contract, counted with repeats, is\r\nreturned as a difference\
+        \ with the deltas expected and the deltas carried; a Fund whose types all\
+        \ match has the\r\nstatus Ok and no differences. A type the contract names,\
+        \ or that moves a register balance, whose movements book\r\nthrough a side\
+        \ the Fund's transaction type scope does not define is a difference too, naming\
+        \ the missing sides."
+      operationId: CheckPartnershipTransactionTypes
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The asAt datetime at which to read the Fund and its transaction
+          types. Defaults to return the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PartnershipTypeCheckResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PartnershipTypeCheckResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PartnershipTypeCheckResult'
+          description: The outcome of checking the Fund's transaction types against
+            its pack.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] CheckPartnershipTransactionTypes: [EXPERIMENTAL] CheckPartnershipTransactionTypes:\
+        \ Check the Fund's transaction types against its partnership configuration\
+        \ pack."
       tags:
       - Funds
       x-fbn-apistatus: EarlyAccess
@@ -151990,6 +152377,9 @@ paths:
                   parentPortfolioId:
                     scope: demo-parent
                     code: demo-parent
+                  parentPortfolioIds:
+                  - scope: demo-parent
+                    code: demo-parent
                   baseCurrency: GBP
                   properties:
                   - key: Portfolio/default/Country
@@ -152015,6 +152405,9 @@ paths:
                   parentPortfolioId:
                     scope: demo-parent
                     code: demo-parent
+                  parentPortfolioIds:
+                  - scope: demo-parent
+                    code: demo-parent
                   baseCurrency: GBP
                   properties:
                   - key: Portfolio/default/Country
@@ -152039,6 +152432,9 @@ paths:
                   created: 2019-04-06T12:00:05.0000000+00:00
                   parentPortfolioId:
                     scope: demo-parent
+                    code: demo-parent
+                  parentPortfolioIds:
+                  - scope: demo-parent
                     code: demo-parent
                   baseCurrency: GBP
                   properties:
@@ -196147,6 +196543,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -205717,6 +206116,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -206113,6 +206515,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -206870,6 +207275,16 @@ components:
           format: double
           nullable: true
           type: number
+        notionalReset:
+          description: "When true, the funding leg is re-struck at every asset price\
+            \ reset: from each reset date the funding\r\naccrues on the units held\
+            \ times the reset price instead of on the funding leg's own notional,\
+            \ as\r\nEquitySwap.NotionalReset does. A funding coupon spanning a reset\
+            \ is paid once and scaled by the\r\ntime-weighted average base over its\
+            \ accrual period. Defaults to false, preserving today's behaviour of\r\
+            \nfinancing on the funding leg's notional for the swap's whole life. Requires\
+            \ a ResetSchedule."
+          type: boolean
         payReceive:
           description: "Either Pay or Receive stating direction of the asset in the\
             \ swap.\r\n \r\nSupported string (enumeration) values are: [Pay, Receive]."
@@ -210219,6 +210634,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -210634,6 +211052,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -213011,8 +213432,20 @@ components:
               \ docs generate justfile LICENSE.md publish README.md resources test_sdk\
               \ Coupon Rate / Coupon Frequency. Coupon Frequency is 12M / Payment\
               \ Frequency.\r\nPayment Frequency can be 1M, 3M, 6M, 12M etc. So Coupon\
-              \ Frequency can be 12, 4, 2, 1 respectively.\r\n\r\nSupported string\
-              \ (enumeration) values are: [Standard, DayCountCoupon, NoCalculationFloater,\
+              \ Frequency can be 12, 4, 2, 1 respectively.\r\nA `Standard` coupon\
+              \ stays Principal docker-compose.yml Dockerfile Dockerfile.cicd docs\
+              \ generate justfile LICENSE.md publish README.md resources test_sdk\
+              \ Coupon Rate / Coupon Frequency on every regular (non-stub) period\
+              \ whatever the day count convention, while the accrued interest follows\
+              \ the day count.\r\nSo on an Act360 or Act365 bond the accrued interest\
+              \ on the day before a payment can be more or less than the coupon.\r\
+              \nUse `DayCountCoupon` when each coupon is Principal docker-compose.yml\
+              \ Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish\
+              \ README.md resources test_sdk Coupon Rate docker-compose.yml Dockerfile\
+              \ Dockerfile.cicd docs generate justfile LICENSE.md publish README.md\
+              \ resources test_sdk YearFraction(accrual start date, accrual end date),\
+              \ so that it equals the interest accrued over the period.\r\n\r\nSupported\
+              \ string (enumeration) values are: [Standard, DayCountCoupon, NoCalculationFloater,\
               \ BrazilFixedCoupon, StandardWithCappedAccruedInterest]."
             maxLength: 50
             minLength: 0
@@ -216232,6 +216665,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -223381,6 +223817,20 @@ components:
           type: boolean
         unitsRatio:
           $ref: '#/components/schemas/UnitsRatio'
+        consentFeePrice:
+          description: "Optional. The consent fee paid to holders who consent, on\
+            \ top of the exchange consideration. Quoted per 1,000 of face for bonds,\
+            \ using the current notional at the effective date of the event, and per\
+            \ unit for other instruments. Must be greater than 0. Required together\
+            \ with ConsentFeeCurrency, and only supported on an ExchangeOfferEvent."
+          format: double
+          nullable: true
+          type: number
+        consentFeeCurrency:
+          description: "Optional. Currency of the consent fee. Required if a consent\
+            \ fee price is provided, and only supported on an ExchangeOfferEvent."
+          nullable: true
+          type: string
       required:
       - cashOfferCurrency
       - cashOfferPrice
@@ -225710,6 +226160,27 @@ components:
       - corrected
       - entityId
       type: object
+    ChangeCompositePortfolioMembershipRequest:
+      additionalProperties: false
+      example:
+        fromDate: 2000-01-23T04:56:07.000+00:00
+        portfolioId:
+          code: code
+          scope: scope
+      properties:
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        fromDate:
+          description: "The effective date from which the constituent contributes\
+            \ to the composite portfolio. Defaults to the constituent's creation date,\
+            \ and must not be later than it, because a constituent contributes its\
+            \ whole history."
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - portfolioId
+      type: object
     ChangeEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -225969,6 +226440,9 @@ components:
           href: https://openapi-generator.tech
           relation: relation
         userId: userId
+        sourcePortfolioId:
+          code: code
+          scope: scope
       properties:
         userId:
           description: The unique identifier of the user that made the change.
@@ -225996,6 +226470,8 @@ components:
           items:
             $ref: '#/components/schemas/ChangeItem'
           type: array
+        sourcePortfolioId:
+          $ref: '#/components/schemas/ResourceId'
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -230089,6 +230565,11 @@ components:
           code: code
           scope: scope
         type: Transaction
+        parentPortfolioIds:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -230175,18 +230656,28 @@ components:
           type: string
         parentPortfolioId:
           $ref: '#/components/schemas/ResourceId'
+        parentPortfolioIds:
+          description: "The scope and code of each portfolio this portfolio takes\
+            \ its contents from: the parent of a derived transaction portfolio, or\
+            \ the constituents of a composite portfolio at the effective date. Empty\
+            \ for a portfolio with no parent."
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
         isDerived:
           description: Whether or not this is a derived portfolio.
           readOnly: true
           type: boolean
         type:
           description: "The type of the portfolio. Available values: Transaction,\
-            \ Reference, DerivedTransaction, SimplePosition."
+            \ Reference, DerivedTransaction, SimplePosition, Composite."
           enum:
           - Transaction
           - Reference
           - DerivedTransaction
           - SimplePosition
+          - Composite
           type: string
         version:
           $ref: '#/components/schemas/Version'
@@ -230442,8 +230933,20 @@ components:
               \ docs generate justfile LICENSE.md publish README.md resources test_sdk\
               \ Coupon Rate / Coupon Frequency. Coupon Frequency is 12M / Payment\
               \ Frequency.\r\nPayment Frequency can be 1M, 3M, 6M, 12M etc. So Coupon\
-              \ Frequency can be 12, 4, 2, 1 respectively.\r\n\r\nSupported string\
-              \ (enumeration) values are: [Standard, DayCountCoupon, NoCalculationFloater,\
+              \ Frequency can be 12, 4, 2, 1 respectively.\r\nA `Standard` coupon\
+              \ stays Principal docker-compose.yml Dockerfile Dockerfile.cicd docs\
+              \ generate justfile LICENSE.md publish README.md resources test_sdk\
+              \ Coupon Rate / Coupon Frequency on every regular (non-stub) period\
+              \ whatever the day count convention, while the accrued interest follows\
+              \ the day count.\r\nSo on an Act360 or Act365 bond the accrued interest\
+              \ on the day before a payment can be more or less than the coupon.\r\
+              \nUse `DayCountCoupon` when each coupon is Principal docker-compose.yml\
+              \ Dockerfile Dockerfile.cicd docs generate justfile LICENSE.md publish\
+              \ README.md resources test_sdk Coupon Rate docker-compose.yml Dockerfile\
+              \ Dockerfile.cicd docs generate justfile LICENSE.md publish README.md\
+              \ resources test_sdk YearFraction(accrual start date, accrual end date),\
+              \ so that it equals the interest accrued over the period.\r\n\r\nSupported\
+              \ string (enumeration) values are: [Standard, DayCountCoupon, NoCalculationFloater,\
               \ BrazilFixedCoupon, StandardWithCappedAccruedInterest]."
             maxLength: 50
             minLength: 0
@@ -235353,6 +235856,27 @@ components:
           nullable: true
           type: array
       type: object
+    CompositePortfolioConstituentRequest:
+      additionalProperties: false
+      example:
+        fromDate: 2000-01-23T04:56:07.000+00:00
+        portfolioId:
+          code: code
+          scope: scope
+      properties:
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        fromDate:
+          description: "The effective date from which the constituent contributes\
+            \ to the composite portfolio. Defaults to the constituent's creation date,\
+            \ and must not be later than it, because a constituent contributes its\
+            \ whole history."
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - portfolioId
+      type: object
     Compounding:
       additionalProperties: false
       description: The compounding settings used on interest rate.
@@ -235851,6 +236375,20 @@ components:
           type: boolean
         unitsRatio:
           $ref: '#/components/schemas/UnitsRatio'
+        consentFeePrice:
+          description: "Optional. The consent fee paid to holders who consent, on\
+            \ top of the exchange consideration. Quoted per 1,000 of face for bonds,\
+            \ using the current notional at the effective date of the event, and per\
+            \ unit for other instruments. Must be greater than 0. Required together\
+            \ with ConsentFeeCurrency, and only supported on an ExchangeOfferEvent."
+          format: double
+          nullable: true
+          type: number
+        consentFeeCurrency:
+          description: "Optional. Currency of the consent fee. Required if a consent\
+            \ fee price is provided, and only supported on an ExchangeOfferEvent."
+          nullable: true
+          type: string
       required:
       - electionKey
       - unitsRatio
@@ -238169,6 +238707,208 @@ components:
       - code
       - description
       - variations
+      type: object
+    CreateCompositePortfolioRequest:
+      additionalProperties: false
+      example:
+        subHoldingKeys:
+        - subHoldingKeys
+        - subHoldingKeys
+        - subHoldingKeys
+        - subHoldingKeys
+        - subHoldingKeys
+        transactionExclusionFilter: transactionExclusionFilter
+        code: code
+        amortisationRuleSetId:
+          code: code
+          scope: scope
+        displayName: displayName
+        created: 2000-01-23T04:56:07.000+00:00
+        fractionalUnitsTrueUpConfiguration:
+          nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+          fractionalUnitsHandling: fractionalUnitsHandling
+          nominatedSubHoldingKey: nominatedSubHoldingKey
+        description: description
+        baseCurrency: baseCurrency
+        holdingsFungibility: holdingsFungibility
+        amortisationMethod: amortisationMethod
+        cashGainLossCalculationDate: cashGainLossCalculationDate
+        accountingMethod: accountingMethod
+        constituents:
+        - fromDate: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+        - fromDate: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+        - fromDate: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+        - fromDate: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+        - fromDate: 2000-01-23T04:56:07.000+00:00
+          portfolioId:
+            code: code
+            scope: scope
+        enablementDate: 2000-01-23T04:56:07.000+00:00
+        taxLotSelectionCostBasis: taxLotSelectionCostBasis
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+        instrumentEventConfiguration:
+          transactionTemplateScopes:
+          - transactionTemplateScopes
+          recipeId:
+            code: code
+            scope: scope
+      properties:
+        displayName:
+          description: The name of the composite portfolio.
+          maxLength: 512
+          minLength: 1
+          pattern: "^[\\s\\S]*$"
+          type: string
+        description:
+          description: A description for the composite portfolio.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          pattern: "^[\\s\\S]*$"
+          type: string
+        code:
+          description: The code of the composite portfolio. Together with the scope
+            this uniquely identifies the composite portfolio.
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        constituents:
+          description: The portfolios that the composite portfolio composes. At least
+            one is required. Each constituent contributes its whole history.
+          items:
+            $ref: '#/components/schemas/CompositePortfolioConstituentRequest'
+          maxItems: 1000
+          minItems: 1
+          type: array
+        created:
+          description: "The original creation date. Defaults to the earliest creation\
+            \ date of the constituents if not specified, because the composite portfolio\
+            \ cannot exist before the first of the portfolios it composes. A constituent\
+            \ created later contributes from its own creation date."
+          format: date-time
+          nullable: true
+          type: string
+        enablementDate:
+          description: "The effective datetime from which instrument events and corporate\
+            \ actions are generated and applied to the composite portfolio. Transactions\
+            \ contribute to holdings, valuations and other computed results from the\
+            \ portfolio's creation date whatever the enablement date. Defaults to\
+            \ the portfolio's creation date if not specified."
+          format: date-time
+          nullable: true
+          type: string
+        baseCurrency:
+          description: The base currency of the composite portfolio. Every constituent
+            must have the same base currency.
+          type: string
+        accountingMethod:
+          description: "Determines the accounting treatment given to the composite\
+            \ portfolio's tax lots. Default value: AverageCost. Available values:\
+            \ Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst,\
+            \ LowestCostFirst, ProRateByUnits, ProRateByCost, ProRateByCostPortfolioCurrency,\
+            \ IntraDayThenFirstInFirstOut, LongTermHighestCostFirst, LongTermHighestCostFirstPortfolioCurrency,\
+            \ HighestCostFirstPortfolioCurrency, LowestCostFirstPortfolioCurrency,\
+            \ MaximumLossMinimumGain, MaximumLossMinimumGainPortfolioCurrency."
+          nullable: true
+          type: string
+        subHoldingKeys:
+          description: "A set of unique transaction properties to group the composite\
+            \ portfolio's holdings by, perhaps for strategy tagging. Each property\
+            \ must be from the 'Transaction' domain and identified by a key in the\
+            \ format {domain}/{scope}/{code}, for example 'Transaction/strategies/quantsignal'.\
+            \ See https://support.lusid.com/docs/how-do-i-register-sub-holding-keys-shks-with-a-portfolio\
+            \ for more information."
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          maxItems: 100
+          nullable: true
+          type: array
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/Property'
+          description: Properties to add to the composite portfolio. Each property
+            must be from the 'Portfolio' domain.
+          nullable: true
+          type: object
+        amortisationMethod:
+          description: "The amortisation method used by the portfolio for the calculation.\
+            \ Available values: NoAmortisation, StraightLine, EffectiveYield, StraightLineSettlementDate,\
+            \ EffectiveYieldSettlementDate."
+          nullable: true
+          type: string
+        cashGainLossCalculationDate:
+          description: "The option when the Cash Gain Loss to be calulated. Default\
+            \ value: SettlementDate. Available values: Default, SettlementDate, TransactionDate."
+          nullable: true
+          type: string
+        amortisationRuleSetId:
+          $ref: '#/components/schemas/ResourceId'
+        instrumentEventConfiguration:
+          $ref: '#/components/schemas/InstrumentEventConfiguration'
+        transactionExclusionFilter:
+          description: A filter expression that identifies transactions to exclude
+            when building the transaction portfolio's transactions and holdings. Transactions
+            matching this filter are flagged as excluded.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: "^[\\s\\S]*$"
+          type: string
+        taxLotSelectionCostBasis:
+          description: "The cost figure that cost-referencing accounting methods evaluate\
+            \ when selecting tax lots for a disposal. This can be: Cost or AmortisedCost.\
+            \ Defaults to Cost if not specified. Supply Default to explicitly reset\
+            \ it; a reset or never-configured basis reads back as absent. Available\
+            \ values: Default, Cost, AmortisedCost."
+          nullable: true
+          type: string
+        fractionalUnitsTrueUpConfiguration:
+          $ref: '#/components/schemas/FractionalUnitsTrueUpConfiguration'
+        holdingsFungibility:
+          description: "Whether the portfolio's holdings are fungible across the currencies\
+            \ of a currency group. This can be: Default or Enabled. Defaults to Default\
+            \ if not specified, which currently means holdings fungibility is not\
+            \ applied. Supply Default to explicitly reset it; a reset or never-configured\
+            \ flag reads back as absent. Available values: Default, Enabled."
+          nullable: true
+          type: string
+      required:
+      - baseCurrency
+      - code
+      - constituents
+      - displayName
       type: object
     CreateCorporateActionSourceRequest:
       additionalProperties: false
@@ -256137,6 +256877,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -256209,6 +256954,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -276638,6 +277388,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -285218,6 +285971,11 @@ components:
               code: code
               scope: scope
             type: Transaction
+            parentPortfolioIds:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
             baseCurrency: baseCurrency
             whtParameters:
               whtConfig:
@@ -285456,6 +286214,11 @@ components:
               code: code
               scope: scope
             type: Transaction
+            parentPortfolioIds:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
             baseCurrency: baseCurrency
             whtParameters:
               whtConfig:
@@ -287032,6 +287795,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           whtParameters:
             whtConfig:
@@ -297131,6 +297899,20 @@ components:
           format: double
           nullable: true
           type: number
+        consentFeePrice:
+          description: "Optional. The consent fee paid to holders who consent, on\
+            \ top of the exchange consideration. Quoted per 1,000 of face for bonds,\
+            \ using the current notional at the effective date of the event, and per\
+            \ unit for other instruments. Must be greater than 0. Required together\
+            \ with ConsentFeeCurrency, and only supported on an ExchangeOfferEvent."
+          format: double
+          nullable: true
+          type: number
+        consentFeeCurrency:
+          description: "Optional. Currency of the consent fee. Required if a consent\
+            \ fee price is provided, and only supported on an ExchangeOfferEvent."
+          nullable: true
+          type: string
       required:
       - electionKey
       type: object
@@ -302121,6 +302903,9 @@ components:
           idsPreviewed:
           - idsPreviewed
           - idsPreviewed
+        sourcePortfolioId:
+          code: code
+          scope: scope
         resolvedTransactionTypeDetails:
           scope: scope
           movementConditionMatches:
@@ -302917,6 +303702,8 @@ components:
             $ref: '#/components/schemas/TransactionEntityLink'
           nullable: true
           type: array
+        sourcePortfolioId:
+          $ref: '#/components/schemas/ResourceId'
       required:
       - instrumentUid
       - settlementDate
@@ -303750,6 +304537,36 @@ components:
       - ruleId
       - transactionType
       type: object
+    PackRegisterDelta:
+      additionalProperties: false
+      description: "A register balance delta: a partners' capital balance, the direction\
+        \ it moves in once booked and the figure it moves by."
+      example:
+        source: source
+        key: key
+        direction: direction
+      properties:
+        key:
+          description: "The holding property key of the register balance, for example\
+            \ PaidInCapital or UncalledCommitment."
+          minLength: 1
+          type: string
+        direction:
+          description: "The direction the balance moves in when the type is booked,\
+            \ the movement's own direction folded into the delta's. Available values:\
+            \ Increase, Decrease."
+          minLength: 1
+          type: string
+        source:
+          description: "The movement figure the delta moves the balance by. Available\
+            \ values: Amount, Units, PortfolioAmount, ProportionOfBalance, PortfolioAmountAtAverageRate."
+          minLength: 1
+          type: string
+      required:
+      - direction
+      - key
+      - source
+      type: object
     PackTransactionType:
       additionalProperties: false
       description: A transaction type carried by a partnership configuration pack.
@@ -303785,6 +304602,48 @@ components:
       - creditAccount
       - debitAccount
       - direction
+      - type
+      type: object
+    PackTypeContract:
+      additionalProperties: false
+      description: The register deltas a transaction type must carry for the partner
+        register to read right.
+      example:
+        requiredDeltas:
+        - source: source
+          key: key
+          direction: direction
+        - source: source
+          key: key
+          direction: direction
+        type: type
+        optionalDeltas:
+        - source: source
+          key: key
+          direction: direction
+        - source: source
+          key: key
+          direction: direction
+      properties:
+        type:
+          description: The transaction type the contract is for.
+          minLength: 1
+          type: string
+        requiredDeltas:
+          description: "The register balance deltas the type must carry, counted with\
+            \ repeats."
+          items:
+            $ref: '#/components/schemas/PackRegisterDelta'
+          type: array
+        optionalDeltas:
+          description: "The register balance deltas the type may carry, each at most\
+            \ once, in the direction given and from the source given."
+          items:
+            $ref: '#/components/schemas/PackRegisterDelta'
+          type: array
+      required:
+      - optionalDeltas
+      - requiredDeltas
       - type
       type: object
     PagedResourceListOfAbor:
@@ -321391,6 +322250,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           properties:
           - referenceData:
@@ -321446,6 +322310,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           properties:
           - referenceData:
@@ -328018,6 +328887,7 @@ components:
       additionalProperties: false
       description: One partner's share of an allocation pool.
       example:
+        reason: reason
         amount: 1.4658129805029452
         investorRecordId: investorRecordId
         basisWeight: 6.027456183070403
@@ -328034,6 +328904,15 @@ components:
           description: The amount allocated to the partner.
           format: double
           type: number
+        reason:
+          description: "Why a partner listed at 0.00 took no share of the pool. Available\
+            \ values: Excluded (the bucket's rule leaves the partner out), Exempt\
+            \ (the partner's register flag sits it out), ZeroBasis (the partner has\
+            \ nothing on the pool's basis). Absent on a partner that shares; a partner\
+            \ at 0.00 with no reason shares the pool, but its share rounded to nothing\
+            \ at the pool's scale."
+          nullable: true
+          type: string
       required:
       - amount
       - basisWeight
@@ -328055,10 +328934,12 @@ components:
         basis: basis
         character: character
         allocations:
-        - amount: 1.4658129805029452
+        - reason: reason
+          amount: 1.4658129805029452
           investorRecordId: investorRecordId
           basisWeight: 6.027456183070403
-        - amount: 1.4658129805029452
+        - reason: reason
+          amount: 1.4658129805029452
           investorRecordId: investorRecordId
           basisWeight: 6.027456183070403
         reportRow: reportRow
@@ -328098,7 +328979,8 @@ components:
           nullable: true
           type: string
         allocations:
-          description: Each partner's share of the pool.
+          description: Each partner's share of the pool; a partner who took none is
+            listed at 0.00 with the reason.
           items:
             $ref: '#/components/schemas/PartnerAllocation'
           type: array
@@ -328271,10 +329153,12 @@ components:
           basis: basis
           character: character
           allocations:
-          - amount: 1.4658129805029452
+          - reason: reason
+            amount: 1.4658129805029452
             investorRecordId: investorRecordId
             basisWeight: 6.027456183070403
-          - amount: 1.4658129805029452
+          - reason: reason
+            amount: 1.4658129805029452
             investorRecordId: investorRecordId
             basisWeight: 6.027456183070403
           reportRow: reportRow
@@ -328296,10 +329180,12 @@ components:
           basis: basis
           character: character
           allocations:
-          - amount: 1.4658129805029452
+          - reason: reason
+            amount: 1.4658129805029452
             investorRecordId: investorRecordId
             basisWeight: 6.027456183070403
-          - amount: 1.4658129805029452
+          - reason: reason
+            amount: 1.4658129805029452
             investorRecordId: investorRecordId
             basisWeight: 6.027456183070403
           reportRow: reportRow
@@ -328349,8 +329235,8 @@ components:
             $ref: '#/components/schemas/PartnerAllocationPool'
           type: array
         unattributed:
-          description: "Always empty: every profit and loss line is now pooled or\
-            \ the run is refused. Kept for one release."
+          description: "Always empty: every profit and loss line is pooled or the\
+            \ run is refused. Kept until no published SDK requires it."
           items:
             $ref: '#/components/schemas/UnattributedAmount'
           type: array
@@ -328361,7 +329247,8 @@ components:
           type: array
         warnings:
           description: "What the run noticed but did not refuse, for example an excluded\
-            \ investor record that is not on the register at the period end."
+            \ investor record that is not on the register at the period end, or a\
+            \ fee accrual naming no investor that was pooled as unaccrued fee (AccruedFeeWithoutInvestor)."
           items:
             type: string
           nullable: true
@@ -329123,7 +330010,8 @@ components:
       additionalProperties: false
       description: "The partnership configuration pack a fund resolves to: the transaction\
         \ types, chart of accounts and posting rules\r\nthe partners' ledger is booked\
-        \ under."
+        \ under, and the register deltas each transaction type the partner register\
+        \ depends\r\non must carry."
       example:
         code: code
         transactionTypes:
@@ -329146,6 +330034,37 @@ components:
           name: name
           type: type
         generalLedgerProfileCode: generalLedgerProfileCode
+        typeContracts:
+        - requiredDeltas:
+          - source: source
+            key: key
+            direction: direction
+          - source: source
+            key: key
+            direction: direction
+          type: type
+          optionalDeltas:
+          - source: source
+            key: key
+            direction: direction
+          - source: source
+            key: key
+            direction: direction
+        - requiredDeltas:
+          - source: source
+            key: key
+            direction: direction
+          - source: source
+            key: key
+            direction: direction
+          type: type
+          optionalDeltas:
+          - source: source
+            key: key
+            direction: direction
+          - source: source
+            key: key
+            direction: direction
         version: version
         postingRules:
         - transactionType: transactionType
@@ -329189,6 +330108,13 @@ components:
             belong to.
           nullable: true
           type: string
+        typeContracts:
+          description: The register balance deltas each transaction type the partner
+            register depends on must carry. A type not named must carry none.
+          items:
+            $ref: '#/components/schemas/PackTypeContract'
+          nullable: true
+          type: array
       required:
       - chartOfAccounts
       - code
@@ -329196,6 +330122,215 @@ components:
       - scope
       - transactionTypes
       - version
+      type: object
+    PartnershipTypeCheckResult:
+      additionalProperties: false
+      description: "The outcome of checking a fund's transaction types against the\
+        \ type contract of its partnership configuration\r\npack: the pack checked\
+        \ against and every type whose register balance deltas are not its contract."
+      example:
+        differences:
+        - actual:
+          - movementName: movementName
+            side: side
+            source: source
+            key: key
+            direction: direction
+          - movementName: movementName
+            side: side
+            source: source
+            key: key
+            direction: direction
+          scope: scope
+          expected:
+          - source: source
+            key: key
+            direction: direction
+          - source: source
+            key: key
+            direction: direction
+          source: source
+          type: type
+          missingSides:
+          - missingSides
+          - missingSides
+        - actual:
+          - movementName: movementName
+            side: side
+            source: source
+            key: key
+            direction: direction
+          - movementName: movementName
+            side: side
+            source: source
+            key: key
+            direction: direction
+          scope: scope
+          expected:
+          - source: source
+            key: key
+            direction: direction
+          - source: source
+            key: key
+            direction: direction
+          source: source
+          type: type
+          missingSides:
+          - missingSides
+          - missingSides
+        pack:
+          code: code
+          transactionTypes:
+          - debitAccount: debitAccount
+            creditAccount: creditAccount
+            description: description
+            type: type
+            direction: direction
+          - debitAccount: debitAccount
+            creditAccount: creditAccount
+            description: description
+            type: type
+            direction: direction
+          scope: scope
+          chartOfAccounts:
+          - code: code
+            name: name
+            type: type
+          - code: code
+            name: name
+            type: type
+          generalLedgerProfileCode: generalLedgerProfileCode
+          typeContracts:
+          - requiredDeltas:
+            - source: source
+              key: key
+              direction: direction
+            - source: source
+              key: key
+              direction: direction
+            type: type
+            optionalDeltas:
+            - source: source
+              key: key
+              direction: direction
+            - source: source
+              key: key
+              direction: direction
+          - requiredDeltas:
+            - source: source
+              key: key
+              direction: direction
+            - source: source
+              key: key
+              direction: direction
+            type: type
+            optionalDeltas:
+            - source: source
+              key: key
+              direction: direction
+            - source: source
+              key: key
+              direction: direction
+          version: version
+          postingRules:
+          - transactionType: transactionType
+            debitAccount: debitAccount
+            creditAccount: creditAccount
+            ruleId: ruleId
+          - transactionType: transactionType
+            debitAccount: debitAccount
+            creditAccount: creditAccount
+            ruleId: ruleId
+        status: status
+      properties:
+        pack:
+          $ref: '#/components/schemas/PartnershipConfigPack'
+        status:
+          description: "The outcome of the check. Available values: Ok, Differences."
+          minLength: 1
+          type: string
+        differences:
+          description: "The transaction types whose register balance deltas are not\
+            \ their contract in the pack, or whose movements book through a side the\
+            \ fund's transaction type scope does not define; empty when the status\
+            \ is Ok."
+          items:
+            $ref: '#/components/schemas/PartnershipTypeDifference'
+          type: array
+      required:
+      - differences
+      - pack
+      - status
+      type: object
+    PartnershipTypeDifference:
+      additionalProperties: false
+      description: "A transaction type a fund's portfolios resolve whose register\
+        \ deltas are not its contract, or whose sides its scope does not define."
+      example:
+        actual:
+        - movementName: movementName
+          side: side
+          source: source
+          key: key
+          direction: direction
+        - movementName: movementName
+          side: side
+          source: source
+          key: key
+          direction: direction
+        scope: scope
+        expected:
+        - source: source
+          key: key
+          direction: direction
+        - source: source
+          key: key
+          direction: direction
+        source: source
+        type: type
+        missingSides:
+        - missingSides
+        - missingSides
+      properties:
+        source:
+          description: The source the transaction type is defined in.
+          minLength: 1
+          type: string
+        type:
+          description: The transaction type.
+          minLength: 1
+          type: string
+        scope:
+          description: The transaction type scope the fund's portfolio resolves the
+            type in.
+          minLength: 1
+          type: string
+        expected:
+          description: The register balance deltas the pack's contract expects of
+            the type.
+          items:
+            $ref: '#/components/schemas/PackRegisterDelta'
+          type: array
+        actual:
+          description: "The register balance deltas the type's movements carry, each\
+            \ named by its movement."
+          items:
+            $ref: '#/components/schemas/RegisterDeltaMovement'
+          type: array
+        missingSides:
+          description: "The sides the type's movements book through that the fund's\
+            \ transaction type scope does not define, so the type cannot be booked\
+            \ there; empty when every side is defined."
+          items:
+            type: string
+          type: array
+      required:
+      - actual
+      - expected
+      - missingSides
+      - scope
+      - source
+      - type
       type: object
     PartnerStatement:
       additionalProperties: false
@@ -332988,6 +334123,11 @@ components:
           code: code
           scope: scope
         type: Transaction
+        parentPortfolioIds:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
         baseCurrency: baseCurrency
         whtParameters:
           whtConfig:
@@ -333221,12 +334361,13 @@ components:
           $ref: '#/components/schemas/ResourceId'
         type:
           description: "The type of the portfolio. Available values: Transaction,\
-            \ Reference, DerivedTransaction, SimplePosition."
+            \ Reference, DerivedTransaction, SimplePosition, Composite."
           enum:
           - Transaction
           - Reference
           - DerivedTransaction
           - SimplePosition
+          - Composite
           type: string
         displayName:
           description: The name of the portfolio.
@@ -333254,6 +334395,15 @@ components:
           type: string
         parentPortfolioId:
           $ref: '#/components/schemas/ResourceId'
+        parentPortfolioIds:
+          description: "The scope and code of each portfolio this portfolio takes\
+            \ its contents from: the parent of a derived transaction portfolio, or\
+            \ the constituents of a composite portfolio at the effective date. Empty\
+            \ for a portfolio with no parent."
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
         version:
           $ref: '#/components/schemas/Version'
         stagedModifications:
@@ -333474,6 +334624,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -334287,6 +335440,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           whtParameters:
             whtConfig:
@@ -334524,6 +335682,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           whtParameters:
             whtConfig:
@@ -334768,6 +335931,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           whtParameters:
             whtConfig:
@@ -335981,6 +337149,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -336989,6 +338160,11 @@ components:
           code: code
           scope: scope
         type: Transaction
+        parentPortfolioIds:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
         baseCurrency: baseCurrency
         properties:
         - referenceData:
@@ -337028,12 +338204,13 @@ components:
           $ref: '#/components/schemas/ResourceId'
         type:
           description: "The type of the portfolio. Available values: Transaction,\
-            \ Reference, DerivedTransaction, SimplePosition."
+            \ Reference, DerivedTransaction, SimplePosition, Composite."
           enum:
           - Transaction
           - Reference
           - DerivedTransaction
           - SimplePosition
+          - Composite
           type: string
         href:
           description: The specific Uniform Resource Identifier (URI) for this resource
@@ -337061,6 +338238,15 @@ components:
           type: string
         parentPortfolioId:
           $ref: '#/components/schemas/ResourceId'
+        parentPortfolioIds:
+          description: "The scope and code of each portfolio this portfolio takes\
+            \ its contents from: the parent of a derived transaction portfolio, or\
+            \ the constituents of a composite portfolio at the effective date. Empty\
+            \ for a portfolio with no parent."
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
         baseCurrency:
           description: The base currency of the portfolio.
           nullable: true
@@ -337604,6 +338790,7 @@ components:
       - Reference
       - DerivedTransaction
       - SimplePosition
+      - Composite
       type: string
     PortfolioWeight:
       additionalProperties: false
@@ -337640,6 +338827,11 @@ components:
           code: code
           scope: scope
         type: Transaction
+        parentPortfolioIds:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
         baseCurrency: baseCurrency
         whtParameters:
           whtConfig:
@@ -337866,12 +339058,13 @@ components:
           $ref: '#/components/schemas/ResourceId'
         type:
           description: "The type of the portfolio. Available values: Transaction,\
-            \ Reference, DerivedTransaction, SimplePosition."
+            \ Reference, DerivedTransaction, SimplePosition, Composite."
           enum:
           - Transaction
           - Reference
           - DerivedTransaction
           - SimplePosition
+          - Composite
           type: string
         displayName:
           description: The name of the portfolio.
@@ -337899,6 +339092,15 @@ components:
           type: string
         parentPortfolioId:
           $ref: '#/components/schemas/ResourceId'
+        parentPortfolioIds:
+          description: "The scope and code of each portfolio this portfolio takes\
+            \ its contents from: the parent of a derived transaction portfolio, or\
+            \ the constituents of a composite portfolio at the effective date. Empty\
+            \ for a portfolio with no parent."
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
         version:
           $ref: '#/components/schemas/Version'
         stagedModifications:
@@ -338028,6 +339230,276 @@ components:
       - displayName
       - id
       - type
+      type: object
+    PortfolioWithWarnings:
+      additionalProperties: false
+      description: A portfolio together with warnings about its configuration.
+      example:
+        portfolio:
+          transactionExclusionFilter: transactionExclusionFilter
+          displayName: displayName
+          instrumentScopes:
+          - instrumentScopes
+          - instrumentScopes
+          description: description
+          parentPortfolioId:
+            code: code
+            scope: scope
+          type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          baseCurrency: baseCurrency
+          whtParameters:
+            whtConfig:
+              code: code
+              scope: scope
+            profileType: profileType
+            taxCountry: taxCountry
+          relationships:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              stagedModificationIdModified: stagedModificationIdModified
+              reasonModified: reasonModified
+              entityUniqueId: entityUniqueId
+              requestIdModified: requestIdModified
+              reasonCreated: reasonCreated
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 1
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              requestIdCreated: requestIdCreated
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  referenceData:
+                    key:
+                      stringValue: stringValue
+                      numericValue: 6.027456183070403
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              stagedModificationIdModified: stagedModificationIdModified
+              reasonModified: reasonModified
+              entityUniqueId: entityUniqueId
+              requestIdModified: requestIdModified
+              reasonCreated: reasonCreated
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 1
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              requestIdCreated: requestIdCreated
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          holdingsFungibility: holdingsFungibility
+          settlementConfiguration:
+            cashSettlement:
+              calculateInstructionToPortfolioRate: true
+              methodOverride:
+                propertyKey: propertyKey
+              method: method
+              calculateTradeDateToSettlementFxPnL: true
+              calculateInLieuSettlementAmount: true
+            transactionMatchingAlternativeId:
+              propertyKey: propertyKey
+            stockSettlement:
+              calculateInstructionToPortfolioRate: true
+              methodOverride:
+                propertyKey: propertyKey
+              method: method
+              calculateTradeDateToSettlementFxPnL: true
+              calculateInLieuSettlementAmount: true
+            deferredCashReceipt:
+              calculateInstructionToPortfolioRate: true
+              methodOverride:
+                propertyKey: propertyKey
+              method: method
+              calculateTradeDateToSettlementFxPnL: true
+              calculateInLieuSettlementAmount: true
+          cashGainLossCalculationDate: cashGainLossCalculationDate
+          chargeableGainsRegime: chargeableGainsRegime
+          accountingMethod: Default
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          stagedModifications:
+            hrefPending: https://openapi-generator.tech
+            countPending: 0
+            idsPreviewed:
+            - idsPreviewed
+            - idsPreviewed
+          taxLotSelectionCostBasis: taxLotSelectionCostBasis
+          isDerived: true
+          amortisationRuleSetId:
+            code: code
+            scope: scope
+          created: 2000-01-23T04:56:07.000+00:00
+          fractionalUnitsTrueUpConfiguration:
+            nominatedSubHoldingKeyValue: nominatedSubHoldingKeyValue
+            fractionalUnitsHandling: fractionalUnitsHandling
+            nominatedSubHoldingKey: nominatedSubHoldingKey
+          taxRuleSetScope: taxRuleSetScope
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
+          amortisationMethod: amortisationMethod
+          enablementDate: 2000-01-23T04:56:07.000+00:00
+          amortisationHorizon:
+            premium: premium
+            discount: discount
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          instrumentEventConfiguration:
+            transactionTemplateScopes:
+            - transactionTemplateScopes
+            recipeId:
+              code: code
+              scope: scope
+        warnings:
+        - entityId: entityId
+          message: message
+        - entityId: entityId
+          message: message
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+      properties:
+        portfolio:
+          $ref: '#/components/schemas/Portfolio'
+        warnings:
+          items:
+            $ref: '#/components/schemas/Warning'
+          nullable: true
+          type: array
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
       type: object
     PostCloseActivitiesRequest:
       additionalProperties: false
@@ -346879,6 +348351,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -347280,6 +348755,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -351636,6 +353114,47 @@ components:
       - Floating
       - Periodical
       type: string
+    RegisterDeltaMovement:
+      additionalProperties: false
+      description: "A register balance delta one of a transaction type's movements\
+        \ carries, as the engine books it, named by that movement."
+      example:
+        movementName: movementName
+        side: side
+        source: source
+        key: key
+        direction: direction
+      properties:
+        key:
+          description: "The holding property key of the register balance, for example\
+            \ PaidInCapital or UncalledCommitment."
+          minLength: 1
+          type: string
+        direction:
+          description: "The direction the balance moves in when the type is booked,\
+            \ the movement's own direction folded into the delta's. Available values:\
+            \ Increase, Decrease."
+          minLength: 1
+          type: string
+        source:
+          description: "The movement figure the delta moves the balance by. Available\
+            \ values: Amount, Units, PortfolioAmount, ProportionOfBalance, PortfolioAmountAtAverageRate."
+          minLength: 1
+          type: string
+        movementName:
+          description: The name of the movement that carries the delta.
+          nullable: true
+          type: string
+        side:
+          description: The side of the movement that carries the delta.
+          minLength: 1
+          type: string
+      required:
+      - direction
+      - key
+      - side
+      - source
+      type: object
     RelatedEntity:
       additionalProperties: false
       description: Information about the other related entity in the relationship
@@ -355318,6 +356837,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -355714,6 +357236,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -356291,6 +357816,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -356687,6 +358215,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -358152,6 +359683,9 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           userId: userId
+          sourcePortfolioId:
+            code: code
+            scope: scope
         - modifiedAsAt: 2000-01-23T04:56:07.000+00:00
           requestId: requestId
           changes:
@@ -358176,6 +359710,9 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           userId: userId
+          sourcePortfolioId:
+            code: code
+            scope: scope
         links:
         - method: method
           description: description
@@ -361585,6 +363122,11 @@ components:
                 code: code
                 scope: scope
               type: Transaction
+              parentPortfolioIds:
+              - code: code
+                scope: scope
+              - code: code
+                scope: scope
               baseCurrency: baseCurrency
               whtParameters:
                 whtConfig:
@@ -361823,6 +363365,11 @@ components:
                 code: code
                 scope: scope
               type: Transaction
+              parentPortfolioIds:
+              - code: code
+                scope: scope
+              - code: code
+                scope: scope
               baseCurrency: baseCurrency
               whtParameters:
                 whtConfig:
@@ -363349,6 +364896,11 @@ components:
                 code: code
                 scope: scope
               type: Transaction
+              parentPortfolioIds:
+              - code: code
+                scope: scope
+              - code: code
+                scope: scope
               baseCurrency: baseCurrency
               whtParameters:
                 whtConfig:
@@ -363587,6 +365139,11 @@ components:
                 code: code
                 scope: scope
               type: Transaction
+              parentPortfolioIds:
+              - code: code
+                scope: scope
+              - code: code
+                scope: scope
               baseCurrency: baseCurrency
               whtParameters:
                 whtConfig:
@@ -368282,6 +369839,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -369381,6 +370941,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -371047,6 +372610,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           whtParameters:
             whtConfig:
@@ -371279,6 +372847,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           whtParameters:
             whtConfig:
@@ -371626,6 +373199,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -372075,6 +373651,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -375332,6 +376911,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -375728,6 +377310,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -376925,6 +378510,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -377338,6 +378926,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -377775,6 +379366,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -378188,6 +379782,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -379649,6 +381246,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -380840,6 +382440,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -385892,6 +387495,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -387663,6 +389269,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -392833,19 +394442,17 @@ components:
       properties:
         ruleId:
           description: "The identifier of the Posting Rule. At most one rule in the\
-            \ request may have the ruleId of the superseded rule. If it does, the\
-            \ existing rule is capped so that it stops applying from this rule's EffectiveFrom,\
-            \ and this rule is created as its next version. Otherwise this rule is\
-            \ created as a new rule."
+            \ request may have the ruleId of the superseded rule, in which case this\
+            \ rule is created as its next version. Otherwise this rule is created\
+            \ as a new rule."
           maxLength: 64
           minLength: 1
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         effectiveFrom:
-          description: "The inclusive accounting date from which this rule applies.\
-            \ If this rule has the ruleId of the superseded rule, the superseded rule's\
-            \ latest version stops applying from this date, unless it already ends\
-            \ by then; it is never extended."
+          description: The inclusive accounting date from which this rule applies.
+            All rules in the request must share the same EffectiveFrom. The superseded
+            rule's latest version stops applying from this date.
           format: date-time
           type: string
         effectiveUntil:
@@ -398231,6 +399838,9 @@ components:
           idsPreviewed:
           - idsPreviewed
           - idsPreviewed
+        sourcePortfolioId:
+          code: code
+          scope: scope
         resolvedTransactionTypeDetails:
           scope: scope
           movementConditionMatches:
@@ -398731,6 +400341,8 @@ components:
             $ref: '#/components/schemas/TransactionEntityLink'
           nullable: true
           type: array
+        sourcePortfolioId:
+          $ref: '#/components/schemas/ResourceId'
       required:
       - instrumentUid
       - settlementDate
@@ -399376,6 +400988,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           whtParameters:
             whtConfig:
@@ -399635,6 +401252,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -400009,6 +401629,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           whtParameters:
             whtConfig:
@@ -400264,6 +401889,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -400661,6 +402289,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -401047,6 +402678,11 @@ components:
             code: code
             scope: scope
           type: Transaction
+          parentPortfolioIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
           baseCurrency: baseCurrency
           whtParameters:
             whtConfig:
@@ -403742,6 +405378,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -404143,6 +405782,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -404540,6 +406182,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -404941,6 +406586,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -406520,6 +408168,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -406933,6 +408584,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -408856,8 +410510,9 @@ components:
       type: object
     UnattributedAmount:
       additionalProperties: false
-      description: An amount on the income summary an allocation run could not attribute
-        to any pool.
+      description: "An amount on the income summary an allocation run could not attribute\
+        \ to any pool. Always empty: every profit and\r\nloss line is pooled or the\
+        \ run is refused. Kept, required, until no published SDK requires it."
       example:
         reason: reason
         amount: 9.301444243932576
@@ -409634,6 +411289,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -416435,6 +418093,11 @@ components:
                   code: code
                   scope: scope
                 type: Transaction
+                parentPortfolioIds:
+                - code: code
+                  scope: scope
+                - code: code
+                  scope: scope
                 baseCurrency: baseCurrency
                 whtParameters:
                   whtConfig:
@@ -416673,6 +418336,11 @@ components:
                   code: code
                   scope: scope
                 type: Transaction
+                parentPortfolioIds:
+                - code: code
+                  scope: scope
+                - code: code
+                  scope: scope
                 baseCurrency: baseCurrency
                 whtParameters:
                   whtConfig:
@@ -424555,6 +426223,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -425666,6 +427337,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -428285,6 +429959,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -429428,6 +431105,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -432056,6 +433736,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -432475,6 +434158,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -433647,6 +435333,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -434746,6 +436435,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -435716,6 +437408,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -436418,6 +438113,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -436870,6 +438568,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -437266,6 +438967,9 @@ components:
             idsPreviewed:
             - idsPreviewed
             - idsPreviewed
+          sourcePortfolioId:
+            code: code
+            scope: scope
           resolvedTransactionTypeDetails:
             scope: scope
             movementConditionMatches:
@@ -438668,6 +440372,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -439844,6 +441551,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -440816,6 +442526,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -441518,6 +443231,9 @@ components:
               idsPreviewed:
               - idsPreviewed
               - idsPreviewed
+            sourcePortfolioId:
+              code: code
+              scope: scope
             resolvedTransactionTypeDetails:
               scope: scope
               movementConditionMatches:
@@ -444900,6 +446616,7 @@ x-tagGroups:
   - Collateral Agreements
   - Complex Market Data
   - Compliance
+  - Composite Portfolios
   - Configuration Recipe
   - Conventions
   - Corporate Action Sources

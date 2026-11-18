@@ -31,7 +31,9 @@ public enum PortfolioType {
   
   DERIVEDTRANSACTION("DerivedTransaction"),
   
-  SIMPLEPOSITION("SimplePosition");
+  SIMPLEPOSITION("SimplePosition"),
+  
+  COMPOSITE("Composite");
 
   private String value;
 

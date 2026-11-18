@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **requestId** | **String** | The unique identifier of the request that the changes were part of. | [default to String]
 **action** | **String** | The action performed on the transaction. Available values: Create, Update, Delete. | [default to String]
 **changes** | [**List&lt;ChangeItem&gt;**](ChangeItem.md) | The collection of changes that were made. | [default to List<ChangeItem>]
+**sourcePortfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -23,6 +24,7 @@ OffsetDateTime ModifiedAsAt = OffsetDateTime.now();
 String RequestId = "example RequestId";
 String Action = "example Action";
 List<ChangeItem> Changes = new List<ChangeItem>();
+ResourceId SourcePortfolioId = new ResourceId();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -32,6 +34,7 @@ ChangeHistory changeHistoryInstance = new ChangeHistory()
     .RequestId(RequestId)
     .Action(Action)
     .Changes(Changes)
+    .SourcePortfolioId(SourcePortfolioId)
     .Links(Links);
 ```
 

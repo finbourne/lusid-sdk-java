@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **securitiesConstituents** | [**List&lt;SecurityOfferConstituent&gt;**](SecurityOfferConstituent.md) |  | [optional] [default to List<SecurityOfferConstituent>]
 **cashConstituents** | [**List&lt;CashOfferConstituent&gt;**](CashOfferConstituent.md) |  | [optional] [default to List<CashOfferConstituent>]
 **costFactor** | **java.math.BigDecimal** |  | [optional] [default to java.math.BigDecimal]
+**consentFeePrice** | **java.math.BigDecimal** | Optional. The consent fee paid to holders who consent, on top of the exchange consideration. Quoted per 1,000 of face for bonds, using the current notional at the effective date of the event, and per unit for other instruments. Must be greater than 0. Required together with ConsentFeeCurrency, and only supported on an ExchangeOfferEvent. | [optional] [default to java.math.BigDecimal]
+**consentFeeCurrency** | **String** | Optional. Currency of the consent fee. Required if a consent fee price is provided, and only supported on an ExchangeOfferEvent. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.MixedLotConstituentsElection;
@@ -23,6 +25,8 @@ Boolean IsChosen = true;
 @jakarta.annotation.Nullable List<SecurityOfferConstituent> SecuritiesConstituents = new List<SecurityOfferConstituent>();
 @jakarta.annotation.Nullable List<CashOfferConstituent> CashConstituents = new List<CashOfferConstituent>();
 @jakarta.annotation.Nullable java.math.BigDecimal CostFactor = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal ConsentFeePrice = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String ConsentFeeCurrency = "example ConsentFeeCurrency";
 
 
 MixedLotConstituentsElection mixedLotConstituentsElectionInstance = new MixedLotConstituentsElection()
@@ -31,7 +35,9 @@ MixedLotConstituentsElection mixedLotConstituentsElectionInstance = new MixedLot
     .IsChosen(IsChosen)
     .SecuritiesConstituents(SecuritiesConstituents)
     .CashConstituents(CashConstituents)
-    .CostFactor(CostFactor);
+    .CostFactor(CostFactor)
+    .ConsentFeePrice(ConsentFeePrice)
+    .ConsentFeeCurrency(ConsentFeeCurrency);
 ```
 
 

@@ -72,6 +72,7 @@ import com.finbourne.lusid.model.PartnerStatement;
 import com.finbourne.lusid.model.PartnerStatementDiff;
 import com.finbourne.lusid.model.PartnerStatementRequest;
 import com.finbourne.lusid.model.PartnershipConfigPack;
+import com.finbourne.lusid.model.PartnershipTypeCheckResult;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.QueryFundCashStatementParameters;
 import com.finbourne.lusid.model.ResourceListOfFundTaxExceptionItem;
@@ -2021,6 +2022,262 @@ public class FundsApi {
      */
     public APIcalculateManagementFeesRequest calculateManagementFees(String scope, String code, ManagementFeeRequest managementFeeRequest) {
         return new APIcalculateManagementFeesRequest(scope, code, managementFeeRequest);
+    }
+    private okhttp3.Call checkPartnershipTransactionTypesCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return checkPartnershipTransactionTypesCall(scope, code, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call checkPartnershipTransactionTypesCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/partnershipaccounting/typecheck"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call checkPartnershipTransactionTypesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling checkPartnershipTransactionTypes(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling checkPartnershipTransactionTypes(Async)");
+        }
+
+        return checkPartnershipTransactionTypesCall(scope, code, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PartnershipTypeCheckResult> checkPartnershipTransactionTypesWithHttpInfo(String scope, String code, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = checkPartnershipTransactionTypesValidateBeforeCall(scope, code, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PartnershipTypeCheckResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PartnershipTypeCheckResult> checkPartnershipTransactionTypesWithHttpInfo(String scope, String code, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = checkPartnershipTransactionTypesValidateBeforeCall(scope, code, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<PartnershipTypeCheckResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call checkPartnershipTransactionTypesAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<PartnershipTypeCheckResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = checkPartnershipTransactionTypesValidateBeforeCall(scope, code, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PartnershipTypeCheckResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call checkPartnershipTransactionTypesAsync(String scope, String code, OffsetDateTime asAt, final ApiCallback<PartnershipTypeCheckResult> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = checkPartnershipTransactionTypesValidateBeforeCall(scope, code, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<PartnershipTypeCheckResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcheckPartnershipTransactionTypesRequest {
+        private final String scope;
+        private final String code;
+        private OffsetDateTime asAt;
+
+        private APIcheckPartnershipTransactionTypesRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the Fund and its transaction types. Defaults to return the latest version if not specified. (optional)
+         * @return APIcheckPartnershipTransactionTypesRequest
+         */
+        public APIcheckPartnershipTransactionTypesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for checkPartnershipTransactionTypes
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of checking the Fund&#39;s transaction types against its pack. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return checkPartnershipTransactionTypesCall(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute checkPartnershipTransactionTypes request
+         * @return PartnershipTypeCheckResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of checking the Fund&#39;s transaction types against its pack. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PartnershipTypeCheckResult execute() throws ApiException {
+            ApiResponse<PartnershipTypeCheckResult> localVarResp = checkPartnershipTransactionTypesWithHttpInfo(scope, code, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute checkPartnershipTransactionTypes request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PartnershipTypeCheckResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of checking the Fund&#39;s transaction types against its pack. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PartnershipTypeCheckResult execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PartnershipTypeCheckResult> localVarResp = checkPartnershipTransactionTypesWithHttpInfo(scope, code, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute checkPartnershipTransactionTypes request with HTTP info returned
+         * @return ApiResponse&lt;PartnershipTypeCheckResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of checking the Fund&#39;s transaction types against its pack. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PartnershipTypeCheckResult> executeWithHttpInfo() throws ApiException {
+            return checkPartnershipTransactionTypesWithHttpInfo(scope, code, asAt);
+        }
+
+        /**
+         * Execute checkPartnershipTransactionTypes request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PartnershipTypeCheckResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of checking the Fund&#39;s transaction types against its pack. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PartnershipTypeCheckResult> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return checkPartnershipTransactionTypesWithHttpInfo(scope, code, asAt, opts);
+        }
+
+        /**
+         * Execute checkPartnershipTransactionTypes request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of checking the Fund&#39;s transaction types against its pack. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PartnershipTypeCheckResult> _callback) throws ApiException {
+            return checkPartnershipTransactionTypesAsync(scope, code, asAt, _callback);
+        }
+
+        /**
+         * Execute checkPartnershipTransactionTypes request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of checking the Fund&#39;s transaction types against its pack. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PartnershipTypeCheckResult> _callback, ConfigurationOptions opts) throws ApiException {
+            return checkPartnershipTransactionTypesAsync(scope, code, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] CheckPartnershipTransactionTypes: [EXPERIMENTAL] CheckPartnershipTransactionTypes: Check the Fund&#39;s transaction types against its partnership configuration pack.
+     * Resolve every transaction type the Fund&#39;s portfolios book with, through their transaction type scope and each  source in it, and compare the register balance deltas each type&#39;s movements carry against the type contract of  the Fund&#39;s partnership configuration pack. A type whose deltas are not its contract, counted with repeats, is  returned as a difference with the deltas expected and the deltas carried; a Fund whose types all match has the  status Ok and no differences. A type the contract names, or that moves a register balance, whose movements book  through a side the Fund&#39;s transaction type scope does not define is a difference too, naming the missing sides.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @return APIcheckPartnershipTransactionTypesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The outcome of checking the Fund&#39;s transaction types against its pack. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcheckPartnershipTransactionTypesRequest checkPartnershipTransactionTypes(String scope, String code) {
+        return new APIcheckPartnershipTransactionTypesRequest(scope, code);
     }
     private okhttp3.Call createFacilityCall(String scope, String code, FacilityRequest facilityRequest, final ApiCallback _callback) throws ApiException {
         return createFacilityCall(scope, code, facilityRequest,  _callback, new ConfigurationOptions());

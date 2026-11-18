@@ -233,7 +233,7 @@ public class PartnerAllocationPool {
   }
 
    /**
-   * Each partner&#39;s share of the pool.
+   * Each partner&#39;s share of the pool; a partner who took none is listed at 0.00 with the reason.
    * @return allocations
   **/
   @jakarta.annotation.Nonnull

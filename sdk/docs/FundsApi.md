@@ -11,6 +11,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**advanceTaxReturn**](FundsApi.md#advanceTaxReturn) | **POST** /api/funds/{scope}/{code}/tax/return/advance | [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step. |
 | [**approveTaxProvision**](FundsApi.md#approveTaxProvision) | **POST** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}/tax/provision/approve | [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point. |
 | [**calculateManagementFees**](FundsApi.md#calculateManagementFees) | **POST** /api/funds/{scope}/{code}/fees/$calculate | [EARLY ACCESS] CalculateManagementFees: [EXPERIMENTAL] CalculateManagementFees: Calculate the management fee per partner for a period. |
+| [**checkPartnershipTransactionTypes**](FundsApi.md#checkPartnershipTransactionTypes) | **GET** /api/funds/{scope}/{code}/partnershipaccounting/typecheck | [EARLY ACCESS] CheckPartnershipTransactionTypes: [EXPERIMENTAL] CheckPartnershipTransactionTypes: Check the Fund&#39;s transaction types against its partnership configuration pack. |
 | [**createFacility**](FundsApi.md#createFacility) | **POST** /api/funds/{scope}/{code}/facilities | [EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility. |
 | [**createFee**](FundsApi.md#createFee) | **POST** /api/funds/{scope}/{code}/fees | [EARLY ACCESS] CreateFee: Create a Fee. |
 | [**createFund**](FundsApi.md#createFund) | **POST** /api/funds/{scope} | [EARLY ACCESS] CreateFund: Create a Fund. |
@@ -768,6 +769,101 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The management fee per partner. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## checkPartnershipTransactionTypes
+
+> PartnershipTypeCheckResult checkPartnershipTransactionTypes(scope, code, asAt)
+
+[EARLY ACCESS] CheckPartnershipTransactionTypes: [EXPERIMENTAL] CheckPartnershipTransactionTypes: Check the Fund&#39;s transaction types against its partnership configuration pack.
+
+Resolve every transaction type the Fund&#39;s portfolios book with, through their transaction type scope and each  source in it, and compare the register balance deltas each type&#39;s movements carry against the type contract of  the Fund&#39;s partnership configuration pack. A type whose deltas are not its contract, counted with repeats, is  returned as a difference with the deltas expected and the deltas carried; a Fund whose types all match has the  status Ok and no differences. A type the contract names, or that moves a register balance, whose movements book  through a side the Fund&#39;s transaction type scope does not define is a difference too, naming the missing sides.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the Fund and its transaction types. Defaults to return the latest version if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PartnershipTypeCheckResult result = apiInstance.checkPartnershipTransactionTypes(scope, code, asAt).execute(opts);
+
+            PartnershipTypeCheckResult result = apiInstance.checkPartnershipTransactionTypes(scope, code, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#checkPartnershipTransactionTypes");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the Fund and its transaction types. Defaults to return the latest version if not specified. | [optional] |
+
+### Return type
+
+[**PartnershipTypeCheckResult**](PartnershipTypeCheckResult.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The outcome of checking the Fund&#39;s transaction types against its pack. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

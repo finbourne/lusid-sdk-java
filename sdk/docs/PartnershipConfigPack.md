@@ -1,5 +1,5 @@
 # com.finbourne.lusid.model.PartnershipConfigPack
-The partnership configuration pack a fund resolves to: the transaction types, chart of accounts and posting rules  the partners' ledger is booked under.
+The partnership configuration pack a fund resolves to: the transaction types, chart of accounts and posting rules  the partners' ledger is booked under, and the register deltas each transaction type the partner register depends  on must carry.
 
 ## Properties
 
@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **chartOfAccounts** | [**List&lt;PackAccount&gt;**](PackAccount.md) | The accounts the pack posts partner capital to. | [default to List<PackAccount>]
 **postingRules** | [**List&lt;PackPostingRule&gt;**](PackPostingRule.md) | The rules that move each transaction type between its accounts. | [default to List<PackPostingRule>]
 **generalLedgerProfileCode** | **String** | The code of the general ledger profile the pack&#39;s posting rules belong to. | [optional] [default to String]
+**typeContracts** | [**List&lt;PackTypeContract&gt;**](PackTypeContract.md) | The register balance deltas each transaction type the partner register depends on must carry. A type not named must carry none. | [optional] [default to List<PackTypeContract>]
 
 ```java
 import com.finbourne.lusid.model.PartnershipConfigPack;
@@ -26,6 +27,7 @@ List<PackTransactionType> TransactionTypes = new List<PackTransactionType>();
 List<PackAccount> ChartOfAccounts = new List<PackAccount>();
 List<PackPostingRule> PostingRules = new List<PackPostingRule>();
 @jakarta.annotation.Nullable String GeneralLedgerProfileCode = "example GeneralLedgerProfileCode";
+@jakarta.annotation.Nullable List<PackTypeContract> TypeContracts = new List<PackTypeContract>();
 
 
 PartnershipConfigPack partnershipConfigPackInstance = new PartnershipConfigPack()
@@ -35,7 +37,8 @@ PartnershipConfigPack partnershipConfigPackInstance = new PartnershipConfigPack(
     .TransactionTypes(TransactionTypes)
     .ChartOfAccounts(ChartOfAccounts)
     .PostingRules(PostingRules)
-    .GeneralLedgerProfileCode(GeneralLedgerProfileCode);
+    .GeneralLedgerProfileCode(GeneralLedgerProfileCode)
+    .TypeContracts(TypeContracts);
 ```
 
 

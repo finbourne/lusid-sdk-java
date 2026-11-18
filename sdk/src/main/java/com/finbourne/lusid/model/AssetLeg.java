@@ -68,6 +68,10 @@ public class AssetLeg {
   @SerializedName(SERIALIZED_NAME_INITIAL_PRICE)
   private java.math.BigDecimal initialPrice;
 
+  public static final String SERIALIZED_NAME_NOTIONAL_RESET = "notionalReset";
+  @SerializedName(SERIALIZED_NAME_NOTIONAL_RESET)
+  private Boolean notionalReset;
+
   public static final String SERIALIZED_NAME_PAY_RECEIVE = "payReceive";
   @SerializedName(SERIALIZED_NAME_PAY_RECEIVE)
   private String payReceive;
@@ -163,6 +167,27 @@ public class AssetLeg {
   }
 
 
+  public AssetLeg notionalReset(Boolean notionalReset) {
+    
+    this.notionalReset = notionalReset;
+    return this;
+  }
+
+   /**
+   * When true, the funding leg is re-struck at every asset price reset: from each reset date the funding  accrues on the units held times the reset price instead of on the funding leg&#39;s own notional, as  EquitySwap.NotionalReset does. A funding coupon spanning a reset is paid once and scaled by the  time-weighted average base over its accrual period. Defaults to false, preserving today&#39;s behaviour of  financing on the funding leg&#39;s notional for the swap&#39;s whole life. Requires a ResetSchedule.
+   * @return notionalReset
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getNotionalReset() {
+    return notionalReset;
+  }
+
+
+  public void setNotionalReset(Boolean notionalReset) {
+    this.notionalReset = notionalReset;
+  }
+
+
   public AssetLeg payReceive(String payReceive) {
     
     this.payReceive = payReceive;
@@ -219,6 +244,7 @@ public class AssetLeg {
         Objects.equals(this.assetSwapStructure, assetLeg.assetSwapStructure) &&
         Objects.equals(this.incomePolicy, assetLeg.incomePolicy) &&
         (this.initialPrice.compareTo(assetLeg.getInitialPrice()) == 0) &&
+        Objects.equals(this.notionalReset, assetLeg.notionalReset) &&
         Objects.equals(this.payReceive, assetLeg.payReceive) &&
         Objects.equals(this.resetSchedule, assetLeg.resetSchedule);
   }
@@ -229,7 +255,7 @@ public class AssetLeg {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asset, assetSwapStructure, incomePolicy, initialPrice, payReceive, resetSchedule);
+    return Objects.hash(asset, assetSwapStructure, incomePolicy, initialPrice, notionalReset, payReceive, resetSchedule);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -247,6 +273,7 @@ public class AssetLeg {
     sb.append("    assetSwapStructure: ").append(toIndentedString(assetSwapStructure)).append("\n");
     sb.append("    incomePolicy: ").append(toIndentedString(incomePolicy)).append("\n");
     sb.append("    initialPrice: ").append(toIndentedString(initialPrice)).append("\n");
+    sb.append("    notionalReset: ").append(toIndentedString(notionalReset)).append("\n");
     sb.append("    payReceive: ").append(toIndentedString(payReceive)).append("\n");
     sb.append("    resetSchedule: ").append(toIndentedString(resetSchedule)).append("\n");
     sb.append("}");
@@ -275,6 +302,7 @@ public class AssetLeg {
     openapiFields.add("assetSwapStructure");
     openapiFields.add("incomePolicy");
     openapiFields.add("initialPrice");
+    openapiFields.add("notionalReset");
     openapiFields.add("payReceive");
     openapiFields.add("resetSchedule");
 

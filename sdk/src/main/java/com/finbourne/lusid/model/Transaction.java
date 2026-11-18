@@ -247,6 +247,10 @@ public class Transaction {
   @SerializedName(SERIALIZED_NAME_ENTITY_LINKS)
   private List<TransactionEntityLink> entityLinks;
 
+  public static final String SERIALIZED_NAME_SOURCE_PORTFOLIO_ID = "sourcePortfolioId";
+  @SerializedName(SERIALIZED_NAME_SOURCE_PORTFOLIO_ID)
+  private ResourceId sourcePortfolioId;
+
   public Transaction() {
   }
 
@@ -920,6 +924,27 @@ public class Transaction {
   }
 
 
+  public Transaction sourcePortfolioId(ResourceId sourcePortfolioId) {
+    
+    this.sourcePortfolioId = sourcePortfolioId;
+    return this;
+  }
+
+   /**
+   * Get sourcePortfolioId
+   * @return sourcePortfolioId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getSourcePortfolioId() {
+    return sourcePortfolioId;
+  }
+
+
+  public void setSourcePortfolioId(ResourceId sourcePortfolioId) {
+    this.sourcePortfolioId = sourcePortfolioId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -959,7 +984,8 @@ public class Transaction {
         Objects.equals(this.version, transaction.version) &&
         Objects.equals(this.stagedModifications, transaction.stagedModifications) &&
         Objects.equals(this.custodianEntries, transaction.custodianEntries) &&
-        Objects.equals(this.entityLinks, transaction.entityLinks);
+        Objects.equals(this.entityLinks, transaction.entityLinks) &&
+        Objects.equals(this.sourcePortfolioId, transaction.sourcePortfolioId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -968,7 +994,7 @@ public class Transaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails, dataModelMembership, version, stagedModifications, custodianEntries, entityLinks);
+    return Objects.hash(transactionId, type, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionPrice, totalConsideration, exchangeRate, transactionCurrency, properties, counterpartyId, source, entryDateTime, otcConfirmation, transactionStatus, cancelDateTime, orderId, allocationId, custodianAccount, transactionGroupId, strategyTag, resolvedTransactionTypeDetails, dataModelMembership, version, stagedModifications, custodianEntries, entityLinks, sourcePortfolioId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1012,6 +1038,7 @@ public class Transaction {
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    custodianEntries: ").append(toIndentedString(custodianEntries)).append("\n");
     sb.append("    entityLinks: ").append(toIndentedString(entityLinks)).append("\n");
+    sb.append("    sourcePortfolioId: ").append(toIndentedString(sourcePortfolioId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1064,6 +1091,7 @@ public class Transaction {
     openapiFields.add("stagedModifications");
     openapiFields.add("custodianEntries");
     openapiFields.add("entityLinks");
+    openapiFields.add("sourcePortfolioId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1202,6 +1230,10 @@ public class Transaction {
             TransactionEntityLink.validateJsonElement(jsonArrayentityLinks.get(i));
           };
         }
+      }
+      // validate the optional field `sourcePortfolioId`
+      if (jsonObj.get("sourcePortfolioId") != null && !jsonObj.get("sourcePortfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("sourcePortfolioId"));
       }
   }
 

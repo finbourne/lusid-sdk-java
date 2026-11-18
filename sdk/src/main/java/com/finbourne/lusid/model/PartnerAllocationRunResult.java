@@ -279,7 +279,7 @@ public class PartnerAllocationRunResult {
   }
 
    /**
-   * Always empty: every profit and loss line is now pooled or the run is refused. Kept for one release.
+   * Always empty: every profit and loss line is pooled or the run is refused. Kept until no published SDK requires it.
    * @return unattributed
   **/
   @jakarta.annotation.Nonnull
@@ -337,7 +337,7 @@ public class PartnerAllocationRunResult {
   }
 
    /**
-   * What the run noticed but did not refuse, for example an excluded investor record that is not on the register at the period end.
+   * What the run noticed but did not refuse, for example an excluded investor record that is not on the register at the period end, or a fee accrual naming no investor that was pooled as unaccrued fee (AccruedFeeWithoutInvestor).
    * @return warnings
   **/
   @jakarta.annotation.Nullable

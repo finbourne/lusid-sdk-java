@@ -17,6 +17,7 @@ PortfolioType method = PortfolioType.TRANSACTION;
 PortfolioType method = PortfolioType.REFERENCE;
 PortfolioType method = PortfolioType.DERIVEDTRANSACTION;
 PortfolioType method = PortfolioType.SIMPLEPOSITION;
+PortfolioType method = PortfolioType.COMPOSITE;
 ```
 
 

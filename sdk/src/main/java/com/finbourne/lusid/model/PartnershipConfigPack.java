@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.PackAccount;
 import com.finbourne.lusid.model.PackPostingRule;
 import com.finbourne.lusid.model.PackTransactionType;
+import com.finbourne.lusid.model.PackTypeContract;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,7 +52,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The partnership configuration pack a fund resolves to: the transaction types, chart of accounts and posting rules  the partners&#39; ledger is booked under.
+ * The partnership configuration pack a fund resolves to: the transaction types, chart of accounts and posting rules  the partners&#39; ledger is booked under, and the register deltas each transaction type the partner register depends  on must carry.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PartnershipConfigPack {
@@ -82,6 +83,10 @@ public class PartnershipConfigPack {
   public static final String SERIALIZED_NAME_GENERAL_LEDGER_PROFILE_CODE = "generalLedgerProfileCode";
   @SerializedName(SERIALIZED_NAME_GENERAL_LEDGER_PROFILE_CODE)
   private String generalLedgerProfileCode;
+
+  public static final String SERIALIZED_NAME_TYPE_CONTRACTS = "typeContracts";
+  @SerializedName(SERIALIZED_NAME_TYPE_CONTRACTS)
+  private List<PackTypeContract> typeContracts;
 
   public PartnershipConfigPack() {
   }
@@ -257,6 +262,35 @@ public class PartnershipConfigPack {
   }
 
 
+  public PartnershipConfigPack typeContracts(List<PackTypeContract> typeContracts) {
+    
+    this.typeContracts = typeContracts;
+    return this;
+  }
+
+  public PartnershipConfigPack addTypeContractsItem(PackTypeContract typeContractsItem) {
+    if (this.typeContracts == null) {
+      this.typeContracts = new ArrayList<>();
+    }
+    this.typeContracts.add(typeContractsItem);
+    return this;
+  }
+
+   /**
+   * The register balance deltas each transaction type the partner register depends on must carry. A type not named must carry none.
+   * @return typeContracts
+  **/
+  @jakarta.annotation.Nullable
+  public List<PackTypeContract> getTypeContracts() {
+    return typeContracts;
+  }
+
+
+  public void setTypeContracts(List<PackTypeContract> typeContracts) {
+    this.typeContracts = typeContracts;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -273,7 +307,8 @@ public class PartnershipConfigPack {
         Objects.equals(this.transactionTypes, partnershipConfigPack.transactionTypes) &&
         Objects.equals(this.chartOfAccounts, partnershipConfigPack.chartOfAccounts) &&
         Objects.equals(this.postingRules, partnershipConfigPack.postingRules) &&
-        Objects.equals(this.generalLedgerProfileCode, partnershipConfigPack.generalLedgerProfileCode);
+        Objects.equals(this.generalLedgerProfileCode, partnershipConfigPack.generalLedgerProfileCode) &&
+        Objects.equals(this.typeContracts, partnershipConfigPack.typeContracts);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -282,7 +317,7 @@ public class PartnershipConfigPack {
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, version, transactionTypes, chartOfAccounts, postingRules, generalLedgerProfileCode);
+    return Objects.hash(scope, code, version, transactionTypes, chartOfAccounts, postingRules, generalLedgerProfileCode, typeContracts);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -303,6 +338,7 @@ public class PartnershipConfigPack {
     sb.append("    chartOfAccounts: ").append(toIndentedString(chartOfAccounts)).append("\n");
     sb.append("    postingRules: ").append(toIndentedString(postingRules)).append("\n");
     sb.append("    generalLedgerProfileCode: ").append(toIndentedString(generalLedgerProfileCode)).append("\n");
+    sb.append("    typeContracts: ").append(toIndentedString(typeContracts)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -332,6 +368,7 @@ public class PartnershipConfigPack {
     openapiFields.add("chartOfAccounts");
     openapiFields.add("postingRules");
     openapiFields.add("generalLedgerProfileCode");
+    openapiFields.add("typeContracts");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -404,6 +441,20 @@ public class PartnershipConfigPack {
       };
       if ((jsonObj.get("generalLedgerProfileCode") != null && !jsonObj.get("generalLedgerProfileCode").isJsonNull()) && !jsonObj.get("generalLedgerProfileCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `generalLedgerProfileCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("generalLedgerProfileCode").toString()));
+      }
+      if (jsonObj.get("typeContracts") != null && !jsonObj.get("typeContracts").isJsonNull()) {
+        JsonArray jsonArraytypeContracts = jsonObj.getAsJsonArray("typeContracts");
+        if (jsonArraytypeContracts != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("typeContracts").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `typeContracts` to be an array in the JSON string but got `%s`", jsonObj.get("typeContracts").toString()));
+          }
+
+          // validate the optional field `typeContracts` (array)
+          for (int i = 0; i < jsonArraytypeContracts.size(); i++) {
+            PackTypeContract.validateJsonElement(jsonArraytypeContracts.get(i));
+          };
+        }
       }
   }
 

@@ -76,7 +76,7 @@ public class Portfolio {
   private ResourceId id;
 
   /**
-   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
+   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition, Composite.
    */
   @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
@@ -86,7 +86,9 @@ public class Portfolio {
     
     DERIVEDTRANSACTION("DerivedTransaction"),
     
-    SIMPLEPOSITION("SimplePosition");
+    SIMPLEPOSITION("SimplePosition"),
+    
+    COMPOSITE("Composite");
 
     private String value;
 
@@ -149,6 +151,10 @@ public class Portfolio {
   public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_ID = "parentPortfolioId";
   @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_ID)
   private ResourceId parentPortfolioId;
+
+  public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_IDS = "parentPortfolioIds";
+  @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_IDS)
+  private List<ResourceId> parentPortfolioIds;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -369,7 +375,7 @@ public class Portfolio {
   }
 
    /**
-   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition.
+   * The type of the portfolio. Available values: Transaction, Reference, DerivedTransaction, SimplePosition, Composite.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -485,6 +491,35 @@ public class Portfolio {
 
   public void setParentPortfolioId(ResourceId parentPortfolioId) {
     this.parentPortfolioId = parentPortfolioId;
+  }
+
+
+  public Portfolio parentPortfolioIds(List<ResourceId> parentPortfolioIds) {
+    
+    this.parentPortfolioIds = parentPortfolioIds;
+    return this;
+  }
+
+  public Portfolio addParentPortfolioIdsItem(ResourceId parentPortfolioIdsItem) {
+    if (this.parentPortfolioIds == null) {
+      this.parentPortfolioIds = new ArrayList<>();
+    }
+    this.parentPortfolioIds.add(parentPortfolioIdsItem);
+    return this;
+  }
+
+   /**
+   * The scope and code of each portfolio this portfolio takes its contents from: the parent of a derived transaction portfolio, or the constituents of a composite portfolio at the effective date. Empty for a portfolio with no parent.
+   * @return parentPortfolioIds
+  **/
+  @jakarta.annotation.Nullable
+  public List<ResourceId> getParentPortfolioIds() {
+    return parentPortfolioIds;
+  }
+
+
+  public void setParentPortfolioIds(List<ResourceId> parentPortfolioIds) {
+    this.parentPortfolioIds = parentPortfolioIds;
   }
 
 
@@ -1021,6 +1056,7 @@ public class Portfolio {
         Objects.equals(this.created, portfolio.created) &&
         Objects.equals(this.enablementDate, portfolio.enablementDate) &&
         Objects.equals(this.parentPortfolioId, portfolio.parentPortfolioId) &&
+        Objects.equals(this.parentPortfolioIds, portfolio.parentPortfolioIds) &&
         Objects.equals(this.version, portfolio.version) &&
         Objects.equals(this.stagedModifications, portfolio.stagedModifications) &&
         Objects.equals(this.isDerived, portfolio.isDerived) &&
@@ -1052,7 +1088,7 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, type, displayName, description, created, enablementDate, parentPortfolioId, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime, amortisationHorizon, whtParameters, links);
+    return Objects.hash(href, id, type, displayName, description, created, enablementDate, parentPortfolioId, parentPortfolioIds, version, stagedModifications, isDerived, baseCurrency, properties, relationships, instrumentScopes, accountingMethod, amortisationMethod, transactionTypeScope, cashGainLossCalculationDate, instrumentEventConfiguration, amortisationRuleSetId, taxRuleSetScope, settlementConfiguration, transactionExclusionFilter, taxLotSelectionCostBasis, fractionalUnitsTrueUpConfiguration, holdingsFungibility, chargeableGainsRegime, amortisationHorizon, whtParameters, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1074,6 +1110,7 @@ public class Portfolio {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    enablementDate: ").append(toIndentedString(enablementDate)).append("\n");
     sb.append("    parentPortfolioId: ").append(toIndentedString(parentPortfolioId)).append("\n");
+    sb.append("    parentPortfolioIds: ").append(toIndentedString(parentPortfolioIds)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    stagedModifications: ").append(toIndentedString(stagedModifications)).append("\n");
     sb.append("    isDerived: ").append(toIndentedString(isDerived)).append("\n");
@@ -1127,6 +1164,7 @@ public class Portfolio {
     openapiFields.add("created");
     openapiFields.add("enablementDate");
     openapiFields.add("parentPortfolioId");
+    openapiFields.add("parentPortfolioIds");
     openapiFields.add("version");
     openapiFields.add("stagedModifications");
     openapiFields.add("isDerived");
@@ -1196,6 +1234,20 @@ public class Portfolio {
       // validate the optional field `parentPortfolioId`
       if (jsonObj.get("parentPortfolioId") != null && !jsonObj.get("parentPortfolioId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("parentPortfolioId"));
+      }
+      if (jsonObj.get("parentPortfolioIds") != null && !jsonObj.get("parentPortfolioIds").isJsonNull()) {
+        JsonArray jsonArrayparentPortfolioIds = jsonObj.getAsJsonArray("parentPortfolioIds");
+        if (jsonArrayparentPortfolioIds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("parentPortfolioIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `parentPortfolioIds` to be an array in the JSON string but got `%s`", jsonObj.get("parentPortfolioIds").toString()));
+          }
+
+          // validate the optional field `parentPortfolioIds` (array)
+          for (int i = 0; i < jsonArrayparentPortfolioIds.size(); i++) {
+            ResourceId.validateJsonElement(jsonArrayparentPortfolioIds.get(i));
+          };
+        }
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

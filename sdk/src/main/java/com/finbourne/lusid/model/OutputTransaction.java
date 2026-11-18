@@ -310,6 +310,10 @@ public class OutputTransaction {
   @SerializedName(SERIALIZED_NAME_ENTITY_LINKS)
   private List<TransactionEntityLink> entityLinks;
 
+  public static final String SERIALIZED_NAME_SOURCE_PORTFOLIO_ID = "sourcePortfolioId";
+  @SerializedName(SERIALIZED_NAME_SOURCE_PORTFOLIO_ID)
+  private ResourceId sourcePortfolioId;
+
   public OutputTransaction() {
   }
 
@@ -1330,6 +1334,27 @@ public class OutputTransaction {
   }
 
 
+  public OutputTransaction sourcePortfolioId(ResourceId sourcePortfolioId) {
+    
+    this.sourcePortfolioId = sourcePortfolioId;
+    return this;
+  }
+
+   /**
+   * Get sourcePortfolioId
+   * @return sourcePortfolioId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getSourcePortfolioId() {
+    return sourcePortfolioId;
+  }
+
+
+  public void setSourcePortfolioId(ResourceId sourcePortfolioId) {
+    this.sourcePortfolioId = sourcePortfolioId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -1384,7 +1409,8 @@ public class OutputTransaction {
         Objects.equals(this.resolvedCustodianAccounts, outputTransaction.resolvedCustodianAccounts) &&
         Objects.equals(this.unresolvedCustodianAccounts, outputTransaction.unresolvedCustodianAccounts) &&
         Objects.equals(this.isExcluded, outputTransaction.isExcluded) &&
-        Objects.equals(this.entityLinks, outputTransaction.entityLinks);
+        Objects.equals(this.entityLinks, outputTransaction.entityLinks) &&
+        Objects.equals(this.sourcePortfolioId, outputTransaction.sourcePortfolioId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -1393,7 +1419,7 @@ public class OutputTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications, custodianEntries, resolvedCustodianAccounts, unresolvedCustodianAccounts, isExcluded, entityLinks);
+    return Objects.hash(transactionId, type, description, instrumentIdentifiers, instrumentScope, instrumentUid, transactionDate, settlementDate, units, transactionAmount, transactionPrice, totalConsideration, exchangeRate, transactionToPortfolioRate, transactionCurrency, properties, counterpartyId, source, transactionStatus, entryDateTime, cancelDateTime, realisedGainLoss, holdingIds, sourceType, sourceInstrumentEventId, custodianAccount, transactionGroupId, resolvedTransactionTypeDetails, grossTransactionAmount, otcConfirmation, orderId, allocationId, accountingDate, economics, dataModelMembership, sequence, sequencePriority, settlementSummary, version, stagedModifications, custodianEntries, resolvedCustodianAccounts, unresolvedCustodianAccounts, isExcluded, entityLinks, sourcePortfolioId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1452,6 +1478,7 @@ public class OutputTransaction {
     sb.append("    unresolvedCustodianAccounts: ").append(toIndentedString(unresolvedCustodianAccounts)).append("\n");
     sb.append("    isExcluded: ").append(toIndentedString(isExcluded)).append("\n");
     sb.append("    entityLinks: ").append(toIndentedString(entityLinks)).append("\n");
+    sb.append("    sourcePortfolioId: ").append(toIndentedString(sourcePortfolioId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -1519,6 +1546,7 @@ public class OutputTransaction {
     openapiFields.add("unresolvedCustodianAccounts");
     openapiFields.add("isExcluded");
     openapiFields.add("entityLinks");
+    openapiFields.add("sourcePortfolioId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1717,6 +1745,10 @@ public class OutputTransaction {
             TransactionEntityLink.validateJsonElement(jsonArrayentityLinks.get(i));
           };
         }
+      }
+      // validate the optional field `sourcePortfolioId`
+      if (jsonObj.get("sourcePortfolioId") != null && !jsonObj.get("sourcePortfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("sourcePortfolioId"));
       }
   }
 
