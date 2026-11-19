@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **margin** | **java.math.BigDecimal** | The margin over the reference rate, expressed as a decimal. Must be zero or greater. | [default to java.math.BigDecimal]
 **commitmentFeeRate** | **java.math.BigDecimal** | The annual commitment fee rate charged on the undrawn balance, expressed as a decimal. Must be zero or greater. | [default to java.math.BigDecimal]
 **dayCountConvention** | **String** | The day count convention used to accrue interest. One of: Act360, Act365, Act365F, Thirty360. | [default to String]
+**availableFrom** | [**OffsetDateTime**](OffsetDateTime.md) | The first date the Facility may be drawn, inclusive. A draw dated before it is refused. Required on creation; a Facility stored without one may be drawn on any date. | [default to OffsetDateTime]
+**maturityDate** | [**OffsetDateTime**](OffsetDateTime.md) | The last date the Facility may be drawn, inclusive. A draw dated after it is refused; a repayment is not. Optional; omit for a Facility with no maturity. | [optional] [default to OffsetDateTime]
+**limitChanges** | [**List&lt;FacilityLimitChange&gt;**](FacilityLimitChange.md) | Changes to the committed limit after the initial limit, each in force from its effective date until the next. Each must take effect after AvailableFrom and, when set, on or before MaturityDate. A draw is held to the limit in force on its date. | [optional] [default to List<FacilityLimitChange>]
 
 ```java
 import com.finbourne.lusid.model.FacilityRequest;
@@ -31,6 +34,9 @@ String Currency = "example Currency";
 java.math.BigDecimal Margin = new java.math.BigDecimal("100.00");
 java.math.BigDecimal CommitmentFeeRate = new java.math.BigDecimal("100.00");
 String DayCountConvention = "example DayCountConvention";
+OffsetDateTime AvailableFrom = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime MaturityDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable List<FacilityLimitChange> LimitChanges = new List<FacilityLimitChange>();
 
 
 FacilityRequest facilityRequestInstance = new FacilityRequest()
@@ -43,7 +49,10 @@ FacilityRequest facilityRequestInstance = new FacilityRequest()
     .RateReference(RateReference)
     .Margin(Margin)
     .CommitmentFeeRate(CommitmentFeeRate)
-    .DayCountConvention(DayCountConvention);
+    .DayCountConvention(DayCountConvention)
+    .AvailableFrom(AvailableFrom)
+    .MaturityDate(MaturityDate)
+    .LimitChanges(LimitChanges);
 ```
 
 

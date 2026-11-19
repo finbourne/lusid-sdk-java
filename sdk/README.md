@@ -438,6 +438,7 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**runPartnerAllocations**](docs/FundsApi.md#runpartnerallocations) | **POST** /api/funds/{scope}/{code}/partnerallocations/$run | [EARLY ACCESS] RunPartnerAllocations: [EXPERIMENTAL] RunPartnerAllocations: Allocate a period's income to the Fund's partners.
 *FundsApi* | [**sendBackTaxReturn**](docs/FundsApi.md#sendbacktaxreturn) | **POST** /api/funds/{scope}/{code}/tax/return/send-back | [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step.
 *FundsApi* | [**setShareClassInstruments**](docs/FundsApi.md#setshareclassinstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
+*FundsApi* | [**updateFacility**](docs/FundsApi.md#updatefacility) | **PUT** /api/funds/{scope}/{code}/facilities/{facilityCode} | [EXPERIMENTAL] UpdateFacility: [EXPERIMENTAL] UpdateFacility: Update a Facility.
 *FundsApi* | [**updateValuationPoint**](docs/FundsApi.md#updatevaluationpoint) | **PUT** /api/funds/{scope}/{code}/valuationpoints | [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point.
 *FundsApi* | [**upsertBookmark**](docs/FundsApi.md#upsertbookmark) | **POST** /api/funds/{scope}/{code}/bookmarks | [EARLY ACCESS] UpsertBookmark: Upsert a bookmark.
 *FundsApi* | [**upsertDiaryEntryTypeValuationPoint**](docs/FundsApi.md#upsertdiaryentrytypevaluationpoint) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EARLY ACCESS] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point.
@@ -1055,6 +1056,8 @@ Class | Method | HTTP request | Description
  - [AllocationEventNoticeEvent](docs/AllocationEventNoticeEvent.md)
  - [AllocationEventNoticeLine](docs/AllocationEventNoticeLine.md)
  - [AllocationEventNoticePartner](docs/AllocationEventNoticePartner.md)
+ - [AllocationEventNoticePartnerLine](docs/AllocationEventNoticePartnerLine.md)
+ - [AllocationEventNoticeTransfer](docs/AllocationEventNoticeTransfer.md)
  - [AllocationEventNoticeUnfundedReconciliation](docs/AllocationEventNoticeUnfundedReconciliation.md)
  - [AllocationEventNoticeWire](docs/AllocationEventNoticeWire.md)
  - [AllocationEventReallocateRequest](docs/AllocationEventReallocateRequest.md)
@@ -1643,6 +1646,7 @@ Class | Method | HTTP request | Description
  - [FacilityCommitmentFeeEvent](docs/FacilityCommitmentFeeEvent.md)
  - [FacilityDrawEvent](docs/FacilityDrawEvent.md)
  - [FacilityInterestEvent](docs/FacilityInterestEvent.md)
+ - [FacilityLimitChange](docs/FacilityLimitChange.md)
  - [FacilityRepaymentEvent](docs/FacilityRepaymentEvent.md)
  - [FacilityRequest](docs/FacilityRequest.md)
  - [Fee](docs/Fee.md)
@@ -2232,6 +2236,7 @@ Class | Method | HTTP request | Description
  - [PartnerCapitalAccountMemo](docs/PartnerCapitalAccountMemo.md)
  - [PartnerCapitalAccountRow](docs/PartnerCapitalAccountRow.md)
  - [PartnerCapitalAccountRowDetail](docs/PartnerCapitalAccountRowDetail.md)
+ - [PartnerInterestShare](docs/PartnerInterestShare.md)
  - [PartnerPerformance](docs/PartnerPerformance.md)
  - [PartnerPerformanceCashFlow](docs/PartnerPerformanceCashFlow.md)
  - [PartnerPerformanceMeasures](docs/PartnerPerformanceMeasures.md)

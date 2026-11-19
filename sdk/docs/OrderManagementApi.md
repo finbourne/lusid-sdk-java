@@ -851,7 +851,7 @@ public class OrderManagementApiExample {
 
 ## runAllocationService
 
-> AllocationServiceRunResponse runAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect)
+> AllocationServiceRunResponse runAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect, dryRun)
 
 RunAllocationService: Runs the Allocation Service
 
@@ -899,11 +899,12 @@ public class OrderManagementApiExample {
         List<ResourceId> resourceId = Arrays.asList(); // List<ResourceId> | The List of Placement IDs for which you wish to allocate Executions.
         String allocationAlgorithm = "allocationAlgorithm_example"; // String | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \"PR-FIFO\".  This defaults to \"PR-FIFO\".
         Boolean cancelAndCorrect = true; // Boolean | Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to true. Set to false to leave allocations with booked transactions untouched.
+        Boolean dryRun = false; // Boolean | When true, the allocations are computed and returned as the run would create them, but nothing is written  and no booked transactions are cancelled. Allocations the run would create carry placeholder identifiers  prefixed \"preview-\" rather than the identifiers a real run would assign. Because nothing is written, the  property entitlement and validation checks made when allocations are stored do not run, so a dry run can  succeed where the real run would be refused, and property values are returned as computed rather than as  their property definitions type them. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect).execute(opts);
+            // AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect, dryRun).execute(opts);
 
-            AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect).execute();
+            AllocationServiceRunResponse result = apiInstance.runAllocationService(resourceId, allocationAlgorithm, cancelAndCorrect, dryRun).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrderManagementApi#runAllocationService");
@@ -923,6 +924,7 @@ public class OrderManagementApiExample {
 | **resourceId** | [**List&lt;ResourceId&gt;**](ResourceId.md)| The List of Placement IDs for which you wish to allocate Executions. | |
 | **allocationAlgorithm** | **String**| A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-FIFO\&quot;.  This defaults to \&quot;PR-FIFO\&quot;. | [optional] |
 | **cancelAndCorrect** | **Boolean**| Whether to re-allocate allocations that already have booked transactions or to skip them.  The transactions booked against the re-allocated allocations are cancelled, and a subsequent call to  BookTransactions books corrected ones.  Defaults to true. Set to false to leave allocations with booked transactions untouched. | [optional] [default to true] |
+| **dryRun** | **Boolean**| When true, the allocations are computed and returned as the run would create them, but nothing is written  and no booked transactions are cancelled. Allocations the run would create carry placeholder identifiers  prefixed \&quot;preview-\&quot; rather than the identifiers a real run would assign. Because nothing is written, the  property entitlement and validation checks made when allocations are stored do not run, so a dry run can  succeed where the real run would be refused, and property values are returned as computed rather than as  their property definitions type them. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 
@@ -946,7 +948,7 @@ public class OrderManagementApiExample {
 
 ## runAllocationServiceWithWeights
 
-> AllocationServiceRunResponse runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect)
+> AllocationServiceRunResponse runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, dryRun)
 
 RunAllocationServiceWithWeights: Runs the Allocation Service with portfolio weights
 
@@ -994,11 +996,12 @@ public class OrderManagementApiExample {
         WeightedAllocationServiceRunRequest weightedAllocationServiceRunRequest = new WeightedAllocationServiceRunRequest(); // WeightedAllocationServiceRunRequest | The placement IDs to allocate against, and the portfolio weights to use for the allocation split.
         String allocationAlgorithm = "allocationAlgorithm_example"; // String | A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \"PR-LF\".  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \"PR-LF\". Valid values are \"PR-LF\", \"PR-SF\", \"LF\", \"SF\".
         Boolean cancelAndCorrect = true; // Boolean | Whether to cancel the transactions booked against this placement's allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place.
+        Boolean dryRun = false; // Boolean | When true, the allocations are computed and returned as the run would create them, but nothing is written  and no booked transactions are cancelled. Allocations the run would create carry placeholder identifiers  prefixed \"preview-\" rather than the identifiers a real run would assign. Because nothing is written, the  property entitlement and validation checks made when allocations are stored do not run, so a dry run can  succeed where the real run would be refused, and property values are returned as computed rather than as  their property definitions type them. Defaults to false.
         try {
             // uncomment the below to set overrides at the request level
-            // AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect).execute(opts);
+            // AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, dryRun).execute(opts);
 
-            AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect).execute();
+            AllocationServiceRunResponse result = apiInstance.runAllocationServiceWithWeights(weightedAllocationServiceRunRequest, allocationAlgorithm, cancelAndCorrect, dryRun).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling OrderManagementApi#runAllocationServiceWithWeights");
@@ -1018,6 +1021,7 @@ public class OrderManagementApiExample {
 | **weightedAllocationServiceRunRequest** | [**WeightedAllocationServiceRunRequest**](WeightedAllocationServiceRunRequest.md)| The placement IDs to allocate against, and the portfolio weights to use for the allocation split. | |
 | **allocationAlgorithm** | **String**| A string representation of the allocation algorithm you would like to use to allocate shares from executions e.g. \&quot;PR-LF\&quot;.  Allocating with weights means the base algorithm is always pro-rata, and the orphan allocation algorithm is either Largest First or Smallest First.  This defaults to \&quot;PR-LF\&quot;. Valid values are \&quot;PR-LF\&quot;, \&quot;PR-SF\&quot;, \&quot;LF\&quot;, \&quot;SF\&quot;. | [optional] |
 | **cancelAndCorrect** | **Boolean**| Whether to cancel the transactions booked against this placement&#39;s allocations once the run has re-split the  full executed quantity by the weights. A subsequent call to BookTransactions then books corrected ones.  Defaults to true. Set to false to leave the booked transactions in place. | [optional] [default to true] |
+| **dryRun** | **Boolean**| When true, the allocations are computed and returned as the run would create them, but nothing is written  and no booked transactions are cancelled. Allocations the run would create carry placeholder identifiers  prefixed \&quot;preview-\&quot; rather than the identifiers a real run would assign. Because nothing is written, the  property entitlement and validation checks made when allocations are stored do not run, so a dry run can  succeed where the real run would be refused, and property values are returned as computed rather than as  their property definitions type them. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 

@@ -61,6 +61,10 @@ public class AllocationEventNoticeCumulative {
   @SerializedName(SERIALIZED_NAME_RECALLABLE)
   private java.math.BigDecimal recallable;
 
+  public static final String SERIALIZED_NAME_TAX_WITHHELD = "taxWithheld";
+  @SerializedName(SERIALIZED_NAME_TAX_WITHHELD)
+  private java.math.BigDecimal taxWithheld;
+
   public AllocationEventNoticeCumulative() {
   }
 
@@ -92,7 +96,7 @@ public class AllocationEventNoticeCumulative {
   }
 
    /**
-   * Cumulative distributions after the event.
+   * Cumulative distributions after the event, tax withheld on the partner&#39;s behalf included, as the capital account&#39;s distributions row counts them.
    * @return distributions
   **/
   @jakarta.annotation.Nonnull
@@ -127,6 +131,27 @@ public class AllocationEventNoticeCumulative {
   }
 
 
+  public AllocationEventNoticeCumulative taxWithheld(java.math.BigDecimal taxWithheld) {
+    
+    this.taxWithheld = taxWithheld;
+    return this;
+  }
+
+   /**
+   * Tax withheld from the partner&#39;s distributions to date and paid to the tax authority on its behalf: counted in the cumulative distributions, so the cash the partner actually received is distributions less this.
+   * @return taxWithheld
+  **/
+  @jakarta.annotation.Nonnull
+  public java.math.BigDecimal getTaxWithheld() {
+    return taxWithheld;
+  }
+
+
+  public void setTaxWithheld(java.math.BigDecimal taxWithheld) {
+    this.taxWithheld = taxWithheld;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +164,13 @@ public class AllocationEventNoticeCumulative {
     AllocationEventNoticeCumulative allocationEventNoticeCumulative = (AllocationEventNoticeCumulative) o;
     return (this.contributions.compareTo(allocationEventNoticeCumulative.getContributions()) == 0) &&
         (this.distributions.compareTo(allocationEventNoticeCumulative.getDistributions()) == 0) &&
-        (this.recallable.compareTo(allocationEventNoticeCumulative.getRecallable()) == 0);
+        (this.recallable.compareTo(allocationEventNoticeCumulative.getRecallable()) == 0) &&
+        (this.taxWithheld.compareTo(allocationEventNoticeCumulative.getTaxWithheld()) == 0);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contributions, distributions, recallable);
+    return Objects.hash(contributions, distributions, recallable, taxWithheld);
   }
 
   @Override
@@ -154,6 +180,7 @@ public class AllocationEventNoticeCumulative {
     sb.append("    contributions: ").append(toIndentedString(contributions)).append("\n");
     sb.append("    distributions: ").append(toIndentedString(distributions)).append("\n");
     sb.append("    recallable: ").append(toIndentedString(recallable)).append("\n");
+    sb.append("    taxWithheld: ").append(toIndentedString(taxWithheld)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,12 +206,14 @@ public class AllocationEventNoticeCumulative {
     openapiFields.add("contributions");
     openapiFields.add("distributions");
     openapiFields.add("recallable");
+    openapiFields.add("taxWithheld");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("contributions");
     openapiRequiredFields.add("distributions");
     openapiRequiredFields.add("recallable");
+    openapiRequiredFields.add("taxWithheld");
   }
 
  /**

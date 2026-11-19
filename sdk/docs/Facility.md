@@ -15,6 +15,10 @@ Name | Type | Description | Notes
 **margin** | **java.math.BigDecimal** | The margin over the reference rate, expressed as a decimal. Must be zero or greater. | [default to java.math.BigDecimal]
 **commitmentFeeRate** | **java.math.BigDecimal** | The annual commitment fee rate charged on the undrawn balance, expressed as a decimal. Must be zero or greater. | [default to java.math.BigDecimal]
 **dayCountConvention** | **String** | The day count convention used to accrue interest. One of: Act360, Act365, Act365F, Thirty360. | [default to String]
+**availableFrom** | [**OffsetDateTime**](OffsetDateTime.md) | The first date the Facility may be drawn, inclusive. A draw dated before it is refused. Required on creation; a Facility stored without one may be drawn on any date. | [optional] [default to OffsetDateTime]
+**maturityDate** | [**OffsetDateTime**](OffsetDateTime.md) | The last date the Facility may be drawn, inclusive. A draw dated after it is refused; a repayment is not. Optional; omit for a Facility with no maturity. | [optional] [default to OffsetDateTime]
+**limitChanges** | [**List&lt;FacilityLimitChange&gt;**](FacilityLimitChange.md) | Changes to the committed limit after the initial limit, each in force from its effective date until the next. Each must take effect after AvailableFrom and, when set, on or before MaturityDate. A draw is held to the limit in force on its date. | [optional] [default to List<FacilityLimitChange>]
+**warnings** | [**List&lt;Warning&gt;**](Warning.md) | Warnings about the Facility as stored, for example that its limit is now below what is already drawn. Only present on a successful update. | [optional] [default to List<Warning>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
@@ -35,6 +39,10 @@ String Currency = "example Currency";
 java.math.BigDecimal Margin = new java.math.BigDecimal("100.00");
 java.math.BigDecimal CommitmentFeeRate = new java.math.BigDecimal("100.00");
 String DayCountConvention = "example DayCountConvention";
+@jakarta.annotation.Nullable OffsetDateTime AvailableFrom = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime MaturityDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable List<FacilityLimitChange> LimitChanges = new List<FacilityLimitChange>();
+@jakarta.annotation.Nullable List<Warning> Warnings = new List<Warning>();
 Version Version = new Version();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
@@ -51,6 +59,10 @@ Facility facilityInstance = new Facility()
     .Margin(Margin)
     .CommitmentFeeRate(CommitmentFeeRate)
     .DayCountConvention(DayCountConvention)
+    .AvailableFrom(AvailableFrom)
+    .MaturityDate(MaturityDate)
+    .LimitChanges(LimitChanges)
+    .Warnings(Warnings)
     .Version(Version)
     .Links(Links);
 ```

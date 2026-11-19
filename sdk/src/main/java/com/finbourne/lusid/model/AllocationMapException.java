@@ -47,7 +47,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A departure from the default participation of an Allocation Map for one investor record.
+ * A departure from the default participation of an Allocation Map for one investor record or one of its register lines.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AllocationMapException {
@@ -70,6 +70,10 @@ public class AllocationMapException {
   public static final String SERIALIZED_NAME_EFFECTIVE_FROM = "effectiveFrom";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_FROM)
   private OffsetDateTime effectiveFrom;
+
+  public static final String SERIALIZED_NAME_COMMITMENT_LINE_ID = "commitmentLineId";
+  @SerializedName(SERIALIZED_NAME_COMMITMENT_LINE_ID)
+  private String commitmentLineId;
 
   public AllocationMapException() {
   }
@@ -179,6 +183,27 @@ public class AllocationMapException {
   }
 
 
+  public AllocationMapException commitmentLineId(String commitmentLineId) {
+    
+    this.commitmentLineId = commitmentLineId;
+    return this;
+  }
+
+   /**
+   * The register line of the investor record the exception applies to, when it applies to one line rather than the record as a whole. The record&#39;s other lines take part as usual: an Excluded line&#39;s basis leaves the event&#39;s basis total, and a FixedPercentage line takes its fixed share off the top. Optional.
+   * @return commitmentLineId
+  **/
+  @jakarta.annotation.Nullable
+  public String getCommitmentLineId() {
+    return commitmentLineId;
+  }
+
+
+  public void setCommitmentLineId(String commitmentLineId) {
+    this.commitmentLineId = commitmentLineId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -193,7 +218,8 @@ public class AllocationMapException {
         Objects.equals(this.treatment, allocationMapException.treatment) &&
         (this.participationPercent.compareTo(allocationMapException.getParticipationPercent()) == 0) &&
         Objects.equals(this.reason, allocationMapException.reason) &&
-        Objects.equals(this.effectiveFrom, allocationMapException.effectiveFrom);
+        Objects.equals(this.effectiveFrom, allocationMapException.effectiveFrom) &&
+        Objects.equals(this.commitmentLineId, allocationMapException.commitmentLineId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -202,7 +228,7 @@ public class AllocationMapException {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, treatment, participationPercent, reason, effectiveFrom);
+    return Objects.hash(investorRecordId, treatment, participationPercent, reason, effectiveFrom, commitmentLineId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -221,6 +247,7 @@ public class AllocationMapException {
     sb.append("    participationPercent: ").append(toIndentedString(participationPercent)).append("\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
+    sb.append("    commitmentLineId: ").append(toIndentedString(commitmentLineId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -248,6 +275,7 @@ public class AllocationMapException {
     openapiFields.add("participationPercent");
     openapiFields.add("reason");
     openapiFields.add("effectiveFrom");
+    openapiFields.add("commitmentLineId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -284,6 +312,9 @@ public class AllocationMapException {
       }
       if (!jsonObj.get("reason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
+      }
+      if ((jsonObj.get("commitmentLineId") != null && !jsonObj.get("commitmentLineId").isJsonNull()) && !jsonObj.get("commitmentLineId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `commitmentLineId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("commitmentLineId").toString()));
       }
   }
 

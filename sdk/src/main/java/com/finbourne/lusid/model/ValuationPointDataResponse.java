@@ -17,6 +17,7 @@ import com.finbourne.lusid.model.BucketSetSeed;
 import com.finbourne.lusid.model.FundDetails;
 import com.finbourne.lusid.model.FundValuationPointData;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PartnerInterestShare;
 import com.finbourne.lusid.model.ShareClassData;
 import com.finbourne.lusid.model.StagedModificationsInfo;
 import com.finbourne.lusid.model.ValuationPointDiagnostic;
@@ -121,6 +122,10 @@ public class ValuationPointDataResponse {
   public static final String SERIALIZED_NAME_BUCKET_SET_SEEDS = "bucketSetSeeds";
   @SerializedName(SERIALIZED_NAME_BUCKET_SET_SEEDS)
   private List<BucketSetSeed> bucketSetSeeds;
+
+  public static final String SERIALIZED_NAME_PARTNER_INTEREST_SHARES = "partnerInterestShares";
+  @SerializedName(SERIALIZED_NAME_PARTNER_INTEREST_SHARES)
+  private List<PartnerInterestShare> partnerInterestShares;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -484,6 +489,35 @@ public class ValuationPointDataResponse {
   }
 
 
+  public ValuationPointDataResponse partnerInterestShares(List<PartnerInterestShare> partnerInterestShares) {
+    
+    this.partnerInterestShares = partnerInterestShares;
+    return this;
+  }
+
+  public ValuationPointDataResponse addPartnerInterestSharesItem(PartnerInterestShare partnerInterestSharesItem) {
+    if (this.partnerInterestShares == null) {
+      this.partnerInterestShares = new ArrayList<>();
+    }
+    this.partnerInterestShares.add(partnerInterestSharesItem);
+    return this;
+  }
+
+   /**
+   * How each partner interest (LP, GP or carry) this fund holds in a partnership-enabled fund structure member flowed when the valuation point was struck: from the member&#39;s booked partner allocation to the holder&#39;s line, from a dry run of it while the member has not booked, at a provisional share of committed capital while the member cannot be allocated, or at the sharing percentage the fund structure edge declares. Absent when the fund holds none.
+   * @return partnerInterestShares
+  **/
+  @jakarta.annotation.Nullable
+  public List<PartnerInterestShare> getPartnerInterestShares() {
+    return partnerInterestShares;
+  }
+
+
+  public void setPartnerInterestShares(List<PartnerInterestShare> partnerInterestShares) {
+    this.partnerInterestShares = partnerInterestShares;
+  }
+
+
   public ValuationPointDataResponse links(List<Link> links) {
     
     this.links = links;
@@ -538,6 +572,7 @@ public class ValuationPointDataResponse {
         Objects.equals(this.applyClearDown, valuationPointDataResponse.applyClearDown) &&
         Objects.equals(this.diagnostics, valuationPointDataResponse.diagnostics) &&
         Objects.equals(this.bucketSetSeeds, valuationPointDataResponse.bucketSetSeeds) &&
+        Objects.equals(this.partnerInterestShares, valuationPointDataResponse.partnerInterestShares) &&
         Objects.equals(this.links, valuationPointDataResponse.links);
   }
 
@@ -547,7 +582,7 @@ public class ValuationPointDataResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, type, status, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, apportionmentResults, bucketSetResults, stagedModifications, isBackfilled, applyClearDown, diagnostics, bucketSetSeeds, links);
+    return Objects.hash(href, type, status, fundDetails, fundValuationPointData, shareClassData, valuationPointCode, previousValuationPointCode, apportionmentResults, bucketSetResults, stagedModifications, isBackfilled, applyClearDown, diagnostics, bucketSetSeeds, partnerInterestShares, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -576,6 +611,7 @@ public class ValuationPointDataResponse {
     sb.append("    applyClearDown: ").append(toIndentedString(applyClearDown)).append("\n");
     sb.append("    diagnostics: ").append(toIndentedString(diagnostics)).append("\n");
     sb.append("    bucketSetSeeds: ").append(toIndentedString(bucketSetSeeds)).append("\n");
+    sb.append("    partnerInterestShares: ").append(toIndentedString(partnerInterestShares)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -614,6 +650,7 @@ public class ValuationPointDataResponse {
     openapiFields.add("applyClearDown");
     openapiFields.add("diagnostics");
     openapiFields.add("bucketSetSeeds");
+    openapiFields.add("partnerInterestShares");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -731,6 +768,20 @@ public class ValuationPointDataResponse {
           // validate the optional field `bucketSetSeeds` (array)
           for (int i = 0; i < jsonArraybucketSetSeeds.size(); i++) {
             BucketSetSeed.validateJsonElement(jsonArraybucketSetSeeds.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("partnerInterestShares") != null && !jsonObj.get("partnerInterestShares").isJsonNull()) {
+        JsonArray jsonArraypartnerInterestShares = jsonObj.getAsJsonArray("partnerInterestShares");
+        if (jsonArraypartnerInterestShares != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("partnerInterestShares").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `partnerInterestShares` to be an array in the JSON string but got `%s`", jsonObj.get("partnerInterestShares").toString()));
+          }
+
+          // validate the optional field `partnerInterestShares` (array)
+          for (int i = 0; i < jsonArraypartnerInterestShares.size(); i++) {
+            PartnerInterestShare.validateJsonElement(jsonArraypartnerInterestShares.get(i));
           };
         }
       }

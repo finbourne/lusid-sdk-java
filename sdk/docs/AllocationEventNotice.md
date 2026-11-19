@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **gpColumn** | [**AllocationEventNoticeCumulative**](AllocationEventNoticeCumulative.md) |  | [optional] [default to AllocationEventNoticeCumulative]
 **wire** | [**AllocationEventNoticeWire**](AllocationEventNoticeWire.md) |  | [optional] [default to AllocationEventNoticeWire]
 **paymentHold** | [**AllocationPaymentHold**](AllocationPaymentHold.md) |  | [optional] [default to AllocationPaymentHold]
+**transfer** | [**AllocationEventNoticeTransfer**](AllocationEventNoticeTransfer.md) |  | [optional] [default to AllocationEventNoticeTransfer]
 **watermark** | **String** | DRAFT until the allocation event is booked, otherwise null. | [optional] [default to String]
 
 ```java
@@ -37,6 +38,7 @@ AllocationEventNoticeCumulative Cumulative = new AllocationEventNoticeCumulative
 AllocationEventNoticeCumulative GpColumn = new AllocationEventNoticeCumulative();
 AllocationEventNoticeWire Wire = new AllocationEventNoticeWire();
 AllocationPaymentHold PaymentHold = new AllocationPaymentHold();
+AllocationEventNoticeTransfer Transfer = new AllocationEventNoticeTransfer();
 @jakarta.annotation.Nullable String Watermark = "example Watermark";
 
 
@@ -53,6 +55,7 @@ AllocationEventNotice allocationEventNoticeInstance = new AllocationEventNotice(
     .GpColumn(GpColumn)
     .Wire(Wire)
     .PaymentHold(PaymentHold)
+    .Transfer(Transfer)
     .Watermark(Watermark);
 ```
 

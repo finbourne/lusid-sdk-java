@@ -11,8 +11,10 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.FacilityLimitChange;
 import com.finbourne.lusid.model.Link;
 import com.finbourne.lusid.model.Version;
+import com.finbourne.lusid.model.Warning;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -20,6 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.net.URI;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -98,6 +101,22 @@ public class Facility {
   public static final String SERIALIZED_NAME_DAY_COUNT_CONVENTION = "dayCountConvention";
   @SerializedName(SERIALIZED_NAME_DAY_COUNT_CONVENTION)
   private String dayCountConvention;
+
+  public static final String SERIALIZED_NAME_AVAILABLE_FROM = "availableFrom";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE_FROM)
+  private OffsetDateTime availableFrom;
+
+  public static final String SERIALIZED_NAME_MATURITY_DATE = "maturityDate";
+  @SerializedName(SERIALIZED_NAME_MATURITY_DATE)
+  private OffsetDateTime maturityDate;
+
+  public static final String SERIALIZED_NAME_LIMIT_CHANGES = "limitChanges";
+  @SerializedName(SERIALIZED_NAME_LIMIT_CHANGES)
+  private List<FacilityLimitChange> limitChanges;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<Warning> warnings;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -341,6 +360,106 @@ public class Facility {
   }
 
 
+  public Facility availableFrom(OffsetDateTime availableFrom) {
+    
+    this.availableFrom = availableFrom;
+    return this;
+  }
+
+   /**
+   * The first date the Facility may be drawn, inclusive. A draw dated before it is refused. Required on creation; a Facility stored without one may be drawn on any date.
+   * @return availableFrom
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getAvailableFrom() {
+    return availableFrom;
+  }
+
+
+  public void setAvailableFrom(OffsetDateTime availableFrom) {
+    this.availableFrom = availableFrom;
+  }
+
+
+  public Facility maturityDate(OffsetDateTime maturityDate) {
+    
+    this.maturityDate = maturityDate;
+    return this;
+  }
+
+   /**
+   * The last date the Facility may be drawn, inclusive. A draw dated after it is refused; a repayment is not. Optional; omit for a Facility with no maturity.
+   * @return maturityDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getMaturityDate() {
+    return maturityDate;
+  }
+
+
+  public void setMaturityDate(OffsetDateTime maturityDate) {
+    this.maturityDate = maturityDate;
+  }
+
+
+  public Facility limitChanges(List<FacilityLimitChange> limitChanges) {
+    
+    this.limitChanges = limitChanges;
+    return this;
+  }
+
+  public Facility addLimitChangesItem(FacilityLimitChange limitChangesItem) {
+    if (this.limitChanges == null) {
+      this.limitChanges = new ArrayList<>();
+    }
+    this.limitChanges.add(limitChangesItem);
+    return this;
+  }
+
+   /**
+   * Changes to the committed limit after the initial limit, each in force from its effective date until the next. Each must take effect after AvailableFrom and, when set, on or before MaturityDate. A draw is held to the limit in force on its date.
+   * @return limitChanges
+  **/
+  @jakarta.annotation.Nullable
+  public List<FacilityLimitChange> getLimitChanges() {
+    return limitChanges;
+  }
+
+
+  public void setLimitChanges(List<FacilityLimitChange> limitChanges) {
+    this.limitChanges = limitChanges;
+  }
+
+
+  public Facility warnings(List<Warning> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public Facility addWarningsItem(Warning warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Warnings about the Facility as stored, for example that its limit is now below what is already drawn. Only present on a successful update.
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<Warning> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<Warning> warnings) {
+    this.warnings = warnings;
+  }
+
+
   public Facility version(Version version) {
     
     this.version = version;
@@ -412,6 +531,10 @@ public class Facility {
         (this.margin.compareTo(facility.getMargin()) == 0) &&
         (this.commitmentFeeRate.compareTo(facility.getCommitmentFeeRate()) == 0) &&
         Objects.equals(this.dayCountConvention, facility.dayCountConvention) &&
+        Objects.equals(this.availableFrom, facility.availableFrom) &&
+        Objects.equals(this.maturityDate, facility.maturityDate) &&
+        Objects.equals(this.limitChanges, facility.limitChanges) &&
+        Objects.equals(this.warnings, facility.warnings) &&
         Objects.equals(this.version, facility.version) &&
         Objects.equals(this.links, facility.links);
   }
@@ -422,7 +545,7 @@ public class Facility {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, facilityCode, displayName, description, lender, limit, currency, rateReference, margin, commitmentFeeRate, dayCountConvention, version, links);
+    return Objects.hash(href, facilityCode, displayName, description, lender, limit, currency, rateReference, margin, commitmentFeeRate, dayCountConvention, availableFrom, maturityDate, limitChanges, warnings, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -447,6 +570,10 @@ public class Facility {
     sb.append("    margin: ").append(toIndentedString(margin)).append("\n");
     sb.append("    commitmentFeeRate: ").append(toIndentedString(commitmentFeeRate)).append("\n");
     sb.append("    dayCountConvention: ").append(toIndentedString(dayCountConvention)).append("\n");
+    sb.append("    availableFrom: ").append(toIndentedString(availableFrom)).append("\n");
+    sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
+    sb.append("    limitChanges: ").append(toIndentedString(limitChanges)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
@@ -482,6 +609,10 @@ public class Facility {
     openapiFields.add("margin");
     openapiFields.add("commitmentFeeRate");
     openapiFields.add("dayCountConvention");
+    openapiFields.add("availableFrom");
+    openapiFields.add("maturityDate");
+    openapiFields.add("limitChanges");
+    openapiFields.add("warnings");
     openapiFields.add("version");
     openapiFields.add("links");
 
@@ -539,6 +670,34 @@ public class Facility {
       }
       if (!jsonObj.get("dayCountConvention").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dayCountConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dayCountConvention").toString()));
+      }
+      if (jsonObj.get("limitChanges") != null && !jsonObj.get("limitChanges").isJsonNull()) {
+        JsonArray jsonArraylimitChanges = jsonObj.getAsJsonArray("limitChanges");
+        if (jsonArraylimitChanges != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("limitChanges").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `limitChanges` to be an array in the JSON string but got `%s`", jsonObj.get("limitChanges").toString()));
+          }
+
+          // validate the optional field `limitChanges` (array)
+          for (int i = 0; i < jsonArraylimitChanges.size(); i++) {
+            FacilityLimitChange.validateJsonElement(jsonArraylimitChanges.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            Warning.validateJsonElement(jsonArraywarnings.get(i));
+          };
+        }
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

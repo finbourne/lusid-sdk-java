@@ -11,13 +11,16 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AllocationEventNoticePartnerLine;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -61,6 +64,10 @@ public class AllocationEventNoticePartner {
   public static final String SERIALIZED_NAME_COMMITMENT = "commitment";
   @SerializedName(SERIALIZED_NAME_COMMITMENT)
   private java.math.BigDecimal commitment;
+
+  public static final String SERIALIZED_NAME_LINES = "lines";
+  @SerializedName(SERIALIZED_NAME_LINES)
+  private List<AllocationEventNoticePartnerLine> lines;
 
   public AllocationEventNoticePartner() {
   }
@@ -114,7 +121,7 @@ public class AllocationEventNoticePartner {
   }
 
    /**
-   * The partner&#39;s total commitment.
+   * The partner&#39;s committed capital on the fund the event allocates over at the event date, summed over the lines the event allocates to there; for a partner looked through to, its line on the feeder. Never the partner&#39;s total across funds.
    * @return commitment
   **/
   @jakarta.annotation.Nonnull
@@ -125,6 +132,35 @@ public class AllocationEventNoticePartner {
 
   public void setCommitment(java.math.BigDecimal commitment) {
     this.commitment = commitment;
+  }
+
+
+  public AllocationEventNoticePartner lines(List<AllocationEventNoticePartnerLine> lines) {
+    
+    this.lines = lines;
+    return this;
+  }
+
+  public AllocationEventNoticePartner addLinesItem(AllocationEventNoticePartnerLine linesItem) {
+    if (this.lines == null) {
+      this.lines = new ArrayList<>();
+    }
+    this.lines.add(linesItem);
+    return this;
+  }
+
+   /**
+   * The register lines the partner was allocated on, one per line, each with the fund whose register holds it, its commitment at the event date and the partner&#39;s share landing on it. The shares sum to the net amount due before tax withheld.
+   * @return lines
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationEventNoticePartnerLine> getLines() {
+    return lines;
+  }
+
+
+  public void setLines(List<AllocationEventNoticePartnerLine> lines) {
+    this.lines = lines;
   }
 
 
@@ -140,7 +176,8 @@ public class AllocationEventNoticePartner {
     AllocationEventNoticePartner allocationEventNoticePartner = (AllocationEventNoticePartner) o;
     return Objects.equals(this.investorRecordId, allocationEventNoticePartner.investorRecordId) &&
         Objects.equals(this.displayName, allocationEventNoticePartner.displayName) &&
-        (this.commitment.compareTo(allocationEventNoticePartner.getCommitment()) == 0);
+        (this.commitment.compareTo(allocationEventNoticePartner.getCommitment()) == 0) &&
+        Objects.equals(this.lines, allocationEventNoticePartner.lines);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -149,7 +186,7 @@ public class AllocationEventNoticePartner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(investorRecordId, displayName, commitment);
+    return Objects.hash(investorRecordId, displayName, commitment, lines);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -166,6 +203,7 @@ public class AllocationEventNoticePartner {
     sb.append("    investorRecordId: ").append(toIndentedString(investorRecordId)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    commitment: ").append(toIndentedString(commitment)).append("\n");
+    sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -191,6 +229,7 @@ public class AllocationEventNoticePartner {
     openapiFields.add("investorRecordId");
     openapiFields.add("displayName");
     openapiFields.add("commitment");
+    openapiFields.add("lines");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -223,6 +262,20 @@ public class AllocationEventNoticePartner {
       }
       if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
+      if (jsonObj.get("lines") != null && !jsonObj.get("lines").isJsonNull()) {
+        JsonArray jsonArraylines = jsonObj.getAsJsonArray("lines");
+        if (jsonArraylines != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("lines").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `lines` to be an array in the JSON string but got `%s`", jsonObj.get("lines").toString()));
+          }
+
+          // validate the optional field `lines` (array)
+          for (int i = 0; i < jsonArraylines.size(); i++) {
+            AllocationEventNoticePartnerLine.validateJsonElement(jsonArraylines.get(i));
+          };
+        }
       }
   }
 

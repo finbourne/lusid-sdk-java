@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10685
+  version: 0.11.10691
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -56673,6 +56673,11 @@ paths:
               margin: 0.0175
               commitmentFeeRate: 0.0035
               dayCountConvention: Act360
+              availableFrom: 2024-01-01T00:00:00.0000000+00:00
+              maturityDate: 2026-12-31T00:00:00.0000000+00:00
+              limitChanges:
+              - effectiveFrom: 2025-01-01T00:00:00.0000000+00:00
+                limit: 75000000
             schema:
               $ref: '#/components/schemas/FacilityRequest'
           application/json:
@@ -56687,6 +56692,11 @@ paths:
               margin: 0.0175
               commitmentFeeRate: 0.0035
               dayCountConvention: Act360
+              availableFrom: 2024-01-01T00:00:00.0000000+00:00
+              maturityDate: 2026-12-31T00:00:00.0000000+00:00
+              limitChanges:
+              - effectiveFrom: 2025-01-01T00:00:00.0000000+00:00
+                limit: 75000000
             schema:
               $ref: '#/components/schemas/FacilityRequest'
           text/json:
@@ -56701,6 +56711,11 @@ paths:
               margin: 0.0175
               commitmentFeeRate: 0.0035
               dayCountConvention: Act360
+              availableFrom: 2024-01-01T00:00:00.0000000+00:00
+              maturityDate: 2026-12-31T00:00:00.0000000+00:00
+              limitChanges:
+              - effectiveFrom: 2025-01-01T00:00:00.0000000+00:00
+                limit: 75000000
             schema:
               $ref: '#/components/schemas/FacilityRequest'
           application/*+json:
@@ -56715,6 +56730,11 @@ paths:
               margin: 0.0175
               commitmentFeeRate: 0.0035
               dayCountConvention: Act360
+              availableFrom: 2024-01-01T00:00:00.0000000+00:00
+              maturityDate: 2026-12-31T00:00:00.0000000+00:00
+              limitChanges:
+              - effectiveFrom: 2025-01-01T00:00:00.0000000+00:00
+                limit: 75000000
             schema:
               $ref: '#/components/schemas/FacilityRequest'
         description: The Facility to create.
@@ -56940,6 +56960,168 @@ paths:
       tags:
       - Funds
       x-fbn-apistatus: Experimental
+      x-accepts: application/json
+    put:
+      description: "Replace the definition of a Facility of a Fund. The code, the\
+        \ Fund and the currency cannot change. Lowering\r\nthe limit below what is\
+        \ already drawn is accepted and the response carries a warning: the draws\
+        \ already\r\nbooked stand, and further draws are refused until the Facility\
+        \ is repaid within its limit."
+      operationId: UpdateFacility
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Facility to update.
+        explode: false
+        in: path
+        name: facilityCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              code: FacilityCode
+              displayName: Revolving Credit Facility
+              description: Subscription line with Bank A
+              lender: Bank A
+              limit: 50000000
+              currency: USD
+              rateReference: SOFR
+              margin: 0.0175
+              commitmentFeeRate: 0.0035
+              dayCountConvention: Act360
+              availableFrom: 2024-01-01T00:00:00.0000000+00:00
+              maturityDate: 2026-12-31T00:00:00.0000000+00:00
+              limitChanges:
+              - effectiveFrom: 2025-01-01T00:00:00.0000000+00:00
+                limit: 75000000
+            schema:
+              $ref: '#/components/schemas/FacilityRequest'
+          application/json:
+            example:
+              code: FacilityCode
+              displayName: Revolving Credit Facility
+              description: Subscription line with Bank A
+              lender: Bank A
+              limit: 50000000
+              currency: USD
+              rateReference: SOFR
+              margin: 0.0175
+              commitmentFeeRate: 0.0035
+              dayCountConvention: Act360
+              availableFrom: 2024-01-01T00:00:00.0000000+00:00
+              maturityDate: 2026-12-31T00:00:00.0000000+00:00
+              limitChanges:
+              - effectiveFrom: 2025-01-01T00:00:00.0000000+00:00
+                limit: 75000000
+            schema:
+              $ref: '#/components/schemas/FacilityRequest'
+          text/json:
+            example:
+              code: FacilityCode
+              displayName: Revolving Credit Facility
+              description: Subscription line with Bank A
+              lender: Bank A
+              limit: 50000000
+              currency: USD
+              rateReference: SOFR
+              margin: 0.0175
+              commitmentFeeRate: 0.0035
+              dayCountConvention: Act360
+              availableFrom: 2024-01-01T00:00:00.0000000+00:00
+              maturityDate: 2026-12-31T00:00:00.0000000+00:00
+              limitChanges:
+              - effectiveFrom: 2025-01-01T00:00:00.0000000+00:00
+                limit: 75000000
+            schema:
+              $ref: '#/components/schemas/FacilityRequest'
+          application/*+json:
+            example:
+              code: FacilityCode
+              displayName: Revolving Credit Facility
+              description: Subscription line with Bank A
+              lender: Bank A
+              limit: 50000000
+              currency: USD
+              rateReference: SOFR
+              margin: 0.0175
+              commitmentFeeRate: 0.0035
+              dayCountConvention: Act360
+              availableFrom: 2024-01-01T00:00:00.0000000+00:00
+              maturityDate: 2026-12-31T00:00:00.0000000+00:00
+              limitChanges:
+              - effectiveFrom: 2025-01-01T00:00:00.0000000+00:00
+                limit: 75000000
+            schema:
+              $ref: '#/components/schemas/FacilityRequest'
+        description: The Facility definition to store.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Facility'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Facility'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Facility'
+          description: The updated Facility.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] UpdateFacility: [EXPERIMENTAL] UpdateFacility: Update\
+        \ a Facility."
+      tags:
+      - Funds
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/funds/{scope}/{code}/fees:
     get:
@@ -99682,6 +99864,24 @@ paths:
           type: boolean
         style: form
         x-nullable: true
+      - description: "When true, the allocations are computed and returned as the\
+          \ run would create them, but nothing is written\r\nand no booked transactions\
+          \ are cancelled. Allocations the run would create carry placeholder identifiers\r\
+          \nprefixed \"preview-\" rather than the identifiers a real run would assign.\
+          \ Because nothing is written, the\r\nproperty entitlement and validation\
+          \ checks made when allocations are stored do not run, so a dry run can\r\
+          \nsucceed where the real run would be refused, and property values are returned\
+          \ as computed rather than as\r\ntheir property definitions type them. Defaults\
+          \ to false."
+        explode: true
+        in: query
+        name: dryRun
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -100034,6 +100234,24 @@ paths:
         required: false
         schema:
           default: true
+          type: boolean
+        style: form
+        x-nullable: true
+      - description: "When true, the allocations are computed and returned as the\
+          \ run would create them, but nothing is written\r\nand no booked transactions\
+          \ are cancelled. Allocations the run would create carry placeholder identifiers\r\
+          \nprefixed \"preview-\" rather than the identifiers a real run would assign.\
+          \ Because nothing is written, the\r\nproperty entitlement and validation\
+          \ checks made when allocations are stored do not run, so a dry run can\r\
+          \nsucceed where the real run would be refused, and property values are returned\
+          \ as computed rather than as\r\ntheir property definitions type them. Defaults\
+          \ to false."
+        explode: true
+        in: query
+        name: dryRun
+        required: false
+        schema:
+          default: false
           type: boolean
         style: form
         x-nullable: true
@@ -195027,6 +195245,17 @@ components:
               - absoluteValue: 1.4658129805029452
                 bucketId: bucketId
                 perUnitValue: 5.962133916683182
+          partnerInterestShares:
+          - reason: reason
+            member: member
+            holder: holder
+            shareSource: shareSource
+            viaInstrumentId: viaInstrumentId
+          - reason: reason
+            member: member
+            holder: holder
+            shareSource: shareSource
+            viaInstrumentId: viaInstrumentId
           links:
           - method: method
             description: description
@@ -195857,6 +196086,17 @@ components:
               - absoluteValue: 1.4658129805029452
                 bucketId: bucketId
                 perUnitValue: 5.962133916683182
+          partnerInterestShares:
+          - reason: reason
+            member: member
+            holder: holder
+            shareSource: shareSource
+            viaInstrumentId: viaInstrumentId
+          - reason: reason
+            member: member
+            holder: holder
+            shareSource: shareSource
+            viaInstrumentId: viaInstrumentId
           links:
           - method: method
             description: description
@@ -201794,14 +202034,16 @@ components:
       example:
         watermark: watermark
         gpColumn:
-          contributions: 1.2315135367772556
-          recallable: 1.4894159098541704
-          distributions: 1.0246457001441578
-        netAmountDue: 5.962133916683182
+          contributions: 1.4894159098541704
+          recallable: 7.457744773683766
+          distributions: 6.84685269835264
+          taxWithheld: 1.1730742509559433
+        netAmountDue: 2.3021358869347655
         cumulative:
-          contributions: 1.2315135367772556
-          recallable: 1.4894159098541704
-          distributions: 1.0246457001441578
+          contributions: 1.4894159098541704
+          recallable: 7.457744773683766
+          distributions: 6.84685269835264
+          taxWithheld: 1.1730742509559433
         paymentHold:
           reference: reference
           reason: reason
@@ -201816,23 +202058,47 @@ components:
           placedAt: 2000-01-23T04:56:07.000+00:00
           status: status
         unfundedReconciliation:
-          closing: 7.386281948385884
-          calls: 7.061401241503109
-          transfers: 4.145608029883936
-          distributionsRecallable: 9.301444243932576
-          commitmentChanges: 2.027123023002322
-          opening: 2.3021358869347655
-          expiries: 3.616076749251911
+          closing: 1.0246457001441578
+          calls: 3.616076749251911
+          transfers: 1.2315135367772556
+          distributionsRecallable: 2.027123023002322
+          commitmentChanges: 7.386281948385884
+          opening: 9.301444243932576
+          expiries: 4.145608029883936
         wire:
           reference: reference
           accountName: accountName
           bankName: bankName
           accountNumber: accountNumber
           bic: bic
+        transfer:
+          consentReference: consentReference
+          counterpartyInvestorRecordId: counterpartyInvestorRecordId
+          fromLineId: fromLineId
+          consideration:
+            amount: 7.386281948385884
+            recordOnly: true
+            currency: currency
+          toLineId: toLineId
+          pnlSplit: pnlSplit
+          fraction: 4.965218492984954
         partner:
           displayName: displayName
           commitment: 0.8008281904610115
           investorRecordId: investorRecordId
+          lines:
+          - commitmentLineId: commitmentLineId
+            fundId:
+              code: code
+              scope: scope
+            amount: 1.4658129805029452
+            commitment: 6.027456183070403
+          - commitmentLineId: commitmentLineId
+            fundId:
+              code: code
+              scope: scope
+            amount: 1.4658129805029452
+            commitment: 6.027456183070403
         fund:
           code: code
           scope: scope
@@ -201848,18 +202114,18 @@ components:
           status: status
         lines:
         - component: component
-          amount: 6.027456183070403
+          amount: 5.962133916683182
           insideFund: true
           recallableUntil: 2000-01-23T04:56:07.000+00:00
           ilpaTransactionType: ilpaTransactionType
-          unfundedImpact: 1.4658129805029452
+          unfundedImpact: 5.637376656633329
         - component: component
-          amount: 6.027456183070403
+          amount: 5.962133916683182
           insideFund: true
           recallableUntil: 2000-01-23T04:56:07.000+00:00
           ilpaTransactionType: ilpaTransactionType
-          unfundedImpact: 1.4658129805029452
-        taxWithheld: 5.637376656633329
+          unfundedImpact: 5.637376656633329
+        taxWithheld: 7.061401241503109
       properties:
         fund:
           $ref: '#/components/schemas/ResourceId'
@@ -201902,6 +202168,8 @@ components:
           $ref: '#/components/schemas/AllocationEventNoticeWire'
         paymentHold:
           $ref: '#/components/schemas/AllocationPaymentHold'
+        transfer:
+          $ref: '#/components/schemas/AllocationEventNoticeTransfer'
         watermark:
           description: "DRAFT until the allocation event is booked, otherwise null."
           nullable: true
@@ -201921,26 +202189,36 @@ components:
       additionalProperties: false
       description: Cumulative balances to date for a partner on a notice.
       example:
-        contributions: 1.2315135367772556
-        recallable: 1.4894159098541704
-        distributions: 1.0246457001441578
+        contributions: 1.4894159098541704
+        recallable: 7.457744773683766
+        distributions: 6.84685269835264
+        taxWithheld: 1.1730742509559433
       properties:
         contributions:
           description: Cumulative contributions after the event.
           format: double
           type: number
         distributions:
-          description: Cumulative distributions after the event.
+          description: "Cumulative distributions after the event, tax withheld on\
+            \ the partner's behalf included, as the capital account's distributions\
+            \ row counts them."
           format: double
           type: number
         recallable:
           description: Cumulative recallable distributions after the event.
           format: double
           type: number
+        taxWithheld:
+          description: "Tax withheld from the partner's distributions to date and\
+            \ paid to the tax authority on its behalf: counted in the cumulative distributions,\
+            \ so the cash the partner actually received is distributions less this."
+          format: double
+          type: number
       required:
       - contributions
       - distributions
       - recallable
+      - taxWithheld
       type: object
     AllocationEventNoticeEvent:
       additionalProperties: false
@@ -201991,11 +202269,11 @@ components:
         \ an ILPA transaction type."
       example:
         component: component
-        amount: 6.027456183070403
+        amount: 5.962133916683182
         insideFund: true
         recallableUntil: 2000-01-23T04:56:07.000+00:00
         ilpaTransactionType: ilpaTransactionType
-        unfundedImpact: 1.4658129805029452
+        unfundedImpact: 5.637376656633329
       properties:
         ilpaTransactionType:
           description: The ILPA transaction type of the line.
@@ -202036,6 +202314,19 @@ components:
         displayName: displayName
         commitment: 0.8008281904610115
         investorRecordId: investorRecordId
+        lines:
+        - commitmentLineId: commitmentLineId
+          fundId:
+            code: code
+            scope: scope
+          amount: 1.4658129805029452
+          commitment: 6.027456183070403
+        - commitmentLineId: commitmentLineId
+          fundId:
+            code: code
+            scope: scope
+          amount: 1.4658129805029452
+          commitment: 6.027456183070403
       properties:
         investorRecordId:
           description: The investor record identifier of the partner.
@@ -202046,25 +202337,125 @@ components:
           nullable: true
           type: string
         commitment:
-          description: The partner's total commitment.
+          description: "The partner's committed capital on the fund the event allocates\
+            \ over at the event date, summed over the lines the event allocates to\
+            \ there; for a partner looked through to, its line on the feeder. Never\
+            \ the partner's total across funds."
           format: double
           type: number
+        lines:
+          description: "The register lines the partner was allocated on, one per line,\
+            \ each with the fund whose register holds it, its commitment at the event\
+            \ date and the partner's share landing on it. The shares sum to the net\
+            \ amount due before tax withheld."
+          items:
+            $ref: '#/components/schemas/AllocationEventNoticePartnerLine'
+          nullable: true
+          type: array
       required:
       - commitment
       - investorRecordId
+      type: object
+    AllocationEventNoticePartnerLine:
+      additionalProperties: false
+      description: "One register line a notice's partner was allocated on: the line,\
+        \ the fund whose register holds it, the line's\r\ncommitment at the event\
+        \ date and the partner's share landing on it."
+      example:
+        commitmentLineId: commitmentLineId
+        fundId:
+          code: code
+          scope: scope
+        amount: 1.4658129805029452
+        commitment: 6.027456183070403
+      properties:
+        commitmentLineId:
+          description: The identifier of the register line.
+          minLength: 1
+          type: string
+        fundId:
+          $ref: '#/components/schemas/ResourceId'
+        commitment:
+          description: The line's committed capital at the event date.
+          format: double
+          type: number
+        amount:
+          description: "The partner's share of the event landing on the line, signed\
+            \ as the net amount due is. On a transfer, the committed capital moving\
+            \ on the line."
+          format: double
+          type: number
+      required:
+      - amount
+      - commitment
+      - commitmentLineId
+      - fundId
+      type: object
+    AllocationEventNoticeTransfer:
+      additionalProperties: false
+      description: "The transfer a notice reports, from the leg the partner is on:\
+        \ the other party to the leg, the lines the\r\ninterest moves between, the\
+        \ fraction and the terms."
+      example:
+        consentReference: consentReference
+        counterpartyInvestorRecordId: counterpartyInvestorRecordId
+        fromLineId: fromLineId
+        consideration:
+          amount: 7.386281948385884
+          recordOnly: true
+          currency: currency
+        toLineId: toLineId
+        pnlSplit: pnlSplit
+        fraction: 4.965218492984954
+      properties:
+        counterpartyInvestorRecordId:
+          description: "The investor record on the other side of the leg: the transferor\
+            \ on the transferee's notice, the transferee on the transferor's. Absent\
+            \ when the register does not say who holds the source line."
+          nullable: true
+          type: string
+        fromLineId:
+          description: The register line the interest moves from.
+          minLength: 1
+          type: string
+        toLineId:
+          description: The register line the interest moves to.
+          minLength: 1
+          type: string
+        fraction:
+          description: The fraction of the source line transferred.
+          format: double
+          type: number
+        pnlSplit:
+          description: "How the period's profit and loss is split around the transfer\
+            \ date: InterimClose or DailyProration."
+          minLength: 1
+          type: string
+        consideration:
+          $ref: '#/components/schemas/AllocationEventTransferConsideration'
+        consentReference:
+          description: "A reference to the consent obtained for the transfer, when\
+            \ one was."
+          nullable: true
+          type: string
+      required:
+      - fraction
+      - fromLineId
+      - pnlSplit
+      - toLineId
       type: object
     AllocationEventNoticeUnfundedReconciliation:
       additionalProperties: false
       description: The partner's unfunded commitment rolled through the event on the
         notice.
       example:
-        closing: 7.386281948385884
-        calls: 7.061401241503109
-        transfers: 4.145608029883936
-        distributionsRecallable: 9.301444243932576
-        commitmentChanges: 2.027123023002322
-        opening: 2.3021358869347655
-        expiries: 3.616076749251911
+        closing: 1.0246457001441578
+        calls: 3.616076749251911
+        transfers: 1.2315135367772556
+        distributionsRecallable: 2.027123023002322
+        commitmentChanges: 7.386281948385884
+        opening: 9.301444243932576
+        expiries: 4.145608029883936
       properties:
         opening:
           description: The unfunded commitment before the event.
@@ -203222,11 +203613,13 @@ components:
           exceptions:
           - treatment: treatment
             reason: reason
+            commitmentLineId: commitmentLineId
             participationPercent: 0.8008281904610115
             investorRecordId: investorRecordId
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
           - treatment: treatment
             reason: reason
+            commitmentLineId: commitmentLineId
             participationPercent: 0.8008281904610115
             investorRecordId: investorRecordId
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -203522,10 +203915,11 @@ components:
     AllocationMapException:
       additionalProperties: false
       description: A departure from the default participation of an Allocation Map
-        for one investor record.
+        for one investor record or one of its register lines.
       example:
         treatment: treatment
         reason: reason
+        commitmentLineId: commitmentLineId
         participationPercent: 0.8008281904610115
         investorRecordId: investorRecordId
         effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -203562,6 +203956,17 @@ components:
             to always if not specified.
           format: date-time
           nullable: true
+          type: string
+        commitmentLineId:
+          description: "The register line of the investor record the exception applies\
+            \ to, when it applies to one line rather than the record as a whole. The\
+            \ record's other lines take part as usual: an Excluded line's basis leaves\
+            \ the event's basis total, and a FixedPercentage line takes its fixed\
+            \ share off the top. Optional."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
       required:
       - investorRecordId
@@ -203646,11 +204051,13 @@ components:
         exceptions:
         - treatment: treatment
           reason: reason
+          commitmentLineId: commitmentLineId
           participationPercent: 0.8008281904610115
           investorRecordId: investorRecordId
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
         - treatment: treatment
           reason: reason
+          commitmentLineId: commitmentLineId
           participationPercent: 0.8008281904610115
           investorRecordId: investorRecordId
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -203748,11 +204155,13 @@ components:
           exceptions:
           - treatment: treatment
             reason: reason
+            commitmentLineId: commitmentLineId
             participationPercent: 0.8008281904610115
             investorRecordId: investorRecordId
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
           - treatment: treatment
             reason: reason
+            commitmentLineId: commitmentLineId
             participationPercent: 0.8008281904610115
             investorRecordId: investorRecordId
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -207728,6 +208137,39 @@ components:
               $ref: '#/components/schemas/LapseElection'
             nullable: true
             type: array
+          mixedLotConstituentsElections:
+            description: "List of possible mixed lot options for this event, if any.\
+              \ Each election removes the original position\r\nand delivers one or\
+              \ more distinct new securities and/or cash legs of its own, each with\
+              \ its own\r\nsettlement date. The event has no event-level NewInstrument:\
+              \ every security constituent carries its own.\r\nDefaults to an empty\
+              \ list."
+            items:
+              $ref: '#/components/schemas/MixedLotConstituentsElection'
+            nullable: true
+            type: array
+          fractionalUnitsCashPrice:
+            description: The cash price paid in lieu of fractional units.
+            format: double
+            nullable: true
+            type: number
+          fractionalUnitsCashCurrency:
+            description: The currency of the cash paid in lieu of fractional units.
+            nullable: true
+            type: string
+          fractionalUnitsRoundingConvention:
+            description: "The convention used to round the fractional units entitlement.\
+              \ Defaults to Floor. BuyUp is not supported. Available values: Floor,\
+              \ Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp,\
+              \ BankerRounding."
+            nullable: true
+            type: string
+          fractionalUnitsDecimalPlaces:
+            description: The number of decimal places to round to when FractionalUnitsRoundingConvention
+              is RoundToDecimalPlaces.
+            format: int32
+            nullable: true
+            type: integer
           instrumentEventType:
             description: "The Type of Event. Available values: TransitionEvent, InformationalEvent,\
               \ OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent,\
@@ -207909,7 +208351,9 @@ components:
         \ unable to meet its financial\r\nobligations. With no elections it is a pure\
         \ informational marker, generating no transactions and\r\nhaving no position\
         \ impact. It may also carry a ballot: one CashOfferElection per option that\
-        \ pays\r\ncash and one LapseElection per option that pays nothing."
+        \ pays\r\ncash, one LapseElection per option that pays nothing, and one MixedLotConstituentsElection\
+        \ per option that\r\ndelivers new securities, cash, or both and removes the\
+        \ original position."
     Barrier:
       additionalProperties: false
       description: Barrier class for exotic FxOption
@@ -257931,7 +258375,18 @@ components:
         margin: 6.027456183070403
         commitmentFeeRate: 1.4658129805029452
         displayName: displayName
+        warnings:
+        - entityId: entityId
+          message: message
+        - entityId: entityId
+          message: message
         description: description
+        limitChanges:
+        - limit: 5.962133916683182
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        - limit: 5.962133916683182
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        availableFrom: 2000-01-23T04:56:07.000+00:00
         version:
           stagedModificationIdModified: stagedModificationIdModified
           reasonModified: reasonModified
@@ -257947,6 +258402,7 @@ components:
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
         lender: lender
+        maturityDate: 2000-01-23T04:56:07.000+00:00
         limit: 0.8008281904610115
         dayCountConvention: dayCountConvention
         currency: currency
@@ -258025,6 +258481,37 @@ components:
           maxLength: 50
           minLength: 0
           type: string
+        availableFrom:
+          description: "The first date the Facility may be drawn, inclusive. A draw\
+            \ dated before it is refused. Required on creation; a Facility stored\
+            \ without one may be drawn on any date."
+          format: date-time
+          nullable: true
+          type: string
+        maturityDate:
+          description: "The last date the Facility may be drawn, inclusive. A draw\
+            \ dated after it is refused; a repayment is not. Optional; omit for a\
+            \ Facility with no maturity."
+          format: date-time
+          nullable: true
+          type: string
+        limitChanges:
+          description: "Changes to the committed limit after the initial limit, each\
+            \ in force from its effective date until the next. Each must take effect\
+            \ after AvailableFrom and, when set, on or before MaturityDate. A draw\
+            \ is held to the limit in force on its date."
+          items:
+            $ref: '#/components/schemas/FacilityLimitChange'
+          nullable: true
+          type: array
+        warnings:
+          description: "Warnings about the Facility as stored, for example that its\
+            \ limit is now below what is already drawn. Only present on a successful\
+            \ update."
+          items:
+            $ref: '#/components/schemas/Warning'
+          nullable: true
+          type: array
         version:
           $ref: '#/components/schemas/Version'
         links:
@@ -258693,6 +259180,24 @@ components:
         \ for a period, at the facility rate\r\non the given day-count basis: outstanding\
         \ x rate x days / basis. A partnership expense that is allocated\r\nto partners\
         \ like other fund expenses; it never moves a partner's capital balances."
+    FacilityLimitChange:
+      additionalProperties: false
+      description: "A change to a Facility's committed limit: the limit in force from\
+        \ a date until the next change."
+      example:
+        limit: 5.962133916683182
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+      properties:
+        effectiveFrom:
+          format: date-time
+          type: string
+        limit:
+          format: double
+          type: number
+      required:
+      - effectiveFrom
+      - limit
+      type: object
     FacilityRepaymentEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -258900,13 +259405,20 @@ components:
     FacilityRequest:
       additionalProperties: false
       example:
-        lender: lender
         margin: 6.027456183070403
         code: code
         commitmentFeeRate: 1.4658129805029452
         displayName: displayName
-        limit: 0.8008281904610115
         description: description
+        limitChanges:
+        - limit: 5.962133916683182
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        - limit: 5.962133916683182
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        availableFrom: 2000-01-23T04:56:07.000+00:00
+        lender: lender
+        maturityDate: 2000-01-23T04:56:07.000+00:00
+        limit: 0.8008281904610115
         dayCountConvention: dayCountConvention
         currency: currency
         rateReference: rateReference
@@ -258967,7 +259479,30 @@ components:
           maxLength: 256
           minLength: 1
           type: string
+        availableFrom:
+          description: "The first date the Facility may be drawn, inclusive. A draw\
+            \ dated before it is refused. Required on creation; a Facility stored\
+            \ without one may be drawn on any date."
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The last date the Facility may be drawn, inclusive. A draw\
+            \ dated after it is refused; a repayment is not. Optional; omit for a\
+            \ Facility with no maturity."
+          format: date-time
+          nullable: true
+          type: string
+        limitChanges:
+          description: "Changes to the committed limit after the initial limit, each\
+            \ in force from its effective date until the next. Each must take effect\
+            \ after AvailableFrom and, when set, on or before MaturityDate. A draw\
+            \ is held to the limit in force on its date."
+          items:
+            $ref: '#/components/schemas/FacilityLimitChange'
+          nullable: true
+          type: array
       required:
+      - availableFrom
       - code
       - commitmentFeeRate
       - currency
@@ -306872,11 +307407,13 @@ components:
             exceptions:
             - treatment: treatment
               reason: reason
+              commitmentLineId: commitmentLineId
               participationPercent: 0.8008281904610115
               investorRecordId: investorRecordId
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
             - treatment: treatment
               reason: reason
+              commitmentLineId: commitmentLineId
               participationPercent: 0.8008281904610115
               investorRecordId: investorRecordId
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -306964,11 +307501,13 @@ components:
             exceptions:
             - treatment: treatment
               reason: reason
+              commitmentLineId: commitmentLineId
               participationPercent: 0.8008281904610115
               investorRecordId: investorRecordId
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
             - treatment: treatment
               reason: reason
+              commitmentLineId: commitmentLineId
               participationPercent: 0.8008281904610115
               investorRecordId: investorRecordId
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -311583,7 +312122,18 @@ components:
           margin: 6.027456183070403
           commitmentFeeRate: 1.4658129805029452
           displayName: displayName
+          warnings:
+          - entityId: entityId
+            message: message
+          - entityId: entityId
+            message: message
           description: description
+          limitChanges:
+          - limit: 5.962133916683182
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          - limit: 5.962133916683182
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          availableFrom: 2000-01-23T04:56:07.000+00:00
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -311599,6 +312149,7 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           lender: lender
+          maturityDate: 2000-01-23T04:56:07.000+00:00
           limit: 0.8008281904610115
           dayCountConvention: dayCountConvention
           currency: currency
@@ -311617,7 +312168,18 @@ components:
           margin: 6.027456183070403
           commitmentFeeRate: 1.4658129805029452
           displayName: displayName
+          warnings:
+          - entityId: entityId
+            message: message
+          - entityId: entityId
+            message: message
           description: description
+          limitChanges:
+          - limit: 5.962133916683182
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          - limit: 5.962133916683182
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          availableFrom: 2000-01-23T04:56:07.000+00:00
           version:
             stagedModificationIdModified: stagedModificationIdModified
             reasonModified: reasonModified
@@ -311633,6 +312195,7 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           lender: lender
+          maturityDate: 2000-01-23T04:56:07.000+00:00
           limit: 0.8008281904610115
           dayCountConvention: dayCountConvention
           currency: currency
@@ -330456,6 +331019,60 @@ components:
       - kind
       - qtd
       - ytd
+      type: object
+    PartnerInterestShare:
+      additionalProperties: false
+      description: "How a holder's partner interest in a held fund structure member\
+        \ flowed when the valuation point was struck: from\r\nthe member's booked\
+        \ partner allocation, from a dry run of it, at a provisional share of committed\
+        \ capital, or at\r\nthe sharing percentage the fund structure edge declares."
+      example:
+        reason: reason
+        member: member
+        holder: holder
+        shareSource: shareSource
+        viaInstrumentId: viaInstrumentId
+      properties:
+        holder:
+          description: "The short code of the holding fund, as the fund structure\
+            \ names it."
+          minLength: 1
+          type: string
+        member:
+          description: The short code of the held fund structure member whose P&L
+            flowed.
+          minLength: 1
+          type: string
+        viaInstrumentId:
+          description: "The LUSID instrument id of the instrument the holder holds\
+            \ the member through: the holder's line on the member's partner register."
+          minLength: 1
+          type: string
+        shareSource:
+          description: "Where the holder's share of the member's P&L came from. 'MemberBooked':\
+            \ the member's booked partner allocation to the holder's line for the\
+            \ period, pool by pool, which a Final valuation point requires. 'MemberDryRun':\
+            \ the member has not booked the period, so a dry run of its allocation\
+            \ gave the holder's line what the booking would; the point cannot be accepted\
+            \ until the member books and the point is struck again. 'Provisional':\
+            \ the member cannot be allocated yet, so the member's P&L flowed at the\
+            \ line's committed capital over the register total; the point cannot be\
+            \ accepted until the member books and the point is struck again. 'Declared':\
+            \ the via instrument is not a line of the member's register, or the register\
+            \ carries no commitments, so the edge's declared sharing percentage was\
+            \ used; the valuation point's diagnostics name the fall-back."
+          minLength: 1
+          type: string
+        reason:
+          description: Why a provisional or declared share was taken. Absent when
+            the share came from the member's allocation.
+          nullable: true
+          type: string
+      required:
+      - holder
+      - member
+      - shareSource
+      - viaInstrumentId
       type: object
     PartnerPerformance:
       additionalProperties: false
@@ -357999,14 +358616,16 @@ components:
         values:
         - watermark: watermark
           gpColumn:
-            contributions: 1.2315135367772556
-            recallable: 1.4894159098541704
-            distributions: 1.0246457001441578
-          netAmountDue: 5.962133916683182
+            contributions: 1.4894159098541704
+            recallable: 7.457744773683766
+            distributions: 6.84685269835264
+            taxWithheld: 1.1730742509559433
+          netAmountDue: 2.3021358869347655
           cumulative:
-            contributions: 1.2315135367772556
-            recallable: 1.4894159098541704
-            distributions: 1.0246457001441578
+            contributions: 1.4894159098541704
+            recallable: 7.457744773683766
+            distributions: 6.84685269835264
+            taxWithheld: 1.1730742509559433
           paymentHold:
             reference: reference
             reason: reason
@@ -358021,23 +358640,47 @@ components:
             placedAt: 2000-01-23T04:56:07.000+00:00
             status: status
           unfundedReconciliation:
-            closing: 7.386281948385884
-            calls: 7.061401241503109
-            transfers: 4.145608029883936
-            distributionsRecallable: 9.301444243932576
-            commitmentChanges: 2.027123023002322
-            opening: 2.3021358869347655
-            expiries: 3.616076749251911
+            closing: 1.0246457001441578
+            calls: 3.616076749251911
+            transfers: 1.2315135367772556
+            distributionsRecallable: 2.027123023002322
+            commitmentChanges: 7.386281948385884
+            opening: 9.301444243932576
+            expiries: 4.145608029883936
           wire:
             reference: reference
             accountName: accountName
             bankName: bankName
             accountNumber: accountNumber
             bic: bic
+          transfer:
+            consentReference: consentReference
+            counterpartyInvestorRecordId: counterpartyInvestorRecordId
+            fromLineId: fromLineId
+            consideration:
+              amount: 7.386281948385884
+              recordOnly: true
+              currency: currency
+            toLineId: toLineId
+            pnlSplit: pnlSplit
+            fraction: 4.965218492984954
           partner:
             displayName: displayName
             commitment: 0.8008281904610115
             investorRecordId: investorRecordId
+            lines:
+            - commitmentLineId: commitmentLineId
+              fundId:
+                code: code
+                scope: scope
+              amount: 1.4658129805029452
+              commitment: 6.027456183070403
+            - commitmentLineId: commitmentLineId
+              fundId:
+                code: code
+                scope: scope
+              amount: 1.4658129805029452
+              commitment: 6.027456183070403
           fund:
             code: code
             scope: scope
@@ -358053,28 +358696,30 @@ components:
             status: status
           lines:
           - component: component
-            amount: 6.027456183070403
+            amount: 5.962133916683182
             insideFund: true
             recallableUntil: 2000-01-23T04:56:07.000+00:00
             ilpaTransactionType: ilpaTransactionType
-            unfundedImpact: 1.4658129805029452
+            unfundedImpact: 5.637376656633329
           - component: component
-            amount: 6.027456183070403
+            amount: 5.962133916683182
             insideFund: true
             recallableUntil: 2000-01-23T04:56:07.000+00:00
             ilpaTransactionType: ilpaTransactionType
-            unfundedImpact: 1.4658129805029452
-          taxWithheld: 5.637376656633329
+            unfundedImpact: 5.637376656633329
+          taxWithheld: 7.061401241503109
         - watermark: watermark
           gpColumn:
-            contributions: 1.2315135367772556
-            recallable: 1.4894159098541704
-            distributions: 1.0246457001441578
-          netAmountDue: 5.962133916683182
+            contributions: 1.4894159098541704
+            recallable: 7.457744773683766
+            distributions: 6.84685269835264
+            taxWithheld: 1.1730742509559433
+          netAmountDue: 2.3021358869347655
           cumulative:
-            contributions: 1.2315135367772556
-            recallable: 1.4894159098541704
-            distributions: 1.0246457001441578
+            contributions: 1.4894159098541704
+            recallable: 7.457744773683766
+            distributions: 6.84685269835264
+            taxWithheld: 1.1730742509559433
           paymentHold:
             reference: reference
             reason: reason
@@ -358089,23 +358734,47 @@ components:
             placedAt: 2000-01-23T04:56:07.000+00:00
             status: status
           unfundedReconciliation:
-            closing: 7.386281948385884
-            calls: 7.061401241503109
-            transfers: 4.145608029883936
-            distributionsRecallable: 9.301444243932576
-            commitmentChanges: 2.027123023002322
-            opening: 2.3021358869347655
-            expiries: 3.616076749251911
+            closing: 1.0246457001441578
+            calls: 3.616076749251911
+            transfers: 1.2315135367772556
+            distributionsRecallable: 2.027123023002322
+            commitmentChanges: 7.386281948385884
+            opening: 9.301444243932576
+            expiries: 4.145608029883936
           wire:
             reference: reference
             accountName: accountName
             bankName: bankName
             accountNumber: accountNumber
             bic: bic
+          transfer:
+            consentReference: consentReference
+            counterpartyInvestorRecordId: counterpartyInvestorRecordId
+            fromLineId: fromLineId
+            consideration:
+              amount: 7.386281948385884
+              recordOnly: true
+              currency: currency
+            toLineId: toLineId
+            pnlSplit: pnlSplit
+            fraction: 4.965218492984954
           partner:
             displayName: displayName
             commitment: 0.8008281904610115
             investorRecordId: investorRecordId
+            lines:
+            - commitmentLineId: commitmentLineId
+              fundId:
+                code: code
+                scope: scope
+              amount: 1.4658129805029452
+              commitment: 6.027456183070403
+            - commitmentLineId: commitmentLineId
+              fundId:
+                code: code
+                scope: scope
+              amount: 1.4658129805029452
+              commitment: 6.027456183070403
           fund:
             code: code
             scope: scope
@@ -358121,18 +358790,18 @@ components:
             status: status
           lines:
           - component: component
-            amount: 6.027456183070403
+            amount: 5.962133916683182
             insideFund: true
             recallableUntil: 2000-01-23T04:56:07.000+00:00
             ilpaTransactionType: ilpaTransactionType
-            unfundedImpact: 1.4658129805029452
+            unfundedImpact: 5.637376656633329
           - component: component
-            amount: 6.027456183070403
+            amount: 5.962133916683182
             insideFund: true
             recallableUntil: 2000-01-23T04:56:07.000+00:00
             ilpaTransactionType: ilpaTransactionType
-            unfundedImpact: 1.4658129805029452
-          taxWithheld: 5.637376656633329
+            unfundedImpact: 5.637376656633329
+          taxWithheld: 7.061401241503109
         links:
         - method: method
           description: description
@@ -425984,6 +426653,17 @@ components:
             - absoluteValue: 1.4658129805029452
               bucketId: bucketId
               perUnitValue: 5.962133916683182
+        partnerInterestShares:
+        - reason: reason
+          member: member
+          holder: holder
+          shareSource: shareSource
+          viaInstrumentId: viaInstrumentId
+        - reason: reason
+          member: member
+          holder: holder
+          shareSource: shareSource
+          viaInstrumentId: viaInstrumentId
         links:
         - method: method
           description: description
@@ -426141,6 +426821,18 @@ components:
             \ request resolved to the Valuation Point itself. Null when it has none."
           items:
             $ref: '#/components/schemas/BucketSetSeed'
+          nullable: true
+          type: array
+        partnerInterestShares:
+          description: "How each partner interest (LP, GP or carry) this fund holds\
+            \ in a partnership-enabled fund structure member flowed when the valuation\
+            \ point was struck: from the member's booked partner allocation to the\
+            \ holder's line, from a dry run of it while the member has not booked,\
+            \ at a provisional share of committed capital while the member cannot\
+            \ be allocated, or at the sharing percentage the fund structure edge declares.\
+            \ Absent when the fund holds none."
+          items:
+            $ref: '#/components/schemas/PartnerInterestShare'
           nullable: true
           type: array
         links:

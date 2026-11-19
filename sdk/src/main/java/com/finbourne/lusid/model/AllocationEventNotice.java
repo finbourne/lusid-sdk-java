@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.AllocationEventNoticeCumulative;
 import com.finbourne.lusid.model.AllocationEventNoticeEvent;
 import com.finbourne.lusid.model.AllocationEventNoticeLine;
 import com.finbourne.lusid.model.AllocationEventNoticePartner;
+import com.finbourne.lusid.model.AllocationEventNoticeTransfer;
 import com.finbourne.lusid.model.AllocationEventNoticeUnfundedReconciliation;
 import com.finbourne.lusid.model.AllocationEventNoticeWire;
 import com.finbourne.lusid.model.AllocationPaymentHold;
@@ -107,6 +108,10 @@ public class AllocationEventNotice {
   public static final String SERIALIZED_NAME_PAYMENT_HOLD = "paymentHold";
   @SerializedName(SERIALIZED_NAME_PAYMENT_HOLD)
   private AllocationPaymentHold paymentHold;
+
+  public static final String SERIALIZED_NAME_TRANSFER = "transfer";
+  @SerializedName(SERIALIZED_NAME_TRANSFER)
+  private AllocationEventNoticeTransfer transfer;
 
   public static final String SERIALIZED_NAME_WATERMARK = "watermark";
   @SerializedName(SERIALIZED_NAME_WATERMARK)
@@ -375,6 +380,27 @@ public class AllocationEventNotice {
   }
 
 
+  public AllocationEventNotice transfer(AllocationEventNoticeTransfer transfer) {
+    
+    this.transfer = transfer;
+    return this;
+  }
+
+   /**
+   * Get transfer
+   * @return transfer
+  **/
+  @jakarta.annotation.Nullable
+  public AllocationEventNoticeTransfer getTransfer() {
+    return transfer;
+  }
+
+
+  public void setTransfer(AllocationEventNoticeTransfer transfer) {
+    this.transfer = transfer;
+  }
+
+
   public AllocationEventNotice watermark(String watermark) {
     
     this.watermark = watermark;
@@ -418,6 +444,7 @@ public class AllocationEventNotice {
         Objects.equals(this.gpColumn, allocationEventNotice.gpColumn) &&
         Objects.equals(this.wire, allocationEventNotice.wire) &&
         Objects.equals(this.paymentHold, allocationEventNotice.paymentHold) &&
+        Objects.equals(this.transfer, allocationEventNotice.transfer) &&
         Objects.equals(this.watermark, allocationEventNotice.watermark);
   }
 
@@ -427,7 +454,7 @@ public class AllocationEventNotice {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fund, event, partner, currency, lines, netAmountDue, taxWithheld, unfundedReconciliation, cumulative, gpColumn, wire, paymentHold, watermark);
+    return Objects.hash(fund, event, partner, currency, lines, netAmountDue, taxWithheld, unfundedReconciliation, cumulative, gpColumn, wire, paymentHold, transfer, watermark);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -453,6 +480,7 @@ public class AllocationEventNotice {
     sb.append("    gpColumn: ").append(toIndentedString(gpColumn)).append("\n");
     sb.append("    wire: ").append(toIndentedString(wire)).append("\n");
     sb.append("    paymentHold: ").append(toIndentedString(paymentHold)).append("\n");
+    sb.append("    transfer: ").append(toIndentedString(transfer)).append("\n");
     sb.append("    watermark: ").append(toIndentedString(watermark)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -488,6 +516,7 @@ public class AllocationEventNotice {
     openapiFields.add("gpColumn");
     openapiFields.add("wire");
     openapiFields.add("paymentHold");
+    openapiFields.add("transfer");
     openapiFields.add("watermark");
 
     // a set of required properties/fields (JSON key names)
@@ -557,6 +586,10 @@ public class AllocationEventNotice {
       // validate the optional field `paymentHold`
       if (jsonObj.get("paymentHold") != null && !jsonObj.get("paymentHold").isJsonNull()) {
         AllocationPaymentHold.validateJsonElement(jsonObj.get("paymentHold"));
+      }
+      // validate the optional field `transfer`
+      if (jsonObj.get("transfer") != null && !jsonObj.get("transfer").isJsonNull()) {
+        AllocationEventNoticeTransfer.validateJsonElement(jsonObj.get("transfer"));
       }
       if ((jsonObj.get("watermark") != null && !jsonObj.get("watermark").isJsonNull()) && !jsonObj.get("watermark").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `watermark` to be a primitive type in the JSON string but got `%s`", jsonObj.get("watermark").toString()));

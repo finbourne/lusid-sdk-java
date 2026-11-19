@@ -24401,6 +24401,268 @@ public class FundsApi {
     public APIsetShareClassInstrumentsRequest setShareClassInstruments(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest) {
         return new APIsetShareClassInstrumentsRequest(scope, code, setShareClassInstrumentsRequest);
     }
+    private okhttp3.Call updateFacilityCall(String scope, String code, String facilityCode, FacilityRequest facilityRequest, final ApiCallback _callback) throws ApiException {
+        return updateFacilityCall(scope, code, facilityCode, facilityRequest,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call updateFacilityCall(String scope, String code, String facilityCode, FacilityRequest facilityRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = facilityRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/facilities/{facilityCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "facilityCode" + "}", localVarApiClient.escapeString(facilityCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call updateFacilityValidateBeforeCall(String scope, String code, String facilityCode, FacilityRequest facilityRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling updateFacility(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling updateFacility(Async)");
+        }
+
+        // verify the required parameter 'facilityCode' is set
+        if (facilityCode == null) {
+            throw new ApiException("Missing the required parameter 'facilityCode' when calling updateFacility(Async)");
+        }
+
+        // verify the required parameter 'facilityRequest' is set
+        if (facilityRequest == null) {
+            throw new ApiException("Missing the required parameter 'facilityRequest' when calling updateFacility(Async)");
+        }
+
+        return updateFacilityCall(scope, code, facilityCode, facilityRequest, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Facility> updateFacilityWithHttpInfo(String scope, String code, String facilityCode, FacilityRequest facilityRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateFacilityValidateBeforeCall(scope, code, facilityCode, facilityRequest, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Facility> updateFacilityWithHttpInfo(String scope, String code, String facilityCode, FacilityRequest facilityRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = updateFacilityValidateBeforeCall(scope, code, facilityCode, facilityRequest, null, opts);
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call updateFacilityAsync(String scope, String code, String facilityCode, FacilityRequest facilityRequest, final ApiCallback<Facility> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = updateFacilityValidateBeforeCall(scope, code, facilityCode, facilityRequest, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call updateFacilityAsync(String scope, String code, String facilityCode, FacilityRequest facilityRequest, final ApiCallback<Facility> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = updateFacilityValidateBeforeCall(scope, code, facilityCode, facilityRequest, _callback, opts);
+        Type localVarReturnType = new TypeToken<Facility>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupdateFacilityRequest {
+        private final String scope;
+        private final String code;
+        private final String facilityCode;
+        private final FacilityRequest facilityRequest;
+
+        private APIupdateFacilityRequest(String scope, String code, String facilityCode, FacilityRequest facilityRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.facilityCode = facilityCode;
+            this.facilityRequest = facilityRequest;
+        }
+
+        /**
+         * Build call for updateFacility
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateFacilityCall(scope, code, facilityCode, facilityRequest, _callback);
+        }
+
+        /**
+         * Execute updateFacility request
+         * @return Facility
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Facility execute() throws ApiException {
+            ApiResponse<Facility> localVarResp = updateFacilityWithHttpInfo(scope, code, facilityCode, facilityRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateFacility request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Facility
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Facility execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Facility> localVarResp = updateFacilityWithHttpInfo(scope, code, facilityCode, facilityRequest, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateFacility request with HTTP info returned
+         * @return ApiResponse&lt;Facility&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Facility> executeWithHttpInfo() throws ApiException {
+            return updateFacilityWithHttpInfo(scope, code, facilityCode, facilityRequest);
+        }
+
+        /**
+         * Execute updateFacility request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Facility&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Facility> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return updateFacilityWithHttpInfo(scope, code, facilityCode, facilityRequest, opts);
+        }
+
+        /**
+         * Execute updateFacility request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Facility> _callback) throws ApiException {
+            return updateFacilityAsync(scope, code, facilityCode, facilityRequest, _callback);
+        }
+
+        /**
+         * Execute updateFacility request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Facility. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Facility> _callback, ConfigurationOptions opts) throws ApiException {
+            return updateFacilityAsync(scope, code, facilityCode, facilityRequest, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] UpdateFacility: [EXPERIMENTAL] UpdateFacility: Update a Facility.
+     * Replace the definition of a Facility of a Fund. The code, the Fund and the currency cannot change. Lowering  the limit below what is already drawn is accepted and the response carries a warning: the draws already  booked stand, and further draws are refused until the Facility is repaid within its limit.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param facilityCode The code of the Facility to update. (required)
+     * @param facilityRequest The Facility definition to store. (required)
+     * @return APIupdateFacilityRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated Facility. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupdateFacilityRequest updateFacility(String scope, String code, String facilityCode, FacilityRequest facilityRequest) {
+        return new APIupdateFacilityRequest(scope, code, facilityCode, facilityRequest);
+    }
     private okhttp3.Call updateValuationPointCall(String scope, String code, UpdateValuationPointRequest updateValuationPointRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return updateValuationPointCall(scope, code, updateValuationPointRequest, navTypeCode,  _callback, new ConfigurationOptions());
     }

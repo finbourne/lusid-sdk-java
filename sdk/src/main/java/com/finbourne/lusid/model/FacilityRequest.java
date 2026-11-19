@@ -11,13 +11,17 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.FacilityLimitChange;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -89,6 +93,18 @@ public class FacilityRequest {
   public static final String SERIALIZED_NAME_DAY_COUNT_CONVENTION = "dayCountConvention";
   @SerializedName(SERIALIZED_NAME_DAY_COUNT_CONVENTION)
   private String dayCountConvention;
+
+  public static final String SERIALIZED_NAME_AVAILABLE_FROM = "availableFrom";
+  @SerializedName(SERIALIZED_NAME_AVAILABLE_FROM)
+  private OffsetDateTime availableFrom;
+
+  public static final String SERIALIZED_NAME_MATURITY_DATE = "maturityDate";
+  @SerializedName(SERIALIZED_NAME_MATURITY_DATE)
+  private OffsetDateTime maturityDate;
+
+  public static final String SERIALIZED_NAME_LIMIT_CHANGES = "limitChanges";
+  @SerializedName(SERIALIZED_NAME_LIMIT_CHANGES)
+  private List<FacilityLimitChange> limitChanges;
 
   public FacilityRequest() {
   }
@@ -303,6 +319,77 @@ public class FacilityRequest {
   }
 
 
+  public FacilityRequest availableFrom(OffsetDateTime availableFrom) {
+    
+    this.availableFrom = availableFrom;
+    return this;
+  }
+
+   /**
+   * The first date the Facility may be drawn, inclusive. A draw dated before it is refused. Required on creation; a Facility stored without one may be drawn on any date.
+   * @return availableFrom
+  **/
+  @jakarta.annotation.Nonnull
+  public OffsetDateTime getAvailableFrom() {
+    return availableFrom;
+  }
+
+
+  public void setAvailableFrom(OffsetDateTime availableFrom) {
+    this.availableFrom = availableFrom;
+  }
+
+
+  public FacilityRequest maturityDate(OffsetDateTime maturityDate) {
+    
+    this.maturityDate = maturityDate;
+    return this;
+  }
+
+   /**
+   * The last date the Facility may be drawn, inclusive. A draw dated after it is refused; a repayment is not. Optional; omit for a Facility with no maturity.
+   * @return maturityDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getMaturityDate() {
+    return maturityDate;
+  }
+
+
+  public void setMaturityDate(OffsetDateTime maturityDate) {
+    this.maturityDate = maturityDate;
+  }
+
+
+  public FacilityRequest limitChanges(List<FacilityLimitChange> limitChanges) {
+    
+    this.limitChanges = limitChanges;
+    return this;
+  }
+
+  public FacilityRequest addLimitChangesItem(FacilityLimitChange limitChangesItem) {
+    if (this.limitChanges == null) {
+      this.limitChanges = new ArrayList<>();
+    }
+    this.limitChanges.add(limitChangesItem);
+    return this;
+  }
+
+   /**
+   * Changes to the committed limit after the initial limit, each in force from its effective date until the next. Each must take effect after AvailableFrom and, when set, on or before MaturityDate. A draw is held to the limit in force on its date.
+   * @return limitChanges
+  **/
+  @jakarta.annotation.Nullable
+  public List<FacilityLimitChange> getLimitChanges() {
+    return limitChanges;
+  }
+
+
+  public void setLimitChanges(List<FacilityLimitChange> limitChanges) {
+    this.limitChanges = limitChanges;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -322,7 +409,10 @@ public class FacilityRequest {
         Objects.equals(this.rateReference, facilityRequest.rateReference) &&
         (this.margin.compareTo(facilityRequest.getMargin()) == 0) &&
         (this.commitmentFeeRate.compareTo(facilityRequest.getCommitmentFeeRate()) == 0) &&
-        Objects.equals(this.dayCountConvention, facilityRequest.dayCountConvention);
+        Objects.equals(this.dayCountConvention, facilityRequest.dayCountConvention) &&
+        Objects.equals(this.availableFrom, facilityRequest.availableFrom) &&
+        Objects.equals(this.maturityDate, facilityRequest.maturityDate) &&
+        Objects.equals(this.limitChanges, facilityRequest.limitChanges);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -331,7 +421,7 @@ public class FacilityRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, lender, limit, currency, rateReference, margin, commitmentFeeRate, dayCountConvention);
+    return Objects.hash(code, displayName, description, lender, limit, currency, rateReference, margin, commitmentFeeRate, dayCountConvention, availableFrom, maturityDate, limitChanges);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -355,6 +445,9 @@ public class FacilityRequest {
     sb.append("    margin: ").append(toIndentedString(margin)).append("\n");
     sb.append("    commitmentFeeRate: ").append(toIndentedString(commitmentFeeRate)).append("\n");
     sb.append("    dayCountConvention: ").append(toIndentedString(dayCountConvention)).append("\n");
+    sb.append("    availableFrom: ").append(toIndentedString(availableFrom)).append("\n");
+    sb.append("    maturityDate: ").append(toIndentedString(maturityDate)).append("\n");
+    sb.append("    limitChanges: ").append(toIndentedString(limitChanges)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -387,6 +480,9 @@ public class FacilityRequest {
     openapiFields.add("margin");
     openapiFields.add("commitmentFeeRate");
     openapiFields.add("dayCountConvention");
+    openapiFields.add("availableFrom");
+    openapiFields.add("maturityDate");
+    openapiFields.add("limitChanges");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -398,6 +494,7 @@ public class FacilityRequest {
     openapiRequiredFields.add("margin");
     openapiRequiredFields.add("commitmentFeeRate");
     openapiRequiredFields.add("dayCountConvention");
+    openapiRequiredFields.add("availableFrom");
   }
 
  /**
@@ -440,6 +537,20 @@ public class FacilityRequest {
       }
       if (!jsonObj.get("dayCountConvention").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dayCountConvention` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dayCountConvention").toString()));
+      }
+      if (jsonObj.get("limitChanges") != null && !jsonObj.get("limitChanges").isJsonNull()) {
+        JsonArray jsonArraylimitChanges = jsonObj.getAsJsonArray("limitChanges");
+        if (jsonArraylimitChanges != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("limitChanges").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `limitChanges` to be an array in the JSON string but got `%s`", jsonObj.get("limitChanges").toString()));
+          }
+
+          // validate the optional field `limitChanges` (array)
+          for (int i = 0; i < jsonArraylimitChanges.size(); i++) {
+            FacilityLimitChange.validateJsonElement(jsonArraylimitChanges.get(i));
+          };
+        }
       }
   }
 

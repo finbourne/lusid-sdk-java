@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.CashOfferElection;
 import com.finbourne.lusid.model.InstrumentEvent;
 import com.finbourne.lusid.model.LapseElection;
+import com.finbourne.lusid.model.MixedLotConstituentsElection;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -52,7 +53,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A Bankruptcy (BRUP) event recording the legal status of a company unable to meet its financial  obligations. With no elections it is a pure informational marker, generating no transactions and  having no position impact. It may also carry a ballot: one CashOfferElection per option that pays  cash and one LapseElection per option that pays nothing.
+ * A Bankruptcy (BRUP) event recording the legal status of a company unable to meet its financial  obligations. With no elections it is a pure informational marker, generating no transactions and  having no position impact. It may also carry a ballot: one CashOfferElection per option that pays  cash, one LapseElection per option that pays nothing, and one MixedLotConstituentsElection per option that  delivers new securities, cash, or both and removes the original position.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class BankruptcyEvent extends InstrumentEvent {
@@ -83,6 +84,26 @@ public class BankruptcyEvent extends InstrumentEvent {
   public static final String SERIALIZED_NAME_LAPSE_ELECTIONS = "lapseElections";
   @SerializedName(SERIALIZED_NAME_LAPSE_ELECTIONS)
   private List<LapseElection> lapseElections;
+
+  public static final String SERIALIZED_NAME_MIXED_LOT_CONSTITUENTS_ELECTIONS = "mixedLotConstituentsElections";
+  @SerializedName(SERIALIZED_NAME_MIXED_LOT_CONSTITUENTS_ELECTIONS)
+  private List<MixedLotConstituentsElection> mixedLotConstituentsElections;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_PRICE = "fractionalUnitsCashPrice";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_PRICE)
+  private java.math.BigDecimal fractionalUnitsCashPrice;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY = "fractionalUnitsCashCurrency";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_CASH_CURRENCY)
+  private String fractionalUnitsCashCurrency;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION = "fractionalUnitsRoundingConvention";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_ROUNDING_CONVENTION)
+  private String fractionalUnitsRoundingConvention;
+
+  public static final String SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES = "fractionalUnitsDecimalPlaces";
+  @SerializedName(SERIALIZED_NAME_FRACTIONAL_UNITS_DECIMAL_PLACES)
+  private Integer fractionalUnitsDecimalPlaces;
 
   public BankruptcyEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
@@ -251,6 +272,119 @@ public class BankruptcyEvent extends InstrumentEvent {
   }
 
 
+  public BankruptcyEvent mixedLotConstituentsElections(List<MixedLotConstituentsElection> mixedLotConstituentsElections) {
+    
+    this.mixedLotConstituentsElections = mixedLotConstituentsElections;
+    return this;
+  }
+
+  public BankruptcyEvent addMixedLotConstituentsElectionsItem(MixedLotConstituentsElection mixedLotConstituentsElectionsItem) {
+    if (this.mixedLotConstituentsElections == null) {
+      this.mixedLotConstituentsElections = new ArrayList<>();
+    }
+    this.mixedLotConstituentsElections.add(mixedLotConstituentsElectionsItem);
+    return this;
+  }
+
+   /**
+   * List of possible mixed lot options for this event, if any. Each election removes the original position  and delivers one or more distinct new securities and/or cash legs of its own, each with its own  settlement date. The event has no event-level NewInstrument: every security constituent carries its own.  Defaults to an empty list.
+   * @return mixedLotConstituentsElections
+  **/
+  @jakarta.annotation.Nullable
+  public List<MixedLotConstituentsElection> getMixedLotConstituentsElections() {
+    return mixedLotConstituentsElections;
+  }
+
+
+  public void setMixedLotConstituentsElections(List<MixedLotConstituentsElection> mixedLotConstituentsElections) {
+    this.mixedLotConstituentsElections = mixedLotConstituentsElections;
+  }
+
+
+  public BankruptcyEvent fractionalUnitsCashPrice(java.math.BigDecimal fractionalUnitsCashPrice) {
+    
+    this.fractionalUnitsCashPrice = fractionalUnitsCashPrice;
+    return this;
+  }
+
+   /**
+   * The cash price paid in lieu of fractional units.
+   * @return fractionalUnitsCashPrice
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFractionalUnitsCashPrice() {
+    return fractionalUnitsCashPrice;
+  }
+
+
+  public void setFractionalUnitsCashPrice(java.math.BigDecimal fractionalUnitsCashPrice) {
+    this.fractionalUnitsCashPrice = fractionalUnitsCashPrice;
+  }
+
+
+  public BankruptcyEvent fractionalUnitsCashCurrency(String fractionalUnitsCashCurrency) {
+    
+    this.fractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
+    return this;
+  }
+
+   /**
+   * The currency of the cash paid in lieu of fractional units.
+   * @return fractionalUnitsCashCurrency
+  **/
+  @jakarta.annotation.Nullable
+  public String getFractionalUnitsCashCurrency() {
+    return fractionalUnitsCashCurrency;
+  }
+
+
+  public void setFractionalUnitsCashCurrency(String fractionalUnitsCashCurrency) {
+    this.fractionalUnitsCashCurrency = fractionalUnitsCashCurrency;
+  }
+
+
+  public BankruptcyEvent fractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+    return this;
+  }
+
+   /**
+   * The convention used to round the fractional units entitlement. Defaults to Floor. BuyUp is not supported. Available values: Floor, Ceiling, RoundHalfUp, RoundHalfDown, RoundToDecimalPlaces, BuyUp, BankerRounding.
+   * @return fractionalUnitsRoundingConvention
+  **/
+  @jakarta.annotation.Nullable
+  public String getFractionalUnitsRoundingConvention() {
+    return fractionalUnitsRoundingConvention;
+  }
+
+
+  public void setFractionalUnitsRoundingConvention(String fractionalUnitsRoundingConvention) {
+    this.fractionalUnitsRoundingConvention = fractionalUnitsRoundingConvention;
+  }
+
+
+  public BankruptcyEvent fractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+    return this;
+  }
+
+   /**
+   * The number of decimal places to round to when FractionalUnitsRoundingConvention is RoundToDecimalPlaces.
+   * @return fractionalUnitsDecimalPlaces
+  **/
+  @jakarta.annotation.Nullable
+  public Integer getFractionalUnitsDecimalPlaces() {
+    return fractionalUnitsDecimalPlaces;
+  }
+
+
+  public void setFractionalUnitsDecimalPlaces(Integer fractionalUnitsDecimalPlaces) {
+    this.fractionalUnitsDecimalPlaces = fractionalUnitsDecimalPlaces;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -268,6 +402,11 @@ public class BankruptcyEvent extends InstrumentEvent {
         Objects.equals(this.paymentDate, bankruptcyEvent.paymentDate) &&
         Objects.equals(this.cashOfferElections, bankruptcyEvent.cashOfferElections) &&
         Objects.equals(this.lapseElections, bankruptcyEvent.lapseElections) &&
+        Objects.equals(this.mixedLotConstituentsElections, bankruptcyEvent.mixedLotConstituentsElections) &&
+        (this.fractionalUnitsCashPrice.compareTo(bankruptcyEvent.getFractionalUnitsCashPrice()) == 0) &&
+        Objects.equals(this.fractionalUnitsCashCurrency, bankruptcyEvent.fractionalUnitsCashCurrency) &&
+        Objects.equals(this.fractionalUnitsRoundingConvention, bankruptcyEvent.fractionalUnitsRoundingConvention) &&
+        Objects.equals(this.fractionalUnitsDecimalPlaces, bankruptcyEvent.fractionalUnitsDecimalPlaces) &&
         super.equals(o);
   }
 
@@ -277,7 +416,7 @@ public class BankruptcyEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveDate, notificationType, claimFilingDeadline, narrative, paymentDate, cashOfferElections, lapseElections, super.hashCode());
+    return Objects.hash(effectiveDate, notificationType, claimFilingDeadline, narrative, paymentDate, cashOfferElections, lapseElections, mixedLotConstituentsElections, fractionalUnitsCashPrice, fractionalUnitsCashCurrency, fractionalUnitsRoundingConvention, fractionalUnitsDecimalPlaces, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -299,6 +438,11 @@ public class BankruptcyEvent extends InstrumentEvent {
     sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("    cashOfferElections: ").append(toIndentedString(cashOfferElections)).append("\n");
     sb.append("    lapseElections: ").append(toIndentedString(lapseElections)).append("\n");
+    sb.append("    mixedLotConstituentsElections: ").append(toIndentedString(mixedLotConstituentsElections)).append("\n");
+    sb.append("    fractionalUnitsCashPrice: ").append(toIndentedString(fractionalUnitsCashPrice)).append("\n");
+    sb.append("    fractionalUnitsCashCurrency: ").append(toIndentedString(fractionalUnitsCashCurrency)).append("\n");
+    sb.append("    fractionalUnitsRoundingConvention: ").append(toIndentedString(fractionalUnitsRoundingConvention)).append("\n");
+    sb.append("    fractionalUnitsDecimalPlaces: ").append(toIndentedString(fractionalUnitsDecimalPlaces)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -329,6 +473,11 @@ public class BankruptcyEvent extends InstrumentEvent {
     openapiFields.add("paymentDate");
     openapiFields.add("cashOfferElections");
     openapiFields.add("lapseElections");
+    openapiFields.add("mixedLotConstituentsElections");
+    openapiFields.add("fractionalUnitsCashPrice");
+    openapiFields.add("fractionalUnitsCashCurrency");
+    openapiFields.add("fractionalUnitsRoundingConvention");
+    openapiFields.add("fractionalUnitsDecimalPlaces");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
