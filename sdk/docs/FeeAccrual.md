@@ -15,6 +15,11 @@ Name | Type | Description | Notes
 **capPeriodAccrual** | **java.math.BigDecimal** | The amount accrued so far in the current fee year (from the fee&#39;s AnchorDate), in the fund currency, against which an annual FeeCap is assessed. | [optional] [default to java.math.BigDecimal]
 **feeCapApplied** | **Boolean** | Whether the FeeCap reduced the amount accrued at this valuation point. | [optional] [default to Boolean]
 **feeFloorApplied** | **Boolean** | Whether the FeeFloor raised the amount accrued at this valuation point. | [optional] [default to Boolean]
+**isPayableDate** | **Boolean** | Whether the valuation point&#39;s window, from the day after the previous valuation point to this one, holds one of the fee&#39;s payable dates, set by its PayableFrequency and AnchorDate and rolled by its BusinessDayConvention. | [optional] [default to Boolean]
+**payableDate** | [**OffsetDateTime**](OffsetDateTime.md) | The latest payable date of the fee in the valuation point&#39;s window, after business day adjustment. Null when the window holds no payable date. | [optional] [default to OffsetDateTime]
+**payableAmount** | **java.math.BigDecimal** | The accrued balance that became payable at this valuation point: the previous valuation point&#39;s AccruedBalance plus the accrual through the end of the PayableDate, less what the fund&#39;s own transactions tagged with the fee&#39;s code in a Transaction/&lt;fund scope&gt;/FeeCode property deemed payable on or before it. Several payable dates in one window give one combined payable. Never negative: zero when the window holds no payable date, or when the balance due is not positive, as when tagged transactions already deemed more than was due. A share class&#39;s PayableAmount is its share of the fund&#39;s, apportioned by each class&#39;s balance due before deems, so the classes&#39; add up to the fund&#39;s. | [optional] [default to java.math.BigDecimal]
+**accruedBalance** | **java.math.BigDecimal** | The amount accrued and not yet payable. It resets on a payable date, unlike TotalAccrual, and the total consideration of each of the fund&#39;s transactions in the valuation point&#39;s window tagged with the fee&#39;s code in a Transaction/&lt;fund scope&gt;/FeeCode property comes off it. A negative balance, from deeming more than was due, nets off later accruals before anything is payable again, as a prepaid fee does. | [optional] [default to java.math.BigDecimal]
+**previousAccruedBalance** | **java.math.BigDecimal** | The previous valuation point&#39;s AccruedBalance. | [optional] [default to java.math.BigDecimal]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -34,6 +39,11 @@ java.math.BigDecimal TotalAccrual = new java.math.BigDecimal("100.00");
 java.math.BigDecimal CapPeriodAccrual = new java.math.BigDecimal("100.00");
 Boolean FeeCapApplied = true;
 Boolean FeeFloorApplied = true;
+Boolean IsPayableDate = true;
+@jakarta.annotation.Nullable OffsetDateTime PayableDate = OffsetDateTime.now();
+java.math.BigDecimal PayableAmount = new java.math.BigDecimal("100.00");
+java.math.BigDecimal AccruedBalance = new java.math.BigDecimal("100.00");
+java.math.BigDecimal PreviousAccruedBalance = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -49,6 +59,11 @@ FeeAccrual feeAccrualInstance = new FeeAccrual()
     .CapPeriodAccrual(CapPeriodAccrual)
     .FeeCapApplied(FeeCapApplied)
     .FeeFloorApplied(FeeFloorApplied)
+    .IsPayableDate(IsPayableDate)
+    .PayableDate(PayableDate)
+    .PayableAmount(PayableAmount)
+    .AccruedBalance(AccruedBalance)
+    .PreviousAccruedBalance(PreviousAccruedBalance)
     .Links(Links);
 ```
 

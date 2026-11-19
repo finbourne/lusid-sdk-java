@@ -31,6 +31,10 @@ Name | Type | Description | Notes
 **returnedCapitalPortfolioCcyAmount** | **java.math.BigDecimal** | The returned capital the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side carries the source line&#39;s share of ReturnedCapitalPortfolioCcy, as the Out side gives it up, and is refused when it omits a share the source line carries, and the transaction type configuration must include the ReturnedCapitalPortfolioCcy movement for the twin to move. | [optional] [default to java.math.BigDecimal]
 **excessCapitalReturnedPortfolioCcyAmount** | **java.math.BigDecimal** | The cumulative excess capital returned that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side carries the source line&#39;s share of ExcessCapitalReturnedPortfolioCcy, as the Out side gives it up, and is refused when it omits a share the source line carries, and the transaction type configuration must include the ExcessCapitalReturnedPortfolioCcy movement for the twin to move. | [optional] [default to java.math.BigDecimal]
 **recalledCapitalAmount** | **java.math.BigDecimal** | The cumulative recalled capital that the destination line takes over, in the commitment currency. Used on the &#39;In&#39; side only; must not be negative. An In side carries the source line&#39;s share of RecalledCapital, as the Out side gives it up, and is refused when it omits a share the source line carries, and the transaction type configuration must include the RecalledCapital movement for the balance to move. | [optional] [default to java.math.BigDecimal]
+**totalDistributionsAmount** | **java.math.BigDecimal** | The cumulative distributions that the destination line takes over, in the commitment currency. Used on the &#39;In&#39; side only; must not be negative. An In side that carries it must carry the source line&#39;s share of TotalDistributions, as the Out side gives it up. An In side may leave it out: the Out side still gives the share up and the destination line takes over none of it. The transaction type configuration must include the TotalDistributions movement for the balance to move. | [optional] [default to java.math.BigDecimal]
+**callsOutsideCommitmentAmount** | **java.math.BigDecimal** | The cumulative capital paid outside the commitment that the destination line takes over, in the commitment currency. Used on the &#39;In&#39; side only; must not be negative. An In side that carries it must carry the source line&#39;s share of CallsOutsideCommitment, as the Out side gives it up. An In side may leave it out: the Out side still gives the share up and the destination line takes over none of it. The transaction type configuration must include the CallsOutsideCommitment movement for the balance to move. | [optional] [default to java.math.BigDecimal]
+**totalDistributionsPortfolioCcyAmount** | **java.math.BigDecimal** | The cumulative distributions that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that carries it must carry the source line&#39;s share of TotalDistributionsPortfolioCcy, as the Out side gives it up. An In side may leave it out: the Out side still gives the share up and the destination line takes over none of it. The transaction type configuration must include the TotalDistributionsPortfolioCcy movement for the twin to move. | [optional] [default to java.math.BigDecimal]
+**callsOutsideCommitmentPortfolioCcyAmount** | **java.math.BigDecimal** | The cumulative capital paid outside the commitment that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that carries it must carry the source line&#39;s share of CallsOutsideCommitmentPortfolioCcy, as the Out side gives it up. An In side may leave it out: the Out side still gives the share up and the destination line takes over none of it. The transaction type configuration must include the CallsOutsideCommitmentPortfolioCcy movement for the twin to move. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.CapitalInterestTransferEvent;
@@ -64,6 +68,10 @@ String ToLineId = "example ToLineId";
 @jakarta.annotation.Nullable java.math.BigDecimal ReturnedCapitalPortfolioCcyAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal ExcessCapitalReturnedPortfolioCcyAmount = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal RecalledCapitalAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal TotalDistributionsAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal CallsOutsideCommitmentAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal TotalDistributionsPortfolioCcyAmount = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal CallsOutsideCommitmentPortfolioCcyAmount = new java.math.BigDecimal("100.00");
 
 
 CapitalInterestTransferEvent capitalInterestTransferEventInstance = new CapitalInterestTransferEvent()
@@ -92,7 +100,11 @@ CapitalInterestTransferEvent capitalInterestTransferEventInstance = new CapitalI
     .PaidInCapitalPortfolioCcyAmount(PaidInCapitalPortfolioCcyAmount)
     .ReturnedCapitalPortfolioCcyAmount(ReturnedCapitalPortfolioCcyAmount)
     .ExcessCapitalReturnedPortfolioCcyAmount(ExcessCapitalReturnedPortfolioCcyAmount)
-    .RecalledCapitalAmount(RecalledCapitalAmount);
+    .RecalledCapitalAmount(RecalledCapitalAmount)
+    .TotalDistributionsAmount(TotalDistributionsAmount)
+    .CallsOutsideCommitmentAmount(CallsOutsideCommitmentAmount)
+    .TotalDistributionsPortfolioCcyAmount(TotalDistributionsPortfolioCcyAmount)
+    .CallsOutsideCommitmentPortfolioCcyAmount(CallsOutsideCommitmentPortfolioCcyAmount);
 ```
 
 

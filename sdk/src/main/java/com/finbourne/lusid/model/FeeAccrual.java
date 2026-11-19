@@ -98,6 +98,26 @@ public class FeeAccrual {
   @SerializedName(SERIALIZED_NAME_FEE_FLOOR_APPLIED)
   private Boolean feeFloorApplied;
 
+  public static final String SERIALIZED_NAME_IS_PAYABLE_DATE = "isPayableDate";
+  @SerializedName(SERIALIZED_NAME_IS_PAYABLE_DATE)
+  private Boolean isPayableDate;
+
+  public static final String SERIALIZED_NAME_PAYABLE_DATE = "payableDate";
+  @SerializedName(SERIALIZED_NAME_PAYABLE_DATE)
+  private OffsetDateTime payableDate;
+
+  public static final String SERIALIZED_NAME_PAYABLE_AMOUNT = "payableAmount";
+  @SerializedName(SERIALIZED_NAME_PAYABLE_AMOUNT)
+  private java.math.BigDecimal payableAmount;
+
+  public static final String SERIALIZED_NAME_ACCRUED_BALANCE = "accruedBalance";
+  @SerializedName(SERIALIZED_NAME_ACCRUED_BALANCE)
+  private java.math.BigDecimal accruedBalance;
+
+  public static final String SERIALIZED_NAME_PREVIOUS_ACCRUED_BALANCE = "previousAccruedBalance";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_ACCRUED_BALANCE)
+  private java.math.BigDecimal previousAccruedBalance;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -336,6 +356,111 @@ public class FeeAccrual {
   }
 
 
+  public FeeAccrual isPayableDate(Boolean isPayableDate) {
+    
+    this.isPayableDate = isPayableDate;
+    return this;
+  }
+
+   /**
+   * Whether the valuation point&#39;s window, from the day after the previous valuation point to this one, holds one of the fee&#39;s payable dates, set by its PayableFrequency and AnchorDate and rolled by its BusinessDayConvention.
+   * @return isPayableDate
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsPayableDate() {
+    return isPayableDate;
+  }
+
+
+  public void setIsPayableDate(Boolean isPayableDate) {
+    this.isPayableDate = isPayableDate;
+  }
+
+
+  public FeeAccrual payableDate(OffsetDateTime payableDate) {
+    
+    this.payableDate = payableDate;
+    return this;
+  }
+
+   /**
+   * The latest payable date of the fee in the valuation point&#39;s window, after business day adjustment. Null when the window holds no payable date.
+   * @return payableDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getPayableDate() {
+    return payableDate;
+  }
+
+
+  public void setPayableDate(OffsetDateTime payableDate) {
+    this.payableDate = payableDate;
+  }
+
+
+  public FeeAccrual payableAmount(java.math.BigDecimal payableAmount) {
+    
+    this.payableAmount = payableAmount;
+    return this;
+  }
+
+   /**
+   * The accrued balance that became payable at this valuation point: the previous valuation point&#39;s AccruedBalance plus the accrual through the end of the PayableDate, less what the fund&#39;s own transactions tagged with the fee&#39;s code in a Transaction/&lt;fund scope&gt;/FeeCode property deemed payable on or before it. Several payable dates in one window give one combined payable. Never negative: zero when the window holds no payable date, or when the balance due is not positive, as when tagged transactions already deemed more than was due. A share class&#39;s PayableAmount is its share of the fund&#39;s, apportioned by each class&#39;s balance due before deems, so the classes&#39; add up to the fund&#39;s.
+   * @return payableAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getPayableAmount() {
+    return payableAmount;
+  }
+
+
+  public void setPayableAmount(java.math.BigDecimal payableAmount) {
+    this.payableAmount = payableAmount;
+  }
+
+
+  public FeeAccrual accruedBalance(java.math.BigDecimal accruedBalance) {
+    
+    this.accruedBalance = accruedBalance;
+    return this;
+  }
+
+   /**
+   * The amount accrued and not yet payable. It resets on a payable date, unlike TotalAccrual, and the total consideration of each of the fund&#39;s transactions in the valuation point&#39;s window tagged with the fee&#39;s code in a Transaction/&lt;fund scope&gt;/FeeCode property comes off it. A negative balance, from deeming more than was due, nets off later accruals before anything is payable again, as a prepaid fee does.
+   * @return accruedBalance
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getAccruedBalance() {
+    return accruedBalance;
+  }
+
+
+  public void setAccruedBalance(java.math.BigDecimal accruedBalance) {
+    this.accruedBalance = accruedBalance;
+  }
+
+
+  public FeeAccrual previousAccruedBalance(java.math.BigDecimal previousAccruedBalance) {
+    
+    this.previousAccruedBalance = previousAccruedBalance;
+    return this;
+  }
+
+   /**
+   * The previous valuation point&#39;s AccruedBalance.
+   * @return previousAccruedBalance
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getPreviousAccruedBalance() {
+    return previousAccruedBalance;
+  }
+
+
+  public void setPreviousAccruedBalance(java.math.BigDecimal previousAccruedBalance) {
+    this.previousAccruedBalance = previousAccruedBalance;
+  }
+
+
   public FeeAccrual links(List<Link> links) {
     
     this.links = links;
@@ -386,6 +511,11 @@ public class FeeAccrual {
         (this.capPeriodAccrual.compareTo(feeAccrual.getCapPeriodAccrual()) == 0) &&
         Objects.equals(this.feeCapApplied, feeAccrual.feeCapApplied) &&
         Objects.equals(this.feeFloorApplied, feeAccrual.feeFloorApplied) &&
+        Objects.equals(this.isPayableDate, feeAccrual.isPayableDate) &&
+        Objects.equals(this.payableDate, feeAccrual.payableDate) &&
+        (this.payableAmount.compareTo(feeAccrual.getPayableAmount()) == 0) &&
+        (this.accruedBalance.compareTo(feeAccrual.getAccruedBalance()) == 0) &&
+        (this.previousAccruedBalance.compareTo(feeAccrual.getPreviousAccruedBalance()) == 0) &&
         Objects.equals(this.links, feeAccrual.links);
   }
 
@@ -395,7 +525,7 @@ public class FeeAccrual {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, code, name, calculationBase, amount, previousAccrual, previousTotalAccrual, totalAccrual, capPeriodAccrual, feeCapApplied, feeFloorApplied, links);
+    return Objects.hash(effectiveAt, code, name, calculationBase, amount, previousAccrual, previousTotalAccrual, totalAccrual, capPeriodAccrual, feeCapApplied, feeFloorApplied, isPayableDate, payableDate, payableAmount, accruedBalance, previousAccruedBalance, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -420,6 +550,11 @@ public class FeeAccrual {
     sb.append("    capPeriodAccrual: ").append(toIndentedString(capPeriodAccrual)).append("\n");
     sb.append("    feeCapApplied: ").append(toIndentedString(feeCapApplied)).append("\n");
     sb.append("    feeFloorApplied: ").append(toIndentedString(feeFloorApplied)).append("\n");
+    sb.append("    isPayableDate: ").append(toIndentedString(isPayableDate)).append("\n");
+    sb.append("    payableDate: ").append(toIndentedString(payableDate)).append("\n");
+    sb.append("    payableAmount: ").append(toIndentedString(payableAmount)).append("\n");
+    sb.append("    accruedBalance: ").append(toIndentedString(accruedBalance)).append("\n");
+    sb.append("    previousAccruedBalance: ").append(toIndentedString(previousAccruedBalance)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -454,6 +589,11 @@ public class FeeAccrual {
     openapiFields.add("capPeriodAccrual");
     openapiFields.add("feeCapApplied");
     openapiFields.add("feeFloorApplied");
+    openapiFields.add("isPayableDate");
+    openapiFields.add("payableDate");
+    openapiFields.add("payableAmount");
+    openapiFields.add("accruedBalance");
+    openapiFields.add("previousAccruedBalance");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)

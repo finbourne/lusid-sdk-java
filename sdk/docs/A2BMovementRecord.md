@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The properties which have been requested to be decorated onto the holding. These will be from the &#39;Instrument&#39; domain. | [optional] [default to Map<String, Property>]
 **groupId** | **String** | Arbitrary string that can be used to cross reference an entry in the A2B report with activity in the A2B-Movements. This should be used purely as a token. The content should not be relied upon. | [optional] [default to String]
 **errors** | [**List&lt;ResponseMetaData&gt;**](ResponseMetaData.md) | Any errors with the record are reported here. | [optional] [default to List<ResponseMetaData>]
+**causes** | [**List&lt;A2BCorrectionCause&gt;**](A2BCorrectionCause.md) | For a BackdatedCorrection movement, the transactions booked, amended or cancelled after the previous period closed that the correction reconciles, each with the journal action that explains it. Empty for any other movement. | [optional] [default to List<A2BCorrectionCause>]
 
 ```java
 import com.finbourne.lusid.model.A2BMovementRecord;
@@ -54,6 +55,7 @@ A2BCategory End = new A2BCategory();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
 @jakarta.annotation.Nullable String GroupId = "example GroupId";
 @jakarta.annotation.Nullable List<ResponseMetaData> Errors = new List<ResponseMetaData>();
+@jakarta.annotation.Nullable List<A2BCorrectionCause> Causes = new List<A2BCorrectionCause>();
 
 
 A2BMovementRecord a2BMovementRecordInstance = new A2BMovementRecord()
@@ -77,7 +79,8 @@ A2BMovementRecord a2BMovementRecordInstance = new A2BMovementRecord()
     .End(End)
     .Properties(Properties)
     .GroupId(GroupId)
-    .Errors(Errors);
+    .Errors(Errors)
+    .Causes(Causes);
 ```
 
 

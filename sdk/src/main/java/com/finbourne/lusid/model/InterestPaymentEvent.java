@@ -75,6 +75,10 @@ public class InterestPaymentEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_ANNOUNCEMENT_DATE)
   private OffsetDateTime announcementDate;
 
+  public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
+  @SerializedName(SERIALIZED_NAME_DUE_DATE)
+  private OffsetDateTime dueDate;
+
   public static final String SERIALIZED_NAME_CASH_ELECTIONS = "cashElections";
   @SerializedName(SERIALIZED_NAME_CASH_ELECTIONS)
   private List<CashElection> cashElections = new ArrayList<>();
@@ -188,6 +192,27 @@ public class InterestPaymentEvent extends InstrumentEvent {
   }
 
 
+  public InterestPaymentEvent dueDate(OffsetDateTime dueDate) {
+    
+    this.dueDate = dueDate;
+    return this;
+  }
+
+   /**
+   * The date the interest was originally due, when it is paid after the bond&#39;s scheduled coupon date. Optional. When set, the interest is booked on this date and settles on the payment date, and the coupon the bond&#39;s schedule generates for this date is not booked. It must fall between the record date and the payment date.
+   * @return dueDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getDueDate() {
+    return dueDate;
+  }
+
+
+  public void setDueDate(OffsetDateTime dueDate) {
+    this.dueDate = dueDate;
+  }
+
+
   public InterestPaymentEvent cashElections(List<CashElection> cashElections) {
     
     this.cashElections = cashElections;
@@ -232,6 +257,7 @@ public class InterestPaymentEvent extends InstrumentEvent {
         Objects.equals(this.responseDeadline, interestPaymentEvent.responseDeadline) &&
         Objects.equals(this.marketDeadline, interestPaymentEvent.marketDeadline) &&
         Objects.equals(this.announcementDate, interestPaymentEvent.announcementDate) &&
+        Objects.equals(this.dueDate, interestPaymentEvent.dueDate) &&
         Objects.equals(this.cashElections, interestPaymentEvent.cashElections) &&
         super.equals(o);
   }
@@ -242,7 +268,7 @@ public class InterestPaymentEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recordDate, paymentDate, responseDeadline, marketDeadline, announcementDate, cashElections, super.hashCode());
+    return Objects.hash(recordDate, paymentDate, responseDeadline, marketDeadline, announcementDate, dueDate, cashElections, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -262,6 +288,7 @@ public class InterestPaymentEvent extends InstrumentEvent {
     sb.append("    responseDeadline: ").append(toIndentedString(responseDeadline)).append("\n");
     sb.append("    marketDeadline: ").append(toIndentedString(marketDeadline)).append("\n");
     sb.append("    announcementDate: ").append(toIndentedString(announcementDate)).append("\n");
+    sb.append("    dueDate: ").append(toIndentedString(dueDate)).append("\n");
     sb.append("    cashElections: ").append(toIndentedString(cashElections)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -291,6 +318,7 @@ public class InterestPaymentEvent extends InstrumentEvent {
     openapiFields.add("responseDeadline");
     openapiFields.add("marketDeadline");
     openapiFields.add("announcementDate");
+    openapiFields.add("dueDate");
     openapiFields.add("cashElections");
 
     // a set of required properties/fields (JSON key names)

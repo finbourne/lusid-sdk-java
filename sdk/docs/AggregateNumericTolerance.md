@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **relativeThreshold** | **java.math.BigDecimal** | Allowed difference as a fraction of the reference side value, e.g. 0.01 allows a 1% difference. The fraction is applied to the magnitude of the reference value, so a negative reference is tolerated in the same way as a positive one. | [optional] [default to java.math.BigDecimal]
 **thresholdPriority** | **String** | Whether to apply the GreaterOf or LesserOf the absoluteThreshold vs relativeThreshold. Required when both thresholds are provided; must be omitted when only one is. Available values: GreaterOf, LesserOf. | [optional] [default to String]
 **offset** | **String** | How the threshold should be applied to the reference side value. Defaults to Either. Available values: Above, Below, Either. | [optional] [default to String]
-**toleranceType** | **String** | Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric. | [default to String]
+**toleranceType** | **String** | Polymorphic discriminator. Supported types: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric, CoreMatchingSet. Available values: CoreStringCross, CoreAttributeOptionality, CoreDateTolerance, Numeric, CoreMatchingSet. | [default to String]
 **ruleName** | **String** | The reference name of the rule that this tolerance relaxes. | [default to String]
 
 ```java

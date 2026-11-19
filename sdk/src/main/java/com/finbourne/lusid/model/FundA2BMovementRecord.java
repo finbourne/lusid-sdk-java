@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.A2BCategory;
+import com.finbourne.lusid.model.A2BCorrectionCause;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.Property;
 import com.finbourne.lusid.model.ResourceId;
@@ -143,6 +144,10 @@ public class FundA2BMovementRecord {
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
   private List<ResponseMetaData> errors;
+
+  public static final String SERIALIZED_NAME_CAUSES = "causes";
+  @SerializedName(SERIALIZED_NAME_CAUSES)
+  private List<A2BCorrectionCause> causes;
 
   public FundA2BMovementRecord() {
   }
@@ -612,6 +617,35 @@ public class FundA2BMovementRecord {
   }
 
 
+  public FundA2BMovementRecord causes(List<A2BCorrectionCause> causes) {
+    
+    this.causes = causes;
+    return this;
+  }
+
+  public FundA2BMovementRecord addCausesItem(A2BCorrectionCause causesItem) {
+    if (this.causes == null) {
+      this.causes = new ArrayList<>();
+    }
+    this.causes.add(causesItem);
+    return this;
+  }
+
+   /**
+   * For a BackdatedCorrection movement, the transactions booked, amended or cancelled after the previous period closed that the correction reconciles, each with the journal action that explains it. Empty for any other movement.
+   * @return causes
+  **/
+  @jakarta.annotation.Nullable
+  public List<A2BCorrectionCause> getCauses() {
+    return causes;
+  }
+
+
+  public void setCauses(List<A2BCorrectionCause> causes) {
+    this.causes = causes;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -642,7 +676,8 @@ public class FundA2BMovementRecord {
         (this.runningCost.compareTo(fundA2BMovementRecord.getRunningCost()) == 0) &&
         Objects.equals(this.properties, fundA2BMovementRecord.properties) &&
         Objects.equals(this.groupId, fundA2BMovementRecord.groupId) &&
-        Objects.equals(this.errors, fundA2BMovementRecord.errors);
+        Objects.equals(this.errors, fundA2BMovementRecord.errors) &&
+        Objects.equals(this.causes, fundA2BMovementRecord.causes);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -651,7 +686,7 @@ public class FundA2BMovementRecord {
 
   @Override
   public int hashCode() {
-    return Objects.hash(portfolioId, holdingType, instrumentScope, instrumentUid, subHoldingKeys, currency, transactionId, movementName, effectiveDate, units, start, flows, gains, carry, end, runningUnits, runningBalance, runningCost, properties, groupId, errors);
+    return Objects.hash(portfolioId, holdingType, instrumentScope, instrumentUid, subHoldingKeys, currency, transactionId, movementName, effectiveDate, units, start, flows, gains, carry, end, runningUnits, runningBalance, runningCost, properties, groupId, errors, causes);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -686,6 +721,7 @@ public class FundA2BMovementRecord {
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
     sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("    causes: ").append(toIndentedString(causes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -729,6 +765,7 @@ public class FundA2BMovementRecord {
     openapiFields.add("properties");
     openapiFields.add("groupId");
     openapiFields.add("errors");
+    openapiFields.add("causes");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -807,6 +844,20 @@ public class FundA2BMovementRecord {
           // validate the optional field `errors` (array)
           for (int i = 0; i < jsonArrayerrors.size(); i++) {
             ResponseMetaData.validateJsonElement(jsonArrayerrors.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("causes") != null && !jsonObj.get("causes").isJsonNull()) {
+        JsonArray jsonArraycauses = jsonObj.getAsJsonArray("causes");
+        if (jsonArraycauses != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("causes").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `causes` to be an array in the JSON string but got `%s`", jsonObj.get("causes").toString()));
+          }
+
+          // validate the optional field `causes` (array)
+          for (int i = 0; i < jsonArraycauses.size(); i++) {
+            A2BCorrectionCause.validateJsonElement(jsonArraycauses.get(i));
           };
         }
       }

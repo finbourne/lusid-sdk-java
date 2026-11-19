@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **responseDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | The holder-instruction deadline. Required for MandatoryWithChoices; must be null for Mandatory. | [optional] [default to OffsetDateTime]
 **marketDeadline** | [**OffsetDateTime**](OffsetDateTime.md) | The market-organisation deadline. Required for MandatoryWithChoices; must be null for Mandatory. | [optional] [default to OffsetDateTime]
 **announcementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date the event was announced by the issuer. Optional. | [optional] [default to OffsetDateTime]
+**dueDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date the interest was originally due, when it is paid after the bond&#39;s scheduled coupon date. Optional. When set, the interest is booked on this date and settles on the payment date, and the coupon the bond&#39;s schedule generates for this date is not booked. It must fall between the record date and the payment date. | [optional] [default to OffsetDateTime]
 **cashElections** | [**List&lt;CashElection&gt;**](CashElection.md) | The cash elections for this event. For Mandatory participation a single declared election is supplied  with IsDeclared, IsDefault and IsChosen all true; for MandatoryWithChoices one entry per offered  currency is supplied, with exactly one declared, one default and one chosen. Every election carries a  per-unit absolute (signed) DividendRate and an ExchangeRate of 1. | [default to List<CashElection>]
 
 ```java
@@ -23,6 +24,7 @@ OffsetDateTime PaymentDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime ResponseDeadline = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime MarketDeadline = OffsetDateTime.now();
 @jakarta.annotation.Nullable OffsetDateTime AnnouncementDate = OffsetDateTime.now();
+@jakarta.annotation.Nullable OffsetDateTime DueDate = OffsetDateTime.now();
 List<CashElection> CashElections = new List<CashElection>();
 
 
@@ -32,6 +34,7 @@ InterestPaymentEvent interestPaymentEventInstance = new InterestPaymentEvent()
     .ResponseDeadline(ResponseDeadline)
     .MarketDeadline(MarketDeadline)
     .AnnouncementDate(AnnouncementDate)
+    .DueDate(DueDate)
     .CashElections(CashElections);
 ```
 

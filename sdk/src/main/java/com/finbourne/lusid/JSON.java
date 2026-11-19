@@ -3495,6 +3495,8 @@ public class JSON {
                         classByDiscriminatorValue.put("CoreAttributeOptionality", com.finbourne.lusid.model.CoreAttributeOptionalityTolerance.class);
                         classByDiscriminatorValue.put("CoreAttributeOptionalityTolerance", com.finbourne.lusid.model.CoreAttributeOptionalityTolerance.class);
                         classByDiscriminatorValue.put("CoreDateTolerance", com.finbourne.lusid.model.CoreDateTolerance.class);
+                        classByDiscriminatorValue.put("CoreMatchingSet", com.finbourne.lusid.model.CoreMatchingSetTolerance.class);
+                        classByDiscriminatorValue.put("CoreMatchingSetTolerance", com.finbourne.lusid.model.CoreMatchingSetTolerance.class);
                         classByDiscriminatorValue.put("CoreStringCross", com.finbourne.lusid.model.CoreStringCrossTolerance.class);
                         classByDiscriminatorValue.put("CoreStringCrossTolerance", com.finbourne.lusid.model.CoreStringCrossTolerance.class);
                         classByDiscriminatorValue.put("Numeric", com.finbourne.lusid.model.AggregateNumericTolerance.class);
@@ -3679,6 +3681,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.A2BBreakdown.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.A2BCategory.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.A2BCorrectionCause.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.A2BDataRecord.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.A2BMovementRecord.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Abor.CustomTypeAdapterFactory());
@@ -4097,6 +4100,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CoreAttributeOptionalityTolerance.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CoreDateTolerance.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CoreMatchingRule.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CoreMatchingSetTolerance.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CoreRuleValues.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CoreStringCrossTolerance.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CorporateAction.CustomTypeAdapterFactory());

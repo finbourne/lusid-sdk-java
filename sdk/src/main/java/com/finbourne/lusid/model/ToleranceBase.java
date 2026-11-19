@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.AggregateNumericTolerance;
 import com.finbourne.lusid.model.CoreAttributeOptionalityTolerance;
 import com.finbourne.lusid.model.CoreDateTolerance;
+import com.finbourne.lusid.model.CoreMatchingSetTolerance;
 import com.finbourne.lusid.model.CoreStringCrossTolerance;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -21,7 +22,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 
@@ -74,6 +77,7 @@ public class ToleranceBase extends AbstractOpenApiSchema {
             final TypeAdapter<AggregateNumericTolerance> adapterAggregateNumericTolerance = gson.getDelegateAdapter(this, TypeToken.get(AggregateNumericTolerance.class));
             final TypeAdapter<CoreAttributeOptionalityTolerance> adapterCoreAttributeOptionalityTolerance = gson.getDelegateAdapter(this, TypeToken.get(CoreAttributeOptionalityTolerance.class));
             final TypeAdapter<CoreDateTolerance> adapterCoreDateTolerance = gson.getDelegateAdapter(this, TypeToken.get(CoreDateTolerance.class));
+            final TypeAdapter<CoreMatchingSetTolerance> adapterCoreMatchingSetTolerance = gson.getDelegateAdapter(this, TypeToken.get(CoreMatchingSetTolerance.class));
             final TypeAdapter<CoreStringCrossTolerance> adapterCoreStringCrossTolerance = gson.getDelegateAdapter(this, TypeToken.get(CoreStringCrossTolerance.class));
 
             return (TypeAdapter<T>) new TypeAdapter<ToleranceBase>() {
@@ -102,13 +106,19 @@ public class ToleranceBase extends AbstractOpenApiSchema {
                       elementAdapter.write(out, element);
                       return;
                     }
+                    // check if the actual instance is of the type `CoreMatchingSetTolerance`
+                    if (value.getActualInstance() instanceof CoreMatchingSetTolerance) {
+                      JsonElement element = adapterCoreMatchingSetTolerance.toJsonTree((CoreMatchingSetTolerance)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
                     // check if the actual instance is of the type `CoreStringCrossTolerance`
                     if (value.getActualInstance() instanceof CoreStringCrossTolerance) {
                       JsonElement element = adapterCoreStringCrossTolerance.toJsonTree((CoreStringCrossTolerance)value.getActualInstance());
                       elementAdapter.write(out, element);
                       return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance");
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreMatchingSetTolerance, CoreStringCrossTolerance");
                 }
 
                 @Override
@@ -141,6 +151,14 @@ public class ToleranceBase extends AbstractOpenApiSchema {
                                 deserialized = adapterCoreDateTolerance.fromJsonTree(jsonObject);
                                 newToleranceBase.setActualInstance(deserialized);
                                 return newToleranceBase;
+                            case "CoreMatchingSet":
+                                deserialized = adapterCoreMatchingSetTolerance.fromJsonTree(jsonObject);
+                                newToleranceBase.setActualInstance(deserialized);
+                                return newToleranceBase;
+                            case "CoreMatchingSetTolerance":
+                                deserialized = adapterCoreMatchingSetTolerance.fromJsonTree(jsonObject);
+                                newToleranceBase.setActualInstance(deserialized);
+                                return newToleranceBase;
                             case "CoreStringCross":
                                 deserialized = adapterCoreStringCrossTolerance.fromJsonTree(jsonObject);
                                 newToleranceBase.setActualInstance(deserialized);
@@ -154,7 +172,7 @@ public class ToleranceBase extends AbstractOpenApiSchema {
                                 newToleranceBase.setActualInstance(deserialized);
                                 return newToleranceBase;
                             default:
-                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ToleranceBase. Possible values: AggregateNumericTolerance CoreAttributeOptionality CoreAttributeOptionalityTolerance CoreDateTolerance CoreStringCross CoreStringCrossTolerance Numeric", jsonObject.get("toleranceType").getAsString()));
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ToleranceBase. Possible values: AggregateNumericTolerance CoreAttributeOptionality CoreAttributeOptionalityTolerance CoreDateTolerance CoreMatchingSet CoreMatchingSetTolerance CoreStringCross CoreStringCrossTolerance Numeric", jsonObject.get("toleranceType").getAsString()));
                         }
                     }
 
@@ -197,6 +215,18 @@ public class ToleranceBase extends AbstractOpenApiSchema {
                       // deserialization failed, continue
                       errorMessages.add(String.format("Deserialization for CoreDateTolerance failed with `%s`.", e.getMessage()));
                       log.log(Level.FINER, "Input data does not match schema 'CoreDateTolerance'", e);
+                    }
+                    // deserialize CoreMatchingSetTolerance
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      CoreMatchingSetTolerance.validateJsonElement(jsonElement);
+                      actualAdapter = adapterCoreMatchingSetTolerance;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'CoreMatchingSetTolerance'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for CoreMatchingSetTolerance failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'CoreMatchingSetTolerance'", e);
                     }
                     // deserialize CoreStringCrossTolerance
                     try {
@@ -245,6 +275,11 @@ public class ToleranceBase extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public ToleranceBase(CoreMatchingSetTolerance o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     public ToleranceBase(CoreStringCrossTolerance o) {
         super("oneOf", Boolean.FALSE);
         setActualInstance(o);
@@ -254,6 +289,7 @@ public class ToleranceBase extends AbstractOpenApiSchema {
         schemas.put("AggregateNumericTolerance", AggregateNumericTolerance.class);
         schemas.put("CoreAttributeOptionalityTolerance", CoreAttributeOptionalityTolerance.class);
         schemas.put("CoreDateTolerance", CoreDateTolerance.class);
+        schemas.put("CoreMatchingSetTolerance", CoreMatchingSetTolerance.class);
         schemas.put("CoreStringCrossTolerance", CoreStringCrossTolerance.class);
     }
 
@@ -265,7 +301,7 @@ public class ToleranceBase extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance
+     * AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreMatchingSetTolerance, CoreStringCrossTolerance
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -286,19 +322,24 @@ public class ToleranceBase extends AbstractOpenApiSchema {
             return;
         }
 
+        if (instance instanceof CoreMatchingSetTolerance) {
+            super.setActualInstance(instance);
+            return;
+        }
+
         if (instance instanceof CoreStringCrossTolerance) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance");
+        throw new RuntimeException("Invalid instance type. Must be AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreMatchingSetTolerance, CoreStringCrossTolerance");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance
+     * AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreMatchingSetTolerance, CoreStringCrossTolerance
      *
-     * @return The actual instance (AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance)
+     * @return The actual instance (AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreMatchingSetTolerance, CoreStringCrossTolerance)
      */
     @Override
     public Object getActualInstance() {
@@ -334,6 +375,16 @@ public class ToleranceBase extends AbstractOpenApiSchema {
      */
     public CoreDateTolerance getCoreDateTolerance() throws ClassCastException {
         return (CoreDateTolerance)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `CoreMatchingSetTolerance`. If the actual instance is not `CoreMatchingSetTolerance`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `CoreMatchingSetTolerance`
+     * @throws ClassCastException if the instance is not `CoreMatchingSetTolerance`
+     */
+    public CoreMatchingSetTolerance getCoreMatchingSetTolerance() throws ClassCastException {
+        return (CoreMatchingSetTolerance)super.getActualInstance();
     }
     /**
      * Get the actual instance of `CoreStringCrossTolerance`. If the actual instance is not `CoreStringCrossTolerance`,
@@ -380,6 +431,14 @@ public class ToleranceBase extends AbstractOpenApiSchema {
       errorMessages.add(String.format("Deserialization for CoreDateTolerance failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
+    // validate the json string with CoreMatchingSetTolerance
+    try {
+      CoreMatchingSetTolerance.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for CoreMatchingSetTolerance failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
     // validate the json string with CoreStringCrossTolerance
     try {
       CoreStringCrossTolerance.validateJsonElement(jsonElement);
@@ -389,7 +448,7 @@ public class ToleranceBase extends AbstractOpenApiSchema {
       // continue to the next one
     }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for ToleranceBase with oneOf schemas: AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreStringCrossTolerance. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      throw new IOException(String.format("The JSON string is invalid for ToleranceBase with oneOf schemas: AggregateNumericTolerance, CoreAttributeOptionalityTolerance, CoreDateTolerance, CoreMatchingSetTolerance, CoreStringCrossTolerance. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 

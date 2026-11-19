@@ -156,6 +156,22 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   @SerializedName(SERIALIZED_NAME_RECALLED_CAPITAL_AMOUNT)
   private java.math.BigDecimal recalledCapitalAmount;
 
+  public static final String SERIALIZED_NAME_TOTAL_DISTRIBUTIONS_AMOUNT = "totalDistributionsAmount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_DISTRIBUTIONS_AMOUNT)
+  private java.math.BigDecimal totalDistributionsAmount;
+
+  public static final String SERIALIZED_NAME_CALLS_OUTSIDE_COMMITMENT_AMOUNT = "callsOutsideCommitmentAmount";
+  @SerializedName(SERIALIZED_NAME_CALLS_OUTSIDE_COMMITMENT_AMOUNT)
+  private java.math.BigDecimal callsOutsideCommitmentAmount;
+
+  public static final String SERIALIZED_NAME_TOTAL_DISTRIBUTIONS_PORTFOLIO_CCY_AMOUNT = "totalDistributionsPortfolioCcyAmount";
+  @SerializedName(SERIALIZED_NAME_TOTAL_DISTRIBUTIONS_PORTFOLIO_CCY_AMOUNT)
+  private java.math.BigDecimal totalDistributionsPortfolioCcyAmount;
+
+  public static final String SERIALIZED_NAME_CALLS_OUTSIDE_COMMITMENT_PORTFOLIO_CCY_AMOUNT = "callsOutsideCommitmentPortfolioCcyAmount";
+  @SerializedName(SERIALIZED_NAME_CALLS_OUTSIDE_COMMITMENT_PORTFOLIO_CCY_AMOUNT)
+  private java.math.BigDecimal callsOutsideCommitmentPortfolioCcyAmount;
+
   public CapitalInterestTransferEvent() {
     // this.instrumentEventType = this.getClass().getSimpleName();
   }
@@ -706,6 +722,90 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
   }
 
 
+  public CapitalInterestTransferEvent totalDistributionsAmount(java.math.BigDecimal totalDistributionsAmount) {
+    
+    this.totalDistributionsAmount = totalDistributionsAmount;
+    return this;
+  }
+
+   /**
+   * The cumulative distributions that the destination line takes over, in the commitment currency. Used on the &#39;In&#39; side only; must not be negative. An In side that carries it must carry the source line&#39;s share of TotalDistributions, as the Out side gives it up. An In side may leave it out: the Out side still gives the share up and the destination line takes over none of it. The transaction type configuration must include the TotalDistributions movement for the balance to move.
+   * @return totalDistributionsAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getTotalDistributionsAmount() {
+    return totalDistributionsAmount;
+  }
+
+
+  public void setTotalDistributionsAmount(java.math.BigDecimal totalDistributionsAmount) {
+    this.totalDistributionsAmount = totalDistributionsAmount;
+  }
+
+
+  public CapitalInterestTransferEvent callsOutsideCommitmentAmount(java.math.BigDecimal callsOutsideCommitmentAmount) {
+    
+    this.callsOutsideCommitmentAmount = callsOutsideCommitmentAmount;
+    return this;
+  }
+
+   /**
+   * The cumulative capital paid outside the commitment that the destination line takes over, in the commitment currency. Used on the &#39;In&#39; side only; must not be negative. An In side that carries it must carry the source line&#39;s share of CallsOutsideCommitment, as the Out side gives it up. An In side may leave it out: the Out side still gives the share up and the destination line takes over none of it. The transaction type configuration must include the CallsOutsideCommitment movement for the balance to move.
+   * @return callsOutsideCommitmentAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCallsOutsideCommitmentAmount() {
+    return callsOutsideCommitmentAmount;
+  }
+
+
+  public void setCallsOutsideCommitmentAmount(java.math.BigDecimal callsOutsideCommitmentAmount) {
+    this.callsOutsideCommitmentAmount = callsOutsideCommitmentAmount;
+  }
+
+
+  public CapitalInterestTransferEvent totalDistributionsPortfolioCcyAmount(java.math.BigDecimal totalDistributionsPortfolioCcyAmount) {
+    
+    this.totalDistributionsPortfolioCcyAmount = totalDistributionsPortfolioCcyAmount;
+    return this;
+  }
+
+   /**
+   * The cumulative distributions that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that carries it must carry the source line&#39;s share of TotalDistributionsPortfolioCcy, as the Out side gives it up. An In side may leave it out: the Out side still gives the share up and the destination line takes over none of it. The transaction type configuration must include the TotalDistributionsPortfolioCcy movement for the twin to move.
+   * @return totalDistributionsPortfolioCcyAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getTotalDistributionsPortfolioCcyAmount() {
+    return totalDistributionsPortfolioCcyAmount;
+  }
+
+
+  public void setTotalDistributionsPortfolioCcyAmount(java.math.BigDecimal totalDistributionsPortfolioCcyAmount) {
+    this.totalDistributionsPortfolioCcyAmount = totalDistributionsPortfolioCcyAmount;
+  }
+
+
+  public CapitalInterestTransferEvent callsOutsideCommitmentPortfolioCcyAmount(java.math.BigDecimal callsOutsideCommitmentPortfolioCcyAmount) {
+    
+    this.callsOutsideCommitmentPortfolioCcyAmount = callsOutsideCommitmentPortfolioCcyAmount;
+    return this;
+  }
+
+   /**
+   * The cumulative capital paid outside the commitment that the destination line takes over, already in the portfolio&#39;s base currency at the source line&#39;s historical rates. Used on the &#39;In&#39; side only; must not be negative. An In side that carries it must carry the source line&#39;s share of CallsOutsideCommitmentPortfolioCcy, as the Out side gives it up. An In side may leave it out: the Out side still gives the share up and the destination line takes over none of it. The transaction type configuration must include the CallsOutsideCommitmentPortfolioCcy movement for the twin to move.
+   * @return callsOutsideCommitmentPortfolioCcyAmount
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCallsOutsideCommitmentPortfolioCcyAmount() {
+    return callsOutsideCommitmentPortfolioCcyAmount;
+  }
+
+
+  public void setCallsOutsideCommitmentPortfolioCcyAmount(java.math.BigDecimal callsOutsideCommitmentPortfolioCcyAmount) {
+    this.callsOutsideCommitmentPortfolioCcyAmount = callsOutsideCommitmentPortfolioCcyAmount;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -742,6 +842,10 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
         (this.returnedCapitalPortfolioCcyAmount.compareTo(capitalInterestTransferEvent.getReturnedCapitalPortfolioCcyAmount()) == 0) &&
         (this.excessCapitalReturnedPortfolioCcyAmount.compareTo(capitalInterestTransferEvent.getExcessCapitalReturnedPortfolioCcyAmount()) == 0) &&
         (this.recalledCapitalAmount.compareTo(capitalInterestTransferEvent.getRecalledCapitalAmount()) == 0) &&
+        (this.totalDistributionsAmount.compareTo(capitalInterestTransferEvent.getTotalDistributionsAmount()) == 0) &&
+        (this.callsOutsideCommitmentAmount.compareTo(capitalInterestTransferEvent.getCallsOutsideCommitmentAmount()) == 0) &&
+        (this.totalDistributionsPortfolioCcyAmount.compareTo(capitalInterestTransferEvent.getTotalDistributionsPortfolioCcyAmount()) == 0) &&
+        (this.callsOutsideCommitmentPortfolioCcyAmount.compareTo(capitalInterestTransferEvent.getCallsOutsideCommitmentPortfolioCcyAmount()) == 0) &&
         super.equals(o);
   }
 
@@ -751,7 +855,7 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, direction, fraction, fromLineId, toLineId, mode, toPortfolioId, considerationAmount, considerationCurrency, considerationRecordOnly, reason, scope, dealId, taxTreatmentAcknowledged, committedCapitalAmount, calledCommitmentAmount, paidInCapitalAmount, returnedCapitalAmount, recallableCapitalAmount, nonRecallableCapitalAmount, fundedCapitalAmount, excessCapitalReturnedAmount, paidInCapitalPortfolioCcyAmount, returnedCapitalPortfolioCcyAmount, excessCapitalReturnedPortfolioCcyAmount, recalledCapitalAmount, super.hashCode());
+    return Objects.hash(date, direction, fraction, fromLineId, toLineId, mode, toPortfolioId, considerationAmount, considerationCurrency, considerationRecordOnly, reason, scope, dealId, taxTreatmentAcknowledged, committedCapitalAmount, calledCommitmentAmount, paidInCapitalAmount, returnedCapitalAmount, recallableCapitalAmount, nonRecallableCapitalAmount, fundedCapitalAmount, excessCapitalReturnedAmount, paidInCapitalPortfolioCcyAmount, returnedCapitalPortfolioCcyAmount, excessCapitalReturnedPortfolioCcyAmount, recalledCapitalAmount, totalDistributionsAmount, callsOutsideCommitmentAmount, totalDistributionsPortfolioCcyAmount, callsOutsideCommitmentPortfolioCcyAmount, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -792,6 +896,10 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
     sb.append("    returnedCapitalPortfolioCcyAmount: ").append(toIndentedString(returnedCapitalPortfolioCcyAmount)).append("\n");
     sb.append("    excessCapitalReturnedPortfolioCcyAmount: ").append(toIndentedString(excessCapitalReturnedPortfolioCcyAmount)).append("\n");
     sb.append("    recalledCapitalAmount: ").append(toIndentedString(recalledCapitalAmount)).append("\n");
+    sb.append("    totalDistributionsAmount: ").append(toIndentedString(totalDistributionsAmount)).append("\n");
+    sb.append("    callsOutsideCommitmentAmount: ").append(toIndentedString(callsOutsideCommitmentAmount)).append("\n");
+    sb.append("    totalDistributionsPortfolioCcyAmount: ").append(toIndentedString(totalDistributionsPortfolioCcyAmount)).append("\n");
+    sb.append("    callsOutsideCommitmentPortfolioCcyAmount: ").append(toIndentedString(callsOutsideCommitmentPortfolioCcyAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -841,6 +949,10 @@ public class CapitalInterestTransferEvent extends InstrumentEvent {
     openapiFields.add("returnedCapitalPortfolioCcyAmount");
     openapiFields.add("excessCapitalReturnedPortfolioCcyAmount");
     openapiFields.add("recalledCapitalAmount");
+    openapiFields.add("totalDistributionsAmount");
+    openapiFields.add("callsOutsideCommitmentAmount");
+    openapiFields.add("totalDistributionsPortfolioCcyAmount");
+    openapiFields.add("callsOutsideCommitmentPortfolioCcyAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
