@@ -5,8 +5,9 @@ A request to sweep specified blocks.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**blockIds** | [**Map&lt;String, ResourceId&gt;**](ResourceId.md) | A dictionary mapping ephemeral identifiers, which live as long as the request, to specific blocks to sweep. | [default to Map<String, ResourceId>]
-**latestAllowableModificationTime** | **String** | Timestamp or cut label which the block or related entities must not have been updated after. | [default to String]
+**blockIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The identifiers of the blocks to sweep. | [default to List<ResourceId>]
+**latestAllowableModificationTime** | **String** | Timestamp, cut label or tenor. A block can only be swept if none of its executions or allocations were modified after this time. A tenor is relative to the current time, for example &#39;1D&#39; means one day ago. A business day tenor, for example &#39;1BD&#39;, requires calendarId. A tenor cannot go back further than 1 January 1900. For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid) | [default to String]
+**calendarId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.SweepBlocksRequest;
@@ -14,13 +15,15 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-Map<String, ResourceId> BlockIds = new Map<String, ResourceId>();
+List<ResourceId> BlockIds = new List<ResourceId>();
 String LatestAllowableModificationTime = "example LatestAllowableModificationTime";
+ResourceId CalendarId = new ResourceId();
 
 
 SweepBlocksRequest sweepBlocksRequestInstance = new SweepBlocksRequest()
     .BlockIds(BlockIds)
-    .LatestAllowableModificationTime(LatestAllowableModificationTime);
+    .LatestAllowableModificationTime(LatestAllowableModificationTime)
+    .CalendarId(CalendarId);
 ```
 
 

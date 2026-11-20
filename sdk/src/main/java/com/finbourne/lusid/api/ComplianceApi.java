@@ -5383,8 +5383,8 @@ public class ComplianceApi {
     }
 
     /**
-     * [EXPERIMENTAL] RunComplianceV3: [EXPERIMENTAL] Run V3 compliance rules against a portfolio group.
-     * Use this endpoint to run one or more V3 compliance rules against a portfolio group, valuing holdings  with the supplied recipe, and return each rule&#39;s result.
+     * [EXPERIMENTAL] RunComplianceV3: [EXPERIMENTAL] Run V3 compliance rules against one or more individual portfolios.
+     * Use this endpoint to run one or more V3 compliance rules against one or more individual portfolios,  each evaluated on its own, valuing holdings with the supplied recipe, and return each rule&#39;s result.
      * @return APIrunComplianceV3Request
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -5621,8 +5621,8 @@ public class ComplianceApi {
     }
 
     /**
-     * [EXPERIMENTAL] RunComplianceV3PreTrade: [EXPERIMENTAL] Run V3 compliance rules pre-trade against a portfolio group.
-     * Use this endpoint to run one or more V3 compliance rules against a portfolio group including its live  order flow (pre-trade), valuing holdings with the supplied recipe, and return each rule&#39;s result.
+     * [EXPERIMENTAL] RunComplianceV3PreTrade: [EXPERIMENTAL] Run V3 compliance rules pre-trade against one or more individual portfolios.
+     * Use this endpoint to run one or more V3 compliance rules against one or more individual portfolios,  each evaluated on its own, including each portfolio&#39;s live order flow (pre-trade), valuing holdings  with the supplied recipe, and return each rule&#39;s result.
      * @return APIrunComplianceV3PreTradeRequest
      * @http.response.details
      <table summary="Response Details" border="1">

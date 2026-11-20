@@ -2854,7 +2854,7 @@ public class OrderManagementApi {
         Object localVarPostBody = sweepBlocksRequest;
 
         // create path and map variables
-        String localVarPath = "/api/ordermanagement/SweepBlocks";
+        String localVarPath = "/api/ordermanagement/sweepblocks";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();

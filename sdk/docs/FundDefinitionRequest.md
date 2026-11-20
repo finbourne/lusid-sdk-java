@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **dealingEstimates** | [**DealingEstimates**](DealingEstimates.md) |  | [optional] [default to DealingEstimates]
 **whtParameters** | [**WhtParameters**](WhtParameters.md) |  | [optional] [default to WhtParameters]
 **valuationTemplateId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**partnershipAccountingPortfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.FundDefinitionRequest;
@@ -62,6 +63,7 @@ PricingMethodology PricingMethodology = new PricingMethodology();
 DealingEstimates DealingEstimates = new DealingEstimates();
 WhtParameters WhtParameters = new WhtParameters();
 ResourceId ValuationTemplateId = new ResourceId();
+ResourceId PartnershipAccountingPortfolioId = new ResourceId();
 
 
 FundDefinitionRequest fundDefinitionRequestInstance = new FundDefinitionRequest()
@@ -89,7 +91,8 @@ FundDefinitionRequest fundDefinitionRequestInstance = new FundDefinitionRequest(
     .ReportingPrices(ReportingPrices)
     .DealingEstimates(DealingEstimates)
     .WhtParameters(WhtParameters)
-    .ValuationTemplateId(ValuationTemplateId);
+    .ValuationTemplateId(ValuationTemplateId)
+    .PartnershipAccountingPortfolioId(PartnershipAccountingPortfolioId);
 ```
 
 

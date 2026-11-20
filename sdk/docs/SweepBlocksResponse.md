@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**values** | [**Map&lt;String, ResourceId&gt;**](ResourceId.md) | The identifiers of blocks which have been successfully swept, indexed by ephemeral request-lived id. | [optional] [default to Map<String, ResourceId>]
+**values** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The identifiers of blocks which have been successfully swept. | [optional] [default to List<ResourceId>]
 **failed** | [**Map&lt;String, ErrorDetail&gt;**](ErrorDetail.md) | The identifiers of blocks that could not be swept, along with a reason for their failure. | [optional] [default to Map<String, ErrorDetail>]
 
 ```java
@@ -13,7 +13,7 @@ import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
-@jakarta.annotation.Nullable Map<String, ResourceId> Values = new Map<String, ResourceId>();
+@jakarta.annotation.Nullable List<ResourceId> Values = new List<ResourceId>();
 @jakarta.annotation.Nullable Map<String, ErrorDetail> Failed = new Map<String, ErrorDetail>();
 
 

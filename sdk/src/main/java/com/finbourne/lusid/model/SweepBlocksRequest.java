@@ -18,9 +18,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,40 +54,44 @@ import com.finbourne.lusid.JSON;
 public class SweepBlocksRequest {
   public static final String SERIALIZED_NAME_BLOCK_IDS = "blockIds";
   @SerializedName(SERIALIZED_NAME_BLOCK_IDS)
-  private Map<String, ResourceId> blockIds = new HashMap<>();
+  private List<ResourceId> blockIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LATEST_ALLOWABLE_MODIFICATION_TIME = "latestAllowableModificationTime";
   @SerializedName(SERIALIZED_NAME_LATEST_ALLOWABLE_MODIFICATION_TIME)
   private String latestAllowableModificationTime;
 
+  public static final String SERIALIZED_NAME_CALENDAR_ID = "calendarId";
+  @SerializedName(SERIALIZED_NAME_CALENDAR_ID)
+  private ResourceId calendarId;
+
   public SweepBlocksRequest() {
   }
 
-  public SweepBlocksRequest blockIds(Map<String, ResourceId> blockIds) {
+  public SweepBlocksRequest blockIds(List<ResourceId> blockIds) {
     
     this.blockIds = blockIds;
     return this;
   }
 
-  public SweepBlocksRequest putBlockIdsItem(String key, ResourceId blockIdsItem) {
+  public SweepBlocksRequest addBlockIdsItem(ResourceId blockIdsItem) {
     if (this.blockIds == null) {
-      this.blockIds = new HashMap<>();
+      this.blockIds = new ArrayList<>();
     }
-    this.blockIds.put(key, blockIdsItem);
+    this.blockIds.add(blockIdsItem);
     return this;
   }
 
    /**
-   * A dictionary mapping ephemeral identifiers, which live as long as the request, to specific blocks to sweep.
+   * The identifiers of the blocks to sweep.
    * @return blockIds
   **/
   @jakarta.annotation.Nonnull
-  public Map<String, ResourceId> getBlockIds() {
+  public List<ResourceId> getBlockIds() {
     return blockIds;
   }
 
 
-  public void setBlockIds(Map<String, ResourceId> blockIds) {
+  public void setBlockIds(List<ResourceId> blockIds) {
     this.blockIds = blockIds;
   }
 
@@ -99,7 +103,7 @@ public class SweepBlocksRequest {
   }
 
    /**
-   * Timestamp or cut label which the block or related entities must not have been updated after.
+   * Timestamp, cut label or tenor. A block can only be swept if none of its executions or allocations were modified after this time. A tenor is relative to the current time, for example &#39;1D&#39; means one day ago. A business day tenor, for example &#39;1BD&#39;, requires calendarId. A tenor cannot go back further than 1 January 1900. For more information on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid)
    * @return latestAllowableModificationTime
   **/
   @jakarta.annotation.Nonnull
@@ -110,6 +114,27 @@ public class SweepBlocksRequest {
 
   public void setLatestAllowableModificationTime(String latestAllowableModificationTime) {
     this.latestAllowableModificationTime = latestAllowableModificationTime;
+  }
+
+
+  public SweepBlocksRequest calendarId(ResourceId calendarId) {
+    
+    this.calendarId = calendarId;
+    return this;
+  }
+
+   /**
+   * Get calendarId
+   * @return calendarId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCalendarId() {
+    return calendarId;
+  }
+
+
+  public void setCalendarId(ResourceId calendarId) {
+    this.calendarId = calendarId;
   }
 
 
@@ -124,12 +149,13 @@ public class SweepBlocksRequest {
     }
     SweepBlocksRequest sweepBlocksRequest = (SweepBlocksRequest) o;
     return Objects.equals(this.blockIds, sweepBlocksRequest.blockIds) &&
-        Objects.equals(this.latestAllowableModificationTime, sweepBlocksRequest.latestAllowableModificationTime);
+        Objects.equals(this.latestAllowableModificationTime, sweepBlocksRequest.latestAllowableModificationTime) &&
+        Objects.equals(this.calendarId, sweepBlocksRequest.calendarId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(blockIds, latestAllowableModificationTime);
+    return Objects.hash(blockIds, latestAllowableModificationTime, calendarId);
   }
 
   @Override
@@ -138,6 +164,7 @@ public class SweepBlocksRequest {
     sb.append("class SweepBlocksRequest {\n");
     sb.append("    blockIds: ").append(toIndentedString(blockIds)).append("\n");
     sb.append("    latestAllowableModificationTime: ").append(toIndentedString(latestAllowableModificationTime)).append("\n");
+    sb.append("    calendarId: ").append(toIndentedString(calendarId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -162,6 +189,7 @@ public class SweepBlocksRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("blockIds");
     openapiFields.add("latestAllowableModificationTime");
+    openapiFields.add("calendarId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -189,8 +217,22 @@ public class SweepBlocksRequest {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // ensure the json data is an array
+      if (!jsonObj.get("blockIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `blockIds` to be an array in the JSON string but got `%s`", jsonObj.get("blockIds").toString()));
+      }
+
+      JsonArray jsonArrayblockIds = jsonObj.getAsJsonArray("blockIds");
+      // validate the required field `blockIds` (array)
+      for (int i = 0; i < jsonArrayblockIds.size(); i++) {
+        ResourceId.validateJsonElement(jsonArrayblockIds.get(i));
+      };
       if (!jsonObj.get("latestAllowableModificationTime").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `latestAllowableModificationTime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("latestAllowableModificationTime").toString()));
+      }
+      // validate the optional field `calendarId`
+      if (jsonObj.get("calendarId") != null && !jsonObj.get("calendarId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("calendarId"));
       }
   }
 

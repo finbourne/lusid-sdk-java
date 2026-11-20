@@ -49,7 +49,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A summary of a rec result in another instance, as at the stamp that first recorded it.
+ * A summary of a rec result in another instance, as at the stamp, or as last recorded if the result can no longer be read.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RecAgedResult {
@@ -141,7 +141,7 @@ public class RecAgedResult {
   }
 
    /**
-   * The result&#39;s latest run as at the stamp that first recorded it.
+   * The result&#39;s latest run as at the stamp, or as last recorded if the result can no longer be read.
    * @return runNumber
   **/
   @jakarta.annotation.Nonnull
@@ -162,7 +162,7 @@ public class RecAgedResult {
   }
 
    /**
-   * The asAt datetime of the result&#39;s latest run as at the stamp that first recorded it.
+   * The asAt datetime of the result&#39;s latest run as at the stamp, or as last recorded if the result can no longer be read.
    * @return runAsAt
   **/
   @jakarta.annotation.Nonnull
@@ -246,7 +246,7 @@ public class RecAgedResult {
   }
 
    /**
-   * The result&#39;s exception status as at the stamp that first recorded it: Open or Closed. Available values: Open, Closed.
+   * The result&#39;s exception status as at the stamp, or as last recorded if the result can no longer be read: Open or Closed. Available values: Open, Closed.
    * @return exceptionStatus
   **/
   @jakarta.annotation.Nonnull
@@ -267,7 +267,7 @@ public class RecAgedResult {
   }
 
    /**
-   * The result&#39;s exception closure type as at the stamp that first recorded it. Null while the exception is open. Available values: Cleared, Accepted, ForceMatched.
+   * The result&#39;s exception closure type as at the stamp, or as last recorded if the result can no longer be read. Null while the exception is open. Available values: Cleared, Accepted, ForceMatched.
    * @return closureType
   **/
   @jakarta.annotation.Nullable

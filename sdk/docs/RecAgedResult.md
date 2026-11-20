@@ -1,5 +1,5 @@
 # com.finbourne.lusid.model.RecAgedResult
-A summary of a rec result in another instance, as at the stamp that first recorded it.
+A summary of a rec result in another instance, as at the stamp, or as last recorded if the result can no longer be read.
 
 ## Properties
 
@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The id of the result within its instance, e.g. &#39;Holding-break-1&#39;. With instanceId, it fully qualifies the result. | [default to String]
 **instanceId** | [**RecInstanceId**](RecInstanceId.md) |  | [default to RecInstanceId]
-**runNumber** | **Integer** | The result&#39;s latest run as at the stamp that first recorded it. | [default to Integer]
-**runAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime of the result&#39;s latest run as at the stamp that first recorded it. | [default to OffsetDateTime]
+**runNumber** | **Integer** | The result&#39;s latest run as at the stamp, or as last recorded if the result can no longer be read. | [default to Integer]
+**runAsAt** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime of the result&#39;s latest run as at the stamp, or as last recorded if the result can no longer be read. | [default to OffsetDateTime]
 **firstRunSeen** | **Integer** | The run in which the result was first assigned its id. | [default to Integer]
 **asAtFirstSeen** | [**OffsetDateTime**](OffsetDateTime.md) | The runAsAt of the run in which the result first appeared in its instance, the run numbered firstRunSeen. Written once: re-runs leave it unchanged. | [default to OffsetDateTime]
 **datesReconciled** | [**RecDatesReconciled**](RecDatesReconciled.md) |  | [default to RecDatesReconciled]
-**exceptionStatus** | **String** | The result&#39;s exception status as at the stamp that first recorded it: Open or Closed. Available values: Open, Closed. | [default to String]
-**closureType** | **String** | The result&#39;s exception closure type as at the stamp that first recorded it. Null while the exception is open. Available values: Cleared, Accepted, ForceMatched. | [optional] [default to String]
+**exceptionStatus** | **String** | The result&#39;s exception status as at the stamp, or as last recorded if the result can no longer be read: Open or Closed. Available values: Open, Closed. | [default to String]
+**closureType** | **String** | The result&#39;s exception closure type as at the stamp, or as last recorded if the result can no longer be read. Null while the exception is open. Available values: Cleared, Accepted, ForceMatched. | [optional] [default to String]
 
 ```java
 import com.finbourne.lusid.model.RecAgedResult;

@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10697
+  version: 0.11.10709
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -32378,8 +32378,8 @@ paths:
   /api/compliance/v3/runs:
     post:
       description: "Use this endpoint to run one or more V3 compliance rules against\
-        \ a portfolio group, valuing holdings\r\nwith the supplied recipe, and return\
-        \ each rule's result."
+        \ one or more individual portfolios,\r\neach evaluated on its own, valuing\
+        \ holdings with the supplied recipe, and return each rule's result."
       operationId: RunComplianceV3
       requestBody:
         content:
@@ -32388,13 +32388,12 @@ paths:
               ruleIds:
               - scope: ComplianceV3
                 code: EquityConcentration
-              portfolioGroupId:
-                scope: ComplianceV3
+              portfolioIds:
+              - scope: ComplianceV3
                 code: GlobalEquity
               recipeId:
                 scope: ComplianceV3
                 code: Default
-              evaluationMode: PerPortfolio
             schema:
               $ref: '#/components/schemas/RunComplianceV3Request'
           application/json:
@@ -32402,13 +32401,12 @@ paths:
               ruleIds:
               - scope: ComplianceV3
                 code: EquityConcentration
-              portfolioGroupId:
-                scope: ComplianceV3
+              portfolioIds:
+              - scope: ComplianceV3
                 code: GlobalEquity
               recipeId:
                 scope: ComplianceV3
                 code: Default
-              evaluationMode: PerPortfolio
             schema:
               $ref: '#/components/schemas/RunComplianceV3Request'
           text/json:
@@ -32416,13 +32414,12 @@ paths:
               ruleIds:
               - scope: ComplianceV3
                 code: EquityConcentration
-              portfolioGroupId:
-                scope: ComplianceV3
+              portfolioIds:
+              - scope: ComplianceV3
                 code: GlobalEquity
               recipeId:
                 scope: ComplianceV3
                 code: Default
-              evaluationMode: PerPortfolio
             schema:
               $ref: '#/components/schemas/RunComplianceV3Request'
           application/*+json:
@@ -32430,13 +32427,12 @@ paths:
               ruleIds:
               - scope: ComplianceV3
                 code: EquityConcentration
-              portfolioGroupId:
-                scope: ComplianceV3
+              portfolioIds:
+              - scope: ComplianceV3
                 code: GlobalEquity
               recipeId:
                 scope: ComplianceV3
                 code: Default
-              evaluationMode: PerPortfolio
             schema:
               $ref: '#/components/schemas/RunComplianceV3Request'
       responses:
@@ -32494,7 +32490,7 @@ paths:
       security:
       - oauth2: []
       summary: "[EXPERIMENTAL] RunComplianceV3: [EXPERIMENTAL] Run V3 compliance rules\
-        \ against a portfolio group."
+        \ against one or more individual portfolios."
       tags:
       - Compliance
       x-fbn-apistatus: Experimental
@@ -32503,8 +32499,9 @@ paths:
   /api/compliance/v3/runs/$pretrade:
     post:
       description: "Use this endpoint to run one or more V3 compliance rules against\
-        \ a portfolio group including its live\r\norder flow (pre-trade), valuing\
-        \ holdings with the supplied recipe, and return each rule's result."
+        \ one or more individual portfolios,\r\neach evaluated on its own, including\
+        \ each portfolio's live order flow (pre-trade), valuing holdings\r\nwith the\
+        \ supplied recipe, and return each rule's result."
       operationId: RunComplianceV3PreTrade
       requestBody:
         content:
@@ -32513,13 +32510,12 @@ paths:
               ruleIds:
               - scope: ComplianceV3
                 code: EquityConcentration
-              portfolioGroupId:
-                scope: ComplianceV3
+              portfolioIds:
+              - scope: ComplianceV3
                 code: GlobalEquity
               recipeId:
                 scope: ComplianceV3
                 code: Default
-              evaluationMode: PerPortfolio
             schema:
               $ref: '#/components/schemas/RunComplianceV3Request'
           application/json:
@@ -32527,13 +32523,12 @@ paths:
               ruleIds:
               - scope: ComplianceV3
                 code: EquityConcentration
-              portfolioGroupId:
-                scope: ComplianceV3
+              portfolioIds:
+              - scope: ComplianceV3
                 code: GlobalEquity
               recipeId:
                 scope: ComplianceV3
                 code: Default
-              evaluationMode: PerPortfolio
             schema:
               $ref: '#/components/schemas/RunComplianceV3Request'
           text/json:
@@ -32541,13 +32536,12 @@ paths:
               ruleIds:
               - scope: ComplianceV3
                 code: EquityConcentration
-              portfolioGroupId:
-                scope: ComplianceV3
+              portfolioIds:
+              - scope: ComplianceV3
                 code: GlobalEquity
               recipeId:
                 scope: ComplianceV3
                 code: Default
-              evaluationMode: PerPortfolio
             schema:
               $ref: '#/components/schemas/RunComplianceV3Request'
           application/*+json:
@@ -32555,13 +32549,12 @@ paths:
               ruleIds:
               - scope: ComplianceV3
                 code: EquityConcentration
-              portfolioGroupId:
-                scope: ComplianceV3
+              portfolioIds:
+              - scope: ComplianceV3
                 code: GlobalEquity
               recipeId:
                 scope: ComplianceV3
                 code: Default
-              evaluationMode: PerPortfolio
             schema:
               $ref: '#/components/schemas/RunComplianceV3Request'
       responses:
@@ -32619,7 +32612,7 @@ paths:
       security:
       - oauth2: []
       summary: "[EXPERIMENTAL] RunComplianceV3PreTrade: [EXPERIMENTAL] Run V3 compliance\
-        \ rules pre-trade against a portfolio group."
+        \ rules pre-trade against one or more individual portfolios."
       tags:
       - Compliance
       x-fbn-apistatus: Experimental
@@ -53313,7 +53306,7 @@ paths:
         \ Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments,\
         \ Type, TaxTransparency, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes,\
         \ ShareClasses, PricingMethodology, ReportingPrices, DealingEstimates, WhtParameters,\
-        \ ValuationTemplateId."
+        \ ValuationTemplateId, PartnershipAccountingPortfolioId."
       operationId: PatchFund
       parameters:
       - description: The scope of the Fund.
@@ -60863,6 +60856,237 @@ paths:
       - Funds
       x-fbn-apistatus: Experimental
       x-content-type: application/json-patch+json
+      x-accepts: application/json
+  /api/funds/{scope}/{code}/registry:
+    get:
+      description: "Get the register lines of a Fund at the given effective and asAt\
+        \ datetimes: the registry lines of its\r\ntransaction portfolios, each tagged\
+        \ with the portfolio it sits in, with their units, cost and capital\r\nbalances.\
+        \ Registry lines are never holdings, so they do not appear in the holdings\
+        \ of the Fund."
+      operationId: GetRegistryForFund
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to retrieve the
+          registry. Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the registry. Defaults
+          to return the latest version if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter the result set. Read more about filtering
+          results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: "A list of property keys from the \"Instrument\" or \"Holding\"\
+          \ domain to decorate onto\r\n the lines. These take the format {domain}/{scope}/{code}\
+          \ e.g. \"Instrument/system/Name\" or \"Holding/system/CommittedCapital\"\
+          ."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      - description: "When provided, runs against the specified NAV Type, otherwise\
+          \ the Primary NAV Type will be used."
+        explode: true
+        in: query
+        name: navTypeCode
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                version:
+                  effectiveFrom: 2026-03-31T00:00:00.0000000+00:00
+                  asAtDate: 2026-03-31T12:00:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Finbourne-Examples
+                    code: MeridianGrowthIV
+                  instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
+                  subHoldingKeys: {}
+                  properties: {}
+                  holdingType: P
+                  holdingTypeName: Position
+                  units: 1
+                  settledUnits: 1
+                  cost:
+                    amount: 100000
+                    currency: USD
+                  costPortfolioCcy:
+                    amount: 100000
+                    currency: USD
+                  currency: USD
+                  holdingId: 1
+                  investorRecordId: StatePensionFund
+                  commitmentLineId: CI-LINE-001
+                  committed: 1000000
+                  uncalledCommitment: 900000
+                  paidIn: 100000
+                  returned: 0
+                  recallable: 0
+                  unfunded: 900000
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListWithWarningsOfRegistryLine'
+            application/json:
+              example:
+                version:
+                  effectiveFrom: 2026-03-31T00:00:00.0000000+00:00
+                  asAtDate: 2026-03-31T12:00:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Finbourne-Examples
+                    code: MeridianGrowthIV
+                  instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
+                  subHoldingKeys: {}
+                  properties: {}
+                  holdingType: P
+                  holdingTypeName: Position
+                  units: 1
+                  settledUnits: 1
+                  cost:
+                    amount: 100000
+                    currency: USD
+                  costPortfolioCcy:
+                    amount: 100000
+                    currency: USD
+                  currency: USD
+                  holdingId: 1
+                  investorRecordId: StatePensionFund
+                  commitmentLineId: CI-LINE-001
+                  committed: 1000000
+                  uncalledCommitment: 900000
+                  paidIn: 100000
+                  returned: 0
+                  recallable: 0
+                  unfunded: 900000
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListWithWarningsOfRegistryLine'
+            text/json:
+              example:
+                version:
+                  effectiveFrom: 2026-03-31T00:00:00.0000000+00:00
+                  asAtDate: 2026-03-31T12:00:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Finbourne-Examples
+                    code: MeridianGrowthIV
+                  instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
+                  subHoldingKeys: {}
+                  properties: {}
+                  holdingType: P
+                  holdingTypeName: Position
+                  units: 1
+                  settledUnits: 1
+                  cost:
+                    amount: 100000
+                    currency: USD
+                  costPortfolioCcy:
+                    amount: 100000
+                    currency: USD
+                  currency: USD
+                  holdingId: 1
+                  investorRecordId: StatePensionFund
+                  commitmentLineId: CI-LINE-001
+                  committed: 1000000
+                  uncalledCommitment: 900000
+                  paidIn: 100000
+                  returned: 0
+                  recallable: 0
+                  unfunded: 900000
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListWithWarningsOfRegistryLine'
+          description: The registry lines of the transaction portfolios of a Fund
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetRegistryForFund: [EXPERIMENTAL] GetRegistryForFund:\
+        \ Get the registry of a Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: Experimental
       x-accepts: application/json
   /api/funds/{scope}/{code}/series:
     get:
@@ -102785,7 +103009,7 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
-  /api/ordermanagement/SweepBlocks:
+  /api/ordermanagement/sweepblocks:
     post:
       description: "The requirements are:\r\n<list type=\"bullet\"><term>The block\
         \ exists.</term><term>All orders have state \"Closed\", \"Cancelled\", \"\
@@ -102799,60 +103023,48 @@ paths:
           application/json-patch+json:
             example:
               blockIds:
-                A:
-                  scope: APAC
-                  code: "1001"
-                B:
-                  scope: APAC
-                  code: "1002"
-                C:
-                  scope: APAC
-                  code: NotExists
+              - scope: APAC
+                code: "1001"
+              - scope: APAC
+                code: "1002"
+              - scope: APAC
+                code: NotExists
               latestAllowableModificationTime: 2018-08-31NSingaporeClose
             schema:
               $ref: '#/components/schemas/SweepBlocksRequest'
           application/json:
             example:
               blockIds:
-                A:
-                  scope: APAC
-                  code: "1001"
-                B:
-                  scope: APAC
-                  code: "1002"
-                C:
-                  scope: APAC
-                  code: NotExists
+              - scope: APAC
+                code: "1001"
+              - scope: APAC
+                code: "1002"
+              - scope: APAC
+                code: NotExists
               latestAllowableModificationTime: 2018-08-31NSingaporeClose
             schema:
               $ref: '#/components/schemas/SweepBlocksRequest'
           text/json:
             example:
               blockIds:
-                A:
-                  scope: APAC
-                  code: "1001"
-                B:
-                  scope: APAC
-                  code: "1002"
-                C:
-                  scope: APAC
-                  code: NotExists
+              - scope: APAC
+                code: "1001"
+              - scope: APAC
+                code: "1002"
+              - scope: APAC
+                code: NotExists
               latestAllowableModificationTime: 2018-08-31NSingaporeClose
             schema:
               $ref: '#/components/schemas/SweepBlocksRequest'
           application/*+json:
             example:
               blockIds:
-                A:
-                  scope: APAC
-                  code: "1001"
-                B:
-                  scope: APAC
-                  code: "1002"
-                C:
-                  scope: APAC
-                  code: NotExists
+              - scope: APAC
+                code: "1001"
+              - scope: APAC
+                code: "1002"
+              - scope: APAC
+                code: NotExists
               latestAllowableModificationTime: 2018-08-31NSingaporeClose
             schema:
               $ref: '#/components/schemas/SweepBlocksRequest'
@@ -102863,14 +103075,12 @@ paths:
             text/plain:
               example:
                 values:
-                  A:
-                    scope: APAC
-                    code: "1001"
-                  B:
-                    scope: APAC
-                    code: "1002"
+                - scope: APAC
+                  code: "1001"
+                - scope: APAC
+                  code: "1002"
                 failed:
-                  C:
+                  Scope:APAC Code:NotExists:
                     id: Scope:APAC Code:NotExists
                     type: OrdersEntityNotFoundFailure`1
                     detail: "Orders entity APAC/NotExists not known at effective:\
@@ -102880,14 +103090,12 @@ paths:
             application/json:
               example:
                 values:
-                  A:
-                    scope: APAC
-                    code: "1001"
-                  B:
-                    scope: APAC
-                    code: "1002"
+                - scope: APAC
+                  code: "1001"
+                - scope: APAC
+                  code: "1002"
                 failed:
-                  C:
+                  Scope:APAC Code:NotExists:
                     id: Scope:APAC Code:NotExists
                     type: OrdersEntityNotFoundFailure`1
                     detail: "Orders entity APAC/NotExists not known at effective:\
@@ -102897,14 +103105,12 @@ paths:
             text/json:
               example:
                 values:
-                  A:
-                    scope: APAC
-                    code: "1001"
-                  B:
-                    scope: APAC
-                    code: "1002"
+                - scope: APAC
+                  code: "1001"
+                - scope: APAC
+                  code: "1002"
                 failed:
-                  C:
+                  Scope:APAC Code:NotExists:
                     id: Scope:APAC Code:NotExists
                     type: OrdersEntityNotFoundFailure`1
                     detail: "Orders entity APAC/NotExists not known at effective:\
@@ -179036,6 +179242,228 @@ paths:
       x-fbn-apistatus: Stable
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/transactionportfolios/{scope}/{code}/registry:
+    get:
+      description: "Get the registry lines of a transaction portfolio at the given\
+        \ effective and asAt datetimes: the partner\r\nregister lines that transaction\
+        \ types flagged 'Registry' apply to, with their units, cost and capital\r\n\
+        balances. Registry lines are never holdings, so they do not appear in the\
+        \ holdings of the portfolio."
+      operationId: GetRegistry
+      parameters:
+      - description: The scope of the transaction portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The code of the transaction portfolio. Together with the scope\
+          \ this uniquely identifies\r\n the transaction portfolio."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "The effective datetime or cut label at which to retrieve the\
+          \ registry of the transaction\r\n portfolio. Defaults to the current LUSID\
+          \ system datetime if not specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: "The asAt datetime at which to retrieve the registry of the transaction\
+          \ portfolio. Defaults\r\n to return the latest version if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the result set.\r\n For example, to filter\
+          \ on the Holding Type, use \"holdingType eq 'p'\".\r\n For more information\
+          \ about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: "A list of property keys from the \"Instrument\" or \"Holding\"\
+          \ domain to decorate onto\r\n the lines. These must have the format {domain}/{scope}/{code},\
+          \ for example \"Instrument/system/Name\" or \"Holding/system/CommittedCapital\"\
+          ."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                version:
+                  effectiveFrom: 2026-03-31T00:00:00.0000000+00:00
+                  asAtDate: 2026-03-31T12:00:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Finbourne-Examples
+                    code: MeridianGrowthIV
+                  instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
+                  subHoldingKeys: {}
+                  properties: {}
+                  holdingType: P
+                  holdingTypeName: Position
+                  units: 1
+                  settledUnits: 1
+                  cost:
+                    amount: 100000
+                    currency: USD
+                  costPortfolioCcy:
+                    amount: 100000
+                    currency: USD
+                  currency: USD
+                  holdingId: 1
+                  investorRecordId: StatePensionFund
+                  commitmentLineId: CI-LINE-001
+                  committed: 1000000
+                  uncalledCommitment: 900000
+                  paidIn: 100000
+                  returned: 0
+                  recallable: 0
+                  unfunded: 900000
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListWithWarningsOfRegistryLine'
+            application/json:
+              example:
+                version:
+                  effectiveFrom: 2026-03-31T00:00:00.0000000+00:00
+                  asAtDate: 2026-03-31T12:00:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Finbourne-Examples
+                    code: MeridianGrowthIV
+                  instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
+                  subHoldingKeys: {}
+                  properties: {}
+                  holdingType: P
+                  holdingTypeName: Position
+                  units: 1
+                  settledUnits: 1
+                  cost:
+                    amount: 100000
+                    currency: USD
+                  costPortfolioCcy:
+                    amount: 100000
+                    currency: USD
+                  currency: USD
+                  holdingId: 1
+                  investorRecordId: StatePensionFund
+                  commitmentLineId: CI-LINE-001
+                  committed: 1000000
+                  uncalledCommitment: 900000
+                  paidIn: 100000
+                  returned: 0
+                  recallable: 0
+                  unfunded: 900000
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListWithWarningsOfRegistryLine'
+            text/json:
+              example:
+                version:
+                  effectiveFrom: 2026-03-31T00:00:00.0000000+00:00
+                  asAtDate: 2026-03-31T12:00:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Finbourne-Examples
+                    code: MeridianGrowthIV
+                  instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
+                  subHoldingKeys: {}
+                  properties: {}
+                  holdingType: P
+                  holdingTypeName: Position
+                  units: 1
+                  settledUnits: 1
+                  cost:
+                    amount: 100000
+                    currency: USD
+                  costPortfolioCcy:
+                    amount: 100000
+                    currency: USD
+                  currency: USD
+                  holdingId: 1
+                  investorRecordId: StatePensionFund
+                  commitmentLineId: CI-LINE-001
+                  committed: 1000000
+                  uncalledCommitment: 900000
+                  paidIn: 100000
+                  returned: 0
+                  recallable: 0
+                  unfunded: 900000
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListWithWarningsOfRegistryLine'
+          description: The registry lines and version of the specified transaction
+            portfolio
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetRegistry: [EXPERIMENTAL] GetRegistry: Get the registry\
+        \ of a transaction portfolio."
+      tags:
+      - Transaction Portfolios
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
   /api/transactionportfolios/{scope}/{code}/settlementinstructions:
     delete:
       description: Delete the specified settlement instructions
@@ -240437,8 +240865,11 @@ components:
           - UnindexedText
           type: string
         acceptableValues:
-          description: The acceptable set of values for this data type. Only applies
-            to 'open' value type range.
+          description: "The acceptable set of values for this data type. Only applies\
+            \ when the type value range is 'Closed'; it is ignored on write and returned\
+            \ as null for 'Open' data types. If reference data is supplied on a 'Closed'\
+            \ data type and this field is omitted, the acceptable values are derived\
+            \ from the reference data values."
           items:
             type: string
           nullable: true
@@ -249228,8 +249659,11 @@ components:
           - UnindexedText
           type: string
         acceptableValues:
-          description: The acceptable set of values for this data type. Only applies
-            to 'open' value type range.
+          description: "The acceptable set of values for this data type. Only applies\
+            \ when the type value range is 'Closed'; it is ignored on write and returned\
+            \ as null for 'Open' data types. If reference data is supplied on a 'Closed'\
+            \ data type and this field is omitted, the acceptable values are derived\
+            \ from the reference data values."
           items:
             type: string
           nullable: true
@@ -264321,6 +264755,9 @@ components:
       description: A Fund entity.
       example:
         instrumentScope: instrumentScope
+        partnershipAccountingPortfolioId:
+          code: code
+          scope: scope
         displayName: displayName
         yearEndDate:
           month: 7
@@ -265037,6 +265474,8 @@ components:
         whtParameters:
           $ref: '#/components/schemas/WhtParameters'
         valuationTemplateId:
+          $ref: '#/components/schemas/ResourceId'
+        partnershipAccountingPortfolioId:
           $ref: '#/components/schemas/ResourceId'
         links:
           items:
@@ -266943,6 +267382,9 @@ components:
       example:
         code: code
         instrumentScope: instrumentScope
+        partnershipAccountingPortfolioId:
+          code: code
+          scope: scope
         displayName: displayName
         reportingPrices:
         - source: source
@@ -267475,6 +267917,8 @@ components:
         whtParameters:
           $ref: '#/components/schemas/WhtParameters'
         valuationTemplateId:
+          $ref: '#/components/schemas/ResourceId'
+        partnershipAccountingPortfolioId:
           $ref: '#/components/schemas/ResourceId'
       required:
       - baseCurrency
@@ -268343,9 +268787,11 @@ components:
             \ for the gross income line and for a Fee or Tax taken out of that income.\
             \ Fee/Tax: the kind of charge declared on the movement that produced the\
             \ line, where the whole line is the charge ('PL_Fees', or 'PL_Carry' with\
-            \ component 'Expense'). Available values: Undefined, ShortTerm, LongTerm,\
-            \ Bought, Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution,\
-            \ Coupon, Dividend, Fee, Tax."
+            \ component 'Expense'). DeemedDisposal: realised gain from rebasing a\
+            \ holding's cost to its value at a valuation point, without disposing\
+            \ of any units. Available values: Undefined, ShortTerm, LongTerm, Bought,\
+            \ Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution, Coupon,\
+            \ Dividend, Fee, Tax, DeemedDisposal."
           nullable: true
           type: string
         levels:
@@ -269004,11 +269450,10 @@ components:
           code: code
           scope: scope
         code: code
-        decimalPlaces: 2
+        partnershipAccountingPortfolioId:
+          code: code
+          scope: scope
         displayName: displayName
-        shareClassInstrumentScopes:
-        - shareClassInstrumentScopes
-        inceptionDate: 2000-01-23T04:56:07.000+00:00
         yearEndDate:
           month: 7
           day: 5
@@ -269030,6 +269475,10 @@ components:
           launchDate: 2000-01-23T04:56:07.000+00:00
           lusidInstrumentId: lusidInstrumentId
         type: type
+        decimalPlaces: 2
+        shareClassInstrumentScopes:
+        - shareClassInstrumentScopes
+        inceptionDate: 2000-01-23T04:56:07.000+00:00
         properties:
           key:
             referenceData:
@@ -269117,6 +269566,8 @@ components:
           description: A set of properties for the Fund.
           nullable: true
           type: object
+        partnershipAccountingPortfolioId:
+          $ref: '#/components/schemas/ResourceId'
       required:
       - aborId
       - code
@@ -269367,6 +269818,9 @@ components:
         - navTypeCodes
         funds:
         - instrumentScope: instrumentScope
+          partnershipAccountingPortfolioId:
+            code: code
+            scope: scope
           displayName: displayName
           yearEndDate:
             month: 7
@@ -269929,6 +270383,9 @@ components:
             status: status
           createInstrument: true
         - instrumentScope: instrumentScope
+          partnershipAccountingPortfolioId:
+            code: code
+            scope: scope
           displayName: displayName
           yearEndDate:
             month: 7
@@ -291401,9 +291858,11 @@ components:
             \ for the gross income line and for a Fee or Tax taken out of that income.\
             \ Fee/Tax: the kind of charge declared on the movement that produced the\
             \ line, where the whole line is the charge ('PL_Fees', or 'PL_Carry' with\
-            \ component 'Expense'). Available values: Undefined, ShortTerm, LongTerm,\
-            \ Bought, Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution,\
-            \ Coupon, Dividend, Fee, Tax."
+            \ component 'Expense'). DeemedDisposal: realised gain from rebasing a\
+            \ holding's cost to its value at a valuation point, without disposing\
+            \ of any units. Available values: Undefined, ShortTerm, LongTerm, Bought,\
+            \ Sold, TradeDateToSettlementDate, Rounding, InLieuSubstitution, Coupon,\
+            \ Dividend, Fee, Tax, DeemedDisposal."
           nullable: true
           type: string
         levels:
@@ -312976,6 +313435,9 @@ components:
         nextPage: nextPage
         values:
         - instrumentScope: instrumentScope
+          partnershipAccountingPortfolioId:
+            code: code
+            scope: scope
           displayName: displayName
           yearEndDate:
             month: 7
@@ -313538,6 +314000,9 @@ components:
             status: status
           createInstrument: true
         - instrumentScope: instrumentScope
+          partnershipAccountingPortfolioId:
+            code: code
+            scope: scope
           displayName: displayName
           yearEndDate:
             month: 7
@@ -315184,6 +315649,9 @@ components:
           - navTypeCodes
           funds:
           - instrumentScope: instrumentScope
+            partnershipAccountingPortfolioId:
+              code: code
+              scope: scope
             displayName: displayName
             yearEndDate:
               month: 7
@@ -315746,6 +316214,9 @@ components:
               status: status
             createInstrument: true
           - instrumentScope: instrumentScope
+            partnershipAccountingPortfolioId:
+              code: code
+              scope: scope
             displayName: displayName
             yearEndDate:
               month: 7
@@ -316445,6 +316916,9 @@ components:
           - navTypeCodes
           funds:
           - instrumentScope: instrumentScope
+            partnershipAccountingPortfolioId:
+              code: code
+              scope: scope
             displayName: displayName
             yearEndDate:
               month: 7
@@ -317007,6 +317481,9 @@ components:
               status: status
             createInstrument: true
           - instrumentScope: instrumentScope
+            partnershipAccountingPortfolioId:
+              code: code
+              scope: scope
             displayName: displayName
             yearEndDate:
               month: 7
@@ -348345,6 +348822,9 @@ components:
       example:
         fund:
           instrumentScope: instrumentScope
+          partnershipAccountingPortfolioId:
+            code: code
+            scope: scope
           displayName: displayName
           yearEndDate:
             month: 7
@@ -349254,8 +349734,8 @@ components:
       type: object
     RecAgedResult:
       additionalProperties: false
-      description: "A summary of a rec result in another instance, as at the stamp\
-        \ that first recorded it."
+      description: "A summary of a rec result in another instance, as at the stamp,\
+        \ or as last recorded if the result can no longer be read."
       example:
         instanceId:
           instanceIdType: instanceIdType
@@ -349283,13 +349763,13 @@ components:
         instanceId:
           $ref: '#/components/schemas/RecInstanceId'
         runNumber:
-          description: The result's latest run as at the stamp that first recorded
-            it.
+          description: "The result's latest run as at the stamp, or as last recorded\
+            \ if the result can no longer be read."
           format: int32
           type: integer
         runAsAt:
-          description: The asAt datetime of the result's latest run as at the stamp
-            that first recorded it.
+          description: "The asAt datetime of the result's latest run as at the stamp,\
+            \ or as last recorded if the result can no longer be read."
           format: date-time
           type: string
         firstRunSeen:
@@ -349305,14 +349785,15 @@ components:
         datesReconciled:
           $ref: '#/components/schemas/RecDatesReconciled'
         exceptionStatus:
-          description: "The result's exception status as at the stamp that first recorded\
-            \ it: Open or Closed. Available values: Open, Closed."
+          description: "The result's exception status as at the stamp, or as last\
+            \ recorded if the result can no longer be read: Open or Closed. Available\
+            \ values: Open, Closed."
           minLength: 1
           type: string
         closureType:
-          description: "The result's exception closure type as at the stamp that first\
-            \ recorded it. Null while the exception is open. Available values: Cleared,\
-            \ Accepted, ForceMatched."
+          description: "The result's exception closure type as at the stamp, or as\
+            \ last recorded if the result can no longer be read. Null while the exception\
+            \ is open. Available values: Cleared, Accepted, ForceMatched."
           nullable: true
           type: string
       required:
@@ -355606,6 +356087,185 @@ components:
       - key
       - side
       - source
+      type: object
+    RegistryLine:
+      additionalProperties: false
+      description: "A line of a portfolio's registry: a partner register line with\
+        \ the fields of a holding row and its capital\r\nbalances. Registry lines\
+        \ are never holdings, so a line here is absent from the portfolio's holdings."
+      example:
+        subHoldingKeys:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+        commitmentLineId: commitmentLineId
+        committed: 5.962133916683182
+        cost:
+          amount: 0.8008281904610115
+          currency: currency
+        uncalledCommitment: 5.637376656633329
+        recallable: 9.301444243932576
+        instrumentScope: instrumentScope
+        units: 0.8008281904610115
+        holdingTypeName: holdingTypeName
+        holdingId: 1
+        portfolioId:
+          code: code
+          scope: scope
+        unfunded: 3.616076749251911
+        holdingType: holdingType
+        instrumentUid: instrumentUid
+        paidIn: 2.3021358869347655
+        currency: currency
+        investorRecordId: investorRecordId
+        costPortfolioCcy:
+          amount: 0.8008281904610115
+          currency: currency
+        returned: 7.061401241503109
+        settledUnits: 6.027456183070403
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+      properties:
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        instrumentScope:
+          description: The scope in which the line's capital-interest instrument is
+            in.
+          nullable: true
+          type: string
+        instrumentUid:
+          description: The unique Lusid Instrument Id (LUID) of the capital-interest
+            instrument of the line.
+          minLength: 1
+          type: string
+        subHoldingKeys:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: The sub-holding properties which identify the holding. Each
+            property will be from the 'Transaction' domain. These are configured on
+            a transaction portfolio.
+          nullable: true
+          type: object
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/Property'
+          description: The properties which have been requested to be decorated onto
+            the line. These will be from the 'Instrument' or 'Holding' domain; the
+            capital balances are available as 'Holding/system' properties when requested
+            by key.
+          nullable: true
+          type: object
+        holdingType:
+          description: "The code for the type of the holding e.g. P, B, C, R, F etc."
+          minLength: 1
+          type: string
+        holdingTypeName:
+          description: "The decoded type of the holding e.g. Position, Balance, CashCommitment,\
+            \ Receivable, ForwardFX etc."
+          nullable: true
+          type: string
+        units:
+          description: "The number of units of the line, one per open line."
+          format: double
+          type: number
+        settledUnits:
+          description: The number of settled units of the line.
+          format: double
+          type: number
+        cost:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        costPortfolioCcy:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        currency:
+          description: The commitment currency of the line.
+          nullable: true
+          type: string
+        holdingId:
+          description: "A single identifier for the line within the portfolio, constructed\
+            \ from the LusidInstrumentId, sub-holding keys and currency."
+          format: int64
+          nullable: true
+          type: integer
+        investorRecordId:
+          description: "The identifier of the investor record the line belongs to,\
+            \ as the register shows it."
+          minLength: 1
+          type: string
+        commitmentLineId:
+          description: "The identifier of the commitment (register) line, as its capital-interest\
+            \ instrument declares it."
+          minLength: 1
+          type: string
+        committed:
+          description: "The committed capital, in the commitment currency."
+          format: double
+          type: number
+        uncalledCommitment:
+          description: "The commitment not yet called, in the commitment currency."
+          format: double
+          type: number
+        paidIn:
+          description: "The capital paid in, in the commitment currency."
+          format: double
+          type: number
+        returned:
+          description: "The capital returned, in the commitment currency."
+          format: double
+          type: number
+        recallable:
+          description: "The returned capital that may be recalled, in the commitment\
+            \ currency."
+          format: double
+          type: number
+        unfunded:
+          description: "The unfunded commitment: the uncalled commitment plus the\
+            \ recallable capital, in the commitment currency."
+          format: double
+          type: number
+      required:
+      - commitmentLineId
+      - committed
+      - cost
+      - costPortfolioCcy
+      - holdingType
+      - instrumentUid
+      - investorRecordId
+      - paidIn
+      - portfolioId
+      - recallable
+      - returned
+      - settledUnits
+      - uncalledCommitment
+      - unfunded
+      - units
       type: object
     RelatedEntity:
       additionalProperties: false
@@ -387538,9 +388198,10 @@ components:
       type: object
     RunComplianceV3Request:
       additionalProperties: false
-      description: "A request to run one or more V3 compliance rules against a portfolio\
-        \ group, valuing holdings with the\r\nsupplied recipe. The pre-trade variant\
-        \ additionally includes the group's live order flow."
+      description: "A request to run one or more V3 compliance rules against one or\
+        \ more individual portfolios, valuing\r\nholdings with the supplied recipe.\
+        \ Each portfolio is evaluated on its own. The pre-trade variant\r\nadditionally\
+        \ includes each portfolio's live order flow."
       example:
         ruleIds:
         - code: code
@@ -387549,11 +388210,12 @@ components:
           scope: scope
         effectiveAt: 2000-01-23T04:56:07.000+00:00
         asAt: 2000-01-23T04:56:07.000+00:00
-        evaluationMode: evaluationMode
-        recipeId:
-          code: code
+        portfolioIds:
+        - code: code
           scope: scope
-        portfolioGroupId:
+        - code: code
+          scope: scope
+        recipeId:
           code: code
           scope: scope
       properties:
@@ -387561,8 +388223,10 @@ components:
           items:
             $ref: '#/components/schemas/ResourceId'
           type: array
-        portfolioGroupId:
-          $ref: '#/components/schemas/ResourceId'
+        portfolioIds:
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          type: array
         recipeId:
           $ref: '#/components/schemas/ResourceId'
         effectiveAt:
@@ -387573,12 +388237,8 @@ components:
           format: date-time
           nullable: true
           type: string
-        evaluationMode:
-          description: "Available values: PerPortfolio, GroupTotal."
-          nullable: true
-          type: string
       required:
-      - portfolioGroupId
+      - portfolioIds
       - recipeId
       - ruleIds
       type: object
@@ -397525,23 +398185,32 @@ components:
       additionalProperties: false
       description: A request to sweep specified blocks.
       example:
+        calendarId:
+          code: code
+          scope: scope
         blockIds:
-          key:
-            code: code
-            scope: scope
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
         latestAllowableModificationTime: latestAllowableModificationTime
       properties:
         blockIds:
-          additionalProperties:
+          description: The identifiers of the blocks to sweep.
+          items:
             $ref: '#/components/schemas/ResourceId'
-          description: "A dictionary mapping ephemeral identifiers, which live as\
-            \ long as the request, to specific blocks to sweep."
-          type: object
+          type: array
         latestAllowableModificationTime:
-          description: Timestamp or cut label which the block or related entities
-            must not have been updated after.
+          description: "Timestamp, cut label or tenor. A block can only be swept if\
+            \ none of its executions or allocations were modified after this time.\
+            \ A tenor is relative to the current time, for example '1D' means one\
+            \ day ago. A business day tenor, for example '1BD', requires calendarId.\
+            \ A tenor cannot go back further than 1 January 1900. For more information\
+            \ on tenors, see [Specifying tenors in LUSID](https://support.lusid.com/docs/specifying-tenors-in-lusid)"
           minLength: 1
           type: string
+        calendarId:
+          $ref: '#/components/schemas/ResourceId'
       required:
       - blockIds
       - latestAllowableModificationTime
@@ -397550,9 +398219,10 @@ components:
       additionalProperties: false
       example:
         values:
-          key:
-            code: code
-            scope: scope
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
         failed:
           key:
             id: id
@@ -397563,12 +398233,11 @@ components:
             - key: errorDetails
       properties:
         values:
-          additionalProperties:
+          description: The identifiers of blocks which have been successfully swept.
+          items:
             $ref: '#/components/schemas/ResourceId'
-          description: "The identifiers of blocks which have been successfully swept,\
-            \ indexed by ephemeral request-lived id."
           nullable: true
-          type: object
+          type: array
         failed:
           additionalProperties:
             $ref: '#/components/schemas/ErrorDetail'
@@ -415120,8 +415789,11 @@ components:
           pattern: "^[\\s\\S]*$"
           type: string
         acceptableValues:
-          description: The acceptable set of values for this data type. Only applies
-            to 'open' value type range.
+          description: "The acceptable set of values for this data type. Only applies\
+            \ when the type value range is 'Closed'; it is ignored on write and returned\
+            \ as null for 'Open' data types. If reference data is supplied on a 'Closed'\
+            \ data type and this field is omitted, the acceptable values are derived\
+            \ from the reference data values."
           items:
             type: string
           nullable: true
@@ -446301,6 +446973,194 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/PortfolioHolding'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        warnings:
+          items:
+            $ref: '#/components/schemas/Warning'
+          nullable: true
+          type: array
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      - version
+      type: object
+    VersionedResourceListWithWarningsOfRegistryLine:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - subHoldingKeys:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          commitmentLineId: commitmentLineId
+          committed: 5.962133916683182
+          cost:
+            amount: 0.8008281904610115
+            currency: currency
+          uncalledCommitment: 5.637376656633329
+          recallable: 9.301444243932576
+          instrumentScope: instrumentScope
+          units: 0.8008281904610115
+          holdingTypeName: holdingTypeName
+          holdingId: 1
+          portfolioId:
+            code: code
+            scope: scope
+          unfunded: 3.616076749251911
+          holdingType: holdingType
+          instrumentUid: instrumentUid
+          paidIn: 2.3021358869347655
+          currency: currency
+          investorRecordId: investorRecordId
+          costPortfolioCcy:
+            amount: 0.8008281904610115
+            currency: currency
+          returned: 7.061401241503109
+          settledUnits: 6.027456183070403
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        - subHoldingKeys:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          commitmentLineId: commitmentLineId
+          committed: 5.962133916683182
+          cost:
+            amount: 0.8008281904610115
+            currency: currency
+          uncalledCommitment: 5.637376656633329
+          recallable: 9.301444243932576
+          instrumentScope: instrumentScope
+          units: 0.8008281904610115
+          holdingTypeName: holdingTypeName
+          holdingId: 1
+          portfolioId:
+            code: code
+            scope: scope
+          unfunded: 3.616076749251911
+          holdingType: holdingType
+          instrumentUid: instrumentUid
+          paidIn: 2.3021358869347655
+          currency: currency
+          investorRecordId: investorRecordId
+          costPortfolioCcy:
+            amount: 0.8008281904610115
+            currency: currency
+          returned: 7.061401241503109
+          settledUnits: 6.027456183070403
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        warnings:
+        - entityId: entityId
+          message: message
+        - entityId: entityId
+          message: message
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        version:
+          $ref: '#/components/schemas/Version'
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/RegistryLine'
           type: array
         href:
           description: The URI of the resource list.

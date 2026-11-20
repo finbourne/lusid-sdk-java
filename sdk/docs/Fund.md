@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]
 **whtParameters** | [**WhtParameters**](WhtParameters.md) |  | [optional] [default to WhtParameters]
 **valuationTemplateId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
+**partnershipAccountingPortfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -73,6 +74,7 @@ DealingEstimates DealingEstimates = new DealingEstimates();
 Version Version = new Version();
 WhtParameters WhtParameters = new WhtParameters();
 ResourceId ValuationTemplateId = new ResourceId();
+ResourceId PartnershipAccountingPortfolioId = new ResourceId();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -107,6 +109,7 @@ Fund fundInstance = new Fund()
     .Version(Version)
     .WhtParameters(WhtParameters)
     .ValuationTemplateId(ValuationTemplateId)
+    .PartnershipAccountingPortfolioId(PartnershipAccountingPortfolioId)
     .Links(Links);
 ```
 

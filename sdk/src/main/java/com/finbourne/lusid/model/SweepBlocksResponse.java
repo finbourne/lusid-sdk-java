@@ -19,8 +19,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.openapitools.jackson.nullable.JsonNullable;
 
@@ -56,7 +58,7 @@ import com.finbourne.lusid.JSON;
 public class SweepBlocksResponse {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private Map<String, ResourceId> values;
+  private List<ResourceId> values;
 
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
@@ -65,31 +67,31 @@ public class SweepBlocksResponse {
   public SweepBlocksResponse() {
   }
 
-  public SweepBlocksResponse values(Map<String, ResourceId> values) {
+  public SweepBlocksResponse values(List<ResourceId> values) {
     
     this.values = values;
     return this;
   }
 
-  public SweepBlocksResponse putValuesItem(String key, ResourceId valuesItem) {
+  public SweepBlocksResponse addValuesItem(ResourceId valuesItem) {
     if (this.values == null) {
-      this.values = new HashMap<>();
+      this.values = new ArrayList<>();
     }
-    this.values.put(key, valuesItem);
+    this.values.add(valuesItem);
     return this;
   }
 
    /**
-   * The identifiers of blocks which have been successfully swept, indexed by ephemeral request-lived id.
+   * The identifiers of blocks which have been successfully swept.
    * @return values
   **/
   @jakarta.annotation.Nullable
-  public Map<String, ResourceId> getValues() {
+  public List<ResourceId> getValues() {
     return values;
   }
 
 
-  public void setValues(Map<String, ResourceId> values) {
+  public void setValues(List<ResourceId> values) {
     this.values = values;
   }
 
@@ -201,6 +203,20 @@ public class SweepBlocksResponse {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (jsonObj.get("values") != null && !jsonObj.get("values").isJsonNull()) {
+        JsonArray jsonArrayvalues = jsonObj.getAsJsonArray("values");
+        if (jsonArrayvalues != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("values").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
+          }
+
+          // validate the optional field `values` (array)
+          for (int i = 0; i < jsonArrayvalues.size(); i++) {
+            ResourceId.validateJsonElement(jsonArrayvalues.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

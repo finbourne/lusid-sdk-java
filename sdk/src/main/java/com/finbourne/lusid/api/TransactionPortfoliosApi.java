@@ -84,6 +84,7 @@ import com.finbourne.lusid.model.VersionedResourceListOfTransaction;
 import com.finbourne.lusid.model.VersionedResourceListOfTransactionSettlementInstruction;
 import com.finbourne.lusid.model.VersionedResourceListWithPostBodiesOfSettlementInstructionWithTransactionToSettlementInstructionQuery;
 import com.finbourne.lusid.model.VersionedResourceListWithWarningsOfPortfolioHolding;
+import com.finbourne.lusid.model.VersionedResourceListWithWarningsOfRegistryLine;
 import com.finbourne.lusid.model.VirtualTransactionOverridesResponse;
 
 import java.lang.reflect.Type;
@@ -9979,6 +9980,307 @@ public class TransactionPortfoliosApi {
      */
     public APIgetPortfolioCashStatementRequest getPortfolioCashStatement(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
         return new APIgetPortfolioCashStatementRequest(scope, code, fromEffectiveAt, toEffectiveAt);
+    }
+    private okhttp3.Call getRegistryCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getRegistryCall(scope, code, effectiveAt, asAt, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getRegistryCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/transactionportfolios/{scope}/{code}/registry"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getRegistryValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getRegistry(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getRegistry(Async)");
+        }
+
+        return getRegistryCall(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback, opts);
+
+    }
+
+
+    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, null, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getRegistryAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getRegistryAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetRegistryRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+
+        private APIgetRegistryRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the registry of the transaction   portfolio. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetRegistryRequest
+         */
+        public APIgetRegistryRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the registry of the transaction portfolio. Defaults   to return the latest version if not specified. (optional)
+         * @return APIgetRegistryRequest
+         */
+        public APIgetRegistryRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
+         * @return APIgetRegistryRequest
+         */
+        public APIgetRegistryRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Holding\&quot; domain to decorate onto   the lines. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/CommittedCapital\&quot;. (optional)
+         * @return APIgetRegistryRequest
+         */
+        public APIgetRegistryRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getRegistry
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getRegistryCall(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getRegistry request
+         * @return VersionedResourceListWithWarningsOfRegistryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListWithWarningsOfRegistryLine execute() throws ApiException {
+            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getRegistry request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListWithWarningsOfRegistryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListWithWarningsOfRegistryLine execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getRegistry request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListWithWarningsOfRegistryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> executeWithHttpInfo() throws ApiException {
+            return getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys);
+        }
+
+        /**
+         * Execute getRegistry request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListWithWarningsOfRegistryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, opts);
+        }
+
+        /**
+         * Execute getRegistry request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
+            return getRegistryAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getRegistry request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines and version of the specified transaction portfolio </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
+            return getRegistryAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetRegistry: [EXPERIMENTAL] GetRegistry: Get the registry of a transaction portfolio.
+     * Get the registry lines of a transaction portfolio at the given effective and asAt datetimes: the partner  register lines that transaction types flagged &#39;Registry&#39; apply to, with their units, cost and capital  balances. Registry lines are never holdings, so they do not appear in the holdings of the portfolio.
+     * @param scope The scope of the transaction portfolio. (required)
+     * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)
+     * @return APIgetRegistryRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The registry lines and version of the specified transaction portfolio </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetRegistryRequest getRegistry(String scope, String code) {
+        return new APIgetRegistryRequest(scope, code);
     }
     private okhttp3.Call getTransactionHistoryCall(String scope, String code, String transactionId, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getTransactionHistoryCall(scope, code, transactionId, asAt,  _callback, new ConfigurationOptions());

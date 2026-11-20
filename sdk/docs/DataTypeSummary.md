@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The display name of the data type. | [default to String]
 **description** | **String** | The description of the data type. | [default to String]
 **valueType** | **String** | The expected type of the values. Available values: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText. | [default to String]
-**acceptableValues** | **List&lt;String&gt;** | The acceptable set of values for this data type. Only applies to &#39;open&#39; value type range. | [optional] [default to List<String>]
+**acceptableValues** | **List&lt;String&gt;** | The acceptable set of values for this data type. Only applies when the type value range is &#39;Closed&#39;; it is ignored on write and returned as null for &#39;Open&#39; data types. If reference data is supplied on a &#39;Closed&#39; data type and this field is omitted, the acceptable values are derived from the reference data values. | [optional] [default to List<String>]
 **unitSchema** | **String** | The schema of the data type&#39;s units. Available values: NoUnits, Basic, Iso4217Currency. | [optional] [default to String]
 **acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) | The definitions of the acceptable units. | [optional] [default to List<IUnitDefinitionDto>]
 **version** | [**Version**](Version.md) |  | [optional] [default to Version]

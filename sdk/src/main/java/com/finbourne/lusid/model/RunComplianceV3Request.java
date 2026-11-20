@@ -50,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A request to run one or more V3 compliance rules against a portfolio group, valuing holdings with the  supplied recipe. The pre-trade variant additionally includes the group&#39;s live order flow.
+ * A request to run one or more V3 compliance rules against one or more individual portfolios, valuing  holdings with the supplied recipe. Each portfolio is evaluated on its own. The pre-trade variant  additionally includes each portfolio&#39;s live order flow.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RunComplianceV3Request {
@@ -58,9 +58,9 @@ public class RunComplianceV3Request {
   @SerializedName(SERIALIZED_NAME_RULE_IDS)
   private List<ResourceId> ruleIds = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_PORTFOLIO_GROUP_ID = "portfolioGroupId";
-  @SerializedName(SERIALIZED_NAME_PORTFOLIO_GROUP_ID)
-  private ResourceId portfolioGroupId;
+  public static final String SERIALIZED_NAME_PORTFOLIO_IDS = "portfolioIds";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_IDS)
+  private List<ResourceId> portfolioIds = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_RECIPE_ID = "recipeId";
   @SerializedName(SERIALIZED_NAME_RECIPE_ID)
@@ -73,10 +73,6 @@ public class RunComplianceV3Request {
   public static final String SERIALIZED_NAME_AS_AT = "asAt";
   @SerializedName(SERIALIZED_NAME_AS_AT)
   private OffsetDateTime asAt;
-
-  public static final String SERIALIZED_NAME_EVALUATION_MODE = "evaluationMode";
-  @SerializedName(SERIALIZED_NAME_EVALUATION_MODE)
-  private String evaluationMode;
 
   public RunComplianceV3Request() {
   }
@@ -110,24 +106,32 @@ public class RunComplianceV3Request {
   }
 
 
-  public RunComplianceV3Request portfolioGroupId(ResourceId portfolioGroupId) {
+  public RunComplianceV3Request portfolioIds(List<ResourceId> portfolioIds) {
     
-    this.portfolioGroupId = portfolioGroupId;
+    this.portfolioIds = portfolioIds;
+    return this;
+  }
+
+  public RunComplianceV3Request addPortfolioIdsItem(ResourceId portfolioIdsItem) {
+    if (this.portfolioIds == null) {
+      this.portfolioIds = new ArrayList<>();
+    }
+    this.portfolioIds.add(portfolioIdsItem);
     return this;
   }
 
    /**
-   * Get portfolioGroupId
-   * @return portfolioGroupId
+   * Get portfolioIds
+   * @return portfolioIds
   **/
   @jakarta.annotation.Nonnull
-  public ResourceId getPortfolioGroupId() {
-    return portfolioGroupId;
+  public List<ResourceId> getPortfolioIds() {
+    return portfolioIds;
   }
 
 
-  public void setPortfolioGroupId(ResourceId portfolioGroupId) {
-    this.portfolioGroupId = portfolioGroupId;
+  public void setPortfolioIds(List<ResourceId> portfolioIds) {
+    this.portfolioIds = portfolioIds;
   }
 
 
@@ -194,27 +198,6 @@ public class RunComplianceV3Request {
   }
 
 
-  public RunComplianceV3Request evaluationMode(String evaluationMode) {
-    
-    this.evaluationMode = evaluationMode;
-    return this;
-  }
-
-   /**
-   * Available values: PerPortfolio, GroupTotal.
-   * @return evaluationMode
-  **/
-  @jakarta.annotation.Nullable
-  public String getEvaluationMode() {
-    return evaluationMode;
-  }
-
-
-  public void setEvaluationMode(String evaluationMode) {
-    this.evaluationMode = evaluationMode;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -226,11 +209,10 @@ public class RunComplianceV3Request {
     }
     RunComplianceV3Request runComplianceV3Request = (RunComplianceV3Request) o;
     return Objects.equals(this.ruleIds, runComplianceV3Request.ruleIds) &&
-        Objects.equals(this.portfolioGroupId, runComplianceV3Request.portfolioGroupId) &&
+        Objects.equals(this.portfolioIds, runComplianceV3Request.portfolioIds) &&
         Objects.equals(this.recipeId, runComplianceV3Request.recipeId) &&
         Objects.equals(this.effectiveAt, runComplianceV3Request.effectiveAt) &&
-        Objects.equals(this.asAt, runComplianceV3Request.asAt) &&
-        Objects.equals(this.evaluationMode, runComplianceV3Request.evaluationMode);
+        Objects.equals(this.asAt, runComplianceV3Request.asAt);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -239,7 +221,7 @@ public class RunComplianceV3Request {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleIds, portfolioGroupId, recipeId, effectiveAt, asAt, evaluationMode);
+    return Objects.hash(ruleIds, portfolioIds, recipeId, effectiveAt, asAt);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -254,11 +236,10 @@ public class RunComplianceV3Request {
     StringBuilder sb = new StringBuilder();
     sb.append("class RunComplianceV3Request {\n");
     sb.append("    ruleIds: ").append(toIndentedString(ruleIds)).append("\n");
-    sb.append("    portfolioGroupId: ").append(toIndentedString(portfolioGroupId)).append("\n");
+    sb.append("    portfolioIds: ").append(toIndentedString(portfolioIds)).append("\n");
     sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
     sb.append("    asAt: ").append(toIndentedString(asAt)).append("\n");
-    sb.append("    evaluationMode: ").append(toIndentedString(evaluationMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -282,16 +263,15 @@ public class RunComplianceV3Request {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("ruleIds");
-    openapiFields.add("portfolioGroupId");
+    openapiFields.add("portfolioIds");
     openapiFields.add("recipeId");
     openapiFields.add("effectiveAt");
     openapiFields.add("asAt");
-    openapiFields.add("evaluationMode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("ruleIds");
-    openapiRequiredFields.add("portfolioGroupId");
+    openapiRequiredFields.add("portfolioIds");
     openapiRequiredFields.add("recipeId");
   }
 
@@ -325,13 +305,18 @@ public class RunComplianceV3Request {
       for (int i = 0; i < jsonArrayruleIds.size(); i++) {
         ResourceId.validateJsonElement(jsonArrayruleIds.get(i));
       };
-      // validate the required field `portfolioGroupId`
-      ResourceId.validateJsonElement(jsonObj.get("portfolioGroupId"));
+      // ensure the json data is an array
+      if (!jsonObj.get("portfolioIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `portfolioIds` to be an array in the JSON string but got `%s`", jsonObj.get("portfolioIds").toString()));
+      }
+
+      JsonArray jsonArrayportfolioIds = jsonObj.getAsJsonArray("portfolioIds");
+      // validate the required field `portfolioIds` (array)
+      for (int i = 0; i < jsonArrayportfolioIds.size(); i++) {
+        ResourceId.validateJsonElement(jsonArrayportfolioIds.get(i));
+      };
       // validate the required field `recipeId`
       ResourceId.validateJsonElement(jsonObj.get("recipeId"));
-      if ((jsonObj.get("evaluationMode") != null && !jsonObj.get("evaluationMode").isJsonNull()) && !jsonObj.get("evaluationMode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `evaluationMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("evaluationMode").toString()));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

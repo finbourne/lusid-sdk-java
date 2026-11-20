@@ -165,6 +165,10 @@ public class FundDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_VALUATION_TEMPLATE_ID)
   private ResourceId valuationTemplateId;
 
+  public static final String SERIALIZED_NAME_PARTNERSHIP_ACCOUNTING_PORTFOLIO_ID = "partnershipAccountingPortfolioId";
+  @SerializedName(SERIALIZED_NAME_PARTNERSHIP_ACCOUNTING_PORTFOLIO_ID)
+  private ResourceId partnershipAccountingPortfolioId;
+
   public FundDefinitionRequest() {
   }
 
@@ -751,6 +755,27 @@ public class FundDefinitionRequest {
   }
 
 
+  public FundDefinitionRequest partnershipAccountingPortfolioId(ResourceId partnershipAccountingPortfolioId) {
+    
+    this.partnershipAccountingPortfolioId = partnershipAccountingPortfolioId;
+    return this;
+  }
+
+   /**
+   * Get partnershipAccountingPortfolioId
+   * @return partnershipAccountingPortfolioId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getPartnershipAccountingPortfolioId() {
+    return partnershipAccountingPortfolioId;
+  }
+
+
+  public void setPartnershipAccountingPortfolioId(ResourceId partnershipAccountingPortfolioId) {
+    this.partnershipAccountingPortfolioId = partnershipAccountingPortfolioId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -785,7 +810,8 @@ public class FundDefinitionRequest {
         Objects.equals(this.reportingPrices, fundDefinitionRequest.reportingPrices) &&
         Objects.equals(this.dealingEstimates, fundDefinitionRequest.dealingEstimates) &&
         Objects.equals(this.whtParameters, fundDefinitionRequest.whtParameters) &&
-        Objects.equals(this.valuationTemplateId, fundDefinitionRequest.valuationTemplateId);
+        Objects.equals(this.valuationTemplateId, fundDefinitionRequest.valuationTemplateId) &&
+        Objects.equals(this.partnershipAccountingPortfolioId, fundDefinitionRequest.partnershipAccountingPortfolioId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -794,7 +820,7 @@ public class FundDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, instrumentScope, shareClasses, pricingMethodology, reportingPrices, dealingEstimates, whtParameters, valuationTemplateId);
+    return Objects.hash(code, shortCode, displayName, description, baseCurrency, investorStructure, portfolioIds, fundConfigurationId, shareClassInstrumentScopes, shareClassInstruments, type, taxTransparency, inceptionDate, decimalPlaces, primaryNavType, additionalNavTypes, properties, createInstrument, instrumentScope, shareClasses, pricingMethodology, reportingPrices, dealingEstimates, whtParameters, valuationTemplateId, partnershipAccountingPortfolioId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -833,6 +859,7 @@ public class FundDefinitionRequest {
     sb.append("    dealingEstimates: ").append(toIndentedString(dealingEstimates)).append("\n");
     sb.append("    whtParameters: ").append(toIndentedString(whtParameters)).append("\n");
     sb.append("    valuationTemplateId: ").append(toIndentedString(valuationTemplateId)).append("\n");
+    sb.append("    partnershipAccountingPortfolioId: ").append(toIndentedString(partnershipAccountingPortfolioId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -880,6 +907,7 @@ public class FundDefinitionRequest {
     openapiFields.add("dealingEstimates");
     openapiFields.add("whtParameters");
     openapiFields.add("valuationTemplateId");
+    openapiFields.add("partnershipAccountingPortfolioId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -1028,6 +1056,10 @@ public class FundDefinitionRequest {
       // validate the optional field `valuationTemplateId`
       if (jsonObj.get("valuationTemplateId") != null && !jsonObj.get("valuationTemplateId").isJsonNull()) {
         ResourceId.validateJsonElement(jsonObj.get("valuationTemplateId"));
+      }
+      // validate the optional field `partnershipAccountingPortfolioId`
+      if (jsonObj.get("partnershipAccountingPortfolioId") != null && !jsonObj.get("partnershipAccountingPortfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("partnershipAccountingPortfolioId"));
       }
   }
 

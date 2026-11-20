@@ -122,6 +122,7 @@ import com.finbourne.lusid.model.VersionedResourceListOfFundA2BDataRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfFundA2BMovementRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfHoldingContributor;
 import com.finbourne.lusid.model.VersionedResourceListOfPortfolioHolding;
+import com.finbourne.lusid.model.VersionedResourceListWithWarningsOfRegistryLine;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -11224,6 +11225,322 @@ public class FundsApi {
     public APIgetPartnershipConfigPackRequest getPartnershipConfigPack(String scope, String code) {
         return new APIgetPartnershipConfigPackRequest(scope, code);
     }
+    private okhttp3.Call getRegistryForFundCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
+        return getRegistryForFundCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getRegistryForFundCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/registry"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getRegistryForFundValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getRegistryForFund(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getRegistryForFund(Async)");
+        }
+
+        return getRegistryForFundCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback, opts);
+
+    }
+
+
+    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryForFundWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryForFundWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, null, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getRegistryForFundAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getRegistryForFundAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetRegistryForFundRequest {
+        private final String scope;
+        private final String code;
+        private String effectiveAt;
+        private OffsetDateTime asAt;
+        private String filter;
+        private List<String> propertyKeys;
+        private String navTypeCode;
+
+        private APIgetRegistryForFundRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set effectiveAt
+         * @param effectiveAt The effective datetime or cut label at which to retrieve the registry. Defaults to the current LUSID system datetime if not specified. (optional)
+         * @return APIgetRegistryForFundRequest
+         */
+        public APIgetRegistryForFundRequest effectiveAt(String effectiveAt) {
+            this.effectiveAt = effectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the registry. Defaults to return the latest version if not specified. (optional)
+         * @return APIgetRegistryForFundRequest
+         */
+        public APIgetRegistryForFundRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetRegistryForFundRequest
+         */
+        public APIgetRegistryForFundRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys A list of property keys from the \&quot;Instrument\&quot; or \&quot;Holding\&quot; domain to decorate onto   the lines. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/CommittedCapital\&quot;. (optional)
+         * @return APIgetRegistryForFundRequest
+         */
+        public APIgetRegistryForFundRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetRegistryForFundRequest
+         */
+        public APIgetRegistryForFundRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Build call for getRegistryForFund
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines of the transaction portfolios of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getRegistryForFundCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute getRegistryForFund request
+         * @return VersionedResourceListWithWarningsOfRegistryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines of the transaction portfolios of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListWithWarningsOfRegistryLine execute() throws ApiException {
+            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getRegistryForFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListWithWarningsOfRegistryLine
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines of the transaction portfolios of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListWithWarningsOfRegistryLine execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getRegistryForFund request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListWithWarningsOfRegistryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines of the transaction portfolios of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> executeWithHttpInfo() throws ApiException {
+            return getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode);
+        }
+
+        /**
+         * Execute getRegistryForFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListWithWarningsOfRegistryLine&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines of the transaction portfolios of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, opts);
+        }
+
+        /**
+         * Execute getRegistryForFund request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines of the transaction portfolios of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
+            return getRegistryForFundAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback);
+        }
+
+        /**
+         * Execute getRegistryForFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The registry lines of the transaction portfolios of a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
+            return getRegistryForFundAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetRegistryForFund: [EXPERIMENTAL] GetRegistryForFund: Get the registry of a Fund.
+     * Get the register lines of a Fund at the given effective and asAt datetimes: the registry lines of its  transaction portfolios, each tagged with the portfolio it sits in, with their units, cost and capital  balances. Registry lines are never holdings, so they do not appear in the holdings of the Fund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @return APIgetRegistryForFundRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The registry lines of the transaction portfolios of a Fund </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetRegistryForFundRequest getRegistryForFund(String scope, String code) {
+        return new APIgetRegistryForFundRequest(scope, code);
+    }
     private okhttp3.Call getSeriesCall(String scope, String code, String shareClassCode, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getSeriesCall(scope, code, shareClassCode, effectiveAt, asAt,  _callback, new ConfigurationOptions());
     }
@@ -22097,7 +22414,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] PatchFund: Patch a Fund.
-     * Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: ShortCode, DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, TaxTransparency, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, ShareClasses, PricingMethodology, ReportingPrices, DealingEstimates, WhtParameters, ValuationTemplateId.
+     * Update fields on a Fund.  The behaviour is defined by the JSON Patch specification.    Currently supported fields are: ShortCode, DisplayName, Description, BaseCurrency, PortfolioIds, FundConfigurationId, ShareClassInstruments, Type, TaxTransparency, InceptionDate, DecimalPlaces, PrimaryNavType, AdditionalNavTypes, ShareClasses, PricingMethodology, ReportingPrices, DealingEstimates, WhtParameters, ValuationTemplateId, PartnershipAccountingPortfolioId.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param operation The json patch document. For more information see: https://datatracker.ietf.org/doc/html/rfc6902. (required)

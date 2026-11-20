@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **decimalPlaces** | **Integer** | Number of decimal places for reporting | [optional] [default to Integer]
 **yearEndDate** | [**DayMonth**](DayMonth.md) |  | [default to DayMonth]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the Fund. | [optional] [default to Map<String, Property>]
+**partnershipAccountingPortfolioId** | [**ResourceId**](ResourceId.md) |  | [optional] [default to ResourceId]
 
 ```java
 import com.finbourne.lusid.model.FundRequest;
@@ -36,6 +37,7 @@ OffsetDateTime InceptionDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable Integer DecimalPlaces = new Integer("100.00");
 DayMonth YearEndDate = new DayMonth();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
+ResourceId PartnershipAccountingPortfolioId = new ResourceId();
 
 
 FundRequest fundRequestInstance = new FundRequest()
@@ -50,7 +52,8 @@ FundRequest fundRequestInstance = new FundRequest()
     .InceptionDate(InceptionDate)
     .DecimalPlaces(DecimalPlaces)
     .YearEndDate(YearEndDate)
-    .Properties(Properties);
+    .Properties(Properties)
+    .PartnershipAccountingPortfolioId(PartnershipAccountingPortfolioId);
 ```
 
 

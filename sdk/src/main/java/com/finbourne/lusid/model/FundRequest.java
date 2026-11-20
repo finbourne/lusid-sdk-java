@@ -107,6 +107,10 @@ public class FundRequest {
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
 
+  public static final String SERIALIZED_NAME_PARTNERSHIP_ACCOUNTING_PORTFOLIO_ID = "partnershipAccountingPortfolioId";
+  @SerializedName(SERIALIZED_NAME_PARTNERSHIP_ACCOUNTING_PORTFOLIO_ID)
+  private ResourceId partnershipAccountingPortfolioId;
+
   public FundRequest() {
   }
 
@@ -388,6 +392,27 @@ public class FundRequest {
   }
 
 
+  public FundRequest partnershipAccountingPortfolioId(ResourceId partnershipAccountingPortfolioId) {
+    
+    this.partnershipAccountingPortfolioId = partnershipAccountingPortfolioId;
+    return this;
+  }
+
+   /**
+   * Get partnershipAccountingPortfolioId
+   * @return partnershipAccountingPortfolioId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getPartnershipAccountingPortfolioId() {
+    return partnershipAccountingPortfolioId;
+  }
+
+
+  public void setPartnershipAccountingPortfolioId(ResourceId partnershipAccountingPortfolioId) {
+    this.partnershipAccountingPortfolioId = partnershipAccountingPortfolioId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -409,7 +434,8 @@ public class FundRequest {
         Objects.equals(this.inceptionDate, fundRequest.inceptionDate) &&
         Objects.equals(this.decimalPlaces, fundRequest.decimalPlaces) &&
         Objects.equals(this.yearEndDate, fundRequest.yearEndDate) &&
-        Objects.equals(this.properties, fundRequest.properties);
+        Objects.equals(this.properties, fundRequest.properties) &&
+        Objects.equals(this.partnershipAccountingPortfolioId, fundRequest.partnershipAccountingPortfolioId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -418,7 +444,7 @@ public class FundRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, fundConfigurationId, aborId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, properties);
+    return Objects.hash(code, displayName, description, fundConfigurationId, aborId, shareClassInstrumentScopes, shareClassInstruments, type, inceptionDate, decimalPlaces, yearEndDate, properties, partnershipAccountingPortfolioId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -444,6 +470,7 @@ public class FundRequest {
     sb.append("    decimalPlaces: ").append(toIndentedString(decimalPlaces)).append("\n");
     sb.append("    yearEndDate: ").append(toIndentedString(yearEndDate)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    partnershipAccountingPortfolioId: ").append(toIndentedString(partnershipAccountingPortfolioId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -478,6 +505,7 @@ public class FundRequest {
     openapiFields.add("decimalPlaces");
     openapiFields.add("yearEndDate");
     openapiFields.add("properties");
+    openapiFields.add("partnershipAccountingPortfolioId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -545,6 +573,10 @@ public class FundRequest {
       }
       // validate the required field `yearEndDate`
       DayMonth.validateJsonElement(jsonObj.get("yearEndDate"));
+      // validate the optional field `partnershipAccountingPortfolioId`
+      if (jsonObj.get("partnershipAccountingPortfolioId") != null && !jsonObj.get("partnershipAccountingPortfolioId").isJsonNull()) {
+        ResourceId.validateJsonElement(jsonObj.get("partnershipAccountingPortfolioId"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
