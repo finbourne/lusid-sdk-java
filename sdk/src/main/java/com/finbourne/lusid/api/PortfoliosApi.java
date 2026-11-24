@@ -36,6 +36,9 @@ import com.finbourne.lusid.model.CompositeBreakdownRequest;
 import com.finbourne.lusid.model.CompositeBreakdownResponse;
 import com.finbourne.lusid.model.CompositeDispersionResponse;
 import com.finbourne.lusid.model.DeletedEntityResponse;
+import com.finbourne.lusid.model.HoldingEntitlement;
+import com.finbourne.lusid.model.HoldingEntitlementRequest;
+import com.finbourne.lusid.model.HoldingEntitlementsResponse;
 import com.finbourne.lusid.model.InstrumentEventInstruction;
 import com.finbourne.lusid.model.InstrumentEventInstructionRequest;
 import com.finbourne.lusid.model.InstrumentEventInstructionsResponse;
@@ -43,6 +46,7 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.Operation;
+import com.finbourne.lusid.model.PagedResourceListOfHoldingEntitlement;
 import com.finbourne.lusid.model.PagedResourceListOfInstrumentEventInstruction;
 import com.finbourne.lusid.model.PerformanceReturn;
 import com.finbourne.lusid.model.Portfolio;
@@ -369,6 +373,271 @@ public class PortfoliosApi {
      */
     public APIbatchUpsertPortfolioAccessMetadataRequest batchUpsertPortfolioAccessMetadata(Map<String, BatchUpsertPortfolioAccessMetadataRequest> requestBody) {
         return new APIbatchUpsertPortfolioAccessMetadataRequest(requestBody);
+    }
+    private okhttp3.Call deleteHoldingEntitlementCall(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+        return deleteHoldingEntitlementCall(scope, code, holdingEntitlementId, portfolioEffectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call deleteHoldingEntitlementCall(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/{scope}/{code}/holdingentitlements/{holdingEntitlementId}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "holdingEntitlementId" + "}", localVarApiClient.escapeString(holdingEntitlementId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteHoldingEntitlementValidateBeforeCall(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteHoldingEntitlement(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteHoldingEntitlement(Async)");
+        }
+
+        // verify the required parameter 'holdingEntitlementId' is set
+        if (holdingEntitlementId == null) {
+            throw new ApiException("Missing the required parameter 'holdingEntitlementId' when calling deleteHoldingEntitlement(Async)");
+        }
+
+        return deleteHoldingEntitlementCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<DeletedEntityResponse> deleteHoldingEntitlementWithHttpInfo(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = deleteHoldingEntitlementValidateBeforeCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<DeletedEntityResponse> deleteHoldingEntitlementWithHttpInfo(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = deleteHoldingEntitlementValidateBeforeCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call deleteHoldingEntitlementAsync(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteHoldingEntitlementValidateBeforeCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call deleteHoldingEntitlementAsync(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteHoldingEntitlementValidateBeforeCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIdeleteHoldingEntitlementRequest {
+        private final String scope;
+        private final String code;
+        private final String holdingEntitlementId;
+        private String portfolioEffectiveAt;
+
+        private APIdeleteHoldingEntitlementRequest(String scope, String code, String holdingEntitlementId) {
+            this.scope = scope;
+            this.code = code;
+            this.holdingEntitlementId = holdingEntitlementId;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective date at which the portfolio will be resolved. Defaults to current time if not specified. (optional)
+         * @return APIdeleteHoldingEntitlementRequest
+         */
+        public APIdeleteHoldingEntitlementRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for deleteHoldingEntitlement
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the entitlement was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return deleteHoldingEntitlementCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteHoldingEntitlement request
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the entitlement was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute() throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteHoldingEntitlementWithHttpInfo(scope, code, holdingEntitlementId, portfolioEffectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteHoldingEntitlement request. Use any specified configuration options to override any other configuration for this request only.
+         * @return DeletedEntityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the entitlement was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public DeletedEntityResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<DeletedEntityResponse> localVarResp = deleteHoldingEntitlementWithHttpInfo(scope, code, holdingEntitlementId, portfolioEffectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute deleteHoldingEntitlement request with HTTP info returned
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the entitlement was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo() throws ApiException {
+            return deleteHoldingEntitlementWithHttpInfo(scope, code, holdingEntitlementId, portfolioEffectiveAt);
+        }
+
+        /**
+         * Execute deleteHoldingEntitlement request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;DeletedEntityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the entitlement was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<DeletedEntityResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return deleteHoldingEntitlementWithHttpInfo(scope, code, holdingEntitlementId, portfolioEffectiveAt, opts);
+        }
+
+        /**
+         * Execute deleteHoldingEntitlement request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the entitlement was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+            return deleteHoldingEntitlementAsync(scope, code, holdingEntitlementId, portfolioEffectiveAt, _callback);
+        }
+
+        /**
+         * Execute deleteHoldingEntitlement request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The datetime that the entitlement was deleted </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<DeletedEntityResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return deleteHoldingEntitlementAsync(scope, code, holdingEntitlementId, portfolioEffectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] DeleteHoldingEntitlement: [EARLY ACCESS] Delete Holding Entitlement
+     * Delete a particular holding entitlement of a particular portfolio.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param holdingEntitlementId The id of the entitlement to be deleted. (required)
+     * @return APIdeleteHoldingEntitlementRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the entitlement was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIdeleteHoldingEntitlementRequest deleteHoldingEntitlement(String scope, String code, String holdingEntitlementId) {
+        return new APIdeleteHoldingEntitlementRequest(scope, code, holdingEntitlementId);
     }
     private okhttp3.Call deleteInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
         return deleteInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt,  _callback, new ConfigurationOptions());
@@ -2287,6 +2556,331 @@ public class PortfoliosApi {
      */
     public APIgetCompositeBreakdownRequest getCompositeBreakdown(String scope, String code, CompositeBreakdownRequest compositeBreakdownRequest) {
         return new APIgetCompositeBreakdownRequest(scope, code, compositeBreakdownRequest);
+    }
+    private okhttp3.Call getHoldingEntitlementCall(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return getHoldingEntitlementCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getHoldingEntitlementCall(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/{scope}/{code}/holdingentitlements/{holdingEntitlementId}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "holdingEntitlementId" + "}", localVarApiClient.escapeString(holdingEntitlementId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getHoldingEntitlementValidateBeforeCall(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getHoldingEntitlement(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getHoldingEntitlement(Async)");
+        }
+
+        // verify the required parameter 'holdingEntitlementId' is set
+        if (holdingEntitlementId == null) {
+            throw new ApiException("Missing the required parameter 'holdingEntitlementId' when calling getHoldingEntitlement(Async)");
+        }
+
+        return getHoldingEntitlementCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+
+    }
+
+
+    private ApiResponse<HoldingEntitlement> getHoldingEntitlementWithHttpInfo(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingEntitlementValidateBeforeCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<HoldingEntitlement>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<HoldingEntitlement> getHoldingEntitlementWithHttpInfo(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingEntitlementValidateBeforeCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, null, opts);
+        Type localVarReturnType = new TypeToken<HoldingEntitlement>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getHoldingEntitlementAsync(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<HoldingEntitlement> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingEntitlementValidateBeforeCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<HoldingEntitlement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getHoldingEntitlementAsync(String scope, String code, String holdingEntitlementId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<HoldingEntitlement> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingEntitlementValidateBeforeCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        Type localVarReturnType = new TypeToken<HoldingEntitlement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetHoldingEntitlementRequest {
+        private final String scope;
+        private final String code;
+        private final String holdingEntitlementId;
+        private String portfolioEffectiveAt;
+        private OffsetDateTime asAt;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
+
+        private APIgetHoldingEntitlementRequest(String scope, String code, String holdingEntitlementId) {
+            this.scope = scope;
+            this.code = code;
+            this.holdingEntitlementId = holdingEntitlementId;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective date at which the portfolio will be resolved. Defaults to current time if not specified. (optional)
+         * @return APIgetHoldingEntitlementRequest
+         */
+        public APIgetHoldingEntitlementRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the entitlement. Defaults to return the latest version of the entitlement if not specified. (optional)
+         * @return APIgetHoldingEntitlementRequest
+         */
+        public APIgetHoldingEntitlementRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineCode must also be provided. (optional)
+         * @return APIgetHoldingEntitlementRequest
+         */
+        public APIgetHoldingEntitlementRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineScope must also be provided. (optional)
+         * @return APIgetHoldingEntitlementRequest
+         */
+        public APIgetHoldingEntitlementRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period. (optional)
+         * @return APIgetHoldingEntitlementRequest
+         */
+        public APIgetHoldingEntitlementRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
+         * Build call for getHoldingEntitlement
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getHoldingEntitlementCall(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
+        }
+
+        /**
+         * Execute getHoldingEntitlement request
+         * @return HoldingEntitlement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public HoldingEntitlement execute() throws ApiException {
+            ApiResponse<HoldingEntitlement> localVarResp = getHoldingEntitlementWithHttpInfo(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getHoldingEntitlement request. Use any specified configuration options to override any other configuration for this request only.
+         * @return HoldingEntitlement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public HoldingEntitlement execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<HoldingEntitlement> localVarResp = getHoldingEntitlementWithHttpInfo(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getHoldingEntitlement request with HTTP info returned
+         * @return ApiResponse&lt;HoldingEntitlement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<HoldingEntitlement> executeWithHttpInfo() throws ApiException {
+            return getHoldingEntitlementWithHttpInfo(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId);
+        }
+
+        /**
+         * Execute getHoldingEntitlement request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;HoldingEntitlement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<HoldingEntitlement> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getHoldingEntitlementWithHttpInfo(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, opts);
+        }
+
+        /**
+         * Execute getHoldingEntitlement request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<HoldingEntitlement> _callback) throws ApiException {
+            return getHoldingEntitlementAsync(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback);
+        }
+
+        /**
+         * Execute getHoldingEntitlement request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<HoldingEntitlement> _callback, ConfigurationOptions opts) throws ApiException {
+            return getHoldingEntitlementAsync(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetHoldingEntitlement: [EARLY ACCESS] Get Holding Entitlement
+     * Get a particular holding entitlement of a particular portfolio.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param holdingEntitlementId The id of the entitlement to be retrieved. (required)
+     * @return APIgetHoldingEntitlementRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested holding entitlement </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetHoldingEntitlementRequest getHoldingEntitlement(String scope, String code, String holdingEntitlementId) {
+        return new APIgetHoldingEntitlementRequest(scope, code, holdingEntitlementId);
     }
     private okhttp3.Call getInstrumentEventInstructionCall(String scope, String code, String instrumentEventInstructionId, String portfolioEffectiveAt, OffsetDateTime asAt, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
         return getInstrumentEventInstructionCall(scope, code, instrumentEventInstructionId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
@@ -6336,6 +6930,382 @@ public class PortfoliosApi {
     public APIgetPortfoliosAccessMetadataByKeyRequest getPortfoliosAccessMetadataByKey(String scope, String code, String metadataKey) {
         return new APIgetPortfoliosAccessMetadataByKeyRequest(scope, code, metadataKey);
     }
+    private okhttp3.Call listHoldingEntitlementsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
+        return listHoldingEntitlementsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call listHoldingEntitlementsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/{scope}/{code}/holdingentitlements"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        if (timelineScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineScope", timelineScope));
+        }
+
+        if (timelineCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("timelineCode", timelineCode));
+        }
+
+        if (closedPeriodId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("closedPeriodId", closedPeriodId));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listHoldingEntitlementsValidateBeforeCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listHoldingEntitlements(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listHoldingEntitlements(Async)");
+        }
+
+        return listHoldingEntitlementsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfHoldingEntitlement> listHoldingEntitlementsWithHttpInfo(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId) throws ApiException {
+        okhttp3.Call localVarCall = listHoldingEntitlementsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfHoldingEntitlement>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfHoldingEntitlement> listHoldingEntitlementsWithHttpInfo(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = listHoldingEntitlementsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfHoldingEntitlement>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call listHoldingEntitlementsAsync(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<PagedResourceListOfHoldingEntitlement> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listHoldingEntitlementsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfHoldingEntitlement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call listHoldingEntitlementsAsync(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback<PagedResourceListOfHoldingEntitlement> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = listHoldingEntitlementsValidateBeforeCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfHoldingEntitlement>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIlistHoldingEntitlementsRequest {
+        private final String scope;
+        private final String code;
+        private String portfolioEffectiveAt;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private String timelineScope;
+        private String timelineCode;
+        private String closedPeriodId;
+
+        private APIlistHoldingEntitlementsRequest(String scope, String code) {
+            this.scope = scope;
+            this.code = code;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective date at which the portfolio will be resolved. Defaults to current time if not specified. (optional)
+         * @return APIlistHoldingEntitlementsRequest
+         */
+        public APIlistHoldingEntitlementsRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the entitlements. Defaults to latest if not specified. (optional)
+         * @return APIlistHoldingEntitlementsRequest
+         */
+        public APIlistHoldingEntitlementsRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing entitlements; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. (optional)
+         * @return APIlistHoldingEntitlementsRequest
+         */
+        public APIlistHoldingEntitlementsRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+         * @return APIlistHoldingEntitlementsRequest
+         */
+        public APIlistHoldingEntitlementsRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. (optional)
+         * @return APIlistHoldingEntitlementsRequest
+         */
+        public APIlistHoldingEntitlementsRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. (optional)
+         * @return APIlistHoldingEntitlementsRequest
+         */
+        public APIlistHoldingEntitlementsRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set timelineScope
+         * @param timelineScope The scope of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineCode must also be provided. (optional)
+         * @return APIlistHoldingEntitlementsRequest
+         */
+        public APIlistHoldingEntitlementsRequest timelineScope(String timelineScope) {
+            this.timelineScope = timelineScope;
+            return this;
+        }
+
+        /**
+         * Set timelineCode
+         * @param timelineCode The code of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineScope must also be provided. (optional)
+         * @return APIlistHoldingEntitlementsRequest
+         */
+        public APIlistHoldingEntitlementsRequest timelineCode(String timelineCode) {
+            this.timelineCode = timelineCode;
+            return this;
+        }
+
+        /**
+         * Set closedPeriodId
+         * @param closedPeriodId The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period. (optional)
+         * @return APIlistHoldingEntitlementsRequest
+         */
+        public APIlistHoldingEntitlementsRequest closedPeriodId(String closedPeriodId) {
+            this.closedPeriodId = closedPeriodId;
+            return this;
+        }
+
+        /**
+         * Build call for listHoldingEntitlements
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return listHoldingEntitlementsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback);
+        }
+
+        /**
+         * Execute listHoldingEntitlements request
+         * @return PagedResourceListOfHoldingEntitlement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfHoldingEntitlement execute() throws ApiException {
+            ApiResponse<PagedResourceListOfHoldingEntitlement> localVarResp = listHoldingEntitlementsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listHoldingEntitlements request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfHoldingEntitlement
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfHoldingEntitlement execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfHoldingEntitlement> localVarResp = listHoldingEntitlementsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute listHoldingEntitlements request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfHoldingEntitlement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfHoldingEntitlement> executeWithHttpInfo() throws ApiException {
+            return listHoldingEntitlementsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId);
+        }
+
+        /**
+         * Execute listHoldingEntitlements request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfHoldingEntitlement&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfHoldingEntitlement> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return listHoldingEntitlementsWithHttpInfo(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, opts);
+        }
+
+        /**
+         * Execute listHoldingEntitlements request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfHoldingEntitlement> _callback) throws ApiException {
+            return listHoldingEntitlementsAsync(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback);
+        }
+
+        /**
+         * Execute listHoldingEntitlements request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfHoldingEntitlement> _callback, ConfigurationOptions opts) throws ApiException {
+            return listHoldingEntitlementsAsync(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ListHoldingEntitlements: [EARLY ACCESS] List Holding Entitlements
+     * List the holding entitlements of a particular portfolio.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @return APIlistHoldingEntitlementsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested holding entitlements </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIlistHoldingEntitlementsRequest listHoldingEntitlements(String scope, String code) {
+        return new APIlistHoldingEntitlementsRequest(scope, code);
+    }
     private okhttp3.Call listInstrumentEventInstructionsCall(String scope, String code, String portfolioEffectiveAt, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, String timelineScope, String timelineCode, String closedPeriodId, final ApiCallback _callback) throws ApiException {
         return listInstrumentEventInstructionsCall(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId,  _callback, new ConfigurationOptions());
     }
@@ -8526,6 +9496,286 @@ public class PortfoliosApi {
      */
     public APIupdatePortfolioRequest updatePortfolio(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest) {
         return new APIupdatePortfolioRequest(scope, code, updatePortfolioRequest);
+    }
+    private okhttp3.Call upsertHoldingEntitlementsCall(String scope, String code, String successMode, Map<String, HoldingEntitlementRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
+        return upsertHoldingEntitlementsCall(scope, code, successMode, requestBody, portfolioEffectiveAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call upsertHoldingEntitlementsCall(String scope, String code, String successMode, Map<String, HoldingEntitlementRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = requestBody;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/{scope}/{code}/holdingentitlements"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (portfolioEffectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("portfolioEffectiveAt", portfolioEffectiveAt));
+        }
+
+        if (successMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("successMode", successMode));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call upsertHoldingEntitlementsValidateBeforeCall(String scope, String code, String successMode, Map<String, HoldingEntitlementRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling upsertHoldingEntitlements(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling upsertHoldingEntitlements(Async)");
+        }
+
+        // verify the required parameter 'successMode' is set
+        if (successMode == null) {
+            throw new ApiException("Missing the required parameter 'successMode' when calling upsertHoldingEntitlements(Async)");
+        }
+
+        // verify the required parameter 'requestBody' is set
+        if (requestBody == null) {
+            throw new ApiException("Missing the required parameter 'requestBody' when calling upsertHoldingEntitlements(Async)");
+        }
+
+        return upsertHoldingEntitlementsCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<HoldingEntitlementsResponse> upsertHoldingEntitlementsWithHttpInfo(String scope, String code, String successMode, Map<String, HoldingEntitlementRequest> requestBody, String portfolioEffectiveAt) throws ApiException {
+        okhttp3.Call localVarCall = upsertHoldingEntitlementsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<HoldingEntitlementsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<HoldingEntitlementsResponse> upsertHoldingEntitlementsWithHttpInfo(String scope, String code, String successMode, Map<String, HoldingEntitlementRequest> requestBody, String portfolioEffectiveAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = upsertHoldingEntitlementsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, null, opts);
+        Type localVarReturnType = new TypeToken<HoldingEntitlementsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call upsertHoldingEntitlementsAsync(String scope, String code, String successMode, Map<String, HoldingEntitlementRequest> requestBody, String portfolioEffectiveAt, final ApiCallback<HoldingEntitlementsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertHoldingEntitlementsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<HoldingEntitlementsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call upsertHoldingEntitlementsAsync(String scope, String code, String successMode, Map<String, HoldingEntitlementRequest> requestBody, String portfolioEffectiveAt, final ApiCallback<HoldingEntitlementsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = upsertHoldingEntitlementsValidateBeforeCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<HoldingEntitlementsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIupsertHoldingEntitlementsRequest {
+        private final String scope;
+        private final String code;
+        private final String successMode;
+        private final Map<String, HoldingEntitlementRequest> requestBody;
+        private String portfolioEffectiveAt;
+
+        private APIupsertHoldingEntitlementsRequest(String scope, String code, String successMode, Map<String, HoldingEntitlementRequest> requestBody) {
+            this.scope = scope;
+            this.code = code;
+            this.successMode = successMode;
+            this.requestBody = requestBody;
+        }
+
+        /**
+         * Set portfolioEffectiveAt
+         * @param portfolioEffectiveAt The effective date at which the portfolio will be resolved. Defaults to current time if not specified. (optional)
+         * @return APIupsertHoldingEntitlementsRequest
+         */
+        public APIupsertHoldingEntitlementsRequest portfolioEffectiveAt(String portfolioEffectiveAt) {
+            this.portfolioEffectiveAt = portfolioEffectiveAt;
+            return this;
+        }
+
+        /**
+         * Build call for upsertHoldingEntitlements
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return upsertHoldingEntitlementsCall(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertHoldingEntitlements request
+         * @return HoldingEntitlementsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public HoldingEntitlementsResponse execute() throws ApiException {
+            ApiResponse<HoldingEntitlementsResponse> localVarResp = upsertHoldingEntitlementsWithHttpInfo(scope, code, successMode, requestBody, portfolioEffectiveAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertHoldingEntitlements request. Use any specified configuration options to override any other configuration for this request only.
+         * @return HoldingEntitlementsResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public HoldingEntitlementsResponse execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<HoldingEntitlementsResponse> localVarResp = upsertHoldingEntitlementsWithHttpInfo(scope, code, successMode, requestBody, portfolioEffectiveAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute upsertHoldingEntitlements request with HTTP info returned
+         * @return ApiResponse&lt;HoldingEntitlementsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<HoldingEntitlementsResponse> executeWithHttpInfo() throws ApiException {
+            return upsertHoldingEntitlementsWithHttpInfo(scope, code, successMode, requestBody, portfolioEffectiveAt);
+        }
+
+        /**
+         * Execute upsertHoldingEntitlements request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;HoldingEntitlementsResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<HoldingEntitlementsResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return upsertHoldingEntitlementsWithHttpInfo(scope, code, successMode, requestBody, portfolioEffectiveAt, opts);
+        }
+
+        /**
+         * Execute upsertHoldingEntitlements request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<HoldingEntitlementsResponse> _callback) throws ApiException {
+            return upsertHoldingEntitlementsAsync(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback);
+        }
+
+        /**
+         * Execute upsertHoldingEntitlements request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The newly inserted or updated holding entitlements </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<HoldingEntitlementsResponse> _callback, ConfigurationOptions opts) throws ApiException {
+            return upsertHoldingEntitlementsAsync(scope, code, successMode, requestBody, portfolioEffectiveAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] UpsertHoldingEntitlements: [EARLY ACCESS] Upsert Holding Entitlements
+     * Create or update holding entitlements on a portfolio. A holding entitlement states what one holding receives  under a corporate action, in the client&#39;s own figures, and is booked at its ex date.
+     * @param scope The scope of the portfolio. (required)
+     * @param code The code of the portfolio. Together with the scope this uniquely identifies the portfolio. (required)
+     * @param successMode Whether the batch request should fail atomically or in a partial fashion - allowed values: Atomic, Partial (default) (required)
+     * @param requestBody The entitlements to be upserted to the portfolio, keyed by a correlation id of the caller&#39;s choosing. (required)
+     * @return APIupsertHoldingEntitlementsRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The newly inserted or updated holding entitlements </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIupsertHoldingEntitlementsRequest upsertHoldingEntitlements(String scope, String code, String successMode, Map<String, HoldingEntitlementRequest> requestBody) {
+        return new APIupsertHoldingEntitlementsRequest(scope, code, successMode, requestBody);
     }
     private okhttp3.Call upsertInstrumentEventInstructionsCall(String scope, String code, String successMode, Map<String, InstrumentEventInstructionRequest> requestBody, String portfolioEffectiveAt, final ApiCallback _callback) throws ApiException {
         return upsertInstrumentEventInstructionsCall(scope, code, successMode, requestBody, portfolioEffectiveAt,  _callback, new ConfigurationOptions());

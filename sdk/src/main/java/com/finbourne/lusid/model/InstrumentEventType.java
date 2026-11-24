@@ -283,7 +283,9 @@ public enum InstrumentEventType {
   
   INFLATIONINDEXATIONEVENT("InflationIndexationEvent"),
   
-  INTERESTPAYMENTWITHPRINCIPALEVENT("InterestPaymentWithPrincipalEvent");
+  INTERESTPAYMENTWITHPRINCIPALEVENT("InterestPaymentWithPrincipalEvent"),
+  
+  INCREASEINVALUEEVENT("IncreaseInValueEvent");
 
   private String value;
 

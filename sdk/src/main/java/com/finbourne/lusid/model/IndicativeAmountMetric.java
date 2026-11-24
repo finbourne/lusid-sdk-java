@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ReturnsMetricWindow;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,13 +47,17 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The amount a seed amount has grown to by the end of each period of the grid: the seed amount multiplied by  one plus the return since the start of the requested window, geometrically linking the period returns.
+ * The amount a seed amount has grown to by the end of each period of the grid: the seed amount multiplied by  one plus the return since the start of the requested range, geometrically linking the period returns, or  by one plus the return over a window looking back from each period when one is given.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IndicativeAmountMetric {
   public static final String SERIALIZED_NAME_SEED_AMOUNT = "seedAmount";
   @SerializedName(SERIALIZED_NAME_SEED_AMOUNT)
   private String seedAmount;
+
+  public static final String SERIALIZED_NAME_WINDOW = "window";
+  @SerializedName(SERIALIZED_NAME_WINDOW)
+  private ReturnsMetricWindow window;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -83,6 +88,27 @@ public class IndicativeAmountMetric {
 
   public void setSeedAmount(String seedAmount) {
     this.seedAmount = seedAmount;
+  }
+
+
+  public IndicativeAmountMetric window(ReturnsMetricWindow window) {
+    
+    this.window = window;
+    return this;
+  }
+
+   /**
+   * Get window
+   * @return window
+  **/
+  @jakarta.annotation.Nullable
+  public ReturnsMetricWindow getWindow() {
+    return window;
+  }
+
+
+  public void setWindow(ReturnsMetricWindow window) {
+    this.window = window;
   }
 
 
@@ -139,6 +165,7 @@ public class IndicativeAmountMetric {
     }
     IndicativeAmountMetric indicativeAmountMetric = (IndicativeAmountMetric) o;
     return Objects.equals(this.seedAmount, indicativeAmountMetric.seedAmount) &&
+        Objects.equals(this.window, indicativeAmountMetric.window) &&
         Objects.equals(this.type, indicativeAmountMetric.type) &&
         Objects.equals(this.alias, indicativeAmountMetric.alias);
   }
@@ -149,7 +176,7 @@ public class IndicativeAmountMetric {
 
   @Override
   public int hashCode() {
-    return Objects.hash(seedAmount, type, alias);
+    return Objects.hash(seedAmount, window, type, alias);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -164,6 +191,7 @@ public class IndicativeAmountMetric {
     StringBuilder sb = new StringBuilder();
     sb.append("class IndicativeAmountMetric {\n");
     sb.append("    seedAmount: ").append(toIndentedString(seedAmount)).append("\n");
+    sb.append("    window: ").append(toIndentedString(window)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    alias: ").append(toIndentedString(alias)).append("\n");
     sb.append("}");
@@ -189,6 +217,7 @@ public class IndicativeAmountMetric {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("seedAmount");
+    openapiFields.add("window");
     openapiFields.add("type");
     openapiFields.add("alias");
 
@@ -220,6 +249,10 @@ public class IndicativeAmountMetric {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("seedAmount").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `seedAmount` to be a primitive type in the JSON string but got `%s`", jsonObj.get("seedAmount").toString()));
+      }
+      // validate the optional field `window`
+      if (jsonObj.get("window") != null && !jsonObj.get("window").isJsonNull()) {
+        ReturnsMetricWindow.validateJsonElement(jsonObj.get("window"));
       }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));

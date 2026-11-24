@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **fundSide** | [**List&lt;AllocationPostingFundLine&gt;**](AllocationPostingFundLine.md) | The transactions written on the fund&#39;s own books. | [optional] [default to List<AllocationPostingFundLine>]
 **counts** | [**AllocationPostingCounts**](AllocationPostingCounts.md) |  | [optional] [default to AllocationPostingCounts]
 **warnings** | [**List&lt;AllocationEventBookingWarning&gt;**](AllocationEventBookingWarning.md) | The validation rules the booking would be allowed to proceed through under the map&#39;s policy. | [optional] [default to List<AllocationEventBookingWarning>]
+**transferees** | [**List&lt;AllocationEventTransferee&gt;**](AllocationEventTransferee.md) | For a Transfer, each transferee the booking would give a line, with the investment account the line would be opened under and whether the booking would open that account too. | [optional] [default to List<AllocationEventTransferee>]
 
 ```java
 import com.finbourne.lusid.model.AllocationPostingPlan;
@@ -22,6 +23,7 @@ import java.net.URI;
 @jakarta.annotation.Nullable List<AllocationPostingFundLine> FundSide = new List<AllocationPostingFundLine>();
 AllocationPostingCounts Counts = new AllocationPostingCounts();
 @jakarta.annotation.Nullable List<AllocationEventBookingWarning> Warnings = new List<AllocationEventBookingWarning>();
+@jakarta.annotation.Nullable List<AllocationEventTransferee> Transferees = new List<AllocationEventTransferee>();
 
 
 AllocationPostingPlan allocationPostingPlanInstance = new AllocationPostingPlan()
@@ -29,7 +31,8 @@ AllocationPostingPlan allocationPostingPlanInstance = new AllocationPostingPlan(
     .RollUps(RollUps)
     .FundSide(FundSide)
     .Counts(Counts)
-    .Warnings(Warnings);
+    .Warnings(Warnings)
+    .Transferees(Transferees);
 ```
 
 

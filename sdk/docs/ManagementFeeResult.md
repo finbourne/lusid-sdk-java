@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **totals** | [**ManagementFeeTotals**](ManagementFeeTotals.md) |  | [default to ManagementFeeTotals]
 **bookedTransactionIds** | **List&lt;String&gt;** | The identifiers of the transactions booked, if any. | [default to List<String>]
 **fundTransactionIds** | **List&lt;String&gt;** | The identifiers of the fee transactions the run holds in the fund&#39;s own books, one per partner and fee component, when the run was booked. | [optional] [default to List<String>]
+**warnings** | **List&lt;String&gt;** | What booking the run noticed but did not refuse, each starting with its code, for example a payment to the manager on the fee payable in a currency other than the fee&#39;s, which settles none of the payable an offset is set against (FeePaymentCurrencyIgnored). Absent when there is nothing to warn of. | [optional] [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.ManagementFeeResult;
@@ -28,6 +29,7 @@ List<ManagementFeeLine> Lines = new List<ManagementFeeLine>();
 ManagementFeeTotals Totals = new ManagementFeeTotals();
 List<String> BookedTransactionIds = new List<String>();
 @jakarta.annotation.Nullable List<String> FundTransactionIds = new List<String>();
+@jakarta.annotation.Nullable List<String> Warnings = new List<String>();
 
 
 ManagementFeeResult managementFeeResultInstance = new ManagementFeeResult()
@@ -38,7 +40,8 @@ ManagementFeeResult managementFeeResultInstance = new ManagementFeeResult()
     .Lines(Lines)
     .Totals(Totals)
     .BookedTransactionIds(BookedTransactionIds)
-    .FundTransactionIds(FundTransactionIds);
+    .FundTransactionIds(FundTransactionIds)
+    .Warnings(Warnings);
 ```
 
 

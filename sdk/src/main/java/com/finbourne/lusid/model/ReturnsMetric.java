@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.IndicativeAmountMetric;
 import com.finbourne.lusid.model.ReturnMetric;
+import com.finbourne.lusid.model.ReturnsMetricWindow;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

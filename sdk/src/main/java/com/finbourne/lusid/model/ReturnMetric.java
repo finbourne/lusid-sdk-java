@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.ReturnsMetricWindow;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,10 +47,14 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * The rate of return over each period of the grid.
+ * The rate of return over each period of the grid, or over a window looking back from each period when  one is given.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReturnMetric {
+  public static final String SERIALIZED_NAME_WINDOW = "window";
+  @SerializedName(SERIALIZED_NAME_WINDOW)
+  private ReturnsMetricWindow window;
+
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
@@ -60,6 +65,27 @@ public class ReturnMetric {
 
   public ReturnMetric() {
   }
+
+  public ReturnMetric window(ReturnsMetricWindow window) {
+    
+    this.window = window;
+    return this;
+  }
+
+   /**
+   * Get window
+   * @return window
+  **/
+  @jakarta.annotation.Nullable
+  public ReturnsMetricWindow getWindow() {
+    return window;
+  }
+
+
+  public void setWindow(ReturnsMetricWindow window) {
+    this.window = window;
+  }
+
 
   public ReturnMetric type(String type) {
     
@@ -113,7 +139,8 @@ public class ReturnMetric {
       return false;
     }
     ReturnMetric returnMetric = (ReturnMetric) o;
-    return Objects.equals(this.type, returnMetric.type) &&
+    return Objects.equals(this.window, returnMetric.window) &&
+        Objects.equals(this.type, returnMetric.type) &&
         Objects.equals(this.alias, returnMetric.alias);
   }
 
@@ -123,7 +150,7 @@ public class ReturnMetric {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, alias);
+    return Objects.hash(window, type, alias);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -137,6 +164,7 @@ public class ReturnMetric {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ReturnMetric {\n");
+    sb.append("    window: ").append(toIndentedString(window)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    alias: ").append(toIndentedString(alias)).append("\n");
     sb.append("}");
@@ -161,6 +189,7 @@ public class ReturnMetric {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("window");
     openapiFields.add("type");
     openapiFields.add("alias");
 
@@ -189,6 +218,10 @@ public class ReturnMetric {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      // validate the optional field `window`
+      if (jsonObj.get("window") != null && !jsonObj.get("window").isJsonNull()) {
+        ReturnsMetricWindow.validateJsonElement(jsonObj.get("window"));
+      }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }

@@ -297,7 +297,7 @@ public class AllocationEventRequest {
   }
 
    /**
-   * Optional basis values per investor record, used when the map&#39;s basis is not resolvable from stored data.
+   * Optional basis values per investor record. For a register-backed basis such as Committed or PaidIn, the members&#39; registers are read and supplied values override the register value of the investor records they name rather than defining who takes part: every other open line on the map&#39;s members still takes part at its register value, so to leave an investor record out, exclude it on the map. For a basis not read from the register, such as ValueWeighted or PropertyWeighted, they are the values the event is weighted by.
    * @return basisValues
   **/
   @jakarta.annotation.Nullable

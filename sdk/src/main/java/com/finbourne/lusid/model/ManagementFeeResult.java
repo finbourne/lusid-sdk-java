@@ -88,6 +88,10 @@ public class ManagementFeeResult {
   @SerializedName(SERIALIZED_NAME_FUND_TRANSACTION_IDS)
   private List<String> fundTransactionIds;
 
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<String> warnings;
+
   public ManagementFeeResult() {
   }
 
@@ -283,6 +287,35 @@ public class ManagementFeeResult {
   }
 
 
+  public ManagementFeeResult warnings(List<String> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public ManagementFeeResult addWarningsItem(String warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * What booking the run noticed but did not refuse, each starting with its code, for example a payment to the manager on the fee payable in a currency other than the fee&#39;s, which settles none of the payable an offset is set against (FeePaymentCurrencyIgnored). Absent when there is nothing to warn of.
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<String> warnings) {
+    this.warnings = warnings;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -300,7 +333,8 @@ public class ManagementFeeResult {
         Objects.equals(this.lines, managementFeeResult.lines) &&
         Objects.equals(this.totals, managementFeeResult.totals) &&
         Objects.equals(this.bookedTransactionIds, managementFeeResult.bookedTransactionIds) &&
-        Objects.equals(this.fundTransactionIds, managementFeeResult.fundTransactionIds);
+        Objects.equals(this.fundTransactionIds, managementFeeResult.fundTransactionIds) &&
+        Objects.equals(this.warnings, managementFeeResult.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -309,7 +343,7 @@ public class ManagementFeeResult {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fundId, periodStart, periodEnd, basis, lines, totals, bookedTransactionIds, fundTransactionIds);
+    return Objects.hash(fundId, periodStart, periodEnd, basis, lines, totals, bookedTransactionIds, fundTransactionIds, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -331,6 +365,7 @@ public class ManagementFeeResult {
     sb.append("    totals: ").append(toIndentedString(totals)).append("\n");
     sb.append("    bookedTransactionIds: ").append(toIndentedString(bookedTransactionIds)).append("\n");
     sb.append("    fundTransactionIds: ").append(toIndentedString(fundTransactionIds)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -361,6 +396,7 @@ public class ManagementFeeResult {
     openapiFields.add("totals");
     openapiFields.add("bookedTransactionIds");
     openapiFields.add("fundTransactionIds");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -419,6 +455,10 @@ public class ManagementFeeResult {
       // ensure the optional json data is an array if present
       if (jsonObj.get("fundTransactionIds") != null && !jsonObj.get("fundTransactionIds").isJsonNull() && !jsonObj.get("fundTransactionIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `fundTransactionIds` to be an array in the JSON string but got `%s`", jsonObj.get("fundTransactionIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull() && !jsonObj.get("warnings").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
       }
   }
 

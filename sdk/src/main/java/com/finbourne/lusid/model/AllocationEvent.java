@@ -22,6 +22,7 @@ import com.finbourne.lusid.model.AllocationEventRefundPayment;
 import com.finbourne.lusid.model.AllocationEventReversal;
 import com.finbourne.lusid.model.AllocationEventRoundingResidual;
 import com.finbourne.lusid.model.AllocationEventTransfer;
+import com.finbourne.lusid.model.AllocationEventTransferee;
 import com.finbourne.lusid.model.AllocationEventUseOfProceeds;
 import com.finbourne.lusid.model.AllocationMapAllocation;
 import com.finbourne.lusid.model.Link;
@@ -201,6 +202,10 @@ public class AllocationEvent {
   public static final String SERIALIZED_NAME_REFUND_PAYMENTS = "refundPayments";
   @SerializedName(SERIALIZED_NAME_REFUND_PAYMENTS)
   private List<AllocationEventRefundPayment> refundPayments;
+
+  public static final String SERIALIZED_NAME_TRANSFEREES = "transferees";
+  @SerializedName(SERIALIZED_NAME_TRANSFEREES)
+  private List<AllocationEventTransferee> transferees;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -982,6 +987,35 @@ public class AllocationEvent {
   }
 
 
+  public AllocationEvent transferees(List<AllocationEventTransferee> transferees) {
+    
+    this.transferees = transferees;
+    return this;
+  }
+
+  public AllocationEvent addTransfereesItem(AllocationEventTransferee transfereesItem) {
+    if (this.transferees == null) {
+      this.transferees = new ArrayList<>();
+    }
+    this.transferees.add(transfereesItem);
+    return this;
+  }
+
+   /**
+   * For a Transfer event, each transferee the booking gives a line: the line, and the investment account it is opened under. On a dry run, the account and line the booking would create; on a booking, what it created. Empty on every other event.
+   * @return transferees
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationEventTransferee> getTransferees() {
+    return transferees;
+  }
+
+
+  public void setTransferees(List<AllocationEventTransferee> transferees) {
+    this.transferees = transferees;
+  }
+
+
   public AllocationEvent links(List<Link> links) {
     
     this.links = links;
@@ -1054,6 +1088,7 @@ public class AllocationEvent {
         Objects.equals(this.settlementDate, allocationEvent.settlementDate) &&
         Objects.equals(this.receipts, allocationEvent.receipts) &&
         Objects.equals(this.refundPayments, allocationEvent.refundPayments) &&
+        Objects.equals(this.transferees, allocationEvent.transferees) &&
         Objects.equals(this.links, allocationEvent.links);
   }
 
@@ -1063,7 +1098,7 @@ public class AllocationEvent {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, description, allocationMapId, eventType, amount, currency, eventDate, status, basisSource, allocations, bookingReference, bookedAt, reallocationReason, components, residuals, basisDiagnostics, writtenIds, bookingErrors, warnings, transfers, equalisation, useOfProceeds, dealFunding, version, parentAllocationEventId, replaces, reversal, noticeDate, dueDate, settlementDate, receipts, refundPayments, links);
+    return Objects.hash(href, id, description, allocationMapId, eventType, amount, currency, eventDate, status, basisSource, allocations, bookingReference, bookedAt, reallocationReason, components, residuals, basisDiagnostics, writtenIds, bookingErrors, warnings, transfers, equalisation, useOfProceeds, dealFunding, version, parentAllocationEventId, replaces, reversal, noticeDate, dueDate, settlementDate, receipts, refundPayments, transferees, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -1110,6 +1145,7 @@ public class AllocationEvent {
     sb.append("    settlementDate: ").append(toIndentedString(settlementDate)).append("\n");
     sb.append("    receipts: ").append(toIndentedString(receipts)).append("\n");
     sb.append("    refundPayments: ").append(toIndentedString(refundPayments)).append("\n");
+    sb.append("    transferees: ").append(toIndentedString(transferees)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -1166,6 +1202,7 @@ public class AllocationEvent {
     openapiFields.add("settlementDate");
     openapiFields.add("receipts");
     openapiFields.add("refundPayments");
+    openapiFields.add("transferees");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -1379,6 +1416,20 @@ public class AllocationEvent {
           // validate the optional field `refundPayments` (array)
           for (int i = 0; i < jsonArrayrefundPayments.size(); i++) {
             AllocationEventRefundPayment.validateJsonElement(jsonArrayrefundPayments.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("transferees") != null && !jsonObj.get("transferees").isJsonNull()) {
+        JsonArray jsonArraytransferees = jsonObj.getAsJsonArray("transferees");
+        if (jsonArraytransferees != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("transferees").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `transferees` to be an array in the JSON string but got `%s`", jsonObj.get("transferees").toString()));
+          }
+
+          // validate the optional field `transferees` (array)
+          for (int i = 0; i < jsonArraytransferees.size(); i++) {
+            AllocationEventTransferee.validateJsonElement(jsonArraytransferees.get(i));
           };
         }
       }

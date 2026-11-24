@@ -38,6 +38,7 @@ Name | Type | Description | Notes
 **settlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date the postings settle. Defaults to the event date. | [optional] [default to OffsetDateTime]
 **receipts** | [**List&lt;AllocationEventReceipt&gt;**](AllocationEventReceipt.md) | The cash received against the event, in the order it was recorded. | [optional] [default to List<AllocationEventReceipt>]
 **refundPayments** | [**List&lt;AllocationEventRefundPayment&gt;**](AllocationEventRefundPayment.md) | The refunds paid out against the event to investors whose receipts exceeded what they owed, in the order they were recorded. | [optional] [default to List<AllocationEventRefundPayment>]
+**transferees** | [**List&lt;AllocationEventTransferee&gt;**](AllocationEventTransferee.md) | For a Transfer event, each transferee the booking gives a line: the line, and the investment account it is opened under. On a dry run, the account and line the booking would create; on a booking, what it created. Empty on every other event. | [optional] [default to List<AllocationEventTransferee>]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -79,6 +80,7 @@ AllocationEventReversal Reversal = new AllocationEventReversal();
 @jakarta.annotation.Nullable OffsetDateTime SettlementDate = OffsetDateTime.now();
 @jakarta.annotation.Nullable List<AllocationEventReceipt> Receipts = new List<AllocationEventReceipt>();
 @jakarta.annotation.Nullable List<AllocationEventRefundPayment> RefundPayments = new List<AllocationEventRefundPayment>();
+@jakarta.annotation.Nullable List<AllocationEventTransferee> Transferees = new List<AllocationEventTransferee>();
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -116,6 +118,7 @@ AllocationEvent allocationEventInstance = new AllocationEvent()
     .SettlementDate(SettlementDate)
     .Receipts(Receipts)
     .RefundPayments(RefundPayments)
+    .Transferees(Transferees)
     .Links(Links);
 ```
 

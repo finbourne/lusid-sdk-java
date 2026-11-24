@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.AllocationEventBookingWarning;
+import com.finbourne.lusid.model.AllocationEventTransferee;
 import com.finbourne.lusid.model.AllocationPostingCounts;
 import com.finbourne.lusid.model.AllocationPostingFundLine;
 import com.finbourne.lusid.model.AllocationPostingLpLine;
@@ -76,6 +77,10 @@ public class AllocationPostingPlan {
   public static final String SERIALIZED_NAME_WARNINGS = "warnings";
   @SerializedName(SERIALIZED_NAME_WARNINGS)
   private List<AllocationEventBookingWarning> warnings;
+
+  public static final String SERIALIZED_NAME_TRANSFEREES = "transferees";
+  @SerializedName(SERIALIZED_NAME_TRANSFEREES)
+  private List<AllocationEventTransferee> transferees;
 
   public AllocationPostingPlan() {
   }
@@ -217,6 +222,35 @@ public class AllocationPostingPlan {
   }
 
 
+  public AllocationPostingPlan transferees(List<AllocationEventTransferee> transferees) {
+    
+    this.transferees = transferees;
+    return this;
+  }
+
+  public AllocationPostingPlan addTransfereesItem(AllocationEventTransferee transfereesItem) {
+    if (this.transferees == null) {
+      this.transferees = new ArrayList<>();
+    }
+    this.transferees.add(transfereesItem);
+    return this;
+  }
+
+   /**
+   * For a Transfer, each transferee the booking would give a line, with the investment account the line would be opened under and whether the booking would open that account too.
+   * @return transferees
+  **/
+  @jakarta.annotation.Nullable
+  public List<AllocationEventTransferee> getTransferees() {
+    return transferees;
+  }
+
+
+  public void setTransferees(List<AllocationEventTransferee> transferees) {
+    this.transferees = transferees;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -231,7 +265,8 @@ public class AllocationPostingPlan {
         Objects.equals(this.rollUps, allocationPostingPlan.rollUps) &&
         Objects.equals(this.fundSide, allocationPostingPlan.fundSide) &&
         Objects.equals(this.counts, allocationPostingPlan.counts) &&
-        Objects.equals(this.warnings, allocationPostingPlan.warnings);
+        Objects.equals(this.warnings, allocationPostingPlan.warnings) &&
+        Objects.equals(this.transferees, allocationPostingPlan.transferees);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -240,7 +275,7 @@ public class AllocationPostingPlan {
 
   @Override
   public int hashCode() {
-    return Objects.hash(lpSide, rollUps, fundSide, counts, warnings);
+    return Objects.hash(lpSide, rollUps, fundSide, counts, warnings, transferees);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -259,6 +294,7 @@ public class AllocationPostingPlan {
     sb.append("    fundSide: ").append(toIndentedString(fundSide)).append("\n");
     sb.append("    counts: ").append(toIndentedString(counts)).append("\n");
     sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
+    sb.append("    transferees: ").append(toIndentedString(transferees)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -286,6 +322,7 @@ public class AllocationPostingPlan {
     openapiFields.add("fundSide");
     openapiFields.add("counts");
     openapiFields.add("warnings");
+    openapiFields.add("transferees");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -361,6 +398,20 @@ public class AllocationPostingPlan {
           // validate the optional field `warnings` (array)
           for (int i = 0; i < jsonArraywarnings.size(); i++) {
             AllocationEventBookingWarning.validateJsonElement(jsonArraywarnings.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("transferees") != null && !jsonObj.get("transferees").isJsonNull()) {
+        JsonArray jsonArraytransferees = jsonObj.getAsJsonArray("transferees");
+        if (jsonArraytransferees != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("transferees").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `transferees` to be an array in the JSON string but got `%s`", jsonObj.get("transferees").toString()));
+          }
+
+          // validate the optional field `transferees` (array)
+          for (int i = 0; i < jsonArraytransferees.size(); i++) {
+            AllocationEventTransferee.validateJsonElement(jsonArraytransferees.get(i));
           };
         }
       }

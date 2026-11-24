@@ -6,7 +6,7 @@ The request used to recompute an unbooked Allocation Event: why, and with which 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **reason** | **String** | Why the event is being recomputed. | [default to String]
-**basisValues** | [**List&lt;AllocationMapBasisValue&gt;**](AllocationMapBasisValue.md) | Optional replacement basis values per investor record. | [optional] [default to List<AllocationMapBasisValue>]
+**basisValues** | [**List&lt;AllocationMapBasisValue&gt;**](AllocationMapBasisValue.md) | Optional replacement basis values per investor record. As on the event, for a register-backed basis they override the register value of the investor records they name rather than defining who takes part. | [optional] [default to List<AllocationMapBasisValue>]
 
 ```java
 import com.finbourne.lusid.model.AllocationEventReallocateRequest;

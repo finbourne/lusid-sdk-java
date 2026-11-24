@@ -63,6 +63,10 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
   @SerializedName(SERIALIZED_NAME_EXCLUDE_INCOME_FROM_P_V)
   private Boolean excludeIncomeFromPV;
 
+  public static final String SERIALIZED_NAME_FUNDING_LEG_ACCRUED_ONLY = "fundingLegAccruedOnly";
+  @SerializedName(SERIALIZED_NAME_FUNDING_LEG_ACCRUED_ONLY)
+  private Boolean fundingLegAccruedOnly;
+
   public FlexibleLoanPricerOptions() {
     // this.modelOptionsType = this.getClass().getSimpleName();
   }
@@ -130,6 +134,27 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
   }
 
 
+  public FlexibleLoanPricerOptions fundingLegAccruedOnly(Boolean fundingLegAccruedOnly) {
+    
+    this.fundingLegAccruedOnly = fundingLegAccruedOnly;
+    return this;
+  }
+
+   /**
+   * Read by a TotalReturnSwap. If set to true the funding leg&#39;s PV is the interest it has accrued to the valuation date, in place of the coupons it has still to earn, so the swap carries no funding interest not yet earned: PV is the asset leg&#39;s PV plus the funding accrued, and CleanPV is PV less Accrued. A coupon already earned but not yet paid and a notional exchange keep the value they have with the option off. Under a funding notional reset the accrued is the re-struck one; an end-of-day valuation on a reset day whose reset is not yet stored re-strikes on the spot in its place, so the figure moves once that reset is stored. Supported by the price-return pricer (asset leg with a ResetSchedule) and by BondLookupPricer and FlexibleLoanPricer; refused for a swap without a ResetSchedule under ConstantTimeValueOfMoney or Discounting.
+   * @return fundingLegAccruedOnly
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getFundingLegAccruedOnly() {
+    return fundingLegAccruedOnly;
+  }
+
+
+  public void setFundingLegAccruedOnly(Boolean fundingLegAccruedOnly) {
+    this.fundingLegAccruedOnly = fundingLegAccruedOnly;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -143,6 +168,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
     return Objects.equals(this.setCleanPVToZero, flexibleLoanPricerOptions.setCleanPVToZero) &&
         Objects.equals(this.usePriceQuoteForCleanPV, flexibleLoanPricerOptions.usePriceQuoteForCleanPV) &&
         Objects.equals(this.excludeIncomeFromPV, flexibleLoanPricerOptions.excludeIncomeFromPV) &&
+        Objects.equals(this.fundingLegAccruedOnly, flexibleLoanPricerOptions.fundingLegAccruedOnly) &&
         super.equals(o);
   }
 
@@ -152,7 +178,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(setCleanPVToZero, usePriceQuoteForCleanPV, excludeIncomeFromPV, super.hashCode());
+    return Objects.hash(setCleanPVToZero, usePriceQuoteForCleanPV, excludeIncomeFromPV, fundingLegAccruedOnly, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -170,6 +196,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
     sb.append("    setCleanPVToZero: ").append(toIndentedString(setCleanPVToZero)).append("\n");
     sb.append("    usePriceQuoteForCleanPV: ").append(toIndentedString(usePriceQuoteForCleanPV)).append("\n");
     sb.append("    excludeIncomeFromPV: ").append(toIndentedString(excludeIncomeFromPV)).append("\n");
+    sb.append("    fundingLegAccruedOnly: ").append(toIndentedString(fundingLegAccruedOnly)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -196,6 +223,7 @@ public class FlexibleLoanPricerOptions extends ModelOptions {
     openapiFields.add("setCleanPVToZero");
     openapiFields.add("usePriceQuoteForCleanPV");
     openapiFields.add("excludeIncomeFromPV");
+    openapiFields.add("fundingLegAccruedOnly");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

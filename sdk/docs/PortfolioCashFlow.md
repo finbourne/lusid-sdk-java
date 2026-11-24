@@ -15,11 +15,14 @@ Name | Type | Description | Notes
 **balance** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [default to CurrencyAndAmount]
 **fxRate** | **java.math.BigDecimal** | Exchange rate between the currency of this cash flow and the reporting currency. | [default to java.math.BigDecimal]
 **cashflowReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [default to CurrencyAndAmount]
-**balanceReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [default to CurrencyAndAmount]
+**balanceReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **translationGainLoss** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [default to CurrencyAndAmount]
 **costBasisReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [default to CurrencyAndAmount]
 **transaction** | [**Transaction**](Transaction.md) |  | [optional] [default to Transaction]
-**unrealisedGainLossReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [default to CurrencyAndAmount]
+**unrealisedGainLossReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**tradeDateToSettlementDateGainLossReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [default to CurrencyAndAmount]
+**balanceFxRate** | **java.math.BigDecimal** | The exchange rate the balance in the reporting currency was struck at: on an Activity row the recipe&#39;s quote for the row&#39;s date, after the recipe&#39;s quote lookback. Differs from FxRate when the cash flow was booked at another rate. The cash flow&#39;s own rate (FxRate) when no quote could be found; see BalanceFailureReason. | [optional] [default to java.math.BigDecimal]
+**balanceFailureReason** | **String** | Why the balance in the reporting currency could not be struck at the recipe&#39;s quote for the row&#39;s date and is at the cash flow&#39;s own rate instead; absent when it was struck at the quote, including on a row whose local balance is zero. | [optional] [default to String]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -43,6 +46,9 @@ CurrencyAndAmount TranslationGainLoss = new CurrencyAndAmount();
 CurrencyAndAmount CostBasisReportingCurrency = new CurrencyAndAmount();
 Transaction Transaction = new Transaction();
 CurrencyAndAmount UnrealisedGainLossReportingCurrency = new CurrencyAndAmount();
+CurrencyAndAmount TradeDateToSettlementDateGainLossReportingCurrency = new CurrencyAndAmount();
+@jakarta.annotation.Nullable java.math.BigDecimal BalanceFxRate = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String BalanceFailureReason = "example BalanceFailureReason";
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -62,6 +68,9 @@ PortfolioCashFlow portfolioCashFlowInstance = new PortfolioCashFlow()
     .CostBasisReportingCurrency(CostBasisReportingCurrency)
     .Transaction(Transaction)
     .UnrealisedGainLossReportingCurrency(UnrealisedGainLossReportingCurrency)
+    .TradeDateToSettlementDateGainLossReportingCurrency(TradeDateToSettlementDateGainLossReportingCurrency)
+    .BalanceFxRate(BalanceFxRate)
+    .BalanceFailureReason(BalanceFailureReason)
     .Links(Links);
 ```
 

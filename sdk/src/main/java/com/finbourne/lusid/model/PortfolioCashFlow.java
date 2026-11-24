@@ -119,6 +119,18 @@ public class PortfolioCashFlow {
   @SerializedName(SERIALIZED_NAME_UNREALISED_GAIN_LOSS_REPORTING_CURRENCY)
   private CurrencyAndAmount unrealisedGainLossReportingCurrency;
 
+  public static final String SERIALIZED_NAME_TRADE_DATE_TO_SETTLEMENT_DATE_GAIN_LOSS_REPORTING_CURRENCY = "tradeDateToSettlementDateGainLossReportingCurrency";
+  @SerializedName(SERIALIZED_NAME_TRADE_DATE_TO_SETTLEMENT_DATE_GAIN_LOSS_REPORTING_CURRENCY)
+  private CurrencyAndAmount tradeDateToSettlementDateGainLossReportingCurrency;
+
+  public static final String SERIALIZED_NAME_BALANCE_FX_RATE = "balanceFxRate";
+  @SerializedName(SERIALIZED_NAME_BALANCE_FX_RATE)
+  private java.math.BigDecimal balanceFxRate;
+
+  public static final String SERIALIZED_NAME_BALANCE_FAILURE_REASON = "balanceFailureReason";
+  @SerializedName(SERIALIZED_NAME_BALANCE_FAILURE_REASON)
+  private String balanceFailureReason;
+
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
@@ -354,7 +366,7 @@ public class PortfolioCashFlow {
    * Get balanceReportingCurrency
    * @return balanceReportingCurrency
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public CurrencyAndAmount getBalanceReportingCurrency() {
     return balanceReportingCurrency;
   }
@@ -438,7 +450,7 @@ public class PortfolioCashFlow {
    * Get unrealisedGainLossReportingCurrency
    * @return unrealisedGainLossReportingCurrency
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public CurrencyAndAmount getUnrealisedGainLossReportingCurrency() {
     return unrealisedGainLossReportingCurrency;
   }
@@ -446,6 +458,69 @@ public class PortfolioCashFlow {
 
   public void setUnrealisedGainLossReportingCurrency(CurrencyAndAmount unrealisedGainLossReportingCurrency) {
     this.unrealisedGainLossReportingCurrency = unrealisedGainLossReportingCurrency;
+  }
+
+
+  public PortfolioCashFlow tradeDateToSettlementDateGainLossReportingCurrency(CurrencyAndAmount tradeDateToSettlementDateGainLossReportingCurrency) {
+    
+    this.tradeDateToSettlementDateGainLossReportingCurrency = tradeDateToSettlementDateGainLossReportingCurrency;
+    return this;
+  }
+
+   /**
+   * Get tradeDateToSettlementDateGainLossReportingCurrency
+   * @return tradeDateToSettlementDateGainLossReportingCurrency
+  **/
+  @jakarta.annotation.Nonnull
+  public CurrencyAndAmount getTradeDateToSettlementDateGainLossReportingCurrency() {
+    return tradeDateToSettlementDateGainLossReportingCurrency;
+  }
+
+
+  public void setTradeDateToSettlementDateGainLossReportingCurrency(CurrencyAndAmount tradeDateToSettlementDateGainLossReportingCurrency) {
+    this.tradeDateToSettlementDateGainLossReportingCurrency = tradeDateToSettlementDateGainLossReportingCurrency;
+  }
+
+
+  public PortfolioCashFlow balanceFxRate(java.math.BigDecimal balanceFxRate) {
+    
+    this.balanceFxRate = balanceFxRate;
+    return this;
+  }
+
+   /**
+   * The exchange rate the balance in the reporting currency was struck at: on an Activity row the recipe&#39;s quote for the row&#39;s date, after the recipe&#39;s quote lookback. Differs from FxRate when the cash flow was booked at another rate. The cash flow&#39;s own rate (FxRate) when no quote could be found; see BalanceFailureReason.
+   * @return balanceFxRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getBalanceFxRate() {
+    return balanceFxRate;
+  }
+
+
+  public void setBalanceFxRate(java.math.BigDecimal balanceFxRate) {
+    this.balanceFxRate = balanceFxRate;
+  }
+
+
+  public PortfolioCashFlow balanceFailureReason(String balanceFailureReason) {
+    
+    this.balanceFailureReason = balanceFailureReason;
+    return this;
+  }
+
+   /**
+   * Why the balance in the reporting currency could not be struck at the recipe&#39;s quote for the row&#39;s date and is at the cash flow&#39;s own rate instead; absent when it was struck at the quote, including on a row whose local balance is zero.
+   * @return balanceFailureReason
+  **/
+  @jakarta.annotation.Nullable
+  public String getBalanceFailureReason() {
+    return balanceFailureReason;
+  }
+
+
+  public void setBalanceFailureReason(String balanceFailureReason) {
+    this.balanceFailureReason = balanceFailureReason;
   }
 
 
@@ -503,6 +578,9 @@ public class PortfolioCashFlow {
         Objects.equals(this.costBasisReportingCurrency, portfolioCashFlow.costBasisReportingCurrency) &&
         Objects.equals(this.transaction, portfolioCashFlow.transaction) &&
         Objects.equals(this.unrealisedGainLossReportingCurrency, portfolioCashFlow.unrealisedGainLossReportingCurrency) &&
+        Objects.equals(this.tradeDateToSettlementDateGainLossReportingCurrency, portfolioCashFlow.tradeDateToSettlementDateGainLossReportingCurrency) &&
+        (this.balanceFxRate.compareTo(portfolioCashFlow.getBalanceFxRate()) == 0) &&
+        Objects.equals(this.balanceFailureReason, portfolioCashFlow.balanceFailureReason) &&
         Objects.equals(this.links, portfolioCashFlow.links);
   }
 
@@ -512,7 +590,7 @@ public class PortfolioCashFlow {
 
   @Override
   public int hashCode() {
-    return Objects.hash(groupById, sequenceNumber, effectiveDate, subHoldingKeys, type, movementName, cashflow, balance, fxRate, cashflowReportingCurrency, balanceReportingCurrency, translationGainLoss, costBasisReportingCurrency, transaction, unrealisedGainLossReportingCurrency, links);
+    return Objects.hash(groupById, sequenceNumber, effectiveDate, subHoldingKeys, type, movementName, cashflow, balance, fxRate, cashflowReportingCurrency, balanceReportingCurrency, translationGainLoss, costBasisReportingCurrency, transaction, unrealisedGainLossReportingCurrency, tradeDateToSettlementDateGainLossReportingCurrency, balanceFxRate, balanceFailureReason, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -541,6 +619,9 @@ public class PortfolioCashFlow {
     sb.append("    costBasisReportingCurrency: ").append(toIndentedString(costBasisReportingCurrency)).append("\n");
     sb.append("    transaction: ").append(toIndentedString(transaction)).append("\n");
     sb.append("    unrealisedGainLossReportingCurrency: ").append(toIndentedString(unrealisedGainLossReportingCurrency)).append("\n");
+    sb.append("    tradeDateToSettlementDateGainLossReportingCurrency: ").append(toIndentedString(tradeDateToSettlementDateGainLossReportingCurrency)).append("\n");
+    sb.append("    balanceFxRate: ").append(toIndentedString(balanceFxRate)).append("\n");
+    sb.append("    balanceFailureReason: ").append(toIndentedString(balanceFailureReason)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -579,6 +660,9 @@ public class PortfolioCashFlow {
     openapiFields.add("costBasisReportingCurrency");
     openapiFields.add("transaction");
     openapiFields.add("unrealisedGainLossReportingCurrency");
+    openapiFields.add("tradeDateToSettlementDateGainLossReportingCurrency");
+    openapiFields.add("balanceFxRate");
+    openapiFields.add("balanceFailureReason");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -591,10 +675,9 @@ public class PortfolioCashFlow {
     openapiRequiredFields.add("balance");
     openapiRequiredFields.add("fxRate");
     openapiRequiredFields.add("cashflowReportingCurrency");
-    openapiRequiredFields.add("balanceReportingCurrency");
     openapiRequiredFields.add("translationGainLoss");
     openapiRequiredFields.add("costBasisReportingCurrency");
-    openapiRequiredFields.add("unrealisedGainLossReportingCurrency");
+    openapiRequiredFields.add("tradeDateToSettlementDateGainLossReportingCurrency");
   }
 
  /**
@@ -629,8 +712,10 @@ public class PortfolioCashFlow {
       CurrencyAndAmount.validateJsonElement(jsonObj.get("balance"));
       // validate the required field `cashflowReportingCurrency`
       CurrencyAndAmount.validateJsonElement(jsonObj.get("cashflowReportingCurrency"));
-      // validate the required field `balanceReportingCurrency`
-      CurrencyAndAmount.validateJsonElement(jsonObj.get("balanceReportingCurrency"));
+      // validate the optional field `balanceReportingCurrency`
+      if (jsonObj.get("balanceReportingCurrency") != null && !jsonObj.get("balanceReportingCurrency").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("balanceReportingCurrency"));
+      }
       // validate the required field `translationGainLoss`
       CurrencyAndAmount.validateJsonElement(jsonObj.get("translationGainLoss"));
       // validate the required field `costBasisReportingCurrency`
@@ -639,8 +724,15 @@ public class PortfolioCashFlow {
       if (jsonObj.get("transaction") != null && !jsonObj.get("transaction").isJsonNull()) {
         Transaction.validateJsonElement(jsonObj.get("transaction"));
       }
-      // validate the required field `unrealisedGainLossReportingCurrency`
-      CurrencyAndAmount.validateJsonElement(jsonObj.get("unrealisedGainLossReportingCurrency"));
+      // validate the optional field `unrealisedGainLossReportingCurrency`
+      if (jsonObj.get("unrealisedGainLossReportingCurrency") != null && !jsonObj.get("unrealisedGainLossReportingCurrency").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("unrealisedGainLossReportingCurrency"));
+      }
+      // validate the required field `tradeDateToSettlementDateGainLossReportingCurrency`
+      CurrencyAndAmount.validateJsonElement(jsonObj.get("tradeDateToSettlementDateGainLossReportingCurrency"));
+      if ((jsonObj.get("balanceFailureReason") != null && !jsonObj.get("balanceFailureReason").isJsonNull()) && !jsonObj.get("balanceFailureReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `balanceFailureReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("balanceFailureReason").toString()));
+      }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
         if (jsonArraylinks != null) {

@@ -5,6 +5,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**batchUpsertPortfolioAccessMetadata**](PortfoliosApi.md#batchUpsertPortfolioAccessMetadata) | **PUT** /api/portfolios/metadata | [EARLY ACCESS] BatchUpsertPortfolioAccessMetadata: Upsert multiple Portfolio Access Metadata Rules to multiple Portfolios |
+| [**deleteHoldingEntitlement**](PortfoliosApi.md#deleteHoldingEntitlement) | **DELETE** /api/portfolios/{scope}/{code}/holdingentitlements/{holdingEntitlementId} | [EARLY ACCESS] DeleteHoldingEntitlement: [EARLY ACCESS] Delete Holding Entitlement |
 | [**deleteInstrumentEventInstruction**](PortfoliosApi.md#deleteInstrumentEventInstruction) | **DELETE** /api/portfolios/{scope}/{code}/instrumenteventinstructions/{instrumentEventInstructionId} | [EARLY ACCESS] DeleteInstrumentEventInstruction: Delete Instrument Event Instruction |
 | [**deleteKeyFromPortfolioAccessMetadata**](PortfoliosApi.md#deleteKeyFromPortfolioAccessMetadata) | **DELETE** /api/portfolios/{scope}/{code}/metadata/{metadataKey} | DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule |
 | [**deletePortfolio**](PortfoliosApi.md#deletePortfolio) | **DELETE** /api/portfolios/{scope}/{code} | DeletePortfolio: Delete portfolio |
@@ -12,6 +13,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**deletePortfolioReturns**](PortfoliosApi.md#deletePortfolioReturns) | **DELETE** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/$delete | [EARLY ACCESS] DeletePortfolioReturns: Delete Returns |
 | [**getAggregatedReturnsDispersionMetrics**](PortfoliosApi.md#getAggregatedReturnsDispersionMetrics) | **POST** /api/portfolios/{scope}/{code}/returns/dispersion/$aggregated | [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric |
 | [**getCompositeBreakdown**](PortfoliosApi.md#getCompositeBreakdown) | **POST** /api/portfolios/{scope}/{code}/returns/breakdown | [EARLY ACCESS] GetCompositeBreakdown: Get the Composite Breakdown on how the composite Returns are calculated |
+| [**getHoldingEntitlement**](PortfoliosApi.md#getHoldingEntitlement) | **GET** /api/portfolios/{scope}/{code}/holdingentitlements/{holdingEntitlementId} | [EARLY ACCESS] GetHoldingEntitlement: [EARLY ACCESS] Get Holding Entitlement |
 | [**getInstrumentEventInstruction**](PortfoliosApi.md#getInstrumentEventInstruction) | **GET** /api/portfolios/{scope}/{code}/instrumenteventinstructions/{instrumentEventInstructionId} | [EARLY ACCESS] GetInstrumentEventInstruction: Get Instrument Event Instruction |
 | [**getPortfolio**](PortfoliosApi.md#getPortfolio) | **GET** /api/portfolios/{scope}/{code} | GetPortfolio: Get portfolio |
 | [**getPortfolioAggregateReturns**](PortfoliosApi.md#getPortfolioAggregateReturns) | **GET** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/aggregated | [DEPRECATED] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint). |
@@ -25,6 +27,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getPortfolioRelationships**](PortfoliosApi.md#getPortfolioRelationships) | **GET** /api/portfolios/{scope}/{code}/relationships | GetPortfolioRelationships: Get portfolio relationships |
 | [**getPortfolioReturns**](PortfoliosApi.md#getPortfolioReturns) | **GET** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode} | GetPortfolioReturns: Get Returns |
 | [**getPortfoliosAccessMetadataByKey**](PortfoliosApi.md#getPortfoliosAccessMetadataByKey) | **GET** /api/portfolios/{scope}/{code}/metadata/{metadataKey} | [EARLY ACCESS] GetPortfoliosAccessMetadataByKey: Get an entry identified by a metadataKey in the access metadata object |
+| [**listHoldingEntitlements**](PortfoliosApi.md#listHoldingEntitlements) | **GET** /api/portfolios/{scope}/{code}/holdingentitlements | [EARLY ACCESS] ListHoldingEntitlements: [EARLY ACCESS] List Holding Entitlements |
 | [**listInstrumentEventInstructions**](PortfoliosApi.md#listInstrumentEventInstructions) | **GET** /api/portfolios/{scope}/{code}/instrumenteventinstructions | [EARLY ACCESS] ListInstrumentEventInstructions: List Instrument Event Instructions |
 | [**listPortfolioProperties**](PortfoliosApi.md#listPortfolioProperties) | **GET** /api/portfolios/{scope}/{code}/properties/list | [EARLY ACCESS] ListPortfolioProperties: Get portfolio properties |
 | [**listPortfolios**](PortfoliosApi.md#listPortfolios) | **GET** /api/portfolios | ListPortfolios: List portfolios |
@@ -32,6 +35,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**patchPortfolio**](PortfoliosApi.md#patchPortfolio) | **PATCH** /api/portfolios/{scope}/{code} | PatchPortfolio: Patch portfolio. |
 | [**patchPortfolioAccessMetadata**](PortfoliosApi.md#patchPortfolioAccessMetadata) | **PATCH** /api/portfolios/{scope}/{code}/metadata | [EARLY ACCESS] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio. |
 | [**updatePortfolio**](PortfoliosApi.md#updatePortfolio) | **PUT** /api/portfolios/{scope}/{code} | UpdatePortfolio: Update portfolio |
+| [**upsertHoldingEntitlements**](PortfoliosApi.md#upsertHoldingEntitlements) | **POST** /api/portfolios/{scope}/{code}/holdingentitlements | [EARLY ACCESS] UpsertHoldingEntitlements: [EARLY ACCESS] Upsert Holding Entitlements |
 | [**upsertInstrumentEventInstructions**](PortfoliosApi.md#upsertInstrumentEventInstructions) | **POST** /api/portfolios/{scope}/{code}/instrumenteventinstructions | [EARLY ACCESS] UpsertInstrumentEventInstructions: Upsert Instrument Event Instructions |
 | [**upsertPortfolioAccessMetadata**](PortfoliosApi.md#upsertPortfolioAccessMetadata) | **PUT** /api/portfolios/{scope}/{code}/metadata/{metadataKey} | UpsertPortfolioAccessMetadata: Upsert a Portfolio Access Metadata Rule associated with specific metadataKey. This creates or updates the data in LUSID. |
 | [**upsertPortfolioProperties**](PortfoliosApi.md#upsertPortfolioProperties) | **POST** /api/portfolios/{scope}/{code}/properties | UpsertPortfolioProperties: Upsert portfolio properties |
@@ -128,6 +132,103 @@ public class PortfoliosApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The successfully updated or inserted items or any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## deleteHoldingEntitlement
+
+> DeletedEntityResponse deleteHoldingEntitlement(scope, code, holdingEntitlementId, portfolioEffectiveAt)
+
+[EARLY ACCESS] DeleteHoldingEntitlement: [EARLY ACCESS] Delete Holding Entitlement
+
+Delete a particular holding entitlement of a particular portfolio.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class PortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
+        PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the portfolio.
+        String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
+        String holdingEntitlementId = "holdingEntitlementId_example"; // String | The id of the entitlement to be deleted.
+        String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // DeletedEntityResponse result = apiInstance.deleteHoldingEntitlement(scope, code, holdingEntitlementId, portfolioEffectiveAt).execute(opts);
+
+            DeletedEntityResponse result = apiInstance.deleteHoldingEntitlement(scope, code, holdingEntitlementId, portfolioEffectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PortfoliosApi#deleteHoldingEntitlement");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
+| **holdingEntitlementId** | **String**| The id of the entitlement to be deleted. | |
+| **portfolioEffectiveAt** | **String**| The effective date at which the portfolio will be resolved. Defaults to current time if not specified. | [optional] |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the entitlement was deleted |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -815,6 +916,111 @@ public class PortfoliosApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The aggregated returns grouped by return stream. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getHoldingEntitlement
+
+> HoldingEntitlement getHoldingEntitlement(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId)
+
+[EARLY ACCESS] GetHoldingEntitlement: [EARLY ACCESS] Get Holding Entitlement
+
+Get a particular holding entitlement of a particular portfolio.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class PortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
+        PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the portfolio.
+        String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
+        String holdingEntitlementId = "holdingEntitlementId_example"; // String | The id of the entitlement to be retrieved.
+        String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the entitlement. Defaults to return the latest version of the entitlement if not specified.
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineCode must also be provided.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineScope must also be provided.
+        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period.
+        try {
+            // uncomment the below to set overrides at the request level
+            // HoldingEntitlement result = apiInstance.getHoldingEntitlement(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId).execute(opts);
+
+            HoldingEntitlement result = apiInstance.getHoldingEntitlement(scope, code, holdingEntitlementId, portfolioEffectiveAt, asAt, timelineScope, timelineCode, closedPeriodId).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PortfoliosApi#getHoldingEntitlement");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
+| **holdingEntitlementId** | **String**| The id of the entitlement to be retrieved. | |
+| **portfolioEffectiveAt** | **String**| The effective date at which the portfolio will be resolved. Defaults to current time if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the entitlement. Defaults to return the latest version of the entitlement if not specified. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineCode must also be provided. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineScope must also be provided. | [optional] |
+| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period. | [optional] |
+
+### Return type
+
+[**HoldingEntitlement**](HoldingEntitlement.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested holding entitlement |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -2158,6 +2364,117 @@ public class PortfoliosApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## listHoldingEntitlements
+
+> PagedResourceListOfHoldingEntitlement listHoldingEntitlements(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId)
+
+[EARLY ACCESS] ListHoldingEntitlements: [EARLY ACCESS] List Holding Entitlements
+
+List the holding entitlements of a particular portfolio.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class PortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
+        PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the portfolio.
+        String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
+        String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the entitlements. Defaults to latest if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing entitlements; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request.
+        Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
+        String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names to sort by, each suffixed by \" ASC\" or \" DESC\".
+        String timelineScope = "timelineScope_example"; // String | The scope of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineCode must also be provided.
+        String timelineCode = "timelineCode_example"; // String | The code of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineScope must also be provided.
+        String closedPeriodId = "closedPeriodId_example"; // String | The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfHoldingEntitlement result = apiInstance.listHoldingEntitlements(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId).execute(opts);
+
+            PagedResourceListOfHoldingEntitlement result = apiInstance.listHoldingEntitlements(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PortfoliosApi#listHoldingEntitlements");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
+| **portfolioEffectiveAt** | **String**| The effective date at which the portfolio will be resolved. Defaults to current time if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the entitlements. Defaults to latest if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing entitlements; this value is returned from the previous call.   If a pagination token is provided, the filter, effectiveAt and asAt fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. | [optional] |
+| **timelineScope** | **String**| The scope of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineCode must also be provided. | [optional] |
+| **timelineCode** | **String**| The code of the Timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this is provided, timelineScope must also be provided. | [optional] |
+| **closedPeriodId** | **String**| The code of the ClosedPeriod attached to the timeline, used to override the AsAt, and read the entitlements as they stood when the period closed. Entitlements written after the period closed are not included.   If this field is left empty and the timelineScope and timelineCode fields are filled out, the portfolioEffectiveAt will be used to resolve the relevant closed period. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfHoldingEntitlement**](PagedResourceListOfHoldingEntitlement.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested holding entitlements |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## listInstrumentEventInstructions
 
 > PagedResourceListOfInstrumentEventInstruction listInstrumentEventInstructions(scope, code, portfolioEffectiveAt, asAt, page, limit, filter, sortBy, timelineScope, timelineCode, closedPeriodId)
@@ -2869,6 +3186,105 @@ public class PortfoliosApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The updated definition of the portfolio |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## upsertHoldingEntitlements
+
+> HoldingEntitlementsResponse upsertHoldingEntitlements(scope, code, successMode, requestBody, portfolioEffectiveAt)
+
+[EARLY ACCESS] UpsertHoldingEntitlements: [EARLY ACCESS] Upsert Holding Entitlements
+
+Create or update holding entitlements on a portfolio. A holding entitlement states what one holding receives  under a corporate action, in the client&#39;s own figures, and is booked at its ex date.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class PortfoliosApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // PortfoliosApi apiInstance = apiFactory.build(PortfoliosApi.class);
+
+        PortfoliosApi apiInstance = ApiFactoryBuilder.build(fileName).build(PortfoliosApi.class);
+        String scope = "scope_example"; // String | The scope of the portfolio.
+        String code = "code_example"; // String | The code of the portfolio. Together with the scope this uniquely identifies the portfolio.
+        String successMode = "Partial"; // String | Whether the batch request should fail atomically or in a partial fashion - allowed values: Atomic, Partial (default)
+        Map<String, HoldingEntitlementRequest> requestBody = new HashMap(); // Map<String, HoldingEntitlementRequest> | The entitlements to be upserted to the portfolio, keyed by a correlation id of the caller's choosing.
+        String portfolioEffectiveAt = "portfolioEffectiveAt_example"; // String | The effective date at which the portfolio will be resolved. Defaults to current time if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // HoldingEntitlementsResponse result = apiInstance.upsertHoldingEntitlements(scope, code, successMode, requestBody, portfolioEffectiveAt).execute(opts);
+
+            HoldingEntitlementsResponse result = apiInstance.upsertHoldingEntitlements(scope, code, successMode, requestBody, portfolioEffectiveAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling PortfoliosApi#upsertHoldingEntitlements");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the portfolio. | |
+| **code** | **String**| The code of the portfolio. Together with the scope this uniquely identifies the portfolio. | |
+| **successMode** | **String**| Whether the batch request should fail atomically or in a partial fashion - allowed values: Atomic, Partial (default) | [default to Partial] |
+| **requestBody** | [**Map&lt;String, HoldingEntitlementRequest&gt;**](HoldingEntitlementRequest.md)| The entitlements to be upserted to the portfolio, keyed by a correlation id of the caller&#39;s choosing. | |
+| **portfolioEffectiveAt** | **String**| The effective date at which the portfolio will be resolved. Defaults to current time if not specified. | [optional] |
+
+### Return type
+
+[**HoldingEntitlementsResponse**](HoldingEntitlementsResponse.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The newly inserted or updated holding entitlements |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

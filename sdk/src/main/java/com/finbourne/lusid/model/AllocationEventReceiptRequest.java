@@ -265,7 +265,7 @@ public class AllocationEventReceiptRequest {
   }
 
    /**
-   * The caller&#39;s reference for the payment, for instance a bank statement line or a source row id, of 1 to 128 characters. Optional. Posting the same reference again with the same investor record, amount, currency and receipt date returns the event unchanged and writes nothing; with other content it is refused. Without a reference a repeated receipt is a second payment, warned as a possible duplicate when an earlier receipt matches it.
+   * The caller&#39;s reference for the payment, for instance a bank statement line or a source row id, of 1 to 256 characters. Optional. Posting the same reference again with the same investor record, amount, currency and receipt date returns the event unchanged and writes nothing; with other content it is refused. Without a reference a repeated receipt is a second payment, warned as a possible duplicate when an earlier receipt matches it.
    * @return reference
   **/
   @jakarta.annotation.Nullable

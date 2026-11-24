@@ -276,7 +276,7 @@ public class OrderGraphApi {
 
         /**
          * Set includeSwept
-         * @param includeSwept Include Swept Order Blocks. (default: true) (optional, default to true)
+         * @param includeSwept Include Swept Order Blocks. (default: false) (optional, default to false)
          * @return APIlistOrderGraphBlocksRequest
          */
         public APIlistOrderGraphBlocksRequest includeSwept(Boolean includeSwept) {

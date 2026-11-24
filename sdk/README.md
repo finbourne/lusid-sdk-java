@@ -315,6 +315,7 @@ Class | Method | HTTP request | Description
 *EntitiesApi* | [**getCustomEntityByEntityUniqueId**](docs/EntitiesApi.md#getcustomentitybyentityuniqueid) | **GET** /api/entities/customentities/{entityUniqueId} | GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId
 *EntitiesApi* | [**getDataTypeByEntityUniqueId**](docs/EntitiesApi.md#getdatatypebyentityuniqueid) | **GET** /api/entities/datatypes/{entityUniqueId} | GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId
 *EntitiesApi* | [**getEntityHistory**](docs/EntitiesApi.md#getentityhistory) | **GET** /api/entities/{entityType}/{entityUniqueId}/history | GetEntityHistory: List an entity's history information
+*EntitiesApi* | [**getHoldingEntitlementByEntityUniqueId**](docs/EntitiesApi.md#getholdingentitlementbyentityuniqueid) | **GET** /api/entities/holdingentitlements/{entityUniqueId} | [EARLY ACCESS] GetHoldingEntitlementByEntityUniqueId: [EARLY ACCESS] Get holding entitlement by unique id
 *EntitiesApi* | [**getInstrumentByEntityUniqueId**](docs/EntitiesApi.md#getinstrumentbyentityuniqueid) | **GET** /api/entities/instruments/{entityUniqueId} | GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId
 *EntitiesApi* | [**getInstrumentEventByEntityUniqueId**](docs/EntitiesApi.md#getinstrumenteventbyentityuniqueid) | **GET** /api/entities/instrumentevents/{entityUniqueId} | [EARLY ACCESS] GetInstrumentEventByEntityUniqueId: Get instrument event by EntityUniqueId
 *EntitiesApi* | [**getInstrumentEventInstructionByEntityUniqueId**](docs/EntitiesApi.md#getinstrumenteventinstructionbyentityuniqueid) | **GET** /api/entities/instrumenteventinstructions/{entityUniqueId} | GetInstrumentEventInstructionByEntityUniqueId: Get instrument event instruction by EntityUniqueId
@@ -343,6 +344,7 @@ Class | Method | HTTP request | Description
 *FundConfigurationApi* | [**listFundConfigurations**](docs/FundConfigurationApi.md#listfundconfigurations) | **GET** /api/fundconfigurations | [EARLY ACCESS] ListFundConfigurations: List FundConfiguration.
 *FundConfigurationApi* | [**patchFundConfiguration**](docs/FundConfigurationApi.md#patchfundconfiguration) | **PATCH** /api/fundconfigurations/{scope}/{code} | [EARLY ACCESS] PatchFundConfiguration: Patch Fund Configuration.
 *FundConfigurationApi* | [**upsertFundConfigurationProperties**](docs/FundConfigurationApi.md#upsertfundconfigurationproperties) | **POST** /api/fundconfigurations/{scope}/{code}/properties/$upsert | [EARLY ACCESS] UpsertFundConfigurationProperties: Upsert FundConfiguration properties
+*FundGroupsApi* | [**getFundGroupTrialBalance**](docs/FundGroupsApi.md#getfundgrouptrialbalance) | **POST** /api/fundgroups/{scope}/{code}/trialbalance/$query | [EARLY ACCESS] GetFundGroupTrialBalance: Get the Trial Balance for a group of Funds.
 *FundStructuresApi* | [**addFundStructureMember**](docs/FundStructuresApi.md#addfundstructuremember) | **POST** /api/fundstructures/{scope}/{code}/members | [EARLY ACCESS] AddFundStructureMember: Add a member to a Fund Structure.
 *FundStructuresApi* | [**closeFundStructure**](docs/FundStructuresApi.md#closefundstructure) | **POST** /api/fundstructures/{scope}/{code}/$close | [EARLY ACCESS] CloseFundStructure: [EXPERIMENTAL] CloseFundStructure: Finalise a valuation point across a Fund Structure.
 *FundStructuresApi* | [**createFundStructure**](docs/FundStructuresApi.md#createfundstructure) | **POST** /api/fundstructures/{scope} | [EARLY ACCESS] CreateFundStructure: Create a Fund Structure.
@@ -637,6 +639,7 @@ Class | Method | HTTP request | Description
 *PortfolioGroupsApi* | [**upsertGroupProperties**](docs/PortfolioGroupsApi.md#upsertgroupproperties) | **POST** /api/portfoliogroups/{scope}/{code}/properties/$upsert | [EARLY ACCESS] UpsertGroupProperties: Upsert group properties
 *PortfolioGroupsApi* | [**upsertPortfolioGroupAccessMetadata**](docs/PortfolioGroupsApi.md#upsertportfoliogroupaccessmetadata) | **PUT** /api/portfoliogroups/{scope}/{code}/metadata/{metadataKey} | UpsertPortfolioGroupAccessMetadata: Upsert a Portfolio Group Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
 *PortfoliosApi* | [**batchUpsertPortfolioAccessMetadata**](docs/PortfoliosApi.md#batchupsertportfolioaccessmetadata) | **PUT** /api/portfolios/metadata | [EARLY ACCESS] BatchUpsertPortfolioAccessMetadata: Upsert multiple Portfolio Access Metadata Rules to multiple Portfolios
+*PortfoliosApi* | [**deleteHoldingEntitlement**](docs/PortfoliosApi.md#deleteholdingentitlement) | **DELETE** /api/portfolios/{scope}/{code}/holdingentitlements/{holdingEntitlementId} | [EARLY ACCESS] DeleteHoldingEntitlement: [EARLY ACCESS] Delete Holding Entitlement
 *PortfoliosApi* | [**deleteInstrumentEventInstruction**](docs/PortfoliosApi.md#deleteinstrumenteventinstruction) | **DELETE** /api/portfolios/{scope}/{code}/instrumenteventinstructions/{instrumentEventInstructionId} | [EARLY ACCESS] DeleteInstrumentEventInstruction: Delete Instrument Event Instruction
 *PortfoliosApi* | [**deleteKeyFromPortfolioAccessMetadata**](docs/PortfoliosApi.md#deletekeyfromportfolioaccessmetadata) | **DELETE** /api/portfolios/{scope}/{code}/metadata/{metadataKey} | DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio Access Metadata Rule
 *PortfoliosApi* | [**deletePortfolio**](docs/PortfoliosApi.md#deleteportfolio) | **DELETE** /api/portfolios/{scope}/{code} | DeletePortfolio: Delete portfolio
@@ -644,6 +647,7 @@ Class | Method | HTTP request | Description
 *PortfoliosApi* | [**deletePortfolioReturns**](docs/PortfoliosApi.md#deleteportfolioreturns) | **DELETE** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/$delete | [EARLY ACCESS] DeletePortfolioReturns: Delete Returns
 *PortfoliosApi* | [**getAggregatedReturnsDispersionMetrics**](docs/PortfoliosApi.md#getaggregatedreturnsdispersionmetrics) | **POST** /api/portfolios/{scope}/{code}/returns/dispersion/$aggregated | [EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated Returns Dispersion metric
 *PortfoliosApi* | [**getCompositeBreakdown**](docs/PortfoliosApi.md#getcompositebreakdown) | **POST** /api/portfolios/{scope}/{code}/returns/breakdown | [EARLY ACCESS] GetCompositeBreakdown: Get the Composite Breakdown on how the composite Returns are calculated
+*PortfoliosApi* | [**getHoldingEntitlement**](docs/PortfoliosApi.md#getholdingentitlement) | **GET** /api/portfolios/{scope}/{code}/holdingentitlements/{holdingEntitlementId} | [EARLY ACCESS] GetHoldingEntitlement: [EARLY ACCESS] Get Holding Entitlement
 *PortfoliosApi* | [**getInstrumentEventInstruction**](docs/PortfoliosApi.md#getinstrumenteventinstruction) | **GET** /api/portfolios/{scope}/{code}/instrumenteventinstructions/{instrumentEventInstructionId} | [EARLY ACCESS] GetInstrumentEventInstruction: Get Instrument Event Instruction
 *PortfoliosApi* | [**getPortfolio**](docs/PortfoliosApi.md#getportfolio) | **GET** /api/portfolios/{scope}/{code} | GetPortfolio: Get portfolio
 *PortfoliosApi* | [**getPortfolioAggregateReturns**](docs/PortfoliosApi.md#getportfolioaggregatereturns) | **GET** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/aggregated | [DEPRECATED] GetPortfolioAggregateReturns: Aggregate Returns (This is a deprecated endpoint).
@@ -657,6 +661,7 @@ Class | Method | HTTP request | Description
 *PortfoliosApi* | [**getPortfolioRelationships**](docs/PortfoliosApi.md#getportfoliorelationships) | **GET** /api/portfolios/{scope}/{code}/relationships | GetPortfolioRelationships: Get portfolio relationships
 *PortfoliosApi* | [**getPortfolioReturns**](docs/PortfoliosApi.md#getportfolioreturns) | **GET** /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode} | GetPortfolioReturns: Get Returns
 *PortfoliosApi* | [**getPortfoliosAccessMetadataByKey**](docs/PortfoliosApi.md#getportfoliosaccessmetadatabykey) | **GET** /api/portfolios/{scope}/{code}/metadata/{metadataKey} | [EARLY ACCESS] GetPortfoliosAccessMetadataByKey: Get an entry identified by a metadataKey in the access metadata object
+*PortfoliosApi* | [**listHoldingEntitlements**](docs/PortfoliosApi.md#listholdingentitlements) | **GET** /api/portfolios/{scope}/{code}/holdingentitlements | [EARLY ACCESS] ListHoldingEntitlements: [EARLY ACCESS] List Holding Entitlements
 *PortfoliosApi* | [**listInstrumentEventInstructions**](docs/PortfoliosApi.md#listinstrumenteventinstructions) | **GET** /api/portfolios/{scope}/{code}/instrumenteventinstructions | [EARLY ACCESS] ListInstrumentEventInstructions: List Instrument Event Instructions
 *PortfoliosApi* | [**listPortfolioProperties**](docs/PortfoliosApi.md#listportfolioproperties) | **GET** /api/portfolios/{scope}/{code}/properties/list | [EARLY ACCESS] ListPortfolioProperties: Get portfolio properties
 *PortfoliosApi* | [**listPortfolios**](docs/PortfoliosApi.md#listportfolios) | **GET** /api/portfolios | ListPortfolios: List portfolios
@@ -664,6 +669,7 @@ Class | Method | HTTP request | Description
 *PortfoliosApi* | [**patchPortfolio**](docs/PortfoliosApi.md#patchportfolio) | **PATCH** /api/portfolios/{scope}/{code} | PatchPortfolio: Patch portfolio.
 *PortfoliosApi* | [**patchPortfolioAccessMetadata**](docs/PortfoliosApi.md#patchportfolioaccessmetadata) | **PATCH** /api/portfolios/{scope}/{code}/metadata | [EARLY ACCESS] PatchPortfolioAccessMetadata: Patch Access Metadata rules for a Portfolio.
 *PortfoliosApi* | [**updatePortfolio**](docs/PortfoliosApi.md#updateportfolio) | **PUT** /api/portfolios/{scope}/{code} | UpdatePortfolio: Update portfolio
+*PortfoliosApi* | [**upsertHoldingEntitlements**](docs/PortfoliosApi.md#upsertholdingentitlements) | **POST** /api/portfolios/{scope}/{code}/holdingentitlements | [EARLY ACCESS] UpsertHoldingEntitlements: [EARLY ACCESS] Upsert Holding Entitlements
 *PortfoliosApi* | [**upsertInstrumentEventInstructions**](docs/PortfoliosApi.md#upsertinstrumenteventinstructions) | **POST** /api/portfolios/{scope}/{code}/instrumenteventinstructions | [EARLY ACCESS] UpsertInstrumentEventInstructions: Upsert Instrument Event Instructions
 *PortfoliosApi* | [**upsertPortfolioAccessMetadata**](docs/PortfoliosApi.md#upsertportfolioaccessmetadata) | **PUT** /api/portfolios/{scope}/{code}/metadata/{metadataKey} | UpsertPortfolioAccessMetadata: Upsert a Portfolio Access Metadata Rule associated with specific metadataKey. This creates or updates the data in LUSID.
 *PortfoliosApi* | [**upsertPortfolioProperties**](docs/PortfoliosApi.md#upsertportfolioproperties) | **POST** /api/portfolios/{scope}/{code}/properties | UpsertPortfolioProperties: Upsert portfolio properties
@@ -1077,6 +1083,7 @@ Class | Method | HTTP request | Description
  - [AllocationEventRoundingResidual](docs/AllocationEventRoundingResidual.md)
  - [AllocationEventTransfer](docs/AllocationEventTransfer.md)
  - [AllocationEventTransferConsideration](docs/AllocationEventTransferConsideration.md)
+ - [AllocationEventTransferee](docs/AllocationEventTransferee.md)
  - [AllocationEventUnbookRequest](docs/AllocationEventUnbookRequest.md)
  - [AllocationEventUseOfProceeds](docs/AllocationEventUseOfProceeds.md)
  - [AllocationGroup](docs/AllocationGroup.md)
@@ -1611,6 +1618,8 @@ Class | Method | HTTP request | Description
  - [EligibleCollateralSchedule](docs/EligibleCollateralSchedule.md)
  - [EligibleCollateralScheduleRequest](docs/EligibleCollateralScheduleRequest.md)
  - [EmptyModelOptions](docs/EmptyModelOptions.md)
+ - [EntitlementLeg](docs/EntitlementLeg.md)
+ - [EntitlementLegRequest](docs/EntitlementLegRequest.md)
  - [EntityIdentifier](docs/EntityIdentifier.md)
  - [EntityResolver](docs/EntityResolver.md)
  - [EqualisationTerms](docs/EqualisationTerms.md)
@@ -1720,6 +1729,12 @@ Class | Method | HTTP request | Description
  - [FundDetails](docs/FundDetails.md)
  - [FundDistributionEvent](docs/FundDistributionEvent.md)
  - [FundEstimateValuationPoint](docs/FundEstimateValuationPoint.md)
+ - [FundGroupReportOutput](docs/FundGroupReportOutput.md)
+ - [FundGroupReportResult](docs/FundGroupReportResult.md)
+ - [FundGroupReportValuationPoint](docs/FundGroupReportValuationPoint.md)
+ - [FundGroupTrialBalance](docs/FundGroupTrialBalance.md)
+ - [FundGroupTrialBalanceRequest](docs/FundGroupTrialBalanceRequest.md)
+ - [FundGroupTrialBalanceResponse](docs/FundGroupTrialBalanceResponse.md)
  - [FundIdList](docs/FundIdList.md)
  - [FundInstrument](docs/FundInstrument.md)
  - [FundJournalEntryLine](docs/FundJournalEntryLine.md)
@@ -1850,6 +1865,10 @@ Class | Method | HTTP request | Description
  - [HoldingAdjustmentWithDate](docs/HoldingAdjustmentWithDate.md)
  - [HoldingContext](docs/HoldingContext.md)
  - [HoldingContributor](docs/HoldingContributor.md)
+ - [HoldingEntitlement](docs/HoldingEntitlement.md)
+ - [HoldingEntitlementEntity](docs/HoldingEntitlementEntity.md)
+ - [HoldingEntitlementRequest](docs/HoldingEntitlementRequest.md)
+ - [HoldingEntitlementsResponse](docs/HoldingEntitlementsResponse.md)
  - [HoldingIdsRequest](docs/HoldingIdsRequest.md)
  - [HoldingPricingInfo](docs/HoldingPricingInfo.md)
  - [HoldingPropertyDelta](docs/HoldingPropertyDelta.md)
@@ -1862,6 +1881,7 @@ Class | Method | HTTP request | Description
  - [IdentifierForResolution](docs/IdentifierForResolution.md)
  - [IdentifierPartSchema](docs/IdentifierPartSchema.md)
  - [IgnoredDistributionTag](docs/IgnoredDistributionTag.md)
+ - [IncreaseInValueEvent](docs/IncreaseInValueEvent.md)
  - [IndexConvention](docs/IndexConvention.md)
  - [IndexModelOptions](docs/IndexModelOptions.md)
  - [IndexProjectionDependency](docs/IndexProjectionDependency.md)
@@ -2171,6 +2191,7 @@ Class | Method | HTTP request | Description
  - [PagedResourceListOfGroupReconciliationComparisonResult](docs/PagedResourceListOfGroupReconciliationComparisonResult.md)
  - [PagedResourceListOfGroupReconciliationComparisonRuleset](docs/PagedResourceListOfGroupReconciliationComparisonRuleset.md)
  - [PagedResourceListOfGroupReconciliationDefinition](docs/PagedResourceListOfGroupReconciliationDefinition.md)
+ - [PagedResourceListOfHoldingEntitlement](docs/PagedResourceListOfHoldingEntitlement.md)
  - [PagedResourceListOfIdentifierDefinition](docs/PagedResourceListOfIdentifierDefinition.md)
  - [PagedResourceListOfInstrument](docs/PagedResourceListOfInstrument.md)
  - [PagedResourceListOfInstrumentEventHolder](docs/PagedResourceListOfInstrumentEventHolder.md)
@@ -2678,6 +2699,7 @@ Class | Method | HTTP request | Description
  - [ReturnZeroPvOptions](docs/ReturnZeroPvOptions.md)
  - [ReturnsEntity](docs/ReturnsEntity.md)
  - [ReturnsMetric](docs/ReturnsMetric.md)
+ - [ReturnsMetricWindow](docs/ReturnsMetricWindow.md)
  - [RevaluationProblem](docs/RevaluationProblem.md)
  - [ReverseStockSplitEvent](docs/ReverseStockSplitEvent.md)
  - [ReverseStressRequest](docs/ReverseStressRequest.md)

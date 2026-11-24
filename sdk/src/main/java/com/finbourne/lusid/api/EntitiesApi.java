@@ -31,6 +31,7 @@ import com.finbourne.lusid.model.ComplianceRuleTemplateEntity;
 import com.finbourne.lusid.model.CorporateActionSourceEntity;
 import com.finbourne.lusid.model.CustomEntityEntity;
 import com.finbourne.lusid.model.DataTypeEntity;
+import com.finbourne.lusid.model.HoldingEntitlementEntity;
 import com.finbourne.lusid.model.InstrumentEntity;
 import com.finbourne.lusid.model.InstrumentEventEntity;
 import com.finbourne.lusid.model.InstrumentEventInstructionEntity;
@@ -1989,6 +1990,253 @@ public class EntitiesApi {
      */
     public APIgetEntityHistoryRequest getEntityHistory(String entityType, String entityUniqueId) {
         return new APIgetEntityHistoryRequest(entityType, entityUniqueId);
+    }
+    private okhttp3.Call getHoldingEntitlementByEntityUniqueIdCall(String entityUniqueId, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return getHoldingEntitlementByEntityUniqueIdCall(entityUniqueId, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getHoldingEntitlementByEntityUniqueIdCall(String entityUniqueId, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/entities/holdingentitlements/{entityUniqueId}"
+            .replace("{" + "entityUniqueId" + "}", localVarApiClient.escapeString(entityUniqueId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getHoldingEntitlementByEntityUniqueIdValidateBeforeCall(String entityUniqueId, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'entityUniqueId' is set
+        if (entityUniqueId == null) {
+            throw new ApiException("Missing the required parameter 'entityUniqueId' when calling getHoldingEntitlementByEntityUniqueId(Async)");
+        }
+
+        return getHoldingEntitlementByEntityUniqueIdCall(entityUniqueId, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<HoldingEntitlementEntity> getHoldingEntitlementByEntityUniqueIdWithHttpInfo(String entityUniqueId, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingEntitlementByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<HoldingEntitlementEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<HoldingEntitlementEntity> getHoldingEntitlementByEntityUniqueIdWithHttpInfo(String entityUniqueId, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getHoldingEntitlementByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<HoldingEntitlementEntity>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getHoldingEntitlementByEntityUniqueIdAsync(String entityUniqueId, OffsetDateTime asAt, final ApiCallback<HoldingEntitlementEntity> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingEntitlementByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<HoldingEntitlementEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getHoldingEntitlementByEntityUniqueIdAsync(String entityUniqueId, OffsetDateTime asAt, final ApiCallback<HoldingEntitlementEntity> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getHoldingEntitlementByEntityUniqueIdValidateBeforeCall(entityUniqueId, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<HoldingEntitlementEntity>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetHoldingEntitlementByEntityUniqueIdRequest {
+        private final String entityUniqueId;
+        private OffsetDateTime asAt;
+
+        private APIgetHoldingEntitlementByEntityUniqueIdRequest(String entityUniqueId) {
+            this.entityUniqueId = entityUniqueId;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to retrieve the holding entitlement. Defaults to returning the latest version of the holding entitlement if not specified. (optional)
+         * @return APIgetHoldingEntitlementByEntityUniqueIdRequest
+         */
+        public APIgetHoldingEntitlementByEntityUniqueIdRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for getHoldingEntitlementByEntityUniqueId
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getHoldingEntitlementByEntityUniqueIdCall(entityUniqueId, asAt, _callback);
+        }
+
+        /**
+         * Execute getHoldingEntitlementByEntityUniqueId request
+         * @return HoldingEntitlementEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public HoldingEntitlementEntity execute() throws ApiException {
+            ApiResponse<HoldingEntitlementEntity> localVarResp = getHoldingEntitlementByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getHoldingEntitlementByEntityUniqueId request. Use any specified configuration options to override any other configuration for this request only.
+         * @return HoldingEntitlementEntity
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public HoldingEntitlementEntity execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<HoldingEntitlementEntity> localVarResp = getHoldingEntitlementByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getHoldingEntitlementByEntityUniqueId request with HTTP info returned
+         * @return ApiResponse&lt;HoldingEntitlementEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<HoldingEntitlementEntity> executeWithHttpInfo() throws ApiException {
+            return getHoldingEntitlementByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt);
+        }
+
+        /**
+         * Execute getHoldingEntitlementByEntityUniqueId request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;HoldingEntitlementEntity&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<HoldingEntitlementEntity> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getHoldingEntitlementByEntityUniqueIdWithHttpInfo(entityUniqueId, asAt, opts);
+        }
+
+        /**
+         * Execute getHoldingEntitlementByEntityUniqueId request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<HoldingEntitlementEntity> _callback) throws ApiException {
+            return getHoldingEntitlementByEntityUniqueIdAsync(entityUniqueId, asAt, _callback);
+        }
+
+        /**
+         * Execute getHoldingEntitlementByEntityUniqueId request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The requested holding entitlement entity </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<HoldingEntitlementEntity> _callback, ConfigurationOptions opts) throws ApiException {
+            return getHoldingEntitlementByEntityUniqueIdAsync(entityUniqueId, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetHoldingEntitlementByEntityUniqueId: [EARLY ACCESS] Get holding entitlement by unique id
+     * Retrieve the definition of a holding entitlement by its entity unique id, whichever state it is in.
+     * @param entityUniqueId The entity unique identifier of the holding entitlement. The expected format is &#39;{portfolioEntityUniqueId}_{holdingEntitlementId}&#39;. (required)
+     * @return APIgetHoldingEntitlementByEntityUniqueIdRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested holding entitlement entity </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetHoldingEntitlementByEntityUniqueIdRequest getHoldingEntitlementByEntityUniqueId(String entityUniqueId) {
+        return new APIgetHoldingEntitlementByEntityUniqueIdRequest(entityUniqueId);
     }
     private okhttp3.Call getInstrumentByEntityUniqueIdCall(String entityUniqueId, String effectiveAt, OffsetDateTime asAt, List<String> previews, String dataModelScope, String dataModelCode, final ApiCallback _callback) throws ApiException {
         return getInstrumentByEntityUniqueIdCall(entityUniqueId, effectiveAt, asAt, previews, dataModelScope, dataModelCode,  _callback, new ConfigurationOptions());

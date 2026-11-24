@@ -115,7 +115,7 @@ public class AllocationEventTransfer {
   }
 
    /**
-   * The investor record that receives the transferred interest.
+   * The investor record that receives the transferred interest, in the fund&#39;s scope: &#39;idTypeScope/idTypeCode/value&#39;, the form the register and the partners&#39; capital report carry, or a bare value, read as the system InvestorRecordId. A record that is not in the fund&#39;s scope is refused with TransferDestinationRecordNotFound; it is never looked for in another scope. A record with no investment account in the fund has one opened for it when the transfer is booked.
    * @return toInvestorRecordId
   **/
   @jakarta.annotation.Nonnull
@@ -136,7 +136,7 @@ public class AllocationEventTransfer {
   }
 
    /**
-   * The identifier of the capital interest line the fraction moves to. Created if it does not exist.
+   * The identifier of the capital interest line the fraction moves to. Created if it does not exist, under the investment account the investor record holds in the fund, or the one the booking opens for it.
    * @return toLineId
   **/
   @jakarta.annotation.Nonnull

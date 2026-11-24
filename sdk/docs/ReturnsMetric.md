@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **type** | **String** | Available values: Return, IndicativeAmount. | [default to String]
 **alias** | **String** |  | [optional] [default to String]
 **seedAmount** | **String** |  | [default to String]
+**window** | [**ReturnsMetricWindow**](ReturnsMetricWindow.md) |  | [optional] [default to ReturnsMetricWindow]
 
 ```java
 import com.finbourne.lusid.model.ReturnsMetric;

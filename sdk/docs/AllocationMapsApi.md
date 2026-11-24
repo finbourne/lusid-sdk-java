@@ -601,7 +601,7 @@ public class AllocationMapsApiExample {
 
 [EARLY ACCESS] ResolveAllocationMap: Resolve an Allocation Map.
 
-Dry-run the map against an event: share the supplied amount across the participants in force at the  effective datetime, applying fixed-percentage exceptions off the top and the declared basis to the remainder.  Nothing is booked. Basis values (for example committed capital per investor) are supplied in the request  until the investor register can provide them.
+Dry-run the map against an event: share the supplied amount across the participants in force at the  effective datetime, applying fixed-percentage exceptions off the top and the declared basis to the remainder.  Nothing is booked. For a register-backed basis the members&#39; registers provide the basis values; values  supplied in the request override the register value of the investor records they name rather than defining  who takes part, so every other open line still takes part.
 
 ### Example
 

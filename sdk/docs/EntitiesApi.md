@@ -11,6 +11,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getCustomEntityByEntityUniqueId**](EntitiesApi.md#getCustomEntityByEntityUniqueId) | **GET** /api/entities/customentities/{entityUniqueId} | GetCustomEntityByEntityUniqueId: Get a Custom Entity instance by its EntityUniqueId |
 | [**getDataTypeByEntityUniqueId**](EntitiesApi.md#getDataTypeByEntityUniqueId) | **GET** /api/entities/datatypes/{entityUniqueId} | GetDataTypeByEntityUniqueId: Get DataType by EntityUniqueId |
 | [**getEntityHistory**](EntitiesApi.md#getEntityHistory) | **GET** /api/entities/{entityType}/{entityUniqueId}/history | GetEntityHistory: List an entity&#39;s history information |
+| [**getHoldingEntitlementByEntityUniqueId**](EntitiesApi.md#getHoldingEntitlementByEntityUniqueId) | **GET** /api/entities/holdingentitlements/{entityUniqueId} | [EARLY ACCESS] GetHoldingEntitlementByEntityUniqueId: [EARLY ACCESS] Get holding entitlement by unique id |
 | [**getInstrumentByEntityUniqueId**](EntitiesApi.md#getInstrumentByEntityUniqueId) | **GET** /api/entities/instruments/{entityUniqueId} | GetInstrumentByEntityUniqueId: Get instrument by EntityUniqueId |
 | [**getInstrumentEventByEntityUniqueId**](EntitiesApi.md#getInstrumentEventByEntityUniqueId) | **GET** /api/entities/instrumentevents/{entityUniqueId} | [EARLY ACCESS] GetInstrumentEventByEntityUniqueId: Get instrument event by EntityUniqueId |
 | [**getInstrumentEventInstructionByEntityUniqueId**](EntitiesApi.md#getInstrumentEventInstructionByEntityUniqueId) | **GET** /api/entities/instrumenteventinstructions/{entityUniqueId} | GetInstrumentEventInstructionByEntityUniqueId: Get instrument event instruction by EntityUniqueId |
@@ -691,6 +692,99 @@ public class EntitiesApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The change history of the provided entity. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getHoldingEntitlementByEntityUniqueId
+
+> HoldingEntitlementEntity getHoldingEntitlementByEntityUniqueId(entityUniqueId, asAt)
+
+[EARLY ACCESS] GetHoldingEntitlementByEntityUniqueId: [EARLY ACCESS] Get holding entitlement by unique id
+
+Retrieve the definition of a holding entitlement by its entity unique id, whichever state it is in.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.EntitiesApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class EntitiesApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // EntitiesApi apiInstance = apiFactory.build(EntitiesApi.class);
+
+        EntitiesApi apiInstance = ApiFactoryBuilder.build(fileName).build(EntitiesApi.class);
+        String entityUniqueId = "entityUniqueId_example"; // String | The entity unique identifier of the holding entitlement. The expected format is '{portfolioEntityUniqueId}_{holdingEntitlementId}'.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the holding entitlement. Defaults to returning the latest version of the holding entitlement if not specified.
+        try {
+            // uncomment the below to set overrides at the request level
+            // HoldingEntitlementEntity result = apiInstance.getHoldingEntitlementByEntityUniqueId(entityUniqueId, asAt).execute(opts);
+
+            HoldingEntitlementEntity result = apiInstance.getHoldingEntitlementByEntityUniqueId(entityUniqueId, asAt).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling EntitiesApi#getHoldingEntitlementByEntityUniqueId");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityUniqueId** | **String**| The entity unique identifier of the holding entitlement. The expected format is &#39;{portfolioEntityUniqueId}_{holdingEntitlementId}&#39;. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the holding entitlement. Defaults to returning the latest version of the holding entitlement if not specified. | [optional] |
+
+### Return type
+
+[**HoldingEntitlementEntity**](HoldingEntitlementEntity.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested holding entitlement entity |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
