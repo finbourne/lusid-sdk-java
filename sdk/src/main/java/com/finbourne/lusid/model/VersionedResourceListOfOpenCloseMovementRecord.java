@@ -12,7 +12,8 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.PartnerCapitalAccount;
+import com.finbourne.lusid.model.OpenCloseMovementRecord;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,10 +52,22 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * PagedResourceListOfPartnerCapitalAccount
+ * VersionedResourceListOfOpenCloseMovementRecord
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PagedResourceListOfPartnerCapitalAccount {
+public class VersionedResourceListOfOpenCloseMovementRecord {
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version;
+
+  public static final String SERIALIZED_NAME_VALUES = "values";
+  @SerializedName(SERIALIZED_NAME_VALUES)
+  private List<OpenCloseMovementRecord> values = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private URI href;
+
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
   private String nextPage;
@@ -63,70 +76,41 @@ public class PagedResourceListOfPartnerCapitalAccount {
   @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
   private String previousPage;
 
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<PartnerCapitalAccount> values = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private URI href;
-
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
-  public PagedResourceListOfPartnerCapitalAccount() {
+  public VersionedResourceListOfOpenCloseMovementRecord() {
   }
 
-  public PagedResourceListOfPartnerCapitalAccount nextPage(String nextPage) {
+  public VersionedResourceListOfOpenCloseMovementRecord version(Version version) {
     
-    this.nextPage = nextPage;
+    this.version = version;
     return this;
   }
 
    /**
-   * Get nextPage
-   * @return nextPage
+   * Get version
+   * @return version
   **/
-  @jakarta.annotation.Nullable
-  public String getNextPage() {
-    return nextPage;
+  @jakarta.annotation.Nonnull
+  public Version getVersion() {
+    return version;
   }
 
 
-  public void setNextPage(String nextPage) {
-    this.nextPage = nextPage;
+  public void setVersion(Version version) {
+    this.version = version;
   }
 
 
-  public PagedResourceListOfPartnerCapitalAccount previousPage(String previousPage) {
-    
-    this.previousPage = previousPage;
-    return this;
-  }
-
-   /**
-   * Get previousPage
-   * @return previousPage
-  **/
-  @jakarta.annotation.Nullable
-  public String getPreviousPage() {
-    return previousPage;
-  }
-
-
-  public void setPreviousPage(String previousPage) {
-    this.previousPage = previousPage;
-  }
-
-
-  public PagedResourceListOfPartnerCapitalAccount values(List<PartnerCapitalAccount> values) {
+  public VersionedResourceListOfOpenCloseMovementRecord values(List<OpenCloseMovementRecord> values) {
     
     this.values = values;
     return this;
   }
 
-  public PagedResourceListOfPartnerCapitalAccount addValuesItem(PartnerCapitalAccount valuesItem) {
+  public VersionedResourceListOfOpenCloseMovementRecord addValuesItem(OpenCloseMovementRecord valuesItem) {
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -139,17 +123,17 @@ public class PagedResourceListOfPartnerCapitalAccount {
    * @return values
   **/
   @jakarta.annotation.Nonnull
-  public List<PartnerCapitalAccount> getValues() {
+  public List<OpenCloseMovementRecord> getValues() {
     return values;
   }
 
 
-  public void setValues(List<PartnerCapitalAccount> values) {
+  public void setValues(List<OpenCloseMovementRecord> values) {
     this.values = values;
   }
 
 
-  public PagedResourceListOfPartnerCapitalAccount href(URI href) {
+  public VersionedResourceListOfOpenCloseMovementRecord href(URI href) {
     
     this.href = href;
     return this;
@@ -170,13 +154,55 @@ public class PagedResourceListOfPartnerCapitalAccount {
   }
 
 
-  public PagedResourceListOfPartnerCapitalAccount links(List<Link> links) {
+  public VersionedResourceListOfOpenCloseMovementRecord nextPage(String nextPage) {
+    
+    this.nextPage = nextPage;
+    return this;
+  }
+
+   /**
+   * Get nextPage
+   * @return nextPage
+  **/
+  @jakarta.annotation.Nullable
+  public String getNextPage() {
+    return nextPage;
+  }
+
+
+  public void setNextPage(String nextPage) {
+    this.nextPage = nextPage;
+  }
+
+
+  public VersionedResourceListOfOpenCloseMovementRecord previousPage(String previousPage) {
+    
+    this.previousPage = previousPage;
+    return this;
+  }
+
+   /**
+   * Get previousPage
+   * @return previousPage
+  **/
+  @jakarta.annotation.Nullable
+  public String getPreviousPage() {
+    return previousPage;
+  }
+
+
+  public void setPreviousPage(String previousPage) {
+    this.previousPage = previousPage;
+  }
+
+
+  public VersionedResourceListOfOpenCloseMovementRecord links(List<Link> links) {
     
     this.links = links;
     return this;
   }
 
-  public PagedResourceListOfPartnerCapitalAccount addLinksItem(Link linksItem) {
+  public VersionedResourceListOfOpenCloseMovementRecord addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -208,12 +234,13 @@ public class PagedResourceListOfPartnerCapitalAccount {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PagedResourceListOfPartnerCapitalAccount pagedResourceListOfPartnerCapitalAccount = (PagedResourceListOfPartnerCapitalAccount) o;
-    return Objects.equals(this.nextPage, pagedResourceListOfPartnerCapitalAccount.nextPage) &&
-        Objects.equals(this.previousPage, pagedResourceListOfPartnerCapitalAccount.previousPage) &&
-        Objects.equals(this.values, pagedResourceListOfPartnerCapitalAccount.values) &&
-        Objects.equals(this.href, pagedResourceListOfPartnerCapitalAccount.href) &&
-        Objects.equals(this.links, pagedResourceListOfPartnerCapitalAccount.links);
+    VersionedResourceListOfOpenCloseMovementRecord versionedResourceListOfOpenCloseMovementRecord = (VersionedResourceListOfOpenCloseMovementRecord) o;
+    return Objects.equals(this.version, versionedResourceListOfOpenCloseMovementRecord.version) &&
+        Objects.equals(this.values, versionedResourceListOfOpenCloseMovementRecord.values) &&
+        Objects.equals(this.href, versionedResourceListOfOpenCloseMovementRecord.href) &&
+        Objects.equals(this.nextPage, versionedResourceListOfOpenCloseMovementRecord.nextPage) &&
+        Objects.equals(this.previousPage, versionedResourceListOfOpenCloseMovementRecord.previousPage) &&
+        Objects.equals(this.links, versionedResourceListOfOpenCloseMovementRecord.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -222,7 +249,7 @@ public class PagedResourceListOfPartnerCapitalAccount {
 
   @Override
   public int hashCode() {
-    return Objects.hash(nextPage, previousPage, values, href, links);
+    return Objects.hash(version, values, href, nextPage, previousPage, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -235,11 +262,12 @@ public class PagedResourceListOfPartnerCapitalAccount {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PagedResourceListOfPartnerCapitalAccount {\n");
-    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
-    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
+    sb.append("class VersionedResourceListOfOpenCloseMovementRecord {\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
+    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -263,14 +291,16 @@ public class PagedResourceListOfPartnerCapitalAccount {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("nextPage");
-    openapiFields.add("previousPage");
+    openapiFields.add("version");
     openapiFields.add("values");
     openapiFields.add("href");
+    openapiFields.add("nextPage");
+    openapiFields.add("previousPage");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("version");
     openapiRequiredFields.add("values");
   }
 
@@ -278,28 +308,24 @@ public class PagedResourceListOfPartnerCapitalAccount {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to PagedResourceListOfPartnerCapitalAccount
+  * @throws IOException if the JSON Element is invalid with respect to VersionedResourceListOfOpenCloseMovementRecord
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!PagedResourceListOfPartnerCapitalAccount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PagedResourceListOfPartnerCapitalAccount is not found in the empty JSON string", PagedResourceListOfPartnerCapitalAccount.openapiRequiredFields.toString()));
+        if (!VersionedResourceListOfOpenCloseMovementRecord.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in VersionedResourceListOfOpenCloseMovementRecord is not found in the empty JSON string", VersionedResourceListOfOpenCloseMovementRecord.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PagedResourceListOfPartnerCapitalAccount.openapiRequiredFields) {
+      for (String requiredField : VersionedResourceListOfOpenCloseMovementRecord.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("nextPage") != null && !jsonObj.get("nextPage").isJsonNull()) && !jsonObj.get("nextPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nextPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPage").toString()));
-      }
-      if ((jsonObj.get("previousPage") != null && !jsonObj.get("previousPage").isJsonNull()) && !jsonObj.get("previousPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `previousPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousPage").toString()));
-      }
+      // validate the required field `version`
+      Version.validateJsonElement(jsonObj.get("version"));
       // ensure the json data is an array
       if (!jsonObj.get("values").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
@@ -308,10 +334,16 @@ public class PagedResourceListOfPartnerCapitalAccount {
       JsonArray jsonArrayvalues = jsonObj.getAsJsonArray("values");
       // validate the required field `values` (array)
       for (int i = 0; i < jsonArrayvalues.size(); i++) {
-        PartnerCapitalAccount.validateJsonElement(jsonArrayvalues.get(i));
+        OpenCloseMovementRecord.validateJsonElement(jsonArrayvalues.get(i));
       };
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      if ((jsonObj.get("nextPage") != null && !jsonObj.get("nextPage").isJsonNull()) && !jsonObj.get("nextPage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `nextPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPage").toString()));
+      }
+      if ((jsonObj.get("previousPage") != null && !jsonObj.get("previousPage").isJsonNull()) && !jsonObj.get("previousPage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `previousPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousPage").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
@@ -333,22 +365,22 @@ public class PagedResourceListOfPartnerCapitalAccount {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PagedResourceListOfPartnerCapitalAccount.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PagedResourceListOfPartnerCapitalAccount' and its subtypes
+       if (!VersionedResourceListOfOpenCloseMovementRecord.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'VersionedResourceListOfOpenCloseMovementRecord' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PagedResourceListOfPartnerCapitalAccount> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PagedResourceListOfPartnerCapitalAccount.class));
+       final TypeAdapter<VersionedResourceListOfOpenCloseMovementRecord> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(VersionedResourceListOfOpenCloseMovementRecord.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PagedResourceListOfPartnerCapitalAccount>() {
+       return (TypeAdapter<T>) new TypeAdapter<VersionedResourceListOfOpenCloseMovementRecord>() {
            @Override
-           public void write(JsonWriter out, PagedResourceListOfPartnerCapitalAccount value) throws IOException {
+           public void write(JsonWriter out, VersionedResourceListOfOpenCloseMovementRecord value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public PagedResourceListOfPartnerCapitalAccount read(JsonReader in) throws IOException {
+           public VersionedResourceListOfOpenCloseMovementRecord read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -359,18 +391,18 @@ public class PagedResourceListOfPartnerCapitalAccount {
   }
 
  /**
-  * Create an instance of PagedResourceListOfPartnerCapitalAccount given an JSON string
+  * Create an instance of VersionedResourceListOfOpenCloseMovementRecord given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of PagedResourceListOfPartnerCapitalAccount
-  * @throws IOException if the JSON string is invalid with respect to PagedResourceListOfPartnerCapitalAccount
+  * @return An instance of VersionedResourceListOfOpenCloseMovementRecord
+  * @throws IOException if the JSON string is invalid with respect to VersionedResourceListOfOpenCloseMovementRecord
   */
-  public static PagedResourceListOfPartnerCapitalAccount fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PagedResourceListOfPartnerCapitalAccount.class);
+  public static VersionedResourceListOfOpenCloseMovementRecord fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, VersionedResourceListOfOpenCloseMovementRecord.class);
   }
 
  /**
-  * Convert an instance of PagedResourceListOfPartnerCapitalAccount to an JSON string
+  * Convert an instance of VersionedResourceListOfOpenCloseMovementRecord to an JSON string
   *
   * @return JSON string
   */

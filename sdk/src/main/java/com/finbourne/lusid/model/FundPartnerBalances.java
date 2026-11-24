@@ -82,6 +82,10 @@ public class FundPartnerBalances {
   @SerializedName(SERIALIZED_NAME_OUTSTANDING_CALLS)
   private java.math.BigDecimal outstandingCalls;
 
+  public static final String SERIALIZED_NAME_CALL_CREDIT = "callCredit";
+  @SerializedName(SERIALIZED_NAME_CALL_CREDIT)
+  private java.math.BigDecimal callCredit;
+
   public FundPartnerBalances() {
   }
 
@@ -253,6 +257,27 @@ public class FundPartnerBalances {
   }
 
 
+  public FundPartnerBalances callCredit(java.math.BigDecimal callCredit) {
+    
+    this.callCredit = callCredit;
+    return this;
+  }
+
+   /**
+   * The credit an equalisation kept against the line&#39;s future calls, less what later calls have drawn on it: a liability to the partner, not capital, until a call applies it. Zero when the line holds none.
+   * @return callCredit
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCallCredit() {
+    return callCredit;
+  }
+
+
+  public void setCallCredit(java.math.BigDecimal callCredit) {
+    this.callCredit = callCredit;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -270,7 +295,8 @@ public class FundPartnerBalances {
         (this.recallable.compareTo(fundPartnerBalances.getRecallable()) == 0) &&
         (this.unfunded.compareTo(fundPartnerBalances.getUnfunded()) == 0) &&
         (this.funded.compareTo(fundPartnerBalances.getFunded()) == 0) &&
-        (this.outstandingCalls.compareTo(fundPartnerBalances.getOutstandingCalls()) == 0);
+        (this.outstandingCalls.compareTo(fundPartnerBalances.getOutstandingCalls()) == 0) &&
+        (this.callCredit.compareTo(fundPartnerBalances.getCallCredit()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -279,7 +305,7 @@ public class FundPartnerBalances {
 
   @Override
   public int hashCode() {
-    return Objects.hash(committed, uncalledCommitment, paidIn, returned, recallable, unfunded, funded, outstandingCalls);
+    return Objects.hash(committed, uncalledCommitment, paidIn, returned, recallable, unfunded, funded, outstandingCalls, callCredit);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -301,6 +327,7 @@ public class FundPartnerBalances {
     sb.append("    unfunded: ").append(toIndentedString(unfunded)).append("\n");
     sb.append("    funded: ").append(toIndentedString(funded)).append("\n");
     sb.append("    outstandingCalls: ").append(toIndentedString(outstandingCalls)).append("\n");
+    sb.append("    callCredit: ").append(toIndentedString(callCredit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -331,6 +358,7 @@ public class FundPartnerBalances {
     openapiFields.add("unfunded");
     openapiFields.add("funded");
     openapiFields.add("outstandingCalls");
+    openapiFields.add("callCredit");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

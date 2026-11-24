@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **memo** | [**PartnerCapitalAccountMemo**](PartnerCapitalAccountMemo.md) |  | [default to PartnerCapitalAccountMemo]
 **foots** | **Boolean** | Whether the ending capital agrees across the quarter-to-date, year-to-date and inception-to-date columns within tolerance. | [default to Boolean]
 **footingDifference** | **java.math.BigDecimal** | The largest difference between the ending capital of any two columns. | [default to java.math.BigDecimal]
+**warnings** | [**List&lt;Warning&gt;**](Warning.md) | Warnings about the register the account was read from, for example a transaction type of the fund that books a register line outside the registry, so that line is not in the account. Empty when there is nothing to warn of. | [optional] [default to List<Warning>]
 
 ```java
 import com.finbourne.lusid.model.PartnerCapitalAccount;
@@ -32,6 +33,7 @@ List<PartnerCapitalAccountRow> Rows = new List<PartnerCapitalAccountRow>();
 PartnerCapitalAccountMemo Memo = new PartnerCapitalAccountMemo();
 Boolean Foots = true;
 java.math.BigDecimal FootingDifference = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable List<Warning> Warnings = new List<Warning>();
 
 
 PartnerCapitalAccount partnerCapitalAccountInstance = new PartnerCapitalAccount()
@@ -44,7 +46,8 @@ PartnerCapitalAccount partnerCapitalAccountInstance = new PartnerCapitalAccount(
     .Rows(Rows)
     .Memo(Memo)
     .Foots(Foots)
-    .FootingDifference(FootingDifference);
+    .FootingDifference(FootingDifference)
+    .Warnings(Warnings);
 ```
 
 

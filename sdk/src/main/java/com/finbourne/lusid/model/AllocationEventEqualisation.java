@@ -91,6 +91,18 @@ public class AllocationEventEqualisation {
   @SerializedName(SERIALIZED_NAME_MARKS)
   private List<AllocationEventEqualisationMark> marks;
 
+  public static final String SERIALIZED_NAME_PRIOR_DISTRIBUTION_IDS = "priorDistributionIds";
+  @SerializedName(SERIALIZED_NAME_PRIOR_DISTRIBUTION_IDS)
+  private List<ResourceId> priorDistributionIds;
+
+  public static final String SERIALIZED_NAME_INTEREST_TREATMENT = "interestTreatment";
+  @SerializedName(SERIALIZED_NAME_INTEREST_TREATMENT)
+  private String interestTreatment;
+
+  public static final String SERIALIZED_NAME_EXCLUDED_COMPONENTS = "excludedComponents";
+  @SerializedName(SERIALIZED_NAME_EXCLUDED_COMPONENTS)
+  private List<String> excludedComponents;
+
   public AllocationEventEqualisation() {
   }
 
@@ -222,7 +234,7 @@ public class AllocationEventEqualisation {
   }
 
    /**
-   * How the existing partners&#39; excess is returned: ReturnOfExcess restores it to their uncalled commitment; RecallableDistribution distributes it as recallable capital. Defaults to ReturnOfExcess. Available values: ReturnOfExcess, RecallableDistribution.
+   * How the existing partners&#39; excess is returned: ReturnOfExcess restores it to their uncalled commitment; RecallableDistribution distributes it as recallable capital; CreditAgainstFutureCalls restores it to their uncalled commitment and keeps the cash in the fund as a credit their next calls draw down; RetainedByFund hands nothing back and instead calls the admitted partners up to the existing partners&#39; level on the commitments before the close. Defaults to ReturnOfExcess. Available values: ReturnOfExcess, RecallableDistribution, CreditAgainstFutureCalls, RetainedByFund.
    * @return treatment
   **/
   @jakarta.annotation.Nullable
@@ -243,7 +255,7 @@ public class AllocationEventEqualisation {
   }
 
    /**
-   * Whether profit and loss already allocated is re-trued between partners with no cash so each holds its post-close share (ReTrue), or the equalisation is kept to capital (CapitalOnly). Defaults to ReTrue. Available values: ReTrue, CapitalOnly.
+   * Whether profit and loss already allocated is re-trued between partners with no cash so each holds its post-close share (ReTrue), or the equalisation is kept to capital (CapitalOnly). Defaults to CapitalOnly when omitted on a request. An equalisation stored before this default was introduced keeps the treatment it was stored with, which is ReTrue. Available values: ReTrue, CapitalOnly.
    * @return pnl
   **/
   @jakarta.annotation.Nullable
@@ -315,6 +327,85 @@ public class AllocationEventEqualisation {
   }
 
 
+  public AllocationEventEqualisation priorDistributionIds(List<ResourceId> priorDistributionIds) {
+    
+    this.priorDistributionIds = priorDistributionIds;
+    return this;
+  }
+
+  public AllocationEventEqualisation addPriorDistributionIdsItem(ResourceId priorDistributionIdsItem) {
+    if (this.priorDistributionIds == null) {
+      this.priorDistributionIds = new ArrayList<>();
+    }
+    this.priorDistributionIds.add(priorDistributionIdsItem);
+    return this;
+  }
+
+   /**
+   * The booked distributions on the same allocation map, dated before the close, whose return of capital is re-spread net of the prior calls. When omitted, every booked distribution on the map dated before the close counts.
+   * @return priorDistributionIds
+  **/
+  @jakarta.annotation.Nullable
+  public List<ResourceId> getPriorDistributionIds() {
+    return priorDistributionIds;
+  }
+
+
+  public void setPriorDistributionIds(List<ResourceId> priorDistributionIds) {
+    this.priorDistributionIds = priorDistributionIds;
+  }
+
+
+  public AllocationEventEqualisation interestTreatment(String interestTreatment) {
+    
+    this.interestTreatment = interestTreatment;
+    return this;
+  }
+
+   /**
+   * How the equalisation interest reaches the existing partners: Cash pays it to them; CapitalCredit credits it to their capital accounts with no cash; None charges and pays no equalisation interest. Defaults to Cash. Available values: Cash, CapitalCredit, None.
+   * @return interestTreatment
+  **/
+  @jakarta.annotation.Nullable
+  public String getInterestTreatment() {
+    return interestTreatment;
+  }
+
+
+  public void setInterestTreatment(String interestTreatment) {
+    this.interestTreatment = interestTreatment;
+  }
+
+
+  public AllocationEventEqualisation excludedComponents(List<String> excludedComponents) {
+    
+    this.excludedComponents = excludedComponents;
+    return this;
+  }
+
+  public AllocationEventEqualisation addExcludedComponentsItem(String excludedComponentsItem) {
+    if (this.excludedComponents == null) {
+      this.excludedComponents = new ArrayList<>();
+    }
+    this.excludedComponents.add(excludedComponentsItem);
+    return this;
+  }
+
+   /**
+   * The call components left out of the re-spread: ManagementFee, OtherFee, Expense, OrganisationCost or Recall. Defaults to ManagementFee. A component no prior call carries, other than ManagementFee, is refused. Available values: ManagementFee, OtherFee, Expense, OrganisationCost, Recall.
+   * @return excludedComponents
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getExcludedComponents() {
+    return excludedComponents;
+  }
+
+
+  public void setExcludedComponents(List<String> excludedComponents) {
+    this.excludedComponents = excludedComponents;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -333,7 +424,10 @@ public class AllocationEventEqualisation {
         Objects.equals(this.treatment, allocationEventEqualisation.treatment) &&
         Objects.equals(this.pnl, allocationEventEqualisation.pnl) &&
         Objects.equals(this.feeCatchUps, allocationEventEqualisation.feeCatchUps) &&
-        Objects.equals(this.marks, allocationEventEqualisation.marks);
+        Objects.equals(this.marks, allocationEventEqualisation.marks) &&
+        Objects.equals(this.priorDistributionIds, allocationEventEqualisation.priorDistributionIds) &&
+        Objects.equals(this.interestTreatment, allocationEventEqualisation.interestTreatment) &&
+        Objects.equals(this.excludedComponents, allocationEventEqualisation.excludedComponents);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -342,7 +436,7 @@ public class AllocationEventEqualisation {
 
   @Override
   public int hashCode() {
-    return Objects.hash(priorCallIds, newInvestorRecordIds, interestRate, dayCountConvention, interestOnFees, treatment, pnl, feeCatchUps, marks);
+    return Objects.hash(priorCallIds, newInvestorRecordIds, interestRate, dayCountConvention, interestOnFees, treatment, pnl, feeCatchUps, marks, priorDistributionIds, interestTreatment, excludedComponents);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -365,6 +459,9 @@ public class AllocationEventEqualisation {
     sb.append("    pnl: ").append(toIndentedString(pnl)).append("\n");
     sb.append("    feeCatchUps: ").append(toIndentedString(feeCatchUps)).append("\n");
     sb.append("    marks: ").append(toIndentedString(marks)).append("\n");
+    sb.append("    priorDistributionIds: ").append(toIndentedString(priorDistributionIds)).append("\n");
+    sb.append("    interestTreatment: ").append(toIndentedString(interestTreatment)).append("\n");
+    sb.append("    excludedComponents: ").append(toIndentedString(excludedComponents)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -396,6 +493,9 @@ public class AllocationEventEqualisation {
     openapiFields.add("pnl");
     openapiFields.add("feeCatchUps");
     openapiFields.add("marks");
+    openapiFields.add("priorDistributionIds");
+    openapiFields.add("interestTreatment");
+    openapiFields.add("excludedComponents");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -475,6 +575,27 @@ public class AllocationEventEqualisation {
             AllocationEventEqualisationMark.validateJsonElement(jsonArraymarks.get(i));
           };
         }
+      }
+      if (jsonObj.get("priorDistributionIds") != null && !jsonObj.get("priorDistributionIds").isJsonNull()) {
+        JsonArray jsonArraypriorDistributionIds = jsonObj.getAsJsonArray("priorDistributionIds");
+        if (jsonArraypriorDistributionIds != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("priorDistributionIds").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `priorDistributionIds` to be an array in the JSON string but got `%s`", jsonObj.get("priorDistributionIds").toString()));
+          }
+
+          // validate the optional field `priorDistributionIds` (array)
+          for (int i = 0; i < jsonArraypriorDistributionIds.size(); i++) {
+            ResourceId.validateJsonElement(jsonArraypriorDistributionIds.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("interestTreatment") != null && !jsonObj.get("interestTreatment").isJsonNull()) && !jsonObj.get("interestTreatment").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `interestTreatment` to be a primitive type in the JSON string but got `%s`", jsonObj.get("interestTreatment").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("excludedComponents") != null && !jsonObj.get("excludedComponents").isJsonNull() && !jsonObj.get("excludedComponents").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `excludedComponents` to be an array in the JSON string but got `%s`", jsonObj.get("excludedComponents").toString()));
       }
   }
 

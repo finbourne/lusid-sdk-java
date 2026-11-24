@@ -56,7 +56,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A single row in the local-currency Fund Cash Statement report. Each row is a settled cash  movement with a running balance in local currency only; base-currency columns are out of  scope for this variant and are not returned.
+ * A single row in the local-currency Fund Cash Statement report. Each row is a settled cash  movement with a running balance in local currency, and the base-currency cash flow, realised FX  (split into its trade-date-to-settlement-date and cash pool parts), cost basis, balance at the  recipe&#39;s rate on the row&#39;s date and the unrealised FX between the two.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FundCashStatementLocalCurrency {
@@ -123,6 +123,46 @@ public class FundCashStatementLocalCurrency {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, Property> properties;
+
+  public static final String SERIALIZED_NAME_CASHFLOW_BASE = "cashflowBase";
+  @SerializedName(SERIALIZED_NAME_CASHFLOW_BASE)
+  private CurrencyAndAmount cashflowBase;
+
+  public static final String SERIALIZED_NAME_TRADE_DATE_TO_SETTLEMENT_DATE_FX_PNL_BASE = "tradeDateToSettlementDateFxPnlBase";
+  @SerializedName(SERIALIZED_NAME_TRADE_DATE_TO_SETTLEMENT_DATE_FX_PNL_BASE)
+  private CurrencyAndAmount tradeDateToSettlementDateFxPnlBase;
+
+  public static final String SERIALIZED_NAME_CASH_POOL_FX_PNL_BASE = "cashPoolFxPnlBase";
+  @SerializedName(SERIALIZED_NAME_CASH_POOL_FX_PNL_BASE)
+  private CurrencyAndAmount cashPoolFxPnlBase;
+
+  public static final String SERIALIZED_NAME_COST_BASIS_BASE = "costBasisBase";
+  @SerializedName(SERIALIZED_NAME_COST_BASIS_BASE)
+  private CurrencyAndAmount costBasisBase;
+
+  public static final String SERIALIZED_NAME_BALANCE_BASE = "balanceBase";
+  @SerializedName(SERIALIZED_NAME_BALANCE_BASE)
+  private CurrencyAndAmount balanceBase;
+
+  public static final String SERIALIZED_NAME_UNREALISED_FX_PNL_BASE = "unrealisedFxPnlBase";
+  @SerializedName(SERIALIZED_NAME_UNREALISED_FX_PNL_BASE)
+  private CurrencyAndAmount unrealisedFxPnlBase;
+
+  public static final String SERIALIZED_NAME_BALANCE_FX_RATE = "balanceFxRate";
+  @SerializedName(SERIALIZED_NAME_BALANCE_FX_RATE)
+  private java.math.BigDecimal balanceFxRate;
+
+  public static final String SERIALIZED_NAME_BALANCE_BASE_FAILURE_REASON = "balanceBaseFailureReason";
+  @SerializedName(SERIALIZED_NAME_BALANCE_BASE_FAILURE_REASON)
+  private String balanceBaseFailureReason;
+
+  public static final String SERIALIZED_NAME_AVG_RATE = "avgRate";
+  @SerializedName(SERIALIZED_NAME_AVG_RATE)
+  private java.math.BigDecimal avgRate;
+
+  public static final String SERIALIZED_NAME_FX_RATE_MOVEMENT = "fxRateMovement";
+  @SerializedName(SERIALIZED_NAME_FX_RATE_MOVEMENT)
+  private java.math.BigDecimal fxRateMovement;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -483,6 +523,216 @@ public class FundCashStatementLocalCurrency {
   }
 
 
+  public FundCashStatementLocalCurrency cashflowBase(CurrencyAndAmount cashflowBase) {
+    
+    this.cashflowBase = cashflowBase;
+    return this;
+  }
+
+   /**
+   * Get cashflowBase
+   * @return cashflowBase
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getCashflowBase() {
+    return cashflowBase;
+  }
+
+
+  public void setCashflowBase(CurrencyAndAmount cashflowBase) {
+    this.cashflowBase = cashflowBase;
+  }
+
+
+  public FundCashStatementLocalCurrency tradeDateToSettlementDateFxPnlBase(CurrencyAndAmount tradeDateToSettlementDateFxPnlBase) {
+    
+    this.tradeDateToSettlementDateFxPnlBase = tradeDateToSettlementDateFxPnlBase;
+    return this;
+  }
+
+   /**
+   * Get tradeDateToSettlementDateFxPnlBase
+   * @return tradeDateToSettlementDateFxPnlBase
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getTradeDateToSettlementDateFxPnlBase() {
+    return tradeDateToSettlementDateFxPnlBase;
+  }
+
+
+  public void setTradeDateToSettlementDateFxPnlBase(CurrencyAndAmount tradeDateToSettlementDateFxPnlBase) {
+    this.tradeDateToSettlementDateFxPnlBase = tradeDateToSettlementDateFxPnlBase;
+  }
+
+
+  public FundCashStatementLocalCurrency cashPoolFxPnlBase(CurrencyAndAmount cashPoolFxPnlBase) {
+    
+    this.cashPoolFxPnlBase = cashPoolFxPnlBase;
+    return this;
+  }
+
+   /**
+   * Get cashPoolFxPnlBase
+   * @return cashPoolFxPnlBase
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getCashPoolFxPnlBase() {
+    return cashPoolFxPnlBase;
+  }
+
+
+  public void setCashPoolFxPnlBase(CurrencyAndAmount cashPoolFxPnlBase) {
+    this.cashPoolFxPnlBase = cashPoolFxPnlBase;
+  }
+
+
+  public FundCashStatementLocalCurrency costBasisBase(CurrencyAndAmount costBasisBase) {
+    
+    this.costBasisBase = costBasisBase;
+    return this;
+  }
+
+   /**
+   * Get costBasisBase
+   * @return costBasisBase
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getCostBasisBase() {
+    return costBasisBase;
+  }
+
+
+  public void setCostBasisBase(CurrencyAndAmount costBasisBase) {
+    this.costBasisBase = costBasisBase;
+  }
+
+
+  public FundCashStatementLocalCurrency balanceBase(CurrencyAndAmount balanceBase) {
+    
+    this.balanceBase = balanceBase;
+    return this;
+  }
+
+   /**
+   * Get balanceBase
+   * @return balanceBase
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getBalanceBase() {
+    return balanceBase;
+  }
+
+
+  public void setBalanceBase(CurrencyAndAmount balanceBase) {
+    this.balanceBase = balanceBase;
+  }
+
+
+  public FundCashStatementLocalCurrency unrealisedFxPnlBase(CurrencyAndAmount unrealisedFxPnlBase) {
+    
+    this.unrealisedFxPnlBase = unrealisedFxPnlBase;
+    return this;
+  }
+
+   /**
+   * Get unrealisedFxPnlBase
+   * @return unrealisedFxPnlBase
+  **/
+  @jakarta.annotation.Nullable
+  public CurrencyAndAmount getUnrealisedFxPnlBase() {
+    return unrealisedFxPnlBase;
+  }
+
+
+  public void setUnrealisedFxPnlBase(CurrencyAndAmount unrealisedFxPnlBase) {
+    this.unrealisedFxPnlBase = unrealisedFxPnlBase;
+  }
+
+
+  public FundCashStatementLocalCurrency balanceFxRate(java.math.BigDecimal balanceFxRate) {
+    
+    this.balanceFxRate = balanceFxRate;
+    return this;
+  }
+
+   /**
+   * The FX rate BalanceBase was struck at, from the row&#39;s currency to the base currency, or 1 for a balance already in the base currency. Not returned when BalanceBase is not, nor when BalanceLocal is zero and no rate was found.
+   * @return balanceFxRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getBalanceFxRate() {
+    return balanceFxRate;
+  }
+
+
+  public void setBalanceFxRate(java.math.BigDecimal balanceFxRate) {
+    this.balanceFxRate = balanceFxRate;
+  }
+
+
+  public FundCashStatementLocalCurrency balanceBaseFailureReason(String balanceBaseFailureReason) {
+    
+    this.balanceBaseFailureReason = balanceBaseFailureReason;
+    return this;
+  }
+
+   /**
+   * Why BalanceBase, BalanceFxRate and UnrealisedFxPnlBase are not returned on this row: no FX rate was found for the row&#39;s currency at its accounting date within the recipe&#39;s quote interval, the rate found was not positive, or the rates could not be read. Null when the balance was struck, and on a row whose BalanceLocal is zero, which is zero in the base currency without a rate.
+   * @return balanceBaseFailureReason
+  **/
+  @jakarta.annotation.Nullable
+  public String getBalanceBaseFailureReason() {
+    return balanceBaseFailureReason;
+  }
+
+
+  public void setBalanceBaseFailureReason(String balanceBaseFailureReason) {
+    this.balanceBaseFailureReason = balanceBaseFailureReason;
+  }
+
+
+  public FundCashStatementLocalCurrency avgRate(java.math.BigDecimal avgRate) {
+    
+    this.avgRate = avgRate;
+    return this;
+  }
+
+   /**
+   * Weighted average FX rate (costBasisBase / balanceLocal). Null when balance is zero.
+   * @return avgRate
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getAvgRate() {
+    return avgRate;
+  }
+
+
+  public void setAvgRate(java.math.BigDecimal avgRate) {
+    this.avgRate = avgRate;
+  }
+
+
+  public FundCashStatementLocalCurrency fxRateMovement(java.math.BigDecimal fxRateMovement) {
+    
+    this.fxRateMovement = fxRateMovement;
+    return this;
+  }
+
+   /**
+   * FX rate for this specific movement (CashflowBase / CashFlowLocal). Null when localAmount is zero.
+   * @return fxRateMovement
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getFxRateMovement() {
+    return fxRateMovement;
+  }
+
+
+  public void setFxRateMovement(java.math.BigDecimal fxRateMovement) {
+    this.fxRateMovement = fxRateMovement;
+  }
+
+
   public FundCashStatementLocalCurrency links(List<Link> links) {
     
     this.links = links;
@@ -538,6 +788,16 @@ public class FundCashStatementLocalCurrency {
         Objects.equals(this.cashflowLocal, fundCashStatementLocalCurrency.cashflowLocal) &&
         Objects.equals(this.balanceLocal, fundCashStatementLocalCurrency.balanceLocal) &&
         Objects.equals(this.properties, fundCashStatementLocalCurrency.properties) &&
+        Objects.equals(this.cashflowBase, fundCashStatementLocalCurrency.cashflowBase) &&
+        Objects.equals(this.tradeDateToSettlementDateFxPnlBase, fundCashStatementLocalCurrency.tradeDateToSettlementDateFxPnlBase) &&
+        Objects.equals(this.cashPoolFxPnlBase, fundCashStatementLocalCurrency.cashPoolFxPnlBase) &&
+        Objects.equals(this.costBasisBase, fundCashStatementLocalCurrency.costBasisBase) &&
+        Objects.equals(this.balanceBase, fundCashStatementLocalCurrency.balanceBase) &&
+        Objects.equals(this.unrealisedFxPnlBase, fundCashStatementLocalCurrency.unrealisedFxPnlBase) &&
+        (this.balanceFxRate.compareTo(fundCashStatementLocalCurrency.getBalanceFxRate()) == 0) &&
+        Objects.equals(this.balanceBaseFailureReason, fundCashStatementLocalCurrency.balanceBaseFailureReason) &&
+        (this.avgRate.compareTo(fundCashStatementLocalCurrency.getAvgRate()) == 0) &&
+        (this.fxRateMovement.compareTo(fundCashStatementLocalCurrency.getFxRateMovement()) == 0) &&
         Objects.equals(this.links, fundCashStatementLocalCurrency.links);
   }
 
@@ -547,7 +807,7 @@ public class FundCashStatementLocalCurrency {
 
   @Override
   public int hashCode() {
-    return Objects.hash(groupById, sequenceNumber, subHoldingKeys, sourceId, cashStatementActionType, entryType, accountingDate, activityDate, movementName, portfolioId, instructionType, diaryEntryCode, originDiaryEntryCode, cashflowLocal, balanceLocal, properties, links);
+    return Objects.hash(groupById, sequenceNumber, subHoldingKeys, sourceId, cashStatementActionType, entryType, accountingDate, activityDate, movementName, portfolioId, instructionType, diaryEntryCode, originDiaryEntryCode, cashflowLocal, balanceLocal, properties, cashflowBase, tradeDateToSettlementDateFxPnlBase, cashPoolFxPnlBase, costBasisBase, balanceBase, unrealisedFxPnlBase, balanceFxRate, balanceBaseFailureReason, avgRate, fxRateMovement, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -577,6 +837,16 @@ public class FundCashStatementLocalCurrency {
     sb.append("    cashflowLocal: ").append(toIndentedString(cashflowLocal)).append("\n");
     sb.append("    balanceLocal: ").append(toIndentedString(balanceLocal)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    cashflowBase: ").append(toIndentedString(cashflowBase)).append("\n");
+    sb.append("    tradeDateToSettlementDateFxPnlBase: ").append(toIndentedString(tradeDateToSettlementDateFxPnlBase)).append("\n");
+    sb.append("    cashPoolFxPnlBase: ").append(toIndentedString(cashPoolFxPnlBase)).append("\n");
+    sb.append("    costBasisBase: ").append(toIndentedString(costBasisBase)).append("\n");
+    sb.append("    balanceBase: ").append(toIndentedString(balanceBase)).append("\n");
+    sb.append("    unrealisedFxPnlBase: ").append(toIndentedString(unrealisedFxPnlBase)).append("\n");
+    sb.append("    balanceFxRate: ").append(toIndentedString(balanceFxRate)).append("\n");
+    sb.append("    balanceBaseFailureReason: ").append(toIndentedString(balanceBaseFailureReason)).append("\n");
+    sb.append("    avgRate: ").append(toIndentedString(avgRate)).append("\n");
+    sb.append("    fxRateMovement: ").append(toIndentedString(fxRateMovement)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -616,6 +886,16 @@ public class FundCashStatementLocalCurrency {
     openapiFields.add("cashflowLocal");
     openapiFields.add("balanceLocal");
     openapiFields.add("properties");
+    openapiFields.add("cashflowBase");
+    openapiFields.add("tradeDateToSettlementDateFxPnlBase");
+    openapiFields.add("cashPoolFxPnlBase");
+    openapiFields.add("costBasisBase");
+    openapiFields.add("balanceBase");
+    openapiFields.add("unrealisedFxPnlBase");
+    openapiFields.add("balanceFxRate");
+    openapiFields.add("balanceBaseFailureReason");
+    openapiFields.add("avgRate");
+    openapiFields.add("fxRateMovement");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -667,6 +947,33 @@ public class FundCashStatementLocalCurrency {
       // validate the optional field `balanceLocal`
       if (jsonObj.get("balanceLocal") != null && !jsonObj.get("balanceLocal").isJsonNull()) {
         CurrencyAndAmount.validateJsonElement(jsonObj.get("balanceLocal"));
+      }
+      // validate the optional field `cashflowBase`
+      if (jsonObj.get("cashflowBase") != null && !jsonObj.get("cashflowBase").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("cashflowBase"));
+      }
+      // validate the optional field `tradeDateToSettlementDateFxPnlBase`
+      if (jsonObj.get("tradeDateToSettlementDateFxPnlBase") != null && !jsonObj.get("tradeDateToSettlementDateFxPnlBase").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("tradeDateToSettlementDateFxPnlBase"));
+      }
+      // validate the optional field `cashPoolFxPnlBase`
+      if (jsonObj.get("cashPoolFxPnlBase") != null && !jsonObj.get("cashPoolFxPnlBase").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("cashPoolFxPnlBase"));
+      }
+      // validate the optional field `costBasisBase`
+      if (jsonObj.get("costBasisBase") != null && !jsonObj.get("costBasisBase").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("costBasisBase"));
+      }
+      // validate the optional field `balanceBase`
+      if (jsonObj.get("balanceBase") != null && !jsonObj.get("balanceBase").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("balanceBase"));
+      }
+      // validate the optional field `unrealisedFxPnlBase`
+      if (jsonObj.get("unrealisedFxPnlBase") != null && !jsonObj.get("unrealisedFxPnlBase").isJsonNull()) {
+        CurrencyAndAmount.validateJsonElement(jsonObj.get("unrealisedFxPnlBase"));
+      }
+      if ((jsonObj.get("balanceBaseFailureReason") != null && !jsonObj.get("balanceBaseFailureReason").isJsonNull()) && !jsonObj.get("balanceBaseFailureReason").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `balanceBaseFailureReason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("balanceBaseFailureReason").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

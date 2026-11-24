@@ -1,5 +1,5 @@
 # com.finbourne.lusid.model.FundCashStatementLocalCurrency
-A single row in the local-currency Fund Cash Statement report. Each row is a settled cash  movement with a running balance in local currency only; base-currency columns are out of  scope for this variant and are not returned.
+A single row in the local-currency Fund Cash Statement report. Each row is a settled cash  movement with a running balance in local currency, and the base-currency cash flow, realised FX  (split into its trade-date-to-settlement-date and cash pool parts), cost basis, balance at the  recipe's rate on the row's date and the unrealised FX between the two.
 
 ## Properties
 
@@ -21,6 +21,16 @@ Name | Type | Description | Notes
 **cashflowLocal** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **balanceLocal** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested properties decorated onto the cash statement row. | [optional] [default to Map<String, Property>]
+**cashflowBase** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**tradeDateToSettlementDateFxPnlBase** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**cashPoolFxPnlBase** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**costBasisBase** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**balanceBase** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**unrealisedFxPnlBase** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | [optional] [default to CurrencyAndAmount]
+**balanceFxRate** | **java.math.BigDecimal** | The FX rate BalanceBase was struck at, from the row&#39;s currency to the base currency, or 1 for a balance already in the base currency. Not returned when BalanceBase is not, nor when BalanceLocal is zero and no rate was found. | [optional] [default to java.math.BigDecimal]
+**balanceBaseFailureReason** | **String** | Why BalanceBase, BalanceFxRate and UnrealisedFxPnlBase are not returned on this row: no FX rate was found for the row&#39;s currency at its accounting date within the recipe&#39;s quote interval, the rate found was not positive, or the rates could not be read. Null when the balance was struck, and on a row whose BalanceLocal is zero, which is zero in the base currency without a rate. | [optional] [default to String]
+**avgRate** | **java.math.BigDecimal** | Weighted average FX rate (costBasisBase / balanceLocal). Null when balance is zero. | [optional] [default to java.math.BigDecimal]
+**fxRateMovement** | **java.math.BigDecimal** | FX rate for this specific movement (CashflowBase / CashFlowLocal). Null when localAmount is zero. | [optional] [default to java.math.BigDecimal]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
@@ -45,6 +55,16 @@ ResourceId PortfolioId = new ResourceId();
 CurrencyAndAmount CashflowLocal = new CurrencyAndAmount();
 CurrencyAndAmount BalanceLocal = new CurrencyAndAmount();
 @jakarta.annotation.Nullable Map<String, Property> Properties = new Map<String, Property>();
+CurrencyAndAmount CashflowBase = new CurrencyAndAmount();
+CurrencyAndAmount TradeDateToSettlementDateFxPnlBase = new CurrencyAndAmount();
+CurrencyAndAmount CashPoolFxPnlBase = new CurrencyAndAmount();
+CurrencyAndAmount CostBasisBase = new CurrencyAndAmount();
+CurrencyAndAmount BalanceBase = new CurrencyAndAmount();
+CurrencyAndAmount UnrealisedFxPnlBase = new CurrencyAndAmount();
+@jakarta.annotation.Nullable java.math.BigDecimal BalanceFxRate = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable String BalanceBaseFailureReason = "example BalanceBaseFailureReason";
+@jakarta.annotation.Nullable java.math.BigDecimal AvgRate = new java.math.BigDecimal("100.00");
+@jakarta.annotation.Nullable java.math.BigDecimal FxRateMovement = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
@@ -65,6 +85,16 @@ FundCashStatementLocalCurrency fundCashStatementLocalCurrencyInstance = new Fund
     .CashflowLocal(CashflowLocal)
     .BalanceLocal(BalanceLocal)
     .Properties(Properties)
+    .CashflowBase(CashflowBase)
+    .TradeDateToSettlementDateFxPnlBase(TradeDateToSettlementDateFxPnlBase)
+    .CashPoolFxPnlBase(CashPoolFxPnlBase)
+    .CostBasisBase(CostBasisBase)
+    .BalanceBase(BalanceBase)
+    .UnrealisedFxPnlBase(UnrealisedFxPnlBase)
+    .BalanceFxRate(BalanceFxRate)
+    .BalanceBaseFailureReason(BalanceBaseFailureReason)
+    .AvgRate(AvgRate)
+    .FxRateMovement(FxRateMovement)
     .Links(Links);
 ```
 

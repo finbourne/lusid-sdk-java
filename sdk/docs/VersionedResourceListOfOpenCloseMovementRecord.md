@@ -1,33 +1,36 @@
-# com.finbourne.lusid.model.PagedResourceListOfPartnerCapitalAccount
+# com.finbourne.lusid.model.VersionedResourceListOfOpenCloseMovementRecord
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**version** | [**Version**](Version.md) |  | [default to Version]
+**values** | [**List&lt;OpenCloseMovementRecord&gt;**](OpenCloseMovementRecord.md) |  | [default to List<OpenCloseMovementRecord>]
+**href** | [**URI**](URI.md) |  | [optional] [default to URI]
 **nextPage** | **String** |  | [optional] [default to String]
 **previousPage** | **String** |  | [optional] [default to String]
-**values** | [**List&lt;PartnerCapitalAccount&gt;**](PartnerCapitalAccount.md) |  | [default to List<PartnerCapitalAccount>]
-**href** | [**URI**](URI.md) |  | [optional] [default to URI]
 **links** | [**List&lt;Link&gt;**](Link.md) |  | [optional] [default to List<Link>]
 
 ```java
-import com.finbourne.lusid.model.PagedResourceListOfPartnerCapitalAccount;
+import com.finbourne.lusid.model.VersionedResourceListOfOpenCloseMovementRecord;
 import java.util.*;
 import java.lang.System;
 import java.net.URI;
 
+Version Version = new Version();
+List<OpenCloseMovementRecord> Values = new List<OpenCloseMovementRecord>();
+@jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 @jakarta.annotation.Nullable String NextPage = "example NextPage";
 @jakarta.annotation.Nullable String PreviousPage = "example PreviousPage";
-List<PartnerCapitalAccount> Values = new List<PartnerCapitalAccount>();
-@jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
 @jakarta.annotation.Nullable List<Link> Links = new List<Link>();
 
 
-PagedResourceListOfPartnerCapitalAccount pagedResourceListOfPartnerCapitalAccountInstance = new PagedResourceListOfPartnerCapitalAccount()
-    .NextPage(NextPage)
-    .PreviousPage(PreviousPage)
+VersionedResourceListOfOpenCloseMovementRecord versionedResourceListOfOpenCloseMovementRecordInstance = new VersionedResourceListOfOpenCloseMovementRecord()
+    .Version(Version)
     .Values(Values)
     .Href(Href)
+    .NextPage(NextPage)
+    .PreviousPage(PreviousPage)
     .Links(Links);
 ```
 

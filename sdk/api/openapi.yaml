@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10709
+  version: 0.11.10728
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -54164,6 +54164,18 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: form
+      - description: "When true, returns the stored valuation address keys instead\
+          \ of running the full aggregation engine, and returns no data if none are\
+          \ stored for the valuation point. Defaults to false."
+        explode: true
+        in: query
+        name: auditMode
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -55544,13 +55556,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/PagedResourceListOfPartnerCapitalAccount'
+                $ref: '#/components/schemas/ResourceListWithWarningsOfPartnerCapitalAccount'
             application/json:
               schema:
-                $ref: '#/components/schemas/PagedResourceListOfPartnerCapitalAccount'
+                $ref: '#/components/schemas/ResourceListWithWarningsOfPartnerCapitalAccount'
             text/json:
               schema:
-                $ref: '#/components/schemas/PagedResourceListOfPartnerCapitalAccount'
+                $ref: '#/components/schemas/ResourceListWithWarningsOfPartnerCapitalAccount'
           description: The capital account statements of the fund's partners over
             the period.
         "400":
@@ -57207,7 +57219,15 @@ paths:
           type: string
         style: form
       - description: "A list of field names or properties to sort by, each suffixed\
-          \ by \" ASC\" or \" DESC\""
+          \ by \" ASC\" or \" DESC\".\r\n The fields that can be sorted on are FeeCode,\
+          \ DisplayName, Description, Origin, CalculationBase, AccrualCurrency,\r\n\
+          \ Treatment, TotalAnnualAccrualAmount, FeeRatePercentage, PayableFrequency,\
+          \ BusinessDayConvention, StartDate, EndDate,\r\n NavTypeCode, FeeTypeId.Scope,\
+          \ FeeTypeId.Code, PortfolioId.Scope, PortfolioId.Code, AnchorDate.Day and\
+          \ AnchorDate.Month.\r\n To sort on a property from the 'Fee' domain, specify\
+          \ \"Properties[{domain}/{scope}/{code}]\", for example\r\n \"Properties[Fee/Account/Id]\
+          \ ASC\". Sorting on any other field of a Fee returns a 400 that names the\
+          \ field."
         explode: true
         in: query
         name: sortBy
@@ -57595,6 +57615,7 @@ paths:
                 offsetPercentage: 100
                 deal: DEAL-001
               book: false
+              prepaid: false
             schema:
               $ref: '#/components/schemas/ManagementFeeRequest'
           application/json:
@@ -57608,6 +57629,7 @@ paths:
                 offsetPercentage: 100
                 deal: DEAL-001
               book: false
+              prepaid: false
             schema:
               $ref: '#/components/schemas/ManagementFeeRequest'
           text/json:
@@ -57621,6 +57643,7 @@ paths:
                 offsetPercentage: 100
                 deal: DEAL-001
               book: false
+              prepaid: false
             schema:
               $ref: '#/components/schemas/ManagementFeeRequest'
           application/*+json:
@@ -57634,6 +57657,7 @@ paths:
                 offsetPercentage: 100
                 deal: DEAL-001
               book: false
+              prepaid: false
             schema:
               $ref: '#/components/schemas/ManagementFeeRequest'
         description: "The fee period, basis and offsets."
@@ -59487,13 +59511,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/PagedResourceListOfFundPartner'
+                $ref: '#/components/schemas/ResourceListWithWarningsOfFundPartner'
             application/json:
               schema:
-                $ref: '#/components/schemas/PagedResourceListOfFundPartner'
+                $ref: '#/components/schemas/ResourceListWithWarningsOfFundPartner'
             text/json:
               schema:
-                $ref: '#/components/schemas/PagedResourceListOfFundPartner'
+                $ref: '#/components/schemas/ResourceListWithWarningsOfFundPartner'
           description: The partners of the requested Fund.
         "400":
           content:
@@ -60950,6 +60974,56 @@ paths:
           pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         style: form
+      - description: "When provided, only the lines of this investor record are returned."
+        explode: true
+        in: query
+        name: investorRecordId
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      - description: "When provided, only the lines of this commitment line are returned."
+        explode: true
+        in: query
+        name: commitmentLineId
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      - description: "When paginating, limit the number of returned results to this\
+          \ many. Defaults to 5000 if not specified."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing registry lines\
+          \ from a previous call to get the registry.\r\n This value is returned from\
+          \ the previous call. If a pagination token is provided, the effectiveAt,\
+          \ asAt, filter,\r\n propertyKeys, investorRecordId and commitmentLineId\
+          \ must not change between calls."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -61647,6 +61721,471 @@ paths:
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/funds/{scope}/{code}/shareclasses:
+    post:
+      description: "Add new ShareClass definitions to the Fund. All requested ShareClassShortCodes\
+        \ must be new;\r\nto update existing share classes use PatchFund."
+      operationId: AddShareClasses
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - instrumentIdentifiers:
+                Instrument/default/ClientInternal: ShareClassA
+              name: Share Class A
+              shareClassShortCode: ScA
+              properties: {}
+              investorType: Income
+              distributionType: Net
+              domCcy: GBP
+              distributionPaymentType: Gross
+              hedging: None
+            schema:
+              items:
+                $ref: '#/components/schemas/ShareClassDefinition'
+              type: array
+          application/json:
+            example:
+            - instrumentIdentifiers:
+                Instrument/default/ClientInternal: ShareClassA
+              name: Share Class A
+              shareClassShortCode: ScA
+              properties: {}
+              investorType: Income
+              distributionType: Net
+              domCcy: GBP
+              distributionPaymentType: Gross
+              hedging: None
+            schema:
+              items:
+                $ref: '#/components/schemas/ShareClassDefinition'
+              type: array
+          text/json:
+            example:
+            - instrumentIdentifiers:
+                Instrument/default/ClientInternal: ShareClassA
+              name: Share Class A
+              shareClassShortCode: ScA
+              properties: {}
+              investorType: Income
+              distributionType: Net
+              domCcy: GBP
+              distributionPaymentType: Gross
+              hedging: None
+            schema:
+              items:
+                $ref: '#/components/schemas/ShareClassDefinition'
+              type: array
+          application/*+json:
+            example:
+            - instrumentIdentifiers:
+                Instrument/default/ClientInternal: ShareClassA
+              name: Share Class A
+              shareClassShortCode: ScA
+              properties: {}
+              investorType: Income
+              distributionType: Net
+              domCcy: GBP
+              distributionPaymentType: Gross
+              hedging: None
+            schema:
+              items:
+                $ref: '#/components/schemas/ShareClassDefinition'
+              type: array
+        description: The definitions of the ShareClasses to add to the Fund.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: http://example.com
+                id:
+                  scope: FundScope
+                  code: FundCode
+                displayName: Fund Name
+                description: Standard Fund
+                baseCurrency: USD
+                investorStructure: Classes
+                portfolioIds:
+                - displayName: Portfolio Name
+                  description: This is a longer description of the Portfolio
+                  scope: PortfolioScope
+                  code: PortfolioCode
+                  portfolioEntityType: SinglePortfolio
+                fundConfigurationId:
+                  scope: FundConfigurationScope
+                  code: FundConfigurationCode
+                shareClassInstruments:
+                - instrumentIdentifiers:
+                    Instrument/default/Figi: GB0007980598
+                  lusidInstrumentId: LUID_00000123
+                  instrumentScope: MyScope
+                type: Standalone
+                inceptionDate: 2024-01-01T00:00:00.0000000+00:00
+                decimalPlaces: 6
+                primaryNavType:
+                  status: Active
+                  code: PrimaryNav
+                  displayName: PrimaryNav
+                  description: Primary Nav description
+                  chartOfAccountsId:
+                    scope: ChartOfAccountsScope
+                    code: ChartOfAccountsCode
+                  postingModuleCodes:
+                  - PostingModule1
+                  cleardownModuleCodes:
+                  - CleardownModule1
+                  valuationRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode
+                  holdingRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode
+                  accountingMethod: FirstInFirstOut
+                  subHoldingKeys: []
+                  amortisationMethod: EffectiveYield
+                  transactionTypeScope: TransactionTypeScope
+                  cashGainLossCalculationDate: Default
+                additionalNavTypes:
+                - status: Active
+                  code: taxNav
+                  displayName: Tax Nav
+                  description: Tax Nav description
+                  chartOfAccountsId:
+                    scope: ChartOfAccountsScope
+                    code: ChartOfAccountsCode
+                  postingModuleCodes:
+                  - PostingModule1
+                  cleardownModuleCodes:
+                  - CleardownModule1
+                  valuationRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode2
+                  holdingRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode3
+                  accountingMethod: FirstInFirstOut
+                  subHoldingKeys: []
+                  amortisationMethod: EffectiveYield
+                  transactionTypeScope: TransactionTypeScope
+                  cashGainLossCalculationDate: Default
+                  amortisationRuleSetId:
+                    scope: AmortisationRuleSetScope
+                    code: AmortisationRuleSetCode
+                  leaderNavTypeCode: PrimaryNav
+                  transactionTemplateScope: TransactionTemplateScope
+                properties:
+                  Fund/MyScope/FundManagerName:
+                    key: Fund/MyScope/FundManagerName
+                    value:
+                      labelValue: Smith
+                    effectiveFrom: 2020-03-05T00:00:00.0000000+00:00
+                createInstrument: false
+                allocationGroups:
+                - classes:
+                  - shareClassShortCode: SCA
+                    apportionmentFactor: 1
+                  name: Allocation Group 1
+                  shareClassShortCode: SCA
+                shareClasses:
+                - instrumentIdentifiers:
+                    Instrument/default/Figi: GB0007980591
+                  series:
+                  - seriesIdentifier: S1
+                    seriesType: Lead
+                    launchDate: 2024-01-01T00:00:00.0000000+00:00
+                    launchPriceType: Manual
+                    domCcy: USD
+                    properties: {}
+                  name: Share Class A
+                  shareClassShortCode: SCA
+                  launchPrice: 100
+                  launchDate: 2024-01-01T00:00:00.0000000+00:00
+                  properties: {}
+                  investorType: Unitised
+                  distributionType: Income
+                  domCcy: USD
+                  distributionPaymentType: Gross
+                  hedging: None
+              schema:
+                $ref: '#/components/schemas/Fund'
+            application/json:
+              example:
+                href: http://example.com
+                id:
+                  scope: FundScope
+                  code: FundCode
+                displayName: Fund Name
+                description: Standard Fund
+                baseCurrency: USD
+                investorStructure: Classes
+                portfolioIds:
+                - displayName: Portfolio Name
+                  description: This is a longer description of the Portfolio
+                  scope: PortfolioScope
+                  code: PortfolioCode
+                  portfolioEntityType: SinglePortfolio
+                fundConfigurationId:
+                  scope: FundConfigurationScope
+                  code: FundConfigurationCode
+                shareClassInstruments:
+                - instrumentIdentifiers:
+                    Instrument/default/Figi: GB0007980598
+                  lusidInstrumentId: LUID_00000123
+                  instrumentScope: MyScope
+                type: Standalone
+                inceptionDate: 2024-01-01T00:00:00.0000000+00:00
+                decimalPlaces: 6
+                primaryNavType:
+                  status: Active
+                  code: PrimaryNav
+                  displayName: PrimaryNav
+                  description: Primary Nav description
+                  chartOfAccountsId:
+                    scope: ChartOfAccountsScope
+                    code: ChartOfAccountsCode
+                  postingModuleCodes:
+                  - PostingModule1
+                  cleardownModuleCodes:
+                  - CleardownModule1
+                  valuationRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode
+                  holdingRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode
+                  accountingMethod: FirstInFirstOut
+                  subHoldingKeys: []
+                  amortisationMethod: EffectiveYield
+                  transactionTypeScope: TransactionTypeScope
+                  cashGainLossCalculationDate: Default
+                additionalNavTypes:
+                - status: Active
+                  code: taxNav
+                  displayName: Tax Nav
+                  description: Tax Nav description
+                  chartOfAccountsId:
+                    scope: ChartOfAccountsScope
+                    code: ChartOfAccountsCode
+                  postingModuleCodes:
+                  - PostingModule1
+                  cleardownModuleCodes:
+                  - CleardownModule1
+                  valuationRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode2
+                  holdingRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode3
+                  accountingMethod: FirstInFirstOut
+                  subHoldingKeys: []
+                  amortisationMethod: EffectiveYield
+                  transactionTypeScope: TransactionTypeScope
+                  cashGainLossCalculationDate: Default
+                  amortisationRuleSetId:
+                    scope: AmortisationRuleSetScope
+                    code: AmortisationRuleSetCode
+                  leaderNavTypeCode: PrimaryNav
+                  transactionTemplateScope: TransactionTemplateScope
+                properties:
+                  Fund/MyScope/FundManagerName:
+                    key: Fund/MyScope/FundManagerName
+                    value:
+                      labelValue: Smith
+                    effectiveFrom: 2020-03-05T00:00:00.0000000+00:00
+                createInstrument: false
+                allocationGroups:
+                - classes:
+                  - shareClassShortCode: SCA
+                    apportionmentFactor: 1
+                  name: Allocation Group 1
+                  shareClassShortCode: SCA
+                shareClasses:
+                - instrumentIdentifiers:
+                    Instrument/default/Figi: GB0007980591
+                  series:
+                  - seriesIdentifier: S1
+                    seriesType: Lead
+                    launchDate: 2024-01-01T00:00:00.0000000+00:00
+                    launchPriceType: Manual
+                    domCcy: USD
+                    properties: {}
+                  name: Share Class A
+                  shareClassShortCode: SCA
+                  launchPrice: 100
+                  launchDate: 2024-01-01T00:00:00.0000000+00:00
+                  properties: {}
+                  investorType: Unitised
+                  distributionType: Income
+                  domCcy: USD
+                  distributionPaymentType: Gross
+                  hedging: None
+              schema:
+                $ref: '#/components/schemas/Fund'
+            text/json:
+              example:
+                href: http://example.com
+                id:
+                  scope: FundScope
+                  code: FundCode
+                displayName: Fund Name
+                description: Standard Fund
+                baseCurrency: USD
+                investorStructure: Classes
+                portfolioIds:
+                - displayName: Portfolio Name
+                  description: This is a longer description of the Portfolio
+                  scope: PortfolioScope
+                  code: PortfolioCode
+                  portfolioEntityType: SinglePortfolio
+                fundConfigurationId:
+                  scope: FundConfigurationScope
+                  code: FundConfigurationCode
+                shareClassInstruments:
+                - instrumentIdentifiers:
+                    Instrument/default/Figi: GB0007980598
+                  lusidInstrumentId: LUID_00000123
+                  instrumentScope: MyScope
+                type: Standalone
+                inceptionDate: 2024-01-01T00:00:00.0000000+00:00
+                decimalPlaces: 6
+                primaryNavType:
+                  status: Active
+                  code: PrimaryNav
+                  displayName: PrimaryNav
+                  description: Primary Nav description
+                  chartOfAccountsId:
+                    scope: ChartOfAccountsScope
+                    code: ChartOfAccountsCode
+                  postingModuleCodes:
+                  - PostingModule1
+                  cleardownModuleCodes:
+                  - CleardownModule1
+                  valuationRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode
+                  holdingRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode
+                  accountingMethod: FirstInFirstOut
+                  subHoldingKeys: []
+                  amortisationMethod: EffectiveYield
+                  transactionTypeScope: TransactionTypeScope
+                  cashGainLossCalculationDate: Default
+                additionalNavTypes:
+                - status: Active
+                  code: taxNav
+                  displayName: Tax Nav
+                  description: Tax Nav description
+                  chartOfAccountsId:
+                    scope: ChartOfAccountsScope
+                    code: ChartOfAccountsCode
+                  postingModuleCodes:
+                  - PostingModule1
+                  cleardownModuleCodes:
+                  - CleardownModule1
+                  valuationRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode2
+                  holdingRecipeId:
+                    scope: RecipeScope
+                    code: RecipeCode3
+                  accountingMethod: FirstInFirstOut
+                  subHoldingKeys: []
+                  amortisationMethod: EffectiveYield
+                  transactionTypeScope: TransactionTypeScope
+                  cashGainLossCalculationDate: Default
+                  amortisationRuleSetId:
+                    scope: AmortisationRuleSetScope
+                    code: AmortisationRuleSetCode
+                  leaderNavTypeCode: PrimaryNav
+                  transactionTemplateScope: TransactionTemplateScope
+                properties:
+                  Fund/MyScope/FundManagerName:
+                    key: Fund/MyScope/FundManagerName
+                    value:
+                      labelValue: Smith
+                    effectiveFrom: 2020-03-05T00:00:00.0000000+00:00
+                createInstrument: false
+                allocationGroups:
+                - classes:
+                  - shareClassShortCode: SCA
+                    apportionmentFactor: 1
+                  name: Allocation Group 1
+                  shareClassShortCode: SCA
+                shareClasses:
+                - instrumentIdentifiers:
+                    Instrument/default/Figi: GB0007980591
+                  series:
+                  - seriesIdentifier: S1
+                    seriesType: Lead
+                    launchDate: 2024-01-01T00:00:00.0000000+00:00
+                    launchPriceType: Manual
+                    domCcy: USD
+                    properties: {}
+                  name: Share Class A
+                  shareClassShortCode: SCA
+                  launchPrice: 100
+                  launchDate: 2024-01-01T00:00:00.0000000+00:00
+                  properties: {}
+                  investorType: Unitised
+                  distributionType: Income
+                  domCcy: USD
+                  distributionPaymentType: Gross
+                  hedging: None
+              schema:
+                $ref: '#/components/schemas/Fund'
+          description: The updated Fund with the added ShareClasses.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] AddShareClasses: Add ShareClasses to a Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: Experimental
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
     put:
       description: Update the ShareClass Instruments on an existing Fund with the
         set of instruments provided.
@@ -70466,9 +71005,11 @@ paths:
       x-accepts: application/json
   /api/funds/{scope}/{code}/valuationpoints/complexmarketdata/$query:
     post:
-      description: "Lists all complex market data within the effective date range\
-        \ of the specified Valuation Point for a Fund,\r\nincluding any items added\
-        \ via a Complex Close (Post-Close Activity)."
+      description: "Lists the complex market data that the valuation of the specified\
+        \ Valuation Point consumed for a Fund,\r\nincluding any items added via a\
+        \ Complex Close (Post-Close Activity).\r\n \r\nComplex market data that is\
+        \ available but that the valuation did not consume is not listed, so a Fund\
+        \ whose holdings are all priced from quotes returns no rows."
       operationId: ListValuationPointComplexMarketData
       parameters:
       - description: The scope of the Fund.
@@ -71227,13 +71768,551 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
+  /api/funds/{scope}/{code}/valuationpoints/openclose/$query:
+    post:
+      description: "Get, for each instrument held by the transaction portfolios of\
+        \ a Fund (or each kept sub-holding key), the\r\nnet asset economic buckets\
+        \ at the opening and closing of a valuation point window, the period's movements\r\
+        \nby economic bucket classified as the journal entry lines classify them,\
+        \ and the requested valuation\r\nmetrics and instrument properties. Signs\
+        \ follow the journal entry line convention."
+      operationId: GetOpenCloseMovementReportForFund
+      parameters:
+      - description: The scope of the Fund.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: The code of the Fund. Together with the scope this uniquely identifies
+          the Fund.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: simple
+      - description: "When provided, runs against the specified NAV Type, otherwise\
+          \ the Primary NAV Type will be used."
+        explode: true
+        in: query
+        name: navTypeCode
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      - description: "The asAt datetime at which to resolve the fund and the timeline.\
+          \ Defaults\r\n to return the latest version if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter the result set. Read more about filtering
+          results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              start:
+                diaryEntry: 2026Q1
+              end:
+                diaryEntry: 2026Q2
+              subHoldingKeysToKeep:
+              - Transaction/default/Strategy
+              instrumentPropertyKeys:
+              - Instrument/default/Name
+              - Instrument/default/InstrumentType
+              openingMetrics:
+              - Holding/Units
+              - Quotes/Price
+              - Valuation/Accrued
+              closingMetrics:
+              - Holding/Units
+              - Quotes/Price
+              - Valuation/PV
+              - Valuation/Accrued
+            schema:
+              $ref: '#/components/schemas/OpenCloseMovementQueryParameters'
+          application/json:
+            example:
+              start:
+                diaryEntry: 2026Q1
+              end:
+                diaryEntry: 2026Q2
+              subHoldingKeysToKeep:
+              - Transaction/default/Strategy
+              instrumentPropertyKeys:
+              - Instrument/default/Name
+              - Instrument/default/InstrumentType
+              openingMetrics:
+              - Holding/Units
+              - Quotes/Price
+              - Valuation/Accrued
+              closingMetrics:
+              - Holding/Units
+              - Quotes/Price
+              - Valuation/PV
+              - Valuation/Accrued
+            schema:
+              $ref: '#/components/schemas/OpenCloseMovementQueryParameters'
+          text/json:
+            example:
+              start:
+                diaryEntry: 2026Q1
+              end:
+                diaryEntry: 2026Q2
+              subHoldingKeysToKeep:
+              - Transaction/default/Strategy
+              instrumentPropertyKeys:
+              - Instrument/default/Name
+              - Instrument/default/InstrumentType
+              openingMetrics:
+              - Holding/Units
+              - Quotes/Price
+              - Valuation/Accrued
+              closingMetrics:
+              - Holding/Units
+              - Quotes/Price
+              - Valuation/PV
+              - Valuation/Accrued
+            schema:
+              $ref: '#/components/schemas/OpenCloseMovementQueryParameters'
+          application/*+json:
+            example:
+              start:
+                diaryEntry: 2026Q1
+              end:
+                diaryEntry: 2026Q2
+              subHoldingKeysToKeep:
+              - Transaction/default/Strategy
+              instrumentPropertyKeys:
+              - Instrument/default/Name
+              - Instrument/default/InstrumentType
+              openingMetrics:
+              - Holding/Units
+              - Quotes/Price
+              - Valuation/Accrued
+              closingMetrics:
+              - Holding/Units
+              - Quotes/Price
+              - Valuation/PV
+              - Valuation/Accrued
+            schema:
+              $ref: '#/components/schemas/OpenCloseMovementQueryParameters'
+        description: "The window, the sub-holding keys to keep separate, the instrument\
+          \ property keys and the valuation metrics to report."
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                version:
+                  effectiveFrom: 2026-06-30T00:00:00.0000000+00:00
+                  asAtDate: 2026-07-02T09:15:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: P
+                  instrumentScope: default
+                  instrumentUid: LUID_00003D4X
+                  subHoldingKeys:
+                    Transaction/default/Strategy:
+                      key: Transaction/default/Strategy
+                      value:
+                        labelValue: Growth
+                  currency: GBP
+                  opening:
+                  - bucket: NA_Cost
+                    local: 100000
+                    portfolio: 100000
+                  - bucket: NA_Accrued
+                    local: 1250
+                    portfolio: 1250
+                  - bucket: NA_UnrealPriceGL
+                    component: CoreMarket
+                    variant: ShortTerm
+                    local: 2000
+                    portfolio: 2000
+                  closing:
+                  - bucket: NA_Cost
+                    local: 120000
+                    portfolio: 120000
+                  - bucket: NA_Accrued
+                    local: 310
+                    portfolio: 310
+                  - bucket: NA_UnrealPriceGL
+                    component: CoreMarket
+                    variant: ShortTerm
+                    local: 3200
+                    portfolio: 3200
+                  movements:
+                  - bucket: NA_Cost
+                    local: 20000
+                    portfolio: 20000
+                  - bucket: PL_Carry
+                    component: TradedInterest
+                    variant: Bought
+                    local: 310
+                    portfolio: 310
+                  - bucket: PL_Carry
+                    component: Income
+                    variant: Coupon
+                    local: -2500
+                    portfolio: -2500
+                  - bucket: PL_Accrued
+                    local: 940
+                    portfolio: 940
+                  - bucket: PL_UnrealPriceGL
+                    component: CoreMarket
+                    variant: ShortTerm
+                    local: -1200
+                    portfolio: -1200
+                  openingMetrics:
+                    Holding/Units: 100000
+                    Quotes/Price: 102
+                  closingMetrics:
+                    Holding/Units: 120000
+                    Quotes/Price: 102.67
+                    Valuation/PV: 123510
+                  properties:
+                    Instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: UK Gilt 2.5% 2032
+                  errors: []
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_GBP
+                  subHoldingKeys: {}
+                  currency: GBP
+                  opening:
+                  - bucket: NA_Cost
+                    local: 50000
+                    portfolio: 50000
+                  closing:
+                  - bucket: NA_Cost
+                    local: 32190
+                    portfolio: 32190
+                  movements:
+                  - bucket: NA_Cost
+                    local: -17810
+                    portfolio: -17810
+                  openingMetrics:
+                    Holding/Units: 50000
+                    Quotes/Price: null
+                  closingMetrics:
+                    Holding/Units: 32190
+                    Quotes/Price: null
+                    Valuation/PV: 32190
+                  properties: {}
+                  errors:
+                  - type: OpenCloseMovement
+                    description: The closing metric is not a numeric value
+                    identifierType: OpenCloseMovement
+                    identifiers:
+                    - Quotes/Price
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListOfOpenCloseMovementRecord'
+            application/json:
+              example:
+                version:
+                  effectiveFrom: 2026-06-30T00:00:00.0000000+00:00
+                  asAtDate: 2026-07-02T09:15:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: P
+                  instrumentScope: default
+                  instrumentUid: LUID_00003D4X
+                  subHoldingKeys:
+                    Transaction/default/Strategy:
+                      key: Transaction/default/Strategy
+                      value:
+                        labelValue: Growth
+                  currency: GBP
+                  opening:
+                  - bucket: NA_Cost
+                    local: 100000
+                    portfolio: 100000
+                  - bucket: NA_Accrued
+                    local: 1250
+                    portfolio: 1250
+                  - bucket: NA_UnrealPriceGL
+                    component: CoreMarket
+                    variant: ShortTerm
+                    local: 2000
+                    portfolio: 2000
+                  closing:
+                  - bucket: NA_Cost
+                    local: 120000
+                    portfolio: 120000
+                  - bucket: NA_Accrued
+                    local: 310
+                    portfolio: 310
+                  - bucket: NA_UnrealPriceGL
+                    component: CoreMarket
+                    variant: ShortTerm
+                    local: 3200
+                    portfolio: 3200
+                  movements:
+                  - bucket: NA_Cost
+                    local: 20000
+                    portfolio: 20000
+                  - bucket: PL_Carry
+                    component: TradedInterest
+                    variant: Bought
+                    local: 310
+                    portfolio: 310
+                  - bucket: PL_Carry
+                    component: Income
+                    variant: Coupon
+                    local: -2500
+                    portfolio: -2500
+                  - bucket: PL_Accrued
+                    local: 940
+                    portfolio: 940
+                  - bucket: PL_UnrealPriceGL
+                    component: CoreMarket
+                    variant: ShortTerm
+                    local: -1200
+                    portfolio: -1200
+                  openingMetrics:
+                    Holding/Units: 100000
+                    Quotes/Price: 102
+                  closingMetrics:
+                    Holding/Units: 120000
+                    Quotes/Price: 102.67
+                    Valuation/PV: 123510
+                  properties:
+                    Instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: UK Gilt 2.5% 2032
+                  errors: []
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_GBP
+                  subHoldingKeys: {}
+                  currency: GBP
+                  opening:
+                  - bucket: NA_Cost
+                    local: 50000
+                    portfolio: 50000
+                  closing:
+                  - bucket: NA_Cost
+                    local: 32190
+                    portfolio: 32190
+                  movements:
+                  - bucket: NA_Cost
+                    local: -17810
+                    portfolio: -17810
+                  openingMetrics:
+                    Holding/Units: 50000
+                    Quotes/Price: null
+                  closingMetrics:
+                    Holding/Units: 32190
+                    Quotes/Price: null
+                    Valuation/PV: 32190
+                  properties: {}
+                  errors:
+                  - type: OpenCloseMovement
+                    description: The closing metric is not a numeric value
+                    identifierType: OpenCloseMovement
+                    identifiers:
+                    - Quotes/Price
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListOfOpenCloseMovementRecord'
+            text/json:
+              example:
+                version:
+                  effectiveFrom: 2026-06-30T00:00:00.0000000+00:00
+                  asAtDate: 2026-07-02T09:15:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: P
+                  instrumentScope: default
+                  instrumentUid: LUID_00003D4X
+                  subHoldingKeys:
+                    Transaction/default/Strategy:
+                      key: Transaction/default/Strategy
+                      value:
+                        labelValue: Growth
+                  currency: GBP
+                  opening:
+                  - bucket: NA_Cost
+                    local: 100000
+                    portfolio: 100000
+                  - bucket: NA_Accrued
+                    local: 1250
+                    portfolio: 1250
+                  - bucket: NA_UnrealPriceGL
+                    component: CoreMarket
+                    variant: ShortTerm
+                    local: 2000
+                    portfolio: 2000
+                  closing:
+                  - bucket: NA_Cost
+                    local: 120000
+                    portfolio: 120000
+                  - bucket: NA_Accrued
+                    local: 310
+                    portfolio: 310
+                  - bucket: NA_UnrealPriceGL
+                    component: CoreMarket
+                    variant: ShortTerm
+                    local: 3200
+                    portfolio: 3200
+                  movements:
+                  - bucket: NA_Cost
+                    local: 20000
+                    portfolio: 20000
+                  - bucket: PL_Carry
+                    component: TradedInterest
+                    variant: Bought
+                    local: 310
+                    portfolio: 310
+                  - bucket: PL_Carry
+                    component: Income
+                    variant: Coupon
+                    local: -2500
+                    portfolio: -2500
+                  - bucket: PL_Accrued
+                    local: 940
+                    portfolio: 940
+                  - bucket: PL_UnrealPriceGL
+                    component: CoreMarket
+                    variant: ShortTerm
+                    local: -1200
+                    portfolio: -1200
+                  openingMetrics:
+                    Holding/Units: 100000
+                    Quotes/Price: 102
+                  closingMetrics:
+                    Holding/Units: 120000
+                    Quotes/Price: 102.67
+                    Valuation/PV: 123510
+                  properties:
+                    Instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: UK Gilt 2.5% 2032
+                  errors: []
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_GBP
+                  subHoldingKeys: {}
+                  currency: GBP
+                  opening:
+                  - bucket: NA_Cost
+                    local: 50000
+                    portfolio: 50000
+                  closing:
+                  - bucket: NA_Cost
+                    local: 32190
+                    portfolio: 32190
+                  movements:
+                  - bucket: NA_Cost
+                    local: -17810
+                    portfolio: -17810
+                  openingMetrics:
+                    Holding/Units: 50000
+                    Quotes/Price: null
+                  closingMetrics:
+                    Holding/Units: 32190
+                    Quotes/Price: null
+                    Valuation/PV: 32190
+                  properties: {}
+                  errors:
+                  - type: OpenCloseMovement
+                    description: The closing metric is not a numeric value
+                    identifierType: OpenCloseMovement
+                    identifiers:
+                    - Quotes/Price
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListOfOpenCloseMovementRecord'
+          description: "The open, close and movement report for transaction portfolios\
+            \ in a Fund"
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EARLY ACCESS] GetOpenCloseMovementReportForFund: Get the open, close\
+        \ and movement report for a Fund."
+      tags:
+      - Funds
+      x-fbn-apistatus: EarlyAccess
+      x-content-type: application/json-patch+json
+      x-accepts: application/json
   /api/funds/{scope}/{code}/valuationpoints/pnlsummary/$query:
     post:
       description: "Gets the PnL Summary lines from the Journal Entry Lines produced\
-        \ when calculating the Valuation Point.\r\n \r\nRows are returned ordered\
-        \ by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting\
-        \ date, activity date and source id, with the remaining Journal Entry Line\
-        \ fields as tie-breakers, so the order is total and stable across pages."
+        \ when calculating the Valuation Point.\r\n \r\nOnly the Journal Entry Lines\
+        \ selected by the pnlFilters and externalFeeFilters of the Fund Configuration\
+        \ are returned. If the Fund Configuration has neither pnlFilters nor externalFeeFilters,\
+        \ no rows are returned.\r\n \r\nRows are returned ordered by PnL bucket (ordinal),\
+        \ then portfolio scope and code (ordinal), then accounting date, activity\
+        \ date and source id, with the remaining Journal Entry Line fields as tie-breakers,\
+        \ so the order is total and stable across pages."
       operationId: GetValuationPointPnlSummary
       parameters:
       - description: The scope of the Fund.
@@ -179325,6 +180404,56 @@ paths:
           type: array
         style: form
         x-nullable: true
+      - description: "When provided, only the lines of this investor record are returned."
+        explode: true
+        in: query
+        name: investorRecordId
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      - description: "When provided, only the lines of this commitment line are returned."
+        explode: true
+        in: query
+        name: commitmentLineId
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        style: form
+      - description: "When paginating, limit the number of returned results to this\
+          \ many. Defaults to 5000 if not specified."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing registry lines\
+          \ from a previous call to get the registry.\r\n This value is returned from\
+          \ the previous call. If a pagination token is provided, the effectiveAt,\
+          \ asAt, filter,\r\n propertyKeys, investorRecordId and commitmentLineId\
+          \ must not change between calls."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -201143,6 +202272,7 @@ components:
       additionalProperties: false
       example:
         leftOperation: leftOperation
+        isCaseSensitive: true
         leftFormula: leftFormula
         rightFormula: rightFormula
         ruleName: ruleName
@@ -201160,11 +202290,10 @@ components:
           type: string
         leftOperation:
           description: "Group-level operation applied to the left side's per-item\
-            \ values during reconciliation. Only Sum is currently supported; the other\
-            \ listed values are reserved and are rejected. Available values: Sum,\
-            \ Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues,\
-            \ SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance,\
-            \ SumCumulativeInArrears."
+            \ values during reconciliation. Sum adds up decimal values. UniformValue\
+            \ requires all items on the side to carry the same value of any type,\
+            \ and compares it with the other side's value. UniformValue must be used\
+            \ on both sides or on neither. Available values: Sum, UniformValue."
           minLength: 1
           type: string
         rightFormula:
@@ -201175,13 +202304,18 @@ components:
           type: string
         rightOperation:
           description: "Group-level operation applied to the right side's per-item\
-            \ values during reconciliation. Only Sum is currently supported; the other\
-            \ listed values are reserved and are rejected. Available values: Sum,\
-            \ Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues,\
-            \ SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance,\
-            \ SumCumulativeInArrears."
+            \ values during reconciliation. Sum adds up decimal values. UniformValue\
+            \ requires all items on the side to carry the same value of any type,\
+            \ and compares it with the other side's value. UniformValue must be used\
+            \ on both sides or on neither. Available values: Sum, UniformValue."
           minLength: 1
           type: string
+        isCaseSensitive:
+          description: "Whether the comparison of a string rule is case sensitive.\
+            \ Optional, defaults to false. Only a rule whose values are strings can\
+            \ declare it."
+          nullable: true
+          type: boolean
       required:
       - leftFormula
       - leftOperation
@@ -201264,8 +202398,9 @@ components:
           nullable: true
           type: string
         difference:
-          description: "The measured magnitude of the difference, ToString(ABS(leftValue\
-            \ - rightValue))."
+          description: "The unsigned size of the difference: ABS(leftValue - rightValue)\
+            \ for a number, the Levenshtein distance for a string, days for a date,\
+            \ 0 or 1 for a boolean."
           nullable: true
           type: string
         appliedTolerance:
@@ -201807,6 +202942,7 @@ components:
           type: string
         basis:
           description: "Available values: CommittedCapital, PaidInCapital, DealPaidIn."
+          maxLength: 64
           minLength: 1
           type: string
       required:
@@ -201958,6 +203094,14 @@ components:
         equalisation:
           interestRate: 1.2315135367772556
           treatment: treatment
+          priorDistributionIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          excludedComponents:
+          - excludedComponents
+          - excludedComponents
           newInvestorRecordIds:
           - newInvestorRecordIds
           - newInvestorRecordIds
@@ -201969,6 +203113,7 @@ components:
           - amount: 1.0246457001441578
             dueDate: 2000-01-23T04:56:07.000+00:00
             investorRecordId: investorRecordId
+          interestTreatment: interestTreatment
           marks:
           - amount: 1.4894159098541704
             originMemberShortCode: originMemberShortCode
@@ -202506,6 +203651,14 @@ components:
       example:
         interestRate: 1.2315135367772556
         treatment: treatment
+        priorDistributionIds:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+        excludedComponents:
+        - excludedComponents
+        - excludedComponents
         newInvestorRecordIds:
         - newInvestorRecordIds
         - newInvestorRecordIds
@@ -202517,6 +203670,7 @@ components:
         - amount: 1.0246457001441578
           dueDate: 2000-01-23T04:56:07.000+00:00
           investorRecordId: investorRecordId
+        interestTreatment: interestTreatment
         marks:
         - amount: 1.4894159098541704
           originMemberShortCode: originMemberShortCode
@@ -202557,7 +203711,6 @@ components:
           maxLength: 64
           minLength: 1
           nullable: true
-          pattern: "^[a-zA-Z0-9\\-_]+$"
           type: string
         interestOnFees:
           description: "Whether equalisation interest is also charged on the management\
@@ -202567,14 +203720,21 @@ components:
         treatment:
           description: "How the existing partners' excess is returned: ReturnOfExcess\
             \ restores it to their uncalled commitment; RecallableDistribution distributes\
-            \ it as recallable capital. Defaults to ReturnOfExcess. Available values:\
-            \ ReturnOfExcess, RecallableDistribution."
+            \ it as recallable capital; CreditAgainstFutureCalls restores it to their\
+            \ uncalled commitment and keeps the cash in the fund as a credit their\
+            \ next calls draw down; RetainedByFund hands nothing back and instead\
+            \ calls the admitted partners up to the existing partners' level on the\
+            \ commitments before the close. Defaults to ReturnOfExcess. Available\
+            \ values: ReturnOfExcess, RecallableDistribution, CreditAgainstFutureCalls,\
+            \ RetainedByFund."
           nullable: true
           type: string
         pnl:
           description: "Whether profit and loss already allocated is re-trued between\
             \ partners with no cash so each holds its post-close share (ReTrue), or\
-            \ the equalisation is kept to capital (CapitalOnly). Defaults to ReTrue.\
+            \ the equalisation is kept to capital (CapitalOnly). Defaults to CapitalOnly\
+            \ when omitted on a request. An equalisation stored before this default\
+            \ was introduced keeps the treatment it was stored with, which is ReTrue.\
             \ Available values: ReTrue, CapitalOnly."
           nullable: true
           type: string
@@ -202592,6 +203752,32 @@ components:
             \ partners. Ignored when the profit and loss treatment is CapitalOnly."
           items:
             $ref: '#/components/schemas/AllocationEventEqualisationMark'
+          nullable: true
+          type: array
+        priorDistributionIds:
+          description: "The booked distributions on the same allocation map, dated\
+            \ before the close, whose return of capital is re-spread net of the prior\
+            \ calls. When omitted, every booked distribution on the map dated before\
+            \ the close counts."
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
+        interestTreatment:
+          description: "How the equalisation interest reaches the existing partners:\
+            \ Cash pays it to them; CapitalCredit credits it to their capital accounts\
+            \ with no cash; None charges and pays no equalisation interest. Defaults\
+            \ to Cash. Available values: Cash, CapitalCredit, None."
+          nullable: true
+          type: string
+        excludedComponents:
+          description: "The call components left out of the re-spread: ManagementFee,\
+            \ OtherFee, Expense, OrganisationCost or Recall. Defaults to ManagementFee.\
+            \ A component no prior call carries, other than ManagementFee, is refused.\
+            \ Available values: ManagementFee, OtherFee, Expense, OrganisationCost,\
+            \ Recall."
+          items:
+            type: string
           nullable: true
           type: array
       required:
@@ -202729,6 +203915,7 @@ components:
         fund:
           code: code
           scope: scope
+        callCreditApplied: 5.025004791520295
         currency: currency
         event:
           noticeDate: 2000-01-23T04:56:07.000+00:00
@@ -202801,6 +203988,13 @@ components:
           description: "DRAFT until the allocation event is booked, otherwise null."
           nullable: true
           type: string
+        callCreditApplied:
+          description: "The call credit an earlier equalisation kept for the partner\
+            \ that this call draws on, as a positive amount. The lines show the partner's\
+            \ gross share; the net amount due is that share less the credit applied.\
+            \ Zero when no credit was applied."
+          format: double
+          type: number
       required:
       - cumulative
       - currency
@@ -203493,6 +204687,14 @@ components:
         equalisation:
           interestRate: 1.2315135367772556
           treatment: treatment
+          priorDistributionIds:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          excludedComponents:
+          - excludedComponents
+          - excludedComponents
           newInvestorRecordIds:
           - newInvestorRecordIds
           - newInvestorRecordIds
@@ -203504,6 +204706,7 @@ components:
           - amount: 1.0246457001441578
             dueDate: 2000-01-23T04:56:07.000+00:00
             investorRecordId: investorRecordId
+          interestTreatment: interestTreatment
           marks:
           - amount: 1.4894159098541704
             originMemberShortCode: originMemberShortCode
@@ -205739,6 +206942,8 @@ components:
             \ member is shared on deal paid-in unless its rule names a basis, and\
             \ a rule may not ask for deal paid-in. Available values: CommittedCapital,\
             \ PaidInCapital."
+          maxLength: 64
+          minLength: 0
           nullable: true
           type: string
         exemption:
@@ -205747,6 +206952,8 @@ components:
             \ default (FeeExempt for ManagementFee, ExpenseExempt for Expense, otherwise\
             \ None); returned as stored, with what the fund uses under effective.\
             \ Available values: None, FeeExempt, ExpenseExempt."
+          maxLength: 64
+          minLength: 0
           nullable: true
           type: string
         excludedInvestorRecordIds:
@@ -222797,10 +224004,12 @@ components:
             \ SubsequentCloseEqualisation, PartnerPnlAllocation, DistributionMechanism,\
             \ DistributionCharacterSource, SecondaryTransfer, ExcuseExclude, DealScopedPnl,\
             \ NettedCallAndDistribution."
+          maxLength: 64
           minLength: 1
           type: string
         setting:
           description: "Available values: Allowed, Forbidden."
+          maxLength: 64
           minLength: 1
           type: string
         reason:
@@ -241852,11 +243061,13 @@ components:
           overwriteManualEditsOnReRun: true
         aggregateRules:
         - leftOperation: leftOperation
+          isCaseSensitive: true
           leftFormula: leftFormula
           rightFormula: rightFormula
           ruleName: ruleName
           rightOperation: rightOperation
         - leftOperation: leftOperation
+          isCaseSensitive: true
           leftFormula: leftFormula
           rightFormula: rightFormula
           ruleName: ruleName
@@ -254923,6 +256134,42 @@ components:
         - instrumentEventType
         type: object
       description: Early redemption as a consequence of a bond being called or putted.
+    EconomicBucketAmount:
+      additionalProperties: false
+      description: "An amount in one economic bucket, in the holding's currency and\
+        \ the portfolio currency."
+      example:
+        bucket: bucket
+        component: component
+        portfolio: 6.027456183070403
+        variant: variant
+        local: 0.8008281904610115
+      properties:
+        bucket:
+          description: "The economic bucket, such as 'NA_Cost', 'NA_Accrued', 'PL_Carry'\
+            \ or 'PL_RealPriceGL'."
+          nullable: true
+          type: string
+        component:
+          description: "The component of the economic bucket, such as 'TradedInterest',\
+            \ 'Income', 'Expense' or 'CoreMarket'. Null where the bucket has no component."
+          nullable: true
+          type: string
+        variant:
+          description: "The variant of the economic bucket, such as 'Bought', 'Sold',\
+            \ 'Coupon', 'Dividend', 'Fee', 'Tax', 'ShortTerm' or 'LongTerm'. Null\
+            \ where the bucket has no variant."
+          nullable: true
+          type: string
+        local:
+          description: The amount in the holding's currency.
+          format: double
+          type: number
+        portfolio:
+          description: The amount in the portfolio currency.
+          format: double
+          type: number
+      type: object
     EconomicDependency:
       additionalProperties: false
       description: "Base class for representing economic dependencies.\r\nEconomic\
@@ -266208,12 +267455,12 @@ components:
     FundCashStatementLocalCurrency:
       additionalProperties: false
       description: "A single row in the local-currency Fund Cash Statement report.\
-        \ Each row is a settled cash\r\nmovement with a running balance in local currency\
-        \ only; base-currency columns are out of\r\nscope for this variant and are\
-        \ not returned."
+        \ Each row is a settled cash\r\nmovement with a running balance in local currency,\
+        \ and the base-currency cash flow, realised FX\r\n(split into its trade-date-to-settlement-date\
+        \ and cash pool parts), cost basis, balance at the\r\nrecipe's rate on the\
+        \ row's date and the unrealised FX between the two."
       example:
         sourceId: sourceId
-        sequenceNumber: 6
         subHoldingKeys:
           key:
             referenceData:
@@ -266230,18 +267477,19 @@ components:
                 - values
                 - values
             key: key
-        entryType: entryType
-        groupById: 0
-        accountingDate: 2000-01-23T04:56:07.000+00:00
         movementName: movementName
-        diaryEntryCode: diaryEntryCode
+        balanceFxRate: 1.4658129805029452
+        cashPoolFxPnlBase:
+          amount: 0.8008281904610115
+          currency: currency
+        cashflowBase:
+          amount: 0.8008281904610115
+          currency: currency
+        balanceBase:
+          amount: 0.8008281904610115
+          currency: currency
         activityDate: 2000-01-23T04:56:07.000+00:00
-        portfolioId:
-          code: code
-          scope: scope
-        instructionType: instructionType
-        originDiaryEntryCode: originDiaryEntryCode
-        balanceLocal:
+        tradeDateToSettlementDateFxPnlBase:
           amount: 0.8008281904610115
           currency: currency
         links:
@@ -266254,9 +267502,31 @@ components:
           href: https://openapi-generator.tech
           relation: relation
         cashStatementActionType: cashStatementActionType
+        costBasisBase:
+          amount: 0.8008281904610115
+          currency: currency
         cashflowLocal:
           amount: 0.8008281904610115
           currency: currency
+        sequenceNumber: 6
+        entryType: entryType
+        groupById: 0
+        accountingDate: 2000-01-23T04:56:07.000+00:00
+        unrealisedFxPnlBase:
+          amount: 0.8008281904610115
+          currency: currency
+        diaryEntryCode: diaryEntryCode
+        fxRateMovement: 5.637376656633329
+        portfolioId:
+          code: code
+          scope: scope
+        instructionType: instructionType
+        originDiaryEntryCode: originDiaryEntryCode
+        balanceLocal:
+          amount: 0.8008281904610115
+          currency: currency
+        avgRate: 5.962133916683182
+        balanceBaseFailureReason: balanceBaseFailureReason
         properties:
           key:
             referenceData:
@@ -266347,6 +267617,47 @@ components:
             row.
           nullable: true
           type: object
+        cashflowBase:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        tradeDateToSettlementDateFxPnlBase:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        cashPoolFxPnlBase:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        costBasisBase:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        balanceBase:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        unrealisedFxPnlBase:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        balanceFxRate:
+          description: "The FX rate BalanceBase was struck at, from the row's currency\
+            \ to the base currency, or 1 for a balance already in the base currency.\
+            \ Not returned when BalanceBase is not, nor when BalanceLocal is zero\
+            \ and no rate was found."
+          format: double
+          nullable: true
+          type: number
+        balanceBaseFailureReason:
+          description: "Why BalanceBase, BalanceFxRate and UnrealisedFxPnlBase are\
+            \ not returned on this row: no FX rate was found for the row's currency\
+            \ at its accounting date within the recipe's quote interval, the rate\
+            \ found was not positive, or the rates could not be read. Null when the\
+            \ balance was struck, and on a row whose BalanceLocal is zero, which is\
+            \ zero in the base currency without a rate."
+          nullable: true
+          type: string
+        avgRate:
+          description: Weighted average FX rate (costBasisBase / balanceLocal). Null
+            when balance is zero.
+          format: double
+          nullable: true
+          type: number
+        fxRateMovement:
+          description: FX rate for this specific movement (CashflowBase / CashFlowLocal).
+            Null when localAmount is zero.
+          format: double
+          nullable: true
+          type: number
         links:
           items:
             $ref: '#/components/schemas/Link'
@@ -268895,11 +270206,11 @@ components:
         commitmentCurrency: commitmentCurrency
         displayName: displayName
         partnerRole: partnerRole
-        shareOfCommitments: 3.616076749251911
+        shareOfCommitments: 2.027123023002322
         totals:
-          partnerCount: 4
+          partnerCount: 7
           committedByCurrency:
-            key: 2.027123023002322
+            key: 4.145608029883936
         registerRole: registerRole
         balances:
           committed: 0.8008281904610115
@@ -268909,6 +270220,7 @@ components:
           funded: 7.061401241503109
           paidIn: 1.4658129805029452
           outstandingCalls: 9.301444243932576
+          callCredit: 3.616076749251911
           returned: 5.962133916683182
         portfolioId:
           code: code
@@ -268996,6 +270308,7 @@ components:
         funded: 7.061401241503109
         paidIn: 1.4658129805029452
         outstandingCalls: 9.301444243932576
+        callCredit: 3.616076749251911
         returned: 5.962133916683182
       properties:
         committed:
@@ -269035,6 +270348,12 @@ components:
           format: double
           nullable: true
           type: number
+        callCredit:
+          description: "The credit an equalisation kept against the line's future\
+            \ calls, less what later calls have drawn on it: a liability to the partner,\
+            \ not capital, until a call applies it. Zero when the line holds none."
+          format: double
+          type: number
       required:
       - committed
       - funded
@@ -269050,9 +270369,9 @@ components:
         \ paging. Commitments are totalled per commitment\r\ncurrency; amounts in\
         \ different currencies are never added together."
       example:
-        partnerCount: 4
+        partnerCount: 7
         committedByCurrency:
-          key: 2.027123023002322
+          key: 4.145608029883936
       properties:
         committedByCurrency:
           additionalProperties:
@@ -271672,8 +272991,8 @@ components:
           minLength: 1
           type: string
         category:
-          description: "The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation\
-            \ or UnclassifiedInstrument."
+          description: "The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation,\
+            \ UnclassifiedInstrument or CostWithoutUnits."
           minLength: 1
           type: string
         severity:
@@ -295191,6 +296510,7 @@ components:
           deal: deal
           sourceRef: sourceRef
         book: true
+        prepaid: true
         basis: basis
         periodStart: 2000-01-23T04:56:07.000+00:00
         periodEnd: 2000-01-23T04:56:07.000+00:00
@@ -295221,6 +296541,17 @@ components:
         book:
           description: "When true, the net fee per partner is booked."
           type: boolean
+        prepaid:
+          description: "When true with book, the period's fee is booked in advance:\
+            \ the fund prepays each partner's gross fee per component against the\
+            \ fee payable at the period's start, and the partnership ledger is not\
+            \ charged. Offsets are not prepaid. Fee runs accruing inside the period\
+            \ then charge the fee against the prepayment, up to its balance and at\
+            \ the prepayment's rate, and any excess against the payable; an offset\
+            \ arising inside the period reduces the payable, and any part of it above\
+            \ the payable is booked as a receivable from the manager. Defaults to\
+            \ false."
+          type: boolean
       required:
       - periodEnd
       - periodStart
@@ -295232,6 +296563,9 @@ components:
         fundId:
           code: code
           scope: scope
+        fundTransactionIds:
+        - fundTransactionIds
+        - fundTransactionIds
         bookedTransactionIds:
         - bookedTransactionIds
         - bookedTransactionIds
@@ -295290,6 +296624,14 @@ components:
           description: "The identifiers of the transactions booked, if any."
           items:
             type: string
+          type: array
+        fundTransactionIds:
+          description: "The identifiers of the fee transactions the run holds in the\
+            \ fund's own books, one per partner and fee component, when the run was\
+            \ booked."
+          items:
+            type: string
+          nullable: true
           type: array
       required:
       - basis
@@ -298050,11 +299392,13 @@ components:
           overwriteManualEditsOnReRun: true
         aggregateRules:
         - leftOperation: leftOperation
+          isCaseSensitive: true
           leftFormula: leftFormula
           rightFormula: rightFormula
           ruleName: ruleName
           rightOperation: rightOperation
         - leftOperation: leftOperation
+          isCaseSensitive: true
           leftFormula: leftFormula
           rightFormula: rightFormula
           ruleName: ruleName
@@ -300018,6 +301362,31 @@ components:
           nullable: true
           type: string
       type: object
+    MissingMovementOption:
+      additionalProperties: false
+      description: "A movement option one of a transaction type's line legs must carry\
+        \ for the register to see what it books, and does not, named by that movement."
+      example:
+        movementName: movementName
+        side: side
+        option: option
+      properties:
+        movementName:
+          description: The name of the movement that carries the delta.
+          nullable: true
+          type: string
+        side:
+          description: The side of the movement that carries the delta.
+          minLength: 1
+          type: string
+        option:
+          description: The movement option the leg lacks. Currently always 'Registry'.
+          minLength: 1
+          type: string
+      required:
+      - option
+      - side
+      type: object
     MixedLotConstituentsElection:
       additionalProperties: false
       properties:
@@ -301794,6 +303163,271 @@ components:
         - data
         - modelOptionsType
         type: object
+    OpenCloseMovementQueryParameters:
+      additionalProperties: false
+      description: "The parameters of an open, close and movement report over a valuation\
+        \ point window."
+      example:
+        openingMetrics:
+        - openingMetrics
+        - openingMetrics
+        subHoldingKeysToKeep:
+        - subHoldingKeysToKeep
+        - subHoldingKeysToKeep
+        start:
+          date: date
+          diaryEntry: diaryEntry
+        variant: variant
+        end:
+          date: date
+          diaryEntry: diaryEntry
+        instrumentPropertyKeys:
+        - instrumentPropertyKeys
+        - instrumentPropertyKeys
+        closingMetrics:
+        - closingMetrics
+        - closingMetrics
+      properties:
+        start:
+          $ref: '#/components/schemas/DateOrDiaryEntry'
+        end:
+          $ref: '#/components/schemas/DateOrDiaryEntry'
+        variant:
+          description: Optional variant code. Only required when it is necessary to
+            choose between scenarios with multiple estimates.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: "^[a-zA-Z0-9\\-_]+$"
+          type: string
+        subHoldingKeysToKeep:
+          description: "The sub-holding keys to report separately, in the format {domain}/{scope}/{code}.\
+            \ Holdings of an instrument are consolidated to one row per holding type\
+            \ and currency across every other sub-holding key; with none kept every\
+            \ instrument is one row."
+          items:
+            type: string
+          nullable: true
+          type: array
+        instrumentPropertyKeys:
+          description: "Property keys from the 'Instrument' domain to decorate onto\
+            \ each row, in the format {domain}/{scope}/{code} e.g. 'Instrument/system/Name'."
+          items:
+            type: string
+          nullable: true
+          type: array
+        openingMetrics:
+          description: "Valuation address keys to report at the opening of the window,\
+            \ e.g. 'Holding/Units', 'Quotes/Price' or 'Valuation/PV'. When holdings\
+            \ are consolidated a metric that scales with quantity is summed; any other\
+            \ is reported only when it is the same on every consolidated holding,\
+            \ and is otherwise null with a diagnostic in the row's errors."
+          items:
+            type: string
+          nullable: true
+          type: array
+        closingMetrics:
+          description: "Valuation address keys to report at the closing of the window,\
+            \ aggregated as the opening metrics are."
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - end
+      type: object
+    OpenCloseMovementRecord:
+      additionalProperties: false
+      description: "One row of the open, close and movement report: the net asset\
+        \ economic buckets at the opening and closing\r\nof the window, the period's\
+        \ movements by economic bucket, and the requested valuation metrics and\r\n\
+        instrument properties, per instrument or per kept sub-holding key."
+      example:
+        subHoldingKeys:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+        openingMetrics:
+          key: 1.4658129805029452
+        instrumentScope: instrumentScope
+        movements:
+        - bucket: bucket
+          component: component
+          portfolio: 6.027456183070403
+          variant: variant
+          local: 0.8008281904610115
+        - bucket: bucket
+          component: component
+          portfolio: 6.027456183070403
+          variant: variant
+          local: 0.8008281904610115
+        opening:
+        - bucket: bucket
+          component: component
+          portfolio: 6.027456183070403
+          variant: variant
+          local: 0.8008281904610115
+        - bucket: bucket
+          component: component
+          portfolio: 6.027456183070403
+          variant: variant
+          local: 0.8008281904610115
+        closingMetrics:
+          key: 5.962133916683182
+        portfolioId:
+          code: code
+          scope: scope
+        closing:
+        - bucket: bucket
+          component: component
+          portfolio: 6.027456183070403
+          variant: variant
+          local: 0.8008281904610115
+        - bucket: bucket
+          component: component
+          portfolio: 6.027456183070403
+          variant: variant
+          local: 0.8008281904610115
+        holdingType: holdingType
+        instrumentUid: instrumentUid
+        currency: currency
+        properties:
+          key:
+            referenceData:
+              key:
+                stringValue: stringValue
+                numericValue: 6.027456183070403
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+        errors:
+        - identifiers:
+          - identifiers
+          - identifiers
+          description: description
+          identifierType: identifierType
+          type: type
+        - identifiers:
+          - identifiers
+          - identifiers
+          description: description
+          identifierType: identifierType
+          type: type
+      properties:
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        holdingType:
+          description: "The code for the type of the holding e.g. P, B, C, R, F etc."
+          nullable: true
+          type: string
+        instrumentScope:
+          description: The unique Lusid Instrument Id (LUID) of the instrument that
+            the holding is in.
+          nullable: true
+          type: string
+        instrumentUid:
+          description: The unique Lusid Instrument Id (LUID) of the instrument that
+            the holding is in.
+          nullable: true
+          type: string
+        subHoldingKeys:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: The values of the sub-holding keys the request kept separate.
+            Empty when the row is consolidated to the instrument.
+          nullable: true
+          type: object
+        currency:
+          description: The holding currency.
+          nullable: true
+          type: string
+        opening:
+          description: "The net asset economic buckets at the opening of the window,\
+            \ from the opening valuation. Empty when nothing was held. Amounts follow\
+            \ the journal entry line sign convention: a long position's balances are\
+            \ positive. Note that the A2B report's signs are the opposite for gains."
+          items:
+            $ref: '#/components/schemas/EconomicBucketAmount'
+          nullable: true
+          type: array
+        closing:
+          description: "The net asset economic buckets at the closing of the window,\
+            \ from the closing valuation. Empty when nothing is held. Signs as for\
+            \ the opening."
+          items:
+            $ref: '#/components/schemas/EconomicBucketAmount'
+          nullable: true
+          type: array
+        movements:
+          description: "The period's movements by economic bucket, component and variant,\
+            \ classified exactly as the journal entry lines classify them: the transaction\
+            \ lines of the window (cost flows in the NA buckets, carry, fees and realised\
+            \ gains in the PL buckets) plus the remeasurement of each net asset bucket\
+            \ between the two valuations, booked to its PL bucket. Signs follow the\
+            \ journal entry line convention, so income and gains are negative. The\
+            \ row reconciles as: closing = opening + movements in NA buckets - movements\
+            \ in the remeasurement buckets (PL_UnrealPriceGL, PL_UnrealFXGL, PL_Accrued,\
+            \ PL_UnrealisedAmortised, PL_PIKAccrued, PL_DelayedCompensation); any\
+            \ residual is booked to PL_Rounding."
+          items:
+            $ref: '#/components/schemas/EconomicBucketAmount'
+          nullable: true
+          type: array
+        openingMetrics:
+          additionalProperties:
+            format: double
+            nullable: true
+            type: number
+          description: "The requested valuation metrics at the opening of the window,\
+            \ keyed by address key. Absent when nothing was held; null where the metric\
+            \ is unavailable or differs across the consolidated holdings."
+          nullable: true
+          type: object
+        closingMetrics:
+          additionalProperties:
+            format: double
+            nullable: true
+            type: number
+          description: "The requested valuation metrics at the closing of the window,\
+            \ keyed by address key, as the opening metrics."
+          nullable: true
+          type: object
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/Property'
+          description: The properties which have been requested to be decorated onto
+            the holding. These will be from the 'Instrument' domain.
+          nullable: true
+          type: object
+        errors:
+          description: "Any errors with the row are reported here, including metrics\
+            \ that could not be consolidated and reconciliation residuals beyond rounding."
+          items:
+            $ref: '#/components/schemas/ResponseMetaData'
+          nullable: true
+          type: array
+      type: object
     OpenEvent:
       allOf:
       - $ref: '#/components/schemas/InstrumentEvent'
@@ -307704,6 +309338,14 @@ components:
           equalisation:
             interestRate: 1.2315135367772556
             treatment: treatment
+            priorDistributionIds:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+            excludedComponents:
+            - excludedComponents
+            - excludedComponents
             newInvestorRecordIds:
             - newInvestorRecordIds
             - newInvestorRecordIds
@@ -307715,6 +309357,7 @@ components:
             - amount: 1.0246457001441578
               dueDate: 2000-01-23T04:56:07.000+00:00
               investorRecordId: investorRecordId
+            interestTreatment: interestTreatment
             marks:
             - amount: 1.4894159098541704
               originMemberShortCode: originMemberShortCode
@@ -307954,6 +309597,14 @@ components:
           equalisation:
             interestRate: 1.2315135367772556
             treatment: treatment
+            priorDistributionIds:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+            excludedComponents:
+            - excludedComponents
+            - excludedComponents
             newInvestorRecordIds:
             - newInvestorRecordIds
             - newInvestorRecordIds
@@ -307965,6 +309616,7 @@ components:
             - amount: 1.0246457001441578
               dueDate: 2000-01-23T04:56:07.000+00:00
               investorRecordId: investorRecordId
+            interestTreatment: interestTreatment
             marks:
             - amount: 1.4894159098541704
               originMemberShortCode: originMemberShortCode
@@ -315448,97 +317100,6 @@ components:
       required:
       - values
       type: object
-    PagedResourceListOfFundPartner:
-      additionalProperties: false
-      example:
-        previousPage: previousPage
-        nextPage: nextPage
-        values:
-        - commitmentLineId: commitmentLineId
-          commitmentCurrency: commitmentCurrency
-          displayName: displayName
-          partnerRole: partnerRole
-          shareOfCommitments: 3.616076749251911
-          totals:
-            partnerCount: 4
-            committedByCurrency:
-              key: 2.027123023002322
-          registerRole: registerRole
-          balances:
-            committed: 0.8008281904610115
-            uncalledCommitment: 6.027456183070403
-            recallable: 5.637376656633329
-            unfunded: 2.3021358869347655
-            funded: 7.061401241503109
-            paidIn: 1.4658129805029452
-            outstandingCalls: 9.301444243932576
-            returned: 5.962133916683182
-          portfolioId:
-            code: code
-            scope: scope
-          isVehicle: true
-          investorRecordId: investorRecordId
-          admittedOn: 2000-01-23T04:56:07.000+00:00
-          lusidInstrumentId: lusidInstrumentId
-        - commitmentLineId: commitmentLineId
-          commitmentCurrency: commitmentCurrency
-          displayName: displayName
-          partnerRole: partnerRole
-          shareOfCommitments: 3.616076749251911
-          totals:
-            partnerCount: 4
-            committedByCurrency:
-              key: 2.027123023002322
-          registerRole: registerRole
-          balances:
-            committed: 0.8008281904610115
-            uncalledCommitment: 6.027456183070403
-            recallable: 5.637376656633329
-            unfunded: 2.3021358869347655
-            funded: 7.061401241503109
-            paidIn: 1.4658129805029452
-            outstandingCalls: 9.301444243932576
-            returned: 5.962133916683182
-          portfolioId:
-            code: code
-            scope: scope
-          isVehicle: true
-          investorRecordId: investorRecordId
-          admittedOn: 2000-01-23T04:56:07.000+00:00
-          lusidInstrumentId: lusidInstrumentId
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        href: https://openapi-generator.tech
-      properties:
-        nextPage:
-          nullable: true
-          type: string
-        previousPage:
-          nullable: true
-          type: string
-        values:
-          items:
-            $ref: '#/components/schemas/FundPartner'
-          type: array
-        href:
-          format: uri
-          nullable: true
-          type: string
-        links:
-          items:
-            $ref: '#/components/schemas/Link'
-          nullable: true
-          type: array
-      required:
-      - values
-      type: object
     PagedResourceListOfFundStructure:
       additionalProperties: false
       example:
@@ -321133,11 +322694,13 @@ components:
             overwriteManualEditsOnReRun: true
           aggregateRules:
           - leftOperation: leftOperation
+            isCaseSensitive: true
             leftFormula: leftFormula
             rightFormula: rightFormula
             ruleName: ruleName
             rightOperation: rightOperation
           - leftOperation: leftOperation
+            isCaseSensitive: true
             leftFormula: leftFormula
             rightFormula: rightFormula
             ruleName: ruleName
@@ -321227,11 +322790,13 @@ components:
             overwriteManualEditsOnReRun: true
           aggregateRules:
           - leftOperation: leftOperation
+            isCaseSensitive: true
             leftFormula: leftFormula
             rightFormula: rightFormula
             ruleName: ruleName
             rightOperation: rightOperation
           - leftOperation: leftOperation
+            isCaseSensitive: true
             leftFormula: leftFormula
             rightFormula: rightFormula
             ruleName: ruleName
@@ -322960,165 +324525,6 @@ components:
         values:
           items:
             $ref: '#/components/schemas/Participation'
-          type: array
-        href:
-          format: uri
-          nullable: true
-          type: string
-        links:
-          items:
-            $ref: '#/components/schemas/Link'
-          nullable: true
-          type: array
-      required:
-      - values
-      type: object
-    PagedResourceListOfPartnerCapitalAccount:
-      additionalProperties: false
-      example:
-        previousPage: previousPage
-        nextPage: nextPage
-        values:
-        - fundId:
-            code: code
-            scope: scope
-          foots: true
-          memo:
-            availableCommitment: 2.027123023002322
-            contributionsReceivable: 4.145608029883936
-            uncalledCommitment: 9.301444243932576
-            recallable: 3.616076749251911
-            commitment: 7.061401241503109
-            distributionsDeclaredNotPaid: 7.386281948385884
-          investorRecordId: investorRecordId
-          currency: currency
-          rows:
-          - qtd: 0.8008281904610115
-            rowType: rowType
-            ytd: 6.027456183070403
-            itd: 1.4658129805029452
-            details:
-            - qtd: 5.962133916683182
-              allocationEventId:
-                code: code
-                scope: scope
-              kind: kind
-              ytd: 5.637376656633329
-              itd: 2.3021358869347655
-              eventDate: 2000-01-23T04:56:07.000+00:00
-            - qtd: 5.962133916683182
-              allocationEventId:
-                code: code
-                scope: scope
-              kind: kind
-              ytd: 5.637376656633329
-              itd: 2.3021358869347655
-              eventDate: 2000-01-23T04:56:07.000+00:00
-          - qtd: 0.8008281904610115
-            rowType: rowType
-            ytd: 6.027456183070403
-            itd: 1.4658129805029452
-            details:
-            - qtd: 5.962133916683182
-              allocationEventId:
-                code: code
-                scope: scope
-              kind: kind
-              ytd: 5.637376656633329
-              itd: 2.3021358869347655
-              eventDate: 2000-01-23T04:56:07.000+00:00
-            - qtd: 5.962133916683182
-              allocationEventId:
-                code: code
-                scope: scope
-              kind: kind
-              ytd: 5.637376656633329
-              itd: 2.3021358869347655
-              eventDate: 2000-01-23T04:56:07.000+00:00
-          footingDifference: 1.2315135367772556
-          periodStart: 2000-01-23T04:56:07.000+00:00
-          periodEnd: 2000-01-23T04:56:07.000+00:00
-          status: status
-        - fundId:
-            code: code
-            scope: scope
-          foots: true
-          memo:
-            availableCommitment: 2.027123023002322
-            contributionsReceivable: 4.145608029883936
-            uncalledCommitment: 9.301444243932576
-            recallable: 3.616076749251911
-            commitment: 7.061401241503109
-            distributionsDeclaredNotPaid: 7.386281948385884
-          investorRecordId: investorRecordId
-          currency: currency
-          rows:
-          - qtd: 0.8008281904610115
-            rowType: rowType
-            ytd: 6.027456183070403
-            itd: 1.4658129805029452
-            details:
-            - qtd: 5.962133916683182
-              allocationEventId:
-                code: code
-                scope: scope
-              kind: kind
-              ytd: 5.637376656633329
-              itd: 2.3021358869347655
-              eventDate: 2000-01-23T04:56:07.000+00:00
-            - qtd: 5.962133916683182
-              allocationEventId:
-                code: code
-                scope: scope
-              kind: kind
-              ytd: 5.637376656633329
-              itd: 2.3021358869347655
-              eventDate: 2000-01-23T04:56:07.000+00:00
-          - qtd: 0.8008281904610115
-            rowType: rowType
-            ytd: 6.027456183070403
-            itd: 1.4658129805029452
-            details:
-            - qtd: 5.962133916683182
-              allocationEventId:
-                code: code
-                scope: scope
-              kind: kind
-              ytd: 5.637376656633329
-              itd: 2.3021358869347655
-              eventDate: 2000-01-23T04:56:07.000+00:00
-            - qtd: 5.962133916683182
-              allocationEventId:
-                code: code
-                scope: scope
-              kind: kind
-              ytd: 5.637376656633329
-              itd: 2.3021358869347655
-              eventDate: 2000-01-23T04:56:07.000+00:00
-          footingDifference: 1.2315135367772556
-          periodStart: 2000-01-23T04:56:07.000+00:00
-          periodEnd: 2000-01-23T04:56:07.000+00:00
-          status: status
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        href: https://openapi-generator.tech
-      properties:
-        nextPage:
-          nullable: true
-          type: string
-        previousPage:
-          nullable: true
-          type: string
-        values:
-          items:
-            $ref: '#/components/schemas/PartnerCapitalAccount'
           type: array
         href:
           format: uri
@@ -331532,6 +332938,11 @@ components:
           code: code
           scope: scope
         foots: true
+        warnings:
+        - entityId: entityId
+          message: message
+        - entityId: entityId
+          message: message
         memo:
           availableCommitment: 2.027123023002322
           contributionsReceivable: 4.145608029883936
@@ -331631,6 +333042,15 @@ components:
             columns.
           format: double
           type: number
+        warnings:
+          description: "Warnings about the register the account was read from, for\
+            \ example a transaction type of the fund that books a register line outside\
+            \ the registry, so that line is not in the account. Empty when there is\
+            \ nothing to warn of."
+          items:
+            $ref: '#/components/schemas/Warning'
+          nullable: true
+          type: array
       required:
       - currency
       - footingDifference
@@ -331722,8 +333142,16 @@ components:
         rowType:
           description: "The row type: BeginningCapital, Contributions, Distributions,\
             \ TransfersIn, TransfersOut, NetOperatingIncome, ManagementFeesGross,\
-            \ ManagementFeeOffsets, RealisedGainLoss, UnrealisedGainLoss, CarriedInterest\
-            \ or EndingCapital."
+            \ ManagementFeeOffsets, RealisedGainLoss, UnrealisedGainLoss, CarriedInterest,\
+            \ EndingCapital, EqualisationInterest (equalisation interest credited\
+            \ to the partner's capital with no cash, reported after ending capital,\
+            \ which counts it, and only when there is some) or CallCredit (a memo\
+            \ of the call credit equalisations kept for the partner against its future\
+            \ calls: the quarter-to-date and year-to-date columns are its movement\
+            \ in each and inception to date is the credit left at the period end.\
+            \ It is a liability of the fund to the partner, not capital, so ending\
+            \ capital does not count it. Reported last, and only while a credit is\
+            \ left or one moved in the year)."
           minLength: 1
           type: string
         qtd:
@@ -331771,7 +333199,9 @@ components:
       properties:
         kind:
           description: "The kind of amount the entry labels: WithholdingTax for tax\
-            \ withheld from a distribution on the partner's behalf."
+            \ withheld from a distribution on the partner's behalf; on the CallCredit\
+            \ row, CallCreditGranted for a credit an equalisation kept for the partner\
+            \ and CallCreditApplied, negative, for the part of it a call drew on."
           minLength: 1
           type: string
         allocationEventId:
@@ -332198,12 +333628,16 @@ components:
           $ref: '#/components/schemas/ResourceId'
         commitmentCurrencyPolicy:
           description: "Available values: FundCurrencyOnly, AllowLineCurrency."
+          maxLength: 64
+          minLength: 0
           nullable: true
           type: string
         registerPortfolioGroup:
           $ref: '#/components/schemas/ResourceId'
         capitalModel:
           description: "Available values: PartnershipCapitalAccounts, SeriesUnitised."
+          maxLength: 64
+          minLength: 0
           nullable: true
           type: string
         capabilityOverrides:
@@ -332452,6 +333886,13 @@ components:
           missingSides:
           - missingSides
           - missingSides
+          missingOptions:
+          - movementName: movementName
+            side: side
+            option: option
+          - movementName: movementName
+            side: side
+            option: option
         - actual:
           - movementName: movementName
             side: side
@@ -332476,6 +333917,13 @@ components:
           missingSides:
           - missingSides
           - missingSides
+          missingOptions:
+          - movementName: movementName
+            side: side
+            option: option
+          - movementName: movementName
+            side: side
+            option: option
         pack:
           code: code
           transactionTypes:
@@ -332549,9 +333997,10 @@ components:
           type: string
         differences:
           description: "The transaction types whose register balance deltas are not\
-            \ their contract in the pack, or whose movements book through a side the\
-            \ fund's transaction type scope does not define; empty when the status\
-            \ is Ok."
+            \ their contract in the pack, whose movements book through a side the\
+            \ fund's transaction type scope does not define, or whose line legs lack\
+            \ the 'Registry' movement option that books them into the registry; empty\
+            \ when the status is Ok."
           items:
             $ref: '#/components/schemas/PartnershipTypeDifference'
           type: array
@@ -332563,7 +334012,8 @@ components:
     PartnershipTypeDifference:
       additionalProperties: false
       description: "A transaction type a fund's portfolios resolve whose register\
-        \ deltas are not its contract, or whose sides its scope does not define."
+        \ deltas are not its contract, whose sides its scope does not define, or whose\
+        \ line legs lack the option that books them into the registry."
       example:
         actual:
         - movementName: movementName
@@ -332589,6 +334039,13 @@ components:
         missingSides:
         - missingSides
         - missingSides
+        missingOptions:
+        - movementName: movementName
+          side: side
+          option: option
+        - movementName: movementName
+          side: side
+          option: option
       properties:
         source:
           description: The source the transaction type is defined in.
@@ -332622,9 +334079,19 @@ components:
           items:
             type: string
           type: array
+        missingOptions:
+          description: "The movement options the type's line legs must carry to book\
+            \ the register and do not, each named by its movement. A leg that moves\
+            \ a register balance, or books the line's units and cost, without the\
+            \ 'Registry' option books into the portfolio's holdings, where the register\
+            \ never looks; empty when every line leg carries it."
+          items:
+            $ref: '#/components/schemas/MissingMovementOption'
+          type: array
       required:
       - actual
       - expected
+      - missingOptions
       - missingSides
       - scope
       - source
@@ -336410,7 +337877,7 @@ components:
             \ not exists) then 'First' else if(streak.age lt P2D) then 'New' else\
             \ 'Watch'. It reads rules by name as CoreRules[name] and AggregateRules[name].\
             \ Each rule has .leftValue, .rightValue and .appliedTolerance.toleranceType.\
-            \ A numeric aggregate rule also has .difference. You can compare CoreRules[name]\
+            \ Each aggregate rule also has .difference. You can compare CoreRules[name]\
             \ with no side by eq, in or startswith. The comparison is true if either\
             \ side matches. With neq, not in or not startswith, it is true if no side\
             \ matches. Ordering comparisons must name the side. Comparisons ignore\
@@ -359646,6 +361113,7 @@ components:
           fund:
             code: code
             scope: scope
+          callCreditApplied: 5.025004791520295
           currency: currency
           event:
             noticeDate: 2000-01-23T04:56:07.000+00:00
@@ -359740,6 +361208,7 @@ components:
           fund:
             code: code
             scope: scope
+          callCreditApplied: 5.025004791520295
           currency: currency
           event:
             noticeDate: 2000-01-23T04:56:07.000+00:00
@@ -386235,6 +387704,296 @@ components:
       required:
       - values
       type: object
+    ResourceListWithWarningsOfFundPartner:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - commitmentLineId: commitmentLineId
+          commitmentCurrency: commitmentCurrency
+          displayName: displayName
+          partnerRole: partnerRole
+          shareOfCommitments: 2.027123023002322
+          totals:
+            partnerCount: 7
+            committedByCurrency:
+              key: 4.145608029883936
+          registerRole: registerRole
+          balances:
+            committed: 0.8008281904610115
+            uncalledCommitment: 6.027456183070403
+            recallable: 5.637376656633329
+            unfunded: 2.3021358869347655
+            funded: 7.061401241503109
+            paidIn: 1.4658129805029452
+            outstandingCalls: 9.301444243932576
+            callCredit: 3.616076749251911
+            returned: 5.962133916683182
+          portfolioId:
+            code: code
+            scope: scope
+          isVehicle: true
+          investorRecordId: investorRecordId
+          admittedOn: 2000-01-23T04:56:07.000+00:00
+          lusidInstrumentId: lusidInstrumentId
+        - commitmentLineId: commitmentLineId
+          commitmentCurrency: commitmentCurrency
+          displayName: displayName
+          partnerRole: partnerRole
+          shareOfCommitments: 2.027123023002322
+          totals:
+            partnerCount: 7
+            committedByCurrency:
+              key: 4.145608029883936
+          registerRole: registerRole
+          balances:
+            committed: 0.8008281904610115
+            uncalledCommitment: 6.027456183070403
+            recallable: 5.637376656633329
+            unfunded: 2.3021358869347655
+            funded: 7.061401241503109
+            paidIn: 1.4658129805029452
+            outstandingCalls: 9.301444243932576
+            callCredit: 3.616076749251911
+            returned: 5.962133916683182
+          portfolioId:
+            code: code
+            scope: scope
+          isVehicle: true
+          investorRecordId: investorRecordId
+          admittedOn: 2000-01-23T04:56:07.000+00:00
+          lusidInstrumentId: lusidInstrumentId
+        warnings:
+        - entityId: entityId
+          message: message
+        - entityId: entityId
+          message: message
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/FundPartner'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        warnings:
+          items:
+            $ref: '#/components/schemas/Warning'
+          nullable: true
+          type: array
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    ResourceListWithWarningsOfPartnerCapitalAccount:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - fundId:
+            code: code
+            scope: scope
+          foots: true
+          warnings:
+          - entityId: entityId
+            message: message
+          - entityId: entityId
+            message: message
+          memo:
+            availableCommitment: 2.027123023002322
+            contributionsReceivable: 4.145608029883936
+            uncalledCommitment: 9.301444243932576
+            recallable: 3.616076749251911
+            commitment: 7.061401241503109
+            distributionsDeclaredNotPaid: 7.386281948385884
+          investorRecordId: investorRecordId
+          currency: currency
+          rows:
+          - qtd: 0.8008281904610115
+            rowType: rowType
+            ytd: 6.027456183070403
+            itd: 1.4658129805029452
+            details:
+            - qtd: 5.962133916683182
+              allocationEventId:
+                code: code
+                scope: scope
+              kind: kind
+              ytd: 5.637376656633329
+              itd: 2.3021358869347655
+              eventDate: 2000-01-23T04:56:07.000+00:00
+            - qtd: 5.962133916683182
+              allocationEventId:
+                code: code
+                scope: scope
+              kind: kind
+              ytd: 5.637376656633329
+              itd: 2.3021358869347655
+              eventDate: 2000-01-23T04:56:07.000+00:00
+          - qtd: 0.8008281904610115
+            rowType: rowType
+            ytd: 6.027456183070403
+            itd: 1.4658129805029452
+            details:
+            - qtd: 5.962133916683182
+              allocationEventId:
+                code: code
+                scope: scope
+              kind: kind
+              ytd: 5.637376656633329
+              itd: 2.3021358869347655
+              eventDate: 2000-01-23T04:56:07.000+00:00
+            - qtd: 5.962133916683182
+              allocationEventId:
+                code: code
+                scope: scope
+              kind: kind
+              ytd: 5.637376656633329
+              itd: 2.3021358869347655
+              eventDate: 2000-01-23T04:56:07.000+00:00
+          footingDifference: 1.2315135367772556
+          periodStart: 2000-01-23T04:56:07.000+00:00
+          periodEnd: 2000-01-23T04:56:07.000+00:00
+          status: status
+        - fundId:
+            code: code
+            scope: scope
+          foots: true
+          warnings:
+          - entityId: entityId
+            message: message
+          - entityId: entityId
+            message: message
+          memo:
+            availableCommitment: 2.027123023002322
+            contributionsReceivable: 4.145608029883936
+            uncalledCommitment: 9.301444243932576
+            recallable: 3.616076749251911
+            commitment: 7.061401241503109
+            distributionsDeclaredNotPaid: 7.386281948385884
+          investorRecordId: investorRecordId
+          currency: currency
+          rows:
+          - qtd: 0.8008281904610115
+            rowType: rowType
+            ytd: 6.027456183070403
+            itd: 1.4658129805029452
+            details:
+            - qtd: 5.962133916683182
+              allocationEventId:
+                code: code
+                scope: scope
+              kind: kind
+              ytd: 5.637376656633329
+              itd: 2.3021358869347655
+              eventDate: 2000-01-23T04:56:07.000+00:00
+            - qtd: 5.962133916683182
+              allocationEventId:
+                code: code
+                scope: scope
+              kind: kind
+              ytd: 5.637376656633329
+              itd: 2.3021358869347655
+              eventDate: 2000-01-23T04:56:07.000+00:00
+          - qtd: 0.8008281904610115
+            rowType: rowType
+            ytd: 6.027456183070403
+            itd: 1.4658129805029452
+            details:
+            - qtd: 5.962133916683182
+              allocationEventId:
+                code: code
+                scope: scope
+              kind: kind
+              ytd: 5.637376656633329
+              itd: 2.3021358869347655
+              eventDate: 2000-01-23T04:56:07.000+00:00
+            - qtd: 5.962133916683182
+              allocationEventId:
+                code: code
+                scope: scope
+              kind: kind
+              ytd: 5.637376656633329
+              itd: 2.3021358869347655
+              eventDate: 2000-01-23T04:56:07.000+00:00
+          footingDifference: 1.2315135367772556
+          periodStart: 2000-01-23T04:56:07.000+00:00
+          periodEnd: 2000-01-23T04:56:07.000+00:00
+          status: status
+        warnings:
+        - entityId: entityId
+          message: message
+        - entityId: entityId
+          message: message
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/PartnerCapitalAccount'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        warnings:
+          items:
+            $ref: '#/components/schemas/Warning'
+          nullable: true
+          type: array
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     ResourceRecord:
       additionalProperties: false
       example:
@@ -389558,6 +391317,8 @@ components:
           type: number
         distributionSeriesSelection:
           description: "Available values: ProRataByNav, FIFO, SpecifiedSeries."
+          maxLength: 64
+          minLength: 0
           nullable: true
           type: string
         dealLinkedSeries:
@@ -399596,8 +401357,8 @@ components:
           minLength: 1
           type: string
         category:
-          description: "The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation\
-            \ or UnclassifiedInstrument."
+          description: "The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation,\
+            \ UnclassifiedInstrument or CostWithoutUnits."
           minLength: 1
           type: string
         severity:
@@ -411061,9 +412822,11 @@ components:
         condition:
           description: "The condition that the transaction must satisfy to generate\
             \ the movement, such as: Portfolio.BaseCurrency eq 'GBP'. The condition\
-            \ can contain fields and properties from transactions and portfolios.\
-            \ If no condition is provided, the movement will apply for all transactions\
-            \ of this type."
+            \ can contain fields and properties from transactions and portfolios,\
+            \ and the fund and NAV type being processed as Fund.Id.Scope, Fund.Id.Code\
+            \ and NavType.Code, which are absent outside a fund NAV type, so only\
+            \ 'not exists' is true there. If no condition is provided, the movement\
+            \ will apply for all transactions of this type."
           maxLength: 16384
           minLength: 0
           nullable: true
@@ -416610,11 +418373,13 @@ components:
           overwriteManualEditsOnReRun: true
         aggregateRules:
         - leftOperation: leftOperation
+          isCaseSensitive: true
           leftFormula: leftFormula
           rightFormula: rightFormula
           ruleName: ruleName
           rightOperation: rightOperation
         - leftOperation: leftOperation
+          isCaseSensitive: true
           leftFormula: leftFormula
           rightFormula: rightFormula
           ruleName: ruleName
@@ -431356,7 +433121,6 @@ components:
           status: status
         values:
         - sourceId: sourceId
-          sequenceNumber: 6
           subHoldingKeys:
             key:
               referenceData:
@@ -431373,18 +433137,19 @@ components:
                   - values
                   - values
               key: key
-          entryType: entryType
-          groupById: 0
-          accountingDate: 2000-01-23T04:56:07.000+00:00
           movementName: movementName
-          diaryEntryCode: diaryEntryCode
+          balanceFxRate: 1.4658129805029452
+          cashPoolFxPnlBase:
+            amount: 0.8008281904610115
+            currency: currency
+          cashflowBase:
+            amount: 0.8008281904610115
+            currency: currency
+          balanceBase:
+            amount: 0.8008281904610115
+            currency: currency
           activityDate: 2000-01-23T04:56:07.000+00:00
-          portfolioId:
-            code: code
-            scope: scope
-          instructionType: instructionType
-          originDiaryEntryCode: originDiaryEntryCode
-          balanceLocal:
+          tradeDateToSettlementDateFxPnlBase:
             amount: 0.8008281904610115
             currency: currency
           links:
@@ -431397,9 +433162,31 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           cashStatementActionType: cashStatementActionType
+          costBasisBase:
+            amount: 0.8008281904610115
+            currency: currency
           cashflowLocal:
             amount: 0.8008281904610115
             currency: currency
+          sequenceNumber: 6
+          entryType: entryType
+          groupById: 0
+          accountingDate: 2000-01-23T04:56:07.000+00:00
+          unrealisedFxPnlBase:
+            amount: 0.8008281904610115
+            currency: currency
+          diaryEntryCode: diaryEntryCode
+          fxRateMovement: 5.637376656633329
+          portfolioId:
+            code: code
+            scope: scope
+          instructionType: instructionType
+          originDiaryEntryCode: originDiaryEntryCode
+          balanceLocal:
+            amount: 0.8008281904610115
+            currency: currency
+          avgRate: 5.962133916683182
+          balanceBaseFailureReason: balanceBaseFailureReason
           properties:
             key:
               referenceData:
@@ -431419,7 +433206,6 @@ components:
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
         - sourceId: sourceId
-          sequenceNumber: 6
           subHoldingKeys:
             key:
               referenceData:
@@ -431436,18 +433222,19 @@ components:
                   - values
                   - values
               key: key
-          entryType: entryType
-          groupById: 0
-          accountingDate: 2000-01-23T04:56:07.000+00:00
           movementName: movementName
-          diaryEntryCode: diaryEntryCode
+          balanceFxRate: 1.4658129805029452
+          cashPoolFxPnlBase:
+            amount: 0.8008281904610115
+            currency: currency
+          cashflowBase:
+            amount: 0.8008281904610115
+            currency: currency
+          balanceBase:
+            amount: 0.8008281904610115
+            currency: currency
           activityDate: 2000-01-23T04:56:07.000+00:00
-          portfolioId:
-            code: code
-            scope: scope
-          instructionType: instructionType
-          originDiaryEntryCode: originDiaryEntryCode
-          balanceLocal:
+          tradeDateToSettlementDateFxPnlBase:
             amount: 0.8008281904610115
             currency: currency
           links:
@@ -431460,9 +433247,31 @@ components:
             href: https://openapi-generator.tech
             relation: relation
           cashStatementActionType: cashStatementActionType
+          costBasisBase:
+            amount: 0.8008281904610115
+            currency: currency
           cashflowLocal:
             amount: 0.8008281904610115
             currency: currency
+          sequenceNumber: 6
+          entryType: entryType
+          groupById: 0
+          accountingDate: 2000-01-23T04:56:07.000+00:00
+          unrealisedFxPnlBase:
+            amount: 0.8008281904610115
+            currency: currency
+          diaryEntryCode: diaryEntryCode
+          fxRateMovement: 5.637376656633329
+          portfolioId:
+            code: code
+            scope: scope
+          instructionType: instructionType
+          originDiaryEntryCode: originDiaryEntryCode
+          balanceLocal:
+            amount: 0.8008281904610115
+            currency: currency
+          avgRate: 5.962133916683182
+          balanceBaseFailureReason: balanceBaseFailureReason
           properties:
             key:
               referenceData:
@@ -438123,6 +439932,244 @@ components:
         values:
           items:
             $ref: '#/components/schemas/JournalEntryLine'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      - version
+      type: object
+    VersionedResourceListOfOpenCloseMovementRecord:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - subHoldingKeys:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          openingMetrics:
+            key: 1.4658129805029452
+          instrumentScope: instrumentScope
+          movements:
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          opening:
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          closingMetrics:
+            key: 5.962133916683182
+          portfolioId:
+            code: code
+            scope: scope
+          closing:
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          holdingType: holdingType
+          instrumentUid: instrumentUid
+          currency: currency
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          errors:
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+        - subHoldingKeys:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+          openingMetrics:
+            key: 1.4658129805029452
+          instrumentScope: instrumentScope
+          movements:
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          opening:
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          closingMetrics:
+            key: 5.962133916683182
+          portfolioId:
+            code: code
+            scope: scope
+          closing:
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          - bucket: bucket
+            component: component
+            portfolio: 6.027456183070403
+            variant: variant
+            local: 0.8008281904610115
+          holdingType: holdingType
+          instrumentUid: instrumentUid
+          currency: currency
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          errors:
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        version:
+          stagedModificationIdModified: stagedModificationIdModified
+          reasonModified: reasonModified
+          entityUniqueId: entityUniqueId
+          requestIdModified: requestIdModified
+          reasonCreated: reasonCreated
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 1
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          requestIdCreated: requestIdCreated
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        version:
+          $ref: '#/components/schemas/Version'
+        values:
+          items:
+            $ref: '#/components/schemas/OpenCloseMovementRecord'
           type: array
         href:
           format: uri

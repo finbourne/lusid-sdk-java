@@ -3340,7 +3340,7 @@ public class TransactionPortfoliosApiExample {
 
 ## getRegistry
 
-> VersionedResourceListWithWarningsOfRegistryLine getRegistry(scope, code, effectiveAt, asAt, filter, propertyKeys)
+> VersionedResourceListWithWarningsOfRegistryLine getRegistry(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page)
 
 [EXPERIMENTAL] GetRegistry: [EXPERIMENTAL] GetRegistry: Get the registry of a transaction portfolio.
 
@@ -3391,11 +3391,15 @@ public class TransactionPortfoliosApiExample {
         OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the registry of the transaction portfolio. Defaults   to return the latest version if not specified.
         String filter = "filter_example"; // String | Expression to filter the result set.   For example, to filter on the Holding Type, use \"holdingType eq 'p'\".   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" or \"Holding\" domain to decorate onto   the lines. These must have the format {domain}/{scope}/{code}, for example \"Instrument/system/Name\" or \"Holding/system/CommittedCapital\".
+        String investorRecordId = "investorRecordId_example"; // String | When provided, only the lines of this investor record are returned.
+        String commitmentLineId = "commitmentLineId_example"; // String | When provided, only the lines of this commitment line are returned.
+        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing registry lines from a previous call to get the registry.   This value is returned from the previous call. If a pagination token is provided, the effectiveAt, asAt, filter,   propertyKeys, investorRecordId and commitmentLineId must not change between calls.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListWithWarningsOfRegistryLine result = apiInstance.getRegistry(scope, code, effectiveAt, asAt, filter, propertyKeys).execute(opts);
+            // VersionedResourceListWithWarningsOfRegistryLine result = apiInstance.getRegistry(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page).execute(opts);
 
-            VersionedResourceListWithWarningsOfRegistryLine result = apiInstance.getRegistry(scope, code, effectiveAt, asAt, filter, propertyKeys).execute();
+            VersionedResourceListWithWarningsOfRegistryLine result = apiInstance.getRegistry(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling TransactionPortfoliosApi#getRegistry");
@@ -3418,6 +3422,10 @@ public class TransactionPortfoliosApiExample {
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the registry of the transaction portfolio. Defaults   to return the latest version if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the result set.   For example, to filter on the Holding Type, use \&quot;holdingType eq &#39;p&#39;\&quot;.   For more information about filtering LUSID results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; or \&quot;Holding\&quot; domain to decorate onto   the lines. These must have the format {domain}/{scope}/{code}, for example \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/CommittedCapital\&quot;. | [optional] |
+| **investorRecordId** | **String**| When provided, only the lines of this investor record are returned. | [optional] |
+| **commitmentLineId** | **String**| When provided, only the lines of this commitment line are returned. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing registry lines from a previous call to get the registry.   This value is returned from the previous call. If a pagination token is provided, the effectiveAt, asAt, filter,   propertyKeys, investorRecordId and commitmentLineId must not change between calls. | [optional] |
 
 ### Return type
 

@@ -53,14 +53,13 @@ import com.finbourne.lusid.model.ManagementFeeResult;
 import com.finbourne.lusid.model.NavActivityAdjustment;
 import com.finbourne.lusid.model.NavActivityAdjustmentResponse;
 import java.time.OffsetDateTime;
+import com.finbourne.lusid.model.OpenCloseMovementQueryParameters;
 import com.finbourne.lusid.model.Operation;
 import com.finbourne.lusid.model.PagedResourceListOfFacility;
 import com.finbourne.lusid.model.PagedResourceListOfFee;
 import com.finbourne.lusid.model.PagedResourceListOfFund;
 import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntries;
 import com.finbourne.lusid.model.PagedResourceListOfFundCalendarEntry;
-import com.finbourne.lusid.model.PagedResourceListOfFundPartner;
-import com.finbourne.lusid.model.PagedResourceListOfPartnerCapitalAccount;
 import com.finbourne.lusid.model.PagedResourceListOfTaxCostRecord;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointInstrument;
 import com.finbourne.lusid.model.PagedResourceListOfValuationPointOverview;
@@ -82,10 +81,13 @@ import com.finbourne.lusid.model.ResourceListOfPartnerStatement;
 import com.finbourne.lusid.model.ResourceListOfSeries;
 import com.finbourne.lusid.model.ResourceListOfTaxExceptionItem;
 import com.finbourne.lusid.model.ResourceListOfTaxProvision;
+import com.finbourne.lusid.model.ResourceListWithWarningsOfFundPartner;
+import com.finbourne.lusid.model.ResourceListWithWarningsOfPartnerCapitalAccount;
 import com.finbourne.lusid.model.RevertValuationPointDataRequest;
 import com.finbourne.lusid.model.RevertValuationPointResponse;
 import com.finbourne.lusid.model.SeriesDefinitionRequest;
 import com.finbourne.lusid.model.SetShareClassInstrumentsRequest;
+import com.finbourne.lusid.model.ShareClassDefinition;
 import com.finbourne.lusid.model.ShareClassProperties;
 import com.finbourne.lusid.model.SingleValuationPointQueryParameters;
 import com.finbourne.lusid.model.TaxCostRecordRequest;
@@ -121,6 +123,7 @@ import com.finbourne.lusid.model.ValuationPointResourceListOfUnsettledTransactio
 import com.finbourne.lusid.model.VersionedResourceListOfFundA2BDataRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfFundA2BMovementRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfHoldingContributor;
+import com.finbourne.lusid.model.VersionedResourceListOfOpenCloseMovementRecord;
 import com.finbourne.lusid.model.VersionedResourceListOfPortfolioHolding;
 import com.finbourne.lusid.model.VersionedResourceListWithWarningsOfRegistryLine;
 
@@ -1208,6 +1211,259 @@ public class FundsApi {
      */
     public APIaddSeriesRequest addSeries(String scope, String code, List<SeriesDefinitionRequest> seriesDefinitionRequest) {
         return new APIaddSeriesRequest(scope, code, seriesDefinitionRequest);
+    }
+    private okhttp3.Call addShareClassesCall(String scope, String code, List<ShareClassDefinition> shareClassDefinition, final ApiCallback _callback) throws ApiException {
+        return addShareClassesCall(scope, code, shareClassDefinition,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call addShareClassesCall(String scope, String code, List<ShareClassDefinition> shareClassDefinition, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = shareClassDefinition;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/shareclasses"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call addShareClassesValidateBeforeCall(String scope, String code, List<ShareClassDefinition> shareClassDefinition, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling addShareClasses(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling addShareClasses(Async)");
+        }
+
+        // verify the required parameter 'shareClassDefinition' is set
+        if (shareClassDefinition == null) {
+            throw new ApiException("Missing the required parameter 'shareClassDefinition' when calling addShareClasses(Async)");
+        }
+
+        return addShareClassesCall(scope, code, shareClassDefinition, _callback, opts);
+
+    }
+
+
+    private ApiResponse<Fund> addShareClassesWithHttpInfo(String scope, String code, List<ShareClassDefinition> shareClassDefinition) throws ApiException {
+        okhttp3.Call localVarCall = addShareClassesValidateBeforeCall(scope, code, shareClassDefinition, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<Fund> addShareClassesWithHttpInfo(String scope, String code, List<ShareClassDefinition> shareClassDefinition, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = addShareClassesValidateBeforeCall(scope, code, shareClassDefinition, null, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call addShareClassesAsync(String scope, String code, List<ShareClassDefinition> shareClassDefinition, final ApiCallback<Fund> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = addShareClassesValidateBeforeCall(scope, code, shareClassDefinition, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call addShareClassesAsync(String scope, String code, List<ShareClassDefinition> shareClassDefinition, final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = addShareClassesValidateBeforeCall(scope, code, shareClassDefinition, _callback, opts);
+        Type localVarReturnType = new TypeToken<Fund>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIaddShareClassesRequest {
+        private final String scope;
+        private final String code;
+        private final List<ShareClassDefinition> shareClassDefinition;
+
+        private APIaddShareClassesRequest(String scope, String code, List<ShareClassDefinition> shareClassDefinition) {
+            this.scope = scope;
+            this.code = code;
+            this.shareClassDefinition = shareClassDefinition;
+        }
+
+        /**
+         * Build call for addShareClasses
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added ShareClasses. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return addShareClassesCall(scope, code, shareClassDefinition, _callback);
+        }
+
+        /**
+         * Execute addShareClasses request
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added ShareClasses. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute() throws ApiException {
+            ApiResponse<Fund> localVarResp = addShareClassesWithHttpInfo(scope, code, shareClassDefinition);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute addShareClasses request. Use any specified configuration options to override any other configuration for this request only.
+         * @return Fund
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added ShareClasses. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public Fund execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<Fund> localVarResp = addShareClassesWithHttpInfo(scope, code, shareClassDefinition, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute addShareClasses request with HTTP info returned
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added ShareClasses. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo() throws ApiException {
+            return addShareClassesWithHttpInfo(scope, code, shareClassDefinition);
+        }
+
+        /**
+         * Execute addShareClasses request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;Fund&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added ShareClasses. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<Fund> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return addShareClassesWithHttpInfo(scope, code, shareClassDefinition, opts);
+        }
+
+        /**
+         * Execute addShareClasses request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added ShareClasses. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback) throws ApiException {
+            return addShareClassesAsync(scope, code, shareClassDefinition, _callback);
+        }
+
+        /**
+         * Execute addShareClasses request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The updated Fund with the added ShareClasses. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<Fund> _callback, ConfigurationOptions opts) throws ApiException {
+            return addShareClassesAsync(scope, code, shareClassDefinition, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] AddShareClasses: Add ShareClasses to a Fund.
+     * Add new ShareClass definitions to the Fund. All requested ShareClassShortCodes must be new;  to update existing share classes use PatchFund.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param shareClassDefinition The definitions of the ShareClasses to add to the Fund. (required)
+     * @return APIaddShareClassesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The updated Fund with the added ShareClasses. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIaddShareClassesRequest addShareClasses(String scope, String code, List<ShareClassDefinition> shareClassDefinition) {
+        return new APIaddShareClassesRequest(scope, code, shareClassDefinition);
     }
     private okhttp3.Call advanceTaxReturnCall(String scope, String code, TaxReturnTransitionRequest taxReturnTransitionRequest, String effectiveAt, String taxPeriod, final ApiCallback _callback) throws ApiException {
         return advanceTaxReturnCall(scope, code, taxReturnTransitionRequest, effectiveAt, taxPeriod,  _callback, new ConfigurationOptions());
@@ -9745,6 +10001,304 @@ public class FundsApi {
     public APIgetHoldingsForFundRequest getHoldingsForFund(String scope, String code, SingleValuationPointQueryParameters singleValuationPointQueryParameters) {
         return new APIgetHoldingsForFundRequest(scope, code, singleValuationPointQueryParameters);
     }
+    private okhttp3.Call getOpenCloseMovementReportForFundCall(String scope, String code, OpenCloseMovementQueryParameters openCloseMovementQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, final ApiCallback _callback) throws ApiException {
+        return getOpenCloseMovementReportForFundCall(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getOpenCloseMovementReportForFundCall(String scope, String code, OpenCloseMovementQueryParameters openCloseMovementQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = openCloseMovementQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/valuationpoints/openclose/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getOpenCloseMovementReportForFundValidateBeforeCall(String scope, String code, OpenCloseMovementQueryParameters openCloseMovementQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getOpenCloseMovementReportForFund(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getOpenCloseMovementReportForFund(Async)");
+        }
+
+        // verify the required parameter 'openCloseMovementQueryParameters' is set
+        if (openCloseMovementQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'openCloseMovementQueryParameters' when calling getOpenCloseMovementReportForFund(Async)");
+        }
+
+        return getOpenCloseMovementReportForFundCall(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, _callback, opts);
+
+    }
+
+
+    private ApiResponse<VersionedResourceListOfOpenCloseMovementRecord> getOpenCloseMovementReportForFundWithHttpInfo(String scope, String code, OpenCloseMovementQueryParameters openCloseMovementQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter) throws ApiException {
+        okhttp3.Call localVarCall = getOpenCloseMovementReportForFundValidateBeforeCall(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfOpenCloseMovementRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<VersionedResourceListOfOpenCloseMovementRecord> getOpenCloseMovementReportForFundWithHttpInfo(String scope, String code, OpenCloseMovementQueryParameters openCloseMovementQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getOpenCloseMovementReportForFundValidateBeforeCall(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, null, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfOpenCloseMovementRecord>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getOpenCloseMovementReportForFundAsync(String scope, String code, OpenCloseMovementQueryParameters openCloseMovementQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, final ApiCallback<VersionedResourceListOfOpenCloseMovementRecord> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getOpenCloseMovementReportForFundValidateBeforeCall(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfOpenCloseMovementRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getOpenCloseMovementReportForFundAsync(String scope, String code, OpenCloseMovementQueryParameters openCloseMovementQueryParameters, String navTypeCode, OffsetDateTime asAt, String filter, final ApiCallback<VersionedResourceListOfOpenCloseMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getOpenCloseMovementReportForFundValidateBeforeCall(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, _callback, opts);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfOpenCloseMovementRecord>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetOpenCloseMovementReportForFundRequest {
+        private final String scope;
+        private final String code;
+        private final OpenCloseMovementQueryParameters openCloseMovementQueryParameters;
+        private String navTypeCode;
+        private OffsetDateTime asAt;
+        private String filter;
+
+        private APIgetOpenCloseMovementReportForFundRequest(String scope, String code, OpenCloseMovementQueryParameters openCloseMovementQueryParameters) {
+            this.scope = scope;
+            this.code = code;
+            this.openCloseMovementQueryParameters = openCloseMovementQueryParameters;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIgetOpenCloseMovementReportForFundRequest
+         */
+        public APIgetOpenCloseMovementReportForFundRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to resolve the fund and the timeline. Defaults   to return the latest version if not specified. (optional)
+         * @return APIgetOpenCloseMovementReportForFundRequest
+         */
+        public APIgetOpenCloseMovementReportForFundRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetOpenCloseMovementReportForFundRequest
+         */
+        public APIgetOpenCloseMovementReportForFundRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Build call for getOpenCloseMovementReportForFund
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open, close and movement report for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getOpenCloseMovementReportForFundCall(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, _callback);
+        }
+
+        /**
+         * Execute getOpenCloseMovementReportForFund request
+         * @return VersionedResourceListOfOpenCloseMovementRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open, close and movement report for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfOpenCloseMovementRecord execute() throws ApiException {
+            ApiResponse<VersionedResourceListOfOpenCloseMovementRecord> localVarResp = getOpenCloseMovementReportForFundWithHttpInfo(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getOpenCloseMovementReportForFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return VersionedResourceListOfOpenCloseMovementRecord
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open, close and movement report for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public VersionedResourceListOfOpenCloseMovementRecord execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<VersionedResourceListOfOpenCloseMovementRecord> localVarResp = getOpenCloseMovementReportForFundWithHttpInfo(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getOpenCloseMovementReportForFund request with HTTP info returned
+         * @return ApiResponse&lt;VersionedResourceListOfOpenCloseMovementRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open, close and movement report for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfOpenCloseMovementRecord> executeWithHttpInfo() throws ApiException {
+            return getOpenCloseMovementReportForFundWithHttpInfo(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter);
+        }
+
+        /**
+         * Execute getOpenCloseMovementReportForFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;VersionedResourceListOfOpenCloseMovementRecord&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open, close and movement report for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VersionedResourceListOfOpenCloseMovementRecord> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getOpenCloseMovementReportForFundWithHttpInfo(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, opts);
+        }
+
+        /**
+         * Execute getOpenCloseMovementReportForFund request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open, close and movement report for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfOpenCloseMovementRecord> _callback) throws ApiException {
+            return getOpenCloseMovementReportForFundAsync(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, _callback);
+        }
+
+        /**
+         * Execute getOpenCloseMovementReportForFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The open, close and movement report for transaction portfolios in a Fund </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListOfOpenCloseMovementRecord> _callback, ConfigurationOptions opts) throws ApiException {
+            return getOpenCloseMovementReportForFundAsync(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] GetOpenCloseMovementReportForFund: Get the open, close and movement report for a Fund.
+     * Get, for each instrument held by the transaction portfolios of a Fund (or each kept sub-holding key), the  net asset economic buckets at the opening and closing of a valuation point window, the period&#39;s movements  by economic bucket classified as the journal entry lines classify them, and the requested valuation  metrics and instrument properties. Signs follow the journal entry line convention.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param openCloseMovementQueryParameters The window, the sub-holding keys to keep separate, the instrument property keys and the valuation metrics to report. (required)
+     * @return APIgetOpenCloseMovementReportForFundRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The open, close and movement report for transaction portfolios in a Fund </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetOpenCloseMovementReportForFundRequest getOpenCloseMovementReportForFund(String scope, String code, OpenCloseMovementQueryParameters openCloseMovementQueryParameters) {
+        return new APIgetOpenCloseMovementReportForFundRequest(scope, code, openCloseMovementQueryParameters);
+    }
     private okhttp3.Call getPartnerCapitalAccountCall(String scope, String code, String irScope, String irCode, OffsetDateTime periodStart, OffsetDateTime periodEnd, String navTypeCode, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
         return getPartnerCapitalAccountCall(scope, code, irScope, irCode, periodStart, periodEnd, navTypeCode, asAt,  _callback, new ConfigurationOptions());
     }
@@ -10742,30 +11296,30 @@ public class FundsApi {
     }
 
 
-    private ApiResponse<PagedResourceListOfFundPartner> getPartnersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit) throws ApiException {
+    private ApiResponse<ResourceListWithWarningsOfFundPartner> getPartnersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = getPartnersValidateBeforeCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfFundPartner>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListWithWarningsOfFundPartner>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfFundPartner> getPartnersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+    private ApiResponse<ResourceListWithWarningsOfFundPartner> getPartnersWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
         okhttp3.Call localVarCall = getPartnersValidateBeforeCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, null, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfFundPartner>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListWithWarningsOfFundPartner>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getPartnersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, final ApiCallback<PagedResourceListOfFundPartner> _callback) throws ApiException {
+    private okhttp3.Call getPartnersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, final ApiCallback<ResourceListWithWarningsOfFundPartner> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getPartnersValidateBeforeCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfFundPartner>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListWithWarningsOfFundPartner>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getPartnersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, final ApiCallback<PagedResourceListOfFundPartner> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getPartnersAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, Boolean includeClosed, String page, Integer limit, final ApiCallback<ResourceListWithWarningsOfFundPartner> _callback, ConfigurationOptions opts) throws ApiException {
 
         okhttp3.Call localVarCall = getPartnersValidateBeforeCall(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfFundPartner>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListWithWarningsOfFundPartner>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -10853,7 +11407,7 @@ public class FundsApi {
 
         /**
          * Execute getPartners request
-         * @return PagedResourceListOfFundPartner
+         * @return ResourceListWithWarningsOfFundPartner
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -10863,14 +11417,14 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public PagedResourceListOfFundPartner execute() throws ApiException {
-            ApiResponse<PagedResourceListOfFundPartner> localVarResp = getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit);
+        public ResourceListWithWarningsOfFundPartner execute() throws ApiException {
+            ApiResponse<ResourceListWithWarningsOfFundPartner> localVarResp = getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit);
             return localVarResp.getData();
         }
 
         /**
          * Execute getPartners request. Use any specified configuration options to override any other configuration for this request only.
-         * @return PagedResourceListOfFundPartner
+         * @return ResourceListWithWarningsOfFundPartner
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -10880,14 +11434,14 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public PagedResourceListOfFundPartner execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfFundPartner> localVarResp = getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit, opts);
+        public ResourceListWithWarningsOfFundPartner execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListWithWarningsOfFundPartner> localVarResp = getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute getPartners request with HTTP info returned
-         * @return ApiResponse&lt;PagedResourceListOfFundPartner&gt;
+         * @return ApiResponse&lt;ResourceListWithWarningsOfFundPartner&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -10897,13 +11451,13 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<PagedResourceListOfFundPartner> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<ResourceListWithWarningsOfFundPartner> executeWithHttpInfo() throws ApiException {
             return getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit);
         }
 
         /**
          * Execute getPartners request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;PagedResourceListOfFundPartner&gt;
+         * @return ApiResponse&lt;ResourceListWithWarningsOfFundPartner&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -10913,7 +11467,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<PagedResourceListOfFundPartner> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        public ApiResponse<ResourceListWithWarningsOfFundPartner> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
             return getPartnersWithHttpInfo(scope, code, effectiveAt, asAt, includeClosed, page, limit, opts);
         }
 
@@ -10930,7 +11484,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundPartner> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListWithWarningsOfFundPartner> _callback) throws ApiException {
             return getPartnersAsync(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback);
         }
 
@@ -10947,7 +11501,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfFundPartner> _callback, ConfigurationOptions opts) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListWithWarningsOfFundPartner> _callback, ConfigurationOptions opts) throws ApiException {
             return getPartnersAsync(scope, code, effectiveAt, asAt, includeClosed, page, limit, _callback, opts);
         }
     }
@@ -11225,11 +11779,11 @@ public class FundsApi {
     public APIgetPartnershipConfigPackRequest getPartnershipConfigPack(String scope, String code) {
         return new APIgetPartnershipConfigPackRequest(scope, code);
     }
-    private okhttp3.Call getRegistryForFundCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback) throws ApiException {
-        return getRegistryForFundCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getRegistryForFundCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        return getRegistryForFundCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getRegistryForFundCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRegistryForFundCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -11276,6 +11830,22 @@ public class FundsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
         }
 
+        if (investorRecordId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("investorRecordId", investorRecordId));
+        }
+
+        if (commitmentLineId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("commitmentLineId", commitmentLineId));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -11298,7 +11868,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRegistryForFundValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRegistryForFundValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getRegistryForFund(Async)");
@@ -11309,34 +11879,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getRegistryForFund(Async)");
         }
 
-        return getRegistryForFundCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback, opts);
+        return getRegistryForFundCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryForFundWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode) throws ApiException {
-        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryForFundWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, String investorRecordId, String commitmentLineId, Integer limit, String page) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryForFundWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, null, opts);
+    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryForFundWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, String investorRecordId, String commitmentLineId, Integer limit, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getRegistryForFundAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
+    private okhttp3.Call getRegistryForFundAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getRegistryForFundAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRegistryForFundAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String navTypeCode, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback, opts);
+        okhttp3.Call localVarCall = getRegistryForFundValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -11350,6 +11920,10 @@ public class FundsApi {
         private String filter;
         private List<String> propertyKeys;
         private String navTypeCode;
+        private String investorRecordId;
+        private String commitmentLineId;
+        private Integer limit;
+        private String page;
 
         private APIgetRegistryForFundRequest(String scope, String code) {
             this.scope = scope;
@@ -11407,6 +11981,46 @@ public class FundsApi {
         }
 
         /**
+         * Set investorRecordId
+         * @param investorRecordId When provided, only the lines of this investor record are returned. (optional)
+         * @return APIgetRegistryForFundRequest
+         */
+        public APIgetRegistryForFundRequest investorRecordId(String investorRecordId) {
+            this.investorRecordId = investorRecordId;
+            return this;
+        }
+
+        /**
+         * Set commitmentLineId
+         * @param commitmentLineId When provided, only the lines of this commitment line are returned. (optional)
+         * @return APIgetRegistryForFundRequest
+         */
+        public APIgetRegistryForFundRequest commitmentLineId(String commitmentLineId) {
+            this.commitmentLineId = commitmentLineId;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
+         * @return APIgetRegistryForFundRequest
+         */
+        public APIgetRegistryForFundRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing registry lines from a previous call to get the registry.   This value is returned from the previous call. If a pagination token is provided, the effectiveAt, asAt, filter,   propertyKeys, investorRecordId and commitmentLineId must not change between calls. (optional)
+         * @return APIgetRegistryForFundRequest
+         */
+        public APIgetRegistryForFundRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
          * Build call for getRegistryForFund
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -11420,7 +12034,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getRegistryForFundCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback);
+            return getRegistryForFundCall(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, _callback);
         }
 
         /**
@@ -11436,7 +12050,7 @@ public class FundsApi {
          </table>
          */
         public VersionedResourceListWithWarningsOfRegistryLine execute() throws ApiException {
-            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode);
+            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page);
             return localVarResp.getData();
         }
 
@@ -11453,7 +12067,7 @@ public class FundsApi {
          </table>
          */
         public VersionedResourceListWithWarningsOfRegistryLine execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, opts);
+            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, opts);
             return localVarResp.getData();
         }
 
@@ -11470,7 +12084,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> executeWithHttpInfo() throws ApiException {
-            return getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode);
+            return getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page);
         }
 
         /**
@@ -11486,7 +12100,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, opts);
+            return getRegistryForFundWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, opts);
         }
 
         /**
@@ -11503,7 +12117,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
-            return getRegistryForFundAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback);
+            return getRegistryForFundAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, _callback);
         }
 
         /**
@@ -11520,7 +12134,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
-            return getRegistryForFundAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, _callback, opts);
+            return getRegistryForFundAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page, _callback, opts);
         }
     }
 
@@ -14389,11 +15003,11 @@ public class FundsApi {
     public APIgetTaxSyncStatusRequest getTaxSyncStatus(String scope, String code) {
         return new APIgetTaxSyncStatusRequest(scope, code);
     }
-    private okhttp3.Call getValuationForFundCall(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback _callback) throws ApiException {
-        return getValuationForFundCall(scope, code, navTypeCode, fundValuationRequest,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getValuationForFundCall(String scope, String code, String navTypeCode, Boolean auditMode, FundValuationRequest fundValuationRequest, final ApiCallback _callback) throws ApiException {
+        return getValuationForFundCall(scope, code, navTypeCode, auditMode, fundValuationRequest,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getValuationForFundCall(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationForFundCall(String scope, String code, String navTypeCode, Boolean auditMode, FundValuationRequest fundValuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -14424,6 +15038,10 @@ public class FundsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
         }
 
+        if (auditMode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("auditMode", auditMode));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -14450,7 +15068,7 @@ public class FundsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValuationForFundValidateBeforeCall(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationForFundValidateBeforeCall(String scope, String code, String navTypeCode, Boolean auditMode, FundValuationRequest fundValuationRequest, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getValuationForFund(Async)");
@@ -14461,34 +15079,34 @@ public class FundsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getValuationForFund(Async)");
         }
 
-        return getValuationForFundCall(scope, code, navTypeCode, fundValuationRequest, _callback, opts);
+        return getValuationForFundCall(scope, code, navTypeCode, auditMode, fundValuationRequest, _callback, opts);
 
     }
 
 
-    private ApiResponse<ListAggregationResponse> getValuationForFundWithHttpInfo(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest) throws ApiException {
-        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, fundValuationRequest, null, new ConfigurationOptions());
+    private ApiResponse<ListAggregationResponse> getValuationForFundWithHttpInfo(String scope, String code, String navTypeCode, Boolean auditMode, FundValuationRequest fundValuationRequest) throws ApiException {
+        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, auditMode, fundValuationRequest, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<ListAggregationResponse> getValuationForFundWithHttpInfo(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, fundValuationRequest, null, opts);
+    private ApiResponse<ListAggregationResponse> getValuationForFundWithHttpInfo(String scope, String code, String navTypeCode, Boolean auditMode, FundValuationRequest fundValuationRequest, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, auditMode, fundValuationRequest, null, opts);
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getValuationForFundAsync(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
+    private okhttp3.Call getValuationForFundAsync(String scope, String code, String navTypeCode, Boolean auditMode, FundValuationRequest fundValuationRequest, final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, fundValuationRequest, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, auditMode, fundValuationRequest, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getValuationForFundAsync(String scope, String code, String navTypeCode, FundValuationRequest fundValuationRequest, final ApiCallback<ListAggregationResponse> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getValuationForFundAsync(String scope, String code, String navTypeCode, Boolean auditMode, FundValuationRequest fundValuationRequest, final ApiCallback<ListAggregationResponse> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, fundValuationRequest, _callback, opts);
+        okhttp3.Call localVarCall = getValuationForFundValidateBeforeCall(scope, code, navTypeCode, auditMode, fundValuationRequest, _callback, opts);
         Type localVarReturnType = new TypeToken<ListAggregationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -14498,6 +15116,7 @@ public class FundsApi {
         private final String scope;
         private final String code;
         private String navTypeCode;
+        private Boolean auditMode;
         private FundValuationRequest fundValuationRequest;
 
         private APIgetValuationForFundRequest(String scope, String code) {
@@ -14512,6 +15131,16 @@ public class FundsApi {
          */
         public APIgetValuationForFundRequest navTypeCode(String navTypeCode) {
             this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Set auditMode
+         * @param auditMode When true, returns the stored valuation address keys instead of running the full aggregation engine, and returns no data if none are stored for the valuation point. Defaults to false. (optional, default to false)
+         * @return APIgetValuationForFundRequest
+         */
+        public APIgetValuationForFundRequest auditMode(Boolean auditMode) {
+            this.auditMode = auditMode;
             return this;
         }
 
@@ -14539,7 +15168,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getValuationForFundCall(scope, code, navTypeCode, fundValuationRequest, _callback);
+            return getValuationForFundCall(scope, code, navTypeCode, auditMode, fundValuationRequest, _callback);
         }
 
         /**
@@ -14555,7 +15184,7 @@ public class FundsApi {
          </table>
          */
         public ListAggregationResponse execute() throws ApiException {
-            ApiResponse<ListAggregationResponse> localVarResp = getValuationForFundWithHttpInfo(scope, code, navTypeCode, fundValuationRequest);
+            ApiResponse<ListAggregationResponse> localVarResp = getValuationForFundWithHttpInfo(scope, code, navTypeCode, auditMode, fundValuationRequest);
             return localVarResp.getData();
         }
 
@@ -14572,7 +15201,7 @@ public class FundsApi {
          </table>
          */
         public ListAggregationResponse execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<ListAggregationResponse> localVarResp = getValuationForFundWithHttpInfo(scope, code, navTypeCode, fundValuationRequest, opts);
+            ApiResponse<ListAggregationResponse> localVarResp = getValuationForFundWithHttpInfo(scope, code, navTypeCode, auditMode, fundValuationRequest, opts);
             return localVarResp.getData();
         }
 
@@ -14589,7 +15218,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ListAggregationResponse> executeWithHttpInfo() throws ApiException {
-            return getValuationForFundWithHttpInfo(scope, code, navTypeCode, fundValuationRequest);
+            return getValuationForFundWithHttpInfo(scope, code, navTypeCode, auditMode, fundValuationRequest);
         }
 
         /**
@@ -14605,7 +15234,7 @@ public class FundsApi {
          </table>
          */
         public ApiResponse<ListAggregationResponse> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getValuationForFundWithHttpInfo(scope, code, navTypeCode, fundValuationRequest, opts);
+            return getValuationForFundWithHttpInfo(scope, code, navTypeCode, auditMode, fundValuationRequest, opts);
         }
 
         /**
@@ -14622,7 +15251,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback) throws ApiException {
-            return getValuationForFundAsync(scope, code, navTypeCode, fundValuationRequest, _callback);
+            return getValuationForFundAsync(scope, code, navTypeCode, auditMode, fundValuationRequest, _callback);
         }
 
         /**
@@ -14639,7 +15268,7 @@ public class FundsApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<ListAggregationResponse> _callback, ConfigurationOptions opts) throws ApiException {
-            return getValuationForFundAsync(scope, code, navTypeCode, fundValuationRequest, _callback, opts);
+            return getValuationForFundAsync(scope, code, navTypeCode, auditMode, fundValuationRequest, _callback, opts);
         }
     }
 
@@ -15643,7 +16272,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
-     * Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.     Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
+     * Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.     Only the Journal Entry Lines selected by the pnlFilters and externalFeeFilters of the Fund Configuration are returned. If the Fund Configuration has neither pnlFilters nor externalFeeFilters, no rows are returned.     Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataQueryParameters The arguments to use for generating the PnL summary. (required)
@@ -17630,7 +18259,7 @@ public class FundsApi {
 
         /**
          * Set sortBy
-         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
+         * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;.   The fields that can be sorted on are FeeCode, DisplayName, Description, Origin, CalculationBase, AccrualCurrency,   Treatment, TotalAnnualAccrualAmount, FeeRatePercentage, PayableFrequency, BusinessDayConvention, StartDate, EndDate,   NavTypeCode, FeeTypeId.Scope, FeeTypeId.Code, PortfolioId.Scope, PortfolioId.Code, AnchorDate.Day and AnchorDate.Month.   To sort on a property from the &#39;Fee&#39; domain, specify \&quot;Properties[{domain}/{scope}/{code}]\&quot;, for example   \&quot;Properties[Fee/Account/Id] ASC\&quot;. Sorting on any other field of a Fee returns a 400 that names the field. (optional)
          * @return APIlistFeesRequest
          */
         public APIlistFeesRequest sortBy(List<String> sortBy) {
@@ -19209,30 +19838,30 @@ public class FundsApi {
     }
 
 
-    private ApiResponse<PagedResourceListOfPartnerCapitalAccount> listPartnerCapitalAccountsWithHttpInfo(String scope, String code, OffsetDateTime periodStart, OffsetDateTime periodEnd, String navTypeCode, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
+    private ApiResponse<ResourceListWithWarningsOfPartnerCapitalAccount> listPartnerCapitalAccountsWithHttpInfo(String scope, String code, OffsetDateTime periodStart, OffsetDateTime periodEnd, String navTypeCode, OffsetDateTime asAt, String page, Integer limit) throws ApiException {
         okhttp3.Call localVarCall = listPartnerCapitalAccountsValidateBeforeCall(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit, null, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfPartnerCapitalAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListWithWarningsOfPartnerCapitalAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<PagedResourceListOfPartnerCapitalAccount> listPartnerCapitalAccountsWithHttpInfo(String scope, String code, OffsetDateTime periodStart, OffsetDateTime periodEnd, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
+    private ApiResponse<ResourceListWithWarningsOfPartnerCapitalAccount> listPartnerCapitalAccountsWithHttpInfo(String scope, String code, OffsetDateTime periodStart, OffsetDateTime periodEnd, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, ConfigurationOptions opts) throws ApiException {
         okhttp3.Call localVarCall = listPartnerCapitalAccountsValidateBeforeCall(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit, null, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfPartnerCapitalAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListWithWarningsOfPartnerCapitalAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call listPartnerCapitalAccountsAsync(String scope, String code, OffsetDateTime periodStart, OffsetDateTime periodEnd, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<PagedResourceListOfPartnerCapitalAccount> _callback) throws ApiException {
+    private okhttp3.Call listPartnerCapitalAccountsAsync(String scope, String code, OffsetDateTime periodStart, OffsetDateTime periodEnd, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListWithWarningsOfPartnerCapitalAccount> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listPartnerCapitalAccountsValidateBeforeCall(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit, _callback, new ConfigurationOptions());
-        Type localVarReturnType = new TypeToken<PagedResourceListOfPartnerCapitalAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListWithWarningsOfPartnerCapitalAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call listPartnerCapitalAccountsAsync(String scope, String code, OffsetDateTime periodStart, OffsetDateTime periodEnd, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<PagedResourceListOfPartnerCapitalAccount> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call listPartnerCapitalAccountsAsync(String scope, String code, OffsetDateTime periodStart, OffsetDateTime periodEnd, String navTypeCode, OffsetDateTime asAt, String page, Integer limit, final ApiCallback<ResourceListWithWarningsOfPartnerCapitalAccount> _callback, ConfigurationOptions opts) throws ApiException {
 
         okhttp3.Call localVarCall = listPartnerCapitalAccountsValidateBeforeCall(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit, _callback, opts);
-        Type localVarReturnType = new TypeToken<PagedResourceListOfPartnerCapitalAccount>(){}.getType();
+        Type localVarReturnType = new TypeToken<ResourceListWithWarningsOfPartnerCapitalAccount>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -19331,7 +19960,7 @@ public class FundsApi {
 
         /**
          * Execute listPartnerCapitalAccounts request
-         * @return PagedResourceListOfPartnerCapitalAccount
+         * @return ResourceListWithWarningsOfPartnerCapitalAccount
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -19341,14 +19970,14 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public PagedResourceListOfPartnerCapitalAccount execute() throws ApiException {
-            ApiResponse<PagedResourceListOfPartnerCapitalAccount> localVarResp = listPartnerCapitalAccountsWithHttpInfo(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit);
+        public ResourceListWithWarningsOfPartnerCapitalAccount execute() throws ApiException {
+            ApiResponse<ResourceListWithWarningsOfPartnerCapitalAccount> localVarResp = listPartnerCapitalAccountsWithHttpInfo(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit);
             return localVarResp.getData();
         }
 
         /**
          * Execute listPartnerCapitalAccounts request. Use any specified configuration options to override any other configuration for this request only.
-         * @return PagedResourceListOfPartnerCapitalAccount
+         * @return ResourceListWithWarningsOfPartnerCapitalAccount
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -19358,14 +19987,14 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public PagedResourceListOfPartnerCapitalAccount execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<PagedResourceListOfPartnerCapitalAccount> localVarResp = listPartnerCapitalAccountsWithHttpInfo(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit, opts);
+        public ResourceListWithWarningsOfPartnerCapitalAccount execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ResourceListWithWarningsOfPartnerCapitalAccount> localVarResp = listPartnerCapitalAccountsWithHttpInfo(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit, opts);
             return localVarResp.getData();
         }
 
         /**
          * Execute listPartnerCapitalAccounts request with HTTP info returned
-         * @return ApiResponse&lt;PagedResourceListOfPartnerCapitalAccount&gt;
+         * @return ApiResponse&lt;ResourceListWithWarningsOfPartnerCapitalAccount&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -19375,13 +20004,13 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<PagedResourceListOfPartnerCapitalAccount> executeWithHttpInfo() throws ApiException {
+        public ApiResponse<ResourceListWithWarningsOfPartnerCapitalAccount> executeWithHttpInfo() throws ApiException {
             return listPartnerCapitalAccountsWithHttpInfo(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit);
         }
 
         /**
          * Execute listPartnerCapitalAccounts request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
-         * @return ApiResponse&lt;PagedResourceListOfPartnerCapitalAccount&gt;
+         * @return ApiResponse&lt;ResourceListWithWarningsOfPartnerCapitalAccount&gt;
          * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
          * @http.response.details
          <table summary="Response Details" border="1">
@@ -19391,7 +20020,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public ApiResponse<PagedResourceListOfPartnerCapitalAccount> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+        public ApiResponse<ResourceListWithWarningsOfPartnerCapitalAccount> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
             return listPartnerCapitalAccountsWithHttpInfo(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit, opts);
         }
 
@@ -19408,7 +20037,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPartnerCapitalAccount> _callback) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListWithWarningsOfPartnerCapitalAccount> _callback) throws ApiException {
             return listPartnerCapitalAccountsAsync(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit, _callback);
         }
 
@@ -19425,7 +20054,7 @@ public class FundsApi {
             <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
          </table>
          */
-        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfPartnerCapitalAccount> _callback, ConfigurationOptions opts) throws ApiException {
+        public okhttp3.Call executeAsync(final ApiCallback<ResourceListWithWarningsOfPartnerCapitalAccount> _callback, ConfigurationOptions opts) throws ApiException {
             return listPartnerCapitalAccountsAsync(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit, _callback, opts);
         }
     }
@@ -21165,7 +21794,7 @@ public class FundsApi {
 
     /**
      * [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
-     * Lists all complex market data within the effective date range of the specified Valuation Point for a Fund,  including any items added via a Complex Close (Post-Close Activity).
+     * Lists the complex market data that the valuation of the specified Valuation Point consumed for a Fund,  including any items added via a Complex Close (Post-Close Activity).     Complex market data that is available but that the valuation did not consume is not listed, so a Fund whose holdings are all priced from quotes returns no rows.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
      * @param valuationPointDataQueryParameters The arguments to use for querying the complex market data. (required)

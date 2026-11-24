@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ruleName** | **String** | The name of the rule. | [default to String]
 **leftValue** | **String** | The left-side value. | [optional] [default to String]
 **rightValue** | **String** | The right-side value. | [optional] [default to String]
-**difference** | **String** | The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)). | [optional] [default to String]
+**difference** | **String** | The unsigned size of the difference: ABS(leftValue - rightValue) for a number, the Levenshtein distance for a string, days for a date, 0 or 1 for a boolean. | [optional] [default to String]
 **appliedTolerance** | [**ToleranceBase**](ToleranceBase.md) |  | [optional] [default to ToleranceBase]
 
 ```java

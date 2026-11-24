@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **paymentHold** | [**AllocationPaymentHold**](AllocationPaymentHold.md) |  | [optional] [default to AllocationPaymentHold]
 **transfer** | [**AllocationEventNoticeTransfer**](AllocationEventNoticeTransfer.md) |  | [optional] [default to AllocationEventNoticeTransfer]
 **watermark** | **String** | DRAFT until the allocation event is booked, otherwise null. | [optional] [default to String]
+**callCreditApplied** | **java.math.BigDecimal** | The call credit an earlier equalisation kept for the partner that this call draws on, as a positive amount. The lines show the partner&#39;s gross share; the net amount due is that share less the credit applied. Zero when no credit was applied. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.AllocationEventNotice;
@@ -40,6 +41,7 @@ AllocationEventNoticeWire Wire = new AllocationEventNoticeWire();
 AllocationPaymentHold PaymentHold = new AllocationPaymentHold();
 AllocationEventNoticeTransfer Transfer = new AllocationEventNoticeTransfer();
 @jakarta.annotation.Nullable String Watermark = "example Watermark";
+java.math.BigDecimal CallCreditApplied = new java.math.BigDecimal("100.00");
 
 
 AllocationEventNotice allocationEventNoticeInstance = new AllocationEventNotice()
@@ -56,7 +58,8 @@ AllocationEventNotice allocationEventNoticeInstance = new AllocationEventNotice(
     .Wire(Wire)
     .PaymentHold(PaymentHold)
     .Transfer(Transfer)
-    .Watermark(Watermark);
+    .Watermark(Watermark)
+    .CallCreditApplied(CallCreditApplied);
 ```
 
 

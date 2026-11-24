@@ -170,7 +170,7 @@ public class FundTaxExceptionItem {
   }
 
    /**
-   * The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation or UnclassifiedInstrument.
+   * The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation, UnclassifiedInstrument or CostWithoutUnits.
    * @return category
   **/
   @jakarta.annotation.Nonnull

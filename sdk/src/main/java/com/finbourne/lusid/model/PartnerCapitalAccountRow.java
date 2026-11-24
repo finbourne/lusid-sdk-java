@@ -83,7 +83,7 @@ public class PartnerCapitalAccountRow {
   }
 
    /**
-   * The row type: BeginningCapital, Contributions, Distributions, TransfersIn, TransfersOut, NetOperatingIncome, ManagementFeesGross, ManagementFeeOffsets, RealisedGainLoss, UnrealisedGainLoss, CarriedInterest or EndingCapital.
+   * The row type: BeginningCapital, Contributions, Distributions, TransfersIn, TransfersOut, NetOperatingIncome, ManagementFeesGross, ManagementFeeOffsets, RealisedGainLoss, UnrealisedGainLoss, CarriedInterest, EndingCapital, EqualisationInterest (equalisation interest credited to the partner&#39;s capital with no cash, reported after ending capital, which counts it, and only when there is some) or CallCredit (a memo of the call credit equalisations kept for the partner against its future calls: the quarter-to-date and year-to-date columns are its movement in each and inception to date is the credit left at the period end. It is a liability of the fund to the partner, not capital, so ending capital does not count it. Reported last, and only while a credit is left or one moved in the year).
    * @return rowType
   **/
   @jakarta.annotation.Nonnull

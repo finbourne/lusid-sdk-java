@@ -144,7 +144,7 @@ public class AggregateRuleValues {
   }
 
    /**
-   * The measured magnitude of the difference, ToString(ABS(leftValue - rightValue)).
+   * The unsigned size of the difference: ABS(leftValue - rightValue) for a number, the Levenshtein distance for a string, days for a date, 0 or 1 for a boolean.
    * @return difference
   **/
   @jakarta.annotation.Nullable

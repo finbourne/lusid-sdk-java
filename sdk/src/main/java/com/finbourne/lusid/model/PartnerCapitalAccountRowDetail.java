@@ -85,7 +85,7 @@ public class PartnerCapitalAccountRowDetail {
   }
 
    /**
-   * The kind of amount the entry labels: WithholdingTax for tax withheld from a distribution on the partner&#39;s behalf.
+   * The kind of amount the entry labels: WithholdingTax for tax withheld from a distribution on the partner&#39;s behalf; on the CallCredit row, CallCreditGranted for a credit an equalisation kept for the partner and CallCreditApplied, negative, for the part of it a call drew on.
    * @return kind
   **/
   @jakarta.annotation.Nonnull

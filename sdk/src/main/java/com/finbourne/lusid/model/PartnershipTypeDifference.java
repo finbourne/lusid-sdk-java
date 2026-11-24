@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.MissingMovementOption;
 import com.finbourne.lusid.model.PackRegisterDelta;
 import com.finbourne.lusid.model.RegisterDeltaMovement;
 import com.google.gson.TypeAdapter;
@@ -49,7 +50,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * A transaction type a fund&#39;s portfolios resolve whose register deltas are not its contract, or whose sides its scope does not define.
+ * A transaction type a fund&#39;s portfolios resolve whose register deltas are not its contract, whose sides its scope does not define, or whose line legs lack the option that books them into the registry.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PartnershipTypeDifference {
@@ -76,6 +77,10 @@ public class PartnershipTypeDifference {
   public static final String SERIALIZED_NAME_MISSING_SIDES = "missingSides";
   @SerializedName(SERIALIZED_NAME_MISSING_SIDES)
   private List<String> missingSides = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_MISSING_OPTIONS = "missingOptions";
+  @SerializedName(SERIALIZED_NAME_MISSING_OPTIONS)
+  private List<MissingMovementOption> missingOptions = new ArrayList<>();
 
   public PartnershipTypeDifference() {
   }
@@ -230,6 +235,35 @@ public class PartnershipTypeDifference {
   }
 
 
+  public PartnershipTypeDifference missingOptions(List<MissingMovementOption> missingOptions) {
+    
+    this.missingOptions = missingOptions;
+    return this;
+  }
+
+  public PartnershipTypeDifference addMissingOptionsItem(MissingMovementOption missingOptionsItem) {
+    if (this.missingOptions == null) {
+      this.missingOptions = new ArrayList<>();
+    }
+    this.missingOptions.add(missingOptionsItem);
+    return this;
+  }
+
+   /**
+   * The movement options the type&#39;s line legs must carry to book the register and do not, each named by its movement. A leg that moves a register balance, or books the line&#39;s units and cost, without the &#39;Registry&#39; option books into the portfolio&#39;s holdings, where the register never looks; empty when every line leg carries it.
+   * @return missingOptions
+  **/
+  @jakarta.annotation.Nonnull
+  public List<MissingMovementOption> getMissingOptions() {
+    return missingOptions;
+  }
+
+
+  public void setMissingOptions(List<MissingMovementOption> missingOptions) {
+    this.missingOptions = missingOptions;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -245,12 +279,13 @@ public class PartnershipTypeDifference {
         Objects.equals(this.scope, partnershipTypeDifference.scope) &&
         Objects.equals(this.expected, partnershipTypeDifference.expected) &&
         Objects.equals(this.actual, partnershipTypeDifference.actual) &&
-        Objects.equals(this.missingSides, partnershipTypeDifference.missingSides);
+        Objects.equals(this.missingSides, partnershipTypeDifference.missingSides) &&
+        Objects.equals(this.missingOptions, partnershipTypeDifference.missingOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, type, scope, expected, actual, missingSides);
+    return Objects.hash(source, type, scope, expected, actual, missingSides, missingOptions);
   }
 
   @Override
@@ -263,6 +298,7 @@ public class PartnershipTypeDifference {
     sb.append("    expected: ").append(toIndentedString(expected)).append("\n");
     sb.append("    actual: ").append(toIndentedString(actual)).append("\n");
     sb.append("    missingSides: ").append(toIndentedString(missingSides)).append("\n");
+    sb.append("    missingOptions: ").append(toIndentedString(missingOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -291,6 +327,7 @@ public class PartnershipTypeDifference {
     openapiFields.add("expected");
     openapiFields.add("actual");
     openapiFields.add("missingSides");
+    openapiFields.add("missingOptions");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -300,6 +337,7 @@ public class PartnershipTypeDifference {
     openapiRequiredFields.add("expected");
     openapiRequiredFields.add("actual");
     openapiRequiredFields.add("missingSides");
+    openapiRequiredFields.add("missingOptions");
   }
 
  /**
@@ -357,6 +395,16 @@ public class PartnershipTypeDifference {
       } else if (!jsonObj.get("missingSides").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `missingSides` to be an array in the JSON string but got `%s`", jsonObj.get("missingSides").toString()));
       }
+      // ensure the json data is an array
+      if (!jsonObj.get("missingOptions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `missingOptions` to be an array in the JSON string but got `%s`", jsonObj.get("missingOptions").toString()));
+      }
+
+      JsonArray jsonArraymissingOptions = jsonObj.getAsJsonArray("missingOptions");
+      // validate the required field `missingOptions` (array)
+      for (int i = 0; i < jsonArraymissingOptions.size(); i++) {
+        MissingMovementOption.validateJsonElement(jsonArraymissingOptions.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

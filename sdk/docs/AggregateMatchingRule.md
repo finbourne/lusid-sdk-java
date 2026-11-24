@@ -6,9 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ruleName** | **String** | The reference name of the rule. | [default to String]
 **leftFormula** | **String** | Derivation formula evaluated against the left side of the reconciliation. | [default to String]
-**leftOperation** | **String** | Group-level operation applied to the left side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. | [default to String]
+**leftOperation** | **String** | Group-level operation applied to the left side&#39;s per-item values during reconciliation. Sum adds up decimal values. UniformValue requires all items on the side to carry the same value of any type, and compares it with the other side&#39;s value. UniformValue must be used on both sides or on neither. Available values: Sum, UniformValue. | [default to String]
 **rightFormula** | **String** | Derivation formula evaluated against the right side of the reconciliation. | [default to String]
-**rightOperation** | **String** | Group-level operation applied to the right side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears. | [default to String]
+**rightOperation** | **String** | Group-level operation applied to the right side&#39;s per-item values during reconciliation. Sum adds up decimal values. UniformValue requires all items on the side to carry the same value of any type, and compares it with the other side&#39;s value. UniformValue must be used on both sides or on neither. Available values: Sum, UniformValue. | [default to String]
+**isCaseSensitive** | **Boolean** | Whether the comparison of a string rule is case sensitive. Optional, defaults to false. Only a rule whose values are strings can declare it. | [optional] [default to Boolean]
 
 ```java
 import com.finbourne.lusid.model.AggregateMatchingRule;
@@ -21,6 +22,7 @@ String LeftFormula = "example LeftFormula";
 String LeftOperation = "example LeftOperation";
 String RightFormula = "example RightFormula";
 String RightOperation = "example RightOperation";
+@jakarta.annotation.Nullable Boolean IsCaseSensitive = true;
 
 
 AggregateMatchingRule aggregateMatchingRuleInstance = new AggregateMatchingRule()
@@ -28,7 +30,8 @@ AggregateMatchingRule aggregateMatchingRuleInstance = new AggregateMatchingRule(
     .LeftFormula(LeftFormula)
     .LeftOperation(LeftOperation)
     .RightFormula(RightFormula)
-    .RightOperation(RightOperation);
+    .RightOperation(RightOperation)
+    .IsCaseSensitive(IsCaseSensitive);
 ```
 
 

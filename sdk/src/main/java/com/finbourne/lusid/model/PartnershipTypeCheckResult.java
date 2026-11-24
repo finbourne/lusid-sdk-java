@@ -125,7 +125,7 @@ public class PartnershipTypeCheckResult {
   }
 
    /**
-   * The transaction types whose register balance deltas are not their contract in the pack, or whose movements book through a side the fund&#39;s transaction type scope does not define; empty when the status is Ok.
+   * The transaction types whose register balance deltas are not their contract in the pack, whose movements book through a side the fund&#39;s transaction type scope does not define, or whose line legs lack the &#39;Registry&#39; movement option that books them into the registry; empty when the status is Ok.
    * @return differences
   **/
   @jakarta.annotation.Nonnull

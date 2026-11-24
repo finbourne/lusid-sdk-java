@@ -24,6 +24,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -82,6 +83,10 @@ public class ManagementFeeResult {
   public static final String SERIALIZED_NAME_BOOKED_TRANSACTION_IDS = "bookedTransactionIds";
   @SerializedName(SERIALIZED_NAME_BOOKED_TRANSACTION_IDS)
   private List<String> bookedTransactionIds = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_FUND_TRANSACTION_IDS = "fundTransactionIds";
+  @SerializedName(SERIALIZED_NAME_FUND_TRANSACTION_IDS)
+  private List<String> fundTransactionIds;
 
   public ManagementFeeResult() {
   }
@@ -249,6 +254,35 @@ public class ManagementFeeResult {
   }
 
 
+  public ManagementFeeResult fundTransactionIds(List<String> fundTransactionIds) {
+    
+    this.fundTransactionIds = fundTransactionIds;
+    return this;
+  }
+
+  public ManagementFeeResult addFundTransactionIdsItem(String fundTransactionIdsItem) {
+    if (this.fundTransactionIds == null) {
+      this.fundTransactionIds = new ArrayList<>();
+    }
+    this.fundTransactionIds.add(fundTransactionIdsItem);
+    return this;
+  }
+
+   /**
+   * The identifiers of the fee transactions the run holds in the fund&#39;s own books, one per partner and fee component, when the run was booked.
+   * @return fundTransactionIds
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getFundTransactionIds() {
+    return fundTransactionIds;
+  }
+
+
+  public void setFundTransactionIds(List<String> fundTransactionIds) {
+    this.fundTransactionIds = fundTransactionIds;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -265,12 +299,24 @@ public class ManagementFeeResult {
         Objects.equals(this.basis, managementFeeResult.basis) &&
         Objects.equals(this.lines, managementFeeResult.lines) &&
         Objects.equals(this.totals, managementFeeResult.totals) &&
-        Objects.equals(this.bookedTransactionIds, managementFeeResult.bookedTransactionIds);
+        Objects.equals(this.bookedTransactionIds, managementFeeResult.bookedTransactionIds) &&
+        Objects.equals(this.fundTransactionIds, managementFeeResult.fundTransactionIds);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fundId, periodStart, periodEnd, basis, lines, totals, bookedTransactionIds);
+    return Objects.hash(fundId, periodStart, periodEnd, basis, lines, totals, bookedTransactionIds, fundTransactionIds);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -284,6 +330,7 @@ public class ManagementFeeResult {
     sb.append("    lines: ").append(toIndentedString(lines)).append("\n");
     sb.append("    totals: ").append(toIndentedString(totals)).append("\n");
     sb.append("    bookedTransactionIds: ").append(toIndentedString(bookedTransactionIds)).append("\n");
+    sb.append("    fundTransactionIds: ").append(toIndentedString(fundTransactionIds)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -313,6 +360,7 @@ public class ManagementFeeResult {
     openapiFields.add("lines");
     openapiFields.add("totals");
     openapiFields.add("bookedTransactionIds");
+    openapiFields.add("fundTransactionIds");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -367,6 +415,10 @@ public class ManagementFeeResult {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("bookedTransactionIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `bookedTransactionIds` to be an array in the JSON string but got `%s`", jsonObj.get("bookedTransactionIds").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("fundTransactionIds") != null && !jsonObj.get("fundTransactionIds").isJsonNull() && !jsonObj.get("fundTransactionIds").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `fundTransactionIds` to be an array in the JSON string but got `%s`", jsonObj.get("fundTransactionIds").toString()));
       }
   }
 

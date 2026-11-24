@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **lines** | [**List&lt;ManagementFeeLine&gt;**](ManagementFeeLine.md) | The fee per partner. | [default to List<ManagementFeeLine>]
 **totals** | [**ManagementFeeTotals**](ManagementFeeTotals.md) |  | [default to ManagementFeeTotals]
 **bookedTransactionIds** | **List&lt;String&gt;** | The identifiers of the transactions booked, if any. | [default to List<String>]
+**fundTransactionIds** | **List&lt;String&gt;** | The identifiers of the fee transactions the run holds in the fund&#39;s own books, one per partner and fee component, when the run was booked. | [optional] [default to List<String>]
 
 ```java
 import com.finbourne.lusid.model.ManagementFeeResult;
@@ -26,6 +27,7 @@ String Basis = "example Basis";
 List<ManagementFeeLine> Lines = new List<ManagementFeeLine>();
 ManagementFeeTotals Totals = new ManagementFeeTotals();
 List<String> BookedTransactionIds = new List<String>();
+@jakarta.annotation.Nullable List<String> FundTransactionIds = new List<String>();
 
 
 ManagementFeeResult managementFeeResultInstance = new ManagementFeeResult()
@@ -35,7 +37,8 @@ ManagementFeeResult managementFeeResultInstance = new ManagementFeeResult()
     .Basis(Basis)
     .Lines(Lines)
     .Totals(Totals)
-    .BookedTransactionIds(BookedTransactionIds);
+    .BookedTransactionIds(BookedTransactionIds)
+    .FundTransactionIds(FundTransactionIds);
 ```
 
 

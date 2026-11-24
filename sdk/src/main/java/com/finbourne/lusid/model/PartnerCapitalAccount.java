@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.PartnerCapitalAccountMemo;
 import com.finbourne.lusid.model.PartnerCapitalAccountRow;
 import com.finbourne.lusid.model.ResourceId;
+import com.finbourne.lusid.model.Warning;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,6 +25,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -94,6 +96,10 @@ public class PartnerCapitalAccount {
   public static final String SERIALIZED_NAME_FOOTING_DIFFERENCE = "footingDifference";
   @SerializedName(SERIALIZED_NAME_FOOTING_DIFFERENCE)
   private java.math.BigDecimal footingDifference;
+
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<Warning> warnings;
 
   public PartnerCapitalAccount() {
   }
@@ -316,6 +322,35 @@ public class PartnerCapitalAccount {
   }
 
 
+  public PartnerCapitalAccount warnings(List<Warning> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public PartnerCapitalAccount addWarningsItem(Warning warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Warnings about the register the account was read from, for example a transaction type of the fund that books a register line outside the registry, so that line is not in the account. Empty when there is nothing to warn of.
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<Warning> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<Warning> warnings) {
+    this.warnings = warnings;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -335,12 +370,24 @@ public class PartnerCapitalAccount {
         Objects.equals(this.rows, partnerCapitalAccount.rows) &&
         Objects.equals(this.memo, partnerCapitalAccount.memo) &&
         Objects.equals(this.foots, partnerCapitalAccount.foots) &&
-        (this.footingDifference.compareTo(partnerCapitalAccount.getFootingDifference()) == 0);
+        (this.footingDifference.compareTo(partnerCapitalAccount.getFootingDifference()) == 0) &&
+        Objects.equals(this.warnings, partnerCapitalAccount.warnings);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fundId, investorRecordId, currency, periodStart, periodEnd, status, rows, memo, foots, footingDifference);
+    return Objects.hash(fundId, investorRecordId, currency, periodStart, periodEnd, status, rows, memo, foots, footingDifference, warnings);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -357,6 +404,7 @@ public class PartnerCapitalAccount {
     sb.append("    memo: ").append(toIndentedString(memo)).append("\n");
     sb.append("    foots: ").append(toIndentedString(foots)).append("\n");
     sb.append("    footingDifference: ").append(toIndentedString(footingDifference)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -389,6 +437,7 @@ public class PartnerCapitalAccount {
     openapiFields.add("memo");
     openapiFields.add("foots");
     openapiFields.add("footingDifference");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -447,6 +496,20 @@ public class PartnerCapitalAccount {
       };
       // validate the required field `memo`
       PartnerCapitalAccountMemo.validateJsonElement(jsonObj.get("memo"));
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            Warning.validateJsonElement(jsonArraywarnings.get(i));
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

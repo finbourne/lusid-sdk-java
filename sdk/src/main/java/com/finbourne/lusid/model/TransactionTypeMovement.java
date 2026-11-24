@@ -315,7 +315,7 @@ public class TransactionTypeMovement {
   }
 
    /**
-   * The condition that the transaction must satisfy to generate the movement, such as: Portfolio.BaseCurrency eq &#39;GBP&#39;. The condition can contain fields and properties from transactions and portfolios. If no condition is provided, the movement will apply for all transactions of this type.
+   * The condition that the transaction must satisfy to generate the movement, such as: Portfolio.BaseCurrency eq &#39;GBP&#39;. The condition can contain fields and properties from transactions and portfolios, and the fund and NAV type being processed as Fund.Id.Scope, Fund.Id.Code and NavType.Code, which are absent outside a fund NAV type, so only &#39;not exists&#39; is true there. If no condition is provided, the movement will apply for all transactions of this type.
    * @return condition
   **/
   @jakarta.annotation.Nullable

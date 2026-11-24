@@ -74,6 +74,10 @@ public class ManagementFeeRequest {
   @SerializedName(SERIALIZED_NAME_BOOK)
   private Boolean book;
 
+  public static final String SERIALIZED_NAME_PREPAID = "prepaid";
+  @SerializedName(SERIALIZED_NAME_PREPAID)
+  private Boolean prepaid;
+
   public ManagementFeeRequest() {
   }
 
@@ -190,6 +194,27 @@ public class ManagementFeeRequest {
   }
 
 
+  public ManagementFeeRequest prepaid(Boolean prepaid) {
+    
+    this.prepaid = prepaid;
+    return this;
+  }
+
+   /**
+   * When true with book, the period&#39;s fee is booked in advance: the fund prepays each partner&#39;s gross fee per component against the fee payable at the period&#39;s start, and the partnership ledger is not charged. Offsets are not prepaid. Fee runs accruing inside the period then charge the fee against the prepayment, up to its balance and at the prepayment&#39;s rate, and any excess against the payable; an offset arising inside the period reduces the payable, and any part of it above the payable is booked as a receivable from the manager. Defaults to false.
+   * @return prepaid
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getPrepaid() {
+    return prepaid;
+  }
+
+
+  public void setPrepaid(Boolean prepaid) {
+    this.prepaid = prepaid;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -204,7 +229,8 @@ public class ManagementFeeRequest {
         Objects.equals(this.periodEnd, managementFeeRequest.periodEnd) &&
         Objects.equals(this.basis, managementFeeRequest.basis) &&
         Objects.equals(this.offsets, managementFeeRequest.offsets) &&
-        Objects.equals(this.book, managementFeeRequest.book);
+        Objects.equals(this.book, managementFeeRequest.book) &&
+        Objects.equals(this.prepaid, managementFeeRequest.prepaid);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -213,7 +239,7 @@ public class ManagementFeeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(periodStart, periodEnd, basis, offsets, book);
+    return Objects.hash(periodStart, periodEnd, basis, offsets, book, prepaid);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -232,6 +258,7 @@ public class ManagementFeeRequest {
     sb.append("    basis: ").append(toIndentedString(basis)).append("\n");
     sb.append("    offsets: ").append(toIndentedString(offsets)).append("\n");
     sb.append("    book: ").append(toIndentedString(book)).append("\n");
+    sb.append("    prepaid: ").append(toIndentedString(prepaid)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -259,6 +286,7 @@ public class ManagementFeeRequest {
     openapiFields.add("basis");
     openapiFields.add("offsets");
     openapiFields.add("book");
+    openapiFields.add("prepaid");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

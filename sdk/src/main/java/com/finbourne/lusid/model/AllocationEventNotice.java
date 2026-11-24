@@ -117,6 +117,10 @@ public class AllocationEventNotice {
   @SerializedName(SERIALIZED_NAME_WATERMARK)
   private String watermark;
 
+  public static final String SERIALIZED_NAME_CALL_CREDIT_APPLIED = "callCreditApplied";
+  @SerializedName(SERIALIZED_NAME_CALL_CREDIT_APPLIED)
+  private java.math.BigDecimal callCreditApplied;
+
   public AllocationEventNotice() {
   }
 
@@ -422,6 +426,27 @@ public class AllocationEventNotice {
   }
 
 
+  public AllocationEventNotice callCreditApplied(java.math.BigDecimal callCreditApplied) {
+    
+    this.callCreditApplied = callCreditApplied;
+    return this;
+  }
+
+   /**
+   * The call credit an earlier equalisation kept for the partner that this call draws on, as a positive amount. The lines show the partner&#39;s gross share; the net amount due is that share less the credit applied. Zero when no credit was applied.
+   * @return callCreditApplied
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getCallCreditApplied() {
+    return callCreditApplied;
+  }
+
+
+  public void setCallCreditApplied(java.math.BigDecimal callCreditApplied) {
+    this.callCreditApplied = callCreditApplied;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -445,7 +470,8 @@ public class AllocationEventNotice {
         Objects.equals(this.wire, allocationEventNotice.wire) &&
         Objects.equals(this.paymentHold, allocationEventNotice.paymentHold) &&
         Objects.equals(this.transfer, allocationEventNotice.transfer) &&
-        Objects.equals(this.watermark, allocationEventNotice.watermark);
+        Objects.equals(this.watermark, allocationEventNotice.watermark) &&
+        (this.callCreditApplied.compareTo(allocationEventNotice.getCallCreditApplied()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -454,7 +480,7 @@ public class AllocationEventNotice {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fund, event, partner, currency, lines, netAmountDue, taxWithheld, unfundedReconciliation, cumulative, gpColumn, wire, paymentHold, transfer, watermark);
+    return Objects.hash(fund, event, partner, currency, lines, netAmountDue, taxWithheld, unfundedReconciliation, cumulative, gpColumn, wire, paymentHold, transfer, watermark, callCreditApplied);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -482,6 +508,7 @@ public class AllocationEventNotice {
     sb.append("    paymentHold: ").append(toIndentedString(paymentHold)).append("\n");
     sb.append("    transfer: ").append(toIndentedString(transfer)).append("\n");
     sb.append("    watermark: ").append(toIndentedString(watermark)).append("\n");
+    sb.append("    callCreditApplied: ").append(toIndentedString(callCreditApplied)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -518,6 +545,7 @@ public class AllocationEventNotice {
     openapiFields.add("paymentHold");
     openapiFields.add("transfer");
     openapiFields.add("watermark");
+    openapiFields.add("callCreditApplied");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

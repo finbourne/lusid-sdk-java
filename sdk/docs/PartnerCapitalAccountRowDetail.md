@@ -5,7 +5,7 @@ One labelled part of a capital account row's total: the kind of amount, the allo
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**kind** | **String** | The kind of amount the entry labels: WithholdingTax for tax withheld from a distribution on the partner&#39;s behalf. | [default to String]
+**kind** | **String** | The kind of amount the entry labels: WithholdingTax for tax withheld from a distribution on the partner&#39;s behalf; on the CallCredit row, CallCreditGranted for a credit an equalisation kept for the partner and CallCreditApplied, negative, for the part of it a call drew on. | [default to String]
 **allocationEventId** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **eventDate** | [**OffsetDateTime**](OffsetDateTime.md) | The effective date of the allocation event the amount arose on. | [default to OffsetDateTime]
 **qtd** | **java.math.BigDecimal** | The part of the row&#39;s quarter-to-date amount the entry labels; zero when the event falls outside the quarter. | [default to java.math.BigDecimal]

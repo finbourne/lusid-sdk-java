@@ -11,8 +11,9 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.FundPartner;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PartnerCapitalAccount;
+import com.finbourne.lusid.model.Warning;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,10 +52,18 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * PagedResourceListOfFundPartner
+ * ResourceListWithWarningsOfPartnerCapitalAccount
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PagedResourceListOfFundPartner {
+public class ResourceListWithWarningsOfPartnerCapitalAccount {
+  public static final String SERIALIZED_NAME_VALUES = "values";
+  @SerializedName(SERIALIZED_NAME_VALUES)
+  private List<PartnerCapitalAccount> values = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private URI href;
+
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
   private String nextPage;
@@ -63,70 +72,24 @@ public class PagedResourceListOfFundPartner {
   @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
   private String previousPage;
 
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<FundPartner> values = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private URI href;
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<Warning> warnings;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
-  public PagedResourceListOfFundPartner() {
+  public ResourceListWithWarningsOfPartnerCapitalAccount() {
   }
 
-  public PagedResourceListOfFundPartner nextPage(String nextPage) {
-    
-    this.nextPage = nextPage;
-    return this;
-  }
-
-   /**
-   * Get nextPage
-   * @return nextPage
-  **/
-  @jakarta.annotation.Nullable
-  public String getNextPage() {
-    return nextPage;
-  }
-
-
-  public void setNextPage(String nextPage) {
-    this.nextPage = nextPage;
-  }
-
-
-  public PagedResourceListOfFundPartner previousPage(String previousPage) {
-    
-    this.previousPage = previousPage;
-    return this;
-  }
-
-   /**
-   * Get previousPage
-   * @return previousPage
-  **/
-  @jakarta.annotation.Nullable
-  public String getPreviousPage() {
-    return previousPage;
-  }
-
-
-  public void setPreviousPage(String previousPage) {
-    this.previousPage = previousPage;
-  }
-
-
-  public PagedResourceListOfFundPartner values(List<FundPartner> values) {
+  public ResourceListWithWarningsOfPartnerCapitalAccount values(List<PartnerCapitalAccount> values) {
     
     this.values = values;
     return this;
   }
 
-  public PagedResourceListOfFundPartner addValuesItem(FundPartner valuesItem) {
+  public ResourceListWithWarningsOfPartnerCapitalAccount addValuesItem(PartnerCapitalAccount valuesItem) {
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -135,28 +98,28 @@ public class PagedResourceListOfFundPartner {
   }
 
    /**
-   * Get values
+   * The resources to list.
    * @return values
   **/
   @jakarta.annotation.Nonnull
-  public List<FundPartner> getValues() {
+  public List<PartnerCapitalAccount> getValues() {
     return values;
   }
 
 
-  public void setValues(List<FundPartner> values) {
+  public void setValues(List<PartnerCapitalAccount> values) {
     this.values = values;
   }
 
 
-  public PagedResourceListOfFundPartner href(URI href) {
+  public ResourceListWithWarningsOfPartnerCapitalAccount href(URI href) {
     
     this.href = href;
     return this;
   }
 
    /**
-   * Get href
+   * The URI of the resource list.
    * @return href
   **/
   @jakarta.annotation.Nullable
@@ -170,13 +133,84 @@ public class PagedResourceListOfFundPartner {
   }
 
 
-  public PagedResourceListOfFundPartner links(List<Link> links) {
+  public ResourceListWithWarningsOfPartnerCapitalAccount nextPage(String nextPage) {
+    
+    this.nextPage = nextPage;
+    return this;
+  }
+
+   /**
+   * The next page of results.
+   * @return nextPage
+  **/
+  @jakarta.annotation.Nullable
+  public String getNextPage() {
+    return nextPage;
+  }
+
+
+  public void setNextPage(String nextPage) {
+    this.nextPage = nextPage;
+  }
+
+
+  public ResourceListWithWarningsOfPartnerCapitalAccount previousPage(String previousPage) {
+    
+    this.previousPage = previousPage;
+    return this;
+  }
+
+   /**
+   * The previous page of results.
+   * @return previousPage
+  **/
+  @jakarta.annotation.Nullable
+  public String getPreviousPage() {
+    return previousPage;
+  }
+
+
+  public void setPreviousPage(String previousPage) {
+    this.previousPage = previousPage;
+  }
+
+
+  public ResourceListWithWarningsOfPartnerCapitalAccount warnings(List<Warning> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public ResourceListWithWarningsOfPartnerCapitalAccount addWarningsItem(Warning warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * Get warnings
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<Warning> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<Warning> warnings) {
+    this.warnings = warnings;
+  }
+
+
+  public ResourceListWithWarningsOfPartnerCapitalAccount links(List<Link> links) {
     
     this.links = links;
     return this;
   }
 
-  public PagedResourceListOfFundPartner addLinksItem(Link linksItem) {
+  public ResourceListWithWarningsOfPartnerCapitalAccount addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -208,12 +242,13 @@ public class PagedResourceListOfFundPartner {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PagedResourceListOfFundPartner pagedResourceListOfFundPartner = (PagedResourceListOfFundPartner) o;
-    return Objects.equals(this.nextPage, pagedResourceListOfFundPartner.nextPage) &&
-        Objects.equals(this.previousPage, pagedResourceListOfFundPartner.previousPage) &&
-        Objects.equals(this.values, pagedResourceListOfFundPartner.values) &&
-        Objects.equals(this.href, pagedResourceListOfFundPartner.href) &&
-        Objects.equals(this.links, pagedResourceListOfFundPartner.links);
+    ResourceListWithWarningsOfPartnerCapitalAccount resourceListWithWarningsOfPartnerCapitalAccount = (ResourceListWithWarningsOfPartnerCapitalAccount) o;
+    return Objects.equals(this.values, resourceListWithWarningsOfPartnerCapitalAccount.values) &&
+        Objects.equals(this.href, resourceListWithWarningsOfPartnerCapitalAccount.href) &&
+        Objects.equals(this.nextPage, resourceListWithWarningsOfPartnerCapitalAccount.nextPage) &&
+        Objects.equals(this.previousPage, resourceListWithWarningsOfPartnerCapitalAccount.previousPage) &&
+        Objects.equals(this.warnings, resourceListWithWarningsOfPartnerCapitalAccount.warnings) &&
+        Objects.equals(this.links, resourceListWithWarningsOfPartnerCapitalAccount.links);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -222,7 +257,7 @@ public class PagedResourceListOfFundPartner {
 
   @Override
   public int hashCode() {
-    return Objects.hash(nextPage, previousPage, values, href, links);
+    return Objects.hash(values, href, nextPage, previousPage, warnings, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -235,11 +270,12 @@ public class PagedResourceListOfFundPartner {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PagedResourceListOfFundPartner {\n");
-    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
-    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
+    sb.append("class ResourceListWithWarningsOfPartnerCapitalAccount {\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
+    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -263,10 +299,11 @@ public class PagedResourceListOfFundPartner {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("nextPage");
-    openapiFields.add("previousPage");
     openapiFields.add("values");
     openapiFields.add("href");
+    openapiFields.add("nextPage");
+    openapiFields.add("previousPage");
+    openapiFields.add("warnings");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
@@ -278,28 +315,22 @@ public class PagedResourceListOfFundPartner {
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to PagedResourceListOfFundPartner
+  * @throws IOException if the JSON Element is invalid with respect to ResourceListWithWarningsOfPartnerCapitalAccount
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!PagedResourceListOfFundPartner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PagedResourceListOfFundPartner is not found in the empty JSON string", PagedResourceListOfFundPartner.openapiRequiredFields.toString()));
+        if (!ResourceListWithWarningsOfPartnerCapitalAccount.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ResourceListWithWarningsOfPartnerCapitalAccount is not found in the empty JSON string", ResourceListWithWarningsOfPartnerCapitalAccount.openapiRequiredFields.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PagedResourceListOfFundPartner.openapiRequiredFields) {
+      for (String requiredField : ResourceListWithWarningsOfPartnerCapitalAccount.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("nextPage") != null && !jsonObj.get("nextPage").isJsonNull()) && !jsonObj.get("nextPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `nextPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPage").toString()));
-      }
-      if ((jsonObj.get("previousPage") != null && !jsonObj.get("previousPage").isJsonNull()) && !jsonObj.get("previousPage").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `previousPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousPage").toString()));
-      }
       // ensure the json data is an array
       if (!jsonObj.get("values").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `values` to be an array in the JSON string but got `%s`", jsonObj.get("values").toString()));
@@ -308,10 +339,30 @@ public class PagedResourceListOfFundPartner {
       JsonArray jsonArrayvalues = jsonObj.getAsJsonArray("values");
       // validate the required field `values` (array)
       for (int i = 0; i < jsonArrayvalues.size(); i++) {
-        FundPartner.validateJsonElement(jsonArrayvalues.get(i));
+        PartnerCapitalAccount.validateJsonElement(jsonArrayvalues.get(i));
       };
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
+      if ((jsonObj.get("nextPage") != null && !jsonObj.get("nextPage").isJsonNull()) && !jsonObj.get("nextPage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `nextPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nextPage").toString()));
+      }
+      if ((jsonObj.get("previousPage") != null && !jsonObj.get("previousPage").isJsonNull()) && !jsonObj.get("previousPage").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `previousPage` to be a primitive type in the JSON string but got `%s`", jsonObj.get("previousPage").toString()));
+      }
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonNull()) {
+        JsonArray jsonArraywarnings = jsonObj.getAsJsonArray("warnings");
+        if (jsonArraywarnings != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("warnings").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
+          }
+
+          // validate the optional field `warnings` (array)
+          for (int i = 0; i < jsonArraywarnings.size(); i++) {
+            Warning.validateJsonElement(jsonArraywarnings.get(i));
+          };
+        }
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");
@@ -333,22 +384,22 @@ public class PagedResourceListOfFundPartner {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PagedResourceListOfFundPartner.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PagedResourceListOfFundPartner' and its subtypes
+       if (!ResourceListWithWarningsOfPartnerCapitalAccount.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ResourceListWithWarningsOfPartnerCapitalAccount' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PagedResourceListOfFundPartner> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PagedResourceListOfFundPartner.class));
+       final TypeAdapter<ResourceListWithWarningsOfPartnerCapitalAccount> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ResourceListWithWarningsOfPartnerCapitalAccount.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PagedResourceListOfFundPartner>() {
+       return (TypeAdapter<T>) new TypeAdapter<ResourceListWithWarningsOfPartnerCapitalAccount>() {
            @Override
-           public void write(JsonWriter out, PagedResourceListOfFundPartner value) throws IOException {
+           public void write(JsonWriter out, ResourceListWithWarningsOfPartnerCapitalAccount value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public PagedResourceListOfFundPartner read(JsonReader in) throws IOException {
+           public ResourceListWithWarningsOfPartnerCapitalAccount read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -359,18 +410,18 @@ public class PagedResourceListOfFundPartner {
   }
 
  /**
-  * Create an instance of PagedResourceListOfFundPartner given an JSON string
+  * Create an instance of ResourceListWithWarningsOfPartnerCapitalAccount given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of PagedResourceListOfFundPartner
-  * @throws IOException if the JSON string is invalid with respect to PagedResourceListOfFundPartner
+  * @return An instance of ResourceListWithWarningsOfPartnerCapitalAccount
+  * @throws IOException if the JSON string is invalid with respect to ResourceListWithWarningsOfPartnerCapitalAccount
   */
-  public static PagedResourceListOfFundPartner fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PagedResourceListOfFundPartner.class);
+  public static ResourceListWithWarningsOfPartnerCapitalAccount fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ResourceListWithWarningsOfPartnerCapitalAccount.class);
   }
 
  /**
-  * Convert an instance of PagedResourceListOfFundPartner to an JSON string
+  * Convert an instance of ResourceListWithWarningsOfPartnerCapitalAccount to an JSON string
   *
   * @return JSON string
   */

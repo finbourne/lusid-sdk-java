@@ -9981,11 +9981,11 @@ public class TransactionPortfoliosApi {
     public APIgetPortfolioCashStatementRequest getPortfolioCashStatement(String scope, String code, String fromEffectiveAt, String toEffectiveAt) {
         return new APIgetPortfolioCashStatementRequest(scope, code, fromEffectiveAt, toEffectiveAt);
     }
-    private okhttp3.Call getRegistryCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        return getRegistryCall(scope, code, effectiveAt, asAt, filter, propertyKeys,  _callback, new ConfigurationOptions());
+    private okhttp3.Call getRegistryCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        return getRegistryCall(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page,  _callback, new ConfigurationOptions());
     }
 
-    private okhttp3.Call getRegistryCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRegistryCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -10028,6 +10028,22 @@ public class TransactionPortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        if (investorRecordId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("investorRecordId", investorRecordId));
+        }
+
+        if (commitmentLineId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("commitmentLineId", commitmentLineId));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -10050,7 +10066,7 @@ public class TransactionPortfoliosApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getRegistryValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRegistryValidateBeforeCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getRegistry(Async)");
@@ -10061,34 +10077,34 @@ public class TransactionPortfoliosApi {
             throw new ApiException("Missing the required parameter 'code' when calling getRegistry(Async)");
         }
 
-        return getRegistryCall(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback, opts);
+        return getRegistryCall(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, _callback, opts);
 
     }
 
 
-    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys) throws ApiException {
-        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, null, new ConfigurationOptions());
+    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String investorRecordId, String commitmentLineId, Integer limit, String page) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, null, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
-        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, null, opts);
+    private ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> getRegistryWithHttpInfo(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String investorRecordId, String commitmentLineId, Integer limit, String page, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, null, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call getRegistryAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
+    private okhttp3.Call getRegistryAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback, new ConfigurationOptions());
+        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, _callback, new ConfigurationOptions());
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 
-    private okhttp3.Call getRegistryAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
+    private okhttp3.Call getRegistryAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, String filter, List<String> propertyKeys, String investorRecordId, String commitmentLineId, Integer limit, String page, final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
 
-        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback, opts);
+        okhttp3.Call localVarCall = getRegistryValidateBeforeCall(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, _callback, opts);
         Type localVarReturnType = new TypeToken<VersionedResourceListWithWarningsOfRegistryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -10101,6 +10117,10 @@ public class TransactionPortfoliosApi {
         private OffsetDateTime asAt;
         private String filter;
         private List<String> propertyKeys;
+        private String investorRecordId;
+        private String commitmentLineId;
+        private Integer limit;
+        private String page;
 
         private APIgetRegistryRequest(String scope, String code) {
             this.scope = scope;
@@ -10148,6 +10168,46 @@ public class TransactionPortfoliosApi {
         }
 
         /**
+         * Set investorRecordId
+         * @param investorRecordId When provided, only the lines of this investor record are returned. (optional)
+         * @return APIgetRegistryRequest
+         */
+        public APIgetRegistryRequest investorRecordId(String investorRecordId) {
+            this.investorRecordId = investorRecordId;
+            return this;
+        }
+
+        /**
+         * Set commitmentLineId
+         * @param commitmentLineId When provided, only the lines of this commitment line are returned. (optional)
+         * @return APIgetRegistryRequest
+         */
+        public APIgetRegistryRequest commitmentLineId(String commitmentLineId) {
+            this.commitmentLineId = commitmentLineId;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. (optional)
+         * @return APIgetRegistryRequest
+         */
+        public APIgetRegistryRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing registry lines from a previous call to get the registry.   This value is returned from the previous call. If a pagination token is provided, the effectiveAt, asAt, filter,   propertyKeys, investorRecordId and commitmentLineId must not change between calls. (optional)
+         * @return APIgetRegistryRequest
+         */
+        public APIgetRegistryRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
          * Build call for getRegistry
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -10161,7 +10221,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return getRegistryCall(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback);
+            return getRegistryCall(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, _callback);
         }
 
         /**
@@ -10177,7 +10237,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListWithWarningsOfRegistryLine execute() throws ApiException {
-            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys);
+            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page);
             return localVarResp.getData();
         }
 
@@ -10194,7 +10254,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public VersionedResourceListWithWarningsOfRegistryLine execute(ConfigurationOptions opts) throws ApiException {
-            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, opts);
+            ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> localVarResp = getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, opts);
             return localVarResp.getData();
         }
 
@@ -10211,7 +10271,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> executeWithHttpInfo() throws ApiException {
-            return getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys);
+            return getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page);
         }
 
         /**
@@ -10227,7 +10287,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public ApiResponse<VersionedResourceListWithWarningsOfRegistryLine> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
-            return getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, opts);
+            return getRegistryWithHttpInfo(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, opts);
         }
 
         /**
@@ -10244,7 +10304,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback) throws ApiException {
-            return getRegistryAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback);
+            return getRegistryAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, _callback);
         }
 
         /**
@@ -10261,7 +10321,7 @@ public class TransactionPortfoliosApi {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VersionedResourceListWithWarningsOfRegistryLine> _callback, ConfigurationOptions opts) throws ApiException {
-            return getRegistryAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, _callback, opts);
+            return getRegistryAsync(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page, _callback, opts);
         }
     }
 

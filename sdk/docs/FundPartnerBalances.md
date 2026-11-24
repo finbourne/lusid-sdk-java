@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **unfunded** | **java.math.BigDecimal** | The unfunded capital. | [default to java.math.BigDecimal]
 **funded** | **java.math.BigDecimal** | The funded capital. | [default to java.math.BigDecimal]
 **outstandingCalls** | **java.math.BigDecimal** | Capital called but not yet paid in, counting capital that was returned as recallable and has since been recalled. Omitted while a line that has had returned capital marked recallable has not been rebuilt with recalled capital as a balance, since the figure could then miss an unpaid recall. | [optional] [default to java.math.BigDecimal]
+**callCredit** | **java.math.BigDecimal** | The credit an equalisation kept against the line&#39;s future calls, less what later calls have drawn on it: a liability to the partner, not capital, until a call applies it. Zero when the line holds none. | [optional] [default to java.math.BigDecimal]
 
 ```java
 import com.finbourne.lusid.model.FundPartnerBalances;
@@ -28,6 +29,7 @@ java.math.BigDecimal Recallable = new java.math.BigDecimal("100.00");
 java.math.BigDecimal Unfunded = new java.math.BigDecimal("100.00");
 java.math.BigDecimal Funded = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable java.math.BigDecimal OutstandingCalls = new java.math.BigDecimal("100.00");
+java.math.BigDecimal CallCredit = new java.math.BigDecimal("100.00");
 
 
 FundPartnerBalances fundPartnerBalancesInstance = new FundPartnerBalances()
@@ -38,7 +40,8 @@ FundPartnerBalances fundPartnerBalancesInstance = new FundPartnerBalances()
     .Recallable(Recallable)
     .Unfunded(Unfunded)
     .Funded(Funded)
-    .OutstandingCalls(OutstandingCalls);
+    .OutstandingCalls(OutstandingCalls)
+    .CallCredit(CallCredit);
 ```
 
 

@@ -8,6 +8,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**accrueCarry**](FundsApi.md#accrueCarry) | **POST** /api/funds/{scope}/{code}/carry/$accrue | [EARLY ACCESS] AccrueCarry: [EXPERIMENTAL] AccrueCarry: Accrue carried interest to the Fund&#39;s partners. |
 | [**addAllocationGroups**](FundsApi.md#addAllocationGroups) | **POST** /api/funds/{scope}/{code}/allocationgroups | [EARLY ACCESS] AddAllocationGroups: Add Allocation Groups to a Fund. |
 | [**addSeries**](FundsApi.md#addSeries) | **POST** /api/funds/{scope}/{code}/series | [EARLY ACCESS] AddSeries: Add Series to a Fund. |
+| [**addShareClasses**](FundsApi.md#addShareClasses) | **POST** /api/funds/{scope}/{code}/shareclasses | [EXPERIMENTAL] AddShareClasses: Add ShareClasses to a Fund. |
 | [**advanceTaxReturn**](FundsApi.md#advanceTaxReturn) | **POST** /api/funds/{scope}/{code}/tax/return/advance | [EARLY ACCESS] AdvanceTaxReturn: [EARLY ACCESS] AdvanceTaxReturn: Advance the tax return one workflow step. |
 | [**approveTaxProvision**](FundsApi.md#approveTaxProvision) | **POST** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}/tax/provision/approve | [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point. |
 | [**calculateManagementFees**](FundsApi.md#calculateManagementFees) | **POST** /api/funds/{scope}/{code}/fees/$calculate | [EARLY ACCESS] CalculateManagementFees: [EXPERIMENTAL] CalculateManagementFees: Calculate the management fee per partner for a period. |
@@ -39,6 +40,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getFundTaxScope**](FundsApi.md#getFundTaxScope) | **GET** /api/funds/{scope}/{code}/tax/scope | [EARLY ACCESS] GetFundTaxScope: [EARLY ACCESS] GetFundTaxScope: Get the UK chargeable-gains tax scope of a fund. |
 | [**getHoldingContributorsForFund**](FundsApi.md#getHoldingContributorsForFund) | **POST** /api/funds/{scope}/{code}/holdings/{holdingId}/contributors | [EARLY ACCESS] GetHoldingContributorsForFund: Get holdings contributors for transaction portfolios in a Fund. |
 | [**getHoldingsForFund**](FundsApi.md#getHoldingsForFund) | **POST** /api/funds/{scope}/{code}/$holdings | [EARLY ACCESS] GetHoldingsForFund: Get holdings for transaction portfolios in a Fund. |
+| [**getOpenCloseMovementReportForFund**](FundsApi.md#getOpenCloseMovementReportForFund) | **POST** /api/funds/{scope}/{code}/valuationpoints/openclose/$query | [EARLY ACCESS] GetOpenCloseMovementReportForFund: Get the open, close and movement report for a Fund. |
 | [**getPartnerCapitalAccount**](FundsApi.md#getPartnerCapitalAccount) | **GET** /api/funds/{scope}/{code}/partners/{irScope}/{irCode}/capitalaccount | [EARLY ACCESS] GetPartnerCapitalAccount: [EARLY ACCESS] GetPartnerCapitalAccount: Get a partner&#39;s capital account statement. |
 | [**getPartnerPerformance**](FundsApi.md#getPartnerPerformance) | **GET** /api/funds/{scope}/{code}/partners/{irScope}/{irCode}/performance | [EARLY ACCESS] GetPartnerPerformance: [EARLY ACCESS] GetPartnerPerformance: Get a partner&#39;s performance measures. |
 | [**getPartnerUnfundedReconciliation**](FundsApi.md#getPartnerUnfundedReconciliation) | **GET** /api/funds/{scope}/{code}/partners/{investorRecordId}/unfundedreconciliation | [EARLY ACCESS] GetPartnerUnfundedReconciliation: [EARLY ACCESS] GetPartnerUnfundedReconciliation: Get a partner&#39;s unfunded commitment statement. |
@@ -479,6 +481,101 @@ public class FundsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The updated Fund with the added Series. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## addShareClasses
+
+> Fund addShareClasses(scope, code, shareClassDefinition)
+
+[EXPERIMENTAL] AddShareClasses: Add ShareClasses to a Fund.
+
+Add new ShareClass definitions to the Fund. All requested ShareClassShortCodes must be new;  to update existing share classes use PatchFund.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        List<ShareClassDefinition> shareClassDefinition = Arrays.asList(); // List<ShareClassDefinition> | The definitions of the ShareClasses to add to the Fund.
+        try {
+            // uncomment the below to set overrides at the request level
+            // Fund result = apiInstance.addShareClasses(scope, code, shareClassDefinition).execute(opts);
+
+            Fund result = apiInstance.addShareClasses(scope, code, shareClassDefinition).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#addShareClasses");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **shareClassDefinition** | [**List&lt;ShareClassDefinition&gt;**](ShareClassDefinition.md)| The definitions of the ShareClasses to add to the Fund. | |
+
+### Return type
+
+[**Fund**](Fund.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The updated Fund with the added ShareClasses. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -3526,6 +3623,107 @@ public class FundsApiExample {
 [Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
 
 
+## getOpenCloseMovementReportForFund
+
+> VersionedResourceListOfOpenCloseMovementRecord getOpenCloseMovementReportForFund(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter)
+
+[EARLY ACCESS] GetOpenCloseMovementReportForFund: Get the open, close and movement report for a Fund.
+
+Get, for each instrument held by the transaction portfolios of a Fund (or each kept sub-holding key), the  net asset economic buckets at the opening and closing of a valuation point window, the period&#39;s movements  by economic bucket classified as the journal entry lines classify them, and the requested valuation  metrics and instrument properties. Signs follow the journal entry line convention.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.FundsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class FundsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // FundsApi apiInstance = apiFactory.build(FundsApi.class);
+
+        FundsApi apiInstance = ApiFactoryBuilder.build(fileName).build(FundsApi.class);
+        String scope = "scope_example"; // String | The scope of the Fund.
+        String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
+        OpenCloseMovementQueryParameters openCloseMovementQueryParameters = new OpenCloseMovementQueryParameters(); // OpenCloseMovementQueryParameters | The window, the sub-holding keys to keep separate, the instrument property keys and the valuation metrics to report.
+        String navTypeCode = "navTypeCode_example"; // String | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to resolve the fund and the timeline. Defaults   to return the latest version if not specified.
+        String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        try {
+            // uncomment the below to set overrides at the request level
+            // VersionedResourceListOfOpenCloseMovementRecord result = apiInstance.getOpenCloseMovementReportForFund(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter).execute(opts);
+
+            VersionedResourceListOfOpenCloseMovementRecord result = apiInstance.getOpenCloseMovementReportForFund(scope, code, openCloseMovementQueryParameters, navTypeCode, asAt, filter).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling FundsApi#getOpenCloseMovementReportForFund");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Fund. | |
+| **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
+| **openCloseMovementQueryParameters** | [**OpenCloseMovementQueryParameters**](OpenCloseMovementQueryParameters.md)| The window, the sub-holding keys to keep separate, the instrument property keys and the valuation metrics to report. | |
+| **navTypeCode** | **String**| When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to resolve the fund and the timeline. Defaults   to return the latest version if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+
+### Return type
+
+[**VersionedResourceListOfOpenCloseMovementRecord**](VersionedResourceListOfOpenCloseMovementRecord.md)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The open, close and movement report for transaction portfolios in a Fund |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
 ## getPartnerCapitalAccount
 
 > PartnerCapitalAccount getPartnerCapitalAccount(scope, code, irScope, irCode, periodStart, periodEnd, navTypeCode, asAt)
@@ -3836,7 +4034,7 @@ public class FundsApiExample {
 
 ## getPartners
 
-> PagedResourceListOfFundPartner getPartners(scope, code, effectiveAt, asAt, includeClosed, page, limit)
+> ResourceListWithWarningsOfFundPartner getPartners(scope, code, effectiveAt, asAt, includeClosed, page, limit)
 
 [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund.
 
@@ -3890,9 +4088,9 @@ public class FundsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfFundPartner result = apiInstance.getPartners(scope, code, effectiveAt, asAt, includeClosed, page, limit).execute(opts);
+            // ResourceListWithWarningsOfFundPartner result = apiInstance.getPartners(scope, code, effectiveAt, asAt, includeClosed, page, limit).execute(opts);
 
-            PagedResourceListOfFundPartner result = apiInstance.getPartners(scope, code, effectiveAt, asAt, includeClosed, page, limit).execute();
+            ResourceListWithWarningsOfFundPartner result = apiInstance.getPartners(scope, code, effectiveAt, asAt, includeClosed, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getPartners");
@@ -3919,7 +4117,7 @@ public class FundsApiExample {
 
 ### Return type
 
-[**PagedResourceListOfFundPartner**](PagedResourceListOfFundPartner.md)
+[**ResourceListWithWarningsOfFundPartner**](ResourceListWithWarningsOfFundPartner.md)
 
 ### HTTP request headers
 
@@ -4034,7 +4232,7 @@ public class FundsApiExample {
 
 ## getRegistryForFund
 
-> VersionedResourceListWithWarningsOfRegistryLine getRegistryForFund(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode)
+> VersionedResourceListWithWarningsOfRegistryLine getRegistryForFund(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page)
 
 [EXPERIMENTAL] GetRegistryForFund: [EXPERIMENTAL] GetRegistryForFund: Get the registry of a Fund.
 
@@ -4086,11 +4284,15 @@ public class FundsApiExample {
         String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" or \"Holding\" domain to decorate onto   the lines. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or \"Holding/system/CommittedCapital\".
         String navTypeCode = "navTypeCode_example"; // String | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
+        String investorRecordId = "investorRecordId_example"; // String | When provided, only the lines of this investor record are returned.
+        String commitmentLineId = "commitmentLineId_example"; // String | When provided, only the lines of this commitment line are returned.
+        Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing registry lines from a previous call to get the registry.   This value is returned from the previous call. If a pagination token is provided, the effectiveAt, asAt, filter,   propertyKeys, investorRecordId and commitmentLineId must not change between calls.
         try {
             // uncomment the below to set overrides at the request level
-            // VersionedResourceListWithWarningsOfRegistryLine result = apiInstance.getRegistryForFund(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode).execute(opts);
+            // VersionedResourceListWithWarningsOfRegistryLine result = apiInstance.getRegistryForFund(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page).execute(opts);
 
-            VersionedResourceListWithWarningsOfRegistryLine result = apiInstance.getRegistryForFund(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode).execute();
+            VersionedResourceListWithWarningsOfRegistryLine result = apiInstance.getRegistryForFund(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getRegistryForFund");
@@ -4114,6 +4316,10 @@ public class FundsApiExample {
 | **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; or \&quot;Holding\&quot; domain to decorate onto   the lines. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or \&quot;Holding/system/CommittedCapital\&quot;. | [optional] |
 | **navTypeCode** | **String**| When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
+| **investorRecordId** | **String**| When provided, only the lines of this investor record are returned. | [optional] |
+| **commitmentLineId** | **String**| When provided, only the lines of this commitment line are returned. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing registry lines from a previous call to get the registry.   This value is returned from the previous call. If a pagination token is provided, the effectiveAt, asAt, filter,   propertyKeys, investorRecordId and commitmentLineId must not change between calls. | [optional] |
 
 ### Return type
 
@@ -5129,7 +5335,7 @@ public class FundsApiExample {
 
 ## getValuationForFund
 
-> ListAggregationResponse getValuationForFund(scope, code, navTypeCode, fundValuationRequest)
+> ListAggregationResponse getValuationForFund(scope, code, navTypeCode, auditMode, fundValuationRequest)
 
 [EARLY ACCESS] GetValuationForFund: Perform valuation for a Fund.
 
@@ -5177,12 +5383,13 @@ public class FundsApiExample {
         String scope = "scope_example"; // String | The scope of the Fund.
         String code = "code_example"; // String | The code of the Fund. Together with the scope this uniquely identifies the Fund.
         String navTypeCode = "navTypeCode_example"; // String | When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used.
+        Boolean auditMode = false; // Boolean | When true, returns the stored valuation address keys instead of running the full aggregation engine, and returns no data if none are stored for the valuation point. Defaults to false.
         FundValuationRequest fundValuationRequest = new FundValuationRequest(); // FundValuationRequest | The request specifying the dates (or DiaryEntry) on which to calculate a set of valuation metrics.
         try {
             // uncomment the below to set overrides at the request level
-            // ListAggregationResponse result = apiInstance.getValuationForFund(scope, code, navTypeCode, fundValuationRequest).execute(opts);
+            // ListAggregationResponse result = apiInstance.getValuationForFund(scope, code, navTypeCode, auditMode, fundValuationRequest).execute(opts);
 
-            ListAggregationResponse result = apiInstance.getValuationForFund(scope, code, navTypeCode, fundValuationRequest).execute();
+            ListAggregationResponse result = apiInstance.getValuationForFund(scope, code, navTypeCode, auditMode, fundValuationRequest).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#getValuationForFund");
@@ -5202,6 +5409,7 @@ public class FundsApiExample {
 | **scope** | **String**| The scope of the Fund. | |
 | **code** | **String**| The code of the Fund. Together with the scope this uniquely identifies the Fund. | |
 | **navTypeCode** | **String**| When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. | [optional] |
+| **auditMode** | **Boolean**| When true, returns the stored valuation address keys instead of running the full aggregation engine, and returns no data if none are stored for the valuation point. Defaults to false. | [optional] [default to false] |
 | **fundValuationRequest** | [**FundValuationRequest**](FundValuationRequest.md)| The request specifying the dates (or DiaryEntry) on which to calculate a set of valuation metrics. | [optional] |
 
 ### Return type
@@ -5440,7 +5648,7 @@ public class FundsApiExample {
 
 [EARLY ACCESS] GetValuationPointPnlSummary: Get a PnL summary for the given Valuation Point in the Fund.
 
-Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.     Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
+Gets the PnL Summary lines from the Journal Entry Lines produced when calculating the Valuation Point.     Only the Journal Entry Lines selected by the pnlFilters and externalFeeFilters of the Fund Configuration are returned. If the Fund Configuration has neither pnlFilters nor externalFeeFilters, no rows are returned.     Rows are returned ordered by PnL bucket (ordinal), then portfolio scope and code (ordinal), then accounting date, activity date and source id, with the remaining Journal Entry Line fields as tie-breakers, so the order is total and stable across pages.
 
 ### Example
 
@@ -6138,7 +6346,7 @@ public class FundsApiExample {
         String page = "page_example"; // String | The pagination token to use to continue listing fees; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request.
         Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
         String filter = "filter_example"; // String | Expression to filter the results.   For example, to filter on the treatment, specify \"treatment eq 'Monthly'\". For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid.
-        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\"
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names or properties to sort by, each suffixed by \" ASC\" or \" DESC\".   The fields that can be sorted on are FeeCode, DisplayName, Description, Origin, CalculationBase, AccrualCurrency,   Treatment, TotalAnnualAccrualAmount, FeeRatePercentage, PayableFrequency, BusinessDayConvention, StartDate, EndDate,   NavTypeCode, FeeTypeId.Scope, FeeTypeId.Code, PortfolioId.Scope, PortfolioId.Code, AnchorDate.Day and AnchorDate.Month.   To sort on a property from the 'Fee' domain, specify \"Properties[{domain}/{scope}/{code}]\", for example   \"Properties[Fee/Account/Id] ASC\". Sorting on any other field of a Fee returns a 400 that names the field.
         List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Fee' domain to decorate onto each Fee.   These must take the format {domain}/{scope}/{code}, for example 'Fee/Account/Id'.
         try {
             // uncomment the below to set overrides at the request level
@@ -6168,7 +6376,7 @@ public class FundsApiExample {
 | **page** | **String**| The pagination token to use to continue listing fees; this   value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt   and asAt fields must not have changed since the original request. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
 | **filter** | **String**| Expression to filter the results.   For example, to filter on the treatment, specify \&quot;treatment eq &#39;Monthly&#39;\&quot;. For more information about filtering   results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid. | [optional] |
-| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;.   The fields that can be sorted on are FeeCode, DisplayName, Description, Origin, CalculationBase, AccrualCurrency,   Treatment, TotalAnnualAccrualAmount, FeeRatePercentage, PayableFrequency, BusinessDayConvention, StartDate, EndDate,   NavTypeCode, FeeTypeId.Scope, FeeTypeId.Code, PortfolioId.Scope, PortfolioId.Code, AnchorDate.Day and AnchorDate.Month.   To sort on a property from the &#39;Fee&#39; domain, specify \&quot;Properties[{domain}/{scope}/{code}]\&quot;, for example   \&quot;Properties[Fee/Account/Id] ASC\&quot;. Sorting on any other field of a Fee returns a 400 that names the field. | [optional] |
 | **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Fee&#39; domain to decorate onto each Fee.   These must take the format {domain}/{scope}/{code}, for example &#39;Fee/Account/Id&#39;. | [optional] |
 
 ### Return type
@@ -6613,7 +6821,7 @@ public class FundsApiExample {
 
 ## listPartnerCapitalAccounts
 
-> PagedResourceListOfPartnerCapitalAccount listPartnerCapitalAccounts(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit)
+> ResourceListWithWarningsOfPartnerCapitalAccount listPartnerCapitalAccounts(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit)
 
 [EARLY ACCESS] ListPartnerCapitalAccounts: [EARLY ACCESS] ListPartnerCapitalAccounts: List the capital account statements of a fund&#39;s partners.
 
@@ -6668,9 +6876,9 @@ public class FundsApiExample {
         Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
         try {
             // uncomment the below to set overrides at the request level
-            // PagedResourceListOfPartnerCapitalAccount result = apiInstance.listPartnerCapitalAccounts(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit).execute(opts);
+            // ResourceListWithWarningsOfPartnerCapitalAccount result = apiInstance.listPartnerCapitalAccounts(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit).execute(opts);
 
-            PagedResourceListOfPartnerCapitalAccount result = apiInstance.listPartnerCapitalAccounts(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit).execute();
+            ResourceListWithWarningsOfPartnerCapitalAccount result = apiInstance.listPartnerCapitalAccounts(scope, code, periodStart, periodEnd, navTypeCode, asAt, page, limit).execute();
             System.out.println(result.toJson());
         } catch (ApiException e) {
             System.err.println("Exception when calling FundsApi#listPartnerCapitalAccounts");
@@ -6698,7 +6906,7 @@ public class FundsApiExample {
 
 ### Return type
 
-[**PagedResourceListOfPartnerCapitalAccount**](PagedResourceListOfPartnerCapitalAccount.md)
+[**ResourceListWithWarningsOfPartnerCapitalAccount**](ResourceListWithWarningsOfPartnerCapitalAccount.md)
 
 ### HTTP request headers
 
@@ -7215,7 +7423,7 @@ public class FundsApiExample {
 
 [EARLY ACCESS] ListValuationPointComplexMarketData: List the Complex Market Data for the given Fund and Valuation Point.
 
-Lists all complex market data within the effective date range of the specified Valuation Point for a Fund,  including any items added via a Complex Close (Post-Close Activity).
+Lists the complex market data that the valuation of the specified Valuation Point consumed for a Fund,  including any items added via a Complex Close (Post-Close Activity).     Complex market data that is available but that the valuation did not consume is not listed, so a Fund whose holdings are all priced from quotes returns no rows.
 
 ### Example
 

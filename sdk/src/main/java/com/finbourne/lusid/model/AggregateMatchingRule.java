@@ -18,6 +18,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -68,6 +69,10 @@ public class AggregateMatchingRule {
   public static final String SERIALIZED_NAME_RIGHT_OPERATION = "rightOperation";
   @SerializedName(SERIALIZED_NAME_RIGHT_OPERATION)
   private String rightOperation;
+
+  public static final String SERIALIZED_NAME_IS_CASE_SENSITIVE = "isCaseSensitive";
+  @SerializedName(SERIALIZED_NAME_IS_CASE_SENSITIVE)
+  private Boolean isCaseSensitive;
 
   public AggregateMatchingRule() {
   }
@@ -121,7 +126,7 @@ public class AggregateMatchingRule {
   }
 
    /**
-   * Group-level operation applied to the left side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears.
+   * Group-level operation applied to the left side&#39;s per-item values during reconciliation. Sum adds up decimal values. UniformValue requires all items on the side to carry the same value of any type, and compares it with the other side&#39;s value. UniformValue must be used on both sides or on neither. Available values: Sum, UniformValue.
    * @return leftOperation
   **/
   @jakarta.annotation.Nonnull
@@ -163,7 +168,7 @@ public class AggregateMatchingRule {
   }
 
    /**
-   * Group-level operation applied to the right side&#39;s per-item values during reconciliation. Only Sum is currently supported; the other listed values are reserved and are rejected. Available values: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears.
+   * Group-level operation applied to the right side&#39;s per-item values during reconciliation. Sum adds up decimal values. UniformValue requires all items on the side to carry the same value of any type, and compares it with the other side&#39;s value. UniformValue must be used on both sides or on neither. Available values: Sum, UniformValue.
    * @return rightOperation
   **/
   @jakarta.annotation.Nonnull
@@ -174,6 +179,27 @@ public class AggregateMatchingRule {
 
   public void setRightOperation(String rightOperation) {
     this.rightOperation = rightOperation;
+  }
+
+
+  public AggregateMatchingRule isCaseSensitive(Boolean isCaseSensitive) {
+    
+    this.isCaseSensitive = isCaseSensitive;
+    return this;
+  }
+
+   /**
+   * Whether the comparison of a string rule is case sensitive. Optional, defaults to false. Only a rule whose values are strings can declare it.
+   * @return isCaseSensitive
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getIsCaseSensitive() {
+    return isCaseSensitive;
+  }
+
+
+  public void setIsCaseSensitive(Boolean isCaseSensitive) {
+    this.isCaseSensitive = isCaseSensitive;
   }
 
 
@@ -191,12 +217,24 @@ public class AggregateMatchingRule {
         Objects.equals(this.leftFormula, aggregateMatchingRule.leftFormula) &&
         Objects.equals(this.leftOperation, aggregateMatchingRule.leftOperation) &&
         Objects.equals(this.rightFormula, aggregateMatchingRule.rightFormula) &&
-        Objects.equals(this.rightOperation, aggregateMatchingRule.rightOperation);
+        Objects.equals(this.rightOperation, aggregateMatchingRule.rightOperation) &&
+        Objects.equals(this.isCaseSensitive, aggregateMatchingRule.isCaseSensitive);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ruleName, leftFormula, leftOperation, rightFormula, rightOperation);
+    return Objects.hash(ruleName, leftFormula, leftOperation, rightFormula, rightOperation, isCaseSensitive);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -208,6 +246,7 @@ public class AggregateMatchingRule {
     sb.append("    leftOperation: ").append(toIndentedString(leftOperation)).append("\n");
     sb.append("    rightFormula: ").append(toIndentedString(rightFormula)).append("\n");
     sb.append("    rightOperation: ").append(toIndentedString(rightOperation)).append("\n");
+    sb.append("    isCaseSensitive: ").append(toIndentedString(isCaseSensitive)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -235,6 +274,7 @@ public class AggregateMatchingRule {
     openapiFields.add("leftOperation");
     openapiFields.add("rightFormula");
     openapiFields.add("rightOperation");
+    openapiFields.add("isCaseSensitive");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
