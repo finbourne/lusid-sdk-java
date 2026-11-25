@@ -6,7 +6,7 @@ The rate of return over each period of the grid, or over a window looking back f
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **window** | [**ReturnsMetricWindow**](ReturnsMetricWindow.md) |  | [optional] [default to ReturnsMetricWindow]
-**type** | **String** | Available values: Return, IndicativeAmount. | [default to String]
+**type** | **String** | Available values: Return, IndicativeAmount, Volatility. | [default to String]
 **alias** | **String** |  | [optional] [default to String]
 
 ```java

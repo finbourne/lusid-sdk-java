@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.DiaryEntry;
 import com.finbourne.lusid.model.FundCashStatementLocalCurrency;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.ValuationPointDiagnostic;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -61,6 +62,10 @@ public class ValuationPointResourceListOfFundCashStatementLocalCurrency {
   @SerializedName(SERIALIZED_NAME_START_VALUATION_POINT)
   private DiaryEntry startValuationPoint;
 
+  public static final String SERIALIZED_NAME_DIAGNOSTICS = "diagnostics";
+  @SerializedName(SERIALIZED_NAME_DIAGNOSTICS)
+  private List<ValuationPointDiagnostic> diagnostics;
+
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
@@ -106,6 +111,35 @@ public class ValuationPointResourceListOfFundCashStatementLocalCurrency {
 
   public void setStartValuationPoint(DiaryEntry startValuationPoint) {
     this.startValuationPoint = startValuationPoint;
+  }
+
+
+  public ValuationPointResourceListOfFundCashStatementLocalCurrency diagnostics(List<ValuationPointDiagnostic> diagnostics) {
+    
+    this.diagnostics = diagnostics;
+    return this;
+  }
+
+  public ValuationPointResourceListOfFundCashStatementLocalCurrency addDiagnosticsItem(ValuationPointDiagnostic diagnosticsItem) {
+    if (this.diagnostics == null) {
+      this.diagnostics = new ArrayList<>();
+    }
+    this.diagnostics.add(diagnosticsItem);
+    return this;
+  }
+
+   /**
+   * Get diagnostics
+   * @return diagnostics
+  **/
+  @jakarta.annotation.Nullable
+  public List<ValuationPointDiagnostic> getDiagnostics() {
+    return diagnostics;
+  }
+
+
+  public void setDiagnostics(List<ValuationPointDiagnostic> diagnostics) {
+    this.diagnostics = diagnostics;
   }
 
 
@@ -262,6 +296,7 @@ public class ValuationPointResourceListOfFundCashStatementLocalCurrency {
     }
     ValuationPointResourceListOfFundCashStatementLocalCurrency valuationPointResourceListOfFundCashStatementLocalCurrency = (ValuationPointResourceListOfFundCashStatementLocalCurrency) o;
     return Objects.equals(this.startValuationPoint, valuationPointResourceListOfFundCashStatementLocalCurrency.startValuationPoint) &&
+        Objects.equals(this.diagnostics, valuationPointResourceListOfFundCashStatementLocalCurrency.diagnostics) &&
         Objects.equals(this.version, valuationPointResourceListOfFundCashStatementLocalCurrency.version) &&
         Objects.equals(this.values, valuationPointResourceListOfFundCashStatementLocalCurrency.values) &&
         Objects.equals(this.href, valuationPointResourceListOfFundCashStatementLocalCurrency.href) &&
@@ -276,7 +311,7 @@ public class ValuationPointResourceListOfFundCashStatementLocalCurrency {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startValuationPoint, version, values, href, nextPage, previousPage, links);
+    return Objects.hash(startValuationPoint, diagnostics, version, values, href, nextPage, previousPage, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -291,6 +326,7 @@ public class ValuationPointResourceListOfFundCashStatementLocalCurrency {
     StringBuilder sb = new StringBuilder();
     sb.append("class ValuationPointResourceListOfFundCashStatementLocalCurrency {\n");
     sb.append("    startValuationPoint: ").append(toIndentedString(startValuationPoint)).append("\n");
+    sb.append("    diagnostics: ").append(toIndentedString(diagnostics)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
@@ -320,6 +356,7 @@ public class ValuationPointResourceListOfFundCashStatementLocalCurrency {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("startValuationPoint");
+    openapiFields.add("diagnostics");
     openapiFields.add("version");
     openapiFields.add("values");
     openapiFields.add("href");
@@ -356,6 +393,20 @@ public class ValuationPointResourceListOfFundCashStatementLocalCurrency {
       // validate the optional field `startValuationPoint`
       if (jsonObj.get("startValuationPoint") != null && !jsonObj.get("startValuationPoint").isJsonNull()) {
         DiaryEntry.validateJsonElement(jsonObj.get("startValuationPoint"));
+      }
+      if (jsonObj.get("diagnostics") != null && !jsonObj.get("diagnostics").isJsonNull()) {
+        JsonArray jsonArraydiagnostics = jsonObj.getAsJsonArray("diagnostics");
+        if (jsonArraydiagnostics != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("diagnostics").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `diagnostics` to be an array in the JSON string but got `%s`", jsonObj.get("diagnostics").toString()));
+          }
+
+          // validate the optional field `diagnostics` (array)
+          for (int i = 0; i < jsonArraydiagnostics.size(); i++) {
+            ValuationPointDiagnostic.validateJsonElement(jsonArraydiagnostics.get(i));
+          };
+        }
       }
       // validate the required field `version`
       Version.validateJsonElement(jsonObj.get("version"));

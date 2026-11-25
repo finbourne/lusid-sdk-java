@@ -26,6 +26,8 @@ import java.io.IOException;
 
 
 import com.finbourne.lusid.model.AcceptEstimateValuationPointResponse;
+import com.finbourne.lusid.model.AdjustHolding;
+import com.finbourne.lusid.model.AdjustHoldingRequest;
 import com.finbourne.lusid.model.AllocationGroupDefinition;
 import com.finbourne.lusid.model.CarryAccrualRequest;
 import com.finbourne.lusid.model.CarryAccrualResult;
@@ -34,6 +36,7 @@ import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.DiaryEntry;
 import com.finbourne.lusid.model.Facility;
 import com.finbourne.lusid.model.FacilityRequest;
+import com.finbourne.lusid.model.FacilityReseedResult;
 import com.finbourne.lusid.model.Fee;
 import com.finbourne.lusid.model.FeeProperties;
 import com.finbourne.lusid.model.FeeRequest;
@@ -49,6 +52,8 @@ import com.finbourne.lusid.model.ListAggregationResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.ManagementFeeRequest;
+import com.finbourne.lusid.model.ManagementFeeResplitRequest;
+import com.finbourne.lusid.model.ManagementFeeResplitResult;
 import com.finbourne.lusid.model.ManagementFeeResult;
 import com.finbourne.lusid.model.NavActivityAdjustment;
 import com.finbourne.lusid.model.NavActivityAdjustmentResponse;
@@ -24275,6 +24280,539 @@ public class FundsApi {
     public APIreactivateNavTypesRequest reactivateNavTypes(String scope, String code, List<String> requestBody) {
         return new APIreactivateNavTypesRequest(scope, code, requestBody);
     }
+    private okhttp3.Call reseedFacilityBalanceCall(String scope, String code, String facilityCode, Boolean dryRun, final ApiCallback _callback) throws ApiException {
+        return reseedFacilityBalanceCall(scope, code, facilityCode, dryRun,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call reseedFacilityBalanceCall(String scope, String code, String facilityCode, Boolean dryRun, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/facilities/{facilityCode}/$reseed"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "facilityCode" + "}", localVarApiClient.escapeString(facilityCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (dryRun != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("dryRun", dryRun));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call reseedFacilityBalanceValidateBeforeCall(String scope, String code, String facilityCode, Boolean dryRun, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling reseedFacilityBalance(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling reseedFacilityBalance(Async)");
+        }
+
+        // verify the required parameter 'facilityCode' is set
+        if (facilityCode == null) {
+            throw new ApiException("Missing the required parameter 'facilityCode' when calling reseedFacilityBalance(Async)");
+        }
+
+        return reseedFacilityBalanceCall(scope, code, facilityCode, dryRun, _callback, opts);
+
+    }
+
+
+    private ApiResponse<FacilityReseedResult> reseedFacilityBalanceWithHttpInfo(String scope, String code, String facilityCode, Boolean dryRun) throws ApiException {
+        okhttp3.Call localVarCall = reseedFacilityBalanceValidateBeforeCall(scope, code, facilityCode, dryRun, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FacilityReseedResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<FacilityReseedResult> reseedFacilityBalanceWithHttpInfo(String scope, String code, String facilityCode, Boolean dryRun, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = reseedFacilityBalanceValidateBeforeCall(scope, code, facilityCode, dryRun, null, opts);
+        Type localVarReturnType = new TypeToken<FacilityReseedResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call reseedFacilityBalanceAsync(String scope, String code, String facilityCode, Boolean dryRun, final ApiCallback<FacilityReseedResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = reseedFacilityBalanceValidateBeforeCall(scope, code, facilityCode, dryRun, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<FacilityReseedResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call reseedFacilityBalanceAsync(String scope, String code, String facilityCode, Boolean dryRun, final ApiCallback<FacilityReseedResult> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = reseedFacilityBalanceValidateBeforeCall(scope, code, facilityCode, dryRun, _callback, opts);
+        Type localVarReturnType = new TypeToken<FacilityReseedResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIreseedFacilityBalanceRequest {
+        private final String scope;
+        private final String code;
+        private final String facilityCode;
+        private Boolean dryRun;
+
+        private APIreseedFacilityBalanceRequest(String scope, String code, String facilityCode) {
+            this.scope = scope;
+            this.code = code;
+            this.facilityCode = facilityCode;
+        }
+
+        /**
+         * Set dryRun
+         * @param dryRun Report what a re-seed would write, and any draws or repayments that cannot be attributed, without writing anything. Defaults to false. (optional)
+         * @return APIreseedFacilityBalanceRequest
+         */
+        public APIreseedFacilityBalanceRequest dryRun(Boolean dryRun) {
+            this.dryRun = dryRun;
+            return this;
+        }
+
+        /**
+         * Build call for reseedFacilityBalance
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of the re-seed, or of the dry run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return reseedFacilityBalanceCall(scope, code, facilityCode, dryRun, _callback);
+        }
+
+        /**
+         * Execute reseedFacilityBalance request
+         * @return FacilityReseedResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of the re-seed, or of the dry run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FacilityReseedResult execute() throws ApiException {
+            ApiResponse<FacilityReseedResult> localVarResp = reseedFacilityBalanceWithHttpInfo(scope, code, facilityCode, dryRun);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reseedFacilityBalance request. Use any specified configuration options to override any other configuration for this request only.
+         * @return FacilityReseedResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of the re-seed, or of the dry run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public FacilityReseedResult execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<FacilityReseedResult> localVarResp = reseedFacilityBalanceWithHttpInfo(scope, code, facilityCode, dryRun, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute reseedFacilityBalance request with HTTP info returned
+         * @return ApiResponse&lt;FacilityReseedResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of the re-seed, or of the dry run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FacilityReseedResult> executeWithHttpInfo() throws ApiException {
+            return reseedFacilityBalanceWithHttpInfo(scope, code, facilityCode, dryRun);
+        }
+
+        /**
+         * Execute reseedFacilityBalance request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;FacilityReseedResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of the re-seed, or of the dry run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<FacilityReseedResult> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return reseedFacilityBalanceWithHttpInfo(scope, code, facilityCode, dryRun, opts);
+        }
+
+        /**
+         * Execute reseedFacilityBalance request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of the re-seed, or of the dry run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FacilityReseedResult> _callback) throws ApiException {
+            return reseedFacilityBalanceAsync(scope, code, facilityCode, dryRun, _callback);
+        }
+
+        /**
+         * Execute reseedFacilityBalance request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The outcome of the re-seed, or of the dry run. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<FacilityReseedResult> _callback, ConfigurationOptions opts) throws ApiException {
+            return reseedFacilityBalanceAsync(scope, code, facilityCode, dryRun, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] ReseedFacilityBalance: [EXPERIMENTAL] ReseedFacilityBalance: Re-seed a Facility&#39;s balance from its booked draws and repayments.
+     * Rebuild the balance a Facility&#39;s limit is judged on from the draws and repayments booked on it: DealFundings  drawn from it and capital calls repaying it, in Booked or Booking status, on allocation maps whose  structureMemberId is the Fund, and FacilityDrawEvents and FacilityRepaymentEvents in the sources of the Fund&#39;s  portfolios. Afterwards the balance is the booked draws and repayments. Running it again writes nothing. A  Facility with nothing booked on it is seeded with 0. Draws and repayments still in Booking status count, and  are named in a FacilityBookingInProgress warning.  A draw or repayment written at the same time makes the re-seed fail as a concurrent modification; retry it.  A draw or repayment naming the Facility on an allocation map whose structureMemberId is not a fund cannot be  attributed, and the re-seed is refused with 409 FacilityFlowsUnattributable naming them; nothing is written,  and draws, repayments, FacilityInterestEvents and FacilityCommitmentFeeEvents on the Facility are refused the  same way until the maps are fixed and the Facility is re-seeded.  With dryRun, nothing is written: the response says what a re-seed would write, or lists the draws and  repayments that cannot be attributed. Requires the Fund&#39;s update entitlement, except for a dry run.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param facilityCode The code of the Facility to re-seed. (required)
+     * @return APIreseedFacilityBalanceRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The outcome of the re-seed, or of the dry run. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIreseedFacilityBalanceRequest reseedFacilityBalance(String scope, String code, String facilityCode) {
+        return new APIreseedFacilityBalanceRequest(scope, code, facilityCode);
+    }
+    private okhttp3.Call resplitPrepaidManagementFeesCall(String scope, String code, ManagementFeeResplitRequest managementFeeResplitRequest, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
+        return resplitPrepaidManagementFeesCall(scope, code, managementFeeResplitRequest, asAt,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call resplitPrepaidManagementFeesCall(String scope, String code, ManagementFeeResplitRequest managementFeeResplitRequest, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = managementFeeResplitRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/fees/$resplit"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call resplitPrepaidManagementFeesValidateBeforeCall(String scope, String code, ManagementFeeResplitRequest managementFeeResplitRequest, OffsetDateTime asAt, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling resplitPrepaidManagementFees(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling resplitPrepaidManagementFees(Async)");
+        }
+
+        // verify the required parameter 'managementFeeResplitRequest' is set
+        if (managementFeeResplitRequest == null) {
+            throw new ApiException("Missing the required parameter 'managementFeeResplitRequest' when calling resplitPrepaidManagementFees(Async)");
+        }
+
+        return resplitPrepaidManagementFeesCall(scope, code, managementFeeResplitRequest, asAt, _callback, opts);
+
+    }
+
+
+    private ApiResponse<ManagementFeeResplitResult> resplitPrepaidManagementFeesWithHttpInfo(String scope, String code, ManagementFeeResplitRequest managementFeeResplitRequest, OffsetDateTime asAt) throws ApiException {
+        okhttp3.Call localVarCall = resplitPrepaidManagementFeesValidateBeforeCall(scope, code, managementFeeResplitRequest, asAt, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ManagementFeeResplitResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<ManagementFeeResplitResult> resplitPrepaidManagementFeesWithHttpInfo(String scope, String code, ManagementFeeResplitRequest managementFeeResplitRequest, OffsetDateTime asAt, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = resplitPrepaidManagementFeesValidateBeforeCall(scope, code, managementFeeResplitRequest, asAt, null, opts);
+        Type localVarReturnType = new TypeToken<ManagementFeeResplitResult>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call resplitPrepaidManagementFeesAsync(String scope, String code, ManagementFeeResplitRequest managementFeeResplitRequest, OffsetDateTime asAt, final ApiCallback<ManagementFeeResplitResult> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = resplitPrepaidManagementFeesValidateBeforeCall(scope, code, managementFeeResplitRequest, asAt, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<ManagementFeeResplitResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call resplitPrepaidManagementFeesAsync(String scope, String code, ManagementFeeResplitRequest managementFeeResplitRequest, OffsetDateTime asAt, final ApiCallback<ManagementFeeResplitResult> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = resplitPrepaidManagementFeesValidateBeforeCall(scope, code, managementFeeResplitRequest, asAt, _callback, opts);
+        Type localVarReturnType = new TypeToken<ManagementFeeResplitResult>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIresplitPrepaidManagementFeesRequest {
+        private final String scope;
+        private final String code;
+        private final ManagementFeeResplitRequest managementFeeResplitRequest;
+        private OffsetDateTime asAt;
+
+        private APIresplitPrepaidManagementFeesRequest(String scope, String code, ManagementFeeResplitRequest managementFeeResplitRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.managementFeeResplitRequest = managementFeeResplitRequest;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the Fund, on a dry run only. Defaults to return the latest version if not specified. (optional)
+         * @return APIresplitPrepaidManagementFeesRequest
+         */
+        public APIresplitPrepaidManagementFeesRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Build call for resplitPrepaidManagementFees
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The prepaid periods re-split and the fee transactions written. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return resplitPrepaidManagementFeesCall(scope, code, managementFeeResplitRequest, asAt, _callback);
+        }
+
+        /**
+         * Execute resplitPrepaidManagementFees request
+         * @return ManagementFeeResplitResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The prepaid periods re-split and the fee transactions written. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ManagementFeeResplitResult execute() throws ApiException {
+            ApiResponse<ManagementFeeResplitResult> localVarResp = resplitPrepaidManagementFeesWithHttpInfo(scope, code, managementFeeResplitRequest, asAt);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute resplitPrepaidManagementFees request. Use any specified configuration options to override any other configuration for this request only.
+         * @return ManagementFeeResplitResult
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The prepaid periods re-split and the fee transactions written. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ManagementFeeResplitResult execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<ManagementFeeResplitResult> localVarResp = resplitPrepaidManagementFeesWithHttpInfo(scope, code, managementFeeResplitRequest, asAt, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute resplitPrepaidManagementFees request with HTTP info returned
+         * @return ApiResponse&lt;ManagementFeeResplitResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The prepaid periods re-split and the fee transactions written. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ManagementFeeResplitResult> executeWithHttpInfo() throws ApiException {
+            return resplitPrepaidManagementFeesWithHttpInfo(scope, code, managementFeeResplitRequest, asAt);
+        }
+
+        /**
+         * Execute resplitPrepaidManagementFees request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;ManagementFeeResplitResult&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The prepaid periods re-split and the fee transactions written. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<ManagementFeeResplitResult> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return resplitPrepaidManagementFeesWithHttpInfo(scope, code, managementFeeResplitRequest, asAt, opts);
+        }
+
+        /**
+         * Execute resplitPrepaidManagementFees request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The prepaid periods re-split and the fee transactions written. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ManagementFeeResplitResult> _callback) throws ApiException {
+            return resplitPrepaidManagementFeesAsync(scope, code, managementFeeResplitRequest, asAt, _callback);
+        }
+
+        /**
+         * Execute resplitPrepaidManagementFees request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The prepaid periods re-split and the fee transactions written. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<ManagementFeeResplitResult> _callback, ConfigurationOptions opts) throws ApiException {
+            return resplitPrepaidManagementFeesAsync(scope, code, managementFeeResplitRequest, asAt, _callback, opts);
+        }
+    }
+
+    /**
+     * [EARLY ACCESS] ResplitPrepaidManagementFees: [EXPERIMENTAL] ResplitPrepaidManagementFees: Re-split the Fund&#39;s prepaid management fee periods.
+     * Derive again, for every prepaid management fee period meeting the window, the split of its offsets between the  fee payable and a receivable from the manager, from the period&#39;s prepayment, its accruals and the payments to  the manager the Fund&#39;s books now hold, without calculating any fee again. A payment booked after a split leaves  it out of date until the period is re-split, which a valuation point over the period does before it is struck.  An unchanged split writes nothing, a re-split into a final period is its post-close activity, and a dry run  writes nothing and says which periods&#39; splits are out of date.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param managementFeeResplitRequest The window to re-split, and whether to write. (required)
+     * @return APIresplitPrepaidManagementFeesRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The prepaid periods re-split and the fee transactions written. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIresplitPrepaidManagementFeesRequest resplitPrepaidManagementFees(String scope, String code, ManagementFeeResplitRequest managementFeeResplitRequest) {
+        return new APIresplitPrepaidManagementFeesRequest(scope, code, managementFeeResplitRequest);
+    }
     private okhttp3.Call revertValuationPointToEstimateCall(String scope, String code, RevertValuationPointDataRequest revertValuationPointDataRequest, String navTypeCode, final ApiCallback _callback) throws ApiException {
         return revertValuationPointToEstimateCall(scope, code, revertValuationPointDataRequest, navTypeCode,  _callback, new ConfigurationOptions());
     }
@@ -25093,6 +25631,331 @@ public class FundsApi {
      */
     public APIsendBackTaxReturnRequest sendBackTaxReturn(String scope, String code, TaxReturnTransitionRequest taxReturnTransitionRequest) {
         return new APIsendBackTaxReturnRequest(scope, code, taxReturnTransitionRequest);
+    }
+    private okhttp3.Call setHoldingsForFundCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, String navTypeCode, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback _callback) throws ApiException {
+        return setHoldingsForFundCall(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call setHoldingsForFundCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, String navTypeCode, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = adjustHoldingRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/funds/{scope}/{code}/holdings"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (effectiveAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
+        }
+
+        if (navTypeCode != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("navTypeCode", navTypeCode));
+        }
+
+        if (reconciliationMethods != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "reconciliationMethods", reconciliationMethods));
+        }
+
+        if (overrideMovementName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("overrideMovementName", overrideMovementName));
+        }
+
+        if (overrideOffsetMovementName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("overrideOffsetMovementName", overrideOffsetMovementName));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call setHoldingsForFundValidateBeforeCall(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, String navTypeCode, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling setHoldingsForFund(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling setHoldingsForFund(Async)");
+        }
+
+        // verify the required parameter 'effectiveAt' is set
+        if (effectiveAt == null) {
+            throw new ApiException("Missing the required parameter 'effectiveAt' when calling setHoldingsForFund(Async)");
+        }
+
+        // verify the required parameter 'adjustHoldingRequest' is set
+        if (adjustHoldingRequest == null) {
+            throw new ApiException("Missing the required parameter 'adjustHoldingRequest' when calling setHoldingsForFund(Async)");
+        }
+
+        return setHoldingsForFundCall(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, opts);
+
+    }
+
+
+    private ApiResponse<AdjustHolding> setHoldingsForFundWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, String navTypeCode, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName) throws ApiException {
+        okhttp3.Call localVarCall = setHoldingsForFundValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<AdjustHolding> setHoldingsForFundWithHttpInfo(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, String navTypeCode, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = setHoldingsForFundValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, null, opts);
+        Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call setHoldingsForFundAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, String navTypeCode, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback<AdjustHolding> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = setHoldingsForFundValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call setHoldingsForFundAsync(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest, String navTypeCode, List<String> reconciliationMethods, String overrideMovementName, String overrideOffsetMovementName, final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = setHoldingsForFundValidateBeforeCall(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, opts);
+        Type localVarReturnType = new TypeToken<AdjustHolding>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIsetHoldingsForFundRequest {
+        private final String scope;
+        private final String code;
+        private final String effectiveAt;
+        private final List<AdjustHoldingRequest> adjustHoldingRequest;
+        private String navTypeCode;
+        private List<String> reconciliationMethods;
+        private String overrideMovementName;
+        private String overrideOffsetMovementName;
+
+        private APIsetHoldingsForFundRequest(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest) {
+            this.scope = scope;
+            this.code = code;
+            this.effectiveAt = effectiveAt;
+            this.adjustHoldingRequest = adjustHoldingRequest;
+        }
+
+        /**
+         * Set navTypeCode
+         * @param navTypeCode When provided, runs against the specified NAV Type, otherwise the Primary NAV Type will be used. (optional)
+         * @return APIsetHoldingsForFundRequest
+         */
+        public APIsetHoldingsForFundRequest navTypeCode(String navTypeCode) {
+            this.navTypeCode = navTypeCode;
+            return this;
+        }
+
+        /**
+         * Set reconciliationMethods
+         * @param reconciliationMethods Optional parameter for specifying a reconciliation method: e.g. FxForward. Available values: FxForward. (optional)
+         * @return APIsetHoldingsForFundRequest
+         */
+        public APIsetHoldingsForFundRequest reconciliationMethods(List<String> reconciliationMethods) {
+            this.reconciliationMethods = reconciliationMethods;
+            return this;
+        }
+
+        /**
+         * Set overrideMovementName
+         * @param overrideMovementName Optional parameter to override movement name for the set holdings. (optional)
+         * @return APIsetHoldingsForFundRequest
+         */
+        public APIsetHoldingsForFundRequest overrideMovementName(String overrideMovementName) {
+            this.overrideMovementName = overrideMovementName;
+            return this;
+        }
+
+        /**
+         * Set overrideOffsetMovementName
+         * @param overrideOffsetMovementName Optional parameter will create an additional offset movement for the set holdings with this new name and transaction type: CarryAsPnl (optional)
+         * @return APIsetHoldingsForFundRequest
+         */
+        public APIsetHoldingsForFundRequest overrideOffsetMovementName(String overrideOffsetMovementName) {
+            this.overrideOffsetMovementName = overrideOffsetMovementName;
+            return this;
+        }
+
+        /**
+         * Build call for setHoldingsForFund
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the derived portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return setHoldingsForFundCall(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback);
+        }
+
+        /**
+         * Execute setHoldingsForFund request
+         * @return AdjustHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the derived portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AdjustHolding execute() throws ApiException {
+            ApiResponse<AdjustHolding> localVarResp = setHoldingsForFundWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setHoldingsForFund request. Use any specified configuration options to override any other configuration for this request only.
+         * @return AdjustHolding
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the derived portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public AdjustHolding execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<AdjustHolding> localVarResp = setHoldingsForFundWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute setHoldingsForFund request with HTTP info returned
+         * @return ApiResponse&lt;AdjustHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the derived portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AdjustHolding> executeWithHttpInfo() throws ApiException {
+            return setHoldingsForFundWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName);
+        }
+
+        /**
+         * Execute setHoldingsForFund request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;AdjustHolding&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the derived portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<AdjustHolding> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return setHoldingsForFundWithHttpInfo(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, opts);
+        }
+
+        /**
+         * Execute setHoldingsForFund request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the derived portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback) throws ApiException {
+            return setHoldingsForFundAsync(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback);
+        }
+
+        /**
+         * Execute setHoldingsForFund request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The version of the derived portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<AdjustHolding> _callback, ConfigurationOptions opts) throws ApiException {
+            return setHoldingsForFundAsync(scope, code, effectiveAt, adjustHoldingRequest, navTypeCode, reconciliationMethods, overrideMovementName, overrideOffsetMovementName, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] SetHoldingsForFund: Set holdings for a Fund.
+     * Set the holdings of the derived portfolio a Fund maintains for a NAV type to the provided targets. LUSID will  automatically construct adjustment transactions to ensure that the entire set of holdings for the derived  portfolio are always set to the provided targets for the specified effective datetime.
+     * @param scope The scope of the Fund. (required)
+     * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
+     * @param effectiveAt The effective datetime or cut label at which the holdings should be set to the provided targets. (required)
+     * @param adjustHoldingRequest The complete set of target holdings for the Fund&#39;s derived portfolio. (required)
+     * @return APIsetHoldingsForFundRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The version of the derived portfolio that contains the newly set holdings </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIsetHoldingsForFundRequest setHoldingsForFund(String scope, String code, String effectiveAt, List<AdjustHoldingRequest> adjustHoldingRequest) {
+        return new APIsetHoldingsForFundRequest(scope, code, effectiveAt, adjustHoldingRequest);
     }
     private okhttp3.Call setShareClassInstrumentsCall(String scope, String code, SetShareClassInstrumentsRequest setShareClassInstrumentsRequest, final ApiCallback _callback) throws ApiException {
         return setShareClassInstrumentsCall(scope, code, setShareClassInstrumentsRequest,  _callback, new ConfigurationOptions());

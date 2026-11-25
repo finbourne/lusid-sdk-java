@@ -5,10 +5,10 @@ Base class for a metric requested from the aggregated-returns (TWR) endpoint, me
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Available values: Return, IndicativeAmount. | [default to String]
+**type** | **String** | Available values: Return, IndicativeAmount, Volatility. | [default to String]
 **alias** | **String** |  | [optional] [default to String]
 **seedAmount** | **String** |  | [default to String]
-**window** | [**ReturnsMetricWindow**](ReturnsMetricWindow.md) |  | [optional] [default to ReturnsMetricWindow]
+**window** | [**ReturnsMetricWindow**](ReturnsMetricWindow.md) |  | [default to ReturnsMetricWindow]
 
 ```java
 import com.finbourne.lusid.model.ReturnsMetric;
@@ -26,6 +26,8 @@ ReturnsMetric config = new ReturnsMetric(returnsMetric);
 * [IndicativeAmountMetric](./IndicativeAmountMetric.md)
 
 * [ReturnMetric](./ReturnMetric.md)
+
+* [VolatilityMetric](./VolatilityMetric.md)
 
 
 [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to README](../README.md)

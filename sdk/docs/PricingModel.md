@@ -40,6 +40,7 @@ PricingModel method = PricingModel.INFLATIONFORWARD;
 PricingModel method = PricingModel.HULLWHITE1F;
 PricingModel method = PricingModel.CAPITALINTERESTPRICER;
 PricingModel method = PricingModel.DISCOUNTEDFORWARD;
+PricingModel method = PricingModel.ISDASTANDARDMODEL;
 ```
 
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **isChosen** | **Boolean** | Is this the election that has been explicitly chosen from multiple options. | [optional] [default to Boolean]
 **isDefault** | **Boolean** | Is this election automatically applied in the absence of an election having been made.  May only be true for one election if multiple are provided. | [optional] [default to Boolean]
 **unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  | [default to UnitsRatio]
+**paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date this option pays. On MergerEvent, RepurchaseOfferEvent, BonusIssueEvent and  ExchangeOfferEvent it sets the settlement date of this option&#39;s transactions; when omitted, the  event-level date applies. Not supported on other events. | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.SecurityOfferElection;
@@ -20,13 +21,15 @@ String ElectionKey = "example ElectionKey";
 Boolean IsChosen = true;
 Boolean IsDefault = true;
 UnitsRatio UnitsRatio = new UnitsRatio();
+@jakarta.annotation.Nullable OffsetDateTime PaymentDate = OffsetDateTime.now();
 
 
 SecurityOfferElection securityOfferElectionInstance = new SecurityOfferElection()
     .ElectionKey(ElectionKey)
     .IsChosen(IsChosen)
     .IsDefault(IsDefault)
-    .UnitsRatio(UnitsRatio);
+    .UnitsRatio(UnitsRatio)
+    .PaymentDate(PaymentDate);
 ```
 
 

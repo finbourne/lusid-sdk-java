@@ -17,7 +17,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -68,6 +70,10 @@ public class CashOfferElection {
   public static final String SERIALIZED_NAME_IS_DEFAULT = "isDefault";
   @SerializedName(SERIALIZED_NAME_IS_DEFAULT)
   private Boolean isDefault;
+
+  public static final String SERIALIZED_NAME_PAYMENT_DATE = "paymentDate";
+  @SerializedName(SERIALIZED_NAME_PAYMENT_DATE)
+  private OffsetDateTime paymentDate;
 
   public CashOfferElection() {
   }
@@ -177,6 +183,27 @@ public class CashOfferElection {
   }
 
 
+  public CashOfferElection paymentDate(OffsetDateTime paymentDate) {
+    
+    this.paymentDate = paymentDate;
+    return this;
+  }
+
+   /**
+   * Optional. The date this option pays. On MergerEvent, RepurchaseOfferEvent, BonusIssueEvent and  ExchangeOfferEvent it sets the settlement date of this option&#39;s transactions; when omitted, the  event-level date applies. Not supported on other events.
+   * @return paymentDate
+  **/
+  @jakarta.annotation.Nullable
+  public OffsetDateTime getPaymentDate() {
+    return paymentDate;
+  }
+
+
+  public void setPaymentDate(OffsetDateTime paymentDate) {
+    this.paymentDate = paymentDate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -191,12 +218,24 @@ public class CashOfferElection {
         (this.cashOfferPrice.compareTo(cashOfferElection.getCashOfferPrice()) == 0) &&
         Objects.equals(this.electionKey, cashOfferElection.electionKey) &&
         Objects.equals(this.isChosen, cashOfferElection.isChosen) &&
-        Objects.equals(this.isDefault, cashOfferElection.isDefault);
+        Objects.equals(this.isDefault, cashOfferElection.isDefault) &&
+        Objects.equals(this.paymentDate, cashOfferElection.paymentDate);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cashOfferCurrency, cashOfferPrice, electionKey, isChosen, isDefault);
+    return Objects.hash(cashOfferCurrency, cashOfferPrice, electionKey, isChosen, isDefault, paymentDate);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -208,6 +247,7 @@ public class CashOfferElection {
     sb.append("    electionKey: ").append(toIndentedString(electionKey)).append("\n");
     sb.append("    isChosen: ").append(toIndentedString(isChosen)).append("\n");
     sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
+    sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -235,6 +275,7 @@ public class CashOfferElection {
     openapiFields.add("electionKey");
     openapiFields.add("isChosen");
     openapiFields.add("isDefault");
+    openapiFields.add("paymentDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

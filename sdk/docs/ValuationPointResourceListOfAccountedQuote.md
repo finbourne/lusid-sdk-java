@@ -6,6 +6,7 @@ ResourceList with extra header fields used by the various ValuationPoint endpoin
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **startValuationPoint** | [**DiaryEntry**](DiaryEntry.md) |  | [optional] [default to DiaryEntry]
+**diagnostics** | [**List&lt;ValuationPointDiagnostic&gt;**](ValuationPointDiagnostic.md) |  | [optional] [default to List<ValuationPointDiagnostic>]
 **version** | [**Version**](Version.md) |  | [default to Version]
 **values** | [**List&lt;AccountedQuote&gt;**](AccountedQuote.md) |  | [default to List<AccountedQuote>]
 **href** | [**URI**](URI.md) |  | [optional] [default to URI]
@@ -20,6 +21,7 @@ import java.lang.System;
 import java.net.URI;
 
 DiaryEntry StartValuationPoint = new DiaryEntry();
+@jakarta.annotation.Nullable List<ValuationPointDiagnostic> Diagnostics = new List<ValuationPointDiagnostic>();
 Version Version = new Version();
 List<AccountedQuote> Values = new List<AccountedQuote>();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
@@ -30,6 +32,7 @@ List<AccountedQuote> Values = new List<AccountedQuote>();
 
 ValuationPointResourceListOfAccountedQuote valuationPointResourceListOfAccountedQuoteInstance = new ValuationPointResourceListOfAccountedQuote()
     .StartValuationPoint(StartValuationPoint)
+    .Diagnostics(Diagnostics)
     .Version(Version)
     .Values(Values)
     .Href(Href)

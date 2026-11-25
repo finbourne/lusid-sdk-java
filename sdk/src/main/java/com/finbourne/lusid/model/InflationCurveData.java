@@ -130,7 +130,7 @@ public class InflationCurveData extends ComplexMarketData {
   }
 
    /**
-   * The set of instruments that define the curve.  The only supported instrument type is: [InflationSwap].
+   * The set of instruments that define the curve.  The only supported instrument type is: [InflationSwap].  Each is a zero-coupon swap starting on the build date. Their maturities form a contiguous monthly run (one per CPI month, each maturing on the index&#39;s inflationRollDay), then whole-year pillars one year apart; either part may be empty, and a curve with no monthly run starts at 1Y.  A monthly pillar on a month whose index print is already published fails the curve build. Quarterly (3M) indices take whole-year pillars only. A solved index that moves more than 25% from one period to the next (a forward rate above about 1,355% a year for a monthly index, 144% for a quarterly one) fails the curve build; published prints are exempt.
    * @return instruments
   **/
   @jakarta.annotation.Nonnull
@@ -188,7 +188,7 @@ public class InflationCurveData extends ComplexMarketData {
   }
 
    /**
-   * Optional multiplicative seasonal adjustment factors, one per calendar month starting from January.  If provided there must be exactly 12 factors.
+   * Optional multiplicative seasonal adjustment factors, one per calendar month starting from January.  If provided there must be exactly 12 factors.  Seasonal factors only shape the months between pillars, so they have no effect on a curve with a pillar for every month; no warning is given.
    * @return seasonalFactors
   **/
   @jakarta.annotation.Nullable

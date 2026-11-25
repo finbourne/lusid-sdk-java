@@ -6,6 +6,7 @@ ResourceList with extra header fields used by the various ValuationPoint endpoin
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **startValuationPoint** | [**DiaryEntry**](DiaryEntry.md) |  | [optional] [default to DiaryEntry]
+**diagnostics** | [**List&lt;ValuationPointDiagnostic&gt;**](ValuationPointDiagnostic.md) |  | [optional] [default to List<ValuationPointDiagnostic>]
 **version** | [**Version**](Version.md) |  | [default to Version]
 **values** | [**List&lt;FundCashStatementRow&gt;**](FundCashStatementRow.md) |  | [default to List<FundCashStatementRow>]
 **href** | [**URI**](URI.md) |  | [optional] [default to URI]
@@ -20,6 +21,7 @@ import java.lang.System;
 import java.net.URI;
 
 DiaryEntry StartValuationPoint = new DiaryEntry();
+@jakarta.annotation.Nullable List<ValuationPointDiagnostic> Diagnostics = new List<ValuationPointDiagnostic>();
 Version Version = new Version();
 List<FundCashStatementRow> Values = new List<FundCashStatementRow>();
 @jakarta.annotation.Nullable URI Href = URI.create("http://example.com/Href");
@@ -30,6 +32,7 @@ List<FundCashStatementRow> Values = new List<FundCashStatementRow>();
 
 ValuationPointResourceListOfFundCashStatementRow valuationPointResourceListOfFundCashStatementRowInstance = new ValuationPointResourceListOfFundCashStatementRow()
     .StartValuationPoint(StartValuationPoint)
+    .Diagnostics(Diagnostics)
     .Version(Version)
     .Values(Values)
     .Href(Href)

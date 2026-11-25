@@ -145,6 +145,7 @@ InstrumentEventType method = InstrumentEventType.CASHDISTRIBUTIONFROMNONELIGIBLE
 InstrumentEventType method = InstrumentEventType.INFLATIONINDEXATIONEVENT;
 InstrumentEventType method = InstrumentEventType.INTERESTPAYMENTWITHPRINCIPALEVENT;
 InstrumentEventType method = InstrumentEventType.INCREASEINVALUEEVENT;
+InstrumentEventType method = InstrumentEventType.FLEXIBLEREPOCOLLATERALSUBSTITUTIONEVENT;
 ```
 
 

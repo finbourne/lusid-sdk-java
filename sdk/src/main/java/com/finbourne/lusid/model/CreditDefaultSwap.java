@@ -15,6 +15,7 @@ import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.CdsFlowConventions;
 import com.finbourne.lusid.model.CdsProtectionDetailSpecification;
 import com.finbourne.lusid.model.FlowConventionName;
+import com.finbourne.lusid.model.IndexConvention;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
@@ -90,6 +91,14 @@ public class CreditDefaultSwap extends LusidInstrument {
   public static final String SERIALIZED_NAME_IS_NON_STANDARD = "isNonStandard";
   @SerializedName(SERIALIZED_NAME_IS_NON_STANDARD)
   private Boolean isNonStandard;
+
+  public static final String SERIALIZED_NAME_INDEX_CONVENTION = "indexConvention";
+  @SerializedName(SERIALIZED_NAME_INDEX_CONVENTION)
+  private IndexConvention indexConvention;
+
+  public static final String SERIALIZED_NAME_INDEX_CONVENTION_NAME = "indexConventionName";
+  @SerializedName(SERIALIZED_NAME_INDEX_CONVENTION_NAME)
+  private FlowConventionName indexConventionName;
 
   public static final String SERIALIZED_NAME_PROTECTION_DETAIL_SPECIFICATION = "protectionDetailSpecification";
   @SerializedName(SERIALIZED_NAME_PROTECTION_DETAIL_SPECIFICATION)
@@ -275,6 +284,48 @@ public class CreditDefaultSwap extends LusidInstrument {
   }
 
 
+  public CreditDefaultSwap indexConvention(IndexConvention indexConvention) {
+    
+    this.indexConvention = indexConvention;
+    return this;
+  }
+
+   /**
+   * Get indexConvention
+   * @return indexConvention
+  **/
+  @jakarta.annotation.Nullable
+  public IndexConvention getIndexConvention() {
+    return indexConvention;
+  }
+
+
+  public void setIndexConvention(IndexConvention indexConvention) {
+    this.indexConvention = indexConvention;
+  }
+
+
+  public CreditDefaultSwap indexConventionName(FlowConventionName indexConventionName) {
+    
+    this.indexConventionName = indexConventionName;
+    return this;
+  }
+
+   /**
+   * Get indexConventionName
+   * @return indexConventionName
+  **/
+  @jakarta.annotation.Nullable
+  public FlowConventionName getIndexConventionName() {
+    return indexConventionName;
+  }
+
+
+  public void setIndexConventionName(FlowConventionName indexConventionName) {
+    this.indexConventionName = indexConventionName;
+  }
+
+
   public CreditDefaultSwap protectionDetailSpecification(CdsProtectionDetailSpecification protectionDetailSpecification) {
     
     this.protectionDetailSpecification = protectionDetailSpecification;
@@ -364,6 +415,8 @@ public class CreditDefaultSwap extends LusidInstrument {
         Objects.equals(this.conventionName, creditDefaultSwap.conventionName) &&
         (this.notional.compareTo(creditDefaultSwap.getNotional()) == 0) &&
         Objects.equals(this.isNonStandard, creditDefaultSwap.isNonStandard) &&
+        Objects.equals(this.indexConvention, creditDefaultSwap.indexConvention) &&
+        Objects.equals(this.indexConventionName, creditDefaultSwap.indexConventionName) &&
         Objects.equals(this.protectionDetailSpecification, creditDefaultSwap.protectionDetailSpecification) &&
         Objects.equals(this.additionalPayments, creditDefaultSwap.additionalPayments) &&
         Objects.equals(this.timeZoneConventions, creditDefaultSwap.timeZoneConventions) &&
@@ -376,7 +429,7 @@ public class CreditDefaultSwap extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ticker, startDate, maturityDate, flowConventions, couponRate, conventionName, notional, isNonStandard, protectionDetailSpecification, additionalPayments, timeZoneConventions, super.hashCode());
+    return Objects.hash(ticker, startDate, maturityDate, flowConventions, couponRate, conventionName, notional, isNonStandard, indexConvention, indexConventionName, protectionDetailSpecification, additionalPayments, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -399,6 +452,8 @@ public class CreditDefaultSwap extends LusidInstrument {
     sb.append("    conventionName: ").append(toIndentedString(conventionName)).append("\n");
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
     sb.append("    isNonStandard: ").append(toIndentedString(isNonStandard)).append("\n");
+    sb.append("    indexConvention: ").append(toIndentedString(indexConvention)).append("\n");
+    sb.append("    indexConventionName: ").append(toIndentedString(indexConventionName)).append("\n");
     sb.append("    protectionDetailSpecification: ").append(toIndentedString(protectionDetailSpecification)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
@@ -433,6 +488,8 @@ public class CreditDefaultSwap extends LusidInstrument {
     openapiFields.add("conventionName");
     openapiFields.add("notional");
     openapiFields.add("isNonStandard");
+    openapiFields.add("indexConvention");
+    openapiFields.add("indexConventionName");
     openapiFields.add("protectionDetailSpecification");
     openapiFields.add("additionalPayments");
     openapiFields.add("timeZoneConventions");

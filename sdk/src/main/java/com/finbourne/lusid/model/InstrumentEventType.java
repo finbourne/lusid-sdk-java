@@ -285,7 +285,9 @@ public enum InstrumentEventType {
   
   INTERESTPAYMENTWITHPRINCIPALEVENT("InterestPaymentWithPrincipalEvent"),
   
-  INCREASEINVALUEEVENT("IncreaseInValueEvent");
+  INCREASEINVALUEEVENT("IncreaseInValueEvent"),
+  
+  FLEXIBLEREPOCOLLATERALSUBSTITUTIONEVENT("FlexibleRepoCollateralSubstitutionEvent");
 
   private String value;
 

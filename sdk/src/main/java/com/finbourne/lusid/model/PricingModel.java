@@ -77,7 +77,9 @@ public enum PricingModel {
   
   CAPITALINTERESTPRICER("CapitalInterestPricer"),
   
-  DISCOUNTEDFORWARD("DiscountedForward");
+  DISCOUNTEDFORWARD("DiscountedForward"),
+  
+  ISDASTANDARDMODEL("IsdaStandardModel");
 
   private String value;
 

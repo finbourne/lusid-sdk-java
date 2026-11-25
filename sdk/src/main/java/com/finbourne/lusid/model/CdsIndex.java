@@ -16,6 +16,7 @@ import com.finbourne.lusid.model.Basket;
 import com.finbourne.lusid.model.CdsFlowConventions;
 import com.finbourne.lusid.model.CdsProtectionDetailSpecification;
 import com.finbourne.lusid.model.FlowConventionName;
+import com.finbourne.lusid.model.IndexConvention;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.finbourne.lusid.model.TimeZoneConventions;
 import com.google.gson.TypeAdapter;
@@ -101,6 +102,14 @@ public class CdsIndex extends LusidInstrument {
   public static final String SERIALIZED_NAME_PROTECTION_DETAIL_SPECIFICATION = "protectionDetailSpecification";
   @SerializedName(SERIALIZED_NAME_PROTECTION_DETAIL_SPECIFICATION)
   private CdsProtectionDetailSpecification protectionDetailSpecification;
+
+  public static final String SERIALIZED_NAME_INDEX_CONVENTION = "indexConvention";
+  @SerializedName(SERIALIZED_NAME_INDEX_CONVENTION)
+  private IndexConvention indexConvention;
+
+  public static final String SERIALIZED_NAME_INDEX_CONVENTION_NAME = "indexConventionName";
+  @SerializedName(SERIALIZED_NAME_INDEX_CONVENTION_NAME)
+  private FlowConventionName indexConventionName;
 
   public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
@@ -332,6 +341,48 @@ public class CdsIndex extends LusidInstrument {
   }
 
 
+  public CdsIndex indexConvention(IndexConvention indexConvention) {
+    
+    this.indexConvention = indexConvention;
+    return this;
+  }
+
+   /**
+   * Get indexConvention
+   * @return indexConvention
+  **/
+  @jakarta.annotation.Nullable
+  public IndexConvention getIndexConvention() {
+    return indexConvention;
+  }
+
+
+  public void setIndexConvention(IndexConvention indexConvention) {
+    this.indexConvention = indexConvention;
+  }
+
+
+  public CdsIndex indexConventionName(FlowConventionName indexConventionName) {
+    
+    this.indexConventionName = indexConventionName;
+    return this;
+  }
+
+   /**
+   * Get indexConventionName
+   * @return indexConventionName
+  **/
+  @jakarta.annotation.Nullable
+  public FlowConventionName getIndexConventionName() {
+    return indexConventionName;
+  }
+
+
+  public void setIndexConventionName(FlowConventionName indexConventionName) {
+    this.indexConventionName = indexConventionName;
+  }
+
+
   public CdsIndex additionalPayments(List<AdditionalPayment> additionalPayments) {
     
     this.additionalPayments = additionalPayments;
@@ -402,6 +453,8 @@ public class CdsIndex extends LusidInstrument {
         (this.notional.compareTo(cdsIndex.getNotional()) == 0) &&
         Objects.equals(this.isNonStandard, cdsIndex.isNonStandard) &&
         Objects.equals(this.protectionDetailSpecification, cdsIndex.protectionDetailSpecification) &&
+        Objects.equals(this.indexConvention, cdsIndex.indexConvention) &&
+        Objects.equals(this.indexConventionName, cdsIndex.indexConventionName) &&
         Objects.equals(this.additionalPayments, cdsIndex.additionalPayments) &&
         Objects.equals(this.timeZoneConventions, cdsIndex.timeZoneConventions) &&
         super.equals(o);
@@ -413,7 +466,7 @@ public class CdsIndex extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, isNonStandard, protectionDetailSpecification, additionalPayments, timeZoneConventions, super.hashCode());
+    return Objects.hash(startDate, maturityDate, flowConventions, couponRate, identifiers, basket, conventionName, notional, isNonStandard, protectionDetailSpecification, indexConvention, indexConventionName, additionalPayments, timeZoneConventions, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -438,6 +491,8 @@ public class CdsIndex extends LusidInstrument {
     sb.append("    notional: ").append(toIndentedString(notional)).append("\n");
     sb.append("    isNonStandard: ").append(toIndentedString(isNonStandard)).append("\n");
     sb.append("    protectionDetailSpecification: ").append(toIndentedString(protectionDetailSpecification)).append("\n");
+    sb.append("    indexConvention: ").append(toIndentedString(indexConvention)).append("\n");
+    sb.append("    indexConventionName: ").append(toIndentedString(indexConventionName)).append("\n");
     sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("    timeZoneConventions: ").append(toIndentedString(timeZoneConventions)).append("\n");
     sb.append("}");
@@ -473,6 +528,8 @@ public class CdsIndex extends LusidInstrument {
     openapiFields.add("notional");
     openapiFields.add("isNonStandard");
     openapiFields.add("protectionDetailSpecification");
+    openapiFields.add("indexConvention");
+    openapiFields.add("indexConventionName");
     openapiFields.add("additionalPayments");
     openapiFields.add("timeZoneConventions");
 

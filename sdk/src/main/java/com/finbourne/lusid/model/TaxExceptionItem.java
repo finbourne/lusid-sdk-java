@@ -120,7 +120,7 @@ public class TaxExceptionItem {
   }
 
    /**
-   * The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation, UnclassifiedInstrument or CostWithoutUnits.
+   * The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation, UnclassifiedInstrument, CostWithoutUnits or DisposalBeforeIndexationFreeze.
    * @return category
   **/
   @jakarta.annotation.Nonnull

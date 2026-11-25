@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | An identifier stable within a response, built from the category, portfolio and instrument. | [default to String]
-**category** | **String** | The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation, UnclassifiedInstrument or CostWithoutUnits. | [default to String]
+**category** | **String** | The kind of exception: UnmatchedDisposal, NegativePool, MissingValuation, UnclassifiedInstrument, CostWithoutUnits or DisposalBeforeIndexationFreeze. | [default to String]
 **severity** | **String** | Error when the exception blocks the tax computation, Warning when it casts doubt on it. | [default to String]
 **portfolio** | [**ResourceId**](ResourceId.md) |  | [default to ResourceId]
 **instrument** | **String** | The LUSID unique identifier of the instrument the exception was raised against. | [optional] [default to String]

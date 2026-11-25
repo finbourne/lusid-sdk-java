@@ -67,6 +67,10 @@ public class PricingMethodologyOverride {
   @SerializedName(SERIALIZED_NAME_TIMESTAMP)
   private OffsetDateTime timestamp;
 
+  public static final String SERIALIZED_NAME_NET_CASHFLOW = "netCashflow";
+  @SerializedName(SERIALIZED_NAME_NET_CASHFLOW)
+  private java.math.BigDecimal netCashflow;
+
   public PricingMethodologyOverride() {
   }
 
@@ -154,6 +158,27 @@ public class PricingMethodologyOverride {
   }
 
 
+  public PricingMethodologyOverride netCashflow(java.math.BigDecimal netCashflow) {
+    
+    this.netCashflow = netCashflow;
+    return this;
+  }
+
+   /**
+   * The fund&#39;s net dealing cashflow the decision was taken on, in the fund currency, read as at the override&#39;s timestamp. An inflow is positive and an outflow negative. A net that moves within its swing tier leaves the decision standing, so this can differ from the audit&#39;s current netCashflow, and both are kept on the final valuation point. Null when the swing policy approves automatically, or the decision was taken before the net was recorded.
+   * @return netCashflow
+  **/
+  @jakarta.annotation.Nullable
+  public java.math.BigDecimal getNetCashflow() {
+    return netCashflow;
+  }
+
+
+  public void setNetCashflow(java.math.BigDecimal netCashflow) {
+    this.netCashflow = netCashflow;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -167,7 +192,8 @@ public class PricingMethodologyOverride {
     return Objects.equals(this.decision, pricingMethodologyOverride.decision) &&
         Objects.equals(this.reason, pricingMethodologyOverride.reason) &&
         Objects.equals(this.user, pricingMethodologyOverride.user) &&
-        Objects.equals(this.timestamp, pricingMethodologyOverride.timestamp);
+        Objects.equals(this.timestamp, pricingMethodologyOverride.timestamp) &&
+        (this.netCashflow.compareTo(pricingMethodologyOverride.getNetCashflow()) == 0);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -176,7 +202,7 @@ public class PricingMethodologyOverride {
 
   @Override
   public int hashCode() {
-    return Objects.hash(decision, reason, user, timestamp);
+    return Objects.hash(decision, reason, user, timestamp, netCashflow);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -194,6 +220,7 @@ public class PricingMethodologyOverride {
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    user: ").append(toIndentedString(user)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
+    sb.append("    netCashflow: ").append(toIndentedString(netCashflow)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -220,6 +247,7 @@ public class PricingMethodologyOverride {
     openapiFields.add("reason");
     openapiFields.add("user");
     openapiFields.add("timestamp");
+    openapiFields.add("netCashflow");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

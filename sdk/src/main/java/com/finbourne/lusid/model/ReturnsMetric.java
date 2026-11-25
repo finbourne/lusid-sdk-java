@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.IndicativeAmountMetric;
 import com.finbourne.lusid.model.ReturnMetric;
 import com.finbourne.lusid.model.ReturnsMetricWindow;
+import com.finbourne.lusid.model.VolatilityMetric;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -72,6 +73,7 @@ public class ReturnsMetric extends AbstractOpenApiSchema {
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
             final TypeAdapter<IndicativeAmountMetric> adapterIndicativeAmountMetric = gson.getDelegateAdapter(this, TypeToken.get(IndicativeAmountMetric.class));
             final TypeAdapter<ReturnMetric> adapterReturnMetric = gson.getDelegateAdapter(this, TypeToken.get(ReturnMetric.class));
+            final TypeAdapter<VolatilityMetric> adapterVolatilityMetric = gson.getDelegateAdapter(this, TypeToken.get(VolatilityMetric.class));
 
             return (TypeAdapter<T>) new TypeAdapter<ReturnsMetric>() {
                 @Override
@@ -93,7 +95,13 @@ public class ReturnsMetric extends AbstractOpenApiSchema {
                       elementAdapter.write(out, element);
                       return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: IndicativeAmountMetric, ReturnMetric");
+                    // check if the actual instance is of the type `VolatilityMetric`
+                    if (value.getActualInstance() instanceof VolatilityMetric) {
+                      JsonElement element = adapterVolatilityMetric.toJsonTree((VolatilityMetric)value.getActualInstance());
+                      elementAdapter.write(out, element);
+                      return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: IndicativeAmountMetric, ReturnMetric, VolatilityMetric");
                 }
 
                 @Override
@@ -126,8 +134,16 @@ public class ReturnsMetric extends AbstractOpenApiSchema {
                                 deserialized = adapterReturnMetric.fromJsonTree(jsonObject);
                                 newReturnsMetric.setActualInstance(deserialized);
                                 return newReturnsMetric;
+                            case "Volatility":
+                                deserialized = adapterVolatilityMetric.fromJsonTree(jsonObject);
+                                newReturnsMetric.setActualInstance(deserialized);
+                                return newReturnsMetric;
+                            case "VolatilityMetric":
+                                deserialized = adapterVolatilityMetric.fromJsonTree(jsonObject);
+                                newReturnsMetric.setActualInstance(deserialized);
+                                return newReturnsMetric;
                             default:
-                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ReturnsMetric. Possible values: IndicativeAmount IndicativeAmountMetric Return ReturnMetric", jsonObject.get("type").getAsString()));
+                                log.log(Level.WARNING, String.format("Failed to lookup discriminator value `%s` for ReturnsMetric. Possible values: IndicativeAmount IndicativeAmountMetric Return ReturnMetric Volatility VolatilityMetric", jsonObject.get("type").getAsString()));
                         }
                     }
 
@@ -159,6 +175,18 @@ public class ReturnsMetric extends AbstractOpenApiSchema {
                       errorMessages.add(String.format("Deserialization for ReturnMetric failed with `%s`.", e.getMessage()));
                       log.log(Level.FINER, "Input data does not match schema 'ReturnMetric'", e);
                     }
+                    // deserialize VolatilityMetric
+                    try {
+                      // validate the JSON object to see if any exception is thrown
+                      VolatilityMetric.validateJsonElement(jsonElement);
+                      actualAdapter = adapterVolatilityMetric;
+                      match++;
+                      log.log(Level.FINER, "Input data matches schema 'VolatilityMetric'");
+                    } catch (Exception e) {
+                      // deserialization failed, continue
+                      errorMessages.add(String.format("Deserialization for VolatilityMetric failed with `%s`.", e.getMessage()));
+                      log.log(Level.FINER, "Input data does not match schema 'VolatilityMetric'", e);
+                    }
 
                     if (match == 1) {
                         ReturnsMetric ret = new ReturnsMetric();
@@ -189,9 +217,15 @@ public class ReturnsMetric extends AbstractOpenApiSchema {
         setActualInstance(o);
     }
 
+    public ReturnsMetric(VolatilityMetric o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
     static {
         schemas.put("IndicativeAmountMetric", IndicativeAmountMetric.class);
         schemas.put("ReturnMetric", ReturnMetric.class);
+        schemas.put("VolatilityMetric", VolatilityMetric.class);
     }
 
     @Override
@@ -202,7 +236,7 @@ public class ReturnsMetric extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * IndicativeAmountMetric, ReturnMetric
+     * IndicativeAmountMetric, ReturnMetric, VolatilityMetric
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -218,14 +252,19 @@ public class ReturnsMetric extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be IndicativeAmountMetric, ReturnMetric");
+        if (instance instanceof VolatilityMetric) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be IndicativeAmountMetric, ReturnMetric, VolatilityMetric");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * IndicativeAmountMetric, ReturnMetric
+     * IndicativeAmountMetric, ReturnMetric, VolatilityMetric
      *
-     * @return The actual instance (IndicativeAmountMetric, ReturnMetric)
+     * @return The actual instance (IndicativeAmountMetric, ReturnMetric, VolatilityMetric)
      */
     @Override
     public Object getActualInstance() {
@@ -251,6 +290,16 @@ public class ReturnsMetric extends AbstractOpenApiSchema {
      */
     public ReturnMetric getReturnMetric() throws ClassCastException {
         return (ReturnMetric)super.getActualInstance();
+    }
+    /**
+     * Get the actual instance of `VolatilityMetric`. If the actual instance is not `VolatilityMetric`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `VolatilityMetric`
+     * @throws ClassCastException if the instance is not `VolatilityMetric`
+     */
+    public VolatilityMetric getVolatilityMetric() throws ClassCastException {
+        return (VolatilityMetric)super.getActualInstance();
     }
 
  /**
@@ -279,8 +328,16 @@ public class ReturnsMetric extends AbstractOpenApiSchema {
       errorMessages.add(String.format("Deserialization for ReturnMetric failed with `%s`.", e.getMessage()));
       // continue to the next one
     }
+    // validate the json string with VolatilityMetric
+    try {
+      VolatilityMetric.validateJsonElement(jsonElement);
+      validCount++;
+    } catch (Exception e) {
+      errorMessages.add(String.format("Deserialization for VolatilityMetric failed with `%s`.", e.getMessage()));
+      // continue to the next one
+    }
     if (validCount != 1) {
-      throw new IOException(String.format("The JSON string is invalid for ReturnsMetric with oneOf schemas: IndicativeAmountMetric, ReturnMetric. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+      throw new IOException(String.format("The JSON string is invalid for ReturnsMetric with oneOf schemas: IndicativeAmountMetric, ReturnMetric, VolatilityMetric. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
     }
   }
 

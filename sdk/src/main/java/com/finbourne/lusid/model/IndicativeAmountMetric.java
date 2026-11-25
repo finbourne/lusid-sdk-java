@@ -119,7 +119,7 @@ public class IndicativeAmountMetric {
   }
 
    /**
-   * Available values: Return, IndicativeAmount.
+   * Available values: Return, IndicativeAmount, Volatility.
    * @return type
   **/
   @jakarta.annotation.Nonnull

@@ -439,9 +439,12 @@ Class | Method | HTTP request | Description
 *FundsApi* | [**queryCashStatement**](docs/FundsApi.md#querycashstatement) | **POST** /api/funds/{scope}/{code}/valuationpoints/cashstatement/$query | [DEPRECATED] QueryCashStatement: [DEPRECATED] QueryCashStatement: Query cash statement for a Fund valuation point.
 *FundsApi* | [**queryCashStatementLocalCurrency**](docs/FundsApi.md#querycashstatementlocalcurrency) | **POST** /api/funds/{scope}/{code}/valuationpoints/cashstatementlocalcurrency/$query | [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point.
 *FundsApi* | [**reactivateNavTypes**](docs/FundsApi.md#reactivatenavtypes) | **POST** /api/funds/{scope}/{code}/reactivateNavTypes | [EXPERIMENTAL] ReactivateNavTypes: [EXPERIMENTAL] ReactivateNavTypes: Reactivate previously deactivated NAV types on a Fund.
+*FundsApi* | [**reseedFacilityBalance**](docs/FundsApi.md#reseedfacilitybalance) | **POST** /api/funds/{scope}/{code}/facilities/{facilityCode}/$reseed | [EXPERIMENTAL] ReseedFacilityBalance: [EXPERIMENTAL] ReseedFacilityBalance: Re-seed a Facility's balance from its booked draws and repayments.
+*FundsApi* | [**resplitPrepaidManagementFees**](docs/FundsApi.md#resplitprepaidmanagementfees) | **POST** /api/funds/{scope}/{code}/fees/$resplit | [EARLY ACCESS] ResplitPrepaidManagementFees: [EXPERIMENTAL] ResplitPrepaidManagementFees: Re-split the Fund's prepaid management fee periods.
 *FundsApi* | [**revertValuationPointToEstimate**](docs/FundsApi.md#revertvaluationpointtoestimate) | **POST** /api/funds/{scope}/{code}/valuationpoints/$reverttoestimate | [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate.
 *FundsApi* | [**runPartnerAllocations**](docs/FundsApi.md#runpartnerallocations) | **POST** /api/funds/{scope}/{code}/partnerallocations/$run | [EARLY ACCESS] RunPartnerAllocations: [EXPERIMENTAL] RunPartnerAllocations: Allocate a period's income to the Fund's partners.
 *FundsApi* | [**sendBackTaxReturn**](docs/FundsApi.md#sendbacktaxreturn) | **POST** /api/funds/{scope}/{code}/tax/return/send-back | [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step.
+*FundsApi* | [**setHoldingsForFund**](docs/FundsApi.md#setholdingsforfund) | **PUT** /api/funds/{scope}/{code}/holdings | [EXPERIMENTAL] SetHoldingsForFund: Set holdings for a Fund.
 *FundsApi* | [**setShareClassInstruments**](docs/FundsApi.md#setshareclassinstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund.
 *FundsApi* | [**updateFacility**](docs/FundsApi.md#updatefacility) | **PUT** /api/funds/{scope}/{code}/facilities/{facilityCode} | [EXPERIMENTAL] UpdateFacility: [EXPERIMENTAL] UpdateFacility: Update a Facility.
 *FundsApi* | [**updateValuationPoint**](docs/FundsApi.md#updatevaluationpoint) | **PUT** /api/funds/{scope}/{code}/valuationpoints | [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point.
@@ -1329,6 +1332,7 @@ Class | Method | HTTP request | Description
  - [CollateralFundingTerms](docs/CollateralFundingTerms.md)
  - [CollateralInstrument](docs/CollateralInstrument.md)
  - [CollateralOptimisationTerms](docs/CollateralOptimisationTerms.md)
+ - [CollateralSubstitutionConstituent](docs/CollateralSubstitutionConstituent.md)
  - [CommodityCalendarSchedule](docs/CommodityCalendarSchedule.md)
  - [CommodityCalendarSwap](docs/CommodityCalendarSwap.md)
  - [CommodityCalendarSwapCashFlowEvent](docs/CommodityCalendarSwapCashFlowEvent.md)
@@ -1663,8 +1667,13 @@ Class | Method | HTTP request | Description
  - [FacilityDrawEvent](docs/FacilityDrawEvent.md)
  - [FacilityInterestEvent](docs/FacilityInterestEvent.md)
  - [FacilityLimitChange](docs/FacilityLimitChange.md)
+ - [FacilityPayableCheck](docs/FacilityPayableCheck.md)
+ - [FacilityPayableDifference](docs/FacilityPayableDifference.md)
+ - [FacilityPayableLine](docs/FacilityPayableLine.md)
  - [FacilityRepaymentEvent](docs/FacilityRepaymentEvent.md)
  - [FacilityRequest](docs/FacilityRequest.md)
+ - [FacilityReseedFlow](docs/FacilityReseedFlow.md)
+ - [FacilityReseedResult](docs/FacilityReseedResult.md)
  - [Fee](docs/Fee.md)
  - [FeeAccrual](docs/FeeAccrual.md)
  - [FeeCalculationRequest](docs/FeeCalculationRequest.md)
@@ -1690,6 +1699,7 @@ Class | Method | HTTP request | Description
  - [FilteredFundIdList](docs/FilteredFundIdList.md)
  - [FilteredPortfolioIdList](docs/FilteredPortfolioIdList.md)
  - [FinalisedValuationPoint](docs/FinalisedValuationPoint.md)
+ - [FixedBusinessDayLookbackActivityWindow](docs/FixedBusinessDayLookbackActivityWindow.md)
  - [FixedLeg](docs/FixedLeg.md)
  - [FixedLegAllOfOverrides](docs/FixedLegAllOfOverrides.md)
  - [FixedPeriodLookbackActivityWindow](docs/FixedPeriodLookbackActivityWindow.md)
@@ -1700,6 +1710,7 @@ Class | Method | HTTP request | Description
  - [FlexibleRepo](docs/FlexibleRepo.md)
  - [FlexibleRepoCashFlowEvent](docs/FlexibleRepoCashFlowEvent.md)
  - [FlexibleRepoCollateralEvent](docs/FlexibleRepoCollateralEvent.md)
+ - [FlexibleRepoCollateralSubstitutionEvent](docs/FlexibleRepoCollateralSubstitutionEvent.md)
  - [FlexibleRepoFullClosureEvent](docs/FlexibleRepoFullClosureEvent.md)
  - [FlexibleRepoInterestPaymentEvent](docs/FlexibleRepoInterestPaymentEvent.md)
  - [FlexibleRepoPartialClosureEvent](docs/FlexibleRepoPartialClosureEvent.md)
@@ -1995,7 +2006,10 @@ Class | Method | HTTP request | Description
  - [LusidValidationProblemDetails](docs/LusidValidationProblemDetails.md)
  - [ManagementFeeLine](docs/ManagementFeeLine.md)
  - [ManagementFeeOffset](docs/ManagementFeeOffset.md)
+ - [ManagementFeePrepaidSplit](docs/ManagementFeePrepaidSplit.md)
  - [ManagementFeeRequest](docs/ManagementFeeRequest.md)
+ - [ManagementFeeResplitRequest](docs/ManagementFeeResplitRequest.md)
+ - [ManagementFeeResplitResult](docs/ManagementFeeResplitResult.md)
  - [ManagementFeeResult](docs/ManagementFeeResult.md)
  - [ManagementFeeTotals](docs/ManagementFeeTotals.md)
  - [MappedString](docs/MappedString.md)
@@ -2457,6 +2471,7 @@ Class | Method | HTTP request | Description
  - [RecAgedResult](docs/RecAgedResult.md)
  - [RecApprovalDecision](docs/RecApprovalDecision.md)
  - [RecAsAtPolicy](docs/RecAsAtPolicy.md)
+ - [RecBusinessDayLookbackSide](docs/RecBusinessDayLookbackSide.md)
  - [RecClosedExceptionCounts](docs/RecClosedExceptionCounts.md)
  - [RecClosedPeriodReference](docs/RecClosedPeriodReference.md)
  - [RecClosedPeriods](docs/RecClosedPeriods.md)
@@ -2518,6 +2533,7 @@ Class | Method | HTTP request | Description
  - [RecRunLogEntry](docs/RecRunLogEntry.md)
  - [RecSubmission](docs/RecSubmission.md)
  - [RecSupersededRun](docs/RecSupersededRun.md)
+ - [RecTimeOfDay](docs/RecTimeOfDay.md)
  - [RecUserComment](docs/RecUserComment.md)
  - [RecallableCapitalExpiryEvent](docs/RecallableCapitalExpiryEvent.md)
  - [RecipeBlock](docs/RecipeBlock.md)
@@ -3157,6 +3173,7 @@ Class | Method | HTTP request | Description
  - [VolCubeOptions](docs/VolCubeOptions.md)
  - [VolSurfaceShiftDefinition](docs/VolSurfaceShiftDefinition.md)
  - [VolSurfaceShiftMode](docs/VolSurfaceShiftMode.md)
+ - [VolatilityMetric](docs/VolatilityMetric.md)
  - [VolatilitySwap](docs/VolatilitySwap.md)
  - [Warning](docs/Warning.md)
  - [WarrantsExerciseEvent](docs/WarrantsExerciseEvent.md)

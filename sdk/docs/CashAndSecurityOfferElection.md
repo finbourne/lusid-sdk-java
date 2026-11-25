@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **unitsRatio** | [**UnitsRatio**](UnitsRatio.md) |  | [default to UnitsRatio]
 **consentFeePrice** | **java.math.BigDecimal** | Optional. The consent fee paid to holders who consent, on top of the exchange consideration. Quoted per 1,000 of face for bonds, using the current notional at the effective date of the event, and per unit for other instruments. Must be greater than 0. Required together with ConsentFeeCurrency, and only supported on an ExchangeOfferEvent. | [optional] [default to java.math.BigDecimal]
 **consentFeeCurrency** | **String** | Optional. Currency of the consent fee. Required if a consent fee price is provided, and only supported on an ExchangeOfferEvent. | [optional] [default to String]
+**paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) | Optional. The date this option pays, for both its cash and its security. On MergerEvent,  RepurchaseOfferEvent and ExchangeOfferEvent it sets the settlement date of this option&#39;s transactions;  when omitted, the event-level date applies. Not supported on other events. | [optional] [default to OffsetDateTime]
 
 ```java
 import com.finbourne.lusid.model.CashAndSecurityOfferElection;
@@ -30,6 +31,7 @@ Boolean IsDefault = true;
 UnitsRatio UnitsRatio = new UnitsRatio();
 @jakarta.annotation.Nullable java.math.BigDecimal ConsentFeePrice = new java.math.BigDecimal("100.00");
 @jakarta.annotation.Nullable String ConsentFeeCurrency = "example ConsentFeeCurrency";
+@jakarta.annotation.Nullable OffsetDateTime PaymentDate = OffsetDateTime.now();
 
 
 CashAndSecurityOfferElection cashAndSecurityOfferElectionInstance = new CashAndSecurityOfferElection()
@@ -41,7 +43,8 @@ CashAndSecurityOfferElection cashAndSecurityOfferElectionInstance = new CashAndS
     .IsDefault(IsDefault)
     .UnitsRatio(UnitsRatio)
     .ConsentFeePrice(ConsentFeePrice)
-    .ConsentFeeCurrency(ConsentFeeCurrency);
+    .ConsentFeeCurrency(ConsentFeeCurrency)
+    .PaymentDate(PaymentDate);
 ```
 
 

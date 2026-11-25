@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **seedAmount** | **String** |  | [default to String]
 **window** | [**ReturnsMetricWindow**](ReturnsMetricWindow.md) |  | [optional] [default to ReturnsMetricWindow]
-**type** | **String** | Available values: Return, IndicativeAmount. | [default to String]
+**type** | **String** | Available values: Return, IndicativeAmount, Volatility. | [default to String]
 **alias** | **String** |  | [optional] [default to String]
 
 ```java
