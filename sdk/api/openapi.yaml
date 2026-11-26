@@ -423,7 +423,7 @@ info:
     | <a name="982">982</a>|A scenario shift could not be applied to the market data| |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.10761
+  version: 0.11.10762
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1326,8 +1326,6 @@ tags:
   name: Fee Types
 - description: Methods to create and manage FundConfiguration entities.
   name: Fund Configuration
-- description: Endpoints for reporting on groups of Funds.
-  name: Fund Groups
 - description: Methods to create and manage Fund Structure entities.
   name: Fund Structures
 - description: Methods to create and manage the Valuation Templates that Funds and
@@ -51480,196 +51478,6 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
-  /api/fundgroups/{scope}/{code}/trialbalance/$query:
-    post:
-      description: "Runs the Trial Balance once for every Fund in a fund group, where\
-        \ the group is a reference list of type\r\nFundIdList or FilteredFundIdList\
-        \ identified by the scope and code. LUSID chooses the Valuation Point for\r\
-        \neach Fund and NAV type from the run type, and each returned row carries\
-        \ the Fund, NAV type and Valuation Point\r\nit came from. A Fund that could\
-        \ not be reported, because no Valuation Point matches the run type or the\
-        \ NAV type\r\nis missing, is listed in fundResults alongside the rows. A Fund\
-        \ in a FundIdList that the caller is not entitled\r\nto read is listed there\
-        \ too; a FilteredFundIdList only ever contains the Funds the caller can read.\r\
-        \n \r\nRows are ordered by Fund scope, then Fund code, then NAV type code,\
-        \ then as GetValuationPointTrialBalance orders\r\nthem, so the order is stable\
-        \ across pages."
-      operationId: GetFundGroupTrialBalance
-      parameters:
-      - description: The scope of the reference list that defines the fund group.
-        explode: false
-        in: path
-        name: scope
-        required: true
-        schema:
-          maxLength: 64
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-        style: simple
-      - description: The code of the reference list that defines the fund group. Together
-          with the scope this uniquely identifies the reference list.
-        explode: false
-        in: path
-        name: code
-        required: true
-        schema:
-          maxLength: 64
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-        style: simple
-      - description: "The asAt datetime at which to retrieve the Trial Balances and\
-          \ resolve the fund group.\r\n Defaults to returning the latest version if\
-          \ not specified."
-        explode: true
-        in: query
-        name: asAt
-        required: false
-        schema:
-          format: date-time
-          type: string
-        style: form
-        x-nullable: true
-      - description: "Expression to filter the rows by, using the same fields as GetValuationPointTrialBalance.\r\
-          \n For more information about filtering results, see https://support.lusid.com/docs/filtering-information-retrieved-from-lusid."
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          maxLength: 16384
-          minLength: 0
-          pattern: "^[\\s\\S]*$"
-          type: string
-        style: form
-      - description: "When paginating, limit the number of returned rows to this number.\r\
-          \n Defaults to 100 if not specified."
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          format: int32
-          maximum: 5000
-          minimum: 1
-          type: integer
-        style: form
-        x-nullable: true
-      - description: "The pagination token to use to continue listing rows.\r\n This\
-          \ token is returned from the previous call.\r\n If a pagination token is\
-          \ provided, the filter, request body and asAt fields\r\n must not have changed\
-          \ since the original request."
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          maxLength: 500
-          minLength: 1
-          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
-          type: string
-        style: form
-      - description: "A list of property keys from the 'Instrument', 'Transaction',\
-          \ 'Portfolio', 'Account', 'LegalEntity' or 'CustodianAccount'\r\n domain\
-          \ to decorate onto each row's TrialBalance."
-        explode: true
-        in: query
-        name: propertyKeys
-        required: false
-        schema:
-          items:
-            description: "The key that uniquely identifies the property. It has the\
-              \ format {domain}/{scope}/{code}."
-            type: string
-          type: array
-        style: form
-        x-nullable: true
-      requestBody:
-        content:
-          application/json-patch+json:
-            example:
-              runType: LatestApprovedNav
-              effectiveAt: 2024-06-30T00:00:00.0000000+00:00
-              output:
-                mode: NonConsolidated
-              generalLedgerProfileCode: GeneralLedgerProfileCode
-              excludeCleardownModule: false
-            schema:
-              $ref: '#/components/schemas/FundGroupTrialBalanceRequest'
-          application/json:
-            example:
-              runType: LatestApprovedNav
-              effectiveAt: 2024-06-30T00:00:00.0000000+00:00
-              output:
-                mode: NonConsolidated
-              generalLedgerProfileCode: GeneralLedgerProfileCode
-              excludeCleardownModule: false
-            schema:
-              $ref: '#/components/schemas/FundGroupTrialBalanceRequest'
-          text/json:
-            example:
-              runType: LatestApprovedNav
-              effectiveAt: 2024-06-30T00:00:00.0000000+00:00
-              output:
-                mode: NonConsolidated
-              generalLedgerProfileCode: GeneralLedgerProfileCode
-              excludeCleardownModule: false
-            schema:
-              $ref: '#/components/schemas/FundGroupTrialBalanceRequest'
-          application/*+json:
-            example:
-              runType: LatestApprovedNav
-              effectiveAt: 2024-06-30T00:00:00.0000000+00:00
-              output:
-                mode: NonConsolidated
-              generalLedgerProfileCode: GeneralLedgerProfileCode
-              excludeCleardownModule: false
-            schema:
-              $ref: '#/components/schemas/FundGroupTrialBalanceRequest'
-        description: "The run type, dates, NAV type and Trial Balance options."
-        required: true
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/FundGroupTrialBalanceResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FundGroupTrialBalanceResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/FundGroupTrialBalanceResponse'
-          description: "The Trial Balance rows of the Funds in the group, with the\
-            \ outcome for each Fund and NAV type."
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-          description: The details of the input related failure
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidProblemDetails'
-          description: Error response
-      security:
-      - oauth2: []
-      summary: "[EARLY ACCESS] GetFundGroupTrialBalance: Get the Trial Balance for\
-        \ a group of Funds."
-      tags:
-      - Fund Groups
-      x-fbn-apistatus: EarlyAccess
-      x-content-type: application/json-patch+json
-      x-accepts: application/json
   /api/funds:
     get:
       description: List all the Funds matching particular criteria.
@@ -56923,11 +56731,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] ListFacilities: [EXPERIMENTAL] ListFacilities: List\
+      summary: "[EARLY ACCESS] ListFacilities: [EARLY ACCESS] ListFacilities: List\
         \ Facilities for a specified Fund."
       tags:
       - Funds
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     post:
       description: Create the given Facility against a Fund.
@@ -57069,11 +56877,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create\
+      summary: "[EARLY ACCESS] CreateFacility: [EARLY ACCESS] CreateFacility: Create\
         \ a Facility."
       tags:
       - Funds
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/funds/{scope}/{code}/facilities/{facilityCode}:
@@ -57154,11 +56962,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] DeleteFacility: [EXPERIMENTAL] DeleteFacility: Delete\
+      summary: "[EARLY ACCESS] DeleteFacility: [EARLY ACCESS] DeleteFacility: Delete\
         \ a Facility."
       tags:
       - Funds
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     get:
       description: Retrieve a Facility for a specified Fund.
@@ -57252,11 +57060,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] GetFacility: [EXPERIMENTAL] GetFacility: Get a Facility\
+      summary: "[EARLY ACCESS] GetFacility: [EARLY ACCESS] GetFacility: Get a Facility\
         \ for a specified Fund."
       tags:
       - Funds
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     put:
       description: "Replace the definition of a Facility of a Fund. The code, the\
@@ -57413,11 +57221,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] UpdateFacility: [EXPERIMENTAL] UpdateFacility: Update\
+      summary: "[EARLY ACCESS] UpdateFacility: [EARLY ACCESS] UpdateFacility: Update\
         \ a Facility."
       tags:
       - Funds
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: EarlyAccess
       x-content-type: application/json-patch+json
       x-accepts: application/json
   /api/funds/{scope}/{code}/facilities/{facilityCode}/$reseed:
@@ -57519,11 +57327,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] ReseedFacilityBalance: [EXPERIMENTAL] ReseedFacilityBalance:\
+      summary: "[EARLY ACCESS] ReseedFacilityBalance: [EARLY ACCESS] ReseedFacilityBalance:\
         \ Re-seed a Facility's balance from its booked draws and repayments."
       tags:
       - Funds
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/funds/{scope}/{code}/fees:
     get:
@@ -61991,11 +61799,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] GetRegistryForFund: [EXPERIMENTAL] GetRegistryForFund:\
+      summary: "[EARLY ACCESS] GetRegistryForFund: [EARLY ACCESS] GetRegistryForFund:\
         \ Get the registry of a Fund."
       tags:
       - Funds
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/funds/{scope}/{code}/series:
     get:
@@ -144244,6 +144052,161 @@ paths:
       - Recs
       x-fbn-apistatus: Experimental
       x-accepts: application/json
+  /api/recs/results/{instanceIdType}/{instanceIdValue}/{id}/streak:
+    get:
+      description: "List every member of a rec result's streak, the result itself\
+        \ included, read from the stored predecessor links. Each member is a full\
+        \ result, tagged with the streaks it shares with the requested result and\
+        \ where it sits relative to it."
+      operationId: GetRecResultStreak
+      parameters:
+      - description: "How the instance was created: \"WorkflowServiceTaskId\" or \"\
+          Manual\". Available values: WorkflowServiceTaskId, Manual."
+        explode: false
+        in: path
+        name: instanceIdType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      - description: The unique identifier of the rec instance.
+        explode: false
+        in: path
+        name: instanceIdValue
+        required: true
+        schema:
+          maxLength: 36
+          minLength: 36
+          pattern: "^[a-zA-Z0-9\\-]+$"
+          type: string
+        style: simple
+      - description: "The id of the rec result, e.g. \"Holding-break-3\"."
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      - description: The asAt datetime at which to read the streak and its members.
+          Defaults to latest if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing members from\
+          \ a previous call. If a pagination token is provided the filter, sortBy\
+          \ and asAt fields must not have changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: "^[a-zA-Z0-9\\+/]*={0,3}$"
+          type: string
+        style: form
+      - description: "When paginating, limit the number of returned members to this\
+          \ many. Defaults to 100 if not specified."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the members, on relation, streakTypes and\
+          \ any field under result. Read more about filtering results from LUSID here\
+          \ https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: "^[\\s\\S]*$"
+          type: string
+        style: form
+      - description: "A list of field names suffixed by \" ASC\" or \" DESC\". Defaults\
+          \ to result.asAtInstantiated DESC, newest instance first."
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      - description: "The property keys to decorate onto each member's result. The\
+          \ keys its matching ruleset populates always come back, so list only others\
+          \ here."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          items:
+            description: "The key that uniquely identifies the property. It has the\
+              \ format {domain}/{scope}/{code}."
+            type: string
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecResultStreakMember'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecResultStreakMember'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRecResultStreakMember'
+          description: The members of the rec result's streak.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "[EXPERIMENTAL] GetRecResultStreak: GetRecResultStreak"
+      tags:
+      - Recs
+      x-fbn-apistatus: Experimental
+      x-accepts: application/json
   /api/recs/resultsets:
     get:
       description: List rec result sets.
@@ -182756,11 +182719,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: "[EXPERIMENTAL] GetRegistry: [EXPERIMENTAL] GetRegistry: Get the registry\
+      summary: "[EARLY ACCESS] GetRegistry: [EARLY ACCESS] GetRegistry: Get the registry\
         \ of a transaction portfolio."
       tags:
       - Transaction Portfolios
-      x-fbn-apistatus: Experimental
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/transactionportfolios/{scope}/{code}/settlementinstructions:
     delete:
@@ -273218,468 +273181,6 @@ components:
         - fundCalendarEntriesType
         - navTypeCode
         type: object
-    FundGroupReportOutput:
-      additionalProperties: false
-      example:
-        mode: mode
-      properties:
-        mode:
-          description: "Available values: NonConsolidated (each fund's rows returned\
-            \ as they are, tagged with the fund and valuation point). Consolidated\
-            \ is not yet supported. Defaults to NonConsolidated. Available values:\
-            \ NonConsolidated, Consolidated."
-          nullable: true
-          type: string
-      type: object
-    FundGroupReportResult:
-      additionalProperties: false
-      example:
-        valuationPoints:
-        - diaryEntryCode: diaryEntryCode
-          effectiveEnd: 2000-01-23T04:56:07.000+00:00
-          status: status
-        - diaryEntryCode: diaryEntryCode
-          effectiveEnd: 2000-01-23T04:56:07.000+00:00
-          status: status
-        fundId:
-          code: code
-          scope: scope
-        navTypeCode: navTypeCode
-        error:
-          id: id
-          detail: detail
-          type: type
-          errorDetails:
-          - key: errorDetails
-          - key: errorDetails
-        status: status
-      properties:
-        fundId:
-          $ref: '#/components/schemas/ResourceId'
-        navTypeCode:
-          description: "The code of the NAV type the row, or result, was produced\
-            \ for."
-          nullable: true
-          type: string
-        status:
-          description: "Whether the fund was reported. Available values: Succeeded,\
-            \ Failed."
-          nullable: true
-          type: string
-        valuationPoints:
-          description: "The valuation points reported for the fund and NAV type, oldest\
-            \ first. Empty when it failed."
-          items:
-            $ref: '#/components/schemas/FundGroupReportValuationPoint'
-          nullable: true
-          type: array
-        error:
-          $ref: '#/components/schemas/ErrorDetail'
-      type: object
-    FundGroupReportValuationPoint:
-      additionalProperties: false
-      example:
-        diaryEntryCode: diaryEntryCode
-        effectiveEnd: 2000-01-23T04:56:07.000+00:00
-        status: status
-      properties:
-        diaryEntryCode:
-          description: The code of the valuation point the row was produced for.
-          nullable: true
-          type: string
-        status:
-          description: "The status of the valuation point the row was produced for,\
-            \ such as Final or Estimate."
-          nullable: true
-          type: string
-        effectiveEnd:
-          description: The effective end date of the valuation point the row was produced
-            for.
-          format: date-time
-          type: string
-      type: object
-    FundGroupTrialBalance:
-      additionalProperties: false
-      example:
-        fundId:
-          code: code
-          scope: scope
-        trialBalance:
-          generalLedgerAccountCode: generalLedgerAccountCode
-          closing:
-            baseAmount: 6.027456183070403
-            localAmount: 0.8008281904610115
-          accountType: accountType
-          description: description
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          localCurrency: localCurrency
-          debit:
-            baseAmount: 6.027456183070403
-            localAmount: 0.8008281904610115
-          credit:
-            baseAmount: 6.027456183070403
-            localAmount: 0.8008281904610115
-          opening:
-            baseAmount: 6.027456183070403
-            localAmount: 0.8008281904610115
-          levels:
-          - levels
-          - levels
-          properties:
-            key:
-              referenceData:
-                key:
-                  stringValue: stringValue
-                  numericValue: 6.027456183070403
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
-        diaryEntryCode: diaryEntryCode
-        valuationPointStatus: valuationPointStatus
-        navTypeCode: navTypeCode
-        effectiveEnd: 2000-01-23T04:56:07.000+00:00
-      properties:
-        fundId:
-          $ref: '#/components/schemas/ResourceId'
-        navTypeCode:
-          description: "The code of the NAV type the row, or result, was produced\
-            \ for."
-          nullable: true
-          type: string
-        diaryEntryCode:
-          description: The code of the valuation point the row was produced for.
-          nullable: true
-          type: string
-        valuationPointStatus:
-          description: "The status of the valuation point the row was produced for,\
-            \ such as Final or Estimate."
-          nullable: true
-          type: string
-        effectiveEnd:
-          description: The effective end date of the valuation point the row was produced
-            for.
-          format: date-time
-          type: string
-        trialBalance:
-          $ref: '#/components/schemas/TrialBalance'
-      type: object
-    FundGroupTrialBalanceRequest:
-      additionalProperties: false
-      example:
-        output:
-          mode: mode
-        runType: runType
-        effectiveAt: effectiveAt
-        start: start
-        variant: variant
-        statuses:
-        - statuses
-        - statuses
-        end: end
-        generalLedgerProfileCode: generalLedgerProfileCode
-        navTypeCode: navTypeCode
-        excludeCleardownModule: true
-      properties:
-        runType:
-          description: "How the valuation point is chosen for each fund and NAV type.\
-            \ Available values: LatestApprovedNav (the latest Final valuation point\
-            \ on or before effectiveAt), LatestNav (the latest Final, Estimate or\
-            \ Candidate valuation point on or before effectiveAt), DateRange (every\
-            \ valuation point ending between start and end). AdHoc is not supported\
-            \ for the trial balance. Available values: LatestApprovedNav, LatestNav,\
-            \ AdHoc, DateRange."
-          minLength: 1
-          type: string
-        effectiveAt:
-          description: "The date, or cut label, the valuation point is chosen for:\
-            \ the latest valuation point whose effective end is on or before this\
-            \ instant. Required for LatestApprovedNav and LatestNav; ignored for DateRange."
-          format: dateorcutlabel
-          nullable: true
-          type: string
-        start:
-          description: "The first effective end date, or cut label, a DateRange run\
-            \ includes. Required for DateRange."
-          format: dateorcutlabel
-          nullable: true
-          type: string
-        end:
-          description: "The last effective end date, or cut label, a DateRange run\
-            \ includes. Required for DateRange."
-          format: dateorcutlabel
-          nullable: true
-          type: string
-        navTypeCode:
-          description: "When provided, every fund in the group is reported on this\
-            \ NAV type and a fund without it is reported as a failure. Otherwise each\
-            \ fund's NAV type comes from the reference list's NAV type codes hint,\
-            \ or its primary NAV type."
-          maxLength: 64
-          minLength: 1
-          nullable: true
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-        statuses:
-          description: "Narrows the valuation point statuses a LatestNav or DateRange\
-            \ run considers. Defaults to all three. Available values: Final, Estimate,\
-            \ Candidate."
-          items:
-            type: string
-          nullable: true
-          type: array
-        output:
-          $ref: '#/components/schemas/FundGroupReportOutput'
-        generalLedgerProfileCode:
-          description: The optional code of a General Ledger Profile used to decorate
-            the rows with levels; it must exist in each fund's chart of accounts.
-          maxLength: 64
-          minLength: 1
-          nullable: true
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-        excludeCleardownModule:
-          description: "If this is set to true, no Cleardown Module will be applied\
-            \ to the Trial Balances. Defaults to false."
-          type: boolean
-        variant:
-          description: The optional valuation point variant to report for each fund.
-          maxLength: 64
-          minLength: 1
-          nullable: true
-          pattern: "^[a-zA-Z0-9\\-_]+$"
-          type: string
-      required:
-      - runType
-      type: object
-    FundGroupTrialBalanceResponse:
-      additionalProperties: false
-      example:
-        fundResults:
-        - valuationPoints:
-          - diaryEntryCode: diaryEntryCode
-            effectiveEnd: 2000-01-23T04:56:07.000+00:00
-            status: status
-          - diaryEntryCode: diaryEntryCode
-            effectiveEnd: 2000-01-23T04:56:07.000+00:00
-            status: status
-          fundId:
-            code: code
-            scope: scope
-          navTypeCode: navTypeCode
-          error:
-            id: id
-            detail: detail
-            type: type
-            errorDetails:
-            - key: errorDetails
-            - key: errorDetails
-          status: status
-        - valuationPoints:
-          - diaryEntryCode: diaryEntryCode
-            effectiveEnd: 2000-01-23T04:56:07.000+00:00
-            status: status
-          - diaryEntryCode: diaryEntryCode
-            effectiveEnd: 2000-01-23T04:56:07.000+00:00
-            status: status
-          fundId:
-            code: code
-            scope: scope
-          navTypeCode: navTypeCode
-          error:
-            id: id
-            detail: detail
-            type: type
-            errorDetails:
-            - key: errorDetails
-            - key: errorDetails
-          status: status
-        previousPage: previousPage
-        nextPage: nextPage
-        values:
-        - fundId:
-            code: code
-            scope: scope
-          trialBalance:
-            generalLedgerAccountCode: generalLedgerAccountCode
-            closing:
-              baseAmount: 6.027456183070403
-              localAmount: 0.8008281904610115
-            accountType: accountType
-            description: description
-            links:
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            localCurrency: localCurrency
-            debit:
-              baseAmount: 6.027456183070403
-              localAmount: 0.8008281904610115
-            credit:
-              baseAmount: 6.027456183070403
-              localAmount: 0.8008281904610115
-            opening:
-              baseAmount: 6.027456183070403
-              localAmount: 0.8008281904610115
-            levels:
-            - levels
-            - levels
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-          diaryEntryCode: diaryEntryCode
-          valuationPointStatus: valuationPointStatus
-          navTypeCode: navTypeCode
-          effectiveEnd: 2000-01-23T04:56:07.000+00:00
-        - fundId:
-            code: code
-            scope: scope
-          trialBalance:
-            generalLedgerAccountCode: generalLedgerAccountCode
-            closing:
-              baseAmount: 6.027456183070403
-              localAmount: 0.8008281904610115
-            accountType: accountType
-            description: description
-            links:
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            - method: method
-              description: description
-              href: https://openapi-generator.tech
-              relation: relation
-            localCurrency: localCurrency
-            debit:
-              baseAmount: 6.027456183070403
-              localAmount: 0.8008281904610115
-            credit:
-              baseAmount: 6.027456183070403
-              localAmount: 0.8008281904610115
-            opening:
-              baseAmount: 6.027456183070403
-              localAmount: 0.8008281904610115
-            levels:
-            - levels
-            - levels
-            properties:
-              key:
-                referenceData:
-                  key:
-                    stringValue: stringValue
-                    numericValue: 6.027456183070403
-                effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                value:
-                  metricValue:
-                    unit: unit
-                    value: 0.8008281904610115
-                  labelValue: labelValue
-                  labelValueSet:
-                    values:
-                    - values
-                    - values
-                effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                key: key
-          diaryEntryCode: diaryEntryCode
-          valuationPointStatus: valuationPointStatus
-          navTypeCode: navTypeCode
-          effectiveEnd: 2000-01-23T04:56:07.000+00:00
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        href: https://openapi-generator.tech
-        version:
-          stagedModificationIdModified: stagedModificationIdModified
-          reasonModified: reasonModified
-          entityUniqueId: entityUniqueId
-          requestIdModified: requestIdModified
-          reasonCreated: reasonCreated
-          asAtModified: 2000-01-23T04:56:07.000+00:00
-          userIdModified: userIdModified
-          asAtVersionNumber: 1
-          asAtCreated: 2000-01-23T04:56:07.000+00:00
-          requestIdCreated: requestIdCreated
-          userIdCreated: userIdCreated
-          effectiveFrom: 2000-01-23T04:56:07.000+00:00
-          asAtDate: 2000-01-23T04:56:07.000+00:00
-      properties:
-        fundResults:
-          description: "One entry per fund and NAV type in the group: the valuation\
-            \ points reported, or the reason nothing was reported for it."
-          items:
-            $ref: '#/components/schemas/FundGroupReportResult'
-          nullable: true
-          type: array
-        version:
-          $ref: '#/components/schemas/Version'
-        values:
-          items:
-            $ref: '#/components/schemas/FundGroupTrialBalance'
-          type: array
-        href:
-          description: The specific Uniform Resource Identifier (URI) for this resource
-            at the requested effective and asAt datetime.
-          format: uri
-          nullable: true
-          type: string
-        nextPage:
-          nullable: true
-          type: string
-        previousPage:
-          nullable: true
-          type: string
-        links:
-          items:
-            $ref: '#/components/schemas/Link'
-          nullable: true
-          type: array
-      required:
-      - values
-      - version
-      type: object
     FundIdList:
       allOf:
       - $ref: '#/components/schemas/ReferenceList'
@@ -334420,6 +333921,601 @@ components:
       required:
       - values
       type: object
+    PagedResourceListOfRecResultStreakMember:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - result:
+            exception:
+              asAtClosureInvalidated: 2000-01-23T04:56:07.000+00:00
+              asAtClosed: 2000-01-23T04:56:07.000+00:00
+              closureType: closureType
+              status: status
+            resultLifeCycle: resultLifeCycle
+            recDefinitionId:
+              code: code
+              scope: scope
+            asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+            assignedRole: assignedRole
+            customEntityType: customEntityType
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            recType: recType
+            instanceId:
+              instanceIdType: instanceIdType
+              instanceIdValue: instanceIdValue
+            review:
+              decision: decision
+              decisionGroup:
+                coreRulesExcused:
+                - coreRulesExcused
+                - coreRulesExcused
+                groupNumber: 5
+              status: status
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            id: id
+            href: https://openapi-generator.tech
+            resultType: resultType
+            supplementalAttributes:
+            - leftValue: leftValue
+              rightValue: rightValue
+              attributeName: attributeName
+            - leftValue: leftValue
+              rightValue: rightValue
+              attributeName: attributeName
+            assignedUser: assignedUser
+            resultCardinality: resultCardinality
+            comments:
+            - asAtModified: 2000-01-23T04:56:07.000+00:00
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              commentId: commentId
+              commentText: commentText
+              userId: userId
+            - asAtModified: 2000-01-23T04:56:07.000+00:00
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              commentId: commentId
+              commentText: commentText
+              userId: userId
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            coreRules:
+            - leftValue: leftValue
+              rightValue: rightValue
+              ruleName: ruleName
+              appliedTolerance:
+                toleranceType: toleranceType
+            - leftValue: leftValue
+              rightValue: rightValue
+              ruleName: ruleName
+              appliedTolerance:
+                toleranceType: toleranceType
+            streak:
+              countInstances: 3
+              startResult:
+                instanceId:
+                  instanceIdType: instanceIdType
+                  instanceIdValue: instanceIdValue
+                exceptionStatus: exceptionStatus
+                runNumber: 7
+                runAsAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+                asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                datesReconciled:
+                  rightAsAt: 2000-01-23T04:56:07.000+00:00
+                  leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftAsAt: 2000-01-23T04:56:07.000+00:00
+                  rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                firstRunSeen: 9
+                closureType: closureType
+              differenceStreak:
+                countInstances: 2
+                startResult:
+                  instanceId:
+                    instanceIdType: instanceIdType
+                    instanceIdValue: instanceIdValue
+                  exceptionStatus: exceptionStatus
+                  runNumber: 7
+                  runAsAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+                  asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                  datesReconciled:
+                    rightAsAt: 2000-01-23T04:56:07.000+00:00
+                    leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftAsAt: 2000-01-23T04:56:07.000+00:00
+                    rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  firstRunSeen: 9
+                  closureType: closureType
+                age: age
+              predecessor:
+                result:
+                  instanceId:
+                    instanceIdType: instanceIdType
+                    instanceIdValue: instanceIdValue
+                  exceptionStatus: exceptionStatus
+                  runNumber: 7
+                  runAsAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+                  asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                  datesReconciled:
+                    rightAsAt: 2000-01-23T04:56:07.000+00:00
+                    leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftAsAt: 2000-01-23T04:56:07.000+00:00
+                    rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  firstRunSeen: 9
+                  closureType: closureType
+                streakTypes:
+                - streakTypes
+                - streakTypes
+              age: age
+              openStreak:
+                countInstances: 2
+                startResult:
+                  instanceId:
+                    instanceIdType: instanceIdType
+                    instanceIdValue: instanceIdValue
+                  exceptionStatus: exceptionStatus
+                  runNumber: 7
+                  runAsAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+                  asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                  datesReconciled:
+                    rightAsAt: 2000-01-23T04:56:07.000+00:00
+                    leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftAsAt: 2000-01-23T04:56:07.000+00:00
+                    rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  firstRunSeen: 9
+                  closureType: closureType
+                age: age
+            resultNumber: 0
+            asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+            version:
+              stagedModificationIdModified: stagedModificationIdModified
+              reasonModified: reasonModified
+              entityUniqueId: entityUniqueId
+              requestIdModified: requestIdModified
+              reasonCreated: reasonCreated
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 1
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              requestIdCreated: requestIdCreated
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            linkedResults:
+            - recType: recType
+              linkedBy:
+                left:
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                right:
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+              id: id
+            - recType: recType
+              linkedBy:
+                left:
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                right:
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+              id: id
+            aggregateRules:
+            - leftValue: leftValue
+              rightValue: rightValue
+              ruleName: ruleName
+              difference: difference
+              appliedTolerance:
+                toleranceType: toleranceType
+            - leftValue: leftValue
+              rightValue: rightValue
+              ruleName: ruleName
+              difference: difference
+              appliedTolerance:
+                toleranceType: toleranceType
+            recDefinitionDisplayName: recDefinitionDisplayName
+            externalRecTypeName: externalRecTypeName
+            runNumber: 1
+            firstRunSeen: 6
+            items:
+              left:
+              - itemType: itemType
+                ruleAndAttributeValues:
+                  key: ruleAndAttributeValues
+                writebackSuggestions:
+                - writebackType: writebackType
+                - writebackType: writebackType
+              - itemType: itemType
+                ruleAndAttributeValues:
+                  key: ruleAndAttributeValues
+                writebackSuggestions:
+                - writebackType: writebackType
+                - writebackType: writebackType
+              countLeft: 5
+              right:
+              - itemType: itemType
+                ruleAndAttributeValues:
+                  key: ruleAndAttributeValues
+                writebackSuggestions:
+                - writebackType: writebackType
+                - writebackType: writebackType
+              - itemType: itemType
+                ruleAndAttributeValues:
+                  key: ruleAndAttributeValues
+                writebackSuggestions:
+                - writebackType: writebackType
+                - writebackType: writebackType
+              countRight: 2
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          streakTypes:
+          - streakTypes
+          - streakTypes
+          relation: relation
+        - result:
+            exception:
+              asAtClosureInvalidated: 2000-01-23T04:56:07.000+00:00
+              asAtClosed: 2000-01-23T04:56:07.000+00:00
+              closureType: closureType
+              status: status
+            resultLifeCycle: resultLifeCycle
+            recDefinitionId:
+              code: code
+              scope: scope
+            asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+            assignedRole: assignedRole
+            customEntityType: customEntityType
+            datesReconciled:
+              rightAsAt: 2000-01-23T04:56:07.000+00:00
+              leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              leftAsAt: 2000-01-23T04:56:07.000+00:00
+              rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            recType: recType
+            instanceId:
+              instanceIdType: instanceIdType
+              instanceIdValue: instanceIdValue
+            review:
+              decision: decision
+              decisionGroup:
+                coreRulesExcused:
+                - coreRulesExcused
+                - coreRulesExcused
+                groupNumber: 5
+              status: status
+            links:
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            - method: method
+              description: description
+              href: https://openapi-generator.tech
+              relation: relation
+            id: id
+            href: https://openapi-generator.tech
+            resultType: resultType
+            supplementalAttributes:
+            - leftValue: leftValue
+              rightValue: rightValue
+              attributeName: attributeName
+            - leftValue: leftValue
+              rightValue: rightValue
+              attributeName: attributeName
+            assignedUser: assignedUser
+            resultCardinality: resultCardinality
+            comments:
+            - asAtModified: 2000-01-23T04:56:07.000+00:00
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              commentId: commentId
+              commentText: commentText
+              userId: userId
+            - asAtModified: 2000-01-23T04:56:07.000+00:00
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              commentId: commentId
+              commentText: commentText
+              userId: userId
+            runAsAt: 2000-01-23T04:56:07.000+00:00
+            coreRules:
+            - leftValue: leftValue
+              rightValue: rightValue
+              ruleName: ruleName
+              appliedTolerance:
+                toleranceType: toleranceType
+            - leftValue: leftValue
+              rightValue: rightValue
+              ruleName: ruleName
+              appliedTolerance:
+                toleranceType: toleranceType
+            streak:
+              countInstances: 3
+              startResult:
+                instanceId:
+                  instanceIdType: instanceIdType
+                  instanceIdValue: instanceIdValue
+                exceptionStatus: exceptionStatus
+                runNumber: 7
+                runAsAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+                asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                datesReconciled:
+                  rightAsAt: 2000-01-23T04:56:07.000+00:00
+                  leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftAsAt: 2000-01-23T04:56:07.000+00:00
+                  rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                firstRunSeen: 9
+                closureType: closureType
+              differenceStreak:
+                countInstances: 2
+                startResult:
+                  instanceId:
+                    instanceIdType: instanceIdType
+                    instanceIdValue: instanceIdValue
+                  exceptionStatus: exceptionStatus
+                  runNumber: 7
+                  runAsAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+                  asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                  datesReconciled:
+                    rightAsAt: 2000-01-23T04:56:07.000+00:00
+                    leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftAsAt: 2000-01-23T04:56:07.000+00:00
+                    rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  firstRunSeen: 9
+                  closureType: closureType
+                age: age
+              predecessor:
+                result:
+                  instanceId:
+                    instanceIdType: instanceIdType
+                    instanceIdValue: instanceIdValue
+                  exceptionStatus: exceptionStatus
+                  runNumber: 7
+                  runAsAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+                  asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                  datesReconciled:
+                    rightAsAt: 2000-01-23T04:56:07.000+00:00
+                    leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftAsAt: 2000-01-23T04:56:07.000+00:00
+                    rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  firstRunSeen: 9
+                  closureType: closureType
+                streakTypes:
+                - streakTypes
+                - streakTypes
+              age: age
+              openStreak:
+                countInstances: 2
+                startResult:
+                  instanceId:
+                    instanceIdType: instanceIdType
+                    instanceIdValue: instanceIdValue
+                  exceptionStatus: exceptionStatus
+                  runNumber: 7
+                  runAsAt: 2000-01-23T04:56:07.000+00:00
+                  id: id
+                  asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                  datesReconciled:
+                    rightAsAt: 2000-01-23T04:56:07.000+00:00
+                    leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    leftAsAt: 2000-01-23T04:56:07.000+00:00
+                    rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                    rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  firstRunSeen: 9
+                  closureType: closureType
+                age: age
+            resultNumber: 0
+            asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+            version:
+              stagedModificationIdModified: stagedModificationIdModified
+              reasonModified: reasonModified
+              entityUniqueId: entityUniqueId
+              requestIdModified: requestIdModified
+              reasonCreated: reasonCreated
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 1
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              requestIdCreated: requestIdCreated
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            linkedResults:
+            - recType: recType
+              linkedBy:
+                left:
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                right:
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+              id: id
+            - recType: recType
+              linkedBy:
+                left:
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                right:
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+                - taxLotId: taxLotId
+                  holdingId: holdingId
+                  transactionId: transactionId
+              id: id
+            aggregateRules:
+            - leftValue: leftValue
+              rightValue: rightValue
+              ruleName: ruleName
+              difference: difference
+              appliedTolerance:
+                toleranceType: toleranceType
+            - leftValue: leftValue
+              rightValue: rightValue
+              ruleName: ruleName
+              difference: difference
+              appliedTolerance:
+                toleranceType: toleranceType
+            recDefinitionDisplayName: recDefinitionDisplayName
+            externalRecTypeName: externalRecTypeName
+            runNumber: 1
+            firstRunSeen: 6
+            items:
+              left:
+              - itemType: itemType
+                ruleAndAttributeValues:
+                  key: ruleAndAttributeValues
+                writebackSuggestions:
+                - writebackType: writebackType
+                - writebackType: writebackType
+              - itemType: itemType
+                ruleAndAttributeValues:
+                  key: ruleAndAttributeValues
+                writebackSuggestions:
+                - writebackType: writebackType
+                - writebackType: writebackType
+              countLeft: 5
+              right:
+              - itemType: itemType
+                ruleAndAttributeValues:
+                  key: ruleAndAttributeValues
+                writebackSuggestions:
+                - writebackType: writebackType
+                - writebackType: writebackType
+              - itemType: itemType
+                ruleAndAttributeValues:
+                  key: ruleAndAttributeValues
+                writebackSuggestions:
+                - writebackType: writebackType
+                - writebackType: writebackType
+              countRight: 2
+            properties:
+              key:
+                referenceData:
+                  key:
+                    stringValue: stringValue
+                    numericValue: 6.027456183070403
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          streakTypes:
+          - streakTypes
+          - streakTypes
+          relation: relation
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/RecResultStreakMember'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     PagedResourceListOfReferenceListResponse:
       additionalProperties: false
       example:
@@ -362208,6 +362304,313 @@ components:
       - openStreak
       - predecessor
       - startResult
+      type: object
+    RecResultStreakMember:
+      additionalProperties: false
+      description: "A member of a result's streak, tagged relative to the requested\
+        \ result."
+      example:
+        result:
+          exception:
+            asAtClosureInvalidated: 2000-01-23T04:56:07.000+00:00
+            asAtClosed: 2000-01-23T04:56:07.000+00:00
+            closureType: closureType
+            status: status
+          resultLifeCycle: resultLifeCycle
+          recDefinitionId:
+            code: code
+            scope: scope
+          asAtInstantiated: 2000-01-23T04:56:07.000+00:00
+          assignedRole: assignedRole
+          customEntityType: customEntityType
+          datesReconciled:
+            rightAsAt: 2000-01-23T04:56:07.000+00:00
+            leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            leftAsAt: 2000-01-23T04:56:07.000+00:00
+            rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+            rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          recType: recType
+          instanceId:
+            instanceIdType: instanceIdType
+            instanceIdValue: instanceIdValue
+          review:
+            decision: decision
+            decisionGroup:
+              coreRulesExcused:
+              - coreRulesExcused
+              - coreRulesExcused
+              groupNumber: 5
+            status: status
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id: id
+          href: https://openapi-generator.tech
+          resultType: resultType
+          supplementalAttributes:
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          - leftValue: leftValue
+            rightValue: rightValue
+            attributeName: attributeName
+          assignedUser: assignedUser
+          resultCardinality: resultCardinality
+          comments:
+          - asAtModified: 2000-01-23T04:56:07.000+00:00
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            commentId: commentId
+            commentText: commentText
+            userId: userId
+          - asAtModified: 2000-01-23T04:56:07.000+00:00
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            commentId: commentId
+            commentText: commentText
+            userId: userId
+          runAsAt: 2000-01-23T04:56:07.000+00:00
+          coreRules:
+          - leftValue: leftValue
+            rightValue: rightValue
+            ruleName: ruleName
+            appliedTolerance:
+              toleranceType: toleranceType
+          - leftValue: leftValue
+            rightValue: rightValue
+            ruleName: ruleName
+            appliedTolerance:
+              toleranceType: toleranceType
+          streak:
+            countInstances: 3
+            startResult:
+              instanceId:
+                instanceIdType: instanceIdType
+                instanceIdValue: instanceIdValue
+              exceptionStatus: exceptionStatus
+              runNumber: 7
+              runAsAt: 2000-01-23T04:56:07.000+00:00
+              id: id
+              asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+              datesReconciled:
+                rightAsAt: 2000-01-23T04:56:07.000+00:00
+                leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                leftAsAt: 2000-01-23T04:56:07.000+00:00
+                rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+              firstRunSeen: 9
+              closureType: closureType
+            differenceStreak:
+              countInstances: 2
+              startResult:
+                instanceId:
+                  instanceIdType: instanceIdType
+                  instanceIdValue: instanceIdValue
+                exceptionStatus: exceptionStatus
+                runNumber: 7
+                runAsAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+                asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                datesReconciled:
+                  rightAsAt: 2000-01-23T04:56:07.000+00:00
+                  leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftAsAt: 2000-01-23T04:56:07.000+00:00
+                  rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                firstRunSeen: 9
+                closureType: closureType
+              age: age
+            predecessor:
+              result:
+                instanceId:
+                  instanceIdType: instanceIdType
+                  instanceIdValue: instanceIdValue
+                exceptionStatus: exceptionStatus
+                runNumber: 7
+                runAsAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+                asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                datesReconciled:
+                  rightAsAt: 2000-01-23T04:56:07.000+00:00
+                  leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftAsAt: 2000-01-23T04:56:07.000+00:00
+                  rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                firstRunSeen: 9
+                closureType: closureType
+              streakTypes:
+              - streakTypes
+              - streakTypes
+            age: age
+            openStreak:
+              countInstances: 2
+              startResult:
+                instanceId:
+                  instanceIdType: instanceIdType
+                  instanceIdValue: instanceIdValue
+                exceptionStatus: exceptionStatus
+                runNumber: 7
+                runAsAt: 2000-01-23T04:56:07.000+00:00
+                id: id
+                asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+                datesReconciled:
+                  rightAsAt: 2000-01-23T04:56:07.000+00:00
+                  leftEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  leftAsAt: 2000-01-23T04:56:07.000+00:00
+                  rightEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                  rightActivitySinceEffectiveAt: 2000-01-23T04:56:07.000+00:00
+                firstRunSeen: 9
+                closureType: closureType
+              age: age
+          resultNumber: 0
+          asAtFirstSeen: 2000-01-23T04:56:07.000+00:00
+          version:
+            stagedModificationIdModified: stagedModificationIdModified
+            reasonModified: reasonModified
+            entityUniqueId: entityUniqueId
+            requestIdModified: requestIdModified
+            reasonCreated: reasonCreated
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 1
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            requestIdCreated: requestIdCreated
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          linkedResults:
+          - recType: recType
+            linkedBy:
+              left:
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              right:
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+            id: id
+          - recType: recType
+            linkedBy:
+              left:
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              right:
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+              - taxLotId: taxLotId
+                holdingId: holdingId
+                transactionId: transactionId
+            id: id
+          aggregateRules:
+          - leftValue: leftValue
+            rightValue: rightValue
+            ruleName: ruleName
+            difference: difference
+            appliedTolerance:
+              toleranceType: toleranceType
+          - leftValue: leftValue
+            rightValue: rightValue
+            ruleName: ruleName
+            difference: difference
+            appliedTolerance:
+              toleranceType: toleranceType
+          recDefinitionDisplayName: recDefinitionDisplayName
+          externalRecTypeName: externalRecTypeName
+          runNumber: 1
+          firstRunSeen: 6
+          items:
+            left:
+            - itemType: itemType
+              ruleAndAttributeValues:
+                key: ruleAndAttributeValues
+              writebackSuggestions:
+              - writebackType: writebackType
+              - writebackType: writebackType
+            - itemType: itemType
+              ruleAndAttributeValues:
+                key: ruleAndAttributeValues
+              writebackSuggestions:
+              - writebackType: writebackType
+              - writebackType: writebackType
+            countLeft: 5
+            right:
+            - itemType: itemType
+              ruleAndAttributeValues:
+                key: ruleAndAttributeValues
+              writebackSuggestions:
+              - writebackType: writebackType
+              - writebackType: writebackType
+            - itemType: itemType
+              ruleAndAttributeValues:
+                key: ruleAndAttributeValues
+              writebackSuggestions:
+              - writebackType: writebackType
+              - writebackType: writebackType
+            countRight: 2
+          properties:
+            key:
+              referenceData:
+                key:
+                  stringValue: stringValue
+                  numericValue: 6.027456183070403
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        streakTypes:
+        - streakTypes
+        - streakTypes
+        relation: relation
+      properties:
+        result:
+          $ref: '#/components/schemas/RecResult'
+        streakTypes:
+          description: "Which streaks the member shares with the requested result:\
+            \ always Core; Difference when every link between them has unchanged aggregate\
+            \ rule differences; Open when it, the requested result and every member\
+            \ between them have an open exception. The requested result is always\
+            \ Difference. Available values: Core, Difference, Open."
+          items:
+            type: string
+          minItems: 1
+          type: array
+        relation:
+          description: "Where the member sits relative to the requested result: Predecessor\
+            \ in an earlier instance, Requested for the result itself, Successor in\
+            \ a later instance. Available values: Predecessor, Requested, Successor."
+          minLength: 1
+          type: string
+      required:
+      - relation
+      - result
+      - streakTypes
       type: object
     RecResultStreakPredecessor:
       additionalProperties: false
@@ -458414,7 +458817,6 @@ x-tagGroups:
   - Executions
   - Fee Types
   - Fund Configuration
-  - Fund Groups
   - Fund Structures
   - Fund Valuation Templates
   - Funds

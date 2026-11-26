@@ -42,6 +42,7 @@ import com.finbourne.lusid.model.PagedResourceListOfRecDefinition;
 import com.finbourne.lusid.model.PagedResourceListOfRecInstance;
 import com.finbourne.lusid.model.PagedResourceListOfRecResult;
 import com.finbourne.lusid.model.PagedResourceListOfRecResultSet;
+import com.finbourne.lusid.model.PagedResourceListOfRecResultStreakMember;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.RecDefinition;
 import com.finbourne.lusid.model.RecInstance;
@@ -3117,6 +3118,346 @@ public class RecsApi {
      */
     public APIgetRecResultSetRequest getRecResultSet(String entityUniqueId) {
         return new APIgetRecResultSetRequest(entityUniqueId);
+    }
+    private okhttp3.Call getRecResultStreakCall(String instanceIdType, String instanceIdValue, String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
+        return getRecResultStreakCall(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys,  _callback, new ConfigurationOptions());
+    }
+
+    private okhttp3.Call getRecResultStreakCall(String instanceIdType, String instanceIdValue, String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/recs/results/{instanceIdType}/{instanceIdValue}/{id}/streak"
+            .replace("{" + "instanceIdType" + "}", localVarApiClient.escapeString(instanceIdType.toString()))
+            .replace("{" + "instanceIdValue" + "}", localVarApiClient.escapeString(instanceIdValue.toString()))
+            .replace("{" + "id" + "}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
+        if (propertyKeys != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback, opts);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getRecResultStreakValidateBeforeCall(String instanceIdType, String instanceIdValue, String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback _callback, ConfigurationOptions opts) throws ApiException {
+        // verify the required parameter 'instanceIdType' is set
+        if (instanceIdType == null) {
+            throw new ApiException("Missing the required parameter 'instanceIdType' when calling getRecResultStreak(Async)");
+        }
+
+        // verify the required parameter 'instanceIdValue' is set
+        if (instanceIdValue == null) {
+            throw new ApiException("Missing the required parameter 'instanceIdValue' when calling getRecResultStreak(Async)");
+        }
+
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getRecResultStreak(Async)");
+        }
+
+        return getRecResultStreakCall(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+
+    }
+
+
+    private ApiResponse<PagedResourceListOfRecResultStreakMember> getRecResultStreakWithHttpInfo(String instanceIdType, String instanceIdValue, String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys) throws ApiException {
+        okhttp3.Call localVarCall = getRecResultStreakValidateBeforeCall(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, null, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfRecResultStreakMember>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private ApiResponse<PagedResourceListOfRecResultStreakMember> getRecResultStreakWithHttpInfo(String instanceIdType, String instanceIdValue, String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, ConfigurationOptions opts) throws ApiException {
+        okhttp3.Call localVarCall = getRecResultStreakValidateBeforeCall(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, null, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfRecResultStreakMember>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getRecResultStreakAsync(String instanceIdType, String instanceIdValue, String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfRecResultStreakMember> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getRecResultStreakValidateBeforeCall(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, _callback, new ConfigurationOptions());
+        Type localVarReturnType = new TypeToken<PagedResourceListOfRecResultStreakMember>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    private okhttp3.Call getRecResultStreakAsync(String instanceIdType, String instanceIdValue, String id, OffsetDateTime asAt, String page, Integer limit, String filter, List<String> sortBy, List<String> propertyKeys, final ApiCallback<PagedResourceListOfRecResultStreakMember> _callback, ConfigurationOptions opts) throws ApiException {
+
+        okhttp3.Call localVarCall = getRecResultStreakValidateBeforeCall(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfRecResultStreakMember>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetRecResultStreakRequest {
+        private final String instanceIdType;
+        private final String instanceIdValue;
+        private final String id;
+        private OffsetDateTime asAt;
+        private String page;
+        private Integer limit;
+        private String filter;
+        private List<String> sortBy;
+        private List<String> propertyKeys;
+
+        private APIgetRecResultStreakRequest(String instanceIdType, String instanceIdValue, String id) {
+            this.instanceIdType = instanceIdType;
+            this.instanceIdValue = instanceIdValue;
+            this.id = id;
+        }
+
+        /**
+         * Set asAt
+         * @param asAt The asAt datetime at which to read the streak and its members. Defaults to latest if not specified. (optional)
+         * @return APIgetRecResultStreakRequest
+         */
+        public APIgetRecResultStreakRequest asAt(OffsetDateTime asAt) {
+            this.asAt = asAt;
+            return this;
+        }
+
+        /**
+         * Set page
+         * @param page The pagination token to use to continue listing members from a previous call. If a pagination token is provided the filter, sortBy and asAt fields must not have changed since the original request. (optional)
+         * @return APIgetRecResultStreakRequest
+         */
+        public APIgetRecResultStreakRequest page(String page) {
+            this.page = page;
+            return this;
+        }
+
+        /**
+         * Set limit
+         * @param limit When paginating, limit the number of returned members to this many. Defaults to 100 if not specified. (optional)
+         * @return APIgetRecResultStreakRequest
+         */
+        public APIgetRecResultStreakRequest limit(Integer limit) {
+            this.limit = limit;
+            return this;
+        }
+
+        /**
+         * Set filter
+         * @param filter Expression to filter the members, on relation, streakTypes and any field under result. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. (optional)
+         * @return APIgetRecResultStreakRequest
+         */
+        public APIgetRecResultStreakRequest filter(String filter) {
+            this.filter = filter;
+            return this;
+        }
+
+        /**
+         * Set sortBy
+         * @param sortBy A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to result.asAtInstantiated DESC, newest instance first. (optional)
+         * @return APIgetRecResultStreakRequest
+         */
+        public APIgetRecResultStreakRequest sortBy(List<String> sortBy) {
+            this.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * Set propertyKeys
+         * @param propertyKeys The property keys to decorate onto each member&#39;s result. The keys its matching ruleset populates always come back, so list only others here. (optional)
+         * @return APIgetRecResultStreakRequest
+         */
+        public APIgetRecResultStreakRequest propertyKeys(List<String> propertyKeys) {
+            this.propertyKeys = propertyKeys;
+            return this;
+        }
+
+        /**
+         * Build call for getRecResultStreak
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The members of the rec result&#39;s streak. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getRecResultStreakCall(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getRecResultStreak request
+         * @return PagedResourceListOfRecResultStreakMember
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The members of the rec result&#39;s streak. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfRecResultStreakMember execute() throws ApiException {
+            ApiResponse<PagedResourceListOfRecResultStreakMember> localVarResp = getRecResultStreakWithHttpInfo(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getRecResultStreak request. Use any specified configuration options to override any other configuration for this request only.
+         * @return PagedResourceListOfRecResultStreakMember
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The members of the rec result&#39;s streak. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public PagedResourceListOfRecResultStreakMember execute(ConfigurationOptions opts) throws ApiException {
+            ApiResponse<PagedResourceListOfRecResultStreakMember> localVarResp = getRecResultStreakWithHttpInfo(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, opts);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute getRecResultStreak request with HTTP info returned
+         * @return ApiResponse&lt;PagedResourceListOfRecResultStreakMember&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The members of the rec result&#39;s streak. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfRecResultStreakMember> executeWithHttpInfo() throws ApiException {
+            return getRecResultStreakWithHttpInfo(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys);
+        }
+
+        /**
+         * Execute getRecResultStreak request with HTTP info returned. Use any specified configuration options to override any other configuration for this request only.
+         * @return ApiResponse&lt;PagedResourceListOfRecResultStreakMember&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The members of the rec result&#39;s streak. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<PagedResourceListOfRecResultStreakMember> executeWithHttpInfo(ConfigurationOptions opts) throws ApiException {
+            return getRecResultStreakWithHttpInfo(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, opts);
+        }
+
+        /**
+         * Execute getRecResultStreak request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The members of the rec result&#39;s streak. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfRecResultStreakMember> _callback) throws ApiException {
+            return getRecResultStreakAsync(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, _callback);
+        }
+
+        /**
+         * Execute getRecResultStreak request (asynchronously). Use any specified configuration options to override any other configuration for this request only.
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td> The members of the rec result&#39;s streak. </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+            <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<PagedResourceListOfRecResultStreakMember> _callback, ConfigurationOptions opts) throws ApiException {
+            return getRecResultStreakAsync(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys, _callback, opts);
+        }
+    }
+
+    /**
+     * [EXPERIMENTAL] GetRecResultStreak: GetRecResultStreak
+     * List every member of a rec result&#39;s streak, the result itself included, read from the stored predecessor links. Each member is a full result, tagged with the streaks it shares with the requested result and where it sits relative to it.
+     * @param instanceIdType How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual. (required)
+     * @param instanceIdValue The unique identifier of the rec instance. (required)
+     * @param id The id of the rec result, e.g. \&quot;Holding-break-3\&quot;. (required)
+     * @return APIgetRecResultStreakRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The members of the rec result&#39;s streak. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIgetRecResultStreakRequest getRecResultStreak(String instanceIdType, String instanceIdValue, String id) {
+        return new APIgetRecResultStreakRequest(instanceIdType, instanceIdValue, id);
     }
     private okhttp3.Call instantiateRecCall(InstantiateRecRequest instantiateRecRequest, final ApiCallback _callback) throws ApiException {
         return instantiateRecCall(instantiateRecRequest,  _callback, new ConfigurationOptions());

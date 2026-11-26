@@ -10341,7 +10341,7 @@ public class TransactionPortfoliosApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetRegistry: [EXPERIMENTAL] GetRegistry: Get the registry of a transaction portfolio.
+     * [EARLY ACCESS] GetRegistry: [EARLY ACCESS] GetRegistry: Get the registry of a transaction portfolio.
      * Get the registry lines of a transaction portfolio at the given effective and asAt datetimes: the partner  register lines that transaction types flagged &#39;Registry&#39; apply to, with their units, cost and capital  balances. Registry lines are never holdings, so they do not appear in the holdings of the portfolio.
      * @param scope The scope of the transaction portfolio. (required)
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies   the transaction portfolio. (required)

@@ -16,6 +16,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getRecInstance**](RecsApi.md#getRecInstance) | **GET** /api/recs/instances/{instanceIdType}/{instanceIdValue} | [EXPERIMENTAL] GetRecInstance: GetRecInstance |
 | [**getRecResult**](RecsApi.md#getRecResult) | **GET** /api/recs/results/{instanceIdType}/{instanceIdValue}/{id} | [EXPERIMENTAL] GetRecResult: GetRecResult |
 | [**getRecResultSet**](RecsApi.md#getRecResultSet) | **GET** /api/recs/resultsets/{entityUniqueId} | [EXPERIMENTAL] GetRecResultSet: GetRecResultSet |
+| [**getRecResultStreak**](RecsApi.md#getRecResultStreak) | **GET** /api/recs/results/{instanceIdType}/{instanceIdValue}/{id}/streak | [EXPERIMENTAL] GetRecResultStreak: GetRecResultStreak |
 | [**instantiateRec**](RecsApi.md#instantiateRec) | **POST** /api/recs/instances | [EXPERIMENTAL] InstantiateRec: InstantiateRec |
 | [**listMatchingRulesets**](RecsApi.md#listMatchingRulesets) | **GET** /api/recs/matchingrulesets | [EXPERIMENTAL] ListMatchingRulesets: ListMatchingRulesets |
 | [**listRecDefinitions**](RecsApi.md#listRecDefinitions) | **GET** /api/recs/definitions | [EXPERIMENTAL] ListRecDefinitions: ListRecDefinitions |
@@ -1152,6 +1153,113 @@ public class RecsApiExample {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested rec result set. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+[Back to top](#) &#8226; [Back to API list](../README.md#documentation-for-api-endpoints) &#8226; [Back to Model list](../README.md#documentation-for-models) &#8226; [Back to README](../README.md)
+
+
+## getRecResultStreak
+
+> PagedResourceListOfRecResultStreakMember getRecResultStreak(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys)
+
+[EXPERIMENTAL] GetRecResultStreak: GetRecResultStreak
+
+List every member of a rec result&#39;s streak, the result itself included, read from the stored predecessor links. Each member is a full result, tagged with the streaks it shares with the requested result and where it sits relative to it.
+
+### Example
+
+```java
+import com.finbourne.lusid.model.*;
+import com.finbourne.lusid.api.RecsApi;
+import com.finbourne.lusid.extensions.ApiConfigurationException;
+import com.finbourne.lusid.extensions.ApiFactoryBuilder;
+import com.finbourne.lusid.extensions.auth.FinbourneTokenException;
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class RecsApiExample {
+
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException, ApiConfigurationException, FinbourneTokenException {
+        String fileName = "secrets.json";
+        try(PrintWriter writer = new PrintWriter(fileName, "UTF-8")) {
+          writer.write("{" +
+            "\"api\": {" +
+            "    \"tokenUrl\": \"<your-token-url>\"," +
+            "    \"lusidUrl\": \"https://<your-domain>.lusid.com/api\"," +
+            "    \"username\": \"<your-username>\"," +
+            "    \"password\": \"<your-password>\"," +
+            "    \"clientId\": \"<your-client-id>\"," +
+            "    \"clientSecret\": \"<your-client-secret>\"" +
+            "  }" +
+            "}");
+        }
+
+        // uncomment the below to use configuration overrides
+        // ConfigurationOptions opts = new ConfigurationOptions();
+        // opts.setTotalTimeoutMs(2000);
+        
+        // uncomment the below to use an api factory with overrides
+        // ApiFactory apiFactory = ApiFactoryBuilder.build(fileName, opts);
+        // RecsApi apiInstance = apiFactory.build(RecsApi.class);
+
+        RecsApi apiInstance = ApiFactoryBuilder.build(fileName).build(RecsApi.class);
+        String instanceIdType = "instanceIdType_example"; // String | How the instance was created: \"WorkflowServiceTaskId\" or \"Manual\". Available values: WorkflowServiceTaskId, Manual.
+        String instanceIdValue = "instanceIdValue_example"; // String | The unique identifier of the rec instance.
+        String id = "id_example"; // String | The id of the rec result, e.g. \"Holding-break-3\".
+        OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to read the streak and its members. Defaults to latest if not specified.
+        String page = "page_example"; // String | The pagination token to use to continue listing members from a previous call. If a pagination token is provided the filter, sortBy and asAt fields must not have changed since the original request.
+        Integer limit = 56; // Integer | When paginating, limit the number of returned members to this many. Defaults to 100 if not specified.
+        String filter = "filter_example"; // String | Expression to filter the members, on relation, streakTypes and any field under result. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        List<String> sortBy = Arrays.asList(); // List<String> | A list of field names suffixed by \" ASC\" or \" DESC\". Defaults to result.asAtInstantiated DESC, newest instance first.
+        List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys to decorate onto each member's result. The keys its matching ruleset populates always come back, so list only others here.
+        try {
+            // uncomment the below to set overrides at the request level
+            // PagedResourceListOfRecResultStreakMember result = apiInstance.getRecResultStreak(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys).execute(opts);
+
+            PagedResourceListOfRecResultStreakMember result = apiInstance.getRecResultStreak(instanceIdType, instanceIdValue, id, asAt, page, limit, filter, sortBy, propertyKeys).execute();
+            System.out.println(result.toJson());
+        } catch (ApiException e) {
+            System.err.println("Exception when calling RecsApi#getRecResultStreak");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **instanceIdType** | **String**| How the instance was created: \&quot;WorkflowServiceTaskId\&quot; or \&quot;Manual\&quot;. Available values: WorkflowServiceTaskId, Manual. | |
+| **instanceIdValue** | **String**| The unique identifier of the rec instance. | |
+| **id** | **String**| The id of the rec result, e.g. \&quot;Holding-break-3\&quot;. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to read the streak and its members. Defaults to latest if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing members from a previous call. If a pagination token is provided the filter, sortBy and asAt fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned members to this many. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the members, on relation, streakTypes and any field under result. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot;. Defaults to result.asAtInstantiated DESC, newest instance first. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys to decorate onto each member&#39;s result. The keys its matching ruleset populates always come back, so list only others here. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfRecResultStreakMember**](PagedResourceListOfRecResultStreakMember.md)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: text/plain, application/json, text/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The members of the rec result&#39;s streak. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

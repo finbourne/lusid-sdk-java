@@ -13,14 +13,14 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**approveTaxProvision**](FundsApi.md#approveTaxProvision) | **POST** /api/funds/{scope}/{code}/valuationpoints/{diaryEntryCode}/tax/provision/approve | [EARLY ACCESS] ApproveTaxProvision: [EARLY ACCESS] ApproveTaxProvision: Approve the deferred-tax provision of a Valuation Point. |
 | [**calculateManagementFees**](FundsApi.md#calculateManagementFees) | **POST** /api/funds/{scope}/{code}/fees/$calculate | [EARLY ACCESS] CalculateManagementFees: [EXPERIMENTAL] CalculateManagementFees: Calculate the management fee per partner for a period. |
 | [**checkPartnershipTransactionTypes**](FundsApi.md#checkPartnershipTransactionTypes) | **GET** /api/funds/{scope}/{code}/partnershipaccounting/typecheck | [EARLY ACCESS] CheckPartnershipTransactionTypes: [EXPERIMENTAL] CheckPartnershipTransactionTypes: Check the Fund&#39;s transaction types against its partnership configuration pack. |
-| [**createFacility**](FundsApi.md#createFacility) | **POST** /api/funds/{scope}/{code}/facilities | [EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility. |
+| [**createFacility**](FundsApi.md#createFacility) | **POST** /api/funds/{scope}/{code}/facilities | [EARLY ACCESS] CreateFacility: [EARLY ACCESS] CreateFacility: Create a Facility. |
 | [**createFee**](FundsApi.md#createFee) | **POST** /api/funds/{scope}/{code}/fees | [EARLY ACCESS] CreateFee: Create a Fee. |
 | [**createFund**](FundsApi.md#createFund) | **POST** /api/funds/{scope} | [EARLY ACCESS] CreateFund: Create a Fund. |
 | [**createFundV2**](FundsApi.md#createFundV2) | **POST** /api/funds/v2/{scope} | [EARLY ACCESS] CreateFundV2: Create a Fund V2 (Preview). |
 | [**createValuationPoint**](FundsApi.md#createValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$create | [EARLY ACCESS] CreateValuationPoint: Create a Valuation Point. |
 | [**deactivateNavTypes**](FundsApi.md#deactivateNavTypes) | **POST** /api/funds/{scope}/{code}/deactivateNavTypes | [EARLY ACCESS] DeactivateNavTypes: Deactivate NAV types on a Fund. |
 | [**deleteBookmark**](FundsApi.md#deleteBookmark) | **DELETE** /api/funds/{scope}/{code}/bookmarks/{bookmarkCode} | [EARLY ACCESS] DeleteBookmark: Delete a Bookmark. |
-| [**deleteFacility**](FundsApi.md#deleteFacility) | **DELETE** /api/funds/{scope}/{code}/facilities/{facilityCode} | [EXPERIMENTAL] DeleteFacility: [EXPERIMENTAL] DeleteFacility: Delete a Facility. |
+| [**deleteFacility**](FundsApi.md#deleteFacility) | **DELETE** /api/funds/{scope}/{code}/facilities/{facilityCode} | [EARLY ACCESS] DeleteFacility: [EARLY ACCESS] DeleteFacility: Delete a Facility. |
 | [**deleteFee**](FundsApi.md#deleteFee) | **DELETE** /api/funds/{scope}/{code}/fees/{feeCode} | [EARLY ACCESS] DeleteFee: Delete a Fee. |
 | [**deleteFund**](FundsApi.md#deleteFund) | **DELETE** /api/funds/{scope}/{code} | [EARLY ACCESS] DeleteFund: Delete a Fund. |
 | [**deleteNavActivityAdjustments**](FundsApi.md#deleteNavActivityAdjustments) | **POST** /api/funds/{scope}/{code}/navAdjustment/$delete | [EARLY ACCESS] DeleteNavActivityAdjustments: Delete Nav activity adjustments. |
@@ -31,7 +31,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**finaliseCandidateValuationPoint**](FundsApi.md#finaliseCandidateValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints/$finalisecandidate | [EARLY ACCESS] FinaliseCandidateValuationPoint: Finalise a Candidate Valuation Point. |
 | [**getA2BDataForFund**](FundsApi.md#getA2BDataForFund) | **POST** /api/funds/{scope}/{code}/valuationpoints/a2b/$query | [EARLY ACCESS] GetA2BDataForFund: Get A2B data for a Fund. |
 | [**getA2BMovementsForFund**](FundsApi.md#getA2BMovementsForFund) | **POST** /api/funds/{scope}/{code}/valuationpoints/a2bmovements/$query | [EARLY ACCESS] GetA2BMovementsForFund: Get A2B movements for transaction portfolios in a Fund. |
-| [**getFacility**](FundsApi.md#getFacility) | **GET** /api/funds/{scope}/{code}/facilities/{facilityCode} | [EXPERIMENTAL] GetFacility: [EXPERIMENTAL] GetFacility: Get a Facility for a specified Fund. |
+| [**getFacility**](FundsApi.md#getFacility) | **GET** /api/funds/{scope}/{code}/facilities/{facilityCode} | [EARLY ACCESS] GetFacility: [EARLY ACCESS] GetFacility: Get a Facility for a specified Fund. |
 | [**getFee**](FundsApi.md#getFee) | **GET** /api/funds/{scope}/{code}/fees/{feeCode} | [EARLY ACCESS] GetFee: Get a Fee for a specified Fund. |
 | [**getFeeProperties**](FundsApi.md#getFeeProperties) | **GET** /api/funds/{scope}/{code}/fees/{feeCode}/properties | [EARLY ACCESS] GetFeeProperties: Get Fee properties. |
 | [**getFund**](FundsApi.md#getFund) | **GET** /api/funds/{scope}/{code} | [EARLY ACCESS] GetFund: Get a Fund. |
@@ -46,7 +46,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getPartnerUnfundedReconciliation**](FundsApi.md#getPartnerUnfundedReconciliation) | **GET** /api/funds/{scope}/{code}/partners/{investorRecordId}/unfundedreconciliation | [EARLY ACCESS] GetPartnerUnfundedReconciliation: [EARLY ACCESS] GetPartnerUnfundedReconciliation: Get a partner&#39;s unfunded commitment statement. |
 | [**getPartners**](FundsApi.md#getPartners) | **GET** /api/funds/{scope}/{code}/partners | [EARLY ACCESS] GetPartners: [EARLY ACCESS] GetPartners: Get the partners of a partnership fund. |
 | [**getPartnershipConfigPack**](FundsApi.md#getPartnershipConfigPack) | **GET** /api/funds/{scope}/{code}/partnershipaccounting/configpack | [EARLY ACCESS] GetPartnershipConfigPack: [EXPERIMENTAL] GetPartnershipConfigPack: Get the partnership configuration pack of a Fund. |
-| [**getRegistryForFund**](FundsApi.md#getRegistryForFund) | **GET** /api/funds/{scope}/{code}/registry | [EXPERIMENTAL] GetRegistryForFund: [EXPERIMENTAL] GetRegistryForFund: Get the registry of a Fund. |
+| [**getRegistryForFund**](FundsApi.md#getRegistryForFund) | **GET** /api/funds/{scope}/{code}/registry | [EARLY ACCESS] GetRegistryForFund: [EARLY ACCESS] GetRegistryForFund: Get the registry of a Fund. |
 | [**getSeries**](FundsApi.md#getSeries) | **GET** /api/funds/{scope}/{code}/series | [EARLY ACCESS] GetSeries: [EARLY ACCESS] GetSeries: List the Series of a Fund. |
 | [**getTaxDeemedDisposal**](FundsApi.md#getTaxDeemedDisposal) | **GET** /api/funds/{scope}/{code}/tax/deemed-disposals/{holdingId}/{date} | [EARLY ACCESS] GetTaxDeemedDisposal: [EARLY ACCESS] GetTaxDeemedDisposal: Get one deemed disposal. |
 | [**getTaxDeemedDisposals**](FundsApi.md#getTaxDeemedDisposals) | **GET** /api/funds/{scope}/{code}/tax/deemed-disposals | [EARLY ACCESS] GetTaxDeemedDisposals: [EARLY ACCESS] GetTaxDeemedDisposals: List the deemed disposals of a Fund or company. |
@@ -65,7 +65,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getValuationPointTransactions**](FundsApi.md#getValuationPointTransactions) | **POST** /api/funds/{scope}/{code}/valuationpoints/transactions/$query | [EARLY ACCESS] GetValuationPointTransactions: Get the Transactions for the given Fund. |
 | [**getValuationPointTrialBalance**](FundsApi.md#getValuationPointTrialBalance) | **POST** /api/funds/{scope}/{code}/valuationpoints/trialbalance/$query | [EARLY ACCESS] GetValuationPointTrialBalance: Get Trial Balance for the given Fund. |
 | [**getValuationPointUnsettledTransactions**](FundsApi.md#getValuationPointUnsettledTransactions) | **POST** /api/funds/{scope}/{code}/valuationpoints/unsettledtransactions/$query | [EARLY ACCESS] GetValuationPointUnsettledTransactions: Get Unsettled Transactions for the given Fund. |
-| [**listFacilities**](FundsApi.md#listFacilities) | **GET** /api/funds/{scope}/{code}/facilities | [EXPERIMENTAL] ListFacilities: [EXPERIMENTAL] ListFacilities: List Facilities for a specified Fund. |
+| [**listFacilities**](FundsApi.md#listFacilities) | **GET** /api/funds/{scope}/{code}/facilities | [EARLY ACCESS] ListFacilities: [EARLY ACCESS] ListFacilities: List Facilities for a specified Fund. |
 | [**listFees**](FundsApi.md#listFees) | **GET** /api/funds/{scope}/{code}/fees | [EARLY ACCESS] ListFees: List Fees for a specified Fund. |
 | [**listFundCalendar**](FundsApi.md#listFundCalendar) | **GET** /api/funds/{scope}/{code}/calendar | [EARLY ACCESS] ListFundCalendar: List Fund Calendar. |
 | [**listFundCalendarEntries**](FundsApi.md#listFundCalendarEntries) | **GET** /api/funds/{scope}/{code}/calendars | [EARLY ACCESS] ListFundCalendarEntries: List Fund Calendar Entries. |
@@ -86,14 +86,14 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**queryCashStatement**](FundsApi.md#queryCashStatement) | **POST** /api/funds/{scope}/{code}/valuationpoints/cashstatement/$query | [DEPRECATED] QueryCashStatement: [DEPRECATED] QueryCashStatement: Query cash statement for a Fund valuation point. |
 | [**queryCashStatementLocalCurrency**](FundsApi.md#queryCashStatementLocalCurrency) | **POST** /api/funds/{scope}/{code}/valuationpoints/cashstatementlocalcurrency/$query | [EARLY ACCESS] QueryCashStatementLocalCurrency: [EXPERIMENTAL] QueryCashStatementLocalCurrency: Query the local-currency cash statement for a Fund valuation point. |
 | [**reactivateNavTypes**](FundsApi.md#reactivateNavTypes) | **POST** /api/funds/{scope}/{code}/reactivateNavTypes | [EXPERIMENTAL] ReactivateNavTypes: [EXPERIMENTAL] ReactivateNavTypes: Reactivate previously deactivated NAV types on a Fund. |
-| [**reseedFacilityBalance**](FundsApi.md#reseedFacilityBalance) | **POST** /api/funds/{scope}/{code}/facilities/{facilityCode}/$reseed | [EXPERIMENTAL] ReseedFacilityBalance: [EXPERIMENTAL] ReseedFacilityBalance: Re-seed a Facility&#39;s balance from its booked draws and repayments. |
+| [**reseedFacilityBalance**](FundsApi.md#reseedFacilityBalance) | **POST** /api/funds/{scope}/{code}/facilities/{facilityCode}/$reseed | [EARLY ACCESS] ReseedFacilityBalance: [EARLY ACCESS] ReseedFacilityBalance: Re-seed a Facility&#39;s balance from its booked draws and repayments. |
 | [**resplitPrepaidManagementFees**](FundsApi.md#resplitPrepaidManagementFees) | **POST** /api/funds/{scope}/{code}/fees/$resplit | [EARLY ACCESS] ResplitPrepaidManagementFees: [EXPERIMENTAL] ResplitPrepaidManagementFees: Re-split the Fund&#39;s prepaid management fee periods. |
 | [**revertValuationPointToEstimate**](FundsApi.md#revertValuationPointToEstimate) | **POST** /api/funds/{scope}/{code}/valuationpoints/$reverttoestimate | [EARLY ACCESS] RevertValuationPointToEstimate: Reverts a Final Valuation Point to Estimate. |
 | [**runPartnerAllocations**](FundsApi.md#runPartnerAllocations) | **POST** /api/funds/{scope}/{code}/partnerallocations/$run | [EARLY ACCESS] RunPartnerAllocations: [EXPERIMENTAL] RunPartnerAllocations: Allocate a period&#39;s income to the Fund&#39;s partners. |
 | [**sendBackTaxReturn**](FundsApi.md#sendBackTaxReturn) | **POST** /api/funds/{scope}/{code}/tax/return/send-back | [EARLY ACCESS] SendBackTaxReturn: [EARLY ACCESS] SendBackTaxReturn: Send the tax return back one workflow step. |
 | [**setHoldingsForFund**](FundsApi.md#setHoldingsForFund) | **PUT** /api/funds/{scope}/{code}/holdings | [EXPERIMENTAL] SetHoldingsForFund: Set holdings for a Fund. |
 | [**setShareClassInstruments**](FundsApi.md#setShareClassInstruments) | **PUT** /api/funds/{scope}/{code}/shareclasses | [EARLY ACCESS] SetShareClassInstruments: Set the ShareClass Instruments on a Fund. |
-| [**updateFacility**](FundsApi.md#updateFacility) | **PUT** /api/funds/{scope}/{code}/facilities/{facilityCode} | [EXPERIMENTAL] UpdateFacility: [EXPERIMENTAL] UpdateFacility: Update a Facility. |
+| [**updateFacility**](FundsApi.md#updateFacility) | **PUT** /api/funds/{scope}/{code}/facilities/{facilityCode} | [EARLY ACCESS] UpdateFacility: [EARLY ACCESS] UpdateFacility: Update a Facility. |
 | [**updateValuationPoint**](FundsApi.md#updateValuationPoint) | **PUT** /api/funds/{scope}/{code}/valuationpoints | [EARLY ACCESS] UpdateValuationPoint: Update a Valuation Point. |
 | [**upsertBookmark**](FundsApi.md#upsertBookmark) | **POST** /api/funds/{scope}/{code}/bookmarks | [EARLY ACCESS] UpsertBookmark: Upsert a bookmark. |
 | [**upsertDiaryEntryTypeValuationPoint**](FundsApi.md#upsertDiaryEntryTypeValuationPoint) | **POST** /api/funds/{scope}/{code}/valuationpoints | [EARLY ACCESS] UpsertDiaryEntryTypeValuationPoint: Upsert a Valuation Point. |
@@ -977,7 +977,7 @@ public class FundsApiExample {
 
 > Facility createFacility(scope, code, facilityRequest)
 
-[EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility.
+[EARLY ACCESS] CreateFacility: [EARLY ACCESS] CreateFacility: Create a Facility.
 
 Create the given Facility against a Fund.
 
@@ -1646,7 +1646,7 @@ public class FundsApiExample {
 
 > DeletedEntityResponse deleteFacility(scope, code, facilityCode)
 
-[EXPERIMENTAL] DeleteFacility: [EXPERIMENTAL] DeleteFacility: Delete a Facility.
+[EARLY ACCESS] DeleteFacility: [EARLY ACCESS] DeleteFacility: Delete a Facility.
 
 Delete the given Facility.
 
@@ -2723,7 +2723,7 @@ public class FundsApiExample {
 
 > Facility getFacility(scope, code, facilityCode, effectiveAt, asAt)
 
-[EXPERIMENTAL] GetFacility: [EXPERIMENTAL] GetFacility: Get a Facility for a specified Fund.
+[EARLY ACCESS] GetFacility: [EARLY ACCESS] GetFacility: Get a Facility for a specified Fund.
 
 Retrieve a Facility for a specified Fund.
 
@@ -4237,7 +4237,7 @@ public class FundsApiExample {
 
 > VersionedResourceListWithWarningsOfRegistryLine getRegistryForFund(scope, code, effectiveAt, asAt, filter, propertyKeys, navTypeCode, investorRecordId, commitmentLineId, limit, page)
 
-[EXPERIMENTAL] GetRegistryForFund: [EXPERIMENTAL] GetRegistryForFund: Get the registry of a Fund.
+[EARLY ACCESS] GetRegistryForFund: [EARLY ACCESS] GetRegistryForFund: Get the registry of a Fund.
 
 Get the register lines of a Fund at the given effective and asAt datetimes: the registry lines of its  transaction portfolios, each tagged with the portfolio it sits in, with their units, cost and capital  balances. Registry lines are never holdings, so they do not appear in the holdings of the Fund.
 
@@ -6194,7 +6194,7 @@ public class FundsApiExample {
 
 > PagedResourceListOfFacility listFacilities(scope, code, effectiveAt, asAt, page, limit, filter, sortBy)
 
-[EXPERIMENTAL] ListFacilities: [EXPERIMENTAL] ListFacilities: List Facilities for a specified Fund.
+[EARLY ACCESS] ListFacilities: [EARLY ACCESS] ListFacilities: List Facilities for a specified Fund.
 
 List all the Facilities matching a particular criteria.
 
@@ -8347,7 +8347,7 @@ public class FundsApiExample {
 
 > FacilityReseedResult reseedFacilityBalance(scope, code, facilityCode, dryRun)
 
-[EXPERIMENTAL] ReseedFacilityBalance: [EXPERIMENTAL] ReseedFacilityBalance: Re-seed a Facility&#39;s balance from its booked draws and repayments.
+[EARLY ACCESS] ReseedFacilityBalance: [EARLY ACCESS] ReseedFacilityBalance: Re-seed a Facility&#39;s balance from its booked draws and repayments.
 
 Rebuild the balance a Facility&#39;s limit is judged on from the draws and repayments booked on it: DealFundings  drawn from it and capital calls repaying it, in Booked or Booking status, on allocation maps whose  structureMemberId is the Fund, and FacilityDrawEvents and FacilityRepaymentEvents in the sources of the Fund&#39;s  portfolios. Afterwards the balance is the booked draws and repayments. Running it again writes nothing. A  Facility with nothing booked on it is seeded with 0. Draws and repayments still in Booking status count, and  are named in a FacilityBookingInProgress warning.  A draw or repayment written at the same time makes the re-seed fail as a concurrent modification; retry it.  A draw or repayment naming the Facility on an allocation map whose structureMemberId is not a fund cannot be  attributed, and the re-seed is refused with 409 FacilityFlowsUnattributable naming them; nothing is written,  and draws, repayments, FacilityInterestEvents and FacilityCommitmentFeeEvents on the Facility are refused the  same way until the maps are fixed and the Facility is re-seeded.  With dryRun, nothing is written: the response says what a re-seed would write, or lists the draws and  repayments that cannot be attributed. Requires the Fund&#39;s update entitlement, except for a dry run.
 
@@ -9034,7 +9034,7 @@ public class FundsApiExample {
 
 > Facility updateFacility(scope, code, facilityCode, facilityRequest)
 
-[EXPERIMENTAL] UpdateFacility: [EXPERIMENTAL] UpdateFacility: Update a Facility.
+[EARLY ACCESS] UpdateFacility: [EARLY ACCESS] UpdateFacility: Update a Facility.
 
 Replace the definition of a Facility of a Fund. The code, the Fund and the currency cannot change. Lowering  the limit below what is already drawn is accepted and the response carries a warning: the draws already  booked stand, and further draws are refused until the Facility is repaid within its limit.
 

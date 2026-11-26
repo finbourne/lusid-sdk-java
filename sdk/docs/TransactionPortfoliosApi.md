@@ -36,7 +36,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**getPortfolioCashFlows**](TransactionPortfoliosApi.md#getPortfolioCashFlows) | **GET** /api/transactionportfolios/{scope}/{code}/cashflows | GetPortfolioCashFlows: Get portfolio cash flows |
 | [**getPortfolioCashLadder**](TransactionPortfoliosApi.md#getPortfolioCashLadder) | **GET** /api/transactionportfolios/{scope}/{code}/cashladder | GetPortfolioCashLadder: Get portfolio cash ladder |
 | [**getPortfolioCashStatement**](TransactionPortfoliosApi.md#getPortfolioCashStatement) | **GET** /api/transactionportfolios/{scope}/{code}/cashstatement | GetPortfolioCashStatement: Get portfolio cash statement |
-| [**getRegistry**](TransactionPortfoliosApi.md#getRegistry) | **GET** /api/transactionportfolios/{scope}/{code}/registry | [EXPERIMENTAL] GetRegistry: [EXPERIMENTAL] GetRegistry: Get the registry of a transaction portfolio. |
+| [**getRegistry**](TransactionPortfoliosApi.md#getRegistry) | **GET** /api/transactionportfolios/{scope}/{code}/registry | [EARLY ACCESS] GetRegistry: [EARLY ACCESS] GetRegistry: Get the registry of a transaction portfolio. |
 | [**getTransactionHistory**](TransactionPortfoliosApi.md#getTransactionHistory) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/history | GetTransactionHistory: Get the history of a transaction |
 | [**getTransactionSettlementStatus**](TransactionPortfoliosApi.md#getTransactionSettlementStatus) | **GET** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/settlementstatus | [EARLY ACCESS] GetTransactionSettlementStatus: Get transaction settlement status |
 | [**getTransactions**](TransactionPortfoliosApi.md#getTransactions) | **GET** /api/transactionportfolios/{scope}/{code}/transactions | GetTransactions: Get transactions |
@@ -3344,7 +3344,7 @@ public class TransactionPortfoliosApiExample {
 
 > VersionedResourceListWithWarningsOfRegistryLine getRegistry(scope, code, effectiveAt, asAt, filter, propertyKeys, investorRecordId, commitmentLineId, limit, page)
 
-[EXPERIMENTAL] GetRegistry: [EXPERIMENTAL] GetRegistry: Get the registry of a transaction portfolio.
+[EARLY ACCESS] GetRegistry: [EARLY ACCESS] GetRegistry: Get the registry of a transaction portfolio.
 
 Get the registry lines of a transaction portfolio at the given effective and asAt datetimes: the partner  register lines that transaction types flagged &#39;Registry&#39; apply to, with their units, cost and capital  balances. Registry lines are never holdings, so they do not appear in the holdings of the portfolio.
 

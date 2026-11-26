@@ -2778,7 +2778,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] CreateFacility: [EXPERIMENTAL] CreateFacility: Create a Facility.
+     * [EARLY ACCESS] CreateFacility: [EARLY ACCESS] CreateFacility: Create a Facility.
      * Create the given Facility against a Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -4585,7 +4585,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeleteFacility: [EXPERIMENTAL] DeleteFacility: Delete a Facility.
+     * [EARLY ACCESS] DeleteFacility: [EARLY ACCESS] DeleteFacility: Delete a Facility.
      * Delete the given Facility.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -7605,7 +7605,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetFacility: [EXPERIMENTAL] GetFacility: Get a Facility for a specified Fund.
+     * [EARLY ACCESS] GetFacility: [EARLY ACCESS] GetFacility: Get a Facility for a specified Fund.
      * Retrieve a Facility for a specified Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -12144,7 +12144,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetRegistryForFund: [EXPERIMENTAL] GetRegistryForFund: Get the registry of a Fund.
+     * [EARLY ACCESS] GetRegistryForFund: [EARLY ACCESS] GetRegistryForFund: Get the registry of a Fund.
      * Get the register lines of a Fund at the given effective and asAt datetimes: the registry lines of its  transaction portfolios, each tagged with the portfolio it sits in, with their units, cost and capital  balances. Registry lines are never holdings, so they do not appear in the holdings of the Fund.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -18055,7 +18055,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListFacilities: [EXPERIMENTAL] ListFacilities: List Facilities for a specified Fund.
+     * [EARLY ACCESS] ListFacilities: [EARLY ACCESS] ListFacilities: List Facilities for a specified Fund.
      * List all the Facilities matching a particular criteria.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -24528,7 +24528,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ReseedFacilityBalance: [EXPERIMENTAL] ReseedFacilityBalance: Re-seed a Facility&#39;s balance from its booked draws and repayments.
+     * [EARLY ACCESS] ReseedFacilityBalance: [EARLY ACCESS] ReseedFacilityBalance: Re-seed a Facility&#39;s balance from its booked draws and repayments.
      * Rebuild the balance a Facility&#39;s limit is judged on from the draws and repayments booked on it: DealFundings  drawn from it and capital calls repaying it, in Booked or Booking status, on allocation maps whose  structureMemberId is the Fund, and FacilityDrawEvents and FacilityRepaymentEvents in the sources of the Fund&#39;s  portfolios. Afterwards the balance is the booked draws and repayments. Running it again writes nothing. A  Facility with nothing booked on it is seeded with 0. Draws and repayments still in Booking status count, and  are named in a FacilityBookingInProgress warning.  A draw or repayment written at the same time makes the re-seed fail as a concurrent modification; retry it.  A draw or repayment naming the Facility on an allocation map whose structureMemberId is not a fund cannot be  attributed, and the re-seed is refused with 409 FacilityFlowsUnattributable naming them; nothing is written,  and draws, repayments, FacilityInterestEvents and FacilityCommitmentFeeEvents on the Facility are refused the  same way until the maps are fixed and the Facility is re-seeded.  With dryRun, nothing is written: the response says what a re-seed would write, or lists the draws and  repayments that cannot be attributed. Requires the Fund&#39;s update entitlement, except for a dry run.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
@@ -26454,7 +26454,7 @@ public class FundsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpdateFacility: [EXPERIMENTAL] UpdateFacility: Update a Facility.
+     * [EARLY ACCESS] UpdateFacility: [EARLY ACCESS] UpdateFacility: Update a Facility.
      * Replace the definition of a Facility of a Fund. The code, the Fund and the currency cannot change. Lowering  the limit below what is already drawn is accepted and the response carries a warning: the draws already  booked stand, and further draws are refused until the Facility is repaid within its limit.
      * @param scope The scope of the Fund. (required)
      * @param code The code of the Fund. Together with the scope this uniquely identifies the Fund. (required)
